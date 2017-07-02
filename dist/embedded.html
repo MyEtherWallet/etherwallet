@@ -37,40 +37,50 @@
 </header>
 
 
-  <section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+  <section class="container" style="min-height: 50%" ng-controller='genericCtrl'>
 
   <!-- tab panes -->
 
     <div class="tab-content" >
 
-      <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl' role="main" ng-cloak>
+      <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.walletGenerate.id" ng-controller='walletGenerateCtrl' role="main" ng-cloak>
 
+
+  <!-- Section 1 -->
   <article class="block__wrap gen__1" ng-show="!wallet && !showGetAddress">
 
-    <section class="block__main gen__1--inner">
-      <br />
-      <h1 translate="NAV_GenerateWallet" aria-live="polite"> Create New Wallet</h1>
-      <h4 translate="GEN_Label_1"> Enter password </h4>
+    <section class="block__main block__title">
+      <!-- Title -->
+      <h1 translate="WALL_Create"> Create New Wallet</h1>
+      <!-- Desc -->
+      <p translate="PW_Desc"> </p>
+      <!-- Label -->
+      <h4 translate="PW_Enter"> Enter password </h4>
+      <!-- Input -->
       <div class="input-group">
         <input name="password"
              class="form-control"
              type="{{showPass && 'password' || 'text'}}"
-             placeholder="{{'GEN_Placeholder_1' | translate }}"
+             placeholder="{{'PW_Enter' | translate }}"
              ng-model="password"
              ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"
-             aria-label="{{'GEN_Label_1' |translate}}"/>
+             aria-label="{{'PW_Enter' |translate}}"/>
         <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
-      <a tabindex="0" role="button" class="btn btn-primary" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
-      <p translate="x_PasswordDesc"> </p>
-      <br>
+      <!-- Button -->
+      <button tabindex="0"
+              role="button"
+              class="btn btn-primary"
+              func="generateSingleWallet"
+              ng-click="genNewWallet()"
+              translate="WALL_Create"> Generate Wallet </button>
     </section>
 
     <section class="block__help">
       <h2>Ledger / TREZOR:</h2>
       <ul><li>
         <span translate="GEN_Help_1">Use your</span>
-        <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Ledger or TREZOR</a>
+        <a ng-click="globalService.currentTab=globalService.tabs.txSend.id">Ledger or TREZOR</a>
         <span translate="GEN_Help_2">to access your account.</span>
         <span translate="GEN_Help_3">Your device * is * your wallet.</span>
       </li></ul>
@@ -78,14 +88,14 @@
       <h2>Jaxx / Metamask:</h2>
       <ul><li>
         <span translate="GEN_Help_1">Use your</span>
-        <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id" translate="x_Mnemonic">Mnemonic Phrase</a>
+        <a ng-click="globalService.currentTab=globalService.tabs.txSend.id" translate="x_Mnemonic">Mnemonic Phrase</a>
         <span translate="GEN_Help_2">to access your account.</span>
       </li></ul>
 
       <h2>Mist / Geth / Parity:</h2>
       <ul><li>
         <span translate="GEN_Help_1">Use your</span>
-        <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id" translate="x_Keystore2">Keystore File (UTC / JSON)</a>
+        <a ng-click="globalService.currentTab=globalService.tabs.txSend.id" translate="x_Keystore2">Keystore File (UTC / JSON)</a>
         <span translate="GEN_Help_2">to access your account.</span>
       </li></ul>
 
@@ -104,14 +114,14 @@
     </section>
 
   </article>
+  <!-- / Section 1 -->
 
 
-  <article role="main" class="block__wrap gen__2" ng-show="wallet && !showPaperWallet" > <!-- -->
+  <!-- Section 2 -->
+  <article role="main" class="block__wrap" ng-show="wallet && !showPaperWallet">
 
     <section class="block__main gen__2--inner">
-      <br />
-      <h1 translate="GEN_Label_2">Save your Keystore File (UTC / JSON) </h1>
-
+      <h1 translate="x_Keystore_Save">Save your Keystore File (UTC / JSON) </h1>
       <a tabindex="0" role="button"
          class="btn btn-primary"
          href="{{blobEnc}}"
@@ -122,17 +132,15 @@
          target="_blank" rel="noopener">
         <span translate="x_Download"> DOWNLOAD </span> <span translate="x_Keystore2"> Keystore File (UTC / JSON) </span>
       </a>
-
       <div class="warn">
         <p translate="ERROR_28"></p>
         <p><strong translate="GEN_Help_7">Keep it safe &middot; Make a backup &middot; Don't share it with anyone &middot; Don't lose it &middot; It cannot be recovered if you lose it.</strong></p>
         <p>
-          <a tabindex="0" role="button" class="btn btn-danger" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()" translate="GET_ConfButton">
+          <a tabindex="0" role="button" class="btn btn-danger" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()" translate="GEN_ConfButton">
             I understand. Continue.
           </a>
         </p>
       </div>
-
     </section>
 
     <section class="block__help">
@@ -142,27 +150,22 @@
         <li translate="GEN_Help_10"> Right click & save file as. Filename:</li>
         <li><small><small><code> {{encFileName}} </code></small></small></li>
       </ul>
-
       <h2 translate="GEN_Help_11">Don't open this file on your computer</h2>
       <ul><li translate="GEN_Help_12">Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity &amp; other wallet clients.)</li></ul>
-
       <h2 translate="GEN_Help_4">Guides &amp; FAQ</h2>
       <ul>
         <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank" rel="noopener"><strong translate="GEN_Help_13">How to Back Up Your Keystore File</strong></a></li>
         <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank" rel="noopener"><strong translate="GEN_Help_14">What are these Different Formats?</a></strong></li>
       </ul>
-
     </section>
 
   </article>
+  <!-- / Section 2 -->
 
 
-  <article role="main" class="block__wrap gen__3" ng-show="showPaperWallet">
+  <article role="main" class="block__wrap" ng-show="showPaperWallet">
 
     <section class="block__main gen__3--inner">
-
-      <br />
-
       <h1 translate="GEN_Label_5"> Save your Private Key (unencrypted)</h1>
       <input aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc"
              value="{{wallet.getPrivateKeyString()}}"
@@ -179,7 +182,7 @@
       <br /><br />
 
       <a class="btn btn-default btn-sm" ng-click="getAddress()">
-        <span translate="GEN_Label_3"> Save your Address </span> →
+        <span translate="ADDR_Save"> Save your Address </span> →
       </a>
 
     </section>
@@ -188,7 +191,7 @@
       <h2 translate="GEN_Help_4">Guides &amp; FAQ</h2>
       <ul>
         <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank" rel="noopener">
-          <strong translate="HELP_2a_Title">How to Save & Backup Your Wallet.</strong>
+          <strong translate="GEN_Help_21">How to Save & Backup Your Wallet.</strong>
         </a></li>
         <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">
           <strong translate="GEN_Help_15">Preventing loss &amp; theft of your funds.</strong>
@@ -217,8 +220,8 @@
     <div class="clearfix collapse-container">
       <div ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-        <h1 traslate="GEN_Unlock">Unlock your wallet to see your address</h1>
-        <p translate="x_AddessDesc"></p>
+        <h1 traslate="GEN_Unlock">Unlock your Wallet to See Your Address</h1>
+        <p translate="ADDR_Desc"></p>
       </div>
       <div ng-show="!wd">
             <wallet-decrypt-drtv></wallet-decrypt-drtv>         
@@ -226,7 +229,7 @@
       </div>
     </div>
 
-    <div class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
+    <div class="row" ng-show="wallet!=null" ng-controller='walletViewCtrl'>
 
       
         <article class="col-sm-8 view-wallet-content">
@@ -235,8 +238,8 @@
     <div class="col-xs-11">
       <div class="account-help-icon">
         <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
-        <h5 translate="x_Address">Your Address:</h5>
+        <p class="account-help-text" translate="ADDR_Desc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
+        <h5 translate="ADDR_">Your Address:</h5>
       </div>
       <input class="form-control" type="text" ng-value="wallet.getChecksumAddressString()" readonly="readonly">
     </div>
@@ -281,7 +284,7 @@
 
   <section class="block">
     <div class="col-xs-6">
-      <h5 translate="x_Address">Your Address:</h5>
+      <h5 translate="ADDR_">Your Address:</h5>
       <div class="qr-code" qr-code="{{wallet.getChecksumAddressString()}}" watch-var="wallet" width="100%"></div>
     </div>
     <div class="col-xs-6">
@@ -297,78 +300,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="block" ng-show="wallet.type=='default'">
-    
-    
-      <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl' >
-          <!-- Sign Message Panel -->
-  <h2>
-    <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
-    or
-    <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
-  </h2>
-
-  <article class="col-xs-12 clearfix" ng-switch on="visibility">
-
-    <!-- Sign Message Stuff -->
-    <section ng-switch-when="signView">
-
-      <!-- Message -->
-      <div class="account-help-icon">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <ul class="account-help-text">
-          <li translate="MSG_info2">Include your nickname and where you use the nickname so someone else cannot use it.</li>
-          <li translate="MSG_info3">Include a specific reason for the message so it cannot be reused for a different purpose.</li>
-        </ul>
-        <h5 translate="MSG_message"> Message </h5>
-      </div>
-
-
-      <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purpose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="5"></textarea>
-
-      <!-- Date -->
-      <div class="account-help-icon">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="MSG_info1">Include the current date so the signature cannot be reused on a different date.</p>
-        <h5 translate="MSG_date"> Date </h5>
-      </div>
-      <input class="form-control" ng-model="signMsg.dateTime" type="text" placeholder="1 JAN 2016 14:15" />
-
-      <!-- Sign Message Button -->
-      <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
-
-
-      <!-- Signed Message -->
-      <div ng-show="signMsg.signedMsg">
-        <h5 translate="MSG_signature"> Signature </h5>
-        <textarea class="form-control" rows="4" readonly title="Signature">{{signMsg.signedMsg }}</textarea>
-      </div>
-    </section>
-    <!-- / Sign Message Stuff -->
-
-
-
-    <!-- Verify Message Stuff -->
-    <section ng-switch-when="verifyView">
-      <!-- Signature -->
-      <h5 translate="MSG_signature"> Signature </h5>
-      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{ "address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
-
-      <!-- Verify Signature Message Button -->
-      <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
-
-
-
-    </section>
-    <!-- / Verify Message Stuff -->
-
-  </article>
-<!-- / Sign Message Panel -->
-   
-      </main>
-    
   </section>
 
 </article>

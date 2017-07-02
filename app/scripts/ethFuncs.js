@@ -1,6 +1,6 @@
 'use strict';
 var ethFuncs = function() {}
-ethFuncs.gasAdjustment = 21;
+ethFuncs.gasPriceFromSlider = 21;
 ethFuncs.validateEtherAddress = function(address) {
     if (address.substring(0, 2) != "0x") return false;
     else if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) return false;
@@ -34,11 +34,7 @@ ethFuncs.padLeftEven = function(hex) {
 }
 ethFuncs.addTinyMoreToGas = function(hex) {
     hex = this.sanitizeHex(hex);
-    //if (parseInt(ethFuncs.gasAdjustment) >= 80) {
-        //uiFuncs.notifier.danger("We are currently trying to debug a weird issue. Please contact support@myetherwallet.com w/ subject line WEIRD ISSUE to help.");
-        //throw "error";
-    //}
-    return new BigNumber(ethFuncs.gasAdjustment * etherUnits.getValueOfUnit('gwei')).toString(16);
+    return new BigNumber(ethFuncs.gasPriceFromSlider * etherUnits.getValueOfUnit('gwei')).toString(16);
 }
 ethFuncs.decimalToHex = function(dec) {
     return new BigNumber(dec).toString(16);

@@ -14,7 +14,7 @@
 .block {
   background-color: white;
   box-shadow: 16px 16px 47px 2px rgba(0,0,0,.07);
-  padding: @space-lg @space-xl;
+  padding: @space-xl;
   min-height: @space-lg;
   margin: @space auto;
   .clearfix();
@@ -23,6 +23,32 @@
   }
   & > *:last-child {
     margin-bottom: 0;
+  }
+}
+
+.block__title {
+  .block();
+  text-align: center;
+  h1, h4, .btn-primary {
+    margin-top:    @space;
+    margin-bottom: @space;
+  }
+  p {
+    margin-top:    0;
+    margin-bottom: @space*2;
+  }
+  .input-group, .form-control {
+    max-width: @container-sm;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .input-group .form-control {
+    width: 100%;
+  }
+  > * {
+    max-width: @container-md;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -60,10 +86,7 @@
 
 .block__main {
   .block();
-  text-align: left;
-  padding: @space-md;
   flex-basis: 98%;
-  margin: @space @cont-padding;
   @media screen and (min-width: @screen-sm) {
     flex-basis: 68%;
   }
@@ -119,24 +142,6 @@
   text-align: center;
 }
 
-// generate
-.gen__1 {
-  .input-group {
-    max-width: 43rem;
-    margin: @space auto;
-  }
-}
-
-.gen__1--inner {
-  text-align: center;
-  h1   {  margin: @space   auto @space*2  }
-  h4   {  margin: @space*3 auto @space    }
-  p    {  margin: 0        0    @space*2  }
-  .btn {  margin: 0        auto @space*3  }
-}
-
-.gen__2 {
-}
 
 .gen__2--inner {
   text-align: center;

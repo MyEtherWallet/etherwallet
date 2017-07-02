@@ -47,7 +47,7 @@
 
   <input class="form-control"
          type="text"
-         placeholder="{{ 'SEND_amount_short' | translate }}"
+         placeholder="{{ 'x_Amount_short' | translate }}"
          ng-change ="updateEstimate(true)"
          ng-model="swapOrder.fromVal"
          ng-click="showedMinMaxError = false"
@@ -66,7 +66,7 @@
 
   <input class="form-control"
          type="text"
-         placeholder="{{ 'SEND_amount_short' | translate }}"
+         placeholder="{{ 'x_Amount_short' | translate }}"
          ng-change ="updateEstimate(false)"
          ng-model="swapOrder.toVal"
          ng-click="showedMinMaxError = false"

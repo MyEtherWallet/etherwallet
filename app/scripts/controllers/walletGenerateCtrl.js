@@ -1,5 +1,5 @@
 'use strict';
-var walletGenCtrl = function($scope) {
+var walletGenerateCtrl = function($scope) {
     $scope.password = "";
     $scope.wallet = null;
     $scope.showWallet = false;
@@ -51,4 +51,4 @@ var walletGenCtrl = function($scope) {
         $scope.showGetAddress = true;
     }
 };
-module.exports = walletGenCtrl;
+module.exports = walletGenerateCtrl;

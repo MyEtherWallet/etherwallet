@@ -1,12 +1,12 @@
-@@include( '../includes/headerEmbedded.tpl', { "site": "mew" } )
+@@include( '../includes/header-embedded.tpl', { "site": "mew" } )
 
-  <section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+  <section class="container" style="min-height: 50%" ng-controller='genericCtrl'>
 
   <!-- tab panes -->
 
     <div class="tab-content" >
 
-      @@include( '../includes/generateWallet.tpl', { "site": "mew" } )
+      @@include( '../includes/walletGenerate.tpl', { "site": "mew" } )
 
     </div>
 
@@ -18,4 +18,4 @@
   </section>
 
 
-@@include( '../includes/footerEmbedded.tpl', { "site": "mew" } )
+@@include( '../includes/footer-embedded.tpl', { "site": "mew" } )

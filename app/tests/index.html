@@ -31,7 +31,7 @@ describe('Wallet generation Test', function() {
     beforeEach(angular.mock.inject(function(_$controller_, _$rootScope_) {
         $rootScope = _$rootScope_;
         $scope = _$rootScope_.$new();
-        $controller = _$controller_('walletGenCtrl', {
+        $controller = _$controller_('walletGenerate', {
             $rootScope: $rootScope,
             $scope: $scope
         });

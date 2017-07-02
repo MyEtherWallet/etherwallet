@@ -1,5 +1,5 @@
 'use strict';
-var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
+var walletDecryptCxCtrl = function($scope, $sce, walletService) {
 	$scope.allWallets = [];
     $scope.selectedWallet = $scope.password = "";
 	$scope.setAllWallets = function() {
@@ -34,7 +34,7 @@ var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
     }
     $scope.decryptWallet = function() {
 	    $scope.wallet=null;
-        
+
 		try {
             var priv = $scope.getPrivFromAdd();
             if (priv.length==132)
@@ -49,4 +49,4 @@ var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
         if($scope.wallet!=null) $scope.notifier.info(globalFuncs.successMsgs[1]);
 	};
 };
-module.exports = cxDecryptWalletCtrl;
+module.exports = walletDecryptCxCtrl;

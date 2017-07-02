@@ -22,7 +22,7 @@ var addressFieldDrtv = function($compile) {
                 readOnly: false
             }
             element.html('<div class=\"col-xs-11\">\n \
-                    <label translate=\"SEND_addr\"> To Address: </label>\n \
+                    <label translate=\"ADDR_To\"> To Address: </label>\n \
                     <input class=\"form-control\" type=\"text\" placeholder=\"' + placeholder + '\" ng-model=\"addressDrtv.ensAddressField\" ng-disabled=\"addressDrtv.readOnly\" ng-class=\"Validator.isValidENSorEtherAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
                     <p class="ens-response" ng-show="addressDrtv.showDerivedAddress"> ↳ <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span> </p>\n \
                 </div>\n \

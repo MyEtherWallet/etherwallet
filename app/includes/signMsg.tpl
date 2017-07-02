@@ -1,6 +1,6 @@
 <!-- Sign Message Panel -->
   <h2>
-    <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
+    <a translate="MSG_Sign" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
     <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
   </h2>
@@ -32,7 +32,7 @@
       <input class="form-control" ng-model="signMsg.dateTime" type="text" placeholder="1 JAN 2016 14:15" />
 
       <!-- Sign Message Button -->
-      <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
+      <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="MSG_Sign" ng-show="wallet!=null"> Sign Message </a>
 
 
       <!-- Signed Message -->

@@ -186,7 +186,7 @@ var swapCtrl = function($scope, $sce, walletService) {
                 tokenSymbol: $scope.orderResult.input.currency == 'ETH' ? '' : $scope.orderResult.input.currency,
                 readOnly: true
             }
-            new Modal(document.getElementById('sendTransaction'));
+            new Modal(document.getElementById('txSend'));
             $scope.showStage3Eth = true;
         }
     }

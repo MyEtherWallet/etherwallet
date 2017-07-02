@@ -6,86 +6,93 @@ var globalService = function($http, $httpParamSerializerJQLike) {
   ajaxReq.getETHvalue = nodes.ethPrice.getETHvalue;
   ajaxReq.getRates = nodes.ethPrice.getRates;
 var tabs = {
-  generateWallet: {
+  walletViewCX: {
     id: 0,
-    name: "NAV_GenerateWallet_alt",
-    url: "generate-wallet",
-    mew: true,
-    cx: false
-  },
-  myWallet: {
-    id: 1,
-    name: "NAV_MyWallets",
+    name: "WALL_walletViewCX",
     url: "my-wallet",
     mew: false,
     cx: true
   },
-  addWallet: {
-    id: 2,
-    name: "NAV_AddWallet",
+  walletAdd: {
+    id: 1,
+    name: "WALL_Add",
     url: "add-wallet",
     mew: false,
     cx: true
   },
-  sendTransaction: {
-    id: 3,
-    name: "NAV_SendEther",
+  txSend: {
+    id: 2,
+    name: "TX_Send_Title",
     url: "send-transaction",
     mew: true,
     cx: true
   },
-  swap: {
+  txView: {
+    id: 3,
+    name: "TX_View_Short",
+    url: "view-transaction",
+    mew: true,
+    cx: true
+  },
+  txSign: {
     id: 4,
-    name: "NAV_Swap",
+    name: "TX_Sign",
+    url: "sign-transaction",
+    mew: true,
+    cx: true
+  },
+  txBroadcast: {
+    id: 5,
+    name: "TX_Broadcast",
+    url: "broadcast",
+    mew: true,
+    cx: true
+  },
+  swap: {
+    id: 6,
+    name: "SWAP_Title",
     url: "swap",
     mew: true,
     cx: true
   },
-  offlineTransaction: {
-    id: 5,
-    name: "NAV_Offline",
-    url:"offline-transaction",
-    mew: true,
-    cx: false
-  },
-  contracts: {
-    id: 6,
-    name: "NAV_Contracts",
-    url: "contracts",
-    mew: true,
-    cx: true
-  },
   ens: {
-    id:7,
-    name: "NAV_ENS",
+    id: 7,
+    name: "ENS_Title",
     url: "ens",
     mew: true,
     cx: true
   },
-  txStatus: {
+  contracts: {
     id: 8,
-    name: "NAV_CheckTxStatus",
-    url: "check-tx-status",
+    name: "CONTRACT_Title",
+    url: "contracts",
     mew: true,
     cx: true
   },
-  viewWalletInfo: {
+  walletGenerate: {
     id: 9,
-    name: "NAV_ViewWallet",
-    url: "view-wallet-info",
+    name: "WALL_Create",
+    url: "create-wallet",
+    mew: true,
+    cx: false
+  },
+  walletView: {
+    id: 10,
+    name: "WALL_View",
+    url: "view-wallet",
     mew: true,
     cx: false
   },
   signMsg: {
-    id: 10,
-    name: "NAV_SignMsg",
+    id: 11,
+    name: "MSG_Sign",
     url: "sign-message",
     mew: false,
     cx: false
   },
   bulkGenerate: {
-    id: 11,
-    name: "NAV_BulkGenerate",
+    id: 12,
+    name: "BULK_Generate",
     url: "bulk-generate",
     mew: false,
     cx: false

@@ -18,7 +18,7 @@
             <li>Select <code>register</code></li>
             <li> Enter your <strong><u>EOS Public Key</u></strong> <--- CAREFUL! EOS PUBLIC KEY!</li>
             <li>Unlock wallet</li>
-            <li><span translate="SEND_amount">Amount to Send</span>: <code>0</code> &middot; <span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
+            <li><span translate="x_Amount">Amount to Send</span>: <code>0</code> &middot; <span translate="x_GasLimit">Gas Limit</span>: at least <code>90000</code></li>
           </ul>
         </li>
         <li><strong>Fund EOS Contract on Send Page</strong>
@@ -26,14 +26,14 @@
             <li>Go to Send Ether & Tokens Page</li>
             <li>Unlock same wallet you are unlocking here.</li>
             <li>Send Amount you want to Contribute to <code>0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf</code></li>
-            <li><span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
+            <li><span translate="x_GasLimit">Gas Limit</span>: at least <code>90000</code></li>
           </ul>
         </li>
         <li><strong>Claim EOS Tokens</strong>
           <ul>
             <li>Select <code>claimAll</code>.</li>
             <li>Unlock wallet</li>
-            <li><span translate="SEND_amount">Amount to Send</span>: <code>0</code> &middot; <span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
+            <li><span translate="x_Amount">Amount to Send</span>: <code>0</code> &middot; <span translate="x_GasLimit">Gas Limit</span>: at least <code>90000</code></li>
           </ul>
         </li>
     </div>

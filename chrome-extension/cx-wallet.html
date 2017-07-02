@@ -29,16 +29,16 @@
 
 <body>
 
-<header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
+<header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='headerCtrl' >
 
 <!--
-    <div class="small announcement annoucement-warning">
+    <div class="small announcement announcement-warning">
       <div class="container">The #FOMO is Real. Breath. If you are trying to get in on Status.im, <strong> wait until BLOCK 3903900!</strong> <br /> If your TX is not urgent, we recommend NOT SENDING TODAY. Thank you for understanding. </div>
     </div>
 -->
     
     <div class="small announcement annoucement-warning">
-        <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any
+        <div class="container" translate="WARN_04">Make sure you have <strong>external backups</strong> of any
             wallets you store here. Many things could happen that would cause you to lose the data in this Chrome
             Extension, including uninstalling the extension. This extension is a way to easily access your wallets,
             <strong>not</strong> a way to back them up.
@@ -78,9 +78,6 @@
             <li><a ng-class="{true:'active'}[curLang=='Polski']"       ng-click="changeLanguage('pl','Polski'      )"> Polski          </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Português']"    ng-click="changeLanguage('pt','Português'   )"> Português       </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Русский']"      ng-click="changeLanguage('ru','Русский'     )"> Русский         </a></li>
-        <!--<li><a ng-class="{true:'active'}[curLang=='Slovenčina']"   ng-click="changeLanguage('sk','Slovenčina'  )"> Slovenčina      </a></li>-->
-        <!--<li><a ng-class="{true:'active'}[curLang=='Slovenščina']"  ng-click="changeLanguage('sl','Slovenščina' )"> Slovenščina     </a></li>-->
-        <!--<li><a ng-class="{true:'active'}[curLang=='Svenska']"      ng-click="changeLanguage('sv','Svenska'     )"> Svenska         </a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Türkçe']"       ng-click="changeLanguage('tr','Türkçe'      )"> Türkçe          </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Tiếng Việt']"   ng-click="changeLanguage('vi','Tiếng Việt'  )"> Tiếng Việt      </a></li>
             <li><a ng-class="{true:'active'}[curLang=='简体中文']"      ng-click="changeLanguage('zhcn','简体中文'   )"> 简体中文         </a></li>
@@ -92,17 +89,17 @@
 
         <span class="dropdown dropdown-gas" ng-cloak>
           <a tabindex="0" aria-haspopup="true" aria-label="adjust gas price" class="dropdown-toggle  btn btn-white" ng-click="dropdownGasPrice = !dropdownGasPrice">
-            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+            <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei
             <i class="caret"></i>
           </a>
           <ul class="dropdown-menu" ng-show="dropdownGasPrice">
             <div class="header--gas">
-              <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
-              <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
+              <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei
+              <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasPriceChanged()"/>
               <p class="small col-xs-4 text-left">Not So Fast</p>
               <p class="small col-xs-4 text-center">Fast</p>
               <p class="small col-xs-4 text-right">Fast AF</p>
-              <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
+              <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="x_GasPriceDesc"></p>
               <a class="small" translate="x_ReadMore" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener"></a>
             </div>
           </ul>
@@ -162,7 +159,7 @@
           </ul>
         </p>
 
-        <div ng-show="browserProtocol=='https:'" class="alert alert-danger small" translate="NODE_Warning">
+        <div ng-show="browserProtocol=='https:'" class="alert alert-danger small" translate="WARN_05">
           Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
         </div>
 
@@ -238,16 +235,16 @@
 
 <br />
 
-<section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+<section class="container" style="min-height: 50%" ng-controller='genericCtrl'>
 
   <div class="tab-content" >
 
     <!-- My Wallet Page -->
-<main class="tab-pane active myWalletCtrl" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
+<main class="tab-pane active walletViewCXCtrl" ng-if="globalService.currentTab==globalService.tabs.walletViewCX.id" ng-controller='walletViewCXCtrl'  ng-cloak>
 
 
   <!-- Your Wallet Table -->
-  <h1 translate="NAV_YourWallets"> Your Wallets </h1>
+  <h1 translate="WALL_Your"> Your Wallets </h1>
   <table class="table table-striped" id="tblwalletsmain">
     <tr ng-repeat="twallet in allWallets track by $index">
       <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
@@ -276,7 +273,7 @@
 
   <!-- Watch Only Account Table -->
   <section id="secWatchOnlyMain">
-    <h1 translate="MYWAL_WatchOnly"> Your Watch-Only Accounts </h1>
+    <h1 translate="WALL_WatchOnlyAccounts"> Your Watch-Only Accounts </h1>
     <table class="table table-striped" id="tblWatchOnlyMain">
       <tr ng-repeat="twallet in allWatchOnly track by $index">
         <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
@@ -302,9 +299,9 @@
 
 
   <!-- View Wallet Section -->
-  <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
+  <section class="row" ng-show="wallet!=null" ng-controller='walletViewCtrl'>
     <div class="col-sm-12 text-right" style="margin: 1rem 0;" ng-show="wallet!=null">
-      <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
+      <a class="btn btn-warning" ng-click="resetWallet()" translate="WALL_Hide"> Hide Wallet Info </a>
     </div>
     <article class="col-sm-8 view-wallet-content">
 
@@ -312,8 +309,8 @@
     <div class="col-xs-11">
       <div class="account-help-icon">
         <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
-        <h5 translate="x_Address">Your Address:</h5>
+        <p class="account-help-text" translate="ADDR_Desc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
+        <h5 translate="ADDR_">Your Address:</h5>
       </div>
       <input class="form-control" type="text" ng-value="wallet.getChecksumAddressString()" readonly="readonly">
     </div>
@@ -358,7 +355,7 @@
 
   <section class="block">
     <div class="col-xs-6">
-      <h5 translate="x_Address">Your Address:</h5>
+      <h5 translate="ADDR_">Your Address:</h5>
       <div class="qr-code" qr-code="{{wallet.getChecksumAddressString()}}" watch-var="wallet" width="100%"></div>
     </div>
     <div class="col-xs-6">
@@ -374,78 +371,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="block" ng-show="wallet.type=='default'">
-    
-      <main ng-controller='signMsgCtrl' ng-show="wallet!=null">
-          <!-- Sign Message Panel -->
-  <h2>
-    <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
-    or
-    <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
-  </h2>
-
-  <article class="col-xs-12 clearfix" ng-switch on="visibility">
-
-    <!-- Sign Message Stuff -->
-    <section ng-switch-when="signView">
-
-      <!-- Message -->
-      <div class="account-help-icon">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <ul class="account-help-text">
-          <li translate="MSG_info2">Include your nickname and where you use the nickname so someone else cannot use it.</li>
-          <li translate="MSG_info3">Include a specific reason for the message so it cannot be reused for a different purpose.</li>
-        </ul>
-        <h5 translate="MSG_message"> Message </h5>
-      </div>
-
-
-      <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purpose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="5"></textarea>
-
-      <!-- Date -->
-      <div class="account-help-icon">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="MSG_info1">Include the current date so the signature cannot be reused on a different date.</p>
-        <h5 translate="MSG_date"> Date </h5>
-      </div>
-      <input class="form-control" ng-model="signMsg.dateTime" type="text" placeholder="1 JAN 2016 14:15" />
-
-      <!-- Sign Message Button -->
-      <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
-
-
-      <!-- Signed Message -->
-      <div ng-show="signMsg.signedMsg">
-        <h5 translate="MSG_signature"> Signature </h5>
-        <textarea class="form-control" rows="4" readonly title="Signature">{{signMsg.signedMsg }}</textarea>
-      </div>
-    </section>
-    <!-- / Sign Message Stuff -->
-
-
-
-    <!-- Verify Message Stuff -->
-    <section ng-switch-when="verifyView">
-      <!-- Signature -->
-      <h5 translate="MSG_signature"> Signature </h5>
-      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{ "address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
-
-      <!-- Verify Signature Message Button -->
-      <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
-
-
-
-    </section>
-    <!-- / Verify Message Stuff -->
-
-  </article>
-<!-- / Sign Message Panel -->
-    
-      </main>
-    
-    
   </section>
 
 </article>
@@ -465,14 +390,14 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title text-primary">
-            <span translate="MYWAL_Edit_2">Edit Wallet:</span>
+            <span translate="WALL_Edit">Edit Wallet:</span>
             {{viewWallet.addr}}
           </h3>
         </div>
         <div class="modal-body">
           <form role="form">
             <div class="form-group">
-              <label for="walletName" translate="MYWAL_Name">Wallet Name</label>
+              <label for="walletName" translate="WALL_Name">Wallet Name</label>
               <input type="text" class="form-control" value="" ng-model="viewWallet.nick" ng-keyup="$event.keyCode == 13 && editSave()"/>
             </div>
           </form>
@@ -495,7 +420,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title text-warning">
-            <span translate="NAV_ViewWallet">View Wallet Info</span>:
+            <span translate="WALL_View">View Wallet Info</span>:
             {{viewWallet.nick}}
           </h3>
         </div>
@@ -503,7 +428,7 @@
           <p translate="VIEWWALLET_Subtitle_Short"> This allows you to download different versions of private keys and re-print your paper wallet. </p>
           <form role="form">
             <div class="form-group">
-              <label for="walletName" translate="ADD_Label_3">Your file is encrypted. Please enter the password: </label>
+              <label for="walletName" translate="DECRYPT_Label_3">Your file is encrypted. Please enter the password: </label>
               <div class="input-group">
                 <input type="{{showPass && 'password' || 'text'}}" class="form-control" ng-model="password" ng-keyup="$event.keyCode == 13 && decryptWallet()" />
                 <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
@@ -514,7 +439,7 @@
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>
-          <button type="button" class="btn btn-warning" ng-click="decryptWallet()" translate="NAV_ViewWallet"> View Wallet Info </button>
+          <button type="button" class="btn btn-warning" ng-click="decryptWallet()" translate="WALL_View"> View Wallet Info </button>
         </div>
       </div>
     </div>
@@ -529,17 +454,17 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title text-danger">
-            <span translate="MYWAL_Content_1"> Warning! You are about to remove your wallet: </span> {{viewWallet.nick}}
+            <span translate="WARN_06"> Warning! You are about to remove your wallet: </span> {{viewWallet.nick}}
           </h3>
         </div>
         <div class="modal-body">
-          <p translate="MYWAL_Content_2"> Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.</p>
-          <p translate="MYWAL_Content_3"> If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add.</p>
+          <p translate="WARN_07"> Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.</p>
+          <p translate="WARN_08"> If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add.</p>
           <h4 translate="SENDModal_Content_3">Are you sure you want to do this?</h4>
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-          <button type="button" class="btn btn-danger" ng-click="deleteWallet()" translate="MYWAL_Remove">Remove</button>
+          <button type="button" class="btn btn-danger" ng-click="deleteWallet()" translate="WALL_Remove">Remove</button>
         </div>
       </div>
     </div>
@@ -551,16 +476,16 @@
 <!-- / My Wallet Page -->
 
 
-    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'  ng-cloak>
-  <h1 translate="NAV_AddWallet"> Add Wallet </h1>
+    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.walletAdd.id" ng-controller='walletAddCtrl'  ng-cloak>
+  <h1 translate="WALL_Add"> Add Wallet </h1>
 
   <section class="row" id="walletselection">
 
     <article class="col-md-4 col-sm-6">
-      <h4 translate="ADD_Label_1"> What would you like to do? </h4>
+      <h4 translate="DECRYPT_Label_1"> What would you like to do? </h4>
         <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="gennewwallet">
-          <span translate="ADD_Radio_1">Generate New Wallet</span>
+          <span translate="WALL_GenerateNew">Generate New Wallet</span>
         </label>
         <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="fileupload">
@@ -576,7 +501,7 @@
          </label>
         <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="watchonlyaccount">
-          <span translate="ADD_Radio_4">Add an Account to Watch</span>
+          <span translate="ACCOUNT_AddWatch">Add an Account to Watch</span>
         </label>
     </article>
 
@@ -585,16 +510,16 @@
 
       <!-- Generate New Wallet -->
       <div ng-show="walletType=='gennewwallet'" ng-init="showPass=true">
-        <h4 translate="ADD_Radio_1"> Generate New Wallet: </h4>
+        <h4 translate="WALL_GenerateNew"> Generate New Wallet: </h4>
 
         <div class="form-group">
-          <label translate="ADD_Label_2"> Create a Nickname: </label>
-          <input class="form-control" type="text" placeholder="{{'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && importWalletToStorage()"/>
+          <label translate="DECRYPT_Label_2"> Create a Nickname: </label>
+          <input class="form-control" type="text" placeholder="{{'WALL_Nickname' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && importWalletToStorage()"/>
         </div>
         <div class="form-group">
-          <label translate="GEN_Label_1"> Create a Password: (at least 9 characters)</label>
+          <label translate="PW_Enter"> Create a Password: (at least 9 characters)</label>
           <div class="input-group">
-            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{'GEN_Placeholder_1' | translate }}" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-model="addAccount.password" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && generateWallet()"/>
+            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{'PW_Enter' | translate }}" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-model="addAccount.password" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && generateWallet()"/>
             <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
           </div>
         </div>
@@ -605,33 +530,33 @@
 
       <!-- Select Your Wallet File -->
       <div ng-show="walletType=='fileupload'">
-        <h4 translate="ADD_Radio_2_alt">Select Your Wallet File: </h4>
+        <h4 translate="DECRYPT_Radio_2_alt">Select Your Wallet File: </h4>
         <div class="form-group">
           <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector"/>
-          <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short">SELECT WALLET FILE...</a>
+          <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()" translate="DECRYPT_Radio_2_short">SELECT WALLET FILE...</a>
 
         </div>
         <div class="form-group" ng-show="requireFPass">
-          <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
-          <input class="form-control" type="password" placeholder="{{'x_Password' | translate }}" ng-model="filePassword" ng-change="onFilePassChange()" />
+          <p translate="DECRYPT_Label_3"> Your file is encrypted. Please enter the password: </p>
+          <input class="form-control" type="password" placeholder="{{'PW_' | translate }}" ng-model="filePassword" ng-change="onFilePassChange()" />
         </div>
       </div>
 
       <!-- Paste/Type Your Private Key -->
       <div ng-show="walletType=='pasteprivkey'">
-        <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>
+        <h4 translate="DECRYPT_Radio_3"> Paste / type your private key: </h4>
         <div class="form-group">
           <textarea rows="4" class="form-control" placeholder="{{'x_PrivKey2' | translate }}" ng-model="manualprivkey" ng-change="onPrivKeyChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
         </div>
         <div class="form-group" ng-show="requirePPass">
-          <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
-          <input class="form-control" type="password" placeholder="{{'x_Password' | translate }}" ng-model="privPassword" ng-change="onPrivKeyPassChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"/>
+          <p translate="DECRYPT_Label_3"> Your file is encrypted. Please enter the password: </p>
+          <input class="form-control" type="password" placeholder="{{'PW_' | translate }}" ng-model="privPassword" ng-change="onPrivKeyPassChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"/>
         </div>
       </div>
 
       <!-- Paste/Type Your Mnemonic -->
       <div ng-show="walletType=='pastemnemonic'">
-        <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+        <h4 translate="MNEM_Enter"> Paste / type your mnemonic: </h4>
         <div class="form-group">
           <textarea rows="4" class="form-control" placeholder="{{'x_Mnemonic' | translate }}" ng-model="manualmnemonic" ng-change="onMnemonicChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
         </div>
@@ -639,14 +564,14 @@
 
       <!-- Add an Account to Watch -->
       <div ng-show="walletType=='watchonlyaccount'">
-        <h4 translate="ADD_Label_4"> Add an Account to Watch: </h4>
-        <p class="text-danger" translate="ADD_Warning_1">You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it. </p>
+        <h4 translate="DECRYPT_Label_4"> Add an Account to Watch: </h4>
+        <p class="text-danger" translate="WARN_03">You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it. </p>
         <div class="form-group">
-          <label translate="ADD_Label_2"> Create a Nickname: </label>
-          <input class="form-control" type="text" placeholder="{{'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="watchOnlyChange()"/>
+          <label translate="DECRYPT_Label_2"> Create a Nickname: </label>
+          <input class="form-control" type="text" placeholder="{{'WALL_Nickname' | translate }}" ng-model="addAccount.nickName" ng-change="watchOnlyChange()"/>
         </div>
         <div class="form-group">
-          <label translate="ADD_Label_5"> Enter the Address: </label>
+          <label translate="DECRYPT_Label_5"> Enter the Address: </label>
           <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="addAccount.address" ng-change="watchOnlyChange()" ng-keyup="$event.keyCode == 13 && addWatchOnly()"/>
         </div>
       </div>
@@ -655,38 +580,38 @@
 
     <article class="col-md-4 col-sm-6" >
         <div ng-show="showBtnGen">
-          <h4 translate="NAV_GenerateWallet"> Generate Wallet </h4>
-          <div class="form-group"><a ng-click="generateWallet()" class="btn btn-primary btn-block" translate="NAV_GenerateWallet">Generate Wallet</a></div>
+          <h4 translate="WALL_Create"> Generate Wallet </h4>
+          <div class="form-group"><a ng-click="generateWallet()" class="btn btn-primary btn-block" translate="WALL_Create">Generate Wallet</a></div>
         </div>
         <div ng-show="showBtnUnlock">
-          <h4 translate="ADD_Label_6"> Unlock your Wallet </h4>
-          <div class="form-group"><a ng-click="decryptWallet()" class="btn btn-primary btn-block" translate="ADD_Label_6_short">Unlock your Wallet</a></div>
+          <h4 translate="WALL_Unlock"> Unlock your Wallet </h4>
+          <div class="form-group"><a ng-click="decryptWallet()" class="btn btn-primary btn-block" translate="WALL_Unlock_Short">Unlock your Wallet</a></div>
         </div>
         <div ng-show="showBtnAdd">
-          <h4 translate="ADD_Label_7"> Add Account </h4>
-          <div class="form-group"><a ng-click="addWatchOnly()" class="btn btn-primary btn-block" translate="ADD_Label_7">Add Account</a></div>
+          <h4 translate="ACCOUNT_Add"> Add Account </h4>
+          <div class="form-group"><a ng-click="addWatchOnly()" class="btn btn-primary btn-block" translate="ACCOUNT_Add">Add Account</a></div>
         </div>
-        <div ng-bind-html="addWalletStats"></div>
+        <div ng-bind-html="walletAddStats"></div>
     </article>
 
   </section>
 
-  <article class="row" ng-if="showAddWallet">
+  <article class="row" ng-if="showwalletAdd">
 
     <hr />
 
     <!-- Sidebar -->
     <div class="col-sm-4">
-      <h5 translate="sidebar_AccountAddr">Account Address:</h5>
+      <h5 translate="ACCOUNT_Address">Account Address:</h5>
       <ul class="account-info">
       <div class="addressIdenticon med float" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
       <span class="mono wrap">{{wallet.getChecksumAddressString()}}</span>
       </ul>
-      <h5 translate="sidebar_AccountBal">Account Balance:</h5>
+      <h5 translate="ACCOUNT_Balance">Account Balance:</h5>
       <ul class="account-info">
         <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
-      <h5 translate="sidebar_Equiv"> Equivalent Values: </h5>
+      <h5 translate="SIDEBAR_Equiv"> Equivalent Values: </h5>
       <ul class="account-info">
         <li><strong>{{usdBalance}}</strong> USD</li>
         <li><strong>{{eurBalance}}</strong> EUR</li>
@@ -695,7 +620,7 @@
 
       <a ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-xs">Swap via Bity</a>
 
-      <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
+      <h5 translate="TX_History"> Transaction History: </h5>
       <ul class="account-info">
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
@@ -705,18 +630,18 @@
 
     <!-- Content -->
     <div class="col-sm-8">
-      <h4 translate="NAV_AddWallet">Add Wallet</h4>
+      <h4 translate="WALL_Add">Add Wallet</h4>
       <div class="form-group">
-        <label translate="ADD_Label_2"> Create a Nickname: </label>
-        <input class="form-control" type="text" placeholder="{{'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnAddWallet')"/>
+        <label translate="DECRYPT_Label_2"> Create a Nickname: </label>
+        <input class="form-control" type="text" placeholder="{{'WALL_Nickname' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnAddWallet')"/>
       </div>
       <div class="form-group" ng-show="showPassTxt">
-        <label translate="GEN_Label_1"> Enter a strong password (at least 9 characters)</label>
+        <label translate="PW_Enter"> Enter a strong password (at least 9 characters)</label>
         <div class="input-group">
           <input
             type="{{showPass && 'password' || 'text'}}"
             class="form-control"
-            placeholder="{{'GEN_Placeholder_1' | translate }}"
+            placeholder="{{'PW_Enter' | translate }}"
             ng-model="addAccount.password"
             ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'"
             ng-change="newWalletChange('','showBtnAddWallet')"
@@ -726,7 +651,7 @@
         </div>
       </div>
       <div class="form-group" ng-show="showBtnAddWallet">
-        <a class="btn btn-info btn-block" ng-click="importWalletToStorage()" translate="NAV_AddWallet">ADD WALLET </a>
+        <a class="btn btn-info btn-block" ng-click="importWalletToStorage()" translate="WALL_Add">ADD WALLET </a>
       </div>
     </div>
 
@@ -741,35 +666,35 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <!-- Select HD Path -->
           <span ng-show="showDPaths">
-            <h3 class="modal-title" translate="ADD_Radio_5_Path"> Select HD derivation path:</h3>
+            <h3 class="modal-title" translate="MNEM_Enter_Path"> Select HD derivation path:</h3>
             <label class="radio">
               <input type="radio" id="hd_derivation_path_default" ng-model="HDWallet.dPath" value="{{HDWallet.defaultDPath}}" ng-change="onHDDPathChange()"/>
               <span ng-bind="HDWallet.defaultDPath"></span>
-              <span ng-if="!showTrezorSeparate" translate="ADD_Radio_5_withTrezor">(default with trezor)</span>
-              <span ng-if="showTrezorSeparate" translate="ADD_Radio_5_woTrezor">(default without trezor)</span>
+              <span ng-if="!showTrezorSeparate">(default with TREZOR)</span>
+              <span ng-if="showTrezorSeparate">(default without TREZOR)</span>
             </label>
             <label class="radio">
               <input type="radio" id="hd_derivation_path_alternative" ng-model="HDWallet.dPath" value="{{HDWallet.alternativeDPath}}" ng-change="onHDDPathChange()"/>
               <span ng-bind="HDWallet.alternativeDPath"></span>
-              <span translate="ADD_Radio_5_PathAlternative">(alternative)</span>
+              <span>(Ledger)</span>
             </label>
             <label class="radio" ng-if="showTrezorSeparate">
               <input type="radio" id="hd_derivation_path_trezor" ng-model="HDWallet.dPath" value="{{getTrezorPath()}}" ng-change="onHDDPathChange()" />
               <span ng-bind="getTrezorPath()"></span>
-              <span translate="ADD_Radio_5_PathTrezor">(Trezor)</span>
+              <span>(Trezor)</span>
             </label>
             <label class="radio">
               <input type="radio" id="hd_derivation_path_custom" ng-model="HDWallet.dPath" value="{{HDWallet.customDPath}}" ng-change="onHDDPathChange()" />
               <input type="text" class="form-control" style="display:inline;width:70%;max-width:15rem;" ng-model="HDWallet.customDPath" id="hd_derivation_path_custom_value" ng-change="onCustomHDDPathChange()" />
-              <span translate="ADD_Radio_5_PathCustom">(Custom)</span>
+              <span translate="MNEM_Enter_PathCustom">(Custom)</span>
             </label>
           </span>
           <!-- END Select HD Path --><!-- Select Address --><hr />
           <h3 class="modal-title" translate="MNEM_1">Please select the address you would like to interact with.</h3>
           <p class="small" translate="MNEM_2">Your single HD mnemonic phrase can access a number of wallets / addresses.</p>
           <table class="small table table-striped table-mnemonic"><tr><th></th>
-            <th translate="x_Address">Address</th>
-            <th translate="MYWAL_Bal">Balance</th>
+            <th translate="ADDR_">Address</th>
+            <th translate="ACCOUNT_Balance">Balance</th>
           </tr>
           <tr ng-repeat="wallet in HDWallet.wallets track by $index">
             <td><label>
@@ -789,7 +714,7 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>
-          <button class="btn btn-primary" ng-click="setHDWallet()" translate="ADD_Label_6_short">Access Wallet</button>
+          <button class="btn btn-primary" ng-click="setHDWallet()" translate="WALL_Unlock_Short">Access Wallet</button>
         </div>
       </section>
     </section>
@@ -800,30 +725,38 @@
 </main>
 
 
-    <main class="tab-pane active"
-      ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id"
-      ng-controller='sendTxCtrl'
-      ng-cloak >
 
-  <!-- Header : todo turn into warning notification-->
-  <div class="alert alert-info" ng-show="hasQueryString">
-    <p translate="WARN_Send_Link" >You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.</p>
-  </div>
+    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.txSend.id" ng-controller='txSendCtrl' ng-cloak >
 
+  <!-- Block : Title -->
+  <article class="block__title" ng-controller="walletDecryptCtrl">
 
+    <!-- Title -->
+    <h1 translate="TX_Send_Title"> Send Ether &amp; Tokens </h1>
 
-  <!-- Unlock Wallet -->
-  <article class="collapse-container">
-    <div ng-click="wd = !wd">
-      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-      <h1 translate="NAV_SendEther"> Send Ether & Tokens </h1>
-    </div>
-    <div ng-show="!wd">
-          <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   
-        
-    </div>
+    <!-- Desc -->
+    <p translate="TX_Send_Desc"></p>
+
+    <!-- Label -->
+    <h4 translate="ADDR_From"> Sending Address </h4>
+
+    <!-- Input -->
+    <input type="text"
+           class="form-control"
+           ng-change="onAddressChange()"
+           ng-class="Validator.isValidAddress($parent.$parent.addressOnly) ? 'is-valid' : 'is-invalid'"
+           ng-model="$parent.$parent.addressOnly"
+           placeholder="{{ 'ADDR_' | translate }}" />
+
+    <!-- Button -->
+    <button tabindex="0"
+            class="btn btn-primary"
+            ng-click="decryptAddressOnly()"
+            role="button"
+            translate="x_Continue"> Continue </a>
+
   </article>
-
+  <!-- / Block : Title -->
 
 
   <!-- Send Tx Content -->
@@ -839,11 +772,11 @@
     </div>
 
     <!-- Amount to Send -->
-    <label translate="SEND_amount">Amount to Send:</label>
+    <label translate="x_Amount">Amount to Send:</label>
     <div class="input-group col-sm-11">
       <input type="text"
              class="form-control"
-             placeholder="{{ 'SEND_amount_short' | translate }}"
+             placeholder="{{ 'x_Amount_short' | translate }}"
              ng-model="tx.value"
              ng-disabled="tx.readOnly || checkTxReadOnly"
              ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
@@ -860,7 +793,7 @@
         </ul>
       </div>
     </div>
-    <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="SEND_TransferTotal">Send Entire Balance</span></a></p>
+    <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="TX_Send_All">Send Entire Balance</span></a></p>
     <!-- / Amount to Send -->
 
     <!-- Gas Limit -->
@@ -868,9 +801,9 @@
       <div class="col-sm-11 clearfix">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+          <p class="account-help-text" translate="x_GasLimitDesc"></p>
         </a>
-        <label translate="TRANS_gas"> Gas Limit: </label>
+        <label translate="x_GasLimit"> Gas Limit: </label>
         <input type="text"
                class="form-control"
                placeholder="21000"
@@ -883,38 +816,45 @@
     <!-- / Gas Limit -->
 
     <!-- Advanced Option Panel -->
-    <a ng-click="showAdvance=true" ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
-      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
+    <a ng-click="advancedVisible=true" ng-hide="advancedVisible">
+      <p class="strong" translate="SEND_Advanced"> + Advanced: Add Data </p>
     </a>
 
-    <section ng-show="showAdvance || checkTxPage">
-      <!-- Data -->
-      <div class="row form-group">
-        <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
-          <span class="account-help-icon">
+    <section ng-hide="!advancedVisible">
+
+      <!-- Gas Price -->
+      <div class="row form-group" ng-show="gasPriceVisible">
+        <div class="col-xs-12">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
-          </span>
-          <label translate="TRANS_data"> Data: </label>
+            <p class="account-help-text" translate="x_GasPriceDesc"></p>
+          </a>
+          <label style="width: 100%;"> <span translate="x_GasPrice"> Gas Price: </span></label>
+        </div>
+        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
           <input type="text"
                  class="form-control"
-                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
-                 ng-model="tx.data"
-                 ng-disabled="tx.readOnly || checkTxReadOnly"
-                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+                 placeholder="50"
+                 ng-model="tx.gasPrice"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+          <div class="input-group-btn">
+            <a style="min-width: 170px" class="btn btn-default">
+              <strong> GWEI </strong>
+            </a>
+          </div>
         </div>
       </div>
-      <!-- / Data -->
-
+      <!-- / Gas Price -->
 
       <!-- Nonce -->
-      <div class="row form-group" ng-show="checkTxPage">
+      <div class="row form-group" ng-show="nonceVisible">
         <div class="col-sm-11 clearfix">
           <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="NONCE_Desc"></p>
+            <p class="account-help-text" translate="x_NonceDesc"></p>
           </a>
-          <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
+          <label translate="x_Nonce"> Nonce </label>
           <input type="text"
                  class="form-control"
                  placeholder="2"
@@ -925,24 +865,24 @@
       </div>
       <!-- / Nonce -->
 
-
-      <!-- Gas Price -->
-      <div class="row form-group" ng-show="checkTxPage">
+      <!-- Data -->
+      <div class="row form-group" ng-show="tx.sendMode=='ether'">
         <div class="col-sm-11 clearfix">
-          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+          <span class="account-help-icon">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
-          </a>
-          <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
+            <p class="account-help-text" translate="x_DataDesc">This is optional.</p>
+          </span>
+          <label translate="x_Data"> Data: </label>
           <input type="text"
                  class="form-control"
-                 placeholder="50"
-                 ng-model="tx.gasPrice"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
+                 ng-model="tx.data"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
         </div>
       </div>
-      <!-- / Gas Price -->
+      <!-- / Data -->
+
     </section>
 
     <!-- / Advanced Option Panel -->
@@ -956,23 +896,23 @@
 
     <div class="row form-group">
       <div class="col-xs-12 clearfix">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
       </div>
     </div>
 
     <div class="row form-group" ng-show="showRaw">
       <div class="col-sm-6">
-        <label translate="SEND_raw"> Raw Transaction </label>
+        <label translate="TX_Unsigned"> Raw Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
       </div>
       <div class="col-sm-6">
-        <label translate="SEND_signed"> Signed Transaction </label>
+        <label translate="TX_Signed"> Signed Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
       </div>
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Send_Short"> Send Transaction </a>
     </div>
   </div>
 </section>
@@ -981,18 +921,16 @@
 <!-- Sidebar -->
 <section class="col-sm-4">
 
+  <div class="block block--info" ng-show="hasQueryString">
+    <p translate="WARN_02">You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.</p>
+  </div>
+
   <div class="block block--danger" ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
-    <h5>Warning! You do not have enough funds to complete this swap.</h5>
-    <p>Please add more funds to your wallet or access a different wallet.</p>
+    <h5 translate="WARN_09_A">Warning! You do not have enough funds to complete this swap.</h5>
+    <p translate="WARN_09_B">Please add more funds to your wallet or access a different wallet.</p>
   </div>
 
   <wallet-balance-drtv></wallet-balance-drtv>
-
-  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
-    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-  </div>
 
   <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
 
@@ -1001,7 +939,7 @@
  
 
     
-     <article class="modal fade" id="sendTransaction" tabindex="-1">
+     <article class="modal fade" id="txSend" tabindex="-1">
   <section class="modal-dialog">
     <section class="modal-content">
 
@@ -1065,6 +1003,476 @@
 </main>
 
 
+    <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.txView.id" ng-controller='txViewCtrl' role="main" ng-cloak>
+
+
+<!-- Block : Title -->
+<article class="block__title">
+
+  <!-- Title -->
+  <h1 translate="TX_View"> View Transaction Status </h1>
+
+  <!-- Desc -->
+  <p translate="VIEWTX_Desc"></p>
+
+    <!-- Label -->
+    <h4 translate="TX_Hash"> TX Hash </h4>
+
+  <!-- Input -->
+  <input
+     class="form-control"
+     type="text"
+     placeholder="0x3f0efedfe0a0cd611f2465fac9a3699f92d6a06613bc3ead4f786856f5c73e9c"
+     ng-model="txInfo.hash"
+     ng-keyup="$event.keyCode == 13 && checkTxStatus()"
+     aria-label="{{'TX_Hash' | translate}}" ng-class="Validator.isValidTxHash(txInfo.hash) ? 'is-valid' : 'is-invalid'"/>
+
+  <!-- Button -->
+  <button tabindex="0"
+          role="button"
+          class="btn btn-primary"
+          ng-click="checkTxStatus()"
+          translate="TX_View"> View Transaction Status </button>
+
+</article>
+<!-- / Block : Title -->
+
+
+  <!-- Section 2: Current State -->
+  <section class="block txView__2" ng-show="txInfo.status==txStatus.mined || txInfo.status==txStatus.notFound || txInfo.status==txStatus.found">
+
+    <div class="cont-md" ng-show="txInfo.status == txStatus.mined">
+      <h3 class="text-success" translate="VIEWTX_FoundOnChain"> Transaction Found </h3>
+      <h5> <a href="https://etherscan.io/tx/{{ tx.hash }}" target="_blank" rel="noopener"> {{ tx.hash }} </a> </h5>
+      <p><strong translate="VIEWTX_FoundOnChain_1"></strong></p>
+      <ul>
+        <li translate="VIEWTX_FoundOnChain_2"></li>
+        <li translate="VIEWTX_FoundOnChain_3"></li>
+      </ul>
+    </div>
+
+    <div class="cont-md" ng-show="txInfo.status == txStatus.notFound">
+      <h3 class="text-danger" translate="VIEWTX_NotFound">Transaction Not Found</h3>
+      <p><strong translate="VIEWTX_NotFound_1"></strong></p>
+      <ul>
+        <li translate="VIEWTX_NotFound_2"></li>
+        <li translate="VIEWTX_NotFound_3"></li>
+        <li translate="VIEWTX_NotFound_4"></li>
+      </ul>
+    </div>
+
+    <div class="cont-md" ng-show="txInfo.status == txStatus.found">
+      <h3 class="text-warning" translate="VIEWTX_Found">Pending Transaction Found</h3>
+      <ul>
+        <li translate="VIEWTX_Found_1"></li>
+        <li translate="VIEWTX_Found_2"></li>
+        <li translate="VIEWTX_Found_3"></li>
+      </ul>
+    </div>
+
+    <div ng-show="txInfo.status == txStatus.found || txInfo.status == txStatus.mined">
+    <h4 translate="TX_Details" class="cont-md">Transaction Details</h4>
+    <br />
+    <table class="table table-striped txView__2 cont-md"> <!-- ng-show="tx.status=='foundOnChain' || foundInPending'"-->
+      <tbody>
+        <tr>
+          <td translate="TX_Hash">TX Hash</td>
+          <td><a href="https://etherscan.io/tx/{{ txInfo.hash }}" target="_blank" rel="noopener"> {{ txInfo.hash }} </a></td>
+        </tr>
+        <tr>
+          <td translate="ADDR_From">From Address</td>
+          <td><a href="https://etherscan.io/address/{{ txInfo.from }}" target="_blank" rel="noopener"> {{ txInfo.from }} </a></td>
+        </tr>
+        <tr>
+          <td translate="ADDR_To">To Address</td>
+          <td><a href="https://etherscan.io/address/{{ txInfo.to }}" target="_blank" rel="noopener"> {{ txInfo.to }} </a></td>
+        </tr>
+        <tr>
+          <td translate="x_Amount_short">Amount</td>
+          <td>{{ txInfo.valueStr }} </td>
+        </tr>
+        <tr>
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="x_NonceDesc"></p>
+            </a>
+            <span translate="x_Nonce">Nonce</span>
+          </td>
+          <td>{{ txInfo.nonce }} </td>
+        </tr>
+        <tr>
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="x_GasLimitDesc"></p>
+            </a>
+            <span translate="x_GasLimit">Gas Limit</span>
+          </td>
+          <td>{{ txInfo.gasLimit }} </td>
+        </tr>
+        <tr>
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="x_GasPriceDesc"></p>
+            </a>
+            <span translate="x_GasPrice">Gas Price</span>
+          </td>
+          <td>
+            {{ txInfo.gasPrice.gwei }} GWEI
+            <small>({{ txInfo.gasPrice.wei }} WEI)</small></td>
+        </tr>
+<!--
+        <tr>
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="TX_TXFeeDesc"></p>
+            </a>
+            <span translate="TX_TXFee">TX Fee</span>
+          </td>
+          <td>
+            ({{ txFee.eth }} ETH)
+            <small>({{ txFee.usd }} USD)</small>
+          </td>
+        </tr>
+-->
+        <tr>
+          <td translate="x_Data">Data</td>
+          <td>{{ txInfo.data }} </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+  </section>
+  <!-- / Section 2: Current State -->
+
+
+  <!-- Section 3:  Unlock -->
+  <article class="txView__3" ng-show="txInfo.status == txStatus.found">
+    <br><br>
+    <h1 class="text-center" translate="TX_CancelReplace">Cancel or Replace Transaction</h1>
+
+    <section class="clearfix collapse-container">
+      <div class="text-center" ng-click="wd = !wd">
+        <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+        <h4 class="text-danger text-center"> Unlock your wallet to replace your transaction. (But, please be careful) </h4>
+      </div>
+      <div ng-show="!wd">
+          
+            <wallet-decrypt-cx-drtv></wallet-decrypt-cx-drtv>   
+      </div>
+    </section>
+  </article>
+  <!-- / Section 3:  Unlock -->
+
+  <!-- Send Tx Content -->
+ <section class="row" ng-show="wallet!=null" ng-controller='txSendCtrl'>
+      <div ng-show="wallet.getChecksumAddressString() == txInfo.from">
+      
+       <!-- Content -->
+<section class="col-sm-8">
+  <div class="block">
+
+    <!-- To Address -->
+    <div class="row form-group">
+      <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>
+    </div>
+
+    <!-- Amount to Send -->
+    <label translate="x_Amount">Amount to Send:</label>
+    <div class="input-group col-sm-11">
+      <input type="text"
+             class="form-control"
+             placeholder="{{ 'x_Amount_short' | translate }}"
+             ng-model="tx.value"
+             ng-disabled="tx.readOnly || checkTxReadOnly"
+             ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+      <div class="input-group-btn">
+        <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
+          <strong>{{unitReadable}}<i class="caret"></i></strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
+          <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
+          <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+            <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode('token', $index, token.getSymbol())"> {{token.getSymbol()}} </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="TX_Send_All">Send Entire Balance</span></a></p>
+    <!-- / Amount to Send -->
+
+    <!-- Gas Limit -->
+    <div class="row form-group">
+      <div class="col-sm-11 clearfix">
+        <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+          <img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="x_GasLimitDesc"></p>
+        </a>
+        <label translate="x_GasLimit"> Gas Limit: </label>
+        <input type="text"
+               class="form-control"
+               placeholder="21000"
+               ng-model="tx.gasLimit"
+               ng-change="gasLimitChanged=true"
+               ng-disabled="tx.readOnly || checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+      </div>
+    </div>
+    <!-- / Gas Limit -->
+
+    <!-- Advanced Option Panel -->
+    <a ng-click="advancedVisible=true" ng-hide="advancedVisible">
+      <p class="strong" translate="SEND_Advanced"> + Advanced: Add Data </p>
+    </a>
+
+    <section ng-hide="!advancedVisible">
+
+      <!-- Gas Price -->
+      <div class="row form-group" ng-show="gasPriceVisible">
+        <div class="col-xs-12">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="x_GasPriceDesc"></p>
+          </a>
+          <label style="width: 100%;"> <span translate="x_GasPrice"> Gas Price: </span></label>
+        </div>
+        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
+          <input type="text"
+                 class="form-control"
+                 placeholder="50"
+                 ng-model="tx.gasPrice"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+          <div class="input-group-btn">
+            <a style="min-width: 170px" class="btn btn-default">
+              <strong> GWEI </strong>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- / Gas Price -->
+
+      <!-- Nonce -->
+      <div class="row form-group" ng-show="nonceVisible">
+        <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="x_NonceDesc"></p>
+          </a>
+          <label translate="x_Nonce"> Nonce </label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="2"
+                 ng-model="tx.nonce"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
+        </div>
+      </div>
+      <!-- / Nonce -->
+
+      <!-- Data -->
+      <div class="row form-group" ng-show="tx.sendMode=='ether'">
+        <div class="col-sm-11 clearfix">
+          <span class="account-help-icon">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="x_DataDesc">This is optional.</p>
+          </span>
+          <label translate="x_Data"> Data: </label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
+                 ng-model="tx.data"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+        </div>
+      </div>
+      <!-- / Data -->
+
+    </section>
+
+    <!-- / Advanced Option Panel -->
+
+    <div class="clearfix form-group">
+      <div class="well" ng-show="wallet!=null && customGasMsg!=''">
+        <p><small>A message regarding {{tx.to}}</small></p>
+        <p><strong> {{customGasMsg}} </strong></p>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-xs-12 clearfix">
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
+      </div>
+    </div>
+
+    <div class="row form-group" ng-show="showRaw">
+      <div class="col-sm-6">
+        <label translate="TX_Unsigned"> Raw Transaction </label>
+        <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
+      </div>
+      <div class="col-sm-6">
+        <label translate="TX_Signed"> Signed Transaction </label>
+        <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
+      </div>
+    </div>
+
+    <div class="clearfix form-group" ng-show="showRaw">
+      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Send_Short"> Send Transaction </a>
+    </div>
+  </div>
+</section>
+<!-- / Content -->
+
+<!-- Sidebar -->
+<section class="col-sm-4">
+
+  <div class="block block--info" ng-show="hasQueryString">
+    <p translate="WARN_02">You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.</p>
+  </div>
+
+  <div class="block block--danger" ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
+    <h5 translate="WARN_09_A">Warning! You do not have enough funds to complete this swap.</h5>
+    <p translate="WARN_09_B">Please add more funds to your wallet or access a different wallet.</p>
+  </div>
+
+  <wallet-balance-drtv></wallet-balance-drtv>
+
+  <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
+
+</section>
+<!-- / Sidebar -->
+ 
+
+      
+       <article class="modal fade" id="txSend" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
+
+        <table class="table text-center"><tbody><tr>
+
+          <td>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
+          </td>
+
+          <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+
+          <td ng-show="tx.sendMode=='ether'">
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+          </td>
+          <td ng-show="tx.sendMode!=='ether'">
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+          </td>
+
+        </tr></tbody></table>
+
+        <br />
+
+        <p>
+          <span translate="SENDModal_Content_1">You are about to send</span>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
+          <br />
+          <span translate="SENDModal_Content_2">to address</span>
+          <strong ng-show="tx.sendMode=='ether'" class="mono"> {{tx.to}}. </strong>
+          <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
+        </p>
+
+        <p> You are interacting with the <strong>{{ajaxReq.type}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
+
+        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+      </div>
+
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+          No, get me out of here!
+        </button>
+        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+          Yes, I am sure! Make transaction.
+        </button>
+      </div>
+
+    </section>
+  </section>
+</article>
+ 
+      </div>
+      <div class="col-xs-12 block block--danger" ng-show="wallet.getChecksumAddressString() != txInfo.from">
+        <h5>Please unlock the address {{ txInfo.from }}. Only this address can replace a TX.</h5>
+      </div>
+    </section>
+
+
+    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.txSign.id" ng-controller='txSignCtrl' ng-cloak >
+
+  <!-- Unlock Wallet -->
+  <article class="collapse-container">
+    <div ng-click="wd = !wd">
+      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+        <h1> Sign Transaction </h1>
+        <p> Unlock your wallet &amp; paste your unsigned transaction below &amp; press "Sign" button. You can then copy your signed transaction into the <code>broadcast transaction</code> field below, or use <a href="https://etherscan.io/pushTx" target="_blank" rel="noopener">Etherscan.io's tool</a>.</p>
+    </div>
+    <div ng-show="!wd">
+          <wallet-decrypt-cx-drtv></wallet-decrypt-cx-drtv>   
+        
+    </div>
+  </article>
+
+  <div class="block">
+
+    <div class="col-sm-6">
+      <label> Unsigned Transaction </label>
+      <textarea class="form-control" rows="5" ></textarea>
+
+      <a class="btn btn-primary"> Sign Transaction </a>
+    </div>
+
+    <div class="col-sm-6">
+      <label> Signed Transaction </label>
+      <textarea class="form-control" rows="5" readonly></textarea>
+    </div>
+
+  </div>
+
+</main>
+
+
+    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.txBroadcast.id" ng-controller='txBroadcastCtrl' ng-cloak >
+
+  <div class="block">
+
+      <article class="cont-md text-center">
+
+        <h1 translate="TX_Broadcast"> Broadcast Transaction </h1>
+
+        <p translate="TX_Broadcast_Desc"> Paste your signed transaction below &amp; press the button. A confirmation dialog showing your transaction details will be shown before it attempts to broadcast it to the network. Please double check how much of what coin to what address you are sending. </p>
+
+        <div class="col-sm-8 col-sm-offset-2">
+          <label> Signed Transaction </label>
+          <textarea class="form-control" rows="5" ></textarea>
+          <a class="btn btn-primary"> Broadcast Transaction </a>
+        </div>
+
+      </article>
+
+  </div>
+
+
+
+</main>
+
+
+
     <!-- Swap Page -->
 <main class="tab-pane swap-tab active" ng-if="globalService.currentTab==globalService.tabs.swap.id" ng-controller='swapCtrl'  ng-cloak>
 
@@ -1118,7 +1526,7 @@
 
   <input class="form-control"
          type="text"
-         placeholder="{{ 'SEND_amount_short' | translate }}"
+         placeholder="{{ 'x_Amount_short' | translate }}"
          ng-change ="updateEstimate(true)"
          ng-model="swapOrder.fromVal"
          ng-click="showedMinMaxError = false"
@@ -1137,7 +1545,7 @@
 
   <input class="form-control"
          type="text"
-         placeholder="{{ 'SEND_amount_short' | translate }}"
+         placeholder="{{ 'x_Amount_short' | translate }}"
          ng-change ="updateEstimate(false)"
          ng-model="swapOrder.toVal"
          ng-click="showedMinMaxError = false"
@@ -1181,7 +1589,7 @@
   <section class="order-info-wrap row">
     <div class="col-sm-4 order-info">
       <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
-      <p translate="SWAP_send_amt"> Amount to send </p>
+      <p translate="x_Amount"> Amount to send </p>
     </div>
     <div class="col-sm-4 order-info">
       <h4> {{swapOrder.toVal}} {{swapOrder.toCoin}} </h4>
@@ -1307,7 +1715,7 @@
       </div>
       <div ng-show="!wd">
           
-            <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   
+            <wallet-decrypt-cx-drtv></wallet-decrypt-cx-drtv>   
       </div>
     </section>
 
@@ -1316,7 +1724,7 @@
       Please use the node switcher in the top-right corner to switch to an ETH node. We <strong>do not</strong> support swapping ETC or Testnet ETH.
     </div>
 
-    <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+    <section class="row" ng-show="wallet!=null" ng-controller='txSendCtrl'>
       
        <!-- Content -->
 <section class="col-sm-8">
@@ -1328,11 +1736,11 @@
     </div>
 
     <!-- Amount to Send -->
-    <label translate="SEND_amount">Amount to Send:</label>
+    <label translate="x_Amount">Amount to Send:</label>
     <div class="input-group col-sm-11">
       <input type="text"
              class="form-control"
-             placeholder="{{ 'SEND_amount_short' | translate }}"
+             placeholder="{{ 'x_Amount_short' | translate }}"
              ng-model="tx.value"
              ng-disabled="tx.readOnly || checkTxReadOnly"
              ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
@@ -1349,7 +1757,7 @@
         </ul>
       </div>
     </div>
-    <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="SEND_TransferTotal">Send Entire Balance</span></a></p>
+    <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="TX_Send_All">Send Entire Balance</span></a></p>
     <!-- / Amount to Send -->
 
     <!-- Gas Limit -->
@@ -1357,9 +1765,9 @@
       <div class="col-sm-11 clearfix">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+          <p class="account-help-text" translate="x_GasLimitDesc"></p>
         </a>
-        <label translate="TRANS_gas"> Gas Limit: </label>
+        <label translate="x_GasLimit"> Gas Limit: </label>
         <input type="text"
                class="form-control"
                placeholder="21000"
@@ -1372,38 +1780,45 @@
     <!-- / Gas Limit -->
 
     <!-- Advanced Option Panel -->
-    <a ng-click="showAdvance=true" ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
-      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
+    <a ng-click="advancedVisible=true" ng-hide="advancedVisible">
+      <p class="strong" translate="SEND_Advanced"> + Advanced: Add Data </p>
     </a>
 
-    <section ng-show="showAdvance || checkTxPage">
-      <!-- Data -->
-      <div class="row form-group">
-        <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
-          <span class="account-help-icon">
+    <section ng-hide="!advancedVisible">
+
+      <!-- Gas Price -->
+      <div class="row form-group" ng-show="gasPriceVisible">
+        <div class="col-xs-12">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
-          </span>
-          <label translate="TRANS_data"> Data: </label>
+            <p class="account-help-text" translate="x_GasPriceDesc"></p>
+          </a>
+          <label style="width: 100%;"> <span translate="x_GasPrice"> Gas Price: </span></label>
+        </div>
+        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
           <input type="text"
                  class="form-control"
-                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
-                 ng-model="tx.data"
-                 ng-disabled="tx.readOnly || checkTxReadOnly"
-                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+                 placeholder="50"
+                 ng-model="tx.gasPrice"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+          <div class="input-group-btn">
+            <a style="min-width: 170px" class="btn btn-default">
+              <strong> GWEI </strong>
+            </a>
+          </div>
         </div>
       </div>
-      <!-- / Data -->
-
+      <!-- / Gas Price -->
 
       <!-- Nonce -->
-      <div class="row form-group" ng-show="checkTxPage">
+      <div class="row form-group" ng-show="nonceVisible">
         <div class="col-sm-11 clearfix">
           <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="NONCE_Desc"></p>
+            <p class="account-help-text" translate="x_NonceDesc"></p>
           </a>
-          <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
+          <label translate="x_Nonce"> Nonce </label>
           <input type="text"
                  class="form-control"
                  placeholder="2"
@@ -1414,24 +1829,24 @@
       </div>
       <!-- / Nonce -->
 
-
-      <!-- Gas Price -->
-      <div class="row form-group" ng-show="checkTxPage">
+      <!-- Data -->
+      <div class="row form-group" ng-show="tx.sendMode=='ether'">
         <div class="col-sm-11 clearfix">
-          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+          <span class="account-help-icon">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
-          </a>
-          <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
+            <p class="account-help-text" translate="x_DataDesc">This is optional.</p>
+          </span>
+          <label translate="x_Data"> Data: </label>
           <input type="text"
                  class="form-control"
-                 placeholder="50"
-                 ng-model="tx.gasPrice"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
+                 ng-model="tx.data"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
         </div>
       </div>
-      <!-- / Gas Price -->
+      <!-- / Data -->
+
     </section>
 
     <!-- / Advanced Option Panel -->
@@ -1445,23 +1860,23 @@
 
     <div class="row form-group">
       <div class="col-xs-12 clearfix">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
       </div>
     </div>
 
     <div class="row form-group" ng-show="showRaw">
       <div class="col-sm-6">
-        <label translate="SEND_raw"> Raw Transaction </label>
+        <label translate="TX_Unsigned"> Raw Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
       </div>
       <div class="col-sm-6">
-        <label translate="SEND_signed"> Signed Transaction </label>
+        <label translate="TX_Signed"> Signed Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
       </div>
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Send_Short"> Send Transaction </a>
     </div>
   </div>
 </section>
@@ -1470,18 +1885,16 @@
 <!-- Sidebar -->
 <section class="col-sm-4">
 
+  <div class="block block--info" ng-show="hasQueryString">
+    <p translate="WARN_02">You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.</p>
+  </div>
+
   <div class="block block--danger" ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
-    <h5>Warning! You do not have enough funds to complete this swap.</h5>
-    <p>Please add more funds to your wallet or access a different wallet.</p>
+    <h5 translate="WARN_09_A">Warning! You do not have enough funds to complete this swap.</h5>
+    <p translate="WARN_09_B">Please add more funds to your wallet or access a different wallet.</p>
   </div>
 
   <wallet-balance-drtv></wallet-balance-drtv>
-
-  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
-    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-  </div>
 
   <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
 
@@ -1490,7 +1903,7 @@
  
 
       
-       <article class="modal fade" id="sendTransaction" tabindex="-1">
+       <article class="modal fade" id="txSend" tabindex="-1">
   <section class="modal-dialog">
     <section class="modal-content">
 
@@ -1555,7 +1968,7 @@
 
   <!-- Swap CTA BTC -->
   <section class="row block swap-address text-center" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
-    <label translate="x_Address"> Your Address </label>
+    <label translate="ADDR_"> Your Address </label>
     <div class="qr-code" qr-code="{{'bitcoin:'+orderResult.payment_address+'?amount='+orderResult.input.amount}}" watch-var="orderResult" ></div>
     <br />
     <p class="text-danger">
@@ -1600,660 +2013,40 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 
 
-    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.offlineTransaction.id" ng-controller='offlineTxCtrl' ng-cloak style="max-width:1000px; margin: auto">
-
-  <h1 translate="OFFLINE_Title"> Generate & Send Offline Transaction </h1>
-
-  
-   <!-- Step 1 -->
-<article class="row block">
-
-  <h2 class="col-xs-11 clearfix" translate="OFFLLINE_Step1_Title">Step 1: Generate Information (Online Computer)</h2>
-
-  <!-- From Address Input -->
-  <section class="col-xs-11 clearfix">
-    <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
-      <p class="account-help-text" translate="OFFLINE_Step1_Label_2">Note: This is the FROM address, not the TO address.</p>
-      <label translate="OFFLINE_Step1_Label_1"> From Address: </label>
-    </div>
-    <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'')"/>
-  </section>
-  <!-- From Address Icon -->
-  <section class="col-xs-1 address-identicon-container">
-    <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.from}}" watch-var="tx.from"></div>
-  </section>
-
-
-  <!-- Button -->
-  <section class="col-xs-12 clearfix">
-    <a class="btn btn-info" ng-click="getWalletInfo()" translate="OFFLINE_Step1_Button">GENERATE INFORMATION</a>
-  </section>
-
-
-  <section class="clearfix" ng-show="showWalletInfo">
-
-    <!-- Gas Price -->
-    <div class="col-xs-6 col-sm-5">
-      <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
-      <input class="form-control" type="text" placeholder="" readonly="readonly" ng-model="gasPriceDec"/>
-    </div>
-
-    <!-- Nonce -->
-    <div class="col-xs-6 col-sm-5">
-      <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-      <input class="form-control" type="text" placeholder="" readonly="readonly" ng-model="nonceDec"/>
-    </div>
-
-  </section>
-
-</article>
-<!-- / Step 1 -->
- 
-
-  
-   <article class="block">
-
-  <!-- To Address -->
-  <article class="clearfix">
-    <h2 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
-    <section class="col-xs-11">
-      <label translate="OFFLINE_Step2_Label_1">To Address:</label>
-      <input class="form-control"
-             type="text"
-             placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
-             ng-model="tx.to"
-             ng-change="validateAddress(tx.to,'')"/>
-    </section>
-
-    <section class="col-xs-1 address-identicon-container">
-      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-    </section>
-
-    <section class="col-xs-12">
-      <p>{{customGasMsg}}</p>
-    </section>
-  </article>
-
-  <!-- Amount to Send -->
-  <article class="clearfix">
-    <section class="col-sm-11">
-      <label translate="OFFLINE_Step2_Label_2">
-        Amount to Send
-      </label>
-      <div class="input-group">
-        <input class="form-control" type="text" placeholder="{{'SEND_amount_short' | translate }}" ng-model="tx.value"/>
-        <div class="input-group-btn">
-          <a style="min-width: 150px"
-             class="btn btn-default dropdown-toggle"
-             ng-click="dropdownAmount = !dropdownAmount"
-             ng-class="dropdownEnabled ? '' : 'disabled'">
-                {{unitReadable}}<i class="caret"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
-            <li><a ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
-            <li ng-repeat="token in tokenObjs track by $index">
-              <a ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index, token.getSymbol())" > {{token.getSymbol()}} </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </article>
-
-  <!-- Gas Price -->
-  <article class="clearfix">
-    <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
-      </a>
-      <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
-      <input class="form-control" type="text" placeholder="" ng-model="gasPriceDec"/>
-    </section>
-  </article>
-
-  <!-- Gas Limit -->
-  <article class="clearfix">
-    <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">21000 is the default gas limit.</p>
-      </a>
-      <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
-      <input class="form-control" type="text" placeholder="" ng-model="tx.gasLimit"/>
-    </section>
-  </article>
-
-  <!-- Nonce -->
-  <article class="clearfix">
-    <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_5b">This was displayed in Step 1.</p>
-      </a>
-      <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-      <input class="form-control" type="text" placeholder="" ng-model="nonceDec"/>
-    </section>
-  </article>
-
-
-  <!-- Data -->
-  <article class="clearfix">
-    <section class="col-sm-11" ng-show="tokenTx.id=='ether'">
-      <span class="account-help-icon">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
-      </span>
-      <label translate="OFFLINE_Step2_Label_6"> Data </label>
-      <input class="form-control" type="text" placeholder="0x4d792045746865722057616c6c6574" id="offlineData" ng-model="tx.data" />
-    </section>
-  </article>
-
-</article>
-
-
-<!-- Decrypt -->
-<article class="clearfix">
-  <wallet-decrypt-drtv></wallet-decrypt-drtv>
-</article>
-
-
-<!-- Button -->
-<article class="row block" ng-show="wallet!=null">
-  <section class="col-xs-12 clearfix">
-    <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">Generate Signed Transaction</a>
-  </section>
-  <section class="col-sm-5 clearfix">
-    <label translate="SEND_raw"> Raw Transaction </label>
-    <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="rawTx"></textarea>
-  </section>
-  <section class="col-sm-5 clearfix">
-    <label translate="SEND_signed"> Signed Transaction </label>
-    <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="signedTx"></textarea>
-  </section>
-  <section class="col-sm-2 cleafix">
-    <div class="qr-code" qr-code="{{signedTx}}" watch-var="signedTx" width="100%"></div>
-  </section>
-</article>
- 
-
-  
-   <article class="block">
-
-  <h2 translate="OFFLINE_Step3_Title"> Step 3: Send / Publish Transaction </h2>
-
-  <p translate="OFFLINE_Step3_Label_1"> Paste the signed transaction from Step 2 </p>
-
-  <label translate="SEND_signed"> Signed Transaction </label>
-  <textarea class="form-control" rows="3" ng-model="signedTx"></textarea>
-
-  <a class="btn btn-primary" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
-
-</article>
- 
-
-  
-   <article class="modal fade" id="sendTransactionOffline" tabindex="-1">
-  <section class="modal-dialog">
-    <section class="modal-content">
-
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
-
-        <table class="table text-center"><tbody><tr>
-
-          <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.from}}" watch-var="tx.from"></div>
-          </td>
-          <td ng-show="tx.sendMode!=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.from}}" watch-var="tokenTx.from"></div>
-          </td>
-
-          <td ng-show="tx.sendMode=='ether'" class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
-          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br />{{tokenTx.value}} {{unitReadable}}</td>
-
-          <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-          </td>
-          <td ng-show="tx.sendMode!=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
-          </td>
-
-        </tr></tbody></table>
-
-        <br />
-
-        <p>
-          <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
-          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
-          <br />
-          <span translate="SENDModal_Content_2">to address</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono"> {{tx.to}}. </strong>
-          <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
-        </p>
-
-        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
-
-        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-
-      </div>
-
-
-      <div class="modal-footer">
-        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
-          No, get me out of here!
-        </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
-          Yes, I am sure! Make transaction.
-        </button>
-      </div>
-
-    </section>
-  </section>
-</article>
- 
-
-</main>
-
-
-    <main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak>
-
-  <!-- Title -->
-  <h1>
-    <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
-    or
-    <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a>
-  </h1>
-  <!-- / Title -->
-
-
-  <!-- Interact Contracts -->
-  <article class="row" ng-show="visibility=='interactView'">
-
-    
-     
-<!-- Address -->
-<section class="col-sm-6 clearfix">
-  <h4 translate="CONTRACT_Title"> Contract Address</h4> <small style="float: right; margin-top: -2rem;"> or </small>
-  <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
-</section>
-
-<!-- Select Contract Dropdown -->
-<section class="col-sm-6 clearfix">
-  <h4 translate="CONTRACT_Title_2"> Select Existing Contract </h4>
-  <div class="dropdown">
-    <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
-      {{selectedAbi.name}} <small class="mono">{{selectedAbi.address}}</small><i class="caret"></i>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-left" ng-show="dropdownExistingContracts">
-      <li ng-repeat="abi in ajaxReq.abiList track by $index"><a ng-click="selectExistingAbi($index)">{{abi.name}} <small class="mono">{{abi.address}}</small></a></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ABI Textarea -->
-<section class="col-xs-12 clearfix">
-  <h4 translate="CONTRACT_Json"> ABI / JSON Interface </h4>
-  <textarea class="form-control" rows="6" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
-</section>
-
-<!-- Button -->
-<section class="col-xs-12 clearfix">
-  <button class="btn btn-primary" ng-click="initContract()" translate="x_Access"> ACCESS </button>
-</section>
- 
-
-
-    <div class="col-xs-12 clearfix"> <hr /> </div>
-
-    <div ng-show="showReadWrite">
-      
-       <!-- STEP READ/WRITE -->
-<section class="col-xs-12 clearfix">
-
-  <!-- Contract Info CONTRACT_Interact_CTA -->
-  <span class="form-group">
-    <h4 translate="CONTRACT_Interact_Title">Read / Write Contract </h4>
-    <h5> {{ contract.address }} </h5>
-
-
-    <div class="form-group well" ng-show="contract.address=='0x0101010101010101010101010101010101010101'">
-      <p> You probably want to change the address to your Mist Mutlisig Address....</p>
-    </div>
-    <div class="form-group well" ng-show="contract.address=='0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf'">
-      <ol>
-        <li><strong>Generate EOS Key-pair</strong></li>
-        <li><strong>Register / Map your EOS Key</strong>
-          <ul>
-            <li>Select <code>register</code></li>
-            <li> Enter your <strong><u>EOS Public Key</u></strong> <--- CAREFUL! EOS PUBLIC KEY!</li>
-            <li>Unlock wallet</li>
-            <li><span translate="SEND_amount">Amount to Send</span>: <code>0</code> &middot; <span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
-          </ul>
-        </li>
-        <li><strong>Fund EOS Contract on Send Page</strong>
-          <ul>
-            <li>Go to Send Ether & Tokens Page</li>
-            <li>Unlock same wallet you are unlocking here.</li>
-            <li>Send Amount you want to Contribute to <code>0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf</code></li>
-            <li><span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
-          </ul>
-        </li>
-        <li><strong>Claim EOS Tokens</strong>
-          <ul>
-            <li>Select <code>claimAll</code>.</li>
-            <li>Unlock wallet</li>
-            <li><span translate="SEND_amount">Amount to Send</span>: <code>0</code> &middot; <span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
-          </ul>
-        </li>
-    </div>
-
-    <div class="btn-group">
-      <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
-      {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}<i class="caret"></i></a>
-      <ul class="dropdown-menu" ng-show="dropdownContracts">
-        <li ng-repeat="func in contract.functions track by $index"><a ng-click="selectFunc($index)">{{func.name}}</a></li>
-      </ul>
-    </div>
-  </span>
-
-
-
-  <!-- Write -->
-  <span class="form-group" ng-show="contract.selectedFunc!=null">
-    <div ng-repeat="input in contract.functions[contract.selectedFunc.index].inputs track by $index">
-      <div ng-switch on="input.type">
-          <div class="item write-address" ng-switch-when="address">
-          <label> {{input.name}} <small> {{input.type}} </small> </label>
-          <div class="row">
-            <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="input.value" ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'"/></div>
-            <div class="col-xs-1"><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{input.value}}" watch-var="input.value" ></div></div>
-          </div>
-          </div>
-          <p class="item write-unit256" ng-switch-when="uint256">
-            <label> {{input.name}} <small> {{input.type}} </small> </label>
-            <input class="form-control" type="text" placeholder="151" ng-model="input.value" ng-class="Validator.isPositiveNumber(input.value) ? 'is-valid' : 'is-invalid'"/>
-          </p>
-          <p class="item write-string" ng-switch-when="string">
-            <label> {{input.name}} <small> {{input.type}} </small> </label>
-            <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
-          </p>
-          <p class="item write-bytes" ng-switch-when="bytes">
-            <label> {{input.name}} <small> {{input.type}} </small> </label>
-            <input class="form-control" type="text" placeholder="0x151bc..." ng-model="input.value" ng-class="Validator.isValidHex(input.value) ? 'is-valid' : 'is-invalid'"/>
-          </p>
-          <p class="item write-boolean" ng-switch-when="bool">
-            <label> {{input.name}} <small> {{input.type}} </small> </label>
-            <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio-{{input.name}}" ng-value="true">True</label></span>
-            <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio-{{input.name}}" ng-value="false">False</label></span>
-          </p>
-          <p class="item" ng-switch-default>
-            <label> {{input.name}} <small> {{input.type}} </small> </label>
-            <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
-          </p>
-      </div>
-    </div>
-  </span>
-  <!-- / Write -->
-
-
-  <!-- Output -->
-  <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
-    <div ng-repeat="output in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
-      <div ng-switch on="output.type">
-        <!-- Address -->
-        <div class="item write-address" ng-switch-when="address">
-          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <div class="row">
-            <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="output.value" readonly/></div>
-            <div class="col-xs-1"><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{output.value}}" watch-var="output.value" > </div> </div>
-          </div>
-        </div>
-        <!-- unit256 -->
-        <p class="item write-unit256" ng-switch-when="uint256">
-          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <input class="form-control" type="text" placeholder="151" ng-model="output.value" readonly/>
-        </p>
-        <!-- Address -->
-        <p class="item write-string" ng-switch-when="string">
-          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="output.value" readonly/>
-        </p>
-        <!-- Bytes -->
-        <p class="item write-bytes" ng-switch-when="bytes">
-          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <input class="form-control" type="text" placeholder="0x151bc..." ng-model="output.value" readonly/>
-        </p>
-        <!-- Boolean -->
-        <p class="item write-boolean" ng-switch-when="bool">
-          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check.svg" width="16px" height="16px" /> TRUE </span>
-          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="16px" height="16px" />  FALSE </span>
-        </p>
-        <!--  -->
-        <p class="item" ng-switch-default>
-          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <input class="form-control" type="text" placeholder="" ng-model="output.value" readonly/>
-        </p>
-      </div>
-    </div>
-  </span>
-  <!-- / Output -->
-
-
-</section>
- 
-    </div>
-
-    
-     <article class="modal fade" id="sendContract" tabindex="-1">
-  <section class="modal-dialog">
-    <section class="modal-content">
-
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <div ng-show="wd">
-
-          <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
-
-          <p>You are about to <strong>execute a function on contract</strong> on the <strong>{{ajaxReq.type}}</strong> chain.</p>
-
-          <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
-
-          <label translate="SEND_amount"> Amount <em>In most cases you should leave this as 0.</em> </label>
-          <input class="form-control" type="text" placeholder="0" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
-
-          <label translate="TRANS_gas"> Gas </label>
-          <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
-
-          <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
-
-          <!-- Data -->
-          <section class="row" ng-show="showRaw">
-            <!-- Raw TX -->
-            <div class="form-group col-sm-6">
-              <h4 translate="SEND_raw"> Raw Transaction </h4>
-              <textarea class="form-control" rows="3" readonly >{{rawTx}}</textarea>
-            </div>
-            <!-- Singed TX -->
-            <div class="form-group col-sm-6">
-              <h4 translate="SEND_signed"> Signed Transaction </h4>
-              <textarea class="form-control" rows="3" readonly >{{signedTx}}</textarea>
-            </div>
-          </section>
-
-        </div>
-      </div>
-
-
-      <div class="modal-footer" ng-show="showRaw">
-        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
-          No, get me out of here!
-        </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
-          Yes, I am sure! Make transaction.
-        </button>
-      </div>
-
-    </section>
-  </section>
-</article>
-
- 
-
-  </article>
-  <!-- / Interact Contracts -->
-
-
-
-  <!-- Deploy Contract -->
-  <article class="row" ng-show="visibility=='deployView'">
-
-    
-     <section class="col-xs-12">
-
-  <!-- Byte Code -->
-  <div class="form-group">
-    <h4 translate="CONTRACT_ByteCode"> Byte Code: </h4>
-    <textarea
-      class="form-control"
-      rows="8"
-      ng-model="tx.data"
-      ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
-  </div>
-
-  <!-- Gas -->
-  <div class="form-group">
-    <h4 translate="TRANS_gas"> Gas: </h4>
-    <input class="form-control"
-           type="text"
-           placeholder="300000"
-           ng-model="tx.gasLimit"
-           ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
-  </div>
-
-  <!-- Sign TX Button (once wallet has been unlocked) -->
-  <div class="form-group">
-    <a class="btn btn-info btn-block" ng-click="generateTx()" ng-show="wd" translate="DEP_signtx"> Sign Transaction </a>
-  </div>
-
-  <!-- TXs -->
-  <section class="row" ng-show="showRaw">
-    <!-- Raw TX -->
-    <div class="form-group col-sm-6">
-      <h4 translate="SEND_raw"> Raw Transaction </h4>
-      <textarea class="form-control" rows="4" readonly> {{rawTx}} </textarea>
-    </div>
-    <!-- Singed TX -->
-    <div class="form-group col-sm-6">
-      <h4 translate="SEND_signed"> Signed Transaction </h4>
-      <textarea class="form-control" rows="4" readonly> {{signedTx}} </textarea>
-    </div>
-  </section>
-
-  <!-- Deploy Contract Button (once tx has been signed) -->
-  <div class="form-group" ng-show="showRaw">
-    <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#deployContract" translate="NAV_DeployContract"> Deploy Contract </a>
-  </div>
-
-  
-   <article class="modal fade" id="deployContract" tabindex="-1">
-  <section class="modal-dialog">
-    <section class="modal-content">
-
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
-
-        <p>You are about to <strong>deploy a contract</strong> on the <strong>{{ajaxReq.type}}</strong> chain.</p>
-
-        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
-
-        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
-          No, get me out of here!
-        </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
-          Yes, I am sure! Make transaction.
-        </button>
-      </div>
-
-    </section>
-  </section>
-</article>
- 
-
-</section>
- 
-
-  </article>
-  <!-- / Deploy Contract -->
-
-  <!--wallet decrypt-->
-  <article class="form-group" ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
-        <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   
-      
-  </article>
-
-  <article ng-show="contract.selectedFunc!=null">
-
-    <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">
-      <span translate="CONTRACT_Read"> READ</span>
-    </button>
-
-    <button class="btn btn-primary" ng-click="generateContractTx()" ng-show="!contract.functions[contract.selectedFunc.index].constant">
-      <span translate="CONTRACT_Write"> WRITE</span>
-    </button>
-
-    </br>
-  </article>
-
-</main>
-
-
     <main class="tab-pane ens-tab active" ng-if="globalService.currentTab==globalService.tabs.ens.id" ng-controller='ensCtrl' ng-cloak>
 
-  <div class="block">
 
-      <!-- Title -->
-      <article class="cont-md">
-        <h1 class="text-center" translate="NAV_ENS"> ENS </h1>
-        <p>
-          The <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener">Ethereum Name Service</a> is a distributed, open, and extensible naming system based on the Ethereum blockchain. Once you have a name, you can tell your friends to send ETH to <code>mewtopia.eth</code> instead of <code>0x7cB57B5A97eAbe942.....</code>.
-        </p>
-      </article>
-      <!-- / Title -->
+<article class="block__title">
 
-      <br />
+  <!-- Title -->
+  <h1 class="text-center" translate="ENS_Title"> ENS </h1>
 
-      <!-- IF ENS CHAIN: Check Status of Name -->
-      <article class="row" ng-show="showENS()">
-        <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-          <div class="input-group">
-            <input class="form-control"
-                   type="text"
-                   placeholder="myetherwallet"
-                   ng-model="objENS.name"
-                   ng-keyup="$event.keyCode==13 && checkName()"
-                   ng-change="nameOnChange()"
-                   ng-disabled="objENS.nameReadOnly"
-                   ng-class="Validator.isValidENSName(objENS.name) && objENS.name.indexOf('.') == -1 ? 'is-valid' : 'is-invalid'"/>
-            <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
-          </div>
-          <button class="btn btn-primary" ng-click="checkName()"> Check ENS Name </button>
-        </section>
-      </article>
-      <!-- / IF ENS CHAIN: Check Status of Name -->
+  <!-- Desc -->
+  <p translate="ENS_Desc"></p>
 
-  </div>
+  <section ng-show="showENS()">
+    <!-- Label -->
+    <h4> ENS Name </h4>
+
+    <!-- Input -->
+    <div class="input-group">
+      <input class="form-control"
+             type="text"
+             placeholder="myetherwallet"
+             ng-model="objENS.name"
+             ng-keyup="$event.keyCode==13 && checkName()"
+             ng-change="nameOnChange()"
+             ng-disabled="objENS.nameReadOnly"
+             ng-class="Validator.isValidENSName(objENS.name) && objENS.name.indexOf('.') == -1 ? 'is-valid' : 'is-invalid'"/>
+        <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
+    </div>
+
+    <!-- Button -->
+    <button class="btn btn-primary" ng-click="checkName()"> Check ENS Name </button>
+
+  </section>
+
+</article>
 
 
   <!-- IF NOT ENS CHAIN -->
@@ -2466,7 +2259,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       </div>
       <div ng-show="!wd">
           
-            <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   
+            <wallet-decrypt-cx-drtv></wallet-decrypt-cx-drtv>   
       </div>
     </section>
   </article>
@@ -2878,341 +2671,309 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 </main>
 
 
-    <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.txStatus.id" ng-controller='txStatusCtrl' role="main" ng-cloak>
+    <main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak>
 
-  <!-- Section 1 -->
-  <section class="block txstatus__1">
-    <article class="row">
-      <section class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
-        <h1 translate="NAV_CheckTxStatus"> Check TX Status </h1>
-        <p translate="tx_Summary"></p>
-      </section>
-
-      <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-          <input
-             class="form-control"
-             type="text"
-             placeholder="0x3f0efedfe0a0cd611f2465fac9a3699f92d6a06613bc3ead4f786856f5c73e9c"
-             ng-model="txInfo.hash"
-             ng-keyup="$event.keyCode == 13 && checkTxStatus()"
-             aria-label="{{'x_TxHash' | translate}}" ng-class="Validator.isValidTxHash(txInfo.hash) ? 'is-valid' : 'is-invalid'"/>
-          <button tabindex="0"
-                  role="button"
-                  class="btn btn-primary"
-                  ng-click="checkTxStatus()"
-                  translate="NAV_CheckTxStatus"> Check TX Status </button>
-      </section>
-    </article>
-  </section>
-  <!-- / Section 1 -->
+  <!-- Title -->
+  <h1>
+    <a translate="CONTRACT_Interact" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
+    or
+    <a translate="CONTRACT_Deploy"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a>
+  </h1>
+  <!-- / Title -->
 
 
-  <!-- Section 2: Current State -->
-  <section class="block txstatus__2" ng-show="txInfo.status==txStatus.mined || txInfo.status==txStatus.notFound || txInfo.status==txStatus.found">
+  <!-- Interact Contracts -->
+  <article class="row" ng-show="visibility=='interactView'">
 
-    <div class="cont-md" ng-show="txInfo.status == txStatus.mined">
-      <h3 class="text-success" translate="tx_FoundOnChain"> Transaction Found </h3>
-      <h5> <a href="https://etherscan.io/tx/{{ tx.hash }}" target="_blank" rel="noopener"> {{ tx.hash }} </a> </h5>
-      <p><strong translate="tx_FoundOnChain_1"></strong></p>
-      <ul>
-        <li translate="tx_FoundOnChain_2"></li>
-        <li translate="tx_FoundOnChain_3"></li>
-      </ul>
-    </div>
+    
+     
+<!-- Address -->
+<section class="col-sm-6 clearfix">
+  <h4 translate="CONTRACT_Title"> Contract Address</h4> <small style="float: right; margin-top: -2rem;"> or </small>
+  <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
+</section>
 
-    <div class="cont-md" ng-show="txInfo.status == txStatus.notFound">
-      <h3 class="text-danger" translate="tx_notFound">Transaction Not Found</h3>
-      <p><strong translate="tx_notFound_1"></strong></p>
-      <ul>
-        <li translate="tx_notFound_2"></li>
-        <li translate="tx_notFound_3"></li>
-        <li translate="tx_notFound_4"></li>
-      </ul>
-    </div>
-
-    <div class="cont-md" ng-show="txInfo.status == txStatus.found">
-      <h3 class="text-warning" translate="tx_foundInPending">Pending Transaction Found</h3>
-      <ul>
-        <li translate="tx_foundInPending_1"></li>
-        <li translate="tx_foundInPending_2"></li>
-        <li translate="tx_foundInPending_3"></li>
-      </ul>
-    </div>
-
-    <div ng-show="txInfo.status == txStatus.found || txInfo.status == txStatus.mined">
-    <h4 translate="tx_Details" class="cont-md">Transaction Details</h4>
-    <br />
-    <table class="table table-striped txstatus__2 cont-md"> <!-- ng-show="tx.status=='foundOnChain' || foundInPending'"-->
-      <tbody>
-        <tr>
-          <td translate="x_TxHash">TX Hash</td>
-          <td><a href="https://etherscan.io/tx/{{ txInfo.hash }}" target="_blank" rel="noopener"> {{ txInfo.hash }} </a></td>
-        </tr>
-        <tr>
-          <td translate="OFFLINE_Step1_Label_1">From Address</td>
-          <td><a href="https://etherscan.io/address/{{ txInfo.from }}" target="_blank" rel="noopener"> {{ txInfo.from }} </a></td>
-        </tr>
-        <tr>
-          <td translate="OFFLINE_Step2_Label_1">To Address</td>
-          <td><a href="https://etherscan.io/address/{{ txInfo.to }}" target="_blank" rel="noopener"> {{ txInfo.to }} </a></td>
-        </tr>
-        <tr>
-          <td translate="SEND_amount_short">Amount</td>
-          <td>{{ txInfo.valueStr }} </td>
-        </tr>
-        <tr>
-          <td>
-            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
-              <img src="images/icon-help.svg" class="help-icon" />
-              <p class="account-help-text" translate="NONCE_Desc"></p>
-            </a>
-            <span translate="OFFLINE_Step2_Label_5">Nonce</span>
-          </td>
-          <td>{{ txInfo.nonce }} </td>
-        </tr>
-        <tr>
-          <td>
-            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-              <img src="images/icon-help.svg" class="help-icon" />
-              <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
-            </a>
-            <span translate="OFFLINE_Step2_Label_4">Gas Limit</span>
-          </td>
-          <td>{{ txInfo.gasLimit }} </td>
-        </tr>
-        <tr>
-          <td>
-            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-              <img src="images/icon-help.svg" class="help-icon" />
-              <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
-            </a>
-            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>
-          </td>
-          <td>
-            {{ txInfo.gasPrice.gwei }} GWEI
-            <small>({{ txInfo.gasPrice.wei }} WEI)</small></td>
-        </tr>
-<!--
-        <tr>
-          <td>
-            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-              <img src="images/icon-help.svg" class="help-icon" />
-              <p class="account-help-text" translate="TXFEE_Desc"></p>
-            </a>
-            <span translate="x_TXFee">TX Fee</span>
-          </td>
-          <td>
-            ({{ txFee.eth }} ETH)
-            <small>({{ txFee.usd }} USD)</small>
-          </td>
-        </tr>
--->
-        <tr>
-          <td translate="OFFLINE_Step2_Label_6">Data</td>
-          <td>{{ txInfo.data }} </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
-  </section>
-  <!-- / Section 2: Current State -->
-
-
-  <!-- Section 3:  Unlock -->
-  <article class="txstatus__3" ng-show="txInfo.status == txStatus.found">
-    <br><br>
-    <h1 class="text-center" translate="x_CancelReplaceTx">Cancel or Replace Transaction</h1>
-
-    <section class="clearfix collapse-container">
-      <div class="text-center" ng-click="wd = !wd">
-        <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-        <h4 class="text-danger text-center"> Unlock your wallet to replace your transaction. (But, please be careful) </h4>
-      </div>
-      <div ng-show="!wd">
-          
-            <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   
-      </div>
-    </section>
-  </article>
-  <!-- / Section 3:  Unlock -->
-
-  <!-- Send Tx Content -->
- <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
-      <div ng-show="wallet.getChecksumAddressString() == txInfo.from">
-      
-       <!-- Content -->
-<section class="col-sm-8">
-  <div class="block">
-
-    <!-- To Address -->
-    <div class="row form-group">
-      <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>
-    </div>
-
-    <!-- Amount to Send -->
-    <label translate="SEND_amount">Amount to Send:</label>
-    <div class="input-group col-sm-11">
-      <input type="text"
-             class="form-control"
-             placeholder="{{ 'SEND_amount_short' | translate }}"
-             ng-model="tx.value"
-             ng-disabled="tx.readOnly || checkTxReadOnly"
-             ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
-      <div class="input-group-btn">
-        <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
-          <strong>{{unitReadable}}<i class="caret"></i></strong>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
-          <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
-          <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
-            <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode('token', $index, token.getSymbol())"> {{token.getSymbol()}} </a>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-    <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="SEND_TransferTotal">Send Entire Balance</span></a></p>
-    <!-- / Amount to Send -->
-
-    <!-- Gas Limit -->
-    <div class="row form-group">
-      <div class="col-sm-11 clearfix">
-        <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
-        </a>
-        <label translate="TRANS_gas"> Gas Limit: </label>
-        <input type="text"
-               class="form-control"
-               placeholder="21000"
-               ng-model="tx.gasLimit"
-               ng-change="gasLimitChanged=true"
-               ng-disabled="tx.readOnly || checkTxReadOnly"
-               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
-      </div>
-    </div>
-    <!-- / Gas Limit -->
-
-    <!-- Advanced Option Panel -->
-    <a ng-click="showAdvance=true" ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
-      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
+<!-- Select Contract Dropdown -->
+<section class="col-sm-6 clearfix">
+  <h4 translate="CONTRACT_Title_2"> Select Existing Contract </h4>
+  <div class="dropdown">
+    <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
+      {{selectedAbi.name}} <small class="mono">{{selectedAbi.address}}</small><i class="caret"></i>
     </a>
-
-    <section ng-show="showAdvance || checkTxPage">
-      <!-- Data -->
-      <div class="row form-group">
-        <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
-          <span class="account-help-icon">
-            <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
-          </span>
-          <label translate="TRANS_data"> Data: </label>
-          <input type="text"
-                 class="form-control"
-                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
-                 ng-model="tx.data"
-                 ng-disabled="tx.readOnly || checkTxReadOnly"
-                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
-        </div>
-      </div>
-      <!-- / Data -->
-
-
-      <!-- Nonce -->
-      <div class="row form-group" ng-show="checkTxPage">
-        <div class="col-sm-11 clearfix">
-          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="NONCE_Desc"></p>
-          </a>
-          <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-          <input type="text"
-                 class="form-control"
-                 placeholder="2"
-                 ng-model="tx.nonce"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
-        </div>
-      </div>
-      <!-- / Nonce -->
-
-
-      <!-- Gas Price -->
-      <div class="row form-group" ng-show="checkTxPage">
-        <div class="col-sm-11 clearfix">
-          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
-          </a>
-          <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
-          <input type="text"
-                 class="form-control"
-                 placeholder="50"
-                 ng-model="tx.gasPrice"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
-        </div>
-      </div>
-      <!-- / Gas Price -->
-    </section>
-
-    <!-- / Advanced Option Panel -->
-
-    <div class="clearfix form-group">
-      <div class="well" ng-show="wallet!=null && customGasMsg!=''">
-        <p><small>A message regarding {{tx.to}}</small></p>
-        <p><strong> {{customGasMsg}} </strong></p>
-      </div>
-    </div>
-
-    <div class="row form-group">
-      <div class="col-xs-12 clearfix">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
-      </div>
-    </div>
-
-    <div class="row form-group" ng-show="showRaw">
-      <div class="col-sm-6">
-        <label translate="SEND_raw"> Raw Transaction </label>
-        <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
-      </div>
-      <div class="col-sm-6">
-        <label translate="SEND_signed"> Signed Transaction </label>
-        <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
-      </div>
-    </div>
-
-    <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
-    </div>
+    <ul class="dropdown-menu dropdown-menu-left" ng-show="dropdownExistingContracts">
+      <li ng-repeat="abi in ajaxReq.abiList track by $index"><a ng-click="selectExistingAbi($index)">{{abi.name}} <small class="mono">{{abi.address}}</small></a></li>
+    </ul>
   </div>
 </section>
-<!-- / Content -->
 
-<!-- Sidebar -->
-<section class="col-sm-4">
-
-  <div class="block block--danger" ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
-    <h5>Warning! You do not have enough funds to complete this swap.</h5>
-    <p>Please add more funds to your wallet or access a different wallet.</p>
-  </div>
-
-  <wallet-balance-drtv></wallet-balance-drtv>
-
-  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
-    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-  </div>
-
-  <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
-
+<!-- ABI Textarea -->
+<section class="col-xs-12 clearfix">
+  <h4 translate="CONTRACT_Json"> ABI / JSON Interface </h4>
+  <textarea class="form-control" rows="6" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
 </section>
-<!-- / Sidebar -->
+
+<!-- Button -->
+<section class="col-xs-12 clearfix">
+  <button class="btn btn-primary" ng-click="initContract()" translate="x_Access"> ACCESS </button>
+</section>
  
 
+
+    <div class="col-xs-12 clearfix"> <hr /> </div>
+
+    <div ng-show="showReadWrite">
       
-       <article class="modal fade" id="sendTransaction" tabindex="-1">
+       <!-- STEP READ/WRITE -->
+<section class="col-xs-12 clearfix">
+
+  <!-- Contract Info CONTRACT_Interact_CTA -->
+  <span class="form-group">
+    <h4 translate="CONTRACT_Interact_Title">Read / Write Contract </h4>
+    <h5> {{ contract.address }} </h5>
+
+
+    <div class="form-group well" ng-show="contract.address=='0x0101010101010101010101010101010101010101'">
+      <p> You probably want to change the address to your Mist Mutlisig Address....</p>
+    </div>
+    <div class="form-group well" ng-show="contract.address=='0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf'">
+      <ol>
+        <li><strong>Generate EOS Key-pair</strong></li>
+        <li><strong>Register / Map your EOS Key</strong>
+          <ul>
+            <li>Select <code>register</code></li>
+            <li> Enter your <strong><u>EOS Public Key</u></strong> <--- CAREFUL! EOS PUBLIC KEY!</li>
+            <li>Unlock wallet</li>
+            <li><span translate="x_Amount">Amount to Send</span>: <code>0</code> &middot; <span translate="x_GasLimit">Gas Limit</span>: at least <code>90000</code></li>
+          </ul>
+        </li>
+        <li><strong>Fund EOS Contract on Send Page</strong>
+          <ul>
+            <li>Go to Send Ether & Tokens Page</li>
+            <li>Unlock same wallet you are unlocking here.</li>
+            <li>Send Amount you want to Contribute to <code>0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf</code></li>
+            <li><span translate="x_GasLimit">Gas Limit</span>: at least <code>90000</code></li>
+          </ul>
+        </li>
+        <li><strong>Claim EOS Tokens</strong>
+          <ul>
+            <li>Select <code>claimAll</code>.</li>
+            <li>Unlock wallet</li>
+            <li><span translate="x_Amount">Amount to Send</span>: <code>0</code> &middot; <span translate="x_GasLimit">Gas Limit</span>: at least <code>90000</code></li>
+          </ul>
+        </li>
+    </div>
+
+    <div class="btn-group">
+      <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
+      {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}<i class="caret"></i></a>
+      <ul class="dropdown-menu" ng-show="dropdownContracts">
+        <li ng-repeat="func in contract.functions track by $index"><a ng-click="selectFunc($index)">{{func.name}}</a></li>
+      </ul>
+    </div>
+  </span>
+
+
+
+  <!-- Write -->
+  <span class="form-group" ng-show="contract.selectedFunc!=null">
+    <div ng-repeat="input in contract.functions[contract.selectedFunc.index].inputs track by $index">
+      <div ng-switch on="input.type">
+          <div class="item write-address" ng-switch-when="address">
+          <label> {{input.name}} <small> {{input.type}} </small> </label>
+          <div class="row">
+            <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="input.value" ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'"/></div>
+            <div class="col-xs-1"><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{input.value}}" watch-var="input.value" ></div></div>
+          </div>
+          </div>
+          <p class="item write-unit256" ng-switch-when="uint256">
+            <label> {{input.name}} <small> {{input.type}} </small> </label>
+            <input class="form-control" type="text" placeholder="151" ng-model="input.value" ng-class="Validator.isPositiveNumber(input.value) ? 'is-valid' : 'is-invalid'"/>
+          </p>
+          <p class="item write-string" ng-switch-when="string">
+            <label> {{input.name}} <small> {{input.type}} </small> </label>
+            <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
+          </p>
+          <p class="item write-bytes" ng-switch-when="bytes">
+            <label> {{input.name}} <small> {{input.type}} </small> </label>
+            <input class="form-control" type="text" placeholder="0x151bc..." ng-model="input.value" ng-class="Validator.isValidHex(input.value) ? 'is-valid' : 'is-invalid'"/>
+          </p>
+          <p class="item write-boolean" ng-switch-when="bool">
+            <label> {{input.name}} <small> {{input.type}} </small> </label>
+            <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio-{{input.name}}" ng-value="true">True</label></span>
+            <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio-{{input.name}}" ng-value="false">False</label></span>
+          </p>
+          <p class="item" ng-switch-default>
+            <label> {{input.name}} <small> {{input.type}} </small> </label>
+            <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
+          </p>
+      </div>
+    </div>
+  </span>
+  <!-- / Write -->
+
+
+  <!-- Output -->
+  <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
+    <div ng-repeat="output in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
+      <div ng-switch on="output.type">
+        <!-- Address -->
+        <div class="item write-address" ng-switch-when="address">
+          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+          <div class="row">
+            <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="output.value" readonly/></div>
+            <div class="col-xs-1"><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{output.value}}" watch-var="output.value" > </div> </div>
+          </div>
+        </div>
+        <!-- unit256 -->
+        <p class="item write-unit256" ng-switch-when="uint256">
+          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+          <input class="form-control" type="text" placeholder="151" ng-model="output.value" readonly/>
+        </p>
+        <!-- Address -->
+        <p class="item write-string" ng-switch-when="string">
+          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+          <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="output.value" readonly/>
+        </p>
+        <!-- Bytes -->
+        <p class="item write-bytes" ng-switch-when="bytes">
+          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+          <input class="form-control" type="text" placeholder="0x151bc..." ng-model="output.value" readonly/>
+        </p>
+        <!-- Boolean -->
+        <p class="item write-boolean" ng-switch-when="bool">
+          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check.svg" width="16px" height="16px" /> TRUE </span>
+          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="16px" height="16px" />  FALSE </span>
+        </p>
+        <!--  -->
+        <p class="item" ng-switch-default>
+          <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+          <input class="form-control" type="text" placeholder="" ng-model="output.value" readonly/>
+        </p>
+      </div>
+    </div>
+  </span>
+  <!-- / Output -->
+
+
+</section>
+ 
+    </div>
+
+    
+     <article class="modal fade" id="sendContract" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <div ng-show="wd">
+
+          <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
+
+          <p>You are about to <strong>execute a function on contract</strong> on the <strong>{{ajaxReq.type}}</strong> chain.</p>
+
+          <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+
+          <label translate="x_Amount"> Amount <em>In most cases you should leave this as 0.</em> </label>
+          <input class="form-control" type="text" placeholder="0" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+
+          <label translate="x_GasLimit"> Gas </label>
+          <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+
+          <a class="btn btn-info btn-block" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
+
+          <!-- Data -->
+          <section class="row" ng-show="showRaw">
+            <!-- Raw TX -->
+            <div class="form-group col-sm-6">
+              <h4 translate="TX_Unsigned"> Unsigned Transaction </h4>
+              <textarea class="form-control" rows="3" readonly >{{rawTx}}</textarea>
+            </div>
+            <!-- Singed TX -->
+            <div class="form-group col-sm-6">
+              <h4 translate="TX_Signed"> Signed Transaction </h4>
+              <textarea class="form-control" rows="3" readonly >{{signedTx}}</textarea>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+
+      <div class="modal-footer" ng-show="showRaw">
+        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+          No, get me out of here!
+        </button>
+        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+          Yes, I am sure! Make transaction.
+        </button>
+      </div>
+
+    </section>
+  </section>
+</article>
+
+ 
+
+  </article>
+  <!-- / Interact Contracts -->
+
+
+
+  <!-- Deploy Contract -->
+  <article class="row" ng-show="visibility=='deployView'">
+
+    
+     <section class="col-xs-12">
+
+  <!-- Bytecode-->
+  <div class="form-group">
+    <h4 translate="CONTRACT_Bytecode"> Byte Code: </h4>
+    <textarea
+      class="form-control"
+      rows="8"
+      ng-model="tx.data"
+      ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
+  </div>
+
+  <!-- Gas -->
+  <div class="form-group">
+    <h4 translate="x_GasLimit"> Gas: </h4>
+    <input class="form-control"
+           type="text"
+           placeholder="300000"
+           ng-model="tx.gasLimit"
+           ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+  </div>
+
+  <!-- Sign TX Button (once wallet has been unlocked) -->
+  <div class="form-group">
+    <a class="btn btn-info btn-block" ng-click="generateTx()" ng-show="wd" translate="TX_Sign"> Sign Transaction </a>
+  </div>
+
+  <!-- TXs -->
+  <section class="row" ng-show="showRaw">
+    <!-- Raw TX -->
+    <div class="form-group col-sm-6">
+      <h4 translate="TX_Unsigned"> Unsigned Transaction </h4>
+      <textarea class="form-control" rows="4" readonly> {{rawTx}} </textarea>
+    </div>
+    <!-- Singed TX -->
+    <div class="form-group col-sm-6">
+      <h4 translate="TX_Signed"> Signed Transaction </h4>
+      <textarea class="form-control" rows="4" readonly> {{signedTx}} </textarea>
+    </div>
+  </section>
+
+  <!-- Deploy Contract Button (once tx has been signed) -->
+  <div class="form-group" ng-show="showRaw">
+    <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#deployContract" translate="CONTRACT_Deploy"> Deploy Contract </a>
+  </div>
+
+  
+   <article class="modal fade" id="deployContract" tabindex="-1">
   <section class="modal-dialog">
     <section class="modal-content">
 
@@ -3221,41 +2982,12 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
         <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
 
-        <table class="table text-center"><tbody><tr>
+        <p>You are about to <strong>deploy a contract</strong> on the <strong>{{ajaxReq.type}}</strong> chain.</p>
 
-          <td>
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
-          </td>
-
-          <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
-          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
-
-          <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-          </td>
-          <td ng-show="tx.sendMode!=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
-          </td>
-
-        </tr></tbody></table>
-
-        <br />
-
-        <p>
-          <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
-          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
-          <br />
-          <span translate="SENDModal_Content_2">to address</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono"> {{tx.to}}. </strong>
-          <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
-        </p>
-
-        <p> You are interacting with the <strong>{{ajaxReq.type}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
+        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
         <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
       </div>
-
 
       <div class="modal-footer">
         <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
@@ -3270,11 +3002,112 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </section>
 </article>
  
+
+</section>
+ 
+
+  </article>
+  <!-- / Deploy Contract -->
+
+  <!--wallet decrypt-->
+  <article class="form-group" ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
+        <wallet-decrypt-cx-drtv></wallet-decrypt-cx-drtv>   
+      
+  </article>
+
+  <article ng-show="contract.selectedFunc!=null">
+
+    <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">
+      <span translate="CONTRACT_Read"> READ</span>
+    </button>
+
+    <button class="btn btn-primary" ng-click="generateContractTx()" ng-show="!contract.functions[contract.selectedFunc.index].constant">
+      <span translate="CONTRACT_Write"> WRITE</span>
+    </button>
+
+    </br>
+  </article>
+
+</main>
+
+
+
+    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'  ng-cloak>
+
+  <h1 translate="BULK_Generate"> Bulk Generate Wallets </h1>
+
+  <!-- Top - Bulk Generate -->
+  <section class="row">
+    <div class="col-md-6 col-sm-12 form-group">
+      <h4 translate="BULK_Label_1">Number of Wallets To Generate</h4>
+      <input class="form-control" type="text" placeholder="{{ 'BULK_Label_1' | translate }}" ng-model="amount">
+    </div>
+    <div class="col-md-6 col-sm-12 form-group">
+      <h4 translate="BULK_Label_2">Generate Wallets</h4>
+      <a class="btn btn-primary btn-block" ng-click="genWallets()" translate="BULK_Label_2">Generate Wallets</a>
+    </div>
+  </section>
+  <!-- / Top - Bulk Generate -->
+
+  <!-- Bottom - Display Bulk Generated Wallets -->
+  <section ng-show="showWallets">
+
+    <hr />
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 translate="BULK_SuccessMsg">Success! Your wallets have been generated.</h1>
+
+        <div class="alert alert-danger" translate="ERROR_28">**You need your Keystore File + password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
       </div>
-      <div class="col-xs-12 block block--danger" ng-show="wallet.getChecksumAddressString() != txInfo.from">
-        <h5>Please unlock the address {{ txInfo.from }}. Only this address can replace a TX.</h5>
-      </div>
-    </section>
+
+      <article class="col-md-9">
+        <table id="bulkgentable" class="table">
+          <thead>
+            <tr>
+              <th width="32"> Address Identicon </th>
+              <th width="500" translate="ADDR_">Address</th>
+              <th width="500" translate="x_PrivKey">Private Key (unencrypted)</th>
+            </tr>
+            <tr class="privaddkey" ng-repeat="wallet in wallets">
+            <td>
+                <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+            </td>
+            <td>
+                <textarea class="form-control" rows="4" type="text" readonly>{{wallet.getChecksumAddressString()}}</textarea>
+            </td>
+            <td>
+                <textarea class="form-control" rows="4" type="text" readonly>{{wallet.getPrivateKeyString()}}</textarea>
+            </td>
+            </tr>
+          </thead>
+        </table>
+      </article>
+
+      <article class="col-md-3">
+        <div class="form-group">
+          <label translate="x_Print">Print Paper Wallets (unencrypted)</label>
+          <a class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
+        </div>
+        <div class="form-group">
+          <label translate="x_Json"> JSON file (unencrypted)</label>
+          <a class="btn btn-info btn-block" href="{{bJSON}}" download="bulk_ether_accounts.json" translate="x_Download">DOWNLOAD</a>
+        </div>
+        <div class="form-group">
+          <label translate="x_CSV"> CSV file (unencrypted)</label>
+          <a class="btn btn-info btn-block" href="{{bCSV}}" download="bulk_ether_accounts.csv" translate="x_Download">DOWNLOAD</a>
+        </div>
+        <div class="form-group">
+          <label translate="x_TXT"> TXT file (unencrypted)</label>
+          <a class="btn btn-info btn-block" href="{{bTXT}}" download="bulk_ether_accounts.txt" translate="x_Download">DOWNLOAD</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+  <!-- / Bottom - Display Bulk Generated Wallets -->
+
+</main>
 
 
     <!-- print -->
@@ -3362,13 +3195,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
         <p> ETH: <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span> </p>
         <p> BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span> </p>
 
-        <h5 ng-hide="curLang=='en'"> <i>🏅</i> <span translate="Translator_Desc"> Thank you to our translators </span></h5>
+        <h5 ng-hide="curLang=='en'"> <i>🏅</i> <span translate="z_TRANSLATEDesc"> Thank you to our translators </span></h5>
         <p ng-hide="curLang=='en'">
-          <span translate="TranslatorName_1"></span>
-          <span translate="TranslatorName_2"></span>
-          <span translate="TranslatorName_3"></span>
-          <span translate="TranslatorName_4"></span>
-          <span translate="TranslatorName_5"></span>
+          <span translate="z_TRANSLATE1"></span>
+          <span translate="z_TRANSLATE2"></span>
+          <span translate="z_TRANSLATE3"></span>
+          <span translate="z_TRANSLATE4"></span>
+          <span translate="z_TRANSLATE5"></span>
         </p>
 
     </section>

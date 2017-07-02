@@ -31,13 +31,13 @@
         <p> ETH: <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span> </p>
         <p> BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span> </p>
 
-        <h5 ng-hide="curLang=='en'"> <i>🏅</i> <span translate="Translator_Desc"> Thank you to our translators </span></h5>
+        <h5 ng-hide="curLang=='en'"> <i>🏅</i> <span translate="z_TRANSLATEDesc"> Thank you to our translators </span></h5>
         <p ng-hide="curLang=='en'">
-          <span translate="TranslatorName_1"></span>
-          <span translate="TranslatorName_2"></span>
-          <span translate="TranslatorName_3"></span>
-          <span translate="TranslatorName_4"></span>
-          <span translate="TranslatorName_5"></span>
+          <span translate="z_TRANSLATE1"></span>
+          <span translate="z_TRANSLATE2"></span>
+          <span translate="z_TRANSLATE3"></span>
+          <span translate="z_TRANSLATE4"></span>
+          <span translate="z_TRANSLATE5"></span>
         </p>
 
     </section>

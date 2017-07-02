@@ -1,5 +1,5 @@
-@@include( '../includes/headerEmbedded.tpl', { "site": "mew" } )
-<section ng-controller="tabsCtrl">
+@@include( '../includes/header-embedded.tpl', { "site": "mew" } )
+<section ng-controller="headerCtrl">
     <section class="container" style="min-height: 50%" ng-controller='signMsgCtrl'>
         <!-- tab panes -->
         <div class="tab-content">
@@ -8,8 +8,8 @@
         </div>
         <!-- /tab panes -->
 
-        @@include('../includes/alerts.tpl')
+        @@include( '../includes/alerts.tpl', { "site": "mew" } )
 
     </section>
 </section>
-@@include( '../includes/footerEmbedded.tpl', { "site": "mew" } )
+@@include( '../includes/footer-embedded.tpl', { "site": "mew" } )

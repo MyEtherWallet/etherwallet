@@ -1,4 +1,4 @@
-<article class="modal fade" id="sendTransaction" tabindex="-1">
+<article class="modal fade" id="txSend" tabindex="-1">
   <section class="modal-dialog">
     <section class="modal-content">
 

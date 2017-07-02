@@ -26,7 +26,7 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
         trezorPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
-    $scope.mnemonicModel = document.getElementById('mnemonicModel').length > -1 ? new Modal(document.getElementById('mnemonicModel')) : null;
+    $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
     $scope.$watch('ajaxReq.type', function() {
         $scope.nodeType = $scope.ajaxReq.type;
     });
@@ -195,6 +195,7 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
                 setBalance: tempWallet.setBalance,
                 setTokens: tempWallet.setTokens
             }
+            $scope.notifier.info(globalFuncs.successMsgs[1]); /* TODO: Update success Message */
             walletService.walletType = "addressOnly";
             walletService.wallet = $scope.wallet;
         }

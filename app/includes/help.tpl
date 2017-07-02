@@ -1,7 +1,7 @@
 <!-- Help -->
 <article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id"  ng-cloak>
 
-  <h1 translate="NAV_Help"> Help </h1>
+  <h1 translate="x_Help"> Help </h1>
 
   <h3><a href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener">
     This page is slowly being deprecated. Please check out our more up-to-date and searchable Help Center.
@@ -78,7 +78,7 @@
   <article class="collapse-container">
     <div ng-click="h2a = !h2a">
       <a class="collapse-button" ><span ng-show="!h2a">+</span><span ng-show="h2a">-</span></a>
-      <h4 translate="HELP_2a_Title"></h4>
+      <h4 translate="GEN_Help_21"></h4>
     </div>
     <div ng-show="h2a">
       <p translate="HELP_2a_Desc_1"></p>

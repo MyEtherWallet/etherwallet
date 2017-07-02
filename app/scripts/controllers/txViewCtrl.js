@@ -1,7 +1,10 @@
 'use strict';
-var txStatusCtrl = function($scope) {
+var txViewCtrl = function($scope) {
     $scope.Validator = Validator;
-    $scope.checkTxPage = true;
+    $scope.advancedVisible = true;
+    $scope.gasPriceVisible = true;
+    $scope.nonceVisible = true;
+    $scope.gasLimitChanged = true;
     $scope.checkTxReadOnly = true;
     $scope.txStatus = {
         found: 0,
@@ -64,7 +67,7 @@ var txStatusCtrl = function($scope) {
                     data: '',
                     nonce: $scope.txInfo.nonce
                 }
-                new Modal(document.getElementById('sendTransaction'));
+                new Modal(document.getElementById('txSend'));
             }
             setUSDvalues();
         } else {
@@ -89,4 +92,4 @@ var txStatusCtrl = function($scope) {
     globalFuncs.urlGet('txHash') == null ? '' : $scope.checkTxStatus();
 
 };
-module.exports = txStatusCtrl;
+module.exports = txViewCtrl;

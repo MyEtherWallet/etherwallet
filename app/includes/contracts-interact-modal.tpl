@@ -13,24 +13,24 @@
 
           <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
-          <label translate="SEND_amount"> Amount <em>In most cases you should leave this as 0.</em> </label>
+          <label translate="x_Amount"> Amount <em>In most cases you should leave this as 0.</em> </label>
           <input class="form-control" type="text" placeholder="0" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
 
-          <label translate="TRANS_gas"> Gas </label>
+          <label translate="x_GasLimit"> Gas </label>
           <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
 
-          <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
+          <a class="btn btn-info btn-block" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
 
           <!-- Data -->
           <section class="row" ng-show="showRaw">
             <!-- Raw TX -->
             <div class="form-group col-sm-6">
-              <h4 translate="SEND_raw"> Raw Transaction </h4>
+              <h4 translate="TX_Unsigned"> Unsigned Transaction </h4>
               <textarea class="form-control" rows="3" readonly >{{rawTx}}</textarea>
             </div>
             <!-- Singed TX -->
             <div class="form-group col-sm-6">
-              <h4 translate="SEND_signed"> Signed Transaction </h4>
+              <h4 translate="TX_Signed"> Signed Transaction </h4>
               <textarea class="form-control" rows="3" readonly >{{signedTx}}</textarea>
             </div>
           </section>

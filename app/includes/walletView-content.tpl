@@ -4,8 +4,8 @@
     <div class="col-xs-11">
       <div class="account-help-icon">
         <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
-        <h5 translate="x_Address">Your Address:</h5>
+        <p class="account-help-text" translate="ADDR_Desc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
+        <h5 translate="ADDR_">Your Address:</h5>
       </div>
       <input class="form-control" type="text" ng-value="wallet.getChecksumAddressString()" readonly="readonly">
     </div>
@@ -50,7 +50,7 @@
 
   <section class="block">
     <div class="col-xs-6">
-      <h5 translate="x_Address">Your Address:</h5>
+      <h5 translate="ADDR_">Your Address:</h5>
       <div class="qr-code" qr-code="{{wallet.getChecksumAddressString()}}" watch-var="wallet" width="100%"></div>
     </div>
     <div class="col-xs-6">
@@ -66,19 +66,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="block" ng-show="wallet.type=='default'">
-    @@if (site === 'cx' )  {
-      <main ng-controller='signMsgCtrl' ng-show="wallet!=null">
-        @@if (site === 'cx' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }
-      </main>
-    }
-    @@if (site === 'mew' ) {
-      <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl' >
-        @@if (site === 'mew') {  @@include( './signMsg.tpl', { "site": "mew" } )   }
-      </main>
-    }
   </section>
 
 </article>

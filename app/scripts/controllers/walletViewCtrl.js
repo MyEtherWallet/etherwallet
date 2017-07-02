@@ -1,5 +1,5 @@
 'use strict';
-var viewWalletCtrl = function($scope, walletService) {
+var walletViewCtrl = function($scope, walletService) {
     $scope.usdBalance = "loading";
     $scope.gbpBalance = "loading";
     $scope.eurBalance = "loading";
@@ -54,4 +54,4 @@ var viewWalletCtrl = function($scope, walletService) {
         $scope.blob = $scope.blobEnc = $scope.password = "";
     }
 };
-module.exports = viewWalletCtrl;
+module.exports = walletViewCtrl;

@@ -1,5 +1,5 @@
 'use strict';
-var tabsCtrl = function($scope, globalService, $translate, $sce) {
+var headerCtrl = function($scope, globalService, $translate, $sce) {
     $scope.gService = globalService;
     $scope.tabNames = $scope.gService.tabs;
     $scope.curLang = 'English';
@@ -32,21 +32,21 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.setArrowVisibility();
 
     var gasPriceKey = "gasPrice";
-    $scope.gasChanged = function() {
+    $scope.gasPriceChanged = function() {
         globalFuncs.localStorage.setItem(gasPriceKey, $scope.gas.value);
-        ethFuncs.gasAdjustment = $scope.gas.value;
+        ethFuncs.gasPriceFromSlider = $scope.gas.value;
     }
-    var setGasValues = function() {
+    var setGasPriceValues = function() {
         $scope.gas = {
             curVal: 21,
             value: globalFuncs.localStorage.getItem(gasPriceKey, null) ? parseInt(globalFuncs.localStorage.getItem(gasPriceKey)) : 21,
             max: 60,
             min: 1
         }
-        ethFuncs.gasAdjustment = $scope.gas.value;
+        ethFuncs.gasPriceFromSlider = $scope.gas.value;
     }
-    setGasValues();
-    $scope.gasChanged();
+    setGasPriceValues();
+    $scope.gasPriceChanged();
 
 
     $scope.changeNode = function(key) {
@@ -284,4 +284,4 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     globalFuncs.changeHash = $scope.setHash;
 
 };
-module.exports = tabsCtrl;
+module.exports = headerCtrl;

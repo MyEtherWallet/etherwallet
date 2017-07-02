@@ -51,7 +51,7 @@ var quickSendCtrl = function($scope, $sce) {
 				$scope.tx.unit = resp.unit;
 				$scope.tx.value = resp.value;
 			} else {
-				$scope.validateTxStatus = $sce.trustAsHtml(resp.error);
+				$scope.validatetxView = $sce.trustAsHtml(resp.error);
 			}
 		});
 	}
@@ -61,7 +61,7 @@ var quickSendCtrl = function($scope, $sce) {
 			else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[0];
 			$scope.showConfirm = true;
 		} catch (e) {
-			$scope.prepTXStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+			$scope.preptxView = $sce.trustAsHtml(globalFuncs.getDangerText(e));
 		}
 	}
 	$scope.unlockAndSend = function() {
@@ -72,24 +72,24 @@ var quickSendCtrl = function($scope, $sce) {
 				if (!rawTx.isError) {
 					uiFuncs.sendTx(rawTx.signedTx, function(resp) {
 						if (!resp.isError) {
-							$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank' rel='noopener'> ETH TX via EtherScan.io </a>"));
+							$scope.sendtxView = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank' rel='noopener'> ETH TX via EtherScan.io </a>"));
 							$scope.setBalance();
 						} else {
-							$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
+							$scope.sendtxView = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
 						}
 					});
-					$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+					$scope.validatetxView = $sce.trustAsHtml(globalFuncs.getDangerText(''));
 				} else {
-					$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+					$scope.validatetxView = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
 				}
 			});
 		} catch (e) {
-			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+			$scope.validatetxView = $sce.trustAsHtml(globalFuncs.getDangerText(e));
 		}
 	}
 	$scope.decryptWallet = function() {
 		$scope.wallet = null;
-		$scope.validateTxStatus = "";
+		$scope.validatetxView = "";
 		$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.allWallets[$scope.selectedWallet].priv, $scope.password);
 	};
 	$scope.setAllWallets();

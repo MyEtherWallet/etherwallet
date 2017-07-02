@@ -1,5 +1,5 @@
 'use strict';
-var myWalletsCtrl = function($scope, $sce, walletService) {
+var walletViewCXCtrl = function($scope, $sce, walletService) {
     $scope.editModal = new Modal(document.getElementById('editWallet'));
     $scope.viewModal = new Modal(document.getElementById('viewWalletDetails'));
     $scope.removeModal = new Modal(document.getElementById('removeWallet'));
@@ -157,4 +157,4 @@ var myWalletsCtrl = function($scope, $sce, walletService) {
     });
     $scope.setNickNames();
 };
-module.exports = myWalletsCtrl;
+module.exports = walletViewCXCtrl;

@@ -14,24 +14,10 @@
 module.exports = [
 {
   // DCORP
-  to:         '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
-  gasLimit:   21000,
-  data:       '',
-  msg:        'Thank you for your donation! TO THE MOON! 🌝'
-},
-{
-  // DCORP
   to:         '0xD42433A8a0A1CEB73c8ff4e432463e2ee109039d',
   gasLimit:   100000,
   data:       '',
   msg:        'DCORP. Ends June 30, 2017.'
-},
-{
-  // TenX PAY
-  to:         '0xd43d09ec1bc5e57c8f3d0c64020d403b04c7f783',
-  gasLimit:   130000,
-  data:       '',
-  msg:        'TenX PAY Token Sale. Start: June 24, 2017, 1pm UTC'
 },
 {
   // OpenANX
@@ -39,20 +25,6 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'OpenANX. Starts June 22, 2017.'
-},
-{
-  // Adchain
-  to:         '0x0000',
-  gasLimit:   200000,
-  data:       '',
-  msg:        'Adchain. Starts June 26, 2017.'
-},
-{
-  // OmiseGo
-  to:         '0x0000',
-  gasLimit:   200000,
-  data:       '',
-  msg:        'OmiseGo. Starts June 27, 2017.'
 },
 {
   // Nimiq
@@ -81,6 +53,13 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'Moeda. Ends at block 4,111,557.'
+},
+{
+  // SunContract
+  to:         '0x5fb3D432bae33FCd418edE263D98D7440E7fA3ea',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'SunContract ICO address - suncontract.org'
 },
 {
   // FAKE STATUS
@@ -137,13 +116,6 @@ module.exports = [
   gasLimit:   -1,
   data:       '',
   msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
-},
-{
-  // SunContract
-  to:         '0x5fb3D432bae33FCd418edE263D98D7440E7fA3ea',
-  gasLimit:   200000,
-  data:       '',
-  msg:        'SunContract ICO address - suncontract.org'
-},
+}
 ]
 

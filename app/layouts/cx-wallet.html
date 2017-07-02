@@ -2,27 +2,34 @@
 
 <br />
 
-<section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+<section class="container" style="min-height: 50%" ng-controller='genericCtrl'>
 
   <div class="tab-content" >
 
-    @@include( '../includes/myWallet.tpl',           { "site": "cx" } )
+    @@include( '../includes/walletViewCX.tpl',   { "site": "cx" } )
 
-    @@include( '../includes/addWallet.tpl',          { "site": "cx" } )
+    @@include( '../includes/walletAdd.tpl',      { "site": "cx" } )
 
-    @@include( '../includes/sendTx.tpl',             { "site": "cx" } )
 
-    @@include( '../includes/swap.tpl',               { "site": "cx" } )
+    @@include( '../includes/txSend.tpl',         { "site": "cx" } )
 
-    @@include( '../includes/offlineTx.tpl',          { "site": "cx" } )
+    @@include( '../includes/txView.tpl',         { "site": "cx" } )
 
-    @@include( '../includes/contracts.tpl',          { "site": "cx" } )
+    @@include( '../includes/txSign.tpl',         { "site": "cx" } )
 
-    @@include( '../includes/ens.tpl',                { "site": "cx" } )
+    @@include( '../includes/txBroadcast.tpl',    { "site": "cx" } )
 
-    @@include( '../includes/txStatus.tpl',           { "site": "cx" } )
 
-    @@include( '../includes/print.tpl',              { "site": "cx" } )
+    @@include( '../includes/swap.tpl',           { "site": "cx" } )
+
+    @@include( '../includes/ens.tpl',            { "site": "cx" } )
+
+    @@include( '../includes/contracts.tpl',      { "site": "cx" } )
+
+
+    @@include( '../includes/bulkGenerate.tpl',   { "site": "cx" } )
+
+    @@include( '../includes/print.tpl',          { "site": "cx" } )
 
   </div>
 

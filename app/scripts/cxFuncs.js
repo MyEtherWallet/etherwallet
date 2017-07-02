@@ -16,7 +16,7 @@ cxFuncs.getAllNickNames = function(callback) {
 		callback(nickNames);
 	});
 };
-cxFuncs.addWalletToStorage = function(address, encStr, nickname, callback) {
+cxFuncs.walletAddToStorage = function(address, encStr, nickname, callback) {
 	nickname = nickname.replace(/(<([^>]+)>)/ig, "");
 	var value = {
 		nick: nickname,
