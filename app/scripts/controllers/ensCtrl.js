@@ -7,6 +7,7 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.ensFinalizeModal = new Modal(document.getElementById('ensFinalizeConfirm'));
     $scope.Validator = Validator;
     $scope.wd = false;
+    $scope.haveNotAlreadyCheckedLength = true;
     var ENS = new ens();
     $scope.ensModes = ens.modes;
     $scope.minNameLength = 7;
@@ -89,7 +90,12 @@ var ensCtrl = function($scope, $sce, walletService) {
         clearInterval($scope.objENS.timer);
     }
     $scope.checkName = function() {
-        if ($scope.Validator.isValidENSName($scope.objENS.name) && $scope.objENS.name.indexOf('.') == -1) {
+        // checks if it's the same length as a PK and if so, warns them.
+        // If they confirm they can set haveNotAlreadyCheckedLength to true and carry on
+        if ( $scope.haveNotAlreadyCheckedLength && ($scope.objENS.name.length == 128 || $scope.objENS.name.length == 132 || $scope.objENS.name.length == 64 || $scope.objENS.name.length == 66) ) {
+          $scope.notifier.danger( "That looks an awful lot like a private key. Are you sure you would like to check if this name is available on the ENS network? If so, click `Check`. If it is your private key, click refresh & try again." );
+          $scope.haveNotAlreadyCheckedLength = false;
+        } else if ($scope.Validator.isValidENSName($scope.objENS.name) && $scope.objENS.name.indexOf('.') == -1) {
             $scope.objENS.name = ens.normalise($scope.objENS.name);
             $scope.objENS.namehash = ens.getNameHash($scope.objENS.name + '.eth');
             $scope.objENS.nameSHA3 = ENS.getSHA3($scope.objENS.name);

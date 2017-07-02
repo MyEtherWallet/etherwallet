@@ -30,12 +30,12 @@
     <!-- Raw TX -->
     <div class="form-group col-sm-6">
       <h4 translate="TX_Unsigned"> Unsigned Transaction </h4>
-      <textarea class="form-control" rows="4" readonly> {{rawTx}} </textarea>
+      <textarea class="form-control" rows="4" readonly>{{rawTx}}</textarea>
     </div>
     <!-- Singed TX -->
     <div class="form-group col-sm-6">
       <h4 translate="TX_Signed"> Signed Transaction </h4>
-      <textarea class="form-control" rows="4" readonly> {{signedTx}} </textarea>
+      <textarea class="form-control" rows="4" readonly>{{signedTx}}</textarea>
     </div>
   </section>
 

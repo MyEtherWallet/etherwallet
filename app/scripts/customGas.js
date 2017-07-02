@@ -20,6 +20,20 @@ module.exports = [
   msg:        'DCORP. Ends June 30, 2017.'
 },
 {
+  // BattleDrome
+  to:         '0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F',
+  gasLimit:   85000,
+  data:       '',
+  msg:        'BattleDrome ICO/Crowdsale. Thanks for your support!'
+},
+{
+  // TenX PAY
+  to:         '0xd43d09ec1bc5e57c8f3d0c64020d403b04c7f783',
+  gasLimit:   130000,
+  data:       '',
+  msg:        'TenX PAY Token Sale. Start: June 24, 2017, 1pm UTC'
+},
+{
   // OpenANX
   to:         '0x701C244b988a513c945973dEFA05de933b23Fe1D',
   gasLimit:   200000,

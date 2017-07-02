@@ -1,8 +1,20 @@
 [
+{
+    "address":"0x5af2be193a6abca9c8817001f45744777db30756",
+    "symbol":"BQX",
+    "decimal":8,
+    "type":"default"
+  },
   {
     "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
     "symbol":"1ST",
     "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0xD0D6D6C5Fe4a677D343cC433536BB717bAe167dD",
+    "symbol":"ADT",
+    "decimal":9,
     "type":"default"
   },
   {
@@ -120,6 +132,12 @@
     "type":"default"
   },
   {
+    "address":"0x190e569bE071F40c704e15825F285481CB74B6cC",
+    "symbol":"FAM",
+    "decimal":12,
+    "type":"default"
+  },
+  {
     "address":"0xBbB1BD2D741F05E144E6C4517676a15554fD4B8D",
     "symbol":"FUN",
     "decimal":8,
@@ -186,7 +204,7 @@
     "type":"default"
   },
   {
-    "address":"0xB04cfa8a26D602fb50232CEe0DaF29060264e04B",
+    "address":"0xB63B606Ac810a52cCa15e44bB630fd42D8d1d83d",
     "symbol":"MCO",
     "decimal":8,
     "type":"default"
@@ -336,6 +354,12 @@
     "type":"default"
   },
   {
+    "address":"0x4994e81897a920c0FEA235eb8CEdEEd3c6fFF697",
+    "symbol":"SKO1",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xaeC2E87E0A235266D9C5ADc9DEb4b2E29b54D009",
     "symbol":"SNGLS",
     "decimal":0,
@@ -429,6 +453,12 @@
     "address":"0x8f3470A7388c05eE4e7AF3d01D8C722b0FF52374",
     "symbol":"VERI",
     "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0xeDBaF3c5100302dCddA53269322f3730b1F0416d",
+    "symbol":"VRS",
+    "decimal":5,
     "type":"default"
   },
   {
