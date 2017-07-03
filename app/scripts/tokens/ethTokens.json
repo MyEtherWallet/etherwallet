@@ -18,6 +18,12 @@
     "type":"default"
   },
   {
+    "address":"0x4470bb87d77b963a013db939be332f927f2b992e",
+    "symbol":"ADX",
+    "decimal":4,
+    "type":"default"
+  },
+  {
     "address":"0x960b236A07cf122663c4303350609A66A7B288C0",
     "symbol":"ANT",
     "decimal":18,
