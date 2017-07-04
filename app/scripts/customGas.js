@@ -152,5 +152,14 @@ module.exports = [
   data:       '',
   msg:        'SunContract ICO address - suncontract.org'
 },
+
+{
+  // SoerenGelderCom
+  to:         '0x08FF699987510D299Eca5cfE258B19d7F4d53ae9',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'SGelder ICO starts 07th of August 2017'
+},
+
 ]
 
