@@ -341,6 +341,14 @@
     "decimal":18,
     "type":"default"
   },
+    
+    {
+    "address":"0xa1ccc166faf0e998b3e33225a1a0301b1c86119d",
+    "symbol":"SGEL",
+    "decimal":18,
+    "type":"default"
+  },
+    
   {
     "address":"0xd248B0D48E44aaF9c49aea0312be7E13a6dc1468",
     "symbol":"SGT",
