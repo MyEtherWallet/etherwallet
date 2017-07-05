@@ -3,9 +3,9 @@
 <html lang="en" ng-app="mewApp">
 <head>
   <meta charset="utf-8">
-  <title>MyEtherWallet: Open-Source & Client-Side Ether Wallet</title>
+  <title>MyEtherWallet.com</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="Open-Source & Client-Side Ethereum Wallet">
+  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
@@ -20,23 +20,26 @@
   <link rel="shortcut icon" href="images/fav/favicon.ico">
   <meta name="msapplication-config" content="images/fav/browserconfig.xml">
   <meta name="theme-color" content="#163151">
-
-  <meta property="og:url"         content="https://www.MyEtherWallet.com" />
+  <meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
+  <meta property="og:url"         content="https://www.myetherwallet.com" />
   <meta property="og:title"       content="MyEtherWallet.com" />
-  <meta property="og:description" content="MyEtherWallet: Open-Source & Client-Side Ether Wallet" />
-  <meta property="og:image"       content="images/fb-myetherwallet.png" />
-  <meta property="og:image"       content="images/fb-mewtwo.jpg" />
+  <meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain." />
+  <meta property="og:image"       content="images/myetherwallet-logo-banner.png" />
+  <meta property="og:image"       content="images/myetherwallet-logo.png" />
+  <meta property="og:image"       content="images/myetherwallet-logo-square.png" />
+  <meta property="og:image"       content="images/myetherwallet-banner-fun.jpg" />
 </head>
 
 <body>
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
-<!--
-    <div class="small announcement annoucement-warning">
-      <div class="container">The #FOMO is Real. Breath. If you are trying to get in on Status.im, <strong> wait until BLOCK 3903900!</strong> <br /> If your TX is not urgent, we recommend NOT SENDING TODAY. Thank you for understanding. </div>
-    </div>
--->
+    
+      <div class="small announcement annoucement-warning">
+        <div class="container">⚠ Please beware of phishing websites. Do not enter your key on a website you arrived at by clicking a link. Use bookmarks. Always triple-check the domain. Ours is dot com. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">You are responsible for your safety &amp; security</a>.</div>
+      </div>
+    
+
     
   <section class="bg-gradient header-branding">
     <section class="container">
@@ -144,18 +147,10 @@
 
         <h2 class="modal-title text-info" translate="NODE_Title"> Set Up Your Custom Node </h2>
 
-        <p class="small" ng-show="browserProtocol!='https:'">
-          <strong translate="NODE_Subtitle">To connect to a local node...</strong>
-          <ul class="small">
-            <li> URL: http://127.0.0.1</li>
-            <li> Port: 8545 </li>
-            <li> Run geth: <code>geth --rpc --rpccorsdomain "null" --keystore "dont_put_secret_files_here_ever"</code></li>
-            <li> Run Parity: <code>parity --rpccorsdomain "*" --keys-path "dont_put_secret_files_here_ever"</code></li>
-          </ul>
-        </p>
+        <p class="small"><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node" target="_blank" rel="noopener"> Instructions can be found here </a></p>
 
         <div ng-show="browserProtocol=='https:'" class="alert alert-danger small" translate="NODE_Warning">
-          Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
+          Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to your local node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
         </div>
 
         <section class="row">
@@ -573,7 +568,7 @@
 
       <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
-      <p><span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum network.</span></p>
+      <p><span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum blockchain.</span></p>
 
       <p><span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.</p>
 
@@ -689,6 +684,27 @@
  
 
 
+
+<script type='application/ld+json'>
+{
+  "@context":"http://schema.org",
+  "@type":"Organization",
+  "@id":"#organization",
+  "url":"https://www.myetherwallet.com/",
+  "name":"MyEtherWallet",
+  "logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png",
+  "description": "MyEtherWallet is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain.",
+  "sameAs":[
+    "https://www.facebook.com/MyEtherWallet/",
+    "https://twitter.com/myetherwallet",
+    "https://myetherwallet.groovehq.com/help_center",
+    "https://github.com/kvhnuke/etherwallet",
+    "https://github.com/MyEtherWallet",
+    "https://kvhnuke.github.io/etherwallet/",
+    "https://myetherwallet.slack.com/"
+  ]
+}
+</script>
 
 </footer>
 </main>
