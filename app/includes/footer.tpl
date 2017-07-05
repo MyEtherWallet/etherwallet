@@ -6,7 +6,7 @@
 
       <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
-      <p><span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum network.</span></p>
+      <p><span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum blockchain.</span></p>
 
       <p><span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.</p>
 
@@ -91,6 +91,27 @@
 @@if (site === 'mew' ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "mew" } ) }
 @@if (site === 'cx'  ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "cx"  } ) }
 
+
+<script type='application/ld+json'>
+{
+  "@context":"http://schema.org",
+  "@type":"Organization",
+  "@id":"#organization",
+  "url":"https://www.myetherwallet.com/",
+  "name":"MyEtherWallet",
+  "logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png",
+  "description": "MyEtherWallet is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain.",
+  "sameAs":[
+    "https://www.facebook.com/MyEtherWallet/",
+    "https://twitter.com/myetherwallet",
+    "https://myetherwallet.groovehq.com/help_center",
+    "https://github.com/kvhnuke/etherwallet",
+    "https://github.com/MyEtherWallet",
+    "https://kvhnuke.github.io/etherwallet/",
+    "https://myetherwallet.slack.com/"
+  ]
+}
+</script>
 
 </footer>
 </main>
