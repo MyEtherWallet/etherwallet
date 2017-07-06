@@ -1,10 +1,4 @@
 [
-{
-    "address":"0x5af2be193a6abca9c8817001f45744777db30756",
-    "symbol":"BQX",
-    "decimal":8,
-    "type":"default"
-  },
   {
     "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
     "symbol":"1ST",
@@ -63,6 +57,12 @@
     "address":"0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C",
     "symbol":"BNT",
     "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x5af2be193a6abca9c8817001f45744777db30756",
+    "symbol":"BQX",
+    "decimal":8,
     "type":"default"
   },
   {
@@ -341,14 +341,14 @@
     "decimal":18,
     "type":"default"
   },
-    
+
     {
     "address":"0xa1ccc166faf0e998b3e33225a1a0301b1c86119d",
     "symbol":"SGEL",
     "decimal":18,
     "type":"default"
   },
-    
+
   {
     "address":"0xd248B0D48E44aaF9c49aea0312be7E13a6dc1468",
     "symbol":"SGT",
