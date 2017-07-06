@@ -486,5 +486,11 @@
     "symbol":"XAUR",
     "decimal":8,
     "type":"default"
+  },
+  {
+    "address":"0x53b60A7c2F6d95E12c5e5A3cCaAcFE35620AeFf6",
+    "symbol":"NVF",
+    "decimal":8,
+    "type":"default"
   }
 ]
