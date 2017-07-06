@@ -486,5 +486,11 @@
     "symbol":"XAUR",
     "decimal":8,
     "type":"default"
+  },
+  {
+    "address":"0xb110ec7b1dcb8fab8dedbf28f53bc63ea5bedd84",
+    "symbol":"XID",
+    "decimal":8,
+    "type":"default"
   }
 ]
