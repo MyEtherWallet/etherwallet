@@ -68,7 +68,18 @@
             <li><span class="mono wrap">{{wallet.gbpBalance | currency:"£"}}</span> GBP</li>
             <li><span class="mono wrap">{{wallet.chfBalance | currency:" "}}</span> CHF</li>
         </ul>
-        <a target="_blank" rel="noopener" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-info btn-xs">Swap via Bity</a>
-        <a target="_blank" rel="noopener" class="btn btn-info btn-xs" href="https://buy.coinbase.com?code=a6e1bd98-6464-5552-84dd-b27f0388ac7d&address={{wallet.getChecksumAddressString()}}&crypto_currency=ETH&currency=USD">Buy Ether using Coinbase</a>
+        <button class="btn btn-info btn-xs"
+                ng-click="globalService.currentTab=globalService.tabs.swap.id"
+                target="_blank"
+                rel="noopener">
+          Swap via Bity
+        </button>
+        <button class="btn btn-info btn-xs"
+                href="https://buy.coinbase.com?code=a6e1bd98-6464-5552-84dd-b27f0388ac7d&address={{wallet.getChecksumAddressString()}}&crypto_currency=ETH&currency=USD"
+                target="_blank"
+                rel="noopener"
+                ng-hide="ajaxReq.type!=='ETH'">
+          Buy ETH w/ USD via Coinbase
+        </button>
     </div>
 </aside>

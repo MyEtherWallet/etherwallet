@@ -1,13 +1,16 @@
 'use strict';
 var txSendCtrl = function($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
-    $scope.unitReadable = ajaxReq.type;
-    $scope.sendTxModal = new Modal(document.getElementById('txSend'));
-    walletService.wallet = null;
-    walletService.password = '';
-    walletService.walletType = null;
     $scope.dropdownEnabled = true;
+    $scope.gasLimitChanged = false;
+    $scope.sendTxModal = new Modal(document.getElementById('txSend'));
+    $scope.tx = {};
+    $scope.tx.readOnly = globalFuncs.urlGet('readOnly') == null ? false : true;
+    $scope.unitReadable = ajaxReq.type;
     $scope.Validator = Validator;
+    walletService.password = '';
+    walletService.wallet = null;
+    walletService.walletType = null;
 
     // Visibility Controls for Advanced Fields
     $scope.advancedVisible = true;
@@ -29,23 +32,26 @@ var txSendCtrl = function($scope, $sce, walletService) {
 
     $scope.setSendMode = function(sendMode, tokenId = '', tokenSymbol = '') {
         $scope.unitReadable = '';
-        if (sendMode == 'ether') {
+        if ( globalFuncs.urlGet('tokensymbol') != null ) {
+            $scope.unitReadable = $scope.tx.tokensymbol;
+            $scope.tx.sendMode = 'token';
+        } else if (sendMode == 'ether') {
             $scope.unitReadable = ajaxReq.type;
         } else {
-            $scope.unitReadable = tokenSymbol;
+            $scope.unitReadable = tokensymbol;
             $scope.tokenTx.id = tokenId;
         }
         $scope.dropdownAmount = false;
     }
 
     $scope.setTokenSendMode = function() {
-        if ($scope.tx.sendMode == 'token' && !$scope.tx.tokenSymbol) {
-            $scope.tx.tokenSymbol = $scope.wallet.tokenObjs[0].symbol;
+        if ($scope.tx.sendMode == 'token' && !$scope.tx.tokensymbol) {
+            $scope.tx.tokensymbol = $scope.wallet.tokenObjs[0].symbol;
             $scope.wallet.tokenObjs[0].type = "custom";
-            $scope.setSendMode($scope.tx.sendMode, 0, $scope.tx.tokenSymbol);
-        } else if ($scope.tx.tokenSymbol) {
+            $scope.setSendMode($scope.tx.sendMode, 0, $scope.tx.tokensymbol);
+        } else if ($scope.tx.tokensymbol) {
             for (var i = 0; i < $scope.wallet.tokenObjs.length; i++) {
-                if ($scope.wallet.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokenSymbol.toLowerCase()) !== -1) {
+                if ($scope.wallet.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokensymbol.toLowerCase()) !== -1) {
                     $scope.wallet.tokenObjs[i].type = "custom";
                     $scope.setSendMode('token', i, $scope.wallet.tokenObjs[i].symbol);
                     break;
