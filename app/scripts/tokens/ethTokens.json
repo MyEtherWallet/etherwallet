@@ -294,6 +294,12 @@
     "type":"default"
   },
   {
+    "address":"0xd26114cd6EE289AccF82350c8d8487fedB8A0C07",
+    "symbol":"OMG",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xB97048628DB6B661D4C2aA833e95Dbe1A905B280",
     "symbol":"PAY",
     "decimal":18,
