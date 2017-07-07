@@ -103,5 +103,12 @@ module.exports = [
   data:       '',
   msg:        'SGelder ICO starts 07th of August 2017'
 },
+{
+  // NVC
+  to:         '0xd88755197e107603C139df6E709ed09EEC6b6bB3',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'NVC Fund'
+}
 ]
 
