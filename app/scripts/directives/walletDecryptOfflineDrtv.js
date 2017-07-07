@@ -1,7 +1,7 @@
 'use strict';
 
 var walletDecryptOfflineDrtv = function() {
-	if(navigator.onLine){ 
+	if(!navigator.onLine){ 
 	return {
         restrict : "E",
         template : require('./walletDecryptOfflineDrtv.html')

@@ -1,5 +1,5 @@
 'use strict';
-var txSendCtrl = function($scope, $sce, walletService) {
+var txSendCtrl = function($scope, $sce, $interval, walletService) {
     $scope.ajaxReq = ajaxReq;
     $scope.dropdownEnabled = true;
     $scope.gasLimitChanged = false;
@@ -9,6 +9,7 @@ var txSendCtrl = function($scope, $sce, walletService) {
     $scope.tx.readOnly = globalFuncs.urlGet('readOnly') == null ? false : true;
     $scope.unitReadable = ajaxReq.type;
     $scope.Validator = Validator;
+
     walletService.password = '';
     walletService.wallet = null;
     walletService.walletType = null;
@@ -72,6 +73,8 @@ var txSendCtrl = function($scope, $sce, walletService) {
         }
     }
 
+
+
     $scope.tx = {
         gasLimit:    globalFuncs.urlGet('gaslimit') == null       ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
         data:        globalFuncs.urlGet('data') == null           ? ''                            : globalFuncs.urlGet('data'),
@@ -79,15 +82,18 @@ var txSendCtrl = function($scope, $sce, walletService) {
         value:       globalFuncs.urlGet('value') == null          ? ''                            : globalFuncs.urlGet('value'),
         nonce:       globalFuncs.urlGet('nonce') == null          ? ''                            : globalFuncs.urlGet('nonce'),
         gasPrice:    globalFuncs.urlGet('gasPrice') == null       ? ethFuncs.gasPriceFromSlider   : globalFuncs.urlGet('gasPrice'),
-        tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null    ? false                         : globalFuncs.urlGet('tokenSymbol'),
+        tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null    ? ''                            : globalFuncs.urlGet('tokenSymbol'),
         readOnly:    globalFuncs.urlGet('readOnly') == null       ? false                         : true,
         unit:        "ether",
         sendMode:    globalFuncs.urlGet('sendMode') == null       ? $scope.setSendMode('ether')   : $scope.setSendMode(globalFuncs.urlGet('sendMode'))
     }
 
+
+
     if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('tokenSymbol')) {
       $scope.hasQueryString = true // if there is a query string, show an warning at top of page
     }
+
 
     var applyScope = function() {
         if (!$scope.$$phase) $scope.$apply();
@@ -228,8 +234,8 @@ var txSendCtrl = function($scope, $sce, walletService) {
         if ($scope.wallet.balance == 'loading') return false;
         return isEnough($scope.tx.value, $scope.wallet.balance);
     }
-    //*gas price slider *//
 
+    //*gas price slider *//
     var gasPriceKey = "gasPrice";
     $scope.gasPriceChanged = function() {
         globalFuncs.localStorage.setItem(gasPriceKey, $scope.gas.value);
@@ -247,6 +253,12 @@ var txSendCtrl = function($scope, $sce, walletService) {
     setGasPriceValues();
     $scope.gasPriceChanged();
 
+    $interval(function(){
+      if (navigator.onLine) { $scope.onlyOffline = 'disabled'
+    } else { $scope.onlyOffline = ''};
+    console.log($scope.onlyOffline)
+    },5000);
+
 
     $scope.generateTx = function() {
         $scope.offlineSignModal.close();
@@ -256,7 +268,7 @@ var txSendCtrl = function($scope, $sce, walletService) {
         }
         var txData = uiFuncs.getTxData($scope);
 
-        txData.gasPrice = $scope.tx.gasPrice ? '0x' + new BigNumber($scope.tx.gasPrice).toString(16) : null;
+        txData.gasPrice = $scope.gas.value   ? '0x' + new BigNumber($scope.gas.value).toString(16) : null;
         txData.nonce    = $scope.tx.nonce    ? '0x' + new BigNumber($scope.tx.nonce).toString(16)    : null;
 
         // set to true for offline tab and txView tab

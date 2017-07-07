@@ -24,13 +24,6 @@
       <input aria-flowto="aria3" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" />
       <span translate="x_Mnemonic">Mnemonic Phrase</span>
     </label>
-    <label class="radio" style="display: none;" id="showMeTheMoney">
-      <input aria-flowto="aria4" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" />
-      <span translate="x_ParityPhrase">Parity Phrase</span>
-    </label>
-    <label class="radio">
-      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/parity-phrases-no-longer-supported" target="_blank" rel="noopener">No longer supported</a>
-    </label>
     <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
       <input aria-flowto="aria5" type="radio" aria-label="Ledger Nano S hardware wallet" ng-model="walletType" value="ledger" />
       Ledger Nano S

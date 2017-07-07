@@ -41,22 +41,7 @@
         </a>
         <label style="width: 100%;"> <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei</label>
       </div>
-      <!--
-      <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
-        <input type="text"
-               class="form-control"
-               placeholder="50"
-               ng-model="tx.gasPrice"
-               ng-disabled="checkTxReadOnly"
-               ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
-        <div class="input-group-btn">
-          <a style="min-width: 170px" class="btn btn-default">
-            <strong> GWEI </strong>
-          </a>
-      </div>
-      </div>
-      -->
-        <input type="range"
+          <input type="range"
                 ng-model="gas.value"
                 min="{{gas.min}}"
                 max="{{gas.max}"
@@ -144,7 +129,8 @@
     </div>
     <!--offline signer -->
     <div class="clearfix form-group">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#offlineDecrypt" translate="TX_Sign_Offline"> Send Transaction </a>
+
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="TX_Sign_Offline"> Send Transaction </a>
     </div>
 
     <!-- Decrypt -->
@@ -172,8 +158,7 @@
     </div>
   </div>
   <!-- / transaction information -->
-
-</section>
+  </section>
 <!-- / Content -->
 
 <!-- Sidebar -->

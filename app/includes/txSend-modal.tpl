@@ -1,8 +1,8 @@
-<article class="modal fade" id="txSend" tabindex="-1">
+<article class="modal fade" id="txSend" tabindex="-1" ng-controller='txSendCtrl'>
   <section class="modal-dialog">
     <section class="modal-content">
 
-      <div class="modal-body">
+      <div class="modal-body" >
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
         <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
@@ -10,20 +10,24 @@
         <table class="table text-center"><tbody><tr>
 
           <td>
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()">
           </td>
 
-          <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
-          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode=='ether'" class="mono" ng-model="tx.value">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode!=='ether'" class="mono" ng-model="tokenTx.value">-><br /><h4 class="text-danger">{{tokenTx.value}} {{unitReadable}}</h4></td>
 
           <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" ></div>
+            <div>{{tx.to}}</div>
           </td>
           <td ng-show="tx.sendMode!=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}"></div>
+            <div>{{tokenTx.to}}</div>
           </td>
 
-        </tr></tbody></table>
+        </tr>
+        </tbody>
+      </table>
 
         <br />
 
