@@ -4,6 +4,7 @@ var txSendCtrl = function($scope, $sce, walletService) {
     $scope.dropdownEnabled = true;
     $scope.gasLimitChanged = false;
     $scope.sendTxModal = new Modal(document.getElementById('txSend'));
+    $scope.offlineSignModal = new Modal(document.getElementById('offlineDecrypt'));
     $scope.tx = {};
     $scope.tx.readOnly = globalFuncs.urlGet('readOnly') == null ? false : true;
     $scope.unitReadable = ajaxReq.type;
@@ -227,7 +228,28 @@ var txSendCtrl = function($scope, $sce, walletService) {
         if ($scope.wallet.balance == 'loading') return false;
         return isEnough($scope.tx.value, $scope.wallet.balance);
     }
+    //*gas price slider *//
+
+    var gasPriceKey = "gasPrice";
+    $scope.gasPriceChanged = function() {
+        globalFuncs.localStorage.setItem(gasPriceKey, $scope.gas.value);
+        ethFuncs.gasPriceFromSlider = $scope.gas.value;
+    }
+    var setGasPriceValues = function() {
+        $scope.gas = {
+            curVal: 21,
+            value: globalFuncs.localStorage.getItem(gasPriceKey, null) ? parseInt(globalFuncs.localStorage.getItem(gasPriceKey)) : 21,
+            max: 60,
+            min: 1
+        }
+        ethFuncs.gasPriceFromSlider = $scope.gas.value;
+    }
+    setGasPriceValues();
+    $scope.gasPriceChanged();
+
+
     $scope.generateTx = function() {
+        $scope.offlineSignModal.close();
         if (!$scope.Validator.isValidAddress($scope.tx.to)) {
             $scope.notifier.danger(globalFuncs.errorMsgs[5]);
             return;

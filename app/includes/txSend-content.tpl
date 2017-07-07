@@ -32,24 +32,43 @@
     <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="TX_Send_All">Send Entire Balance</span></a></p>
     <!-- / Amount to Send -->
 
-    <!-- Gas Limit -->
-    <div class="row form-group">
-      <div class="col-sm-11 clearfix">
+    <!-- Gas Price -->
+    <div class="row form-group" ng-show="gasPriceVisible">
+      <div class="col-xs-12">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_GasLimitDesc"></p>
+          <p class="account-help-text" translate="x_GasPriceDesc"></p>
         </a>
-        <label translate="x_GasLimit"> Gas Limit: </label>
+        <label style="width: 100%;"> <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei</label>
+      </div>
+      <!--
+      <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
         <input type="text"
                class="form-control"
-               placeholder="21000"
-               ng-model="tx.gasLimit"
-               ng-change="gasLimitChanged=true"
-               ng-disabled="tx.readOnly || checkTxReadOnly"
-               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+               placeholder="50"
+               ng-model="tx.gasPrice"
+               ng-disabled="checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+        <div class="input-group-btn">
+          <a style="min-width: 170px" class="btn btn-default">
+            <strong> GWEI </strong>
+          </a>
       </div>
+      </div>
+      -->
+        <input type="range"
+                ng-model="gas.value"
+                min="{{gas.min}}"
+                max="{{gas.max}"
+                steps="1"
+                ng-change="gasPriceChanged()"/>
+
+      <p class="small col-xs-4 text-left">Not So Fast</p>
+      <p class="small col-xs-4 text-center">Fast</p>
+      <p class="small col-xs-4 text-right">Fast AF</p>
     </div>
-    <!-- / Gas Limit -->
+    <!-- / Gas Price -->
+
 
     <!-- Advanced Option Panel -->
     <a ng-click="advancedVisible=true" ng-hide="advancedVisible">
@@ -58,30 +77,24 @@
 
     <section ng-hide="!advancedVisible">
 
-      <!-- Gas Price -->
-      <div class="row form-group" ng-show="gasPriceVisible">
-        <div class="col-xs-12">
+      <!-- Gas Limit -->
+      <div class="row form-group">
+        <div class="col-sm-11 clearfix ">
           <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="x_GasPriceDesc"></p>
+            <p class="account-help-text" translate="x_GasLimitDesc"></p>
           </a>
-          <label style="width: 100%;"> <span translate="x_GasPrice"> Gas Price: </span></label>
-        </div>
-        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
+          <label translate="x_GasLimit"> Gas Limit: </label>
           <input type="text"
                  class="form-control"
-                 placeholder="50"
-                 ng-model="tx.gasPrice"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
-          <div class="input-group-btn">
-            <a style="min-width: 170px" class="btn btn-default">
-              <strong> GWEI </strong>
-            </a>
-          </div>
+                 placeholder="21000"
+                 ng-model="tx.gasLimit"
+                 ng-change="gasLimitChanged=true"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
-      <!-- / Gas Price -->
+      <!-- / Gas Limit -->
 
       <!-- Nonce -->
       <div class="row form-group" ng-show="nonceVisible">
@@ -129,13 +142,20 @@
         <p><strong> {{customGasMsg}} </strong></p>
       </div>
     </div>
-
-    <div class="row form-group">
-      <div class="col-xs-12 clearfix">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
-      </div>
+    <!--offline signer -->
+    <div class="clearfix form-group">
+      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#offlineDecrypt" translate="TX_Sign_Offline"> Send Transaction </a>
     </div>
 
+    <!-- Decrypt -->
+    <article class="clearfix">
+      <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
+    </article>
+
+    <!-- /decrypt -->
+
+
+    <!-- transaction information -->
     <div class="row form-group" ng-show="showRaw">
       <div class="col-sm-6">
         <label translate="TX_Unsigned"> Unsigned Transaction </label>
@@ -148,9 +168,11 @@
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Send_Short"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Broadcast"> Broadcast Transaction </a>
     </div>
   </div>
+  <!-- / transaction information -->
+
 </section>
 <!-- / Content -->
 

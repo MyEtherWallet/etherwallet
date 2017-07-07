@@ -37,7 +37,7 @@
           <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
         </p>
 
-        <p> You are interacting with the <strong>{{ajaxReq.type}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
+        <p> You are interacting with the <strong>{{ajaxReq.type}} {{ajaxReq.to}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
         <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
       </div>

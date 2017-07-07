@@ -30,7 +30,7 @@ var headerCtrl = function($scope, globalService, $translate, $sce) {
         }, 200);
     }
     $scope.setArrowVisibility();
-
+/* gas stuff
     var gasPriceKey = "gasPrice";
     $scope.gasPriceChanged = function() {
         globalFuncs.localStorage.setItem(gasPriceKey, $scope.gas.value);
@@ -47,7 +47,7 @@ var headerCtrl = function($scope, globalService, $translate, $sce) {
     }
     setGasPriceValues();
     $scope.gasPriceChanged();
-
+*/
 
     $scope.changeNode = function(key) {
         if ($scope.nodeList[key]) {
