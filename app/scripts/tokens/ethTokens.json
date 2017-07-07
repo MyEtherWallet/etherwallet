@@ -270,6 +270,12 @@
     "type":"default"
   },
   {
+    "address":"0x68AA3F232dA9bdC2343465545794ef3eEa5209BD",
+    "symbol":"MSP",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xf433089366899d83a9f26a773d59ec7ecf30355e",
     "symbol":"MTL",
     "decimal":8,
