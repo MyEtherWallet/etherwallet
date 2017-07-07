@@ -12,6 +12,12 @@
     "type":"default"
   },
   {
+    "address":"0x422866a8F0b032c5cf1DfBDEf31A20F4509562b0",
+    "symbol":"ADST",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0xD0D6D6C5Fe4a677D343cC433536BB717bAe167dD",
     "symbol":"ADT",
     "decimal":9,
