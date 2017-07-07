@@ -282,6 +282,12 @@
     "type":"default"
   },
   {
+    "address":"0x53b60A7c2F6d95E12c5e5A3cCaAcFE35620AeFf6",
+    "symbol":"NVF",
+    "decimal":8,
+    "type":"default"
+  },  
+  {
     "address":"0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
     "symbol":"NxC",
     "decimal":3,
@@ -500,9 +506,9 @@
     "type":"default"
   },
   {
-    "address":"0x53b60A7c2F6d95E12c5e5A3cCaAcFE35620AeFf6",
-    "symbol":"NVF",
+    "address":"0xb110ec7b1dcb8fab8dedbf28f53bc63ea5bedd84",
+    "symbol":"XID",
     "decimal":8,
-    "type":"default"
+    "type":"default"  
   }
 ]
