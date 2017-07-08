@@ -85,7 +85,7 @@
             <li><a data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></li>
           </ul>
         </span>
-<!-- gas dropdown disabled for now
+
         <span class="dropdown dropdown-gas" ng-cloak>
           <a tabindex="0" aria-haspopup="true" aria-label="adjust gas price" class="dropdown-toggle  btn btn-white" ng-click="dropdownGasPrice = !dropdownGasPrice">
             <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei
@@ -102,7 +102,7 @@
               <a class="small" translate="x_ReadMore" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener"></a>
             </div>
           </ul>
-        -->
+
         </span>
 
         <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
@@ -884,10 +884,13 @@
         <p><strong> {{customGasMsg}} </strong></p>
       </div>
     </div>
+
+
+
     <!--offline signer -->
     <div class="clearfix form-group">
 
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="TX_Sign_Offline"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}"> Send Transaction </a>
     </div>
 
     <!-- Decrypt -->
@@ -911,7 +914,7 @@
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Broadcast"> Broadcast Transaction </a>
+      <a class="btn btn-primary col-sm-12" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
     </div>
   </div>
   <!-- / transaction information -->
@@ -939,7 +942,7 @@
  
 
     
-     <article class="modal fade" id="txSend" tabindex="-1" ng-controller='txSendCtrl'>
+     <article class="modal fade" id="txSend" tabindex="-1" >
   <section class="modal-dialog">
     <section class="modal-content">
 
@@ -958,8 +961,8 @@
           <td ng-show="tx.sendMode!=='ether'" class="mono" ng-model="tokenTx.value">-><br /><h4 class="text-danger">{{tokenTx.value}} {{unitReadable}}</h4></td>
 
           <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" ></div>
-            <div>{{tx.to}}</div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="{{tx.to}}" ></div>
+
           </td>
           <td ng-show="tx.sendMode!=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}"></div>
@@ -971,10 +974,10 @@
       </table>
 
         <br />
-
+        <p var-name="tx.sendMode"></p>
         <p>
           <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}} </strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
           <br />
           <span translate="SENDModal_Content_2">to address</span>
@@ -982,7 +985,7 @@
           <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
         </p>
 
-        <p> You are interacting with the <strong>{{ajaxReq.type}} {{ajaxReq.to}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
+        <p> You are interacting with the <strong>{{ajaxReq.type}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
         <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
       </div>
@@ -1305,10 +1308,13 @@
         <p><strong> {{customGasMsg}} </strong></p>
       </div>
     </div>
+
+
+
     <!--offline signer -->
     <div class="clearfix form-group">
 
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="TX_Sign_Offline"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}"> Send Transaction </a>
     </div>
 
     <!-- Decrypt -->
@@ -1332,7 +1338,7 @@
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Broadcast"> Broadcast Transaction </a>
+      <a class="btn btn-primary col-sm-12" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
     </div>
   </div>
   <!-- / transaction information -->
@@ -1360,7 +1366,7 @@
  
 
       
-       <article class="modal fade" id="txSend" tabindex="-1" ng-controller='txSendCtrl'>
+       <article class="modal fade" id="txSend" tabindex="-1" >
   <section class="modal-dialog">
     <section class="modal-content">
 
@@ -1379,8 +1385,8 @@
           <td ng-show="tx.sendMode!=='ether'" class="mono" ng-model="tokenTx.value">-><br /><h4 class="text-danger">{{tokenTx.value}} {{unitReadable}}</h4></td>
 
           <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" ></div>
-            <div>{{tx.to}}</div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="{{tx.to}}" ></div>
+
           </td>
           <td ng-show="tx.sendMode!=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}"></div>
@@ -1392,10 +1398,10 @@
       </table>
 
         <br />
-
+        <p var-name="tx.sendMode"></p>
         <p>
           <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}} </strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
           <br />
           <span translate="SENDModal_Content_2">to address</span>
@@ -1403,7 +1409,7 @@
           <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
         </p>
 
-        <p> You are interacting with the <strong>{{ajaxReq.type}} {{ajaxReq.to}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
+        <p> You are interacting with the <strong>{{ajaxReq.type}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
         <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
       </div>
@@ -1427,6 +1433,7 @@
         <h5>Please unlock the address {{ txInfo.from }}. Only this address can replace a TX.</h5>
       </div>
     </section>
+</main>
 
 
     <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.txSign.id" ng-controller='txSignCtrl' ng-cloak >
@@ -1475,16 +1482,16 @@
 
         <div class="col-sm-8 col-sm-offset-2">
           <label> Signed Transaction </label>
-          <textarea class="form-control" rows="5" ></textarea>
-          <a class="btn btn-primary"> Broadcast Transaction </a>
-        </div>
+          <textarea class="form-control" rows="5" ng-model="signedTx" ></textarea>
+          <a class="btn btn-primary" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
 
+        </div>
       </article>
 
   </div>
 
-
-
+  
+  
 </main>
 
 
@@ -1871,10 +1878,13 @@
         <p><strong> {{customGasMsg}} </strong></p>
       </div>
     </div>
+
+
+
     <!--offline signer -->
     <div class="clearfix form-group">
 
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="TX_Sign_Offline"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}"> Send Transaction </a>
     </div>
 
     <!-- Decrypt -->
@@ -1898,7 +1908,7 @@
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Broadcast"> Broadcast Transaction </a>
+      <a class="btn btn-primary col-sm-12" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
     </div>
   </div>
   <!-- / transaction information -->
@@ -1926,7 +1936,7 @@
  
 
       
-       <article class="modal fade" id="txSend" tabindex="-1" ng-controller='txSendCtrl'>
+       <article class="modal fade" id="txSend" tabindex="-1" >
   <section class="modal-dialog">
     <section class="modal-content">
 
@@ -1945,8 +1955,8 @@
           <td ng-show="tx.sendMode!=='ether'" class="mono" ng-model="tokenTx.value">-><br /><h4 class="text-danger">{{tokenTx.value}} {{unitReadable}}</h4></td>
 
           <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" ></div>
-            <div>{{tx.to}}</div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="{{tx.to}}" ></div>
+
           </td>
           <td ng-show="tx.sendMode!=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}"></div>
@@ -1958,10 +1968,10 @@
       </table>
 
         <br />
-
+        <p var-name="tx.sendMode"></p>
         <p>
           <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}} </strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
           <br />
           <span translate="SENDModal_Content_2">to address</span>
@@ -1969,7 +1979,7 @@
           <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
         </p>
 
-        <p> You are interacting with the <strong>{{ajaxReq.type}} {{ajaxReq.to}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
+        <p> You are interacting with the <strong>{{ajaxReq.type}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
         <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
       </div>
@@ -2984,9 +2994,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <!-- Sign TX Button (once wallet has been unlocked) -->
   <div class="form-group">
-    <a class="btn btn-info btn-block" ng-click="generateTx()" ng-show="wd" translate="TX_Sign"> Sign Transaction </a>
+    <div class="clearfix form-group">
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}"> Send Transaction </a>
+    </div>
   </div>
-
+  <article class="clearfix">
+    <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
+  </article>
   <!-- TXs -->
   <section class="row" ng-show="showRaw">
     <!-- Raw TX -->

@@ -38,8 +38,8 @@ var tabs = {
     id: 4,
     name: "TX_Sign",
     url: "sign-transaction",
-    mew: true,
-    cx: true
+    mew: false,
+    cx: false
   },
   txBroadcast: {
     id: 5,
@@ -107,5 +107,3 @@ return {
 };
 };
 module.exports = globalService;
-
-

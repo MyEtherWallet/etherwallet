@@ -88,6 +88,7 @@ ERROR_34                    : 'The name you are attempting to reveal does not ma
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+ERROR_38                    : 'You must go offline to access private keys.', //38
 ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units ', // 4
 ERROR_5                     : 'Please enter a valid address. ', // 5
 ERROR_6                     : 'Please enter a valid password. ', // 6
@@ -174,6 +175,7 @@ SENDModal_No                : 'No, get me out of here! ',
 SENDModal_OK                : 'Okay, get me out of here! ',
 SENDModal_Title             : 'Warning! ',
 SEND_O_Modal_Title          : 'WARNING! THIS SHOULD ONLY BE DONE WHILE YOU ARE OFFLINE!',
+SEND_trans                  : 'Send Transaction.',
 SENDModal_Yes               : 'Yes, I am sure! Make transaction. ',
 SIDEBAR_Equiv               : 'Equivalent Values ',
 SUCCESS_1                   : 'Valid address ',

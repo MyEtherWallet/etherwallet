@@ -127,10 +127,13 @@
         <p><strong> {{customGasMsg}} </strong></p>
       </div>
     </div>
+
+
+
     <!--offline signer -->
     <div class="clearfix form-group">
 
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="TX_Sign_Offline"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}"> Send Transaction </a>
     </div>
 
     <!-- Decrypt -->
@@ -154,7 +157,7 @@
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Broadcast"> Broadcast Transaction </a>
+      <a class="btn btn-primary col-sm-12" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
     </div>
   </div>
   <!-- / transaction information -->

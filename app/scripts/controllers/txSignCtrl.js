@@ -4,7 +4,6 @@ var txSignCtrl = function($scope) {
     walletService.wallet = null;
     walletService.password = '';
     walletService.walletType = null;
-
     $scope.Validator = Validator;
 
 };

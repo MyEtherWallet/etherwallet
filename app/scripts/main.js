@@ -138,7 +138,7 @@ app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
 app.controller('headerCtrl', ['$scope', 'globalService', '$translate', '$sce', headerCtrl]);
-app.controller('txBroadcastCtrl', ['$scope', txBroadcastCtrl]);
+app.controller('txBroadcastCtrl', ['$scope', 'walletService', txBroadcastCtrl]);
 app.controller('txSendCtrl', ['$scope', '$sce', '$interval', 'walletService', txSendCtrl]);
 app.controller('txSignCtrl', ['$scope', txSignCtrl]);
 app.controller('txViewCtrl', ['$scope', txViewCtrl]);
