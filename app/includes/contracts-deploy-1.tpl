@@ -21,14 +21,7 @@
   </div>
 
   <!-- Sign TX Button (once wallet has been unlocked) -->
-  <div class="form-group">
-    <div class="clearfix form-group">
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}"> Send Transaction </a>
-    </div>
-  </div>
-  <article class="clearfix">
-    <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
-  </article>
+
   <!-- TXs -->
   <section class="row" ng-show="showRaw">
     <!-- Raw TX -->

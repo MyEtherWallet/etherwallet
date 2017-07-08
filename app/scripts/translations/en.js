@@ -174,7 +174,7 @@ SENDModal_Content_4         : 'NOTE: If you encounter an error, you most likely 
 SENDModal_No                : 'No, get me out of here! ',
 SENDModal_OK                : 'Okay, get me out of here! ',
 SENDModal_Title             : 'Warning! ',
-SEND_O_Modal_Title          : 'WARNING! THIS SHOULD ONLY BE DONE WHILE YOU ARE OFFLINE!',
+SEND_O_Modal_Title          : 'WARNING! DO NOT GO BACK ONLINE YET!',
 SEND_trans                  : 'Send Transaction.',
 SENDModal_Yes               : 'Yes, I am sure! Make transaction. ',
 SIDEBAR_Equiv               : 'Equivalent Values ',

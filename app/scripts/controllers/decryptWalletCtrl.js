@@ -178,6 +178,7 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
             $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
         }
         if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
+        $scope.offlineSignModal.close();
     };
 
     $scope.decryptAddressOnly = function() {
@@ -197,6 +198,7 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
             }
             walletService.walletType = "addressOnly";
             walletService.wallet = $scope.wallet;
+            $scope.offlineSignModal.close();
         }
     }
     $scope.HWWalletCreate = function(publicKey, chainCode, ledger, path) {
@@ -229,11 +231,13 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
         var app = new ledgerEth($scope.ledger);
         var path = $scope.getLedgerPath();
         app.getAddress(path, $scope.ledgerCallback, false, true);
+        $scope.offlineSignModal.close();
     };
     $scope.scanTrezor = function() {
         // trezor is using the path without change level id
         var path = $scope.getTrezorPath();
         TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.4.0');
+        $scope.offlineSignModal.close();
     };
     $scope.getLedgerPath = function() {
         return $scope.HDWallet.dPath;

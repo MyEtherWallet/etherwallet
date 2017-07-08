@@ -26,7 +26,7 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
     // Visibility Controls for Advanced Fields
     $scope.advancedVisible = true;
     $scope.gasPriceVisible = true;
-    $scope.nonceVisible = false;
+    $scope.nonceVisible = true;
     $scope.gasLimitChanged = globalFuncs.urlGet('gaslimit') != null ? true : false;
 
     // Custom Gas Limit / Msg
@@ -147,7 +147,7 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
         } else if ( walletService.walletType == 'addressOnly' ) {
             $scope.advancedVisible = true;
             $scope.gasPriceVisible = true;
-            $scope.nonceVisible    = true;
+            $scope.nonceVisible    = false;
             $scope.gasLimitChanged = false;
             $scope.tx.from         = $scope.wallet.getAddressString();
             $scope.getNonce();
@@ -268,8 +268,25 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
         $scope.onlyOffline ={
         status : 'disabled',
         msg    : 'ERROR_38'
+      };
+      if ($scope.wd == false) {
+      $scope.wallet = walletService.wallet;
+      $scope.wd = true;
+      $scope.showEnc = walletService.password != '';
+      if (walletService.wallet.type == "default") $scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
+      if (walletService.password != '') {
+          $scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3(walletService.password, {
+              kdf: globalFuncs.kdf,
+              n: globalFuncs.scrypt.n
+          }));
+          $scope.encFileName = $scope.wallet.getV3Filename();
       }
-    } else { $scope.onlyOffline = {
+      $scope.wallet.setBalance();
+      $scope.wallet.setTokens();
+    }
+    } else {
+      $scope.wd = true;
+      $scope.onlyOffline = {
       status : '',
       msg    : 'TX_Sign_Offline'
       }

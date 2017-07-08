@@ -49,8 +49,9 @@
   <!--wallet decrypt-->
   <article class="form-group" ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
       @@if (site === 'cx' )  {  <wallet-decrypt-cx-drtv></wallet-decrypt-cx-drtv>   }
-      @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
-  </article>
+    </article>
+      @@if (site === 'mew' ) {  <article><div class="clearfix form-group"><a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}">Checking Status</a></div><wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv></article> }
+
 
   <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
 

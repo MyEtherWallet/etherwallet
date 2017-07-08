@@ -129,7 +129,7 @@ app.directive('walletDecryptCxDrtv', walletDecryptCxDrtv);
 
 app.controller('genericCtrl', ['$scope', 'globalService', '$sce', genericCtrl]);
 app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
-app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
+app.controller('contractsCtrl', ['$scope', '$sce', '$interval','walletService', contractsCtrl]);
 app.controller('walletDecryptCtrl', ['$scope', '$sce', 'walletService', walletDecryptCtrl]);
 app.controller('walletDecryptOfflineCtrl', ['$scope', '$sce', 'walletService', walletDecryptOfflineCtrl]);
 app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);
@@ -144,7 +144,7 @@ app.controller('txSignCtrl', ['$scope', txSignCtrl]);
 app.controller('txViewCtrl', ['$scope', txViewCtrl]);
 app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
 app.controller('walletGenerateCtrl', ['$scope', walletGenerateCtrl]);
-app.controller('walletViewCtrl', ['$scope', 'walletService', walletViewCtrl]);
+app.controller('walletViewCtrl', ['$scope', '$interval','walletService', walletViewCtrl]);
 
 if (IS_CX) {
   app.controller('walletDecryptCxCtrl', ['$scope', '$sce', 'walletService', walletDecryptCxCtrl]);

@@ -2587,14 +2587,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </div>
 
   <!-- Sign TX Button (once wallet has been unlocked) -->
-  <div class="form-group">
-    <div class="clearfix form-group">
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}"> Send Transaction </a>
-    </div>
-  </div>
-  <article class="clearfix">
-    <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
-  </article>
+
   <!-- TXs -->
   <section class="row" ng-show="showRaw">
     <!-- Raw TX -->
@@ -2655,8 +2648,9 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <!--wallet decrypt-->
   <article class="form-group" ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
       
-        <wallet-decrypt-drtv></wallet-decrypt-drtv>         
-  </article>
+    </article>
+        <article><div class="clearfix form-group"><a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}">Checking Status</a></div><wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv></article> 
+
 
   <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
 
@@ -2951,15 +2945,23 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <article class="collapse-container">
 
     <div ng-click="wd = !wd">
-      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
       <h1 translate="WALL_View">View Wallet Details</h1>
     </div>
 
-    <div ng-show="!wd">
+    <div>
       <p translate="VIEWWALLET_Subtitle">
         This page allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like <a href="http://etherscan.io/" target="_blank" rel="noopener">etherscan.io</a>.
       </p>
-      <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      <div class="clearfix form-group">
+        <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}">Checking Status</a>
+      </div>
+
+      <!-- Decrypt -->
+      <article class="clearfix">
+        <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
+      </article>
+
+
     </div>
 
   </article>
