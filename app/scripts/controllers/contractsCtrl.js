@@ -69,8 +69,10 @@ var contractsCtrl = function($scope, $sce, $interval, walletService) {
     $interval(function(){
       if (navigator.onLine) {
         $scope.onlyOffline ={
-        status : 'disabled',
-        msg    : 'ERROR_38'
+          isOnline  : '',
+          isOffline : 'disabled',
+          offMsg    : 'ERROR_38',
+          onMsg     : 'SEND_trans'
       };
       if ($scope.wd == false) {
       $scope.wallet = walletService.wallet;
@@ -90,8 +92,10 @@ var contractsCtrl = function($scope, $sce, $interval, walletService) {
     } else {
       $scope.wd = true;
       $scope.onlyOffline = {
-      status : '',
-      msg    : 'TX_Sign_Offline'
+        isOnline : 'disabled',
+        isOffline :'',
+        offMsg    : 'TX_Sign_Offline',
+        onMsg     : 'ERROR_39'      
       }
      }
     },5000);

@@ -34,8 +34,10 @@ var walletViewCtrl = function($scope, $interval, walletService) {
     $interval(function(){
       if (navigator.onLine) {
         $scope.onlyOffline ={
-        status : 'disabled',
-        msg    : 'ERROR_38'
+          isOnline  : '',
+          isOffline : 'disabled',
+          offMsg    : 'ERROR_38',
+          onMsg     : 'SEND_trans'
       };
       if ($scope.wd == false) {
       $scope.wallet = walletService.wallet;
@@ -55,8 +57,10 @@ var walletViewCtrl = function($scope, $interval, walletService) {
     } else {
       $scope.wd = true;
       $scope.onlyOffline = {
-      status : '',
-      msg    : 'WALL_View'
+      isOnline : 'disabled',
+      isOffline :'',
+      offMsg    : 'WALL_View',
+      onMsg     : 'ERROR_39'
       }
      }
     },5000);

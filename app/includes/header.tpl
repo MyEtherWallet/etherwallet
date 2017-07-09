@@ -36,6 +36,7 @@
     @@if (site === 'mew' ) {
       <div class="small announcement annoucement-warning">
         <div class="container">⚠ Please beware of phishing websites. Do not enter your key on a website you arrived at by clicking a link. Use bookmarks. Always triple-check the domain. Ours is dot com. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">You are responsible for your safety &amp; security</a>.</div>
+        <span ng-init="notifier.danger(window.location.href)"></span>
       </div>
     }
 

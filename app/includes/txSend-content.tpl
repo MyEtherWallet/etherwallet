@@ -133,7 +133,7 @@
     <!--offline signer -->
     <div class="clearfix form-group">
 
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.status}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.msg}}"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}"> Send Transaction </a>
     </div>
 
     <!-- Decrypt -->
@@ -157,7 +157,7 @@
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary col-sm-12" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
+      <a class="btn btn-primary col-sm-12 {{onlyOffline.isOnline}}" ng-click="confirmSendTx()" translate="{{onlyOffline.onMsg}}">SEND TRANSACTION</a>
     </div>
   </div>
   <!-- / transaction information -->
