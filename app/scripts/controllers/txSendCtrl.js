@@ -269,7 +269,7 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
         isOnline  : '',
         isOffline : 'disabled',
         offMsg    : 'ERROR_38',
-        onMsg     : 'SEND_trans'
+        onMsg     : 'TX_Broadcast'
       };
       if ($scope.wd == false) {
       $scope.wallet = walletService.wallet;

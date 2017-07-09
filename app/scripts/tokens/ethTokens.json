@@ -6,6 +6,12 @@
     "type":"default"
   },
   {
+    "address":"0x422866a8F0b032c5cf1DfBDEf31A20F4509562b0",
+    "symbol":"ADST",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0xD0D6D6C5Fe4a677D343cC433536BB717bAe167dD",
     "symbol":"ADT",
     "decimal":9,
@@ -99,6 +105,12 @@
     "address":"0x5c40eF6f527f4FbA68368774E6130cE6515123f2",
     "symbol":"DAO_extraBalance",
     "decimal":0,
+    "type":"default"
+  },
+  {
+    "address":"0xcC4eF9EEAF656aC1a2Ab886743E98e97E090ed38",
+    "symbol":"DDF",
+    "decimal":18,
     "type":"default"
   },
   {
@@ -198,6 +210,12 @@
     "type":"default"
   },
   {
+    "address":"0x773450335eD4ec3DB45aF74f34F2c85348645D39",
+    "symbol":"JetCoins",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xfa05A73FfE78ef8f1a739473e462c54bae6567D9",
     "symbol":"LUN",
     "decimal":18,
@@ -252,6 +270,12 @@
     "type":"default"
   },
   {
+    "address":"0x68AA3F232dA9bdC2343465545794ef3eEa5209BD",
+    "symbol":"MSP",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xf433089366899d83a9f26a773d59ec7ecf30355e",
     "symbol":"MTL",
     "decimal":8,
@@ -284,6 +308,12 @@
   {
     "address":"0x701C244b988a513c945973dEFA05de933b23Fe1D",
     "symbol":"OAX",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0xd26114cd6EE289AccF82350c8d8487fedB8A0C07",
+    "symbol":"OMG",
     "decimal":18,
     "type":"default"
   },
@@ -484,6 +514,12 @@
   {
     "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
     "symbol":"XAUR",
+    "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0xb110ec7b1dcb8fab8dedbf28f53bc63ea5bedd84",
+    "symbol":"XID",
     "decimal":8,
     "type":"default"
   }

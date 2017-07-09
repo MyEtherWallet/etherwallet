@@ -27,13 +27,6 @@ module.exports = [
   msg:        'BattleDrome ICO/Crowdsale. Thanks for your support!'
 },
 {
-  // TenX PAY
-  to:         '0xd43d09ec1bc5e57c8f3d0c64020d403b04c7f783',
-  gasLimit:   130000,
-  data:       '',
-  msg:        'TenX PAY Token Sale. Start: June 24, 2017, 1pm UTC'
-},
-{
   // OpenANX
   to:         '0x701C244b988a513c945973dEFA05de933b23Fe1D',
   gasLimit:   200000,
@@ -69,74 +62,11 @@ module.exports = [
   msg:        'Moeda. Ends at block 4,111,557.'
 },
 {
-  // SunContract
-  to:         '0x5fb3D432bae33FCd418edE263D98D7440E7fA3ea',
+  // NVC
+  to:         '0xd88755197e107603C139df6E709ed09EEC6b6bB3',
   gasLimit:   200000,
   data:       '',
-  msg:        'SunContract ICO address - suncontract.org'
-},
-{
-  // FAKE STATUS
-  to:         '0xc9f32ce1127e44c51cbd182d6364f3d707fd0d47',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR STATUS!!'
-},
-{
-  // FAKE TenX
-  to:         '0xed44fC770EAA76dB9AdE24d86CE3B409F4AeD009',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
-},
-{
-  // FAKE TenX
-  to:         '0xbc85a12364c9e375801c00aad17b893fc4c8f5b6',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
-},
-{
-  // FAKE TenX
-  to:         '0x199eee5b6ca1AaF030c77f0b5c50e39908Fd2072',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
-},
-{
-  // FAKE TenX
-  to:         '0xaF70168cdAc454Fa9fF94E5458D450ae7EEB7ae8',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
-},
-{
-  // FAKE TenX
-  to:         '0xe112784753273eBEdE055968eCB78DCAD8fF6da2',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
-},
-{
-  // FAKE TenX
-  to:         '0x285cFe87F4AD22228a625DCd1F64b2BC6b27ecff',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
-},
-{
-  // FAKE TenX
-  to:         '0x0d979f9fFDD579D67C29531ccCba568D2172D0b0',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
-},
-{
-  // SunContract
-  to:         '0x5fb3D432bae33FCd418edE263D98D7440E7fA3ea',
-  gasLimit:   200000,
-  data:       '',
-  msg:        'SunContract ICO address - suncontract.org'
+  msg:        'NVC Fund'
 },
 {
   // SoerenGelderCom
@@ -144,6 +74,13 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'SGelder ICO starts 07th of August 2017'
+},
+{
+  // SunContract
+  to:         '0x5fb3D432bae33FCd418edE263D98D7440E7fA3ea',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'SunContract ICO address - suncontract.org'
 }
 ]
 

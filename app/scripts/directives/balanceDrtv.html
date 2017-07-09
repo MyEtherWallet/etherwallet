@@ -50,8 +50,8 @@
         <ul class="account-info">
             <li ng-show="ajaxReq.type != 'CUS'">
                 <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">
-          {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})
-        </a>
+                  {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})
+                </a>
             </li>
             <li>
                 <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener"> Tokens (Ethplorer.io) </a>
