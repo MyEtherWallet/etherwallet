@@ -56,7 +56,7 @@
 
       <div class="tagline">
 
-        <span>v3.9.8.4</span>
+        <span>v3.9.8.5</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -1700,23 +1700,24 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <!-- Gas Price -->
   <article class="clearfix">
+    <section class="col-sm-11">
       <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
         <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
       </a>
       <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
-
-        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
-          <input type="text"
-                 class="form-control"
-                 placeholder="50"
-                 ng-model="gasPriceDec"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(gasPriceDec) ? 'is-valid' : 'is-invalid'" />
-          <div class="input-group-btn">
-            <button style="min-width: 170px" class="btn btn-default">  GWEI </button>
-          </div>
+      <div class="input-group">
+        <input type="text"
+               class="form-control"
+               placeholder="50"
+               ng-model="gasPriceDec"
+               ng-disabled="checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(gasPriceDec) ? 'is-valid' : 'is-invalid'" />
+        <div class="input-group-btn">
+          <button style="min-width: 170px" class="btn btn-default">  WEI </button>
         </div>
+      </div>
+    </section>
   </article>
 
 
