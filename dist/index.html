@@ -3183,10 +3183,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 
 
-  <section class="loading-wrap" ng-hide="1==1">
+  <section class="loading-wrap" ng-show="showLoading">
     <div class="loading">
-      <img src="images/loading2.gif" />
-      <h1> Loading... </h1>
+     <img src="images/loading2.gif" />
+     <h1> {{loadingMsg.msg}} </h1>
+     <h1> You're accessing MEW from {{loadingMsg.website}}</h1>
+   </div>
+
   </section>
 
 
