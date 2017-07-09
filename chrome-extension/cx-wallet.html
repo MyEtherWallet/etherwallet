@@ -102,6 +102,7 @@
               <a class="small" translate="x_ReadMore" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener"></a>
             </div>
           </ul>
+
         </span>
 
         <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
@@ -720,7 +721,7 @@
     <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.txSend.id" ng-controller='txSendCtrl' ng-cloak >
 
   <!-- Block : Title -->
-  <article class="block__title" ng-controller="walletDecryptCtrl">
+  <article class="block__title" ng-controller="walletDecryptOfflineCtrl">
 
     <!-- Title -->
     <h1 translate="TX_Send_Title"> Send Ether &amp; Tokens </h1>
@@ -737,7 +738,8 @@
            ng-change="onAddressChange()"
            ng-class="Validator.isValidAddress($parent.$parent.addressOnly) ? 'is-valid' : 'is-invalid'"
            ng-model="$parent.$parent.addressOnly"
-           placeholder="{{ 'ADDR_' | translate }}" />
+           placeholder="{{ 'ADDR_' | translate }}"
+           id="addrChecker" />
 
     <!-- Button -->
     <button tabindex="0"
@@ -787,24 +789,28 @@
     <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="TX_Send_All">Send Entire Balance</span></a></p>
     <!-- / Amount to Send -->
 
-    <!-- Gas Limit -->
-    <div class="row form-group">
-      <div class="col-sm-11 clearfix">
+    <!-- Gas Price -->
+    <div class="row form-group" ng-show="gasPriceVisible">
+      <div class="col-xs-12">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_GasLimitDesc"></p>
+          <p class="account-help-text" translate="x_GasPriceDesc"></p>
         </a>
-        <label translate="x_GasLimit"> Gas Limit: </label>
-        <input type="text"
-               class="form-control"
-               placeholder="21000"
-               ng-model="tx.gasLimit"
-               ng-change="gasLimitChanged=true"
-               ng-disabled="tx.readOnly || checkTxReadOnly"
-               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+        <label style="width: 100%;"> <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei</label>
       </div>
+          <input type="range"
+                ng-model="gas.value"
+                min="{{gas.min}}"
+                max="{{gas.max}"
+                steps="1"
+                ng-change="gasPriceChanged()"/>
+
+      <p class="small col-xs-4 text-left">Not So Fast</p>
+      <p class="small col-xs-4 text-center">Fast</p>
+      <p class="small col-xs-4 text-right">Fast AF</p>
     </div>
-    <!-- / Gas Limit -->
+    <!-- / Gas Price -->
+
 
     <!-- Advanced Option Panel -->
     <a ng-click="advancedVisible=true" ng-hide="advancedVisible">
@@ -813,30 +819,24 @@
 
     <section ng-hide="!advancedVisible">
 
-      <!-- Gas Price -->
-      <div class="row form-group" ng-show="gasPriceVisible">
-        <div class="col-xs-12">
+      <!-- Gas Limit -->
+      <div class="row form-group">
+        <div class="col-sm-11 clearfix ">
           <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="x_GasPriceDesc"></p>
+            <p class="account-help-text" translate="x_GasLimitDesc"></p>
           </a>
-          <label style="width: 100%;"> <span translate="x_GasPrice"> Gas Price: </span></label>
-        </div>
-        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
+          <label translate="x_GasLimit"> Gas Limit: </label>
           <input type="text"
                  class="form-control"
-                 placeholder="50"
-                 ng-model="tx.gasPrice"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
-          <div class="input-group-btn">
-            <a style="min-width: 170px" class="btn btn-default">
-              <strong> GWEI </strong>
-            </a>
-          </div>
+                 placeholder="21000"
+                 ng-model="tx.gasLimit"
+                 ng-change="gasLimitChanged=true"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
-      <!-- / Gas Price -->
+      <!-- / Gas Limit -->
 
       <!-- Nonce -->
       <div class="row form-group" ng-show="nonceVisible">
@@ -885,12 +885,23 @@
       </div>
     </div>
 
-    <div class="row form-group">
-      <div class="col-xs-12 clearfix">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
-      </div>
+
+
+    <!--offline signer -->
+    <div class="clearfix form-group">
+
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}"> Send Transaction </a>
     </div>
 
+    <!-- Decrypt -->
+    <article class="clearfix">
+      <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
+    </article>
+
+    <!-- /decrypt -->
+
+
+    <!-- transaction information -->
     <div class="row form-group" ng-show="showRaw">
       <div class="col-sm-6">
         <label translate="TX_Unsigned"> Unsigned Transaction </label>
@@ -903,10 +914,11 @@
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Send_Short"> Send Transaction </a>
+      <a class="btn btn-primary col-sm-12 {{onlyOffline.isOnline}}" ng-click="confirmSendTx()" translate="{{onlyOffline.onMsg}}">SEND TRANSACTION</a>
     </div>
   </div>
-</section>
+  <!-- / transaction information -->
+  </section>
 <!-- / Content -->
 
 <!-- Sidebar -->
@@ -930,11 +942,11 @@
  
 
     
-     <article class="modal fade" id="txSend" tabindex="-1">
+     <article class="modal fade" id="txSend" tabindex="-1" >
   <section class="modal-dialog">
     <section class="modal-content">
 
-      <div class="modal-body">
+      <div class="modal-body" >
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
         <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
@@ -942,26 +954,30 @@
         <table class="table text-center"><tbody><tr>
 
           <td>
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()">
           </td>
 
-          <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
-          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode=='ether'" class="mono" ng-model="tx.value">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode!=='ether'" class="mono" ng-model="tokenTx.value">-><br /><h4 class="text-danger">{{tokenTx.value}} {{unitReadable}}</h4></td>
 
           <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to" ></div>
+
           </td>
           <td ng-show="tx.sendMode!=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+            <div>{{tokenTx.to}}</div>
           </td>
 
-        </tr></tbody></table>
+        </tr>
+        </tbody>
+      </table>
 
         <br />
-
+        <p var-name="tx.sendMode"></p>
         <p>
           <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}} </strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
           <br />
           <span translate="SENDModal_Content_2">to address</span>
@@ -988,6 +1004,7 @@
   </section>
 </article>
  
+
   </article>
 
 
@@ -1196,24 +1213,28 @@
     <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="TX_Send_All">Send Entire Balance</span></a></p>
     <!-- / Amount to Send -->
 
-    <!-- Gas Limit -->
-    <div class="row form-group">
-      <div class="col-sm-11 clearfix">
+    <!-- Gas Price -->
+    <div class="row form-group" ng-show="gasPriceVisible">
+      <div class="col-xs-12">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_GasLimitDesc"></p>
+          <p class="account-help-text" translate="x_GasPriceDesc"></p>
         </a>
-        <label translate="x_GasLimit"> Gas Limit: </label>
-        <input type="text"
-               class="form-control"
-               placeholder="21000"
-               ng-model="tx.gasLimit"
-               ng-change="gasLimitChanged=true"
-               ng-disabled="tx.readOnly || checkTxReadOnly"
-               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+        <label style="width: 100%;"> <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei</label>
       </div>
+          <input type="range"
+                ng-model="gas.value"
+                min="{{gas.min}}"
+                max="{{gas.max}"
+                steps="1"
+                ng-change="gasPriceChanged()"/>
+
+      <p class="small col-xs-4 text-left">Not So Fast</p>
+      <p class="small col-xs-4 text-center">Fast</p>
+      <p class="small col-xs-4 text-right">Fast AF</p>
     </div>
-    <!-- / Gas Limit -->
+    <!-- / Gas Price -->
+
 
     <!-- Advanced Option Panel -->
     <a ng-click="advancedVisible=true" ng-hide="advancedVisible">
@@ -1222,30 +1243,24 @@
 
     <section ng-hide="!advancedVisible">
 
-      <!-- Gas Price -->
-      <div class="row form-group" ng-show="gasPriceVisible">
-        <div class="col-xs-12">
+      <!-- Gas Limit -->
+      <div class="row form-group">
+        <div class="col-sm-11 clearfix ">
           <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="x_GasPriceDesc"></p>
+            <p class="account-help-text" translate="x_GasLimitDesc"></p>
           </a>
-          <label style="width: 100%;"> <span translate="x_GasPrice"> Gas Price: </span></label>
-        </div>
-        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
+          <label translate="x_GasLimit"> Gas Limit: </label>
           <input type="text"
                  class="form-control"
-                 placeholder="50"
-                 ng-model="tx.gasPrice"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
-          <div class="input-group-btn">
-            <a style="min-width: 170px" class="btn btn-default">
-              <strong> GWEI </strong>
-            </a>
-          </div>
+                 placeholder="21000"
+                 ng-model="tx.gasLimit"
+                 ng-change="gasLimitChanged=true"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
-      <!-- / Gas Price -->
+      <!-- / Gas Limit -->
 
       <!-- Nonce -->
       <div class="row form-group" ng-show="nonceVisible">
@@ -1294,12 +1309,23 @@
       </div>
     </div>
 
-    <div class="row form-group">
-      <div class="col-xs-12 clearfix">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
-      </div>
+
+
+    <!--offline signer -->
+    <div class="clearfix form-group">
+
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}"> Send Transaction </a>
     </div>
 
+    <!-- Decrypt -->
+    <article class="clearfix">
+      <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
+    </article>
+
+    <!-- /decrypt -->
+
+
+    <!-- transaction information -->
     <div class="row form-group" ng-show="showRaw">
       <div class="col-sm-6">
         <label translate="TX_Unsigned"> Unsigned Transaction </label>
@@ -1312,10 +1338,11 @@
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Send_Short"> Send Transaction </a>
+      <a class="btn btn-primary col-sm-12 {{onlyOffline.isOnline}}" ng-click="confirmSendTx()" translate="{{onlyOffline.onMsg}}">SEND TRANSACTION</a>
     </div>
   </div>
-</section>
+  <!-- / transaction information -->
+  </section>
 <!-- / Content -->
 
 <!-- Sidebar -->
@@ -1339,11 +1366,11 @@
  
 
       
-       <article class="modal fade" id="txSend" tabindex="-1">
+       <article class="modal fade" id="txSend" tabindex="-1" >
   <section class="modal-dialog">
     <section class="modal-content">
 
-      <div class="modal-body">
+      <div class="modal-body" >
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
         <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
@@ -1351,26 +1378,30 @@
         <table class="table text-center"><tbody><tr>
 
           <td>
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()">
           </td>
 
-          <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
-          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode=='ether'" class="mono" ng-model="tx.value">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode!=='ether'" class="mono" ng-model="tokenTx.value">-><br /><h4 class="text-danger">{{tokenTx.value}} {{unitReadable}}</h4></td>
 
           <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to" ></div>
+
           </td>
           <td ng-show="tx.sendMode!=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+            <div>{{tokenTx.to}}</div>
           </td>
 
-        </tr></tbody></table>
+        </tr>
+        </tbody>
+      </table>
 
         <br />
-
+        <p var-name="tx.sendMode"></p>
         <p>
           <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}} </strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
           <br />
           <span translate="SENDModal_Content_2">to address</span>
@@ -1402,6 +1433,7 @@
         <h5>Please unlock the address {{ txInfo.from }}. Only this address can replace a TX.</h5>
       </div>
     </section>
+</main>
 
 
     <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.txSign.id" ng-controller='txSignCtrl' ng-cloak >
@@ -1450,16 +1482,16 @@
 
         <div class="col-sm-8 col-sm-offset-2">
           <label> Signed Transaction </label>
-          <textarea class="form-control" rows="5" ></textarea>
-          <a class="btn btn-primary"> Broadcast Transaction </a>
-        </div>
+          <textarea class="form-control" rows="5" ng-model="signedTx" ></textarea>
+          <a class="btn btn-primary" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
 
+        </div>
       </article>
 
   </div>
 
-
-
+  
+  
 </main>
 
 
@@ -1751,24 +1783,28 @@
     <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="TX_Send_All">Send Entire Balance</span></a></p>
     <!-- / Amount to Send -->
 
-    <!-- Gas Limit -->
-    <div class="row form-group">
-      <div class="col-sm-11 clearfix">
+    <!-- Gas Price -->
+    <div class="row form-group" ng-show="gasPriceVisible">
+      <div class="col-xs-12">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_GasLimitDesc"></p>
+          <p class="account-help-text" translate="x_GasPriceDesc"></p>
         </a>
-        <label translate="x_GasLimit"> Gas Limit: </label>
-        <input type="text"
-               class="form-control"
-               placeholder="21000"
-               ng-model="tx.gasLimit"
-               ng-change="gasLimitChanged=true"
-               ng-disabled="tx.readOnly || checkTxReadOnly"
-               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+        <label style="width: 100%;"> <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei</label>
       </div>
+          <input type="range"
+                ng-model="gas.value"
+                min="{{gas.min}}"
+                max="{{gas.max}"
+                steps="1"
+                ng-change="gasPriceChanged()"/>
+
+      <p class="small col-xs-4 text-left">Not So Fast</p>
+      <p class="small col-xs-4 text-center">Fast</p>
+      <p class="small col-xs-4 text-right">Fast AF</p>
     </div>
-    <!-- / Gas Limit -->
+    <!-- / Gas Price -->
+
 
     <!-- Advanced Option Panel -->
     <a ng-click="advancedVisible=true" ng-hide="advancedVisible">
@@ -1777,30 +1813,24 @@
 
     <section ng-hide="!advancedVisible">
 
-      <!-- Gas Price -->
-      <div class="row form-group" ng-show="gasPriceVisible">
-        <div class="col-xs-12">
+      <!-- Gas Limit -->
+      <div class="row form-group">
+        <div class="col-sm-11 clearfix ">
           <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="x_GasPriceDesc"></p>
+            <p class="account-help-text" translate="x_GasLimitDesc"></p>
           </a>
-          <label style="width: 100%;"> <span translate="x_GasPrice"> Gas Price: </span></label>
-        </div>
-        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
+          <label translate="x_GasLimit"> Gas Limit: </label>
           <input type="text"
                  class="form-control"
-                 placeholder="50"
-                 ng-model="tx.gasPrice"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
-          <div class="input-group-btn">
-            <a style="min-width: 170px" class="btn btn-default">
-              <strong> GWEI </strong>
-            </a>
-          </div>
+                 placeholder="21000"
+                 ng-model="tx.gasLimit"
+                 ng-change="gasLimitChanged=true"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
-      <!-- / Gas Price -->
+      <!-- / Gas Limit -->
 
       <!-- Nonce -->
       <div class="row form-group" ng-show="nonceVisible">
@@ -1849,12 +1879,23 @@
       </div>
     </div>
 
-    <div class="row form-group">
-      <div class="col-xs-12 clearfix">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
-      </div>
+
+
+    <!--offline signer -->
+    <div class="clearfix form-group">
+
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}"> Send Transaction </a>
     </div>
 
+    <!-- Decrypt -->
+    <article class="clearfix">
+      <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
+    </article>
+
+    <!-- /decrypt -->
+
+
+    <!-- transaction information -->
     <div class="row form-group" ng-show="showRaw">
       <div class="col-sm-6">
         <label translate="TX_Unsigned"> Unsigned Transaction </label>
@@ -1867,10 +1908,11 @@
     </div>
 
     <div class="clearfix form-group" ng-show="showRaw">
-      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#txSend" translate="TX_Send_Short"> Send Transaction </a>
+      <a class="btn btn-primary col-sm-12 {{onlyOffline.isOnline}}" ng-click="confirmSendTx()" translate="{{onlyOffline.onMsg}}">SEND TRANSACTION</a>
     </div>
   </div>
-</section>
+  <!-- / transaction information -->
+  </section>
 <!-- / Content -->
 
 <!-- Sidebar -->
@@ -1894,11 +1936,11 @@
  
 
       
-       <article class="modal fade" id="txSend" tabindex="-1">
+       <article class="modal fade" id="txSend" tabindex="-1" >
   <section class="modal-dialog">
     <section class="modal-content">
 
-      <div class="modal-body">
+      <div class="modal-body" >
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
         <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
@@ -1906,26 +1948,30 @@
         <table class="table text-center"><tbody><tr>
 
           <td>
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()">
           </td>
 
-          <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
-          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode=='ether'" class="mono" ng-model="tx.value">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode!=='ether'" class="mono" ng-model="tokenTx.value">-><br /><h4 class="text-danger">{{tokenTx.value}} {{unitReadable}}</h4></td>
 
           <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to" ></div>
+
           </td>
           <td ng-show="tx.sendMode!=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+            <div>{{tokenTx.to}}</div>
           </td>
 
-        </tr></tbody></table>
+        </tr>
+        </tbody>
+      </table>
 
         <br />
-
+        <p var-name="tx.sendMode"></p>
         <p>
           <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}} </strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
           <br />
           <span translate="SENDModal_Content_2">to address</span>
@@ -2947,9 +2993,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </div>
 
   <!-- Sign TX Button (once wallet has been unlocked) -->
-  <div class="form-group">
-    <a class="btn btn-info btn-block" ng-click="generateTx()" ng-show="wd" translate="TX_Sign"> Sign Transaction </a>
-  </div>
 
   <!-- TXs -->
   <section class="row" ng-show="showRaw">
@@ -3010,8 +3053,9 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <!--wallet decrypt-->
   <article class="form-group" ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
         <wallet-decrypt-cx-drtv></wallet-decrypt-cx-drtv>   
+    </article>
       
-  </article>
+
 
   <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
 

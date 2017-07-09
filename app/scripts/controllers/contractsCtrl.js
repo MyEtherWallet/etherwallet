@@ -1,8 +1,9 @@
 'use strict';
-var contractsCtrl = function($scope, $sce, walletService) {
+var contractsCtrl = function($scope, $sce, $interval, walletService) {
     $scope.ajaxReq = ajaxReq;
     walletService.wallet = null;
     $scope.visibility = "interactView";
+    $scope.offlineSignModal = new Modal(document.getElementById('offlineDecrypt'));
     $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
     $scope.showReadWrite = false;
     $scope.sendTxModal = new Modal(document.getElementById('deployContract'));
@@ -65,6 +66,39 @@ var contractsCtrl = function($scope, $sce, walletService) {
             }
         }
     });
+    $interval(function(){
+      if (navigator.onLine) {
+        $scope.onlyOffline ={
+          isOnline  : '',
+          isOffline : 'disabled',
+          offMsg    : 'ERROR_38',
+          onMsg     : 'SEND_trans'
+      };
+      if ($scope.wd == false) {
+      $scope.wallet = walletService.wallet;
+      $scope.wd = true;
+      $scope.showEnc = walletService.password != '';
+      if (walletService.wallet.type == "default") $scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
+      if (walletService.password != '') {
+          $scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3(walletService.password, {
+              kdf: globalFuncs.kdf,
+              n: globalFuncs.scrypt.n
+          }));
+          $scope.encFileName = $scope.wallet.getV3Filename();
+      }
+      $scope.wallet.setBalance();
+      $scope.wallet.setTokens();
+    }
+    } else {
+      $scope.wd = true;
+      $scope.onlyOffline = {
+        isOnline : 'disabled',
+        isOffline :'',
+        offMsg    : 'TX_Sign_Offline',
+        onMsg     : 'ERROR_39'      
+      }
+     }
+    },5000);
     $scope.selectExistingAbi = function(index) {
         $scope.selectedAbi = ajaxReq.abiList[index];
         $scope.contract.address = $scope.selectedAbi.address;

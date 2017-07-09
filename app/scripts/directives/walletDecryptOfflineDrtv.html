@@ -1,4 +1,13 @@
-<article class="block decrypt-drtv clearfix" ng-controller='walletDecryptCtrl as $crtl'>
+<article class="modal fade" id="offlineDecrypt" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h2 class="modal-title text-danger" translate="SEND_O_Modal_Title">Warning!</h2>
+
+<article class="block decrypt-drtv clearfix" ng-controller='walletDecryptOfflineCtrl as $crtl'>
 
   <!-- Column 1 - Select Type of Key -->
   <section class="col-md-4 col-sm-6">
@@ -15,10 +24,6 @@
       <input aria-flowto="aria3" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" />
       <span translate="x_Mnemonic">Mnemonic Phrase</span>
     </label>
-    <label class="radio" style="display: none;" id="showMeTheMoney">
-      <input aria-flowto="aria4" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" />
-      <span translate="x_ParityPhrase">Parity Phrase</span>
-    </label>
     <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
       <input aria-flowto="aria5" type="radio" aria-label="Ledger Nano S hardware wallet" ng-model="walletType" value="ledger" />
       Ledger Nano S
@@ -27,16 +32,12 @@
       <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
       TREZOR
     </label>
-    <label class="radio" ng-show="globalService.currentTab==globalService.tabs.walletView.id || globalService.currentTab==globalService.tabs.txSend.id">
-      <input aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
-      <span ng-show="globalService.currentTab==globalService.tabs.walletView.id">View with Address Only</span>
-      <span ng-show="globalService.currentTab==globalService.tabs.txSend.id">Offline TX (Address Only)</span>
-    </label>
+
   </section>
   <!-- Column 1 - Select Type of Key -->
 
   <!-- Column 2 - Unlock That Key -->
-  <section class="col-md-4 col-sm-6">
+  <section class="col-md-5 col-sm-6">
 
     <!-- if selected upload -->
     <div id="selectedUploadKey" ng-if="walletType=='fileupload'">
@@ -204,7 +205,7 @@
   <!-- / Column 2 - Unlock That Key -->
 
   <!-- Column 3 - The Unlock Button -->
-  <section class="col-md-4 col-sm-6" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType=='ledger'||walletType=='trezor'||showAOnly||showParityDecrypt">
+  <section class="col-md-3 col-sm-6" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType=='ledger'||walletType=='trezor'||showAOnly||showParityDecrypt">
 
 
     <div class="form-group" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||showParityDecrypt">
@@ -433,4 +434,16 @@
   </article>
 
   <!-- / MODAL -->
+  <!--Generate -->
+  <div class="row form-group">
+    <div class="col-xs-12 clearfix">
+      <a ng-show="onlyOffline.offMsg == 'WALL_View'" class="btn btn-info btn-block {{onlyOffline.isOffline}}" ng-click="cleanClose()" translate="WALL_View"> Unlock Wallet </a>
+      <a ng-show="onlyOffline.offMsg == 'TX_Sign_Offline'" class="btn btn-info btn-block {{onlyOffline.isOffline}}" ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
+    </div>
+  </div>
+  <!-- /Generate -->
+  </div>
+  </section>
+</section>
+
 </article>

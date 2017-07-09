@@ -175,3 +175,4 @@
         <h5>Please unlock the address {{ txInfo.from }}. Only this address can replace a TX.</h5>
       </div>
     </section>
+</main>

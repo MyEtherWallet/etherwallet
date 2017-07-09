@@ -10,14 +10,14 @@
 
         <div class="col-sm-8 col-sm-offset-2">
           <label> Signed Transaction </label>
-          <textarea class="form-control" rows="5" ></textarea>
-          <a class="btn btn-primary"> Broadcast Transaction </a>
-        </div>
+          <textarea class="form-control" rows="5" ng-model="signedTx" ></textarea>
+          <a class="btn btn-primary" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
 
+        </div>
       </article>
 
   </div>
 
-
-
+  @@if (site === 'mew' ) { @@include( './txBroadcast-modal.tpl', { "site": "mew" } ) }
+  @@if (site === 'mew' ) { @@include( './txBroadcast-modal.tpl', { "site": "cx" } ) }
 </main>

@@ -11,7 +11,7 @@ ACCOUNT_Balance             : 'Account Balance ',
 ACCOUNT_Info                : 'Account Information ',
 ADDR_                       : 'Your Address ',
 ADDR_Desc                   : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere.',
-ADDR_From                   : 'Sending Address ',
+ADDR_From                   : 'Sending From Address',
 ADDR_Short                  : 'Address ',
 ADDR_To                     : 'To Address ',
 ADDR_Save                   : 'Save your Address',
@@ -88,6 +88,8 @@ ERROR_34                    : 'The name you are attempting to reveal does not ma
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+ERROR_38                    : 'You must be offline to access private keys.', //38
+ERROR_39                    : 'You must be online to continue.', //39
 ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units ', // 4
 ERROR_5                     : 'Please enter a valid address. ', // 5
 ERROR_6                     : 'Please enter a valid password. ', // 6
@@ -171,7 +173,10 @@ SENDModal_Content_2         : 'to address ',
 SENDModal_Content_3         : 'Are you sure you want to do this? ',
 SENDModal_Content_4         : 'NOTE: If you encounter an error, you most likely need to add ether to your account to cover the gas cost of sending tokens. Gas is paid in ether. ',
 SENDModal_No                : 'No, get me out of here! ',
+SENDModal_OK                : 'Okay, get me out of here! ',
 SENDModal_Title             : 'Warning! ',
+SEND_O_Modal_Title          : 'WARNING! DO NOT GO BACK ONLINE YET!',
+SEND_trans                  : 'Broadcast Transaction',
 SENDModal_Yes               : 'Yes, I am sure! Make transaction. ',
 SIDEBAR_Equiv               : 'Equivalent Values ',
 SUCCESS_1                   : 'Valid address ',
@@ -220,6 +225,7 @@ TX_Send_All                 : 'Send Entire Balance ',
 TX_Send_Short               : 'Send',
 TX_Send_Title               : 'Send Transaction ',
 TX_Send_Desc                : 'Enter the address of the account you will be sending from to get started. You will sign your transaction with your `private key` or `keystore file + password` right before you send.',
+TX_Sign_Offline             : 'Sign Transaction Offline',
 TX_Sign                     : 'Sign Transaction ',
 TX_Signed                   : 'Signed Transaction ',
 TX_TXFee                    : 'TX Fee',

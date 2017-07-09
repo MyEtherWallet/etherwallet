@@ -195,6 +195,7 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
         ajaxReq.getTransactionData(fromAdd, function(data) {
             if (data.error) throw data.msg;
             data = data.data;
+
             var gasPrice = new BigNumber(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice))).times(gasLimit);
             var maxVal = new BigNumber(data.balance).minus(gasPrice);
             maxVal = etherUnits.toEther(maxVal, 'wei') < 0 ? 0 : etherUnits.toEther(maxVal, 'wei');

@@ -1,5 +1,5 @@
 'use strict';
-var walletDecryptCtrl = function($scope, $sce, walletService) {
+var walletDecryptOfflineCtrl = function($scope, $sce, walletService) {
     var hval = window.location.hash;
     walletService.walletType = "";
     $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showAOnly = $scope.showParityDecrypt = false;
@@ -26,7 +26,7 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
         trezorPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
-    $scope.mnemonicModel = document.getElementById('mnemonicModel').length > -1 ? new Modal(document.getElementById('mnemonicModel')) : null;
+    $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
     $scope.$watch('ajaxReq.type', function() {
         $scope.nodeType = $scope.ajaxReq.type;
     });
@@ -178,7 +178,6 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
             $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
         }
         if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
-        $scope.offlineSignModal.close();
     };
 
     $scope.decryptAddressOnly = function() {
@@ -196,9 +195,9 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
                 setBalance: tempWallet.setBalance,
                 setTokens: tempWallet.setTokens
             }
+            $scope.notifier.info(globalFuncs.successMsgs[1]); /* TODO: Update success Message */
             walletService.walletType = "addressOnly";
             walletService.wallet = $scope.wallet;
-            $scope.offlineSignModal.close();
         }
     }
     $scope.HWWalletCreate = function(publicKey, chainCode, ledger, path) {
@@ -231,13 +230,11 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
         var app = new ledgerEth($scope.ledger);
         var path = $scope.getLedgerPath();
         app.getAddress(path, $scope.ledgerCallback, false, true);
-        $scope.offlineSignModal.close();
     };
     $scope.scanTrezor = function() {
         // trezor is using the path without change level id
         var path = $scope.getTrezorPath();
         TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.4.0');
-        $scope.offlineSignModal.close();
     };
     $scope.getLedgerPath = function() {
         return $scope.HDWallet.dPath;
@@ -254,4 +251,4 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
         return key;
     }
 };
-module.exports = walletDecryptCtrl;
+module.exports = walletDecryptOfflineCtrl;

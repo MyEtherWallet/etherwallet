@@ -1,7 +1,7 @@
 <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.txSend.id" ng-controller='txSendCtrl' ng-cloak >
 
   <!-- Block : Title -->
-  <article class="block__title" ng-controller="walletDecryptCtrl">
+  <article class="block__title" ng-controller="walletDecryptOfflineCtrl">
 
     <!-- Title -->
     <h1 translate="TX_Send_Title"> Send Ether &amp; Tokens </h1>
@@ -18,7 +18,8 @@
            ng-change="onAddressChange()"
            ng-class="Validator.isValidAddress($parent.$parent.addressOnly) ? 'is-valid' : 'is-invalid'"
            ng-model="$parent.$parent.addressOnly"
-           placeholder="{{ 'ADDR_' | translate }}" />
+           placeholder="{{ 'ADDR_' | translate }}"
+           id="addrChecker" />
 
     <!-- Button -->
     <button tabindex="0"
@@ -38,6 +39,7 @@
 
     @@if (site === 'mew' ) { @@include( './txSend-modal.tpl',   { "site": "mew" } ) }
     @@if (site === 'cx'  ) { @@include( './txSend-modal.tpl',   { "site": "cx"  } ) }
+
   </article>
 
 

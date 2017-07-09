@@ -9,17 +9,13 @@
 
     @@include( '../includes/txView.tpl',         { "site": "mew" } )
 
-    @@include( '../includes/txSign.tpl',         { "site": "mew" } )
-
     @@include( '../includes/txBroadcast.tpl',    { "site": "mew" } )
-
 
     @@include( '../includes/swap.tpl',           { "site": "mew" } )
 
     @@include( '../includes/ens.tpl',            { "site": "mew" } )
 
     @@include( '../includes/contracts.tpl',      { "site": "mew" } )
-
 
     @@include( '../includes/walletGenerate.tpl', { "site": "mew" } )
 
@@ -35,13 +31,16 @@
   @@include('../includes/alerts.tpl')
 
 
-  <!--
-  <section class="loading-wrap" ng-hide="1==1">
+
+  <section class="loading-wrap" ng-show="showLoading">
     <div class="loading">
-      <img src="images/loading.gif" />
-      <h1> Loading... </h1>
+     <img src="images/loading2.gif" />
+     <h1> {{loadingMsg.msg}} </h1>
+     <h1> You're accessing MEW from {{loadingMsg.website}}</h1>
+   </div>
+
   </section>
-  -->
+
 
 </section>
 
