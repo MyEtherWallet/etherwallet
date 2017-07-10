@@ -15,9 +15,6 @@
   var pt = require('./pt');
   var ru = require('./ru');
   var ko = require('./ko');
-  //var sk = require('./sk');
-  //var sl = require('./sl');
-  //var sv = require('./sv');
   var tr = require('./tr');
   var vi = require('./vi');
   var zhcn = require('./zhcn');
@@ -40,9 +37,6 @@
   $translateProvider.translations(pt.code, translate.marked(pt.data));
   $translateProvider.translations(ru.code, translate.marked(ru.data));
   $translateProvider.translations(ko.code, translate.marked(ko.data));
-  //$translateProvider.translations(sk.code, translate.marked(sk.data));
-  //$translateProvider.translations(sl.code, translate.marked(sl.data));
-  //$translateProvider.translations(sv.code, translate.marked(sv.data));
   $translateProvider.translations(tr.code, translate.marked(tr.data));
   $translateProvider.translations(vi.code, translate.marked(vi.data));
   $translateProvider.translations(zhcn.code, translate.marked(zhcn.data));
