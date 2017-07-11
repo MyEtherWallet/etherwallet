@@ -1,21 +1,21 @@
 @@include( '../includes/header-embedded.tpl', { "site": "mew" } )
 
+<section ng-controller="headerCtrl">
+
   <section class="container" style="min-height: 50%" ng-controller='genericCtrl'>
 
-  <!-- tab panes -->
-
-    <div class="tab-content" >
+    <div class="tab-content">
 
       @@include( '../includes/walletGenerate.tpl', { "site": "mew" } )
 
+      @@include('../includes/alerts.tpl', { "site": "mew" } )
+
+      @@include('../includes/mew-tips.tpl', { "site": "mew" } )
+
     </div>
-
-    <!-- /tab panes -->
-
-  @@include('../includes/alerts.tpl')
-
 
   </section>
 
+</section>
 
 @@include( '../includes/footer-embedded.tpl', { "site": "mew" } )

@@ -1,5 +1,49 @@
 module.exports = [
 
+'Before sending to a third-party or using a new service, always Google the service name + "scam" or "reviews"',
+
+'Bookmark your crypto sites. Use those bookmarks and only those.',
+
+'Don’t click any link regarding crypto, money, banking. Always navigate directly.',
+
+'Don’t click on advertisements.',
+
+'Always check that you are on the correct URL. (e.g. myetherwallet.com)',
+
+'Do not trust addresses or URLs. Always verify information w/ a secondary source.',
+
+'Never enter your private keys, passwords, sensitive data on a website that you were sent via message',
+
+'Be VERY careful entering your private key on ANY site.',
+
+'Double check the URL: it\'s always https://www.myetherwallet.com.',
+
+'ONLY unlock your wallet when you want to send a transaction.',
+
+'This Chrome Extension warns you if you go to a malicious site: https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn',
+
+'We have the MyEtherWallet Chrome Extension: https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm',
+
+'Hardware wallets will protect your keys. Order a TREZOR or Ledger today!',
+
+'Always double-check what you are sending, how much you are sending & what address you are sending to.',
+
+'Send a test transaction first & make sure it arrives at intended destination before sending all the ETH.',
+
+'Back up your key in a separate location BEFORE sending funds to it.',
+
+'You can run MEW locally instead of trusting our URL.',
+
+'Do not ever run remote-access software (e.g. TeamViewer)',
+
+'Don\'t trust DMs or Emails. We will never DM you or email except in response to you.',
+
+'Worried about your device being compromised? Get yourself a Ledger or Trezor Hardware Wallet.',
+
+'Don\'t enter your private key to check your balance. Use etherscan.io or ethplorer.io'
+
+/*
+
 '[The MEW Philosophy] Education is Key: Ethereum, security, privacy, importance of controlling your keys & how the blockchain works.',
 
 '[The MEW Philosophy] Empower the people: Give people the ability to interact with the Ethereum blockchain without having to run a full node.',
@@ -12,19 +56,7 @@ module.exports = [
 
 '[The MEW Philosophy] Private: No tracking, ads, demographics! We don\'t know who you are, what you do on our site, nor where you are.',
 
-'Always double-check what you are sending, how much you are sending & what address you are sending to.',
-
-'Always send a small amount of ETH to test first & make sure it arrives at intended destination before sending all the ETH.',
-
-'Before sending to a third-party or using a new service, always Google the service name + "scam" or "reviews.',
-
-'Bookmark your crypto sites. Use those bookmarks and only those.',
-
 'Brain wallets (where you choose the seed) are not secure. Human brains cannot generate entropy. Don\'t use brain wallets.',
-
-'Cold storage is the best storage.',
-
-'Do not ever run remote-access software (e.g. TeamViewer).',
 
 'Do not trust any address except the one posted on the official site.',
 
@@ -33,12 +65,6 @@ module.exports = [
 'Don\'t click on links from Slackbots or Slack DMs.',
 
 'Don\'t ever trade / buy / sell ETH via Paypal. They can file a dispute and take your money 90 days later.',
-
-'Don’t click any link regarding crypto, money, banking. Always navigate directly',
-
-'Don’t click on advertisements.',
-
-'Double check the URL: it\'s always https://www.myetherwallet.com.',
 
 'Follow us on Twitter for important alerts: https://twitter.com/myetherwallet.',
 
@@ -72,10 +98,6 @@ module.exports = [
 
 'No one is giving you free or discounted ETH. Even for completing a survey.',
 
-'Order a TREZOR today: https://trezor.io/?a=myetherwallet.com.',
-
-'Order, or pre-order, a Ledger today: https://www.ledgerwallet.com/r/fa4b?path=/products/.',
-
 'Our helpers page is full of nifty helpers, like WEI <-> ETH converter and debugging ENS reveals! https://www.myetherwallet.com/helpers.htm.',
 
 'Phishers try to trick you with scary messages. Don\'t fall for them',
@@ -83,8 +105,6 @@ module.exports = [
 'Private Key (unencrypted): The unencrypted text version of your private key, meaning no PW is necessary. Keep it *offline*, like on *paper*!.',
 
 'Pro-tip: When asking for help, be nice. Grouchy-pants get helped slower than a 1 GWEI TX on a token sale day. 👖🔥 .',
-
-'Save / back up your private key in a separate location BEFORE sending ETH/Tokens to it.',
 
 'See what gas price you should use at http://ethgasstation.info.',
 
@@ -94,7 +114,7 @@ module.exports = [
 
 'The TX fee = gas price * gas limit & is paid to miners for including your TX in a block. Higher gas price = faster TX, but more expensive.',
 
-'Turn on 2FA for *everything* today. Turn on 2FA for everything. Go do it. Right now.',
+'Turn on 2FA for *everything* today. Go do it. Right now.',
 
 'Use the version of your address that has uppercase letters. It has a checksum.',
 
@@ -102,16 +122,9 @@ module.exports = [
 
 'Want to dive deeper? Check out this list: https://github.com/Scanate/EthList/blob/master/README.md.',
 
-'We will never DM you or email your without you emailing / DMing us first. Don\'t trust DMs or Emails',
-
-'Worried about your device being compromised? Get yourself a Ledger or Trezor Hardware Wallet.',
-
-'Worried about your device being compromised? Get yourself hardware wallet.',
-
-'You can check your balance & TXs on https://etherscan.io/',
-
 'You can connect to MEW\'s, Etherscan\'s, Infura\'s or *your own* nodes via MyEtherWallet.com. Click the dropdown in the top-right.',
 
 'You can turn your unencrypted private key into a keystore file via the MyEtherWallet Chrome Extension.'
+*/
 
 ]

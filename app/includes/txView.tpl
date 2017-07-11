@@ -8,10 +8,10 @@
   <h1 translate="TX_View"> View Transaction Status </h1>
 
   <!-- Desc -->
-  <p translate="VIEWTX_Desc"></p>
 
-    <!-- Label -->
-    <h4 translate="TX_Hash"> TX Hash </h4>
+  <!-- Label -->
+  <h4 translate="TX_Hash"> TX Hash </h4>
+  <p translate="VIEWTX_Desc"></p>
 
   <!-- Input -->
   <input

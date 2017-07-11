@@ -1,3 +1,13 @@
+<section class="pre-footer">
+  <div class="container">
+    <p translate="WARN_10">MyEtherWallet.com is a client-side interface &amp; does not hold your keys. We cannot access accounts, recover keys, reset passwords, nor reverse transactions.</p>
+    <p>
+      <span translate="WARN_11">If you go to a fake MyEtherWallet.com, they can. Check the URL. Use a bookmark.</span>
+      <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="WARN_12"> You are responsible for your security. </a>
+    </p>
+  </div>
+</section>
+
 <footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
   <article class="block__wrap" style="max-width: 1780px; margin: auto;">
@@ -10,11 +20,11 @@
 
       <p><span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.</p>
 
+      <p><a href="https://www.myetherwallet.com/pushtx.html" target="_blank" rel="noopener" role="link" tabindex="0">Broadcast TX</a></p>
+
       <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">Sign Message</a></p>
 
       <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">Helpers &amp; ENS Debugging</a></p>
-
-      <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
 
     </section>
 
@@ -88,10 +98,6 @@
 
 </div>
 
-@@if (site === 'mew' ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "mew" } ) }
-@@if (site === 'cx'  ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "cx"  } ) }
-
-
 <script type='application/ld+json'>
 {
   "@context":"http://schema.org",
@@ -114,6 +120,11 @@
 </script>
 
 </footer>
+
+@@if (site === 'mew' ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "mew" } ) }
+@@if (site === 'cx'  ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "cx"  } ) }
+
+
 </main>
 </body>
 </html>

@@ -151,7 +151,7 @@
 
         <p class="small"><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node" target="_blank" rel="noopener"> Instructions can be found here </a></p>
 
-        <div ng-show="browserProtocol=='https:'" class="alert alert-danger small" translate="NODE_Warning">
+        <div ng-show="browserProtocol=='https:'" class="alert alert-warning small" translate="WARN_05">
           Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to your local node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
         </div>
 
@@ -724,13 +724,19 @@
   <article class="block__title" ng-controller="walletDecryptOfflineCtrl">
 
     <!-- Title -->
-    <h1 translate="TX_Send_Title"> Send Ether &amp; Tokens </h1>
+    <h1 translate="TX_Send_Title"> Send Transaction </h1>
 
     <!-- Desc -->
-    <p translate="TX_Send_Desc"></p>
+    <p>
+      <span translate="TX_Send_Desc_1">1) Generate TX: Enter your address and what you would like to send.</span>
+      <br />
+      <span translate="TX_Send_Desc_2">2) Sign TX: Use your `keystore file + password` or `private key` to sign the transaction.</span>
+      <br />
+      <span translate="TX_Send_Desc_3">3) Broadcast TX: Send the signed TX off to the network to be mined.</span>
+    </p>
 
     <!-- Label -->
-    <h4 translate="ADDR_From"> Sending Address </h4>
+    <h4 translate="ADDR_From"> From Address </h4>
 
     <!-- Input -->
     <input type="text"
@@ -791,23 +797,25 @@
 
     <!-- Gas Price -->
     <div class="row form-group" ng-show="gasPriceVisible">
-      <div class="col-xs-12">
+      <div class="col-sm-11">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_GasPriceDesc"></p>
         </a>
-        <label style="width: 100%;"> <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei</label>
+        <label style="width: 100%;">
+          <span translate="x_GasPrice" > Gas Price </span>
+          <a href="http://ethgasstation.info/" target="_blank" rel="noopener">{{gas.value}} Gwei</a>
+        </label>
+        <input type="range"
+              ng-model="gas.value"
+              min="{{gas.min}}"
+              max="{{gas.max}"
+              steps="1"
+              ng-change="gasPriceChanged()"/>
+        <p class="col-xs-4 text-left">Not So Fast</p>
+        <p class="col-xs-4 text-center">Fast</p>
+        <p class="col-xs-4 text-right">Fast AF</p>
       </div>
-          <input type="range"
-                ng-model="gas.value"
-                min="{{gas.min}}"
-                max="{{gas.max}"
-                steps="1"
-                ng-change="gasPriceChanged()"/>
-
-      <p class="small col-xs-4 text-left">Not So Fast</p>
-      <p class="small col-xs-4 text-center">Fast</p>
-      <p class="small col-xs-4 text-right">Fast AF</p>
     </div>
     <!-- / Gas Price -->
 
@@ -886,11 +894,11 @@
     </div>
 
 
-
     <!--offline signer -->
     <div class="clearfix form-group">
-
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}">
+        Send Transaction
+      </a>
     </div>
 
     <!-- Decrypt -->
@@ -1021,10 +1029,10 @@
   <h1 translate="TX_View"> View Transaction Status </h1>
 
   <!-- Desc -->
-  <p translate="VIEWTX_Desc"></p>
 
-    <!-- Label -->
-    <h4 translate="TX_Hash"> TX Hash </h4>
+  <!-- Label -->
+  <h4 translate="TX_Hash"> TX Hash </h4>
+  <p translate="VIEWTX_Desc"></p>
 
   <!-- Input -->
   <input
@@ -1215,23 +1223,25 @@
 
     <!-- Gas Price -->
     <div class="row form-group" ng-show="gasPriceVisible">
-      <div class="col-xs-12">
+      <div class="col-sm-11">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_GasPriceDesc"></p>
         </a>
-        <label style="width: 100%;"> <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei</label>
+        <label style="width: 100%;">
+          <span translate="x_GasPrice" > Gas Price </span>
+          <a href="http://ethgasstation.info/" target="_blank" rel="noopener">{{gas.value}} Gwei</a>
+        </label>
+        <input type="range"
+              ng-model="gas.value"
+              min="{{gas.min}}"
+              max="{{gas.max}"
+              steps="1"
+              ng-change="gasPriceChanged()"/>
+        <p class="col-xs-4 text-left">Not So Fast</p>
+        <p class="col-xs-4 text-center">Fast</p>
+        <p class="col-xs-4 text-right">Fast AF</p>
       </div>
-          <input type="range"
-                ng-model="gas.value"
-                min="{{gas.min}}"
-                max="{{gas.max}"
-                steps="1"
-                ng-change="gasPriceChanged()"/>
-
-      <p class="small col-xs-4 text-left">Not So Fast</p>
-      <p class="small col-xs-4 text-center">Fast</p>
-      <p class="small col-xs-4 text-right">Fast AF</p>
     </div>
     <!-- / Gas Price -->
 
@@ -1310,11 +1320,11 @@
     </div>
 
 
-
     <!--offline signer -->
     <div class="clearfix form-group">
-
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}">
+        Send Transaction
+      </a>
     </div>
 
     <!-- Decrypt -->
@@ -1785,23 +1795,25 @@
 
     <!-- Gas Price -->
     <div class="row form-group" ng-show="gasPriceVisible">
-      <div class="col-xs-12">
+      <div class="col-sm-11">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_GasPriceDesc"></p>
         </a>
-        <label style="width: 100%;"> <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei</label>
+        <label style="width: 100%;">
+          <span translate="x_GasPrice" > Gas Price </span>
+          <a href="http://ethgasstation.info/" target="_blank" rel="noopener">{{gas.value}} Gwei</a>
+        </label>
+        <input type="range"
+              ng-model="gas.value"
+              min="{{gas.min}}"
+              max="{{gas.max}"
+              steps="1"
+              ng-change="gasPriceChanged()"/>
+        <p class="col-xs-4 text-left">Not So Fast</p>
+        <p class="col-xs-4 text-center">Fast</p>
+        <p class="col-xs-4 text-right">Fast AF</p>
       </div>
-          <input type="range"
-                ng-model="gas.value"
-                min="{{gas.min}}"
-                max="{{gas.max}"
-                steps="1"
-                ng-change="gasPriceChanged()"/>
-
-      <p class="small col-xs-4 text-left">Not So Fast</p>
-      <p class="small col-xs-4 text-center">Fast</p>
-      <p class="small col-xs-4 text-right">Fast AF</p>
     </div>
     <!-- / Gas Price -->
 
@@ -1880,11 +1892,11 @@
     </div>
 
 
-
     <!--offline signer -->
     <div class="clearfix form-group">
-
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}">
+        Send Transaction
+      </a>
     </div>
 
     <!-- Decrypt -->
@@ -3204,6 +3216,16 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 </section>
 
+<section class="pre-footer">
+  <div class="container">
+    <p translate="WARN_10">MyEtherWallet.com is a client-side interface &amp; does not hold your keys. We cannot access accounts, recover keys, reset passwords, nor reverse transactions.</p>
+    <p>
+      <span translate="WARN_11">If you go to a fake MyEtherWallet.com, they can. Check the URL. Use a bookmark.</span>
+      <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="WARN_12"> You are responsible for your security. </a>
+    </p>
+  </div>
+</section>
+
 <footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
   <article class="block__wrap" style="max-width: 1780px; margin: auto;">
@@ -3216,11 +3238,11 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
       <p><span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.</p>
 
+      <p><a href="https://www.myetherwallet.com/pushtx.html" target="_blank" rel="noopener" role="link" tabindex="0">Broadcast TX</a></p>
+
       <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">Sign Message</a></p>
 
       <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">Helpers &amp; ENS Debugging</a></p>
-
-      <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
 
     </section>
 
@@ -3294,41 +3316,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 </div>
 
-
- <article class="modal fade" id="disclaimerModal" tabindex="-1">
-  <section class="modal-dialog">
-    <section class="modal-content">
-
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <h2 class="modal-title text-info" translate="FOOTER_4">Disclaimer</h2>
-
-        <p class="small"><strong> Translations of MyEtherWallet: </strong> The community is doing an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
-
-        <p class="small"><strong>Always backup your keys: </strong> MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</p>
-
-        <p class="small"><strong>We are not responsible for any loss: </strong> Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development. While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but we are not responsible for the lost Ether.</p>
-
-        <p class="small"><strong>MIT License</strong> Copyright &copy; 2015-2017 MyEtherWallet LLC</p>
-
-        <p class="small">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-
-        <p class="small">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-
-        <p class="small"><strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</strong></p>
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn btn-default" data-dismiss="modal">Okay</button>
-      </div>
-
-    </section>
-  </section>
-</article>
- 
-
-
 <script type='application/ld+json'>
 {
   "@context":"http://schema.org",
@@ -3351,6 +3338,44 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 </script>
 
 </footer>
+
+
+ <article class="modal fade" id="disclaimerModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h2 class="modal-title text-info" translate="FOOTER_4">Disclaimer</h2>
+
+        <p class="small"><strong>Be safe &amp; secure:</strong> <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener"> We highly recommend that you read our guide on How to Prevent Loss &amp; Theft for some recommendations on how to be proactive about your security.</a></p>
+
+        <p class="small"><strong>Always backup your keys: </strong> MyEtherWallet.com &amp; MyEtherWallet CX are not "web wallets". You do not create an account or give us your funds to hold onto. No data leaves your computer / your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</p>
+
+        <p class="small"><strong>We are not responsible for any loss: </strong> Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development. While we have thoroughly tested &amp; tens of thousands of wallets have been successfully created by people all over the globe, there is always the possibility something unexpected happens that causes your funds to be lost. Please do not invest more than you are willing to lose, and please be careful.</p>
+
+        <p class="small"><strong> Translations of MyEtherWallet: </strong> The community has done an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
+
+        <p class="small"><strong>MIT License</strong> Copyright &copy; 2015-2017 MyEtherWallet LLC</p>
+
+        <p class="small">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+        <p class="small">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+        <p class="small"><strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</strong></p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Okay</button>
+      </div>
+
+    </section>
+  </section>
+</article>
+ 
+
+
 </main>
 </body>
 </html>

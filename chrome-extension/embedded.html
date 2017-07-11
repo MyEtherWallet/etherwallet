@@ -37,11 +37,11 @@
 </header>
 
 
+<section ng-controller="headerCtrl">
+
   <section class="container" style="min-height: 50%" ng-controller='genericCtrl'>
 
-  <!-- tab panes -->
-
-    <div class="tab-content" >
+    <div class="tab-content">
 
       <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.walletGenerate.id" ng-controller='walletGenerateCtrl' role="main" ng-cloak>
 
@@ -315,11 +315,7 @@
 </main>
 
 
-    </div>
-
-    <!-- /tab panes -->
-
-  <div data-ng-repeat="alert in notifier.alerts">
+      <div data-ng-repeat="alert in notifier.alerts">
   <div class="alert popup alert-{{alert.type}} animated-show-hide"
        style="bottom: {{55*$index}}px; z-index: {{999-$index}};">
     <div class="container">
@@ -330,9 +326,22 @@
 </div>
 
 
+        <section class="loading-wrap" ng-show="showLoading">
+    <div class="loading">
+     Quicktip
+     <br />
+     <img src="images/myetherwallet-logo.png" />
+     <h2 translate="{{loadingMsg.msg}}"></h2>
+     <h4> You're accessing MEW from {{loadingMsg.website}} </h4>
+   </div>
+  </section>
+
+
+    </div>
 
   </section>
 
+</section>
 
 <footer>
   <div class="container">

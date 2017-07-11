@@ -4,13 +4,19 @@
   <article class="block__title" ng-controller="walletDecryptOfflineCtrl">
 
     <!-- Title -->
-    <h1 translate="TX_Send_Title"> Send Ether &amp; Tokens </h1>
+    <h1 translate="TX_Send_Title"> Send Transaction </h1>
 
     <!-- Desc -->
-    <p translate="TX_Send_Desc"></p>
+    <p>
+      <span translate="TX_Send_Desc_1">1) Generate TX: Enter your address and what you would like to send.</span>
+      <br />
+      <span translate="TX_Send_Desc_2">2) Sign TX: Use your `keystore file + password` or `private key` to sign the transaction.</span>
+      <br />
+      <span translate="TX_Send_Desc_3">3) Broadcast TX: Send the signed TX off to the network to be mined.</span>
+    </p>
 
     <!-- Label -->
-    <h4 translate="ADDR_From"> Sending Address </h4>
+    <h4 translate="ADDR_From"> From Address </h4>
 
     <!-- Input -->
     <input type="text"

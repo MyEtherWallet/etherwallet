@@ -23,28 +23,28 @@ var tabs = {
   txSend: {
     id: 2,
     name: "TX_Send_Title",
-    url: "send-transaction",
-    mew: true,
-    cx: true
-  },
-  txView: {
-    id: 3,
-    name: "TX_View_Short",
-    url: "view-transaction",
+    url: "send",
     mew: true,
     cx: true
   },
   txSign: {
-    id: 4,
+    id: 3,
     name: "TX_Sign",
-    url: "sign-transaction",
+    url: "sign",
     mew: false,
     cx: false
   },
   txBroadcast: {
-    id: 5,
+    id: 4,
     name: "TX_Broadcast",
     url: "broadcast",
+    mew: true,
+    cx: true
+  },
+  txView: {
+    id: 5,
+    name: "TX_View_Short",
+    url: "view-tx",
     mew: true,
     cx: true
   },

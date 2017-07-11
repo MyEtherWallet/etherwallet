@@ -36,11 +36,13 @@
 </section>
 </header>
 
+
 <section ng-controller="headerCtrl">
-    <section class="container" style="min-height: 50%" ng-controller='signMsgCtrl'>
-        <!-- tab panes -->
-        <div class="tab-content">
-            <!-- Sign Message Panel -->
+
+  <section class="container" style="min-height: 50%" ng-controller='signMsgCtrl'>
+
+    <div class="tab-content">
+        <!-- Sign Message Panel -->
   <h2>
     <a translate="MSG_Sign" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
@@ -104,11 +106,12 @@
   </article>
 <!-- / Sign Message Panel -->
 
-          <div ng-show="visibility=='signView' && wallet==null"><wallet-decrypt-drtv></wallet-decrypt-drtv></div>
-        </div>
-        <!-- /tab panes -->
+      <div ng-show="visibility=='signView' && wallet==null">
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      </div>
+    </div>
 
-        <div data-ng-repeat="alert in notifier.alerts">
+    <div data-ng-repeat="alert in notifier.alerts">
   <div class="alert popup alert-{{alert.type}} animated-show-hide"
        style="bottom: {{55*$index}}px; z-index: {{999-$index}};">
     <div class="container">
@@ -119,8 +122,21 @@
 </div>
 
 
-    </section>
+      <section class="loading-wrap" ng-show="showLoading">
+    <div class="loading">
+     Quicktip
+     <br />
+     <img src="images/myetherwallet-logo.png" />
+     <h2 translate="{{loadingMsg.msg}}"></h2>
+     <h4> You're accessing MEW from {{loadingMsg.website}} </h4>
+   </div>
+  </section>
+
+
+  </section>
+
 </section>
+
 <footer>
   <div class="container">
     <p>

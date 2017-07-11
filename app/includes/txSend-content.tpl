@@ -34,23 +34,25 @@
 
     <!-- Gas Price -->
     <div class="row form-group" ng-show="gasPriceVisible">
-      <div class="col-xs-12">
+      <div class="col-sm-11">
         <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
           <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_GasPriceDesc"></p>
         </a>
-        <label style="width: 100%;"> <span translate="x_GasPrice">Gas Price</span>: {{gas.value}} Gwei</label>
+        <label style="width: 100%;">
+          <span translate="x_GasPrice" > Gas Price </span>
+          <a href="http://ethgasstation.info/" target="_blank" rel="noopener">{{gas.value}} Gwei</a>
+        </label>
+        <input type="range"
+              ng-model="gas.value"
+              min="{{gas.min}}"
+              max="{{gas.max}"
+              steps="1"
+              ng-change="gasPriceChanged()"/>
+        <p class="col-xs-4 text-left">Not So Fast</p>
+        <p class="col-xs-4 text-center">Fast</p>
+        <p class="col-xs-4 text-right">Fast AF</p>
       </div>
-          <input type="range"
-                ng-model="gas.value"
-                min="{{gas.min}}"
-                max="{{gas.max}"
-                steps="1"
-                ng-change="gasPriceChanged()"/>
-
-      <p class="small col-xs-4 text-left">Not So Fast</p>
-      <p class="small col-xs-4 text-center">Fast</p>
-      <p class="small col-xs-4 text-right">Fast AF</p>
     </div>
     <!-- / Gas Price -->
 
@@ -129,11 +131,11 @@
     </div>
 
 
-
     <!--offline signer -->
     <div class="clearfix form-group">
-
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}"> Send Transaction </a>
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}">
+        Send Transaction
+      </a>
     </div>
 
     <!-- Decrypt -->
