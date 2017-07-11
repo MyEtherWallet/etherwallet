@@ -5,14 +5,14 @@ ar.code = 'ar';
 ar.data = {
 
 /* New Generics */
-x_CancelReplaceTx           : 'Cancel or Replace Transaction',
-x_CancelTx                  : 'Cancel Transaction',
-x_PasswordDesc              : 'This password * encrypts * your private key. This does not act as a seed to generate your keys. **You will need this password + your private key to unlock your wallet.**',
-x_ReadMore                  : 'Read More',
-x_ReplaceTx                 : 'Replace Transaction',
-x_TransHash                 : 'Transaction Hash',
-x_TXFee                     : 'TX Fee',
-x_TxHash                    : 'TX Hash',
+x_CancelReplaceTx           : 'إلغاء العملية أو استبدالها',
+x_CancelTx                  : 'إلغاء العملية',
+x_PasswordDesc              : 'كلمة السر هذه * تشفر * المفتاح الخاص بك. ولكن هذا لا يعمل كبذور لتوليد المفاتيح الخاصة بك. ** سوف تحتاج إلى كلمة السر هذه بالاضافة الى المفتاح الخاص بك لفتح محفظتك. **',
+x_ReadMore                  : 'قراءة المزيد',
+x_ReplaceTx                 : 'استبدال العملية',
+x_TransHash                 : 'مشفر العملية',
+x_TXFee                     : 'رسوم العملية',
+x_TxHash                    : 'مشفر العملية',
 
 /* Check TX Status */
 NAV_CheckTxStatus           : 'Check TX Status',
