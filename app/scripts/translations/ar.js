@@ -404,9 +404,9 @@ PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 
 /* Tranlsation Info */
 translate_version           : '0.5 ',
-Translator_Desc             : ' ',
-TranslatorName_1            : ' ',
-TranslatorAddr_1            : ' ',
+Translator_Desc             : 'نشكر من قام بالترجمة ',
+TranslatorName_1            : '[bstashio](https://www.myetherwallet.com/?gaslimit=21000&to=0xD8FE791535Ad85D2b0E76e603443C1b39107729F&value=1.0#send-transaction) · ',
+TranslatorAddr_1            : '0xD8FE791535Ad85D2b0E76e603443C1b39107729F ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : ' ',
 TranslatorAddr_2            : ' ',
