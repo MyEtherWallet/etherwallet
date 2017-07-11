@@ -319,7 +319,15 @@ z_TRANSLATE3                : ' ',
 z_TRANSLATE4                : ' ',
 z_TRANSLATE5                : ' ',
 z_TRANSLATEDesc             : ' ',
-z_TRANSLATEVersion          : '4.0'
+z_TRANSLATEVersion          : '4.0',
+
+/* welcome messages */
+
+WELCOME_msg1                : 'welcome msg 1',
+WELCOME_msg2                : 'welcome msg 2',
+WELCOME_msg3                : 'welcome msg 3',
+WELCOME_msg4                : 'welcome msg 4',
+WELCOME_msg5                : 'welcome msg 5'
 
 /* Translation Info [YOUR_NAME](https://www.myetherwallet.com/?gaslimit=21000&to=YOUR_ADDRESS&value=0.1#send-transaction) · */
 

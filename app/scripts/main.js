@@ -48,6 +48,8 @@ var bity                     = require('./bity');
 window.bity                  = bity;
 var ens                      = require('./ens');
 window.ens                   = ens;
+var mewtip                   = require('./mew-tips.js');
+window.mewtip                = mewtip;
 var translate                = require('./translations/translate.js');
 if (IS_CX) {
   var cxFuncs                = require('./cxFuncs');
