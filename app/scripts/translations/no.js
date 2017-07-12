@@ -34,33 +34,33 @@ tx_FoundOnChain_2           : '**Hvis du ser et rødt utropstegn `( ! )` eller `
 tx_FoundOnChain_3           : '**Hvis du ikke ser noen feil, var transaksjonen vellykket.** Dine ETH eller Tokens er der du sendte dem. Hvis du ikke ser disse ETH eller Tokens der du sendte dem, og det har gått mer enn 24 timer, vennligst [kontakt vedkommende service](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Send dem en *lenke* til transaksjonen din og spør dem pent om å se på situasjonen din.',
 
 /* Gen Wallet Updates */
-GEN_Help_1                  : 'Use your',
-GEN_Help_2                  : 'to access your account.',
-GEN_Help_3                  : 'Your device * is * your wallet.',
-GEN_Help_4                  : 'Guides & FAQ',
-GEN_Help_5                  : 'How to Create a Wallet',
-GEN_Help_6                  : 'Getting Started',
-GEN_Help_7                  : 'Keep it safe · Make a backup · Don\'t share it with anyone · Don\'t lose it · It cannot be recovered if you lose it.',
-GEN_Help_8                  : 'Not Downloading a File? ',
-GEN_Help_9                  : 'Try using Google Chrome ',
-GEN_Help_10                 : 'Right click & save file as. Filename: ',
-GEN_Help_11                 : 'Don\'t open this file on your computer ',
-GEN_Help_12                 : 'Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity and other wallet clients.) ',
-GEN_Help_13                 : 'How to Back Up Your Keystore File ',
-GEN_Help_14                 : 'What are these Different Formats? ',
-GEN_Help_15                 : 'Preventing loss &amp; theft of your funds.',
-GEN_Help_16                 : 'What are these Different Formats?',
-GEN_Help_17                 : 'Why Should I?',
-GEN_Help_18                 : 'To have a secondary backup.',
-GEN_Help_19                 : 'In case you ever forget your password.',
-GEN_Help_20                 : 'Cold Storage',
-GET_ConfButton              : 'I understand. Continue.',
-GEN_Label_5                 : 'Save Your `Private Key`. ',
-GEN_Unlock                  : 'Unlock your wallet to see your address',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
-NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
-TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
+GEN_Help_1                  : 'Bruk',
+GEN_Help_2                  : 'for å få tilgang til kontoen din.',
+GEN_Help_3                  : 'Enheten din * er * lommeboken din.',
+GEN_Help_4                  : 'Guider & FAQ',
+GEN_Help_5                  : 'Hvordan opprette en lommebok',
+GEN_Help_6                  : 'Komme i gang',
+GEN_Help_7                  : 'Ta godt vare på det · Lag en sikkerhetskopi · Ikke del den med noen · Ikke mist det · Det kan ikke gjenopprettes hvis du mister det.',
+GEN_Help_8                  : 'Lastes ikke filen ned? ', 
+GEN_Help_9                  : 'Prøv å bruke Google Chrome ',
+GEN_Help_10                 : 'Høyreklikk & velg "lagre linken som". Filnavn: ',
+GEN_Help_11                 : 'Ikke åpne denne filen på datamaskinen din ',
+GEN_Help_12                 : 'Bruk den sammen med passordet du oppga til å låse opp lommeboken din via MyEtherWallet (eller Mist, Geth, Parity og andre lommebok-klienter.) ',
+GEN_Help_13                 : 'Hvordan sikkerhetskopiere Keystore-filen ',
+GEN_Help_14                 : 'Hva er disse ulike formatene? ',
+GEN_Help_15                 : 'Unngå tap &amp; tyveri av midlene dine.',
+GEN_Help_16                 : 'Hva er disse ulike formatene? ',
+GEN_Help_17                 : 'Hvorfor bør jeg gjøre dette?',
+GEN_Help_18                 : 'For å ha en ekstra sikkerhetskopi.',
+GEN_Help_19                 : 'I tilfelle du noen gang glemmer passordet ditt.',
+GEN_Help_20                 : 'Kald-lagring',
+GET_ConfButton              : 'Jeg forstår. Fortsett. ',
+GEN_Label_5                 : 'Lagre din `Private Nøkkel`. ',
+GEN_Unlock                  : 'Lås opp lommeboken for å se adressen. ',
+GAS_PRICE_Desc              : 'Gas-pris er beløpet du betaler per gas-enhet. `Transaksjonsavgift = gas-pris * gas-grense` & betales til "miner-ene" får å inkludere transaksjonen din i en blokk. Høyere gas-pris = raskere transaksjon, men dyrere. Standardinnstillingen er `21 GWEI`. ',
+GAS_LIMIT_Desc              : 'Gas-grense er mengden gas som sendes med transaksjonen din. `Tr.avg.` = gas-pris * gas-grense & betales til "miner-ene" får å inkludere transaksjonen din i en blokk. Å øke dette tallet vil ikke få gjennom transaksjonen din raskere. Ulike typer transaksjoner krever ulik mengde gas. F.eks. koster det `21 000` å sende ETH og ~`200 000` å sende tokens. ',
+NONCE_Desc                  : '"Nonce" er antall transaksjoner som noensinne har blitt sendt fra en gitt adresse. Det sikrer at transaksjoner sendes i riktig rekkefølge, og ikke mer enn én gang. ',
+TXFEE_Desc                  : 'Transaksjonsavgiften betales til "miner-ene" får å inkludere transaksjonen din i en blokk. Det er `gas-grense` * `gas-pris`. [Du kan regne om GWEI -> ETH her](https://www.myetherwallet.com/helpers.html)',
 
 
 
@@ -71,7 +71,7 @@ NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Kontrakt ',
 NAV_DeployContract          : 'Utplasser kontrakt ',
 NAV_ENS                     : 'ENS',
-NAV_GenerateWallet_alt      : 'New Wallet ',
+NAV_GenerateWallet_alt      : 'Ny lommebok ',
 NAV_GenerateWallet          : 'Opprett lommebok ',
 NAV_Help                    : 'Hjelp ',
 NAV_InteractContract        : 'Samhandle med Kontrakt ',
@@ -87,7 +87,7 @@ NAV_YourWallets             : 'Dine lommebøker ',
 
 /* General */
 x_Access                    : 'Åpne ',
-x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. Du kjenner kanskje dette som ditt "kontonummer" eller din "offentlige nøkkel". Dette er informasjonen som du sender til folk så de kan sende deg ether (en lang rekke tilfeldige tall og bokstaver som starter med "0x"). Ikonet er en enkel måte å kjenne igjen adressen din på. ',
+x_AddessDesc                : 'Adressen din, også kalt `Kontonummer` eller `Offentlig nøkkel`, er den informasjonen du deler med folk slik at de kan sende deg ether eller tokens. Finn det fargerike adresse-ikonet. Vær sikker på at det stemmer overens med ikonet på papir-lommeboken din, og ellers når du oppgir adressen noe sted. ',
 x_Address                   : 'Din adresse ',
 x_Cancel                    : 'x_Annuler ',
 x_CSV                       : 'CSV-fil (ukryptert) ',
@@ -347,11 +347,11 @@ ERROR_3                     : 'Dette er ikke en gyldig lommebok-fil. ',
 ERROR_4                     : 'Denne enheten eksisterer ikke, vennligst benytt en av de følgende enhetene ',
 ERROR_5                     : 'Ugyldig adresse. ',
 ERROR_6                     : 'Ugyldig passord. ',
-ERROR_7                     : 'Ugyldig beløp. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Ugyldig gas-grense. (Must be integer. Try 21000-4000000.) ', // 8
-ERROR_9                     : 'Ugyldig dataverdi. (Must be hex.) ', // 9
-ERROR_10                    : 'Ugyldig gas-mengde. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
-ERROR_11                    : 'Ugyldig nonce. (Must be integer.) ', // 11
+ERROR_7                     : 'Ugyldig beløp. (Må være heltall. Prøv 0-18.) ', // 7
+ERROR_8                     : 'Ugyldig gas-grense. (Må være heltall. Prøv 21000-4000000.) ', // 8
+ERROR_9                     : 'Ugyldig dataverdi. (Må være hex.) ', // 9
+ERROR_10                    : 'Ugyldig gas-mengde. (Må være heltall. Prøv 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Ugyldig nonce. (Må være heltall.) ', // 11
 ERROR_12                    : 'Ugyldig signert transaksjon. ',
 ERROR_13                    : 'En lommebok med dette kallenavnet eksisterer allerede. ',
 ERROR_14                    : 'Lommebok ikke funnet. ',
@@ -372,10 +372,10 @@ ERROR_28                    : '**Du trenger din Keystore-fil & passord eller din
 ERROR_29                    : 'Vennligst oppgi gyldig brukernavn og passord ',
 ERROR_30                    : 'Vennligst oppgi et gyldig ENS-navn ',
 ERROR_31                    : 'Ugyldig hemmelig frase ',
-ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte.  Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte.  Last inn siden på nytt, prøv en annen node (øverste høyre hjørnet), sjekk brannmur-innstillingene. Hvis du bruker din egen node, sjekk konfigurasjonen.', // 32
 ERROR_33                    : 'Lommeboken du har låst opp stemmer ikke overens med eierens adresse. ', // 33
 ERROR_34                    : 'Navnet du prøver å avsløre er ikke likt navnet du har tastet inn. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input-adressen har ingen sjekk-sum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 
 SUCCESS_1                   : 'Gyldig adresse ',
 SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',
