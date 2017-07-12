@@ -156,15 +156,15 @@ function bundle_js(options) {
 
 
 gulp.task('js', function() {
-    bundle_js();
+    return bundle_js();
 });
 
 gulp.task('js-production', function() {
-    bundle_js({ production: true });
+    return bundle_js({ production: true });
 });
 
 gulp.task('js-debug', function() {
-    bundle_js({ debug: true });
+    return bundle_js({ debug: true });
 });
 
 
