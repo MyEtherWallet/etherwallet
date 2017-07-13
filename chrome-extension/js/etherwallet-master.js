@@ -842,33 +842,27 @@ module.exports = ensCtrl;
 },{}],12:[function(require,module,exports){
 'use strict';
 
-var footerCtrl = function ($scope, $interval, globalService) {
-  var gasPriceKey = "gasPrice";
-  $scope.footerModal = new Modal(document.getElementById('disclaimerModal'));
-  $scope.ethBlockNumber = "loading";
-  $scope.etcBlockNumber = "loading";
-  $scope.showBlocks = window.location.protocol == "https:";
-  $scope.setBlockNumbers = function () {
-    if (!$scope.showBlocks) return;
-    ajaxReq.getCurrentBlock(function (data) {
-      $scope.currentBlockNumber = data.data;
-    });
-  };
-  $scope.setBlockNumbers();
-  $scope.globalService = globalService;
-  $scope.ajaxReq = ajaxReq;
-  $scope.nodeType = $scope.ajaxReq.type;
-  $scope.$watch('ajaxReq.type', function () {
+var footerCtrl = function ($scope, globalService) {
+    var gasPriceKey = "gasPrice";
+    $scope.footerModal = new Modal(document.getElementById('disclaimerModal'));
+    $scope.ethBlockNumber = "loading";
+    $scope.etcBlockNumber = "loading";
+    $scope.showBlocks = window.location.protocol == "https:";
+    $scope.setBlockNumbers = function () {
+        if (!$scope.showBlocks) return;
+        ajaxReq.getCurrentBlock(function (data) {
+            $scope.currentBlockNumber = data.data;
+        });
+    };
+    $scope.setBlockNumbers();
+    $scope.globalService = globalService;
+    $scope.ajaxReq = ajaxReq;
     $scope.nodeType = $scope.ajaxReq.type;
-  });
-  $interval(function () {
-    if (navigator.onLine) {
-      $scope.oLogo = 'Online.png';
-    } else {
-      $scope.oLogo = 'Offline.png';
-    }
-  }, 5000);
-  $scope.curLang = globalFuncs.curLang;
+    $scope.$watch('ajaxReq.type', function () {
+        $scope.nodeType = $scope.ajaxReq.type;
+    });
+
+    $scope.curLang = globalFuncs.curLang;
 };
 module.exports = footerCtrl;
 
@@ -900,7 +894,7 @@ module.exports = genericCtrl;
 },{}],14:[function(require,module,exports){
 'use strict';
 
-var headerCtrl = function ($scope, globalService, $translate, $sce) {
+var headerCtrl = function ($scope, $interval, globalService, $translate, $sce) {
     $scope.gService = globalService;
     $scope.tabNames = $scope.gService.tabs;
     $scope.curLang = 'English';
@@ -935,7 +929,13 @@ var headerCtrl = function ($scope, globalService, $translate, $sce) {
         }, 200);
     };
     $scope.setArrowVisibility();
-
+    $interval(function () {
+        if (navigator.onLine) {
+            $scope.oLogo = 'Online.png';
+        } else {
+            $scope.oLogo = 'Offline.png';
+        }
+    }, 5000);
     var gasPriceKey = "gasPrice";
     $scope.gasPriceChanged = function () {
         globalFuncs.localStorage.setItem(gasPriceKey, $scope.gas.value);
@@ -5386,11 +5386,11 @@ app.controller('contractsCtrl', ['$scope', '$sce', '$interval', 'walletService',
 app.controller('walletDecryptCtrl', ['$scope', '$sce', 'walletService', walletDecryptCtrl]);
 app.controller('walletDecryptOfflineCtrl', ['$scope', '$sce', 'walletService', walletDecryptOfflineCtrl]);
 app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);
-app.controller('footerCtrl', ['$scope', '$interval', 'globalService', footerCtrl]);
+app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
 app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
-app.controller('headerCtrl', ['$scope', 'globalService', '$translate', '$sce', headerCtrl]);
+app.controller('headerCtrl', ['$scope', '$interval', 'globalService', '$translate', '$sce', headerCtrl]);
 app.controller('txBroadcastCtrl', ['$scope', 'walletService', txBroadcastCtrl]);
 app.controller('txSendCtrl', ['$scope', '$sce', '$interval', 'walletService', txSendCtrl]);
 app.controller('txSignCtrl', ['$scope', txSignCtrl]);

@@ -1,5 +1,5 @@
 'use strict';
-var footerCtrl = function($scope, $interval, globalService) {
+var footerCtrl = function($scope, globalService) {
     var gasPriceKey = "gasPrice";
     $scope.footerModal = new Modal(document.getElementById('disclaimerModal'));
     $scope.ethBlockNumber = "loading";
@@ -14,13 +14,7 @@ var footerCtrl = function($scope, $interval, globalService) {
     $scope.ajaxReq = ajaxReq;
     $scope.nodeType = $scope.ajaxReq.type
     $scope.$watch('ajaxReq.type', function() { $scope.nodeType = $scope.ajaxReq.type })
-    $interval(function(){
-      if (navigator.onLine) {
-        $scope.oLogo = 'Online.png';
-      } else {
-        $scope.oLogo = 'Offline.png';
-      }
-    },5000);
+
     $scope.curLang = globalFuncs.curLang;
 };
 module.exports = footerCtrl;

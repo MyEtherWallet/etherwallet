@@ -1,5 +1,5 @@
 'use strict';
-var headerCtrl = function($scope, globalService, $translate, $sce) {
+var headerCtrl = function($scope, $interval, globalService, $translate, $sce) {
     $scope.gService = globalService;
     $scope.tabNames = $scope.gService.tabs;
     $scope.curLang = 'English';
@@ -30,7 +30,13 @@ var headerCtrl = function($scope, globalService, $translate, $sce) {
         }, 200);
     }
     $scope.setArrowVisibility();
-
+    $interval(function(){
+      if (navigator.onLine) {
+        $scope.oLogo = 'Online.png';
+      } else {
+        $scope.oLogo = 'Offline.png';
+      }
+    },5000);
     var gasPriceKey = "gasPrice";
     $scope.gasPriceChanged = function() {
         globalFuncs.localStorage.setItem(gasPriceKey, $scope.gas.value);
