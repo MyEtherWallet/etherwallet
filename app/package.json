@@ -1,6 +1,6 @@
 {
     "name": "MyEtherWallet",
-    "version": "v3.9.9",
+    "version": "3.9.9",
     "description": "An NPM dist of MyEtherWallet. For easier downloading & updating via CLI.",
     "author": "MyEtherWallet",
     "license": "ISC",
