@@ -21,6 +21,7 @@ const source       = require('vinyl-source-stream');
 const uglify       = require('gulp-uglify');
 const zip          = require('gulp-zip');
 const html2js      = require('html2js-browserify');
+const gulpif       = require('gulp-if');
 
 const app          = './app/';
 const dist         = './dist/';
@@ -60,13 +61,31 @@ function notifyFunc(msg) {
 let htmlFiles = app + 'layouts/*.html';
 let tplFiles = app + 'includes/*.tpl';
 
-gulp.task('html', function(done) {
-    return gulp.src(htmlFiles)
-        .pipe(plumber({ errorHandler: onError }))
-        .pipe(fileinclude({ prefix: '@@', basepath: '@file' }))
-        .pipe(gulp.dest(dist))
-        .pipe(gulp.dest(dist_CX))
-        .pipe(notify(onSuccess('HTML')))
+function bundle_html(options) {
+  options = Object.assign({
+    production: false,
+  }, options);
+
+  return gulp.src(htmlFiles)
+      .pipe(plumber({ errorHandler: onError }))
+      .pipe(fileinclude({
+        prefix: '@@',
+        basepath: '@file',
+        context: {
+          production: options.production,
+        },
+      }))
+      .pipe(gulp.dest(dist))
+      .pipe(gulp.dest(dist_CX))
+      .pipe(notify(onSuccess('HTML')));
+}
+
+gulp.task('html', function() {
+    bundle_html();
+});
+
+gulp.task('html-production', function() {
+    bundle_html({ production: true });
 });
 
 
@@ -101,49 +120,51 @@ let js_srcFile = app + 'scripts/main.js';
 let js_destFolder = dist + 'js/';
 let js_destFolder_CX = dist_CX + 'js/';
 let js_destFile = 'etherwallet-master.js';
-let browseOpts = { debug: true }; // generates inline source maps - only in js-debug
-let babelOpts = {
+let js_destFileMin = 'etherwallet-master.min.js';
+
+function bundle_js(options) {
+  options = Object.assign({
+    destFile: js_destFile,
+    debug: false,
+    production: false,
+  }, options || {});
+
+  const browserifyOpts = {
+    debug: options.debug,
+  };
+
+  const babelOpts = {
     presets: ['es2015'],
-    compact: false,
-    global: true
-};
+    global: true,
+    compact: options.production,
+  };
 
-function bundle_js(bundler) {
-    return bundler.bundle()
-        .pipe(plumber({ errorHandler: onError }))
-        .pipe(source('main.js'))
-        .pipe(buffer())
-        .pipe(rename(js_destFile))
-        .pipe(gulp.dest(js_destFolder))
-        .pipe(gulp.dest(js_destFolder_CX))
-        .pipe(notify(onSuccess('JS')))
-}
+  const bundler = browserify(js_srcFile, browserifyOpts)
+    .transform(babelify, babelOpts)
+    .transform(html2js);
 
-function bundle_js_debug(bundler) {
-    return bundler.bundle()
-        .pipe(plumber({ errorHandler: onError }))
-        .pipe(source('main.js'))
-        .pipe(buffer())
-        .pipe(rename(js_destFile))
-        .pipe(gulp.dest(js_destFolder))
-        .pipe(gulp.dest(js_destFolder_CX))
-        .pipe(notify(onSuccess('JS')))
+  return bundler.bundle()
+    .pipe(plumber({ errorHandler: onError }))
+    .pipe(source('main.js'))
+    .pipe(buffer())
+    .pipe(gulpif(options.production, uglify()))
+    .pipe(rename(options.production ? js_destFileMin : js_destFile))
+    .pipe(gulp.dest(js_destFolder))
+    .pipe(gulp.dest(js_destFolder_CX))
+    .pipe(notify(onSuccess('JS')));
 }
 
 
 gulp.task('js', function() {
-    let bundler = browserify(js_srcFile).transform(babelify).transform(html2js);
-    bundle_js(bundler)
+    return bundle_js();
 });
 
 gulp.task('js-production', function() {
-    let bundler = browserify(js_srcFile).transform(babelify, babelOpts).transform(html2js);
-    bundle_js(bundler)
+    return bundle_js({ production: true });
 });
 
 gulp.task('js-debug', function() {
-    let bundler = browserify(js_srcFile, browseOpts).transform(babelify, babelOpts).transform(html2js);
-    bundle_js_debug(bundler)
+    return bundle_js({ debug: true });
 });
 
 
@@ -377,13 +398,15 @@ gulp.task('pushlive', ['getVersion'], function() {
 // git push --tags
 // gulp pushlive ( git subtree push --prefix dist origin gh-pages )
 
-gulp.task('watchJS',      function() { gulp.watch(js_watchFolder,   ['js']            ) })
-gulp.task('watchJSDebug', function() { gulp.watch(js_watchFolder,   ['js-debug']      ) })
-gulp.task('watchJSProd',  function() { gulp.watch(js_watchFolder,   ['js-production'] ) })
-gulp.task('watchLess',    function() { gulp.watch(less_watchFolder, ['styles']        ) })
-gulp.task('watchPAGES',   function() { gulp.watch(htmlFiles,        ['html']          ) })
-gulp.task('watchTPL',     function() { gulp.watch(tplFiles,         ['html']          ) })
-gulp.task('watchCX',      function() { gulp.watch(cxSrcFiles,       ['copy']          ) })
+gulp.task('watchJS',        function() { gulp.watch(js_watchFolder,   ['js']              ) })
+gulp.task('watchJSDebug',   function() { gulp.watch(js_watchFolder,   ['js-debug']        ) })
+gulp.task('watchJSProd',    function() { gulp.watch(js_watchFolder,   ['js-production']   ) })
+gulp.task('watchLess',      function() { gulp.watch(less_watchFolder, ['styles']          ) })
+gulp.task('watchPAGES',     function() { gulp.watch(htmlFiles,        ['html']            ) })
+gulp.task('watchPAGESProd', function() { gulp.watch(htmlFiles,        ['html-production'] ) })
+gulp.task('watchTPL',       function() { gulp.watch(tplFiles,         ['html']            ) })
+gulp.task('watchTPLProd',   function() { gulp.watch(tplFiles,         ['html-production'] ) })
+gulp.task('watchCX',        function() { gulp.watch(cxSrcFiles,       ['copy']            ) })
 
 gulp.task('bump',          function() { return bumpFunc( 'patch' ) });
 gulp.task('bump-patch',    function() { return bumpFunc( 'patch' ) });
@@ -391,7 +414,7 @@ gulp.task('bump-minor',    function() { return bumpFunc( 'minor' ) });
 
 gulp.task('archive',       function() { return archive() });
 
-gulp.task('prep',   function(cb) { runSequence('js-production', 'html', 'styles', 'copy', cb); });
+gulp.task('prep',   function(cb) { runSequence('js-production', 'html-production', 'styles', 'copy', cb); });
 
 gulp.task('bump',   function(cb) { runSequence('bump-patch', 'clean', 'zip', cb);              });
 
@@ -399,8 +422,8 @@ gulp.task('zipit',  function(cb) { runSequence('clean', 'zip', cb);             
 
 gulp.task('commit', function(cb) { runSequence('add', 'commitV', 'tag', cb);                   });
 
-gulp.task('watch',     ['watchJS',     'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
-gulp.task('watchProd', ['watchJSProd', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
+gulp.task('watch',     ['watchJS',     'watchLess', 'watchPAGES',     'watchTPL',     'watchCX'])
+gulp.task('watchProd', ['watchJSProd', 'watchLess', 'watchPAGESProd', 'watchTPLProd', 'watchCX'])
 
 gulp.task('build', ['js', 'html', 'styles', 'copy']);
 gulp.task('build-debug', ['js-debug', 'html', 'styles', 'watchJSDebug', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
