@@ -135,7 +135,7 @@ app.controller('contractsCtrl', ['$scope', '$sce', '$interval','walletService', 
 app.controller('walletDecryptCtrl', ['$scope', '$sce', 'walletService', walletDecryptCtrl]);
 app.controller('walletDecryptOfflineCtrl', ['$scope', '$sce', 'walletService', walletDecryptOfflineCtrl]);
 app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);
-app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
+app.controller('footerCtrl', ['$scope', '$interval', 'globalService', footerCtrl]);
 app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);

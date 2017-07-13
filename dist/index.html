@@ -42,7 +42,7 @@
     
 
     
-  <section class="bg-gradient header-branding">
+  <section class="bg-gradient-{{curNode.name}} header-branding">
     <section class="container">
 
       
@@ -3219,13 +3219,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </div>
 </section>
 
-<footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
+<footer class="footer footer-{{nodeType}}" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
   <article class="block__wrap" style="max-width: 1780px; margin: auto;">
 
     <section class="footer--left">
 
-      <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
+      <a href="https://www.myetherwallet.com/"><img src="images/myetherwallet-logo-{{oLogo}}" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
       <p><span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum blockchain.</span></p>
 
