@@ -56,12 +56,12 @@
         </div>
     </div>
     }
-  <section class="bg-gradient header-branding">
+  <section class="bg-gradient-{{curNode.name}} header-branding">
     <section class="container">
 
       @@if (site === 'mew' ) {
         <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage">
-          <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
+          <img src="images/myetherwallet-logo-{{oLogo}}"   height="64px" width="245px" alt="MyEtherWallet" />
         </a>
       }
       @@if (site === 'cx'  ) {
