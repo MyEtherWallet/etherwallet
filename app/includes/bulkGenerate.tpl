@@ -1,6 +1,6 @@
 <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'  ng-cloak>
 
-  <h1 translate="NAV_BulkGenerate"> Bulk Generate Wallets </h1>
+  <h1 translate="BULK_Generate"> Bulk Generate Wallets </h1>
 
   <!-- Top - Bulk Generate -->
   <section class="row">
@@ -32,7 +32,7 @@
           <thead>
             <tr>
               <th width="32"> Address Identicon </th>
-              <th width="500" translate="x_Address">Address</th>
+              <th width="500" translate="ADDR_">Address</th>
               <th width="500" translate="x_PrivKey">Private Key (unencrypted)</th>
             </tr>
             <tr class="privaddkey" ng-repeat="wallet in wallets">

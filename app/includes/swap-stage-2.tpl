@@ -16,7 +16,7 @@
   <section class="order-info-wrap row">
     <div class="col-sm-4 order-info">
       <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
-      <p translate="SWAP_send_amt"> Amount to send </p>
+      <p translate="x_Amount"> Amount to send </p>
     </div>
     <div class="col-sm-4 order-info">
       <h4> {{swapOrder.toVal}} {{swapOrder.toCoin}} </h4>

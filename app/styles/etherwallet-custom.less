@@ -427,27 +427,24 @@ label small {
 
 
 .loading-wrap {
+  img {
+    width: 360px;
+    max-width: 100%;
+    height: auto;
+  }
   position: fixed;
   top:0;left:0;right:0;bottom:0;
   background-color: fadeOut(black,30%);
   z-index: 999;
   text-align: center;
-
   .loading {
+    .block;
     position: absolute;
     text-align: center;
     top: 40%;
     left: 50%;
     transform: translate(-50%,-60%);
   }
-  img {
-    border-radius: 50%;
-  }
-  h1 {
-    animation: opacity 2000ms infinite ease-in-out;
-    color: white;
-  }
-
   @keyframes opacity {
     from, to {
       opacity: 0;
@@ -534,7 +531,7 @@ header.ETH     {
 }
 header.ETC     {
   border-top: 3px solid @brand-etc;
-  .NAV_ENS { }
+  .ENS_Title { }
   & + .container .modal-content {
     border: 3px solid @brand-etc;
   }
@@ -547,32 +544,29 @@ header.Ropsten {
 }
 header.Kovan   {
   border-top: 3px solid @brand-test;
-  .NAV_ENS { }
+  .ENS_Title { }
   & + .container .modal-content {
     border: 3px solid @brand-test;
   }
 }
 header.Rinkeby {
   border-top: 3px solid @brand-test;
-  .NAV_ENS {}
+  .ENS_Title {}
   & + .container .modal-content {
     border: 3px solid @brand-test;
   }
 }
 header.RSK {
   border-top: 3px solid @brand-rsk;
-  .NAV_ENS {}
+  .ENS_Title {}
   & + .container .modal-content {
     border: 3px solid @brand-rsk;
   }
 }
 header.Custom  {
   border-top: 3px solid @brand-cust;
-  .NAV_ENS { }
+  .ENS_Title { }
   & + .container .modal-content {
     border: 3px solid @brand-cust;
   }
 }
-
-
-

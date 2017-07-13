@@ -3,9 +3,9 @@
   <!-- Title -->
   <div class="block text-center">
     <h1>
-      <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
+      <a translate="CONTRACT_Interact" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
       or
-      <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a>
+      <a translate="CONTRACT_Deploy"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a>
     </h1>
   </div>
   <!-- / Title -->
@@ -48,9 +48,10 @@
 
   <!--wallet decrypt-->
   <article class="form-group" ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
-      @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
-      @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
-  </article>
+      @@if (site === 'cx' )  {  <wallet-decrypt-cx-drtv></wallet-decrypt-cx-drtv>   }
+    </article>
+      @@if (site === 'mew' ) {  <article><div class="clearfix form-group"><a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}">Checking Status</a></div><wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv></article> }
+
 
   <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
 

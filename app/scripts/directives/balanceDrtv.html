@@ -1,104 +1,85 @@
-<aside ng-controller="walletBalanceCtrl">
-
-  <div class="block">
-    <h5 translate="sidebar_AccountAddr">Account Address:</h5>
-    <ul class="account-info">
-      <div class="addressIdenticon med float" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
-      <span class="mono wrap">{{wallet.getChecksumAddressString()}}</span>
-      <label class="ens-response" ng-show="showEns()">
-        ↳ <span class="mono ng-binding"> {{ensAddress}} </span>
-      </label>
-    </ul>
-  </div>
-
-  <div class="block">
-    <h5 translate="sidebar_AccountBal">Account Balance:</h5>
-    <ul class="account-info point" ng-dblclick="showLongBal=!showLongBal" title="{{wallet.balance}} (Double-Click)">
-      <li>
-        <span class="mono wrap" ng-show="!showLongBal">{{wallet.balance | number}}</span>
-        <span class="mono wrap" ng-show="showLongBal">{{wallet.balance}}</span> {{ajaxReq.type}}
-      </li>
-    </ul>
-  </div>
-
-  <div class="block">
-    <section class="token-balances">
-      <h5 translate="sidebar_TokenBal">Token Balances:</h5>
-      <table class="account-info">
-        <tr ng-repeat="token in wallet.tokenObjs track by $index"
-            ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
-          <td class="mono wrap point" title="{{token.getBalance()}} (Double-Click)" ng-dblclick="showLongToken=!showLongToken">
-            <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
-            <span ng-show="!showLongToken || token.type=='default'">{{token.getBalance() | number}}</span>
-            <span ng-show="showLongToken || token.type!=='default'">{{token.getBalance() }}</span>
-          </td>
-          <td>{{token.getSymbol()}}</td>
-        </tr>
-      </table>
-      <a class="btn btn-default btn-xs" ng-click="wallet.setTokens(); tokensLoaded=true" ng-hide="tokensLoaded">
-        Load Tokens Balances
-      </a>
-      <a class="btn btn-default btn-xs" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'">
-        Show All Tokens
-      </a>
-      <a class="btn btn-default btn-xs" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">
-        Hide Tokens
-      </a>
-      <a class="btn btn-default btn-xs" ng-click="customTokenField=!customTokenField">
-        <span translate="SEND_custom">Add Custom Token</span>
-      </a>
-      <div class="custom-token-fields" ng-show="customTokenField">
-        <label translate="TOKEN_Addr"> Address: </label>
-        <input class="form-control input-sm" type="text" ng-model="localToken.contractAdd" ng-class="Validator.isValidAddress(localToken.contractAdd) ? 'is-valid' : 'is-invalid'" />
-        <label translate="TOKEN_Symbol"> Token Symbol: </label>
-        <input class="form-control input-sm" type="text" ng-model="localToken.symbol" ng-class="localToken.symbol!='' ? 'is-valid' : 'is-invalid'" />
-        <label translate="TOKEN_Dec"> Decimals: </label>
-        <input class="form-control input-sm" type="text" ng-model="localToken.decimals" ng-class="Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'" />
-        <button class="btn btn-primary btn-xs" ng-click="saveTokenToLocal()" translate="x_Save">Save</button>
-        <div ng-bind-html="validateLocalToken"></div>
-      </div>
-    </section>
-  </div>
-
-  <div class="block">
-    <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
-    <ul class="account-info">
-      <li ng-show="ajaxReq.type != 'CUS'">
-        <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">
-          {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})
-        </a>
-      </li>
-      <li>
-        <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener">
-          Tokens (Ethplorer.io)
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="block" ng-show="ajaxReq.type=='ETH'">
-    <h5 translate="sidebar_Equiv">Equivalent Values:</h5>
-    <ul class="account-info">
-      <li><span class="mono wrap">{{wallet.btcBalance | number}}</span> BTC</li>
-      <li><span class="mono wrap">{{wallet.repBalance | number}}</span> REP</li>
-      <li><span class="mono wrap">{{wallet.eurBalance | currency:"€"}}</span> EUR</li>
-      <li><span class="mono wrap">{{wallet.usdBalance | currency:"$"}}</span> USD</li>
-      <li><span class="mono wrap">{{wallet.gbpBalance | currency:"£"}}</span> GBP</li>
-      <li><span class="mono wrap">{{wallet.chfBalance | currency:" "}}</span> CHF</li>
-    </ul>
-    <button class="btn btn-info btn-xs"
-            ng-click="globalService.currentTab=globalService.tabs.swap.id"
-            target="_blank"
-            rel="noopener">
-      Swap via Bity
-    </button>
-    <a class="btn btn-info btn-xs"
-            href="https://buy.coinbase.com?code=a6e1bd98-6464-5552-84dd-b27f0388ac7d&address={{wallet.getChecksumAddressString()}}&crypto_currency=ETH&currency=USD"
-            target="_blank"
-            rel="noopener"
-            ng-hide="ajaxReq.type!=='ETH'">
-      Buy ETH w/ USD via Coinbase
-    </a>
-  </div>
-
+<aside ng-controller='walletBalanceCtrl'>
+    <div class="block">
+        <h5 translate="ACCOUNT_Address">Account Address:</h5>
+        <ul class="account-info">
+            <div class="addressIdenticon med float" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+            <span class="mono wrap">{{wallet.getChecksumAddressString()}}</span>
+            <label class="ens-response" ng-show="showens"> ↳ <span class="mono ng-binding"> {{ensAddress}} </span> </label>
+        </ul>
+    </div>
+    <div class="block">
+        <h5 translate="ACCOUNT_Balance">Account Balance:</h5>
+        <ul class="account-info point" ng-dblclick="showLongBal=!showLongBal" title="{{wallet.balance}} (Double-Click)">
+            <li>
+                <span class="mono wrap" ng-show="!showLongBal">{{wallet.balance | number}}</span>
+                <span class="mono wrap" ng-show="showLongBal">{{wallet.balance}}</span> {{ajaxReq.type}}
+            </li>
+        </ul>
+    </div>
+    <div class="block">
+        <section class="token-balances">
+            <h5 translate="TOKEN_Balance">Token Balances:</h5>
+            <table class="account-info">
+                <tr ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+                    <td class="mono wrap point" title="{{token.getBalance()}} (Double-Click)" ng-dblclick="showLongToken=!showLongToken">
+                        <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
+                        <span ng-show="!showLongToken">{{token.getBalance() | number}}</span>
+                        <span ng-show="showLongToken">{{token.getBalance() }}</span>
+                    </td>
+                    <td>{{token.getSymbol()}} </td>
+                </tr>
+            </table>
+            <a class="btn btn-default btn-xs" ng-click="wallet.setTokens(); tokensLoaded=true" ng-hide="tokensLoaded">Load Tokens Balances</a>
+            <a class="btn btn-default btn-xs" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'">Show All Tokens</a>
+            <a class="btn btn-default btn-xs" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">Hide Tokens</a>
+            <a class="btn btn-default btn-xs" ng-click="customTokenField=!customTokenField"><span translate="TOKEN_AddCustom"translate="TOKEN_AddCustom">Add Custom Token</span></a>
+            <div class="custom-token-fields" ng-show="customTokenField">
+                <label translate="ADDR_Short">Address:</label>
+                <input class="form-control input-sm" type="text" ng-model="localToken.contractAdd" ng-class="Validator.isValidAddress(localToken.contractAdd) ? 'is-valid' : 'is-invalid'" />
+                <label translate="TOKEN_Symbol">Token Symbol:</label>
+                <input class="form-control input-sm" type="text" ng-model="localToken.symbol" ng-class="localToken.symbol!='' ? 'is-valid' : 'is-invalid'" />
+                <label translate="TOKEN_Dec"> Decimals:</label>
+                <input class="form-control input-sm" type="text" ng-model="localToken.decimals" ng-class="Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'" />
+                <div class="btn btn-primary btn-xs" ng-click="saveTokenToLocal()" translate="x_Save">Save</div>
+                <div ng-bind-html="validateLocalToken"></div>
+            </div>
+        </section>
+    </div>
+    <div class="block">
+        <h5 translate="TX_History"> Transaction History: </h5>
+        <ul class="account-info">
+            <li ng-show="ajaxReq.type != 'CUS'">
+                <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">
+                  {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})
+                </a>
+            </li>
+            <li>
+                <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener"> Tokens (Ethplorer.io) </a>
+            </li>
+        </ul>
+    </div>
+    <div class="block" ng-show="ajaxReq.type=='ETH'">
+        <h5 translate="SIDEBAR_Equiv">Equivalent Values:</h5>
+        <ul class="account-info">
+            <li><span class="mono wrap">{{wallet.btcBalance | number}}</span> BTC</li>
+            <li><span class="mono wrap">{{wallet.repBalance | number}}</span> REP</li>
+            <li><span class="mono wrap">{{wallet.eurBalance | currency:"€"}}</span> EUR</li>
+            <li><span class="mono wrap">{{wallet.usdBalance | currency:"$"}}</span> USD</li>
+            <li><span class="mono wrap">{{wallet.gbpBalance | currency:"£"}}</span> GBP</li>
+            <li><span class="mono wrap">{{wallet.chfBalance | currency:" "}}</span> CHF</li>
+        </ul>
+        <button class="btn btn-info btn-xs"
+                ng-click="globalService.currentTab=globalService.tabs.swap.id"
+                target="_blank"
+                rel="noopener">
+          Swap via Bity
+        </button>
+        <button class="btn btn-info btn-xs"
+                href="https://buy.coinbase.com?code=a6e1bd98-6464-5552-84dd-b27f0388ac7d&address={{wallet.getChecksumAddressString()}}&crypto_currency=ETH&currency=USD"
+                target="_blank"
+                rel="noopener"
+                ng-hide="ajaxReq.type!=='ETH'">
+          Buy ETH w/ USD via Coinbase
+        </button>
+    </div>
 </aside>

@@ -48,6 +48,8 @@ var bity                     = require('./bity');
 window.bity                  = bity;
 var ens                      = require('./ens');
 window.ens                   = ens;
+var mewtip                   = require('./mew-tips.js');
+window.mewtip                = mewtip;
 var translate                = require('./translations/translate.js');
 if (IS_CX) {
   var cxFuncs                = require('./cxFuncs');
@@ -64,37 +66,44 @@ if (IS_CX) {
 }
 var CustomGasMessages        = require('./customGas.js')
 window.CustomGasMessages     = CustomGasMessages;
-var tabsCtrl                 = require('./controllers/tabsCtrl');
-var viewCtrl                 = require('./controllers/viewCtrl');
-var walletGenCtrl            = require('./controllers/walletGenCtrl');
+
 var bulkGenCtrl              = require('./controllers/bulkGenCtrl');
-var decryptWalletCtrl        = require('./controllers/decryptWalletCtrl');
-var viewWalletCtrl           = require('./controllers/viewWalletCtrl');
-var txStatusCtrl              = require('./controllers/txStatusCtrl');
-var sendTxCtrl               = require('./controllers/sendTxCtrl');
-var swapCtrl                 = require('./controllers/swapCtrl');
-var signMsgCtrl              = require('./controllers/signMsgCtrl');
 var contractsCtrl            = require('./controllers/contractsCtrl');
+var walletDecryptCtrl        = require('./controllers/walletDecryptCtrl');
+var walletDecryptOfflineCtrl = require('./controllers/walletDecryptOfflineCtrl');
 var ensCtrl                  = require('./controllers/ensCtrl');
 var footerCtrl               = require('./controllers/footerCtrl');
-var offlineTxCtrl            = require('./controllers/offlineTxCtrl');
-var walletBalanceCtrl        = require('./controllers/walletBalanceCtrl');
 var helpersCtrl              = require('./controllers/helpersCtrl');
+var signMsgCtrl              = require('./controllers/signMsgCtrl');
+var swapCtrl                 = require('./controllers/swapCtrl');
+var headerCtrl               = require('./controllers/headerCtrl');
+var txBroadcastCtrl          = require('./controllers/txBroadcastCtrl');
+var txSendCtrl               = require('./controllers/txSendCtrl');
+var txSignCtrl               = require('./controllers/txSignCtrl');
+var txViewCtrl               = require('./controllers/txViewCtrl');
+var walletBalanceCtrl        = require('./controllers/walletBalanceCtrl');
+var walletGenerateCtrl       = require('./controllers/walletGenerateCtrl');
+var walletViewCtrl           = require('./controllers/walletViewCtrl');
+var genericCtrl              = require('./controllers/genericCtrl');
+
 var globalService            = require('./services/globalService');
 var walletService            = require('./services/walletService');
+
 var blockiesDrtv             = require('./directives/blockiesDrtv');
 var addressFieldDrtv         = require('./directives/addressFieldDrtv');
 var QRCodeDrtv               = require('./directives/QRCodeDrtv');
 var walletDecryptDrtv        = require('./directives/walletDecryptDrtv');
-var cxWalletDecryptDrtv      = require('./directives/cxWalletDecryptDrtv');
+var walletDecryptOfflineDrtv = require('./directives/walletDecryptOfflineDrtv');
+var walletDecryptCxDrtv      = require('./directives/walletDecryptCxDrtv');
 var fileReaderDrtv           = require('./directives/fileReaderDrtv');
 var balanceDrtv              = require('./directives/balanceDrtv');
+
 if (IS_CX) {
-  var addWalletCtrl          = require('./controllers/CX/addWalletCtrl');
-  var cxDecryptWalletCtrl    = require('./controllers/CX/cxDecryptWalletCtrl');
-  var myWalletsCtrl          = require('./controllers/CX/myWalletsCtrl');
-  var mainPopCtrl            = require('./controllers/CX/mainPopCtrl');
-  var quickSendCtrl          = require('./controllers/CX/quickSendCtrl');
+  var walletDecryptCxCtrl    = require('./controllers/walletDecryptCxCtrl');
+  var mainPopCtrl            = require('./controllers/mainPopCtrl');
+  var quickSendCtrl          = require('./controllers/quickSendCtrl');
+  var walletAddCtrl          = require('./controllers/walletAddCtrl');
+  var walletViewCXCtrl       = require('./controllers/walletViewCXCtrl');
 }
 var app = angular.module('mewApp', ['pascalprecht.translate', 'ngSanitize','ngAnimate']);
 app.config(['$compileProvider', function($compileProvider) {
@@ -107,35 +116,42 @@ app.config(['$translateProvider', function($translateProvider) {
 app.config(['$animateProvider', function($animateProvider) {
     $animateProvider.classNameFilter(/^no-animate$/);
 }]);
+
 app.factory('globalService', ['$http', '$httpParamSerializerJQLike', globalService]);
 app.factory('walletService', walletService);
-app.directive('blockieAddress', blockiesDrtv);
+
 app.directive('addressField', ['$compile', addressFieldDrtv]);
-app.directive('qrCode', QRCodeDrtv);
+app.directive('blockieAddress', blockiesDrtv);
 app.directive('onReadFile', fileReaderDrtv);
+app.directive('qrCode', QRCodeDrtv);
 app.directive('walletBalanceDrtv', balanceDrtv);
 app.directive('walletDecryptDrtv', walletDecryptDrtv);
-app.directive('cxWalletDecryptDrtv', cxWalletDecryptDrtv);
-app.controller('tabsCtrl', ['$scope', 'globalService', '$translate', '$sce', tabsCtrl]);
-app.controller('viewCtrl', ['$scope', 'globalService', '$sce', viewCtrl]);
-app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);
+app.directive('walletDecryptOfflineDrtv', walletDecryptOfflineDrtv);
+app.directive('walletDecryptCxDrtv', walletDecryptCxDrtv);
+
+app.controller('genericCtrl', ['$scope', 'globalService', '$sce', genericCtrl]);
 app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
-app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
-app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
-app.controller('txStatusCtrl', ['$scope', txStatusCtrl]);
-app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', sendTxCtrl]);
-app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
-app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
-app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
+app.controller('contractsCtrl', ['$scope', '$sce', '$interval','walletService', contractsCtrl]);
+app.controller('walletDecryptCtrl', ['$scope', '$sce', 'walletService', walletDecryptCtrl]);
+app.controller('walletDecryptOfflineCtrl', ['$scope', '$sce', 'walletService', walletDecryptOfflineCtrl]);
 app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
-app.controller('offlineTxCtrl', ['$scope', '$sce', 'walletService', offlineTxCtrl]);
-app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
 app.controller('helpersCtrl', ['$scope', helpersCtrl]);
+app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
+app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
+app.controller('headerCtrl', ['$scope', 'globalService', '$translate', '$sce', headerCtrl]);
+app.controller('txBroadcastCtrl', ['$scope', 'walletService', txBroadcastCtrl]);
+app.controller('txSendCtrl', ['$scope', '$sce', '$interval', 'walletService', txSendCtrl]);
+app.controller('txSignCtrl', ['$scope', txSignCtrl]);
+app.controller('txViewCtrl', ['$scope', txViewCtrl]);
+app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
+app.controller('walletGenerateCtrl', ['$scope', walletGenerateCtrl]);
+app.controller('walletViewCtrl', ['$scope', '$interval','walletService', walletViewCtrl]);
+
 if (IS_CX) {
-  app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
-  app.controller('myWalletsCtrl', ['$scope', '$sce','walletService', myWalletsCtrl]);
+  app.controller('walletDecryptCxCtrl', ['$scope', '$sce', 'walletService', walletDecryptCxCtrl]);
   app.controller('mainPopCtrl', ['$scope', '$sce', mainPopCtrl]);
   app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
-  app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
+  app.controller('walletAddCtrl', ['$scope', '$sce', walletAddCtrl]);
+  app.controller('walletViewCXCtrl', ['$scope', '$sce','walletService', walletViewCXCtrl]);
 }

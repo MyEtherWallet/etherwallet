@@ -1,29 +1,29 @@
 
 @@include( '../includes/header.tpl', { "site": "mew" } )
 
-<section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+<section class="container" style="min-height: 50%" ng-controller='genericCtrl'>
 
   <div class="tab-content" >
 
-    @@include( '../includes/generateWallet.tpl',     { "site": "mew" } )
+    @@include( '../includes/txSend.tpl',         { "site": "mew" } )
 
-    @@include( '../includes/sendTx.tpl',             { "site": "mew" } )
+    @@include( '../includes/txView.tpl',         { "site": "mew" } )
 
-    @@include( '../includes/swap.tpl',               { "site": "mew" } )
+    @@include( '../includes/txBroadcast.tpl',    { "site": "mew" } )
 
-    @@include( '../includes/offlineTx.tpl',          { "site": "mew" } )
+    @@include( '../includes/swap.tpl',           { "site": "mew" } )
 
-    @@include( '../includes/contracts.tpl',          { "site": "mew" } )
+    @@include( '../includes/ens.tpl',            { "site": "mew" } )
 
-    @@include( '../includes/ens.tpl',                { "site": "mew" } )
+    @@include( '../includes/contracts.tpl',      { "site": "mew" } )
 
-    @@include( '../includes/viewWalletInfo.tpl',     { "site": "mew" } )
+    @@include( '../includes/walletGenerate.tpl', { "site": "mew" } )
 
-    @@include( '../includes/txStatus.tpl',           { "site": "mew" } )
+    @@include( '../includes/walletView.tpl',     { "site": "mew" } )
 
-    @@include( '../includes/bulkGenerate.tpl',       { "site": "mew" } )
+    @@include( '../includes/bulkGenerate.tpl',   { "site": "mew" } )
 
-    @@include( '../includes/print.tpl',              { "site": "mew" } )
+    @@include( '../includes/print.tpl',          { "site": "mew" } )
 
   </div>
 
@@ -31,13 +31,18 @@
   @@include('../includes/alerts.tpl')
 
 
-  <!--
-  <section class="loading-wrap" ng-hide="1==1">
+
+  <section class="loading-wrap" ng-show="showLoading">
     <div class="loading">
-      <img src="images/loading.gif" />
-      <h1> Loading... </h1>
+     Quicktip
+     <br />
+     <img src="images/myetherwallet-logo.png" />
+     <h2 translate="{{loadingMsg.msg}}"></h2>
+     <h4> You're accessing MEW from {{loadingMsg.website}} </h4>
+   </div>
+
   </section>
-  -->
+
 
 </section>
 

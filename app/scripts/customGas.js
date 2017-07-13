@@ -14,13 +14,6 @@
 module.exports = [
 {
   // DCORP
-  to:         '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
-  gasLimit:   21000,
-  data:       '',
-  msg:        'Thank you for your donation! TO THE MOON! 🌝'
-},
-{
-  // DCORP
   to:         '0xD42433A8a0A1CEB73c8ff4e432463e2ee109039d',
   gasLimit:   100000,
   data:       '',
@@ -39,20 +32,6 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'OpenANX. Starts June 22, 2017.'
-},
-{
-  // Adchain
-  to:         '0x0000',
-  gasLimit:   200000,
-  data:       '',
-  msg:        'Adchain. Starts June 26, 2017.'
-},
-{
-  // OmiseGo
-  to:         '0x0000',
-  gasLimit:   200000,
-  data:       '',
-  msg:        'OmiseGo. Starts June 27, 2017.'
 },
 {
   // Nimiq
@@ -83,18 +62,11 @@ module.exports = [
   msg:        'Moeda. Ends at block 4,111,557.'
 },
 {
-  // FAKE STATUS
-  to:         '0xc9f32ce1127e44c51cbd182d6364f3d707fd0d47',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR STATUS!!'
-},
-{
-  // SunContract
-  to:         '0x5fb3D432bae33FCd418edE263D98D7440E7fA3ea',
+  // NVC
+  to:         '0xd88755197e107603C139df6E709ed09EEC6b6bB3',
   gasLimit:   200000,
   data:       '',
-  msg:        'SunContract ICO address - suncontract.org'
+  msg:        'NVC Fund'
 },
 {
   // SoerenGelderCom
@@ -104,11 +76,11 @@ module.exports = [
   msg:        'SGelder ICO starts 07th of August 2017'
 },
 {
-  // NVC
-  to:         '0xd88755197e107603C139df6E709ed09EEC6b6bB3',
+  // SunContract
+  to:         '0x5fb3D432bae33FCd418edE263D98D7440E7fA3ea',
   gasLimit:   200000,
   data:       '',
-  msg:        'NVC Fund'
+  msg:        'SunContract ICO address - suncontract.org'
 }
 ]
 

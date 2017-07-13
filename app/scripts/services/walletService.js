@@ -2,7 +2,8 @@
 var walletService = function() {
 	return {
         wallet: null,
-        password:''
+        password:'',
+        walletType: null
     }
 };
 module.exports = walletService;

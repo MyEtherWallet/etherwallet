@@ -79,7 +79,7 @@
       </div>
       <div ng-show="!wd">
           @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
-          @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+          @@if (site === 'cx' )  {  <wallet-decrypt-cx-drtv></wallet-decrypt-cx-drtv>   }
       </div>
     </section>
 
@@ -88,12 +88,12 @@
       Please use the node switcher in the top-right corner to switch to an ETH node. We <strong>do not</strong> support swapping ETC or Testnet ETH.
     </div>
 
-    <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
-      @@if (site === 'mew' ) { @@include( './sendTx-content.tpl', { "site": "mew" } ) }
-      @@if (site === 'cx'  ) { @@include( './sendTx-content.tpl', { "site": "cx"  } ) }
+    <section class="row" ng-show="wallet!=null" ng-controller='txSendCtrl'>
+      @@if (site === 'mew' ) { @@include( './txSend-content.tpl', { "site": "mew" } ) }
+      @@if (site === 'cx'  ) { @@include( './txSend-content.tpl', { "site": "cx"  } ) }
 
-      @@if (site === 'mew' ) { @@include( './sendTx-modal.tpl',   { "site": "mew" } ) }
-      @@if (site === 'cx'  ) { @@include( './sendTx-modal.tpl',   { "site": "cx"  } ) }
+      @@if (site === 'mew' ) { @@include( './txSend-modal.tpl',   { "site": "mew" } ) }
+      @@if (site === 'cx'  ) { @@include( './txSend-modal.tpl',   { "site": "cx"  } ) }
     </section>
   </article>
   <!-- / Swap CTA ETH -->
@@ -101,7 +101,7 @@
 
   <!-- Swap CTA BTC -->
   <section class="row block swap-address text-center" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
-    <label translate="x_Address"> Your Address </label>
+    <label translate="ADDR_"> Your Address </label>
     <div class="qr-code" qr-code="{{'bitcoin:'+orderResult.payment_address+'?amount='+orderResult.input.amount}}" watch-var="orderResult" ></div>
     <br />
     <p class="text-danger">

@@ -1,8 +1,8 @@
-<article class="block decrypt-drtv clearfix" ng-controller='decryptWalletCtrl as $crtl'>
+<article class="block decrypt-drtv clearfix" ng-controller='walletDecryptCtrl as $crtl'>
 
   <!-- Column 1 - Select Type of Key -->
   <section class="col-md-4 col-sm-6">
-    <h4 translate="decrypt_Access"> Select the format of your private key: </h4>
+    <h4 translate="DECRYPT_Access"> Select the format of your private key: </h4>
     <label class="radio">
       <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
       <span translate="x_Keystore2">Keystore / JSON File</span>
@@ -19,9 +19,6 @@
       <input aria-flowto="aria4" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" />
       <span translate="x_ParityPhrase">Parity Phrase</span>
     </label>
-    <label class="radio">
-      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/parity-phrases-no-longer-supported" target="_blank" rel="noopener">No longer supported</a>
-    </label>
     <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
       <input aria-flowto="aria5" type="radio" aria-label="Ledger Nano S hardware wallet" ng-model="walletType" value="ledger" />
       Ledger Nano S
@@ -30,9 +27,10 @@
       <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
       TREZOR
     </label>
-    <label class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id">
+    <label class="radio" ng-show="globalService.currentTab==globalService.tabs.walletView.id || globalService.currentTab==globalService.tabs.txSend.id">
       <input aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
-      View with Address Only
+      <span ng-show="globalService.currentTab==globalService.tabs.walletView.id">View with Address Only</span>
+      <span ng-show="globalService.currentTab==globalService.tabs.txSend.id">Offline TX (Address Only)</span>
     </label>
   </section>
   <!-- Column 1 - Select Type of Key -->
@@ -42,18 +40,18 @@
 
     <!-- if selected upload -->
     <div id="selectedUploadKey" ng-if="walletType=='fileupload'">
-      <h4 translate="ADD_Radio_2_alt">Select your wallet file:</h4>
+      <h4 translate="DECRYPT_Radio_2_alt">Select your wallet file:</h4>
       <div class="form-group">
         <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector" />
-        <a class="btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short" id="aria1" tabindex="0" role="button">SELECT WALLET FILE... </a>
+        <a class="btn-file marg-v-sm" ng-click="openFileDialog()" translate="DECRYPT_Radio_2_short" id="aria1" tabindex="0" role="button">SELECT WALLET FILE... </a>
       </div>
       <div class="form-group" ng-if="requireFPass">
-        <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
+        <p translate="DECRYPT_Label_3"> Your file is encrypted. Please enter the password: </p>
         <input class="form-control"
                ng-change="onFilePassChange()"
                ng-class="Validator.isPasswordLenValid($parent.$parent.filePassword,0) ? 'is-valid' : 'is-invalid'"
                ng-model="$parent.$parent.filePassword"
-               placeholder="{{ 'x_Password' | translate }}"
+               placeholder="{{ 'PW_' | translate }}"
                type="password"
         />
       </div>
@@ -62,7 +60,7 @@
 
     <!-- if selected type key-->
     <div id="selectedTypeKey" ng-if="walletType=='pasteprivkey'">
-      <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>
+      <h4 translate="DECRYPT_Radio_3"> Paste / type your private key: </h4>
       <div class="form-group">
         <textarea id="aria2"
                   class="form-control"
@@ -75,13 +73,13 @@
         ></textarea>
       </div>
       <div class="form-group" ng-if="requirePPass">
-        <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
+        <p translate="DECRYPT_Label_3"> Your file is encrypted. Please enter the password: </p>
         <input class="form-control"
                ng-change="onPrivKeyPassChange()"
                ng-class="Validator.isPasswordLenValid($parent.$parent.privPassword,0) ? 'is-valid' : 'is-invalid'"
                ng-keyup="$event.keyCode == 13 && decryptWallet()"
                ng-model="$parent.$parent.privPassword"
-               placeholder="{{ 'x_Password' | translate }}"
+               placeholder="{{ 'PW_' | translate }}"
                type="password"
         />
       </div>
@@ -90,7 +88,7 @@
 
     <!-- if selected type mnemonic-->
     <div id="selectedTypeMnemonic" ng-if="walletType=='pastemnemonic'">
-      <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+      <h4 translate="MNEM_Enter"> Paste / type your mnemonic: </h4>
       <div class="form-group">
         <textarea id="aria3"
                   class="form-control"
@@ -103,12 +101,12 @@
         ></textarea>
       </div>
       <div class="form-group">
-        <p translate="ADD_Label_8">Password (optional): </p>
+        <p translate="PW_Optional">Password (optional): </p>
         <div>
           <input class="form-control"
                  ng-keyup="$event.keyCode == 13 && decryptWallet()"
                  ng-model="$parent.$parent.mnemonicPassword"
-                 placeholder="{{ 'x_Password' | translate }}"
+                 placeholder="{{ 'PW_' | translate }}"
                  type="password"
           / >
         </div>
@@ -118,7 +116,7 @@
 
     <!-- if selected parity phrase-->
     <div id="selectedTypeMnemonic" ng-if="walletType=='parityBWallet'">
-      <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+      <h4 translate="MNEM_Enter"> Paste / type your mnemonic: </h4>
       <div class="form-group">
         <textarea rows="4"
                   class="form-control"
@@ -134,18 +132,19 @@
 
     <!-- if selected type ledger-->
     <div id="selectedTypeLedger" ng-if="walletType=='ledger'">
+      <h4> &nbsp; </h4>
       <ol>
-        <li id="aria7" tabinex="0" translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL">
+        <li id="aria7" tabinex="0" translate="DECRYPT_Ledger_0a" class="text-danger" ng-hide="isSSL">
           Re-open MyEtherWallet on a secure (SSL) connection
         </li>
         <li tabinex="0">
-          <span translate="ADD_Ledger_1">Connect your Ledger Nano S</span> &amp;
-          <span translate="ADD_Ledger_2">Open the Ethereum application (or a contract application)</span>
+          <span translate="DECRYPT_Ledger_1">Connect your Ledger Nano S</span> &amp;
+          <span translate="DECRYPT_Ledger_2">Open the Ethereum application (or a contract application)</span>
         </li>
-        <li tabinex="0" translate="ADD_Ledger_3">
+        <li tabinex="0" translate="DECRYPT_Ledger_3">
           Verify that Browser Support is enabled in Settings
         </li>
-        <li tabinex="0" translate="ADD_Ledger_4">
+        <li tabinex="0" translate="DECRYPT_Ledger_4">
           If no Browser Support is found in settings, verify that you have Firmware >1.2
         </li>
       </ol>
@@ -166,21 +165,13 @@
     <!-- /if selected type ledger-->
 
     <!-- if selected type trezor-->
-    <br />
     <div id="selectedTypeTrezor" ng-if="walletType=='trezor'">
-      <div class="form-group">
-        <a id="aria6"
-           class="btn btn-primary btn-block"
-           ng-click="scanTrezor()"
-           ng-show="walletType=='trezor'"
-           tabindex="0" role="button"
-           translate="ADD_Trezor_scan"
-        > SCAN </a>
-      </div>
-      <p role="alert" ng-show="trezorError" class="text-center text-danger"><strong>
-        {{trezorErrorString}}
-      </strong></p>
-      <br /><br />
+      <h4> &nbsp; </h4>
+      <ol>
+        <li id="aria7" tabinex="0" translate="DECRYPT_Ledger_0a" class="text-danger" ng-hide="isSSL">
+          Re-open MyEtherWallet on a secure (SSL) connection
+        </li>
+      </ol>
       <div class="text-center">
         <p>Guide:<br />
           <a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg" target="_blank" rel="noopener">
@@ -196,14 +187,14 @@
 
     <!-- if selected addressOnly-->
     <div id="selectedTypeKey" ng-if="walletType=='addressOnly'">
-      <h4 translate="x_Address"> Your Address </h4>
+      <h4 translate="ADDR_"> Your Address </h4>
       <div class="form-group">
         <textarea rows="4"
                   class="form-control"
                   ng-change="onAddressChange()"
                   ng-class="Validator.isValidAddress($parent.$parent.addressOnly) ? 'is-valid' : 'is-invalid'"
                   ng-model="$parent.$parent.addressOnly"
-                  placeholder="{{ 'x_Address' | translate }}"
+                  placeholder="{{ 'ADDR_' | translate }}"
         ></textarea>
       </div>
     </div>
@@ -214,36 +205,45 @@
 
   <!-- Column 3 - The Unlock Button -->
   <section class="col-md-4 col-sm-6" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType=='ledger'||walletType=='trezor'||showAOnly||showParityDecrypt">
-    <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt||showPDecrypt||showMDecrypt" translate="ADD_Label_6">
-      Access Your Wallet:
-    </h4>
-    <div class="form-group">
-      <a
-      tabindex="0"
+
+
+    <div class="form-group" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||showParityDecrypt">
+      <h4 id="uploadbtntxt-wallet" translate="WALL_Unlock">Access Your Wallet</h4>
+      <a tabindex="0"
       role="button"
       class="btn btn-primary btn-block"
-      ng-show="showFDecrypt||showPDecrypt||showMDecrypt||showParityDecrypt"
       ng-click="decryptWallet()"
-      translate="ADD_Label_6_short">UNLOCK</a>
+      translate="WALL_Unlock_Short"> Unlock Wallet </a>
     </div>
-    <div class="form-group">
+
+
+    <div class="form-group" ng-show="showAOnly">
+      <h4 id="uploadbtntxt-wallet" translate="WALL_Unlock">Access Your Wallet</h4>
       <a class="btn btn-primary btn-block"
          ng-click="decryptAddressOnly()"
-         ng-show="showAOnly"
          role="button"
-         tabindex="0"
-         translate="ADD_Label_6_short"
-      > UNLOCK </a>
+         tabindex="0"> Open with Address Only </a>
     </div>
-    <div class="form-group">
+
+    <div class="form-group" ng-show="walletType=='trezor'">
+      <h4 id="uploadbtntxt-wallet" translate="WALL_Unlock">Access Your Wallet</h4>
+      <a id="aria6"
+         class="btn btn-primary btn-block"
+         ng-click="scanTrezor()"
+         tabindex="0" role="button"
+         translate="DECRYPT_Trezor_scan"> Scan </a>
+      <p role="alert" ng-show="trezorError" class="text-center text-danger"><strong> {{trezorErrorString}} </strong></p>
+    </div>
+
+    <div class="form-group" ng-show="walletType=='ledger'">
+      <h4 id="uploadbtntxt-wallet" translate="WALL_Unlock">Access Your Wallet</h4>
       <a class="btn btn-primary btn-block"
          ng-click="scanLedger()"
-         ng-show="walletType=='ledger'"
          role="button"
          tabindex="0"
-         translate="ADD_Ledger_scan"
-      > SCAN </a>
+         translate="DECRYPT_Ledger_scan"> Scan </a>
     </div>
+
   </section>
 
   <!-- / Column 3 -The Unlock Button -->
@@ -256,7 +256,7 @@
           <button aria-label="Close" type="button" class="close" data-dismiss="modal">&times;</button>
 
           <!-- Select HD Path -->
-          <h3 id="modalTitle" class="modal-title" translate="ADD_Radio_5_Path">
+          <h3 id="modalTitle" class="modal-title" translate="MNEM_Enter_Path">
             Select HD derivation path:
           </h3>
 
@@ -367,9 +367,9 @@
           </p>
           <table class="small table table-striped table-mnemonic">
             <tr>
-              <th translate="x_Address">Address</th>
-              <th translate="MYWAL_Bal">Balance</th>
-              <th translate="sidebar_TokenBal" class="text-center" >Token<br>Balances</th>
+              <th translate="ADDR_">Address</th>
+              <th translate="ACCOUNT_Balance">Balance</th>
+              <th translate="TOKEN_Balance" class="text-center" >Token<br>Balances</th>
             </tr>
             <tr ng-repeat="wallet in HDWallet.wallets track by $index">
               <td>
@@ -425,7 +425,7 @@
                   ng-click="setHDWallet()"
                   role="button"
                   tabindex="0"
-                  translate="ADD_Label_6"
+                  translate="WALL_Unlock"
           > Access Wallet </button>
         </div>
       </section>
