@@ -33,10 +33,10 @@ textarea {
 }
 
 .annoucement-warning {
-  background-color: @brand-danger;
+  background-color: @brand-orangered;
   &:hover,
   &:focus {
-    background-color: darken(@brand-danger, 5%);
+    background-color: darken(@brand-orangered, 5%);
     a, a:hover {
       text-decoration: none;
     }
@@ -483,7 +483,7 @@ label small {
 
   li:nth-child(3),
   li:nth-child(4),
-  li:nth-child(7) {
+  li:nth-child(9) {
     border-bottom: 1px solid @gray-lighter;
     padding-bottom: 5px;
   }
@@ -511,10 +511,12 @@ label small {
   }
   li:nth-child(5),
   li:nth-child(6),
-  li:nth-child(7) {
+  li:nth-child(7),
+  li:nth-child(8),
+  li:nth-child(9), {
     border-left: 2px solid @brand-test;
   }
-  li:nth-child(8) {
+  li:nth-child(10) {
     border-left: 2px solid @brand-rsk;
   }
   li:last-child {
@@ -526,51 +528,58 @@ label small {
 header {
   margin-bottom: 1em;
 }
-header.ETH     {
-  border-top: 3px solid @brand-eth;
+header.ETH,
+header.ETH + .container + .pre-footer + .footer {
+  border-top: 0.25rem solid @brand-eth;
   & + .container .modal-content {
-    border: 3px solid @brand-eth;
+    border: 0.25rem solid @brand-eth;
   }
 }
-header.ETC     {
-  border-top: 3px solid @brand-etc;
+header.ETC,
+header.ETC + .container + .pre-footer + .footer {
+  border-top: 0.25rem solid @brand-etc;
   .NAV_ENS { }
   & + .container .modal-content {
-    border: 3px solid @brand-etc;
+    border: 0.25rem solid @brand-etc;
   }
 }
-header.Ropsten {
-  border-top: 3px solid @brand-test;
+header.Ropsten,
+header.Ropsten + .container + .pre-footer + .footer {
+  border-top: 0.25rem solid @brand-test;
   & + .container .modal-content {
-    border: 3px solid @brand-test;
+    border: 0.25rem solid @brand-test;
   }
 }
-header.Kovan   {
-  border-top: 3px solid @brand-test;
+header.Kovan,
+header.Kovan + .container + .pre-footer + .footer {
+  border-top: 0.25rem solid @brand-test;
   .NAV_ENS { }
   & + .container .modal-content {
-    border: 3px solid @brand-test;
+    border: 0.25rem solid @brand-test;
   }
 }
-header.Rinkeby {
-  border-top: 3px solid @brand-test;
+header.Rinkeby,
+header.Rinkeby + .container + .pre-footer + .footer {
+  border-top: 0.25rem solid @brand-test;
   .NAV_ENS {}
   & + .container .modal-content {
-    border: 3px solid @brand-test;
+    border: 0.25rem solid @brand-test;
   }
 }
-header.RSK {
-  border-top: 3px solid @brand-rsk;
+header.RSK,
+header.RSK + .container + .pre-footer + .footer {
+  border-top: 0.25rem solid @brand-rsk;
   .NAV_ENS {}
   & + .container .modal-content {
-    border: 3px solid @brand-rsk;
+    border: 0.25rem solid @brand-rsk;
   }
 }
-header.Custom  {
-  border-top: 3px solid @brand-cust;
+header.Custom,
+header.Custom + .container + .pre-footer + .footer {
+  border-top: 0.25rem solid @brand-cust;
   .NAV_ENS { }
   & + .container .modal-content {
-    border: 3px solid @brand-cust;
+    border: 0.25rem solid @brand-cust;
   }
 }
 

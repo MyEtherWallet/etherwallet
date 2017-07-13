@@ -154,11 +154,22 @@
 }
 
 // footer
+.pre-footer {
+  padding: 1rem;
+  box-shadow: 16px 16px 47px 0px rgba(0,0,0,.07);
+  margin-top: 5rem;
+  background-color: white;
+  text-align: center;
+  p {
+    font-size: @font-size-medium;
+  }
+}
+
+
 .footer {
   background-color: @ether-navy;
   color: white;
   font-size: @font-size-small;
-  margin-top: 5rem;
   h5{
     font-size: @font-size-bump;
     margin: @font-size-small 0 0;
@@ -223,7 +234,7 @@
 
 .footer--left {
   .footer--col();
-  max-width: 27rem;
+  max-width: 25rem;
   flex-grow: 1;
 }
 .footer--cent {
@@ -234,6 +245,6 @@
 }
 .footer--righ {
   .footer--col();
-  max-width: 27rem;
+  max-width: 31rem;
   flex-grow: 1;
 }
