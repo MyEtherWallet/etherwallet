@@ -1,3 +1,13 @@
+<section class="pre-footer">
+  <div class="container">
+    <p>MyEtherWallet.com is a client-side interface &amp; does not hold your keys. We cannot access accounts, recover keys, reset passwords, nor reverse transactions.</p>
+    <p>
+      <span>If you go to a fake MyEtherWallet.com, they can. Check the URL. Use a bookmark.</span>
+      <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal"> You are responsible for your security. </a>
+    </p>
+  </div>
+</section>
+
 <footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
   <article class="block__wrap" style="max-width: 1780px; margin: auto;">
@@ -6,15 +16,13 @@
 
       <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
-      <p><span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum blockchain.</span></p>
+      <p><span translate="FOOTER_1">Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.</span></p>
 
       <p><span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.</p>
 
-      <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">Sign Message</a></p>
-
-      <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">Helpers &amp; ENS Debugging</a></p>
-
       <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
+
+      <p> &copy; 2017 MyEtherWallet, LLC </p>
 
     </section>
 
@@ -44,25 +52,50 @@
 
     <section class="footer--righ">
 
-      <h5><i aria-hidden="true">🌎</i> Helpful Links </h5>
+      <h5><i aria-hidden="true">🌎</i> Links </h5>
 
-      <p><a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
-         Knowledge Base
-      </a></p>
+      <p>🌟 Help:
+        <a aria-label="knowledge base" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
+          Knowledge Base
+        </a>
+      </p>
 
-      <p><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
-        www.MyEtherWallet.com
-      </a></p>
+      <p>Web:
+        <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
+          MyEtherWallet.com
+        </a>
+        &middot;
+        <a aria-label="website via github URL" href="https://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+          kvhnuke.github.io/etherwallet
+        </a>
+      </p>
 
-      <p><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
-        Github: MyEtherWallet v3
-      </a></p>
+      <p>Github:
+        <a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
+          Current Site &amp; CX
+        </a>
+        &middot;
+        <a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
+          MEW Org
+        </a>
+        &middot;
+        <a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener" role="link" tabindex="0">
+          Latest Release
+        </a>
 
-      <p><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
-        Github: MyEtherWallet
-      </a></p>
+      </p>
 
-      <p>
+      <p>Chrome Extension:
+        <a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener" role="link" tabindex="0">
+          MyEtherWallet
+        </a>
+        &middot;
+        <a aria-label="Anti-Phishing chrome extension" href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener" role="link" tabindex="0">
+          Anti-Phishing
+        </a>
+      </p>
+
+      <p>Social &amp; Suppport:
         <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" role="link" tabindex="0">
           Slack
         </a>
@@ -71,14 +104,26 @@
           Twitter
         </a>
         &middot;
+        <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+          Reddit
+        </a>
+        &middot;
         <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
           Facebook
         </a>
         &middot;
-        <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
-          Reddit
+        <a aria-label="medium" href="https://medium.com/@myetherwallet_96408" target="_blank" rel="noopener" role="link" tabindex="0">
+          Medium
         </a>
       </p>
+
+      <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">
+        Helpers &amp; ENS Debugging
+      </a></p>
+
+      <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">
+        Sign Message
+      </a></p>
 
       <p ng-show="showBlocks">Latest Block#: {{currentBlockNumber}} </p>
 
@@ -87,9 +132,6 @@
   </article>
 
 </div>
-
-@@if (site === 'mew' ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "mew" } ) }
-@@if (site === 'cx'  ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "cx"  } ) }
 
 
 <script type='application/ld+json'>
@@ -100,20 +142,34 @@
   "url":"https://www.myetherwallet.com/",
   "name":"MyEtherWallet",
   "logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png",
-  "description": "MyEtherWallet is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain.",
+  "description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.",
   "sameAs":[
+    "https://www.myetherwallet.com/",
+    "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
     "https://www.facebook.com/MyEtherWallet/",
     "https://twitter.com/myetherwallet",
+    "https://medium.com/@myetherwallet_96408",
     "https://myetherwallet.groovehq.com/help_center",
     "https://github.com/kvhnuke/etherwallet",
     "https://github.com/MyEtherWallet",
     "https://kvhnuke.github.io/etherwallet/",
-    "https://myetherwallet.slack.com/"
+    "https://github.com/kvhnuke/etherwallet/releases/latest",
+    "https://github.com/409H/EtherAddressLookup",
+    "https://myetherwallet.slack.com/",
+    "https://myetherwallet.herokuapp.com/",
+    "https://www.reddit.com/r/MyEtherWallet/",
+    "https://www.reddit.com/user/insomniasexx/",
+    "https://www.reddit.com/user/kvhnuke/",
+    "https://www.reddit.com/user/myetherwallet"
   ]
 }
 </script>
 
 </footer>
+
+@@if (site === 'mew' ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "mew" } ) }
+@@if (site === 'cx'  ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "cx"  } ) }
+
 </main>
 </body>
 </html>
