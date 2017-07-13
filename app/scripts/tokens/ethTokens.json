@@ -84,6 +84,12 @@
     "type":"default"
   },
   {
+    "address":"0x4e0603e2a27a30480e5e3a4fe548e29ef12f64be",
+    "symbol":"CREDO",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xbf4cfd7d1edeeea5f6600827411b41a21eb08abd",
     "symbol":"CTL",
     "decimal":2,
