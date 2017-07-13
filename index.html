@@ -5,12 +5,17 @@
   <meta charset="utf-8">
   <title>MyEtherWallet.com</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain.">
+  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
   <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
-  <script type="text/javascript" src="js/etherwallet-master.js"></script>
+
+  
+    <script type="text/javascript" src="js/etherwallet-master.min.js"></script>
+  
+
+  
 
   <link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
@@ -23,7 +28,7 @@
   <meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
   <meta property="og:url"         content="https://www.myetherwallet.com" />
   <meta property="og:title"       content="MyEtherWallet.com" />
-  <meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain." />
+  <meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet." />
   <meta property="og:image"       content="images/myetherwallet-logo-banner.png" />
   <meta property="og:image"       content="images/myetherwallet-logo.png" />
   <meta property="og:image"       content="images/myetherwallet-logo-square.png" />
@@ -33,12 +38,6 @@
 <body>
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
-
-    
-      <div class="small announcement annoucement-warning">
-        <div class="container">⚠ Please beware of phishing websites. Do not enter your key on a website you arrived at by clicking a link. Use bookmarks. Always triple-check the domain. Ours is dot com. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">You are responsible for your safety &amp; security</a>.</div>
-      </div>
-    
 
     
   <section class="bg-gradient header-branding">
@@ -53,7 +52,7 @@
 
       <div class="tagline">
 
-        <span>v3.9.8.5</span>
+        <span>v3.9.9</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -123,6 +122,12 @@
       </div>
     </section>
   </section>
+
+  
+    <div class="small announcement annoucement-warning">
+      <div class="container">⚠ Please beware of phishing websites. Do not enter your key on a website you arrived at by clicking a link. Use bookmarks. Always triple-check the domain. Ours is dot com. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">You are responsible for your safety &amp; security</a>.</div>
+    </div>
+  
 
   <nav role="navigation" aria-label="main navigation" class="container nav-container overflowing" >
     <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
@@ -964,7 +969,6 @@
 
 
   <!-- Your Address -->
-  <!-- TODO ADD ENS NAME SUPPORT -->
   <section class='swap-address block'>
     <section class="row">
       <div class="col-sm-8 col-sm-offset-2 col-xs-12">
@@ -1340,26 +1344,19 @@
   
 
 
-  <section class="bity-contact">
-    <div class="col-sm-5 text-right">
-      <br />
-      <p><a class="btn-warning btn-sm" href="mailto:support@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A" target="_blank" rel="noopener"> Issue with your Swap? Contact support.</a></p>
-      <p><small>If the link doesn't work, copy &amp; paste the following:</small></p>
-    </div>
-    <div class="col-sm-5 text-left">
-      <textarea class="form-control input-sm" rows="3">To: support@bity.com, support@myetherwallet.com
+  <section class="bity-contact text-center">
+    <p><a class="btn-warning btn-sm" href="mailto:support@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A" target="_blank" rel="noopener"> Issue with your Swap? Contact support</a></p>
+    <p ng-click="swapIssue = !swapIssue"><small>Click here if link doesn't work</small></p>
+    <textarea class="form-control input-sm" rows="9" ng-show="swapIssue" style="max-width: 35rem;margin: auto;">To: support@bity.com, support@myetherwallet.com
 Subject: {{orderResult.reference}} - Issue regarding my Swap via MEW
 Message:
 REF ID#: {{orderResult.reference}}
 Amount to send: {{orderResult.input.amount}} {{orderResult.input.currency}}
 Amount to receive: {{orderResult.output.amount}} {{orderResult.output.currency}}
 Payment Address: {{orderResult.payment_address}}
+Receiving Address: {{swapOrder.toAddress}}
 Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
-    </div>
-
   </section>
-
-  </main>
 
 </main>
 <!-- / Swap Page -->
@@ -3354,7 +3351,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <div data-ng-repeat="alert in notifier.alerts">
   <div class="alert popup alert-{{alert.type}} animated-show-hide"
-       style="bottom: {{55*$index}}px; z-index: {{999-$index}};">
+       style="bottom: {{85*$index}}px; z-index: {{999+$index}};">
     <div class="container">
       <div class='alert-message' ng-bind-html="alert.message"></div>
     </div>
@@ -3374,6 +3371,16 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 </section>
 
+<section class="pre-footer">
+  <div class="container">
+    <p>MyEtherWallet.com is a client-side interface &amp; does not hold your keys. We cannot access accounts, recover keys, reset passwords, nor reverse transactions.</p>
+    <p>
+      <span>If you go to a fake MyEtherWallet.com, they can. Check the URL. Use a bookmark.</span>
+      <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal"> You are responsible for your security. </a>
+    </p>
+  </div>
+</section>
+
 <footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
   <article class="block__wrap" style="max-width: 1780px; margin: auto;">
@@ -3382,15 +3389,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
       <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
-      <p><span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum blockchain.</span></p>
+      <p><span translate="FOOTER_1">Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.</span></p>
 
       <p><span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.</p>
 
-      <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">Sign Message</a></p>
-
-      <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">Helpers &amp; ENS Debugging</a></p>
-
       <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
+
+      <p> &copy; 2017 MyEtherWallet, LLC </p>
 
     </section>
 
@@ -3420,25 +3425,50 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
     <section class="footer--righ">
 
-      <h5><i aria-hidden="true">🌎</i> Helpful Links </h5>
+      <h5><i aria-hidden="true">🌎</i> Links </h5>
 
-      <p><a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
-         Knowledge Base
-      </a></p>
+      <p>🌟 Help:
+        <a aria-label="knowledge base" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
+          Knowledge Base
+        </a>
+      </p>
 
-      <p><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
-        www.MyEtherWallet.com
-      </a></p>
+      <p>Web:
+        <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
+          MyEtherWallet.com
+        </a>
+        &middot;
+        <a aria-label="website via github URL" href="https://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+          kvhnuke.github.io/etherwallet
+        </a>
+      </p>
 
-      <p><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
-        Github: MyEtherWallet v3
-      </a></p>
+      <p>Github:
+        <a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
+          Current Site &amp; CX
+        </a>
+        &middot;
+        <a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
+          MEW Org
+        </a>
+        &middot;
+        <a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener" role="link" tabindex="0">
+          Latest Release
+        </a>
 
-      <p><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
-        Github: MyEtherWallet
-      </a></p>
+      </p>
 
-      <p>
+      <p>Chrome Extension:
+        <a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener" role="link" tabindex="0">
+          MyEtherWallet
+        </a>
+        &middot;
+        <a aria-label="Anti-Phishing chrome extension" href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener" role="link" tabindex="0">
+          Anti-Phishing
+        </a>
+      </p>
+
+      <p>Social &amp; Suppport:
         <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" role="link" tabindex="0">
           Slack
         </a>
@@ -3447,14 +3477,26 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
           Twitter
         </a>
         &middot;
+        <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+          Reddit
+        </a>
+        &middot;
         <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
           Facebook
         </a>
         &middot;
-        <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
-          Reddit
+        <a aria-label="medium" href="https://medium.com/@myetherwallet_96408" target="_blank" rel="noopener" role="link" tabindex="0">
+          Medium
         </a>
       </p>
+
+      <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">
+        Helpers &amp; ENS Debugging
+      </a></p>
+
+      <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">
+        Sign Message
+      </a></p>
 
       <p ng-show="showBlocks">Latest Block#: {{currentBlockNumber}} </p>
 
@@ -3463,6 +3505,40 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </article>
 
 </div>
+
+
+<script type='application/ld+json'>
+{
+  "@context":"http://schema.org",
+  "@type":"Organization",
+  "@id":"#organization",
+  "url":"https://www.myetherwallet.com/",
+  "name":"MyEtherWallet",
+  "logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png",
+  "description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.",
+  "sameAs":[
+    "https://www.myetherwallet.com/",
+    "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
+    "https://www.facebook.com/MyEtherWallet/",
+    "https://twitter.com/myetherwallet",
+    "https://medium.com/@myetherwallet_96408",
+    "https://myetherwallet.groovehq.com/help_center",
+    "https://github.com/kvhnuke/etherwallet",
+    "https://github.com/MyEtherWallet",
+    "https://kvhnuke.github.io/etherwallet/",
+    "https://github.com/kvhnuke/etherwallet/releases/latest",
+    "https://github.com/409H/EtherAddressLookup",
+    "https://myetherwallet.slack.com/",
+    "https://myetherwallet.herokuapp.com/",
+    "https://www.reddit.com/r/MyEtherWallet/",
+    "https://www.reddit.com/user/insomniasexx/",
+    "https://www.reddit.com/user/kvhnuke/",
+    "https://www.reddit.com/user/myetherwallet"
+  ]
+}
+</script>
+
+</footer>
 
  <article class="modal fade" id="disclaimerModal" tabindex="-1">
   <section class="modal-dialog">
@@ -3473,11 +3549,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
         <h2 class="modal-title text-info" translate="FOOTER_4">Disclaimer</h2>
 
-        <p class="small"><strong> Translations of MyEtherWallet: </strong> The community is doing an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
+        <p class="small"><strong>Be safe &amp; secure:</strong> <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener"> We highly recommend that you read our guide on How to Prevent Loss &amp; Theft for some recommendations on how to be proactive about your security.</a></p>
 
-        <p class="small"><strong>Always backup your keys: </strong> MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</p>
+        <p class="small"><strong>Always backup your keys: </strong> MyEtherWallet.com &amp; MyEtherWallet CX are not "web wallets". You do not create an account or give us your funds to hold onto. No data leaves your computer / your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</p>
 
-        <p class="small"><strong>We are not responsible for any loss: </strong> Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development. While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but we are not responsible for the lost Ether.</p>
+        <p class="small"><strong>We are not responsible for any loss: </strong> Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development. While we have thoroughly tested &amp; tens of thousands of wallets have been successfully created by people all over the globe, there is always the possibility something unexpected happens that causes your funds to be lost. Please do not invest more than you are willing to lose, and please be careful.</p>
+
+        <p class="small"><strong> Translations of MyEtherWallet: </strong> The community has done an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
 
         <p class="small"><strong>MIT License</strong> Copyright &copy; 2015-2017 MyEtherWallet LLC</p>
 
@@ -3498,29 +3576,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
  
 
 
-
-<script type='application/ld+json'>
-{
-  "@context":"http://schema.org",
-  "@type":"Organization",
-  "@id":"#organization",
-  "url":"https://www.myetherwallet.com/",
-  "name":"MyEtherWallet",
-  "logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png",
-  "description": "MyEtherWallet is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain.",
-  "sameAs":[
-    "https://www.facebook.com/MyEtherWallet/",
-    "https://twitter.com/myetherwallet",
-    "https://myetherwallet.groovehq.com/help_center",
-    "https://github.com/kvhnuke/etherwallet",
-    "https://github.com/MyEtherWallet",
-    "https://kvhnuke.github.io/etherwallet/",
-    "https://myetherwallet.slack.com/"
-  ]
-}
-</script>
-
-</footer>
 </main>
 </body>
 </html>
