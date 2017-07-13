@@ -9,8 +9,7 @@
 
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
   <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
-  @@if (production) {   <script type="text/javascript" src="js/etherwallet-master.min.js"></script>  }
-  @@if (!production) {  <script type="text/javascript" src="js/etherwallet-master.js"></script>      }
+  <script type="text/javascript" src="js/etherwallet-master.js"></script>
 
   <link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
@@ -56,7 +55,7 @@
       }
       <div class="tagline">
 
-        <span>v3.9.9</span>
+        <span>v3.9.9.1</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
