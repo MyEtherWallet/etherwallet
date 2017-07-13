@@ -9,15 +9,28 @@
 - source code is the full source for developers to get started with (although cloning or forking the mercury branch is probably a better choice)
 
 
-### Help
+### MEW Around the Web
 
-- [Help Center](https://myetherwallet.groovehq.com/help_center)
-- [Github: MyEtherWallet.com](https://github.com/kvhnuke/etherwallet)
-- [Github: MyEtherWallet v4+](https://github.com/MyEtherWallet)
-- [Slack](https://myetherwallet.herokuapp.com/)
-- [Twitter](https://twitter.com/myetherwallet)
-- [Facebook](https://www.facebook.com/MyEtherWallet/)
-- [Reddit](https://www.reddit.com/r/MyEtherWallet/)
+- [Website: https://www.myetherwallet.com/](https://www.myetherwallet.com/)
+- [CX: https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm)
+- [Anti-phish CX](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn)
+- [FB: https://www.facebook.com/MyEtherWallet/](https://www.facebook.com/MyEtherWallet/)
+- [Twitter: https://twitter.com/myetherwallet](https://twitter.com/myetherwallet)
+- [Medium: https://medium.com/@myetherwallet_96408](https://medium.com/@myetherwallet_96408)
+- [Help Center: https://myetherwallet.groovehq.com/help_center](https://myetherwallet.groovehq.com/help_center)
+- [Github MEW Repo: https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet)
+- [Github MEW Org: https://github.com/MyEtherWallet](https://github.com/MyEtherWallet)
+- [Github Pages URL: https://kvhnuke.github.io/etherwallet/](https://kvhnuke.github.io/etherwallet/)
+- [Github Latest Releases: https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest)
+- [Github Anti-phish CX: https://github.com/409H/EtherAddressLookup](https://github.com/409H/EtherAddressLookup)
+- [Slack: https://myetherwallet.slack.com/ & https://myetherwallet.herokuapp.com/](https://myetherwallet.slack.com/ & https://myetherwallet.herokuapp.com/)
+- [Reddit: https://www.reddit.com/r/MyEtherWallet/](https://www.reddit.com/r/MyEtherWallet/)
+- [tayvano (founder) reddit: https://www.reddit.com/user/insomniasexx/](https://www.reddit.com/user/insomniasexx/)
+- [kvhnuke (founder) reddit: https://www.reddit.com/user/kvhnuke/](https://www.reddit.com/user/kvhnuke/)
+- [jordan (cmo) reddit: https://www.reddit.com/user/trogdortb001](https://www.reddit.com/user/trogdortb001)
+- [myetherwallet reddit user: https://www.reddit.com/user/myetherwallet](https://www.reddit.com/user/myetherwallet)
+-  MEW ETH Donation Address: 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 (mewtopia.eth)
+-  MEW BTC Donation Address: 1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6
 
 
 ### `mercury` is the development branch. gh-pages contains only the smaller dist folder only and is served to MyEtherWallet.com
@@ -98,8 +111,8 @@ If you want to help contribute, here's what you need to know to get it up and ru
 **Getting Started**
 
 - Start by running `npm install`.
-- Run `gulp`. Gulp will then watch & compile everything and then watch for changes to the HTML, JS, or CSS.
-- For distribution, run `gulp clean`.
+- Run `npm run dev`. Gulp will then watch & compile everything and then watch for changes to the HTML, JS, or CSS.
+- For distribution, run `npm run dist`.
 
 **Folder Structure**
 - `fonts` and `images` get moved into their respective folders. This isn't watched via gulp so if you add an image or font, you need to run `gulp` again.
