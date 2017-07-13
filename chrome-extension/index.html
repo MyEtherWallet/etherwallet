@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en" ng-app="mewApp">
 <head>
@@ -10,7 +11,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
   <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
-  <script type="text/javascript" src="js/etherwallet-master.js"></script>
+
+  
+
+  
+    <script type="text/javascript" src="js/etherwallet-master.js"></script>
+  
 
   <link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
@@ -223,7 +229,16 @@
 </header>
 
 
-<section class="container" style="min-height: 50%" ng-controller='genericCtrl'>
+<section class="container" style="min-height: 50%" ng-controller='genericCtrl' ng-init="globalService.currentTab = 2 ">
+      <section class="loading-wrap" ng-show="showLoading">
+    <div class="loading">
+     Quicktip
+     <br />
+     <img src="images/myetherwallet-logo.png" />
+     <h2 translate="{{loadingMsg.msg}}"></h2>
+     <h4> You're accessing MEW from {{loadingMsg.website}} </h4>
+   </div>
+  </section>
 
   <div class="tab-content" >
 
@@ -289,7 +304,7 @@
              ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
       <div class="input-group-btn">
         <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
-          <strong>{{unitReadable}}<i class="caret"></i></strong>
+          <strong>{{ajaxReq.type}}<i class="caret"></i></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
           <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
@@ -715,7 +730,7 @@
              ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
       <div class="input-group-btn">
         <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
-          <strong>{{unitReadable}}<i class="caret"></i></strong>
+          <strong>{{ajaxReq.type}}<i class="caret"></i></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
           <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
@@ -1373,7 +1388,7 @@
              ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
       <div class="input-group-btn">
         <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
-          <strong>{{unitReadable}}<i class="caret"></i></strong>
+          <strong>{{ajaxReq.type}}<i class="caret"></i></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
           <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
@@ -3195,16 +3210,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 
 
-  <section class="loading-wrap" ng-show="showLoading">
-    <div class="loading">
-     Quicktip
-     <br />
-     <img src="images/myetherwallet-logo.png" />
-     <h2 translate="{{loadingMsg.msg}}"></h2>
-     <h4> You're accessing MEW from {{loadingMsg.website}} </h4>
-   </div>
 
-  </section>
 
 
 </section>

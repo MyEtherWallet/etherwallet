@@ -2,6 +2,7 @@
 var walletGenerateCtrl = function($scope) {
     $scope.password = "";
     $scope.wallet = null;
+    $scope.wd = false;
     $scope.showWallet = false;
     $scope.blob = $scope.blobEnc = "";
     $scope.isDone = true;

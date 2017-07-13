@@ -2,6 +2,7 @@
 var txSendCtrl = function($scope, $sce, $interval, walletService) {
     $scope.ajaxReq = ajaxReq;
     $scope.dropdownEnabled = true;
+    $scope.unitReadable = 'ether';
     $scope.gasLimitChanged = false;
     $scope.sendTxModal = new Modal(document.getElementById('txSend'));
     $scope.offlineSignModal = new Modal(document.getElementById('offlineDecrypt'));
@@ -39,7 +40,7 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
         to: '',
         value: 0,
         id: -1,
-        tokenSymbol: ''
+        tokenSymbol: 'ether'
     };
 
     $scope.setSendMode = function(sendMode, tokenId = '', tokenSymbol = '') {
@@ -50,7 +51,7 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
         } else if (sendMode == 'ether') {
             $scope.unitReadable = ajaxReq.type;
         } else {
-            $scope.unitReadable = tokensymbol;
+            $scope.unitReadable = tokenSymbol;
             $scope.tokenTx.id = tokenId;
         }
         $scope.dropdownAmount = false;
