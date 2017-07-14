@@ -72,6 +72,12 @@
     "type":"default"
   },
   {
+   "address":"0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8",
+   "symbol":"CAT",
+   "decimal":18,
+   "type":"default"
+  },
+  {
    "address":"0x12FEF5e57bF45873Cd9B62E9DBd7BFb99e32D73e",
    "symbol":"CFI",
    "decimal":18,
