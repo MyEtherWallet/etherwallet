@@ -421,7 +421,7 @@ TranslatorAddr_2            : '',
 TranslatorName_3            : '[Nikos Vavoulas](https://www.myetherwallet.com/?gaslimit=21000&to=0x062711C89Bd46E9765CfF0b743Cb83a9dBA2d2d2&value=1.0#send-transaction) · ',
 TranslatorAddr_3            : '0x062711C89Bd46E9765CfF0b743Cb83a9dBA2d2d2 ',
 /* Translator 3             : Insert Comments Here */
-TranslatorName_4            : '',
+TranslatorName_4            : 'Ιωάννης Πρωτονοτάριος',
 TranslatorAddr_4            : '',
 /* Translator 4             : Insert Comments Here */
 TranslatorName_5            : '',
