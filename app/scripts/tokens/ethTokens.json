@@ -534,5 +534,11 @@
     "symbol":"XID",
     "decimal":8,
     "type":"default"
-  }
+  },
+  {
+    "address":"0x41e5560054824ea6b0732e656e3ad64e20e94e45",
+    "symbol":"CVC",
+    "decimal":8,
+    "type":"default"
+  }  
 ]
