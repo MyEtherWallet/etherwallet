@@ -8,7 +8,7 @@
 
 
     <div class="form-group well" ng-show="contract.address=='0x0101010101010101010101010101010101010101'">
-      <p> You probably want to change the address to your Mist Mutlisig Address....</p>
+      <p> You probably want to change the address to your Mist Multisig Address....</p>
     </div>
     <div class="form-group well" ng-show="contract.address=='0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf'">
       <ol>
