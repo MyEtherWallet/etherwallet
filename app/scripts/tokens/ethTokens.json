@@ -108,6 +108,12 @@
     "type":"default"
   },
   {
+    "address":"0x41e5560054824ea6b0732e656e3ad64e20e94e45",
+    "symbol":"CVC",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413",
     "symbol":"DAO",
     "decimal":16,
@@ -540,11 +546,5 @@
     "symbol":"XID",
     "decimal":8,
     "type":"default"
-  },
-  {
-    "address":"0x41e5560054824ea6b0732e656e3ad64e20e94e45",
-    "symbol":"CVC",
-    "decimal":8,
-    "type":"default"
-  }  
+  }
 ]
