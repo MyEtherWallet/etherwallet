@@ -87,28 +87,26 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
             $scope.dropdownEnabled = true
         }
     }, true);
-    $scope.setSendMode = function(index, tokenSymbol = '') {
+    $scope.setSendMode = function(index, tokensymbol = '') {
         $scope.tokenTx.id = index;
         if (index == 'ether') {
             $scope.unitReadable = ajaxReq.type;
         } else {
-            $scope.unitReadable = tokenSymbol;
+            $scope.unitReadable = tokensymbol;
         }
         $scope.dropdownAmount = false;
     }
     $scope.validateAddress = function(address, status) {
         $scope.customGasMsg = ''
-        
         if (ethFuncs.validateEtherAddress(address)) {
-            $scope.notifier.info(globalFuncs.successMsgs[0]);
-
             for (var i in CustomGasMessages) {
                 if ($scope.tx.to.toLowerCase() == CustomGasMessages[i].to.toLowerCase()) {
                     $scope.customGasMsg = CustomGasMessages[i].msg != '' ? CustomGasMessages[i].msg : ''
                 }
             }
+            return true;
         } else {
-            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
+          return false;
         }
     }
     $scope.generateTx = function() {

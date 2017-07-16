@@ -14,8 +14,13 @@
              type="text"
              placeholder="0x3f0efedfe0a0cd611f2465fac9a3699f92d6a06613bc3ead4f786856f5c73e9c"
              ng-model="txInfo.hash"
+             ng-keyup="$event.keyCode == 13 && checkTxStatus()"
              aria-label="{{'x_TxHash' | translate}}" ng-class="Validator.isValidTxHash(txInfo.hash) ? 'is-valid' : 'is-invalid'"/>
-          <button tabindex="0" role="button" class="btn btn-primary" ng-click="checkTxStatus()" translate="NAV_CheckTxStatus">Check TX Status</button>
+          <button tabindex="0"
+                  role="button"
+                  class="btn btn-primary"
+                  ng-click="checkTxStatus()"
+                  translate="NAV_CheckTxStatus"> Check TX Status </button>
       </section>
     </article>
   </section>
@@ -23,9 +28,9 @@
 
 
   <!-- Section 2: Current State -->
-  <section class="block txstatus__2">
+  <section class="block txstatus__2" ng-show="txInfo.status==txStatus.mined || txInfo.status==txStatus.notFound || txInfo.status==txStatus.found">
 
-    <div class="cont-md" ng-show="txInfo.status == txStatus.mined"> 
+    <div class="cont-md" ng-show="txInfo.status == txStatus.mined">
       <h3 class="text-success" translate="tx_FoundOnChain"> Transaction Found </h3>
       <h5> <a href="https://etherscan.io/tx/{{ tx.hash }}" target="_blank" rel="noopener"> {{ tx.hash }} </a> </h5>
       <p><strong translate="tx_FoundOnChain_1"></strong></p>
@@ -41,6 +46,7 @@
       <ul>
         <li translate="tx_notFound_2"></li>
         <li translate="tx_notFound_3"></li>
+        <li translate="tx_notFound_4"></li>
       </ul>
     </div>
 
@@ -59,48 +65,69 @@
     <table class="table table-striped txstatus__2 cont-md"> <!-- ng-show="tx.status=='foundOnChain' || foundInPending'"-->
       <tbody>
         <tr>
-          <td></td>
           <td translate="x_TxHash">TX Hash</td>
           <td><a href="https://etherscan.io/tx/{{ txInfo.hash }}" target="_blank" rel="noopener"> {{ txInfo.hash }} </a></td>
         </tr>
         <tr>
-          <td></td>
           <td translate="OFFLINE_Step1_Label_1">From Address</td>
           <td><a href="https://etherscan.io/address/{{ txInfo.from }}" target="_blank" rel="noopener"> {{ txInfo.from }} </a></td>
         </tr>
         <tr>
-          <td></td>
           <td translate="OFFLINE_Step2_Label_1">To Address</td>
           <td><a href="https://etherscan.io/address/{{ txInfo.to }}" target="_blank" rel="noopener"> {{ txInfo.to }} </a></td>
         </tr>
         <tr>
-          <td></td>
           <td translate="SEND_amount_short">Amount</td>
           <td>{{ txInfo.valueStr }} </td>
         </tr>
         <tr>
-          <td><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="NONCE_Desc"></p>
+            </a>
+            <span translate="OFFLINE_Step2_Label_5">Nonce</span>
           </td>
-          <td translate="OFFLINE_Step2_Label_5">Nonce</td>
           <td>{{ txInfo.nonce }} </td>
         </tr>
         <tr>
-          <td><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+            </a>
+            <span translate="OFFLINE_Step2_Label_4">Gas Limit</span>
           </td>
-          <td translate="OFFLINE_Step2_Label_4">Gas Limit</td>
           <td>{{ txInfo.gasLimit }} </td>
         </tr>
         <tr>
-          <td><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
+            </a>
+            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>
           </td>
-          <td><span translate="OFFLINE_Step2_Label_3">Gas Price</span> (wei) &middot;  (ETH) &middot;  (USD) </td>
-          <td>{{ txInfo.gasPrice.wei }}  &middot; {{ txInfo.gasPrice.eth }}  &middot; {{ txInfo.gasPrice.usd }}</td>
+          <td>
+            {{ txInfo.gasPrice.gwei }} GWEI
+            <small>({{ txInfo.gasPrice.wei }} WEI)</small></td>
         </tr>
+<!--
         <tr>
-          <td></td>
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="TXFEE_Desc"></p>
+            </a>
+            <span translate="x_TXFee">TX Fee</span>
+          </td>
+          <td>
+            ({{ txFee.eth }} ETH)
+            <small>({{ txFee.usd }} USD)</small>
+          </td>
+        </tr>
+-->
+        <tr>
           <td translate="OFFLINE_Step2_Label_6">Data</td>
           <td>{{ txInfo.data }} </td>
         </tr>
@@ -131,9 +158,14 @@
 
   <!-- Send Tx Content -->
  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+      <div ng-show="wallet.getChecksumAddressString() == txInfo.from">
       @@if (site === 'mew' ) { @@include( './sendTx-content.tpl', { "site": "mew" } ) }
       @@if (site === 'cx'  ) { @@include( './sendTx-content.tpl', { "site": "cx"  } ) }
 
       @@if (site === 'mew' ) { @@include( './sendTx-modal.tpl',   { "site": "mew" } ) }
       @@if (site === 'cx'  ) { @@include( './sendTx-modal.tpl',   { "site": "cx"  } ) }
+      </div>
+      <div class="col-xs-12 block block--danger" ng-show="wallet.getChecksumAddressString() != txInfo.from">
+        <h5>Please unlock the address {{ txInfo.from }}. Only this address can replace a TX.</h5>
+      </div>
     </section>

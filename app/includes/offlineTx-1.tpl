@@ -9,7 +9,12 @@
       <p class="account-help-text" translate="OFFLINE_Step1_Label_2">Note: This is the FROM address, not the TO address.</p>
       <label translate="OFFLINE_Step1_Label_1"> From Address: </label>
     </div>
-    <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'')"/>
+    <input class="form-control"
+           type="text"
+           placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
+           ng-model="tx.from"
+           ng-change="validateAddress(tx.from,'')"
+           ng-class="Validator.isValidAddress(tx.from) ? 'is-valid' : 'is-invalid'" />
   </section>
   <!-- From Address Icon -->
   <section class="col-xs-1 address-identicon-container">

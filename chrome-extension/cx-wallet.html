@@ -2,11 +2,11 @@
 <html lang="en" ng-app="mewApp">
 <head>
   <meta charset="utf-8">
-  <title>MyEtherWallet: Open-Source & Client-Side Ether Wallet</title>
+  <title>MyEtherWallet.com</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="Open-Source & Client-Side Ethereum Wallet">
-
+  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
   <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
   <script type="text/javascript" src="js/etherwallet-master.js"></script>
@@ -19,25 +19,21 @@
   <link rel="shortcut icon" href="images/fav/favicon.ico">
   <meta name="msapplication-config" content="images/fav/browserconfig.xml">
   <meta name="theme-color" content="#163151">
-
-  <meta property="og:url"         content="https://www.MyEtherWallet.com" />
+  <meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
+  <meta property="og:url"         content="https://www.myetherwallet.com" />
   <meta property="og:title"       content="MyEtherWallet.com" />
-  <meta property="og:description" content="MyEtherWallet: Open-Source & Client-Side Ether Wallet" />
-  <meta property="og:image"       content="images/fb-myetherwallet.png" />
-  <meta property="og:image"       content="images/fb-mewtwo.jpg" />
+  <meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet." />
+  <meta property="og:image"       content="images/myetherwallet-logo-banner.png" />
+  <meta property="og:image"       content="images/myetherwallet-logo.png" />
+  <meta property="og:image"       content="images/myetherwallet-logo-square.png" />
+  <meta property="og:image"       content="images/myetherwallet-banner-fun.jpg" />
 </head>
 
 <body>
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
-
-<!--
-    <div class="small announcement annoucement-warning">
-      <div class="container">The #FOMO is Real. Breath. If you are trying to get in on Status.im, <strong> wait until BLOCK 3903900!</strong> <br /> If your TX is not urgent, we recommend NOT SENDING TODAY. Thank you for understanding. </div>
-    </div>
--->
     
-    <div class="small announcement annoucement-warning">
+    <div class="small announcement annoucement-danger">
         <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any
             wallets you store here. Many things could happen that would cause you to lose the data in this Chrome
             Extension, including uninstalling the extension. This extension is a way to easily access your wallets,
@@ -47,17 +43,15 @@
     
   <section class="bg-gradient header-branding">
     <section class="container">
-
       
       
         <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">
           <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
         </a>
       
-
       <div class="tagline">
 
-        <span>v3.9.5</span>
+        <span>v3.9.9.1</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -97,14 +91,13 @@
           </a>
           <ul class="dropdown-menu" ng-show="dropdownGasPrice">
             <div class="header--gas">
-              <a aria-label="What is Gas?" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener" role="link" tabindex="0">
-                <img src="images/icon-help.svg" class="help-icon" />
-              </a>
               <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
               <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
               <p class="small col-xs-4 text-left">Not So Fast</p>
               <p class="small col-xs-4 text-center">Fast</p>
               <p class="small col-xs-4 text-right">Fast AF</p>
+              <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
+              <a class="small" translate="x_ReadMore" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener"></a>
             </div>
           </ul>
         </span>
@@ -129,6 +122,8 @@
     </section>
   </section>
 
+  
+
   <nav role="navigation" aria-label="main navigation" class="container nav-container overflowing" >
     <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
     <div class="nav-scroll">
@@ -137,6 +132,7 @@
         
         <li ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="tab.cx" ng-click="tabClick($index)"> <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a></li>
         
+        <li class="nav-item help"><a href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener">Help</a></li>
       </ul>
     </div>
     <a aria-hidden="true" ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
@@ -152,18 +148,10 @@
 
         <h2 class="modal-title text-info" translate="NODE_Title"> Set Up Your Custom Node </h2>
 
-        <p class="small" ng-show="browserProtocol!='https:'">
-          <strong translate="NODE_Subtitle">To connect to a local node...</strong>
-          <ul class="small">
-            <li> URL: http://127.0.0.1</li>
-            <li> Port: 8545 </li>
-            <li> Run geth: <code>geth --rpc --rpccorsdomain "null" --keystore "dont_put_secret_files_here_ever"</code></li>
-            <li> Run Parity: <code>parity --rpccorsdomain "*" --keys-path "dont_put_secret_files_here_ever"</code></li>
-          </ul>
-        </p>
+        <p class="small"><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node" target="_blank" rel="noopener"> Instructions can be found here </a></p>
 
         <div ng-show="browserProtocol=='https:'" class="alert alert-danger small" translate="NODE_Warning">
-          Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
+          Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to your local node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
         </div>
 
         <section class="row">
@@ -841,7 +829,12 @@
     <!-- Amount to Send -->
     <label translate="SEND_amount">Amount to Send:</label>
     <div class="input-group col-sm-11">
-      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-disabled="tx.readOnly" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+      <input type="text"
+             class="form-control"
+             placeholder="{{ 'SEND_amount_short' | translate }}"
+             ng-model="tx.value"
+             ng-disabled="tx.readOnly || checkTxReadOnly"
+             ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
       <div class="input-group-btn">
         <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
           <strong>{{unitReadable}}<i class="caret"></i></strong>
@@ -861,41 +854,80 @@
     <!-- Gas Limit -->
     <div class="row form-group">
       <div class="col-sm-11 clearfix">
+        <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+          <img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+        </a>
         <label translate="TRANS_gas"> Gas Limit: </label>
-        <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
+        <input type="text"
+               class="form-control"
+               placeholder="21000"
+               ng-model="tx.gasLimit"
+               ng-change="gasLimitChanged=true"
+               ng-disabled="tx.readOnly || checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
       </div>
     </div>
     <!-- / Gas Limit -->
 
     <!-- Advanced Option Panel -->
-    <a ng-click="showAdvance=!showAdvance" ng-show='!showAdvance'><p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p></a>
+    <a ng-click="showAdvance=true" ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
+      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
+    </a>
 
-    <section ng-show="showAdvance">
+    <section ng-show="showAdvance || checkTxPage">
       <!-- Data -->
       <div class="row form-group">
         <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
+          <span class="account-help-icon">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
+          </span>
           <label translate="TRANS_data"> Data: </label>
-          <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+          <input type="text"
+                 class="form-control"
+                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
+                 ng-model="tx.data"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
         </div>
       </div>
       <!-- / Data -->
 
 
       <!-- Nonce -->
-      <div class="row form-group">
+      <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="NONCE_Desc"></p>
+          </a>
           <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-          <input class="form-control" type="text" placeholder="2" ng-model="tx.nonce" ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
+          <input type="text"
+                 class="form-control"
+                 placeholder="2"
+                 ng-model="tx.nonce"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Nonce -->
 
 
       <!-- Gas Price -->
-      <div class="row form-group">
+      <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
+          </a>
           <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
-          <input class="form-control" type="text" placeholder="50" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+          <input type="text"
+                 class="form-control"
+                 placeholder="50"
+                 ng-model="tx.gasPrice"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Gas Price -->
@@ -905,7 +937,7 @@
 
     <div class="clearfix form-group">
       <div class="well" ng-show="wallet!=null && customGasMsg!=''">
-        <p><small>A message from {{tx.to}}</small></p>
+        <p><small>A message regarding {{tx.to}}</small></p>
         <p><strong> {{customGasMsg}} </strong></p>
       </div>
     </div>
@@ -937,17 +969,21 @@
 <!-- Sidebar -->
 <section class="col-sm-4">
 
-  <div class="block block--danger" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
+  <div class="block block--danger" ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
     <h5>Warning! You do not have enough funds to complete this swap.</h5>
     <p>Please add more funds to your wallet or access a different wallet.</p>
   </div>
 
   <wallet-balance-drtv></wallet-balance-drtv>
-  <div class="block">
+
+  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
     <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-primary btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
+    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
     <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
   </div>
+
+  <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
+
 </section>
 <!-- / Sidebar -->
  
@@ -1018,7 +1054,7 @@
 
 
     <!-- Swap Page -->
-<main class="tab-pane swap-tab active" ng-if="globalService.currentTab==globalService.tabs.swap.id" ng-controller='swapCtrl'  ng-cloak>
+<main class="tab-pane swap-tab active" ng-if="globalService.currentTab==globalService.tabs.swap.id" ng-controller='swapCtrl' ng-cloak>
 
   
    <!-- Swap Rates Panel -->
@@ -1073,6 +1109,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(true)"
          ng-model="swapOrder.fromVal"
+         ng-click="showedMinMaxError = false"
          ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <span class="dropdown">
@@ -1091,6 +1128,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(false)"
          ng-model="swapOrder.toVal"
+         ng-click="showedMinMaxError = false"
          ng-class="Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <div class="dropdown">
@@ -1146,7 +1184,6 @@
 
 
   <!-- Your Address -->
-  <!-- TODO ADD ENS NAME SUPPORT -->
   <section class='swap-address block'>
     <section class="row">
       <div class="col-sm-8 col-sm-offset-2 col-xs-12">
@@ -1280,7 +1317,12 @@
     <!-- Amount to Send -->
     <label translate="SEND_amount">Amount to Send:</label>
     <div class="input-group col-sm-11">
-      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-disabled="tx.readOnly" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+      <input type="text"
+             class="form-control"
+             placeholder="{{ 'SEND_amount_short' | translate }}"
+             ng-model="tx.value"
+             ng-disabled="tx.readOnly || checkTxReadOnly"
+             ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
       <div class="input-group-btn">
         <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
           <strong>{{unitReadable}}<i class="caret"></i></strong>
@@ -1300,41 +1342,80 @@
     <!-- Gas Limit -->
     <div class="row form-group">
       <div class="col-sm-11 clearfix">
+        <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+          <img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+        </a>
         <label translate="TRANS_gas"> Gas Limit: </label>
-        <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
+        <input type="text"
+               class="form-control"
+               placeholder="21000"
+               ng-model="tx.gasLimit"
+               ng-change="gasLimitChanged=true"
+               ng-disabled="tx.readOnly || checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
       </div>
     </div>
     <!-- / Gas Limit -->
 
     <!-- Advanced Option Panel -->
-    <a ng-click="showAdvance=!showAdvance" ng-show='!showAdvance'><p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p></a>
+    <a ng-click="showAdvance=true" ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
+      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
+    </a>
 
-    <section ng-show="showAdvance">
+    <section ng-show="showAdvance || checkTxPage">
       <!-- Data -->
       <div class="row form-group">
         <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
+          <span class="account-help-icon">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
+          </span>
           <label translate="TRANS_data"> Data: </label>
-          <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+          <input type="text"
+                 class="form-control"
+                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
+                 ng-model="tx.data"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
         </div>
       </div>
       <!-- / Data -->
 
 
       <!-- Nonce -->
-      <div class="row form-group">
+      <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="NONCE_Desc"></p>
+          </a>
           <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-          <input class="form-control" type="text" placeholder="2" ng-model="tx.nonce" ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
+          <input type="text"
+                 class="form-control"
+                 placeholder="2"
+                 ng-model="tx.nonce"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Nonce -->
 
 
       <!-- Gas Price -->
-      <div class="row form-group">
+      <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
+          </a>
           <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
-          <input class="form-control" type="text" placeholder="50" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+          <input type="text"
+                 class="form-control"
+                 placeholder="50"
+                 ng-model="tx.gasPrice"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Gas Price -->
@@ -1344,7 +1425,7 @@
 
     <div class="clearfix form-group">
       <div class="well" ng-show="wallet!=null && customGasMsg!=''">
-        <p><small>A message from {{tx.to}}</small></p>
+        <p><small>A message regarding {{tx.to}}</small></p>
         <p><strong> {{customGasMsg}} </strong></p>
       </div>
     </div>
@@ -1376,17 +1457,21 @@
 <!-- Sidebar -->
 <section class="col-sm-4">
 
-  <div class="block block--danger" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
+  <div class="block block--danger" ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
     <h5>Warning! You do not have enough funds to complete this swap.</h5>
     <p>Please add more funds to your wallet or access a different wallet.</p>
   </div>
 
   <wallet-balance-drtv></wallet-balance-drtv>
-  <div class="block">
+
+  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
     <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-primary btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
+    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
     <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
   </div>
+
+  <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
+
 </section>
 <!-- / Sidebar -->
  
@@ -1473,26 +1558,19 @@
  
 
 
-  <section class="bity-contact">
-    <div class="col-sm-5 text-right">
-      <br />
-      <p><a class="btn-warning btn-sm" href="mailto:support@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A" target="_blank" rel="noopener"> Issue with your Swap? Contact support.</a></p>
-      <p><small>If the link doesn't work, copy &amp; paste the following:</small></p>
-    </div>
-    <div class="col-sm-5 text-left">
-      <textarea class="form-control input-sm" rows="3">To: support@bity.com, support@myetherwallet.com
+  <section class="bity-contact text-center">
+    <p><a class="btn-warning btn-sm" href="mailto:support@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A" target="_blank" rel="noopener"> Issue with your Swap? Contact support</a></p>
+    <p ng-click="swapIssue = !swapIssue"><small>Click here if link doesn't work</small></p>
+    <textarea class="form-control input-sm" rows="9" ng-show="swapIssue" style="max-width: 35rem;margin: auto;">To: support@bity.com, support@myetherwallet.com
 Subject: {{orderResult.reference}} - Issue regarding my Swap via MEW
 Message:
 REF ID#: {{orderResult.reference}}
 Amount to send: {{orderResult.input.amount}} {{orderResult.input.currency}}
 Amount to receive: {{orderResult.output.amount}} {{orderResult.output.currency}}
 Payment Address: {{orderResult.payment_address}}
+Receiving Address: {{swapOrder.toAddress}}
 Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
-    </div>
-
   </section>
-
-  </main>
 
 </main>
 <!-- / Swap Page -->
@@ -1518,7 +1596,12 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <p class="account-help-text" translate="OFFLINE_Step1_Label_2">Note: This is the FROM address, not the TO address.</p>
       <label translate="OFFLINE_Step1_Label_1"> From Address: </label>
     </div>
-    <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'')"/>
+    <input class="form-control"
+           type="text"
+           placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
+           ng-model="tx.from"
+           ng-change="validateAddress(tx.from,'')"
+           ng-class="Validator.isValidAddress(tx.from) ? 'is-valid' : 'is-invalid'" />
   </section>
   <!-- From Address Icon -->
   <section class="col-xs-1 address-identicon-container">
@@ -1558,18 +1641,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <!-- To Address -->
   <article class="clearfix">
     <h2 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
-    <section class="col-xs-11">
-      <label translate="OFFLINE_Step2_Label_1">To Address:</label>
-      <input class="form-control"
-             type="text"
-             placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
-             ng-model="tx.to"
-             ng-change="validateAddress(tx.to,'')"/>
-    </section>
 
-    <section class="col-xs-1 address-identicon-container">
-      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-    </section>
+    <address-field var-name="tx.to"></address-field>
 
     <section class="col-xs-12">
       <p>{{customGasMsg}}</p>
@@ -1602,35 +1675,49 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </section>
   </article>
 
-  <!-- Gas Price -->
-  <article class="clearfix">
-    <section class="col-sm-11">
-      <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
-        <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
-      </div>
-      <input class="form-control" type="text" placeholder="" ng-model="gasPriceDec"/>
-    </section>
-  </article>
-
   <!-- Gas Limit -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">21000 is the default gas limit.</p>
-        <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
-      </div>
+      </a>
+      <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
       <input class="form-control" type="text" placeholder="" ng-model="tx.gasLimit"/>
     </section>
   </article>
 
+  <!-- Gas Price -->
+  <article class="clearfix">
+    <section class="col-sm-11">
+      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+        <img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
+      </a>
+      <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
+      <div class="input-group">
+        <input type="text"
+               class="form-control"
+               placeholder="50"
+               ng-model="gasPriceDec"
+               ng-disabled="checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(gasPriceDec) ? 'is-valid' : 'is-invalid'" />
+        <div class="input-group-btn">
+          <button style="min-width: 170px" class="btn btn-default">  WEI </button>
+        </div>
+      </div>
+    </section>
+  </article>
+
+
   <!-- Nonce -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_5b">This was displayed in Step 1.</p>
-        <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-      </div>
+      </a>
+      <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
       <input class="form-control" type="text" placeholder="" ng-model="nonceDec"/>
     </section>
   </article>
@@ -1639,10 +1726,11 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <!-- Data -->
   <article class="clearfix">
     <section class="col-sm-11" ng-show="tokenTx.id=='ether'">
-      <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+      <span class="account-help-icon">
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
-        <label translate="OFFLINE_Step2_Label_6"> Data </label>
-      </div>
+      </span>
+      <label translate="OFFLINE_Step2_Label_6"> Data </label>
       <input class="form-control" type="text" placeholder="0x4d792045746865722057616c6c6574" id="offlineData" ng-model="tx.data" />
     </section>
   </article>
@@ -1760,28 +1848,31 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak>
 
   <!-- Title -->
-  <h1>
-    <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
-    or
-    <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a>
-  </h1>
+  <div class="block text-center">
+    <h1>
+      <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
+      or
+      <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a>
+    </h1>
+  </div>
   <!-- / Title -->
 
 
   <!-- Interact Contracts -->
-  <article class="row" ng-show="visibility=='interactView'">
+  <article class="row block" ng-show="visibility=='interactView'">
 
     
      
 <!-- Address -->
 <section class="col-sm-6 clearfix">
-  <h4 translate="CONTRACT_Title"> Contract Address</h4> <small style="float: right; margin-top: -2rem;"> or </small>
-  <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
+  <div class="row">
+    <address-field labeltranslated="CONTRACT_Title" var-name="contract.address"></address-field>
+  </div>
 </section>
 
 <!-- Select Contract Dropdown -->
 <section class="col-sm-6 clearfix">
-  <h4 translate="CONTRACT_Title_2"> Select Existing Contract </h4>
+  <label translate="CONTRACT_Title_2"> Select Existing Contract </label>
   <div class="dropdown">
     <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
       {{selectedAbi.name}} <small class="mono">{{selectedAbi.address}}</small><i class="caret"></i>
@@ -1794,7 +1885,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 <!-- ABI Textarea -->
 <section class="col-xs-12 clearfix">
-  <h4 translate="CONTRACT_Json"> ABI / JSON Interface </h4>
+  <label translate="CONTRACT_Json"> ABI / JSON Interface </label>
   <textarea class="form-control" rows="6" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
 </section>
 
@@ -1804,17 +1895,52 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 </section>
  
 
+  </article>
 
-    <div class="col-xs-12 clearfix"> <hr /> </div>
 
-    <div ng-show="showReadWrite">
-      
-       <!-- STEP READ/WRITE -->
+  <article class="row block" ng-show="visibility=='interactView' && showReadWrite">
+
+    
+     <!-- STEP READ/WRITE -->
 <section class="col-xs-12 clearfix">
 
   <!-- Contract Info CONTRACT_Interact_CTA -->
   <span class="form-group">
     <h4 translate="CONTRACT_Interact_Title">Read / Write Contract </h4>
+    <h5> {{ contract.address }} </h5>
+
+
+    <div class="form-group well" ng-show="contract.address=='0x0101010101010101010101010101010101010101'">
+      <p> You probably want to change the address to your Mist Mutlisig Address....</p>
+    </div>
+    <div class="form-group well" ng-show="contract.address=='0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf'">
+      <ol>
+        <li><strong>Generate EOS Key-pair</strong></li>
+        <li><strong>Register / Map your EOS Key</strong>
+          <ul>
+            <li>Select <code>register</code></li>
+            <li> Enter your <strong><u>EOS Public Key</u></strong> <--- CAREFUL! EOS PUBLIC KEY!</li>
+            <li>Unlock wallet</li>
+            <li><span translate="SEND_amount">Amount to Send</span>: <code>0</code> &middot; <span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
+          </ul>
+        </li>
+        <li><strong>Fund EOS Contract on Send Page</strong>
+          <ul>
+            <li>Go to Send Ether & Tokens Page</li>
+            <li>Unlock same wallet you are unlocking here.</li>
+            <li>Send Amount you want to Contribute to <code>0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf</code></li>
+            <li><span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
+          </ul>
+        </li>
+        <li><strong>Claim EOS Tokens</strong>
+          <ul>
+            <li>Select <code>claimAll</code>.</li>
+            <li>Unlock wallet</li>
+            <li><span translate="SEND_amount">Amount to Send</span>: <code>0</code> &middot; <span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
+          </ul>
+        </li>
+    </div>
+
     <div class="btn-group">
       <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
       {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}<i class="caret"></i></a>
@@ -1823,6 +1949,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       </ul>
     </div>
   </span>
+
 
 
   <!-- Write -->
@@ -1864,7 +1991,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 
   <!-- Output -->
-  <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
+  <span class="form-group output" ng-show="contract.functions[contract.selectedFunc.index].constant">
     <div ng-repeat="output in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
       <div ng-switch on="output.type">
         <!-- Address -->
@@ -1893,8 +2020,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
         <!-- Boolean -->
         <p class="item write-boolean" ng-switch-when="bool">
           <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check.svg" width="16px" height="16px" /> TRUE </span>
-          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="16px" height="16px" />  FALSE </span>
+          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check-green.svg" width="22px" height="22px" /> TRUE </span>
+          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="22px" height="22px" />  FALSE </span>
         </p>
         <!--  -->
         <p class="item" ng-switch-default>
@@ -1909,7 +2036,10 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 </section>
  
-    </div>
+
+  </article>
+
+  <article ng-show="visibility=='interactView'">
 
     
      <article class="modal fade" id="sendContract" tabindex="-1">
@@ -1974,7 +2104,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 
   <!-- Deploy Contract -->
-  <article class="row" ng-show="visibility=='deployView'">
+  <article class="row block" ng-show="visibility=='deployView'">
 
     
      <section class="col-xs-12">
@@ -2009,12 +2139,12 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <!-- Raw TX -->
     <div class="form-group col-sm-6">
       <h4 translate="SEND_raw"> Raw Transaction </h4>
-      <textarea class="form-control" rows="4" readonly> {{rawTx}} </textarea>
+      <textarea class="form-control" rows="4" readonly>{{rawTx}}</textarea>
     </div>
     <!-- Singed TX -->
     <div class="form-group col-sm-6">
       <h4 translate="SEND_signed"> Signed Transaction </h4>
-      <textarea class="form-control" rows="4" readonly> {{signedTx}} </textarea>
+      <textarea class="form-control" rows="4" readonly>{{signedTx}}</textarea>
     </div>
   </section>
 
@@ -2066,13 +2196,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       
   </article>
 
-  <article ng-show="contract.selectedFunc!=null">
+  <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
 
-    <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">
+    <button class="btn btn-primary btn-block" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">
       <span translate="CONTRACT_Read"> READ</span>
     </button>
 
-    <button class="btn btn-primary" ng-click="generateContractTx()" ng-show="!contract.functions[contract.selectedFunc.index].constant">
+    <button class="btn btn-primary btn-block" ng-click="generateContractTx()" ng-show="!contract.functions[contract.selectedFunc.index].constant">
       <span translate="CONTRACT_Write"> WRITE</span>
     </button>
 
@@ -2757,8 +2887,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
              type="text"
              placeholder="0x3f0efedfe0a0cd611f2465fac9a3699f92d6a06613bc3ead4f786856f5c73e9c"
              ng-model="txInfo.hash"
+             ng-keyup="$event.keyCode == 13 && checkTxStatus()"
              aria-label="{{'x_TxHash' | translate}}" ng-class="Validator.isValidTxHash(txInfo.hash) ? 'is-valid' : 'is-invalid'"/>
-          <button tabindex="0" role="button" class="btn btn-primary" ng-click="checkTxStatus()" translate="NAV_CheckTxStatus">Check TX Status</button>
+          <button tabindex="0"
+                  role="button"
+                  class="btn btn-primary"
+                  ng-click="checkTxStatus()"
+                  translate="NAV_CheckTxStatus"> Check TX Status </button>
       </section>
     </article>
   </section>
@@ -2766,9 +2901,9 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 
   <!-- Section 2: Current State -->
-  <section class="block txstatus__2">
+  <section class="block txstatus__2" ng-show="txInfo.status==txStatus.mined || txInfo.status==txStatus.notFound || txInfo.status==txStatus.found">
 
-    <div class="cont-md" ng-show="txInfo.status == txStatus.mined"> 
+    <div class="cont-md" ng-show="txInfo.status == txStatus.mined">
       <h3 class="text-success" translate="tx_FoundOnChain"> Transaction Found </h3>
       <h5> <a href="https://etherscan.io/tx/{{ tx.hash }}" target="_blank" rel="noopener"> {{ tx.hash }} </a> </h5>
       <p><strong translate="tx_FoundOnChain_1"></strong></p>
@@ -2784,6 +2919,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <ul>
         <li translate="tx_notFound_2"></li>
         <li translate="tx_notFound_3"></li>
+        <li translate="tx_notFound_4"></li>
       </ul>
     </div>
 
@@ -2802,48 +2938,69 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <table class="table table-striped txstatus__2 cont-md"> <!-- ng-show="tx.status=='foundOnChain' || foundInPending'"-->
       <tbody>
         <tr>
-          <td></td>
           <td translate="x_TxHash">TX Hash</td>
           <td><a href="https://etherscan.io/tx/{{ txInfo.hash }}" target="_blank" rel="noopener"> {{ txInfo.hash }} </a></td>
         </tr>
         <tr>
-          <td></td>
           <td translate="OFFLINE_Step1_Label_1">From Address</td>
           <td><a href="https://etherscan.io/address/{{ txInfo.from }}" target="_blank" rel="noopener"> {{ txInfo.from }} </a></td>
         </tr>
         <tr>
-          <td></td>
           <td translate="OFFLINE_Step2_Label_1">To Address</td>
           <td><a href="https://etherscan.io/address/{{ txInfo.to }}" target="_blank" rel="noopener"> {{ txInfo.to }} </a></td>
         </tr>
         <tr>
-          <td></td>
           <td translate="SEND_amount_short">Amount</td>
           <td>{{ txInfo.valueStr }} </td>
         </tr>
         <tr>
-          <td><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="NONCE_Desc"></p>
+            </a>
+            <span translate="OFFLINE_Step2_Label_5">Nonce</span>
           </td>
-          <td translate="OFFLINE_Step2_Label_5">Nonce</td>
           <td>{{ txInfo.nonce }} </td>
         </tr>
         <tr>
-          <td><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+            </a>
+            <span translate="OFFLINE_Step2_Label_4">Gas Limit</span>
           </td>
-          <td translate="OFFLINE_Step2_Label_4">Gas Limit</td>
           <td>{{ txInfo.gasLimit }} </td>
         </tr>
         <tr>
-          <td><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
+            </a>
+            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>
           </td>
-          <td><span translate="OFFLINE_Step2_Label_3">Gas Price</span> (wei) &middot;  (ETH) &middot;  (USD) </td>
-          <td>{{ txInfo.gasPrice.wei }}  &middot; {{ txInfo.gasPrice.eth }}  &middot; {{ txInfo.gasPrice.usd }}</td>
+          <td>
+            {{ txInfo.gasPrice.gwei }} GWEI
+            <small>({{ txInfo.gasPrice.wei }} WEI)</small></td>
         </tr>
+<!--
         <tr>
-          <td></td>
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="TXFEE_Desc"></p>
+            </a>
+            <span translate="x_TXFee">TX Fee</span>
+          </td>
+          <td>
+            ({{ txFee.eth }} ETH)
+            <small>({{ txFee.usd }} USD)</small>
+          </td>
+        </tr>
+-->
+        <tr>
           <td translate="OFFLINE_Step2_Label_6">Data</td>
           <td>{{ txInfo.data }} </td>
         </tr>
@@ -2874,6 +3031,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <!-- Send Tx Content -->
  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+      <div ng-show="wallet.getChecksumAddressString() == txInfo.from">
       
        <!-- Content -->
 <section class="col-sm-8">
@@ -2887,7 +3045,12 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <!-- Amount to Send -->
     <label translate="SEND_amount">Amount to Send:</label>
     <div class="input-group col-sm-11">
-      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-disabled="tx.readOnly" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+      <input type="text"
+             class="form-control"
+             placeholder="{{ 'SEND_amount_short' | translate }}"
+             ng-model="tx.value"
+             ng-disabled="tx.readOnly || checkTxReadOnly"
+             ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
       <div class="input-group-btn">
         <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
           <strong>{{unitReadable}}<i class="caret"></i></strong>
@@ -2907,41 +3070,80 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <!-- Gas Limit -->
     <div class="row form-group">
       <div class="col-sm-11 clearfix">
+        <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+          <img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+        </a>
         <label translate="TRANS_gas"> Gas Limit: </label>
-        <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
+        <input type="text"
+               class="form-control"
+               placeholder="21000"
+               ng-model="tx.gasLimit"
+               ng-change="gasLimitChanged=true"
+               ng-disabled="tx.readOnly || checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
       </div>
     </div>
     <!-- / Gas Limit -->
 
     <!-- Advanced Option Panel -->
-    <a ng-click="showAdvance=!showAdvance" ng-show='!showAdvance'><p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p></a>
+    <a ng-click="showAdvance=true" ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
+      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
+    </a>
 
-    <section ng-show="showAdvance">
+    <section ng-show="showAdvance || checkTxPage">
       <!-- Data -->
       <div class="row form-group">
         <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
+          <span class="account-help-icon">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
+          </span>
           <label translate="TRANS_data"> Data: </label>
-          <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+          <input type="text"
+                 class="form-control"
+                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
+                 ng-model="tx.data"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
         </div>
       </div>
       <!-- / Data -->
 
 
       <!-- Nonce -->
-      <div class="row form-group">
+      <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="NONCE_Desc"></p>
+          </a>
           <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-          <input class="form-control" type="text" placeholder="2" ng-model="tx.nonce" ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
+          <input type="text"
+                 class="form-control"
+                 placeholder="2"
+                 ng-model="tx.nonce"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Nonce -->
 
 
       <!-- Gas Price -->
-      <div class="row form-group">
+      <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
+          </a>
           <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
-          <input class="form-control" type="text" placeholder="50" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+          <input type="text"
+                 class="form-control"
+                 placeholder="50"
+                 ng-model="tx.gasPrice"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Gas Price -->
@@ -2951,7 +3153,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
     <div class="clearfix form-group">
       <div class="well" ng-show="wallet!=null && customGasMsg!=''">
-        <p><small>A message from {{tx.to}}</small></p>
+        <p><small>A message regarding {{tx.to}}</small></p>
         <p><strong> {{customGasMsg}} </strong></p>
       </div>
     </div>
@@ -2983,17 +3185,21 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 <!-- Sidebar -->
 <section class="col-sm-4">
 
-  <div class="block block--danger" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
+  <div class="block block--danger" ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
     <h5>Warning! You do not have enough funds to complete this swap.</h5>
     <p>Please add more funds to your wallet or access a different wallet.</p>
   </div>
 
   <wallet-balance-drtv></wallet-balance-drtv>
-  <div class="block">
+
+  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
     <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-primary btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
+    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
     <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
   </div>
+
+  <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
+
 </section>
 <!-- / Sidebar -->
  
@@ -3057,538 +3263,11 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </section>
 </article>
  
+      </div>
+      <div class="col-xs-12 block block--danger" ng-show="wallet.getChecksumAddressString() != txInfo.from">
+        <h5>Please unlock the address {{ txInfo.from }}. Only this address can replace a TX.</h5>
+      </div>
     </section>
-
-
-    <!-- Help -->
-<article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id"  ng-cloak>
-
-  <h1 translate="NAV_Help"> Help </h1>
-
-  <h3><a href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener">
-    This page is slowly being deprecated. Please check out our more up-to-date and searchable Help Center.
-  </a></h3>
-
- <article class="collapse-container">
-    <div ng-click="hRecent = !hRecent">
-      <a class="collapse-button"><span ng-show="hRecent">+</span><span ng-show="!hRecent">-</span></a>
-      <h4> Recent </h4>
-    </div>
-    <div ng-show="!hRecent">
-      <ul>
-        <li><a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" target="_blank" rel="noopener"><span class="text-danger" translate="HELP_Warning">If you created a wallet or downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.</span></a></li>
-      </ul>
-    </div>
-  </article>
-
-
-  <article class="collapse-container">
-    <div ng-click="hRemind = !hRemind">
-      <a class="collapse-button"><span ng-show="hRemind">+</span><span ng-show="!hRemind">-</span></a>
-      <h4 translate="HELP_Remind_Title"> Some reminders </h4>
-    </div>
-    <div ng-show="!hRemind">
-      <ul>
-        <li translate="HELP_Remind_Desc_1"></li>
-        <li translate="HELP_Remind_Desc_2"></li>
-        <li translate="HELP_Remind_Desc_3"></li>
-      </ul>
-    </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h0 = !h0">
-      <a class="collapse-button" ><span ng-show="!h0">+</span><span ng-show="h0">-</span></a>
-      <h4 translate="HELP_0_Title"></h4>
-    </div>
-    <div ng-show="h0">
-      <p translate="HELP_0_Desc_1"></p>
-      <ol>
-        <li translate="HELP_0_Desc_2"></li>
-        <li translate="HELP_0_Desc_3"></li>
-        <li translate="HELP_0_Desc_4"></li>
-        <li translate="HELP_0_Desc_5"></li>
-      </ol>
-    </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h1 = !h1">
-      <a class="collapse-button" ><span ng-show="!h1">+</span><span ng-show="h1">-</span></a>
-      <h4 translate="HELP_1_Title"></h4>
-    </div>
-    <div ng-show="h1">
-      <ol>
-        
-        
-        <li translate="HELP_1_Desc_2"></li>
-        
-        <li translate="HELP_1_Desc_3"></li>
-        <li translate="HELP_1_Desc_4"></li>
-        <li translate="HELP_1_Desc_5"></li>
-      </ol>
-    </div>
-  </article>
-
-
-  <article class="collapse-container">
-    <div ng-click="h2a = !h2a">
-      <a class="collapse-button" ><span ng-show="!h2a">+</span><span ng-show="h2a">-</span></a>
-      <h4 translate="HELP_2a_Title"></h4>
-    </div>
-    <div ng-show="h2a">
-      <p translate="HELP_2a_Desc_1"></p>
-      <ol>
-        <li translate="HELP_2a_Desc_2"></li>
-        <li translate="HELP_2a_Desc_3"></li>
-        <ul>
-          <li><strong translate="x_Keystore">Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format):</strong> <span translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</span></li>
-          <li><strong translate="x_Json">JSON File (unencrypted):</strong> <span translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</span></li>
-          <li><strong translate="x_PrivKey">Private Key (unencrypted):</strong> <span translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</span></li>
-        </ul>
-
-        <li translate="HELP_2a_Desc_4"> Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.</li>
-        <li translate="HELP_2a_Desc_5"> Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.</li>
-        <li translate="HELP_2a_Desc_6">Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).</li>
-      </ol>
-    </div>
-  </article>
-
-
-
-
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h3 = !h3">
-      <a class="collapse-button" ><span ng-show="!h3">+</span><span ng-show="h3">-</span></a>
-      <h4 translate="HELP_3_Title"> 3. How do I verify I have access to my new wallet? </h4>
-    </div>
-    <div ng-show="h3">
-      <p translate="HELP_3_Desc_1">**Before you send any Ether to your new wallet**, you should ensure you have access to it.</p>
-      <ol>
-        
-        
-        <li translate="HELP_3_Desc_3"> Navigate to the MyEtherWallet.com "View Wallet Info" page. </li>
-        
-        <li translate="HELP_3_Desc_4"> Select your wallet file -or- your private key and unlock your wallet. </li>
-        <li translate="HELP_3_Desc_5"> If the wallet is encrypted, a text box will automatically appear. Enter the password. </li>
-        <li translate="HELP_3_Desc_6"> Click the "Unlock Wallet" button. </li>
-        <li translate="HELP_3_Desc_7"> Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet. </li>
-        <li translate="HELP_3_Desc_8"> If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly. </li>
-      </ol>
-   </div>
-  </article>
-
-
-
-
-
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h4cx = !h4cx">
-      <a class="collapse-button" ><span ng-show="!h4cx">+</span><span ng-show="h4cx">-</span></a>
-      <h4 translate="HELP_4CX_Title">4. How do I send Ether using MyEtherWallet CX? </h4>
-    </div>
-    <div ng-show="h4cx">
-      <p translate="HELP_4CX_Desc_1">First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.</p>
-      <p translate="HELP_4CX_Desc_2" class="strong"> QuickSend: </p>
-      <ol>
-        <li translate="HELP_4CX_Desc_3"> Click the Chrome Extension Icon. </li>
-        <li translate="HELP_4CX_Desc_4"> Click the "QuickSend" button. </li>
-        <li translate="HELP_4CX_Desc_5"> Select the wallet you wish to send from. </li>
-        <li translate="HELP_4CX_Desc_6"> Enter the address you would like to send to in the "To Address:" field. </li>
-        <li translate="HELP_4CX_Desc_7"> Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.</li>
-        <li translate="HELP_4CX_Desc_8"> Click "Send Transaction". </li>
-        <li translate="HELP_4CX_Desc_9"> Verify the address and the amount you are sending is correct. </li>
-        <li translate="HELP_4CX_Desc_10"> Enter the password for that wallet. </li>
-        <li translate="HELP_4CX_Desc_11"> Click "Send Transaction." </li>
-      </ol>
-      <p class="strong" translate="HELP_4CX_Desc_12"> Using "Send Ether" Page: </p>
-      <ol>
-        <li translate="HELP_4_Desc_2"> Navigate to the "Send Ether" page. </li>
-        <li translate="HELP_4_Desc_3"> Select your wallet file -or- your private key and unlock your wallet.</li>
-        <li translate="HELP_4_Desc_4"> If the wallet is encrypted, a text box will automatically appear. Enter the password. </li>
-        <li translate="HELP_4_Desc_5"> Click the "Unlock Wallet" button. </li>
-        <li translate="HELP_4_Desc_6"> Enter the address you would like to send to in the "To Address:" field. </li>
-        <li translate="HELP_4_Desc_7"> Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance. </li>
-        <li translate="HELP_4_Desc_9"> Click "Generate Transaction" Button. </li>
-        <li translate="HELP_4_Desc_10"> A couple more fields will appear. This is your browser generating the transaction. </li>
-        <li translate="HELP_4_Desc_11"> Click the blue "Send Transaction" button below that. </li>
-        <li translate="HELP_4_Desc_12"> A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. </li>
-        <li translate="HELP_4_Desc_13"> The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. </li>
-      </ol>
-    </div>
-  </article>
-
-
-
-
-
-
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h5cx = !h5cx">
-      <a class="collapse-button" ><span ng-show="!h5cx">+</span><span ng-show="h5cx">-</span></a>
-      <h4 translate="HELP_5CX_Title">5. How can I install this extension from the repo instead of the Chrome Store? </h4>
-    </div>
-    <div ng-show="h5cx">
-    <ul>
-      <li translate="HELP_2b_Desc_1"> Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest).</li>
-      <li translate="HELP_5CX_Desc_2"> Download the file below that looks like `chrome-extension-vX.X.X.zip` and unzip it.</li>
-      <li translate="HELP_5CX_Desc_3"> Go to Google Chrome and find you settings (in the menu in the upper right).</li>
-      <li translate="HELP_5CX_Desc_4"> Click "Extensions" on the left. </li>
-      <li translate="HELP_5CX_Desc_5"> Check the "Developer Mode" button at the top of that page. </li>
-      <li translate="HELP_5CX_Desc_6"> Click the "Load unpacked extension..." button. </li>
-      <li translate="HELP_5CX_Desc_7"> Navigate to the now-unzipped folder that you downloaded earlier. Click "select". </li>
-      <li translate="HELP_5CX_Desc_8"> The extension should now show up in your extensions and in your Chrome Extension bar. </li>
-    </ul>
-    </div>
-  </article>
-
-
-  <article class="collapse-container">
-    <div ng-click="h6 = !h6">
-      <a class="collapse-button" ><span ng-show="!h6">+</span><span ng-show="h6">-</span></a>
-      <h4 class="text-danger">6) I cannot connect to my custom node. What do I do? </h4>
-    </div>
-    <div ng-show="h6">
-      <ul>
-        <li> Verify the URL you entered is correct. </li>
-        <li> Verify the port you entered is correct. </li>
-        <li> Verify that if you are connecting to an http:// node you are running MyEtherWallet locally (NOT over https://). </li>
-        <li> Verify geth is running with <code>geth --rpc --rpccorsdomain "null" --keystore "dont_put_secret_files_here_ever"</code> or parity is running with <code>parity --rpccorsdomain "*" --keys-path "dont_put_secret_files_here_ever"</code> </li>
-        <li> Verify your node is actually up and running. </li>
-        <li> Try removing the node and adding it again. </li>
-      </ul>
-    </div>
-  </article>
-
-
-  <article class="collapse-container">
-    <div ng-click="h7 = !h7">
-      <a class="collapse-button" ><span ng-show="!h7">+</span><span ng-show="h7">-</span></a>
-      <h4 translate="HELP_7_Title">7. How do I send Tokens & add custom tokens? </h4>
-    </div>
-    <div ng-show="h7">
-      <p translate="HELP_7_Desc_0"> [Check out Ethplorer.io](https://ethplorer.io/) if you need help finding symbol / decimal. </p>
-      <ol>
-        <li translate="HELP_7_Desc_1"> Navigate to the "Send Token" page. </li>
-        <li translate="HELP_7_Desc_2"> Unlock your wallet. </li>
-        <li translate="HELP_7_Desc_3"> Enter the address you would like to send to in the "To Address:" field. </li>
-        <li translate="HELP_7_Desc_4"> Enter the amount you would like to send.</li>
-        <li translate="HELP_7_Desc_5"> Select which token you would like to send. </li>
-        <li translate="HELP_7_Desc_6"> If you do not see the token listed:</li>
-        <ol>
-          <li translate="HELP_7_Desc_7">Click "Custom".</li>
-          <li translate="HELP_7_Desc_8">Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.</li>
-          <li translate="HELP_7_Desc_9"> Click "Save". </li>
-          <li translate="HELP_7_Desc_10"> You can now send that token as well as see it's balance in the sidebar. </li>
-        </ol>
-        <li translate="HELP_7_Desc_11"> Click "Generate Transaction". </li>
-        <li translate="HELP_7_Desc_12"> A couple more fields will appear. This is your browser generating the transaction. </li>
-        <li translate="HELP_7_Desc_13"> Click the blue "Send Transaction" button below that. </li>
-        <li translate="HELP_7_Desc_14"> A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. </li>
-        <li translate="HELP_7_Desc_15"> The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. </li>
-      </ol>
-    </div>
-  </article>
-
-
-
-
-
-
-
-
-  <article class="collapse-container">
-    <div  ng-click="h8cx = !h8cx">
-      <a class="collapse-button"><span ng-show="!h8cx">+</span><span ng-show="h8cx">-</span></a>
-      <h4 translate="HELP_8CX_Title">8. What happens if MyEtherWallet CX disappears? </h4>
-    </div>
-    <div ng-show="h8cx">
-      <p translate="HELP_8CX_Desc_1">First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it's all saved on your own computer.</p>
-      <p translate="HELP_8CX_Desc_2"> That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.</p>
-      <p translate="HELP_8CX_Desc_3"> If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.</p>
-    </div>
-  </article>
-
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h9 = !h9">
-      <a class="collapse-button" ><span ng-show="!h9">+</span><span ng-show="h9">-</span></a>
-      <h4 translate="HELP_9_Title">9. Is using the send transaction offline? </h4>
-    </div>
-    <div ng-show="h9">
-      <p translate=HELP_9_Desc_1> No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.</p>
-    </div>
-  </article>
-
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h10 = !h10">
-      <a class="collapse-button" ><span ng-show="!h10">+</span><span ng-show="h10">-</span></a>
-      <h4 translate="HELP_10_Title">10. How do I make an offline transaction?</h4>
-    </div>
-    <div ng-show="h10">
-      <ol>
-        <li translate="HELP_10_Desc_1"> Navigate to the "Offline Transaction" page via your online computer.</li>
-        <li translate="HELP_10_Desc_2"> Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.</li>
-        <li translate="HELP_10_Desc_3"> Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.</li>
-        <li translate="HELP_10_Desc_4"> Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.</li>
-        <li translate="HELP_10_Desc_5"> Enter the "NONCE" as it was displayed to you on your online computer in step #1.</li>
-        <li translate="HELP_10_Desc_6"> The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.</li>
-        <li translate="HELP_10_Desc_7"> If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.</li>
-        <li translate="HELP_10_Desc_8"> Select your wallet file -or- your private key and unlock your wallet.</li>
-        <li translate="HELP_10_Desc_9"> Press the "GENERATE SIGNED TRANSACTION" button.</li>
-        <li translate="HELP_10_Desc_10"> The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. </li>
-        <li translate="HELP_10_Desc_11"> On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.</li>
-      </ol>
-    </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h12 = !h12">
-      <a class="collapse-button" ><span ng-show="!h12">+</span><span ng-show="h12">-</span></a>
-      <h4 translate="HELP_12_Title">12. How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?</h4>
-    </div>
-    <div ng-show="h12">
-      <p class="strong" translate="HELP_12_Desc_1"> Using an Geth/Mist JSON file from MyEtherWallet v2+....</p>
-      <ol>
-        
-        
-          <li translate="HELP_12_Desc_4"> Go to the "My Wallets" page.</li>
-          <li translate="HELP_12_Desc_5"> Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. </li>
-        
-        <li translate="HELP_12_Desc_6"> Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.</li>
-        <li translate="HELP_12_Desc_7"> Open the Ethereum Wallet application. </li>
-        <li translate="HELP_12_Desc_8"> In the menu bar, go "Accounts" -> "Backup" -> "Accounts"</li>
-        <li translate="HELP_12_Desc_9"> This will open your keystore folder. Copy the file you just downloaded (<code>UTC--2016-04-14........</code>) into that keystore folder.</li>
-        <li translate="HELP_12_Desc_10"> Your account should show up immediately under "Accounts." </li>
-      </ol>
-
-      <p class="strong" translate="HELP_12_Desc_11">Using your unencrypted private key...</p>
-      <ol>
-        <li translate="HELP_12_Desc_12"> If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.</li>
-        <li translate="HELP_12_Desc_13"> Select your wallet file -or- enter/paste your private key to unlock your wallet.</li>
-        <li translate="HELP_12_Desc_14"> Copy Your Private Key (unencrypted). </li>
-        <li translate="HELP_12_Desc_15"> If you are on a Mac:</li>
-          <ul>
-            <li translate="HELP_12_Desc_16"> Open Text Edit and paste this private key.</li>
-            <li translate="HELP_12_Desc_17"> Go to the menu bar and click "Format" -> "Make Plain Text".</li>
-            <li translate="HELP_12_Desc_18"> Save this file to your <code>desktop</code> as <code>nothing_special_delete_me.txt</code>. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog. </li>
-            <li translate="HELP_12_Desc_19"> Open terminal and run the following command: <code>geth account import ~/Desktop/nothing_special_delete_me.txt</code></li>
-            <li translate="HELP_12_Desc_20"> This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don't forget it. </li>
-            <li translate="HELP_12_Desc_21"> After successful import, delete <code>nothing_special_delete_me.txt</code></li>
-            <li translate="HELP_12_Desc_22"> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
-          </ul>
-        <li translate="HELP_12_Desc_15b"> If you are on a PC:</li>
-          <ul>
-            <li translate="HELP_12_Desc_23"> Open Notepad & paste the private key</li>
-            <li translate="HELP_12_Desc_24"> Save the file as <code>nothing_special_delete_me.txt</code> at <code>C:\</code></li>
-            <li translate="HELP_12_Desc_25"> Run the command, <code>geth account import C:\nothing_special_delete_me.txt</code></li>
-            <li translate="HELP_12_Desc_26"> This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don't forget it.</li>
-            <li translate="HELP_12_Desc_27"> After successful import, delete <code>nothing_special_delete_me.txt</code></li>
-            <li translate="HELP_12_Desc_28"> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
-          </ul>
-        </ol>
-    </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h13 = !h13">
-      <a class="collapse-button" ><span ng-show="!h13">+</span><span ng-show="h13">-</span></a>
-        <h4 translate="HELP_13_Title">13. What does "Gas Limit Too Low" Mean?</h4>
-      </div>
-      <div ng-show="h13">
-        <p translate="HELP_13_Desc_1"> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction. </p>
-      </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h14 = !h14" >
-      <a class="collapse-button"><span ng-show="!h14">+</span><span ng-show="h14">-</span></a>
-        <h4 translate="HELP_14_Title"> 14. Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn't do this. Is the random number generation for MyEtherWallet safe?</h4>
-      </div>
-      <div ng-show="h14">
-        <p translate="HELP_14_Desc_1">While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren't unsafe, it's just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here's a <a href="https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm" target="_blank" rel="noopener">conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto</a> and here is the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto" target="_blank" rel="noopener">the window.crypto w3 spec</a>.</p>
-    </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h15 = !h15">
-      <a class="collapse-button" ><span ng-show="!h15">+</span><span ng-show="h15">-</span></a>
-        <h4 translate="HELP_15_Title">15. Why hasn't the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan) </h4>
-      </div>
-      <div ng-show="h15">
-        <p translate="HELP_15_Desc_1"> Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. </p>
-    </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h16 = !h16">
-      <a class="collapse-button" ><span ng-show="!h16">+</span><span ng-show="h16">-</span></a>
-        <h4 translate="HELP_16_Title">16. How do I check the balance of my account? </h4>
-      </div>
-      <div ng-show="h16">
-        <p translate="HELP_16_Desc_1"> You can use a blockchain explorer like <a href="http://etherscan.io/" target="_blank" rel="noopener">etherscan.io</a>. Paste your address into the search bar and it will pull up your address and transaction history. For example, here's what our <a href="http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" target="_blank" rel="noopener">donation account</a> looks like on etherscan.io</p>
-    </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div  ng-click="h17 = !h17">
-      <a class="collapse-button"><span ng-show="!h17">+</span><span ng-show="h17">-</span></a>
-        <h4 translate="HELP_17_Title">17. Why isn't my balance showing up when I unlock my wallet? </h4>
-      </div>
-      <div ng-show="h17">
-        <p translate="HELP_17_Desc_1"> This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io</p>
-    </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h18 = !h18">
-      <a class="collapse-button" ><span ng-show="!h18">+</span><span ng-show="h18">-</span></a>
-        <h4 translate="HELP_18_Title">18. Where is my geth wallet file? </h4>
-      </div>
-      <div ng-show="h18">
-        <ul>
-          <li>Mac: <code>~/Library/Ethereum/keystore</code></li>
-          <li>Linux: <code>~/.ethereum/keystore</code></li>
-          <li>Windows: <code>%APPDATA%/Ethereum/keystore</code></li>
-        </ul>
-    </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h19 = !h19" >
-      <a class="collapse-button" ><span ng-show="!h19">+</span><span ng-show="h19">-</span></a>
-      <h4 translate="HELP_19_Title">19. Where is my Mist wallet file? </h4>
-    </div>
-    <div ng-show="h19">
-      <p translate="HELP_19_Desc_1"> Mist files are typically found in the file locations above, but it's much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.</p>
-  </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h20 = !h20">
-      <a class="collapse-button" ><span ng-show="!h20">+</span><span ng-show="h20">-</span></a>
-      <h4 translate="HELP_20_Title">20. Where is my pre-sale wallet file?</h4>
-    </div>
-    <div ng-show="h20">
-      <p translate="HELP_20_Desc_1"> Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called <code>"ethereum_wallet_backup.json"</code> and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.</p>
-  </div>
-  </article>
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h21 = !h21">
-      <a class="collapse-button" ><span ng-show="!h21">+</span><span ng-show="h21">-</span></a>
-      <h4 translate="HELP_21_Title"> 21. Couldn't everybody put in random private keys, look for a balance, and send to their own address? </h4>
-    </div>
-    <div ng-show="h21">
-      <p translate="HELP_21_Desc_1"> Short version: yes, but finding an account with a balance would take longer than the universe...so...no.</p>
-      <p translate="HELP_21_Desc_2"> Long ELI5 Version: So Ethereum is based on <a href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank" rel="noopener">Public Key Cryptography</a>, specifically <a href="https://eprint.iacr.org/2013/734.pdf" target="_blank" rel="noopener"> Elliptic curve cryptography </a> which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.</p>
-      <p translate="HELP_21_Desc_3">In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.</p>
-      <p translate="HELP_21_Desc_4">Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.</p>
-      <p translate="HELP_21_Desc_5">And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.</p>
-      <p translate="HELP_21_Desc_6">If you know anything about Bitcoin, <a href="http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver" target="_blank" rel="noopener">this will put it in perspective:</a> *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.*</p>
-      <p translate="HELP_21_Desc_7"><a href="http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392" target="_blank" rel="noopener">If you want something a bit more technical:</a> *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.*</p>
-      <p translate="HELP_21_Desc_8"> Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person's brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that's a separate issue that can wait for another day. </p>
-      <hr />
-    </div>
-  </article>
-
-
-
-
-  <article class="collapse-container">
-    <div ng-click="hSecCX = !hSecCX">
-      <a class="collapse-button" ><span ng-show="!hSecCX">+</span><span ng-show="hSecCX">-</span></a>
-      <h4 translate="HELP_SecCX_Title">Security - MyEtherWallet CX </h4>
-    </div>
-    <div ng-show="hSecCX">
-      <h6 translate="HELP_SecCX_Desc_1"> Where is this extension saving my information?</h6>
-      <p translate="HELP_SecCX_Desc_2"> The information you store in this Chrome Extension is saved via <a href="http://chrome.storage/" target="_blank" rel="noopener">chrome.storage</a>. - this is the same place your passwords are saved when you save your password in Chrome. </p>
-
-      <h6 translate="HELP_SecCX_Desc_3"> What information is saved? </h6>
-      <p translate="HELP_SecCX_Desc_4"> The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted. </p>
-      <h6 translate="HELP_SecCX_Desc_5"> Why aren't the nickname and wallet address encrypted? </h6>
-      <p translate="HELP_SecCX_Desc_6"> If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension. </p>
-    </div>
-  </article>
-
-
-
-
-  <article class="collapse-container">
-    <div ng-click="hSec = !hSec">
-      <a class="collapse-button" ><span ng-show="!hSec">+</span><span ng-show="hSec">-</span></a>
-      <h4 translate="HELP_Sec_Title">Security </h4>
-    </div>
-    <div ng-show="hSec">
-      <p translate="HELP_Sec_Desc_1"> If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. </p>
-      <ul>
-        <li translate="HELP_Sec_Desc_2">We've been up and running since August 2015. If you search for <a href="https://www.reddit.com/search?q=myetherwallet" target="_blank" rel="noopener" />"myetherwallet" on reddit</a>, you can see numerous people who use us with great success.</li>
-        <li translate="HELP_Sec_Desc_3">We aren't going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.</li>
-        <li translate="HELP_Sec_Desc_4"> Check the URL -- This site is being served through GitHub and you can see the source code here: <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages" target="_blank" rel="noopener">https://github.com/kvhnuke/etherwallet/tree/gh-pages</a> to the domains: <a href="http://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener">http://kvhnuke.github.io/etherwallet/</a> and <a href="https://www.myetherwallet.com" target="_blank" rel="noopener">https://www.myetherwallet.com</a>. You can verify it's hosted at GitHub by using <a href="http://viewdns.info/dnsrecord/?domain=myetherwallet.com" target="_blank" rel="noopener">http://viewdns.info/dnsrecord/?domain=myetherwallet.com</a> - last two A record IPs are owned by GitHub for their custom domain hosting.</li>
-        <li translate="HELP_Sec_Desc_5"> For generating wallets, you can download the <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages">source code</a>. See #5 above.</li>
-        <li translate="HELP_Sec_Desc_6"> Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.</li>
-        <li translate="HELP_Sec_Desc_8"> If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! </li>
-      </ul>
-    </div>
-  </article>
-
-  <article class="collapse-container">
-    <div ng-click="hFAQ = !hFAQ">
-      <a class="collapse-button" ><span ng-show="hFAQ">+</span><span ng-show="!hFAQ">-</span></a>
-      <h4 translate="HELP_FAQ_Title">More Helpful Answers to Frequent Questions </h4>
-    </div>
-    <div ng-show="!hFAQ">
-      <ul>
-        <li><a href="https://www.reddit.com/r/ethereum/comments/3vxvlx/starter_guide_almost_all_the_links_youll_need_to/" target="_blank" rel="noopener"> Starter guide: (almost) all the links you'll need to start understanding ethereum. </a></li>
-        <li><a href="https://www.reddit.com/r/ethtrader/comments/41lftl/need_wallet_advice/cz3cs4i" target="_blank" rel="noopener"> Step-by-step Wallet Advice by /u/gattacibus </a></li>
-        <li><a href="https://www.reddit.com/r/ethereum/comments/46887p/tips_for_recovering_your_presale_password/" target="_blank" rel="noopener">/r/ethereum: Tips for Recovering Your Presale Password, Especially for Those Not Good w/ Computers</a></li>
-        <li><a href="https://forum.ethereum.org/discussion/3045/request-post-password-instructions-that-were-given-for-the-presale-last-year" target="_blank" rel="noopener">forum.ethereum.org: I forgot my Pre-Sale Wallet Password / My PW Isn't Working</a></li>
-        <li><a href="https://www.reddit.com/r/ethereum/comments/3g6aw0/i_lost_my_password_to_my_presale_wallet_admit_it/" target="_blank" rel="noopener">/r/ethereum: I forgot my Pre-Sale Wallet Password / My PW Isn't Working </a></li>
-      </ul>
-    </div>
-  </article>
-
-
-</article>
-<!-- / Help -->
 
 
     <!-- print -->
@@ -3632,7 +3311,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <div data-ng-repeat="alert in notifier.alerts">
   <div class="alert popup alert-{{alert.type}} animated-show-hide"
-       style="bottom: {{55*$index}}px; z-index: {{999-$index}};">
+       style="bottom: {{85*$index}}px; z-index: {{999+$index}};">
     <div class="container">
       <div class='alert-message' ng-bind-html="alert.message"></div>
     </div>
@@ -3643,113 +3322,177 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 </section>
 
+<section class="pre-footer">
+  <div class="container">
+    <p>MyEtherWallet.com is a client-side interface &amp; does not hold your keys. We cannot access accounts, recover keys, reset passwords, nor reverse transactions.</p>
+    <p>
+      <span>If you go to a fake MyEtherWallet.com, they can. Check the URL. Use a bookmark.</span>
+      <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal"> You are responsible for your security. </a>
+    </p>
+  </div>
+</section>
+
 <footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
   <article class="block__wrap" style="max-width: 1780px; margin: auto;">
 
-      <section class="footer--left">
-        <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
+    <section class="footer--left">
 
-        <ul>
-          <li>
-            <span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum network.</span>
-            <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.
-          </li>
-        </ul>
-        <ul>
+      <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
-          <li><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">
-             Sign Message
-          </a></li>
+      <p><span translate="FOOTER_1">Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.</span></p>
 
-          <li ng-show="showBlocks">Latest Block#: {{currentBlockNumber}} </li>
+      <p><span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.</p>
 
-          <li> <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a> </li>
+      <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
 
-        </ul>
+      <p> &copy; 2017 MyEtherWallet, LLC </p>
 
-      </section>
+    </section>
 
-      <section class="footer--cent">
+    <section class="footer--cent">
 
-        <div>
-          <h5> <i aria-hidden="true">👫</i> You can support us by supporting our blockchain-family.</h5>
-          <ul>
-            <li>Consider using our affiliate links to...</li>
-            <li><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
-            <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Buy a Ledger Nano S</a>
-            &nbsp;&middot;&nbsp;
-            <a href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">Buy a TREZOR</a></li>
-          </ul>
-        </div>
-        <div>
-          <h5> <i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
-          <ul>
-            <li> ETH: <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span></li>
-            <li> BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span></li>
-          </ul>
-        </div>
-        <div>
-          <h5> <i ng-hide="curLang=='en'">🏅</i> <span translate="Translator_Desc"> Thank you to our translators </span></h5>
-          <ul><li>
-            <span translate="TranslatorName_1"></span>
-            <span translate="TranslatorName_2"></span>
-            <span translate="TranslatorName_3"></span>
-            <span translate="TranslatorName_4"></span>
-            <span translate="TranslatorName_5"></span>
-          </li></ul>
-        </div>
-      </section>
+        <h5> <i aria-hidden="true">👫</i> You can support us by supporting our blockchain-family.</h5>
+        <p>Consider using our affiliate links to...</p>
+        <p><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener">Swap ETH/BTC/EUR/CHF via Bity.com</a></p>
+        <p><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Buy a Ledger Nano S</a>
+          &nbsp;&middot;&nbsp;
+          <a href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">Buy a TREZOR</a></p>
 
-      <section class="footer--righ">
+        <h5> <i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
+        <p> ETH: <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span> </p>
+        <p> BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span> </p>
 
-        <h5><i aria-hidden="true">🌎</i> Helpful Links </h5>
-        <ul>
-          <li><a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
-             Help Center
-          </a></li>
+        <h5 ng-hide="curLang=='en'"> <i>🏅</i> <span translate="Translator_Desc"> Thank you to our translators </span></h5>
+        <p ng-hide="curLang=='en'">
+          <span translate="TranslatorName_1"></span>
+          <span translate="TranslatorName_2"></span>
+          <span translate="TranslatorName_3"></span>
+          <span translate="TranslatorName_4"></span>
+          <span translate="TranslatorName_5"></span>
+        </p>
 
-          <li><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">
-             Utils &amp; ENS Debugging
-          </a></li>
+    </section>
 
-          <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
-            www.MyEtherWallet.com
-          </a></li>
+    <section class="footer--righ">
 
-          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
-            Github: MyEtherWallet v3
-          </a></li>
+      <h5><i aria-hidden="true">🌎</i> Links </h5>
 
-          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
-            Github: MyEtherWallet
-          </a></li>
+      <p>🌟 Help:
+        <a aria-label="knowledge base" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
+          Knowledge Base
+        </a>
+      </p>
 
-          <li>
-            <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" role="link" tabindex="0">
-              Slack
-            </a>
-            &middot;
-            <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
-              Twitter
-            </a>
-            &middot;
-            <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
-              Facebook
-            </a>
-            &middot;
-            <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
-              Reddit
-            </a>
-          </li>
-        </ul>
+      <p>Web:
+        <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
+          MyEtherWallet.com
+        </a>
+        &middot;
+        <a aria-label="website via github URL" href="https://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+          kvhnuke.github.io/etherwallet
+        </a>
+      </p>
 
-      </section>
+      <p>Github:
+        <a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
+          Current Site &amp; CX
+        </a>
+        &middot;
+        <a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
+          MEW Org
+        </a>
+        &middot;
+        <a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener" role="link" tabindex="0">
+          Latest Release
+        </a>
 
-  </div>
+      </p>
 
-  
-   <article class="modal fade" id="disclaimerModal" tabindex="-1">
+      <p>Chrome Extension:
+        <a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener" role="link" tabindex="0">
+          MyEtherWallet
+        </a>
+        &middot;
+        <a aria-label="Anti-Phishing chrome extension" href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener" role="link" tabindex="0">
+          Anti-Phishing
+        </a>
+      </p>
+
+      <p>Social &amp; Suppport:
+        <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" role="link" tabindex="0">
+          Slack
+        </a>
+        &middot;
+        <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
+          Twitter
+        </a>
+        &middot;
+        <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+          Reddit
+        </a>
+        &middot;
+        <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+          Facebook
+        </a>
+        &middot;
+        <a aria-label="medium" href="https://medium.com/@myetherwallet_96408" target="_blank" rel="noopener" role="link" tabindex="0">
+          Medium
+        </a>
+      </p>
+
+      <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">
+        Helpers &amp; ENS Debugging
+      </a></p>
+
+      <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">
+        Sign Message
+      </a></p>
+
+      <p ng-show="showBlocks">Latest Block#: {{currentBlockNumber}} </p>
+
+    </section>
+
+  </article>
+
+</div>
+
+
+<script type='application/ld+json'>
+{
+  "@context":"http://schema.org",
+  "@type":"Organization",
+  "@id":"#organization",
+  "url":"https://www.myetherwallet.com/",
+  "name":"MyEtherWallet",
+  "logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png",
+  "description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.",
+  "sameAs":[
+    "https://www.myetherwallet.com/",
+    "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
+    "https://www.facebook.com/MyEtherWallet/",
+    "https://twitter.com/myetherwallet",
+    "https://medium.com/@myetherwallet_96408",
+    "https://myetherwallet.groovehq.com/help_center",
+    "https://github.com/kvhnuke/etherwallet",
+    "https://github.com/MyEtherWallet",
+    "https://kvhnuke.github.io/etherwallet/",
+    "https://github.com/kvhnuke/etherwallet/releases/latest",
+    "https://github.com/409H/EtherAddressLookup",
+    "https://myetherwallet.slack.com/",
+    "https://myetherwallet.herokuapp.com/",
+    "https://www.reddit.com/r/MyEtherWallet/",
+    "https://www.reddit.com/user/insomniasexx/",
+    "https://www.reddit.com/user/kvhnuke/",
+    "https://www.reddit.com/user/myetherwallet"
+  ]
+}
+</script>
+
+</footer>
+
+
+ <article class="modal fade" id="disclaimerModal" tabindex="-1">
   <section class="modal-dialog">
     <section class="modal-content">
 
@@ -3758,11 +3501,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
         <h2 class="modal-title text-info" translate="FOOTER_4">Disclaimer</h2>
 
-        <p class="small"><strong> Translations of MyEtherWallet: </strong> The community is doing an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
+        <p class="small"><strong>Be safe &amp; secure:</strong> <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener"> We highly recommend that you read our guide on How to Prevent Loss &amp; Theft for some recommendations on how to be proactive about your security.</a></p>
 
-        <p class="small"><strong>Always backup your keys: </strong> MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</p>
+        <p class="small"><strong>Always backup your keys: </strong> MyEtherWallet.com &amp; MyEtherWallet CX are not "web wallets". You do not create an account or give us your funds to hold onto. No data leaves your computer / your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</p>
 
-        <p class="small"><strong>We are not responsible for any loss: </strong> Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development. While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but we are not responsible for the lost Ether.</p>
+        <p class="small"><strong>We are not responsible for any loss: </strong> Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development. While we have thoroughly tested &amp; tens of thousands of wallets have been successfully created by people all over the globe, there is always the possibility something unexpected happens that causes your funds to be lost. Please do not invest more than you are willing to lose, and please be careful.</p>
+
+        <p class="small"><strong> Translations of MyEtherWallet: </strong> The community has done an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
 
         <p class="small"><strong>MIT License</strong> Copyright &copy; 2015-2017 MyEtherWallet LLC</p>
 
@@ -3782,8 +3527,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 </article>
  
 
-
-</footer>
 </main>
 </body>
 </html>

@@ -31,7 +31,6 @@
 
 
   <!-- Your Address -->
-  <!-- TODO ADD ENS NAME SUPPORT -->
   <section class='swap-address block'>
     <section class="row">
       <div class="col-sm-8 col-sm-offset-2 col-xs-12">

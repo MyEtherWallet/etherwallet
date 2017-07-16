@@ -52,7 +52,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
             if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
             $scope.estimateTimer = setTimeout(function() {
                 $scope.estimateGasLimit();
-            }, 500);
+            }, 50);
         }
     }, true);
     $scope.$watch('contract.address', function(newValue, oldValue) {
@@ -68,7 +68,16 @@ var contractsCtrl = function($scope, $sce, walletService) {
     $scope.selectExistingAbi = function(index) {
         $scope.selectedAbi = ajaxReq.abiList[index];
         $scope.contract.address = $scope.selectedAbi.address;
+        $scope.addressDrtv.ensAddressField = $scope.selectedAbi.address;
+        $scope.addressDrtv.showDerivedAddress = false;
         $scope.dropdownExistingContracts = false;
+        $scope.contract.selectedFunc=null
+        $scope.dropdownContracts = false;
+
+        if ($scope.initContractTimer) clearTimeout($scope.initContractTimer);
+        $scope.initContractTimer = setTimeout(function() {
+            $scope.initContract();
+        }, 50);
     }
     $scope.estimateGasLimit = function() {
         var estObj = {

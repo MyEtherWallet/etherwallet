@@ -4,6 +4,70 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
+HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
+
+/* New Generics */
+x_CancelReplaceTx           : '処理を中断、あるいは置換',
+x_CancelTx                  : '処理を中断',
+x_PasswordDesc              : 'このパスワードで秘密鍵を＊暗号化＊します。新しい鍵を作るための元種(seed)ではありません。＊＊このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します＊＊',
+x_ReadMore                  : 'もっと読む',
+x_ReplaceTx                 : '処理を置き換える',
+x_TransHash                 : '処理ハッシュ',
+x_TXFee                     : '処理料',
+x_TxHash                    : '処理ハッシュ',
+
+/* Check TX Status */
+NAV_CheckTxStatus           : '処理状況を確認',
+NAV_TxStatus                : '処理状況',
+tx_Details                  : '処理内容詳細',
+tx_Summary                  : 'もし数日経ってから処理状況を確認した場合でなければ、大量の処理発生時(ICO期間など)には、数時間待たされることがあります。本ツールは、そのような状況において処理待ちのものを探し出し取り消す、あるいは新しくする機能を提供します。＊＊これは一般的な操作ではありませんが、処理プールが満杯の場合にのみ有効です。  [このツールに関しては、こちらを参考にしてください。](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_notFound                 : '対象の処理が見つかりません',
+tx_notFound_1               : 'この処理は、現在接続中の処理プールの中にありませんでした。',
+tx_notFound_2               : 'もし今、処理を送出した直後であれば、１５秒待ってから「処理状況を確認」ボタンを再度押してください。',
+tx_notFound_3               : '別の処理プールで発掘待ちになっているかもしれません。',
+tx_notFound_4               : '右上の下展開メニューから、別のノードを選択してください。 (例： `ETH (Etherscan.io)` or `ETH (Infura.io)` or `ETH (MyEtherWallet)`) から選んで再度確認する。',
+tx_foundInPending           : '待機中の処理が見つかりました。',
+tx_foundInPending_1         : 'あなたの処理が、現在接続中のノードの処理待ちプールの中で見つかりました。',
+tx_foundInPending_2         : '現在待機中です（発掘待ち）。',
+tx_foundInPending_3         : 'この処理を取り消す、あるいは置き換えることができます。下記のお財布をアンロックしてください。 ',
+tx_FoundOnChain             : '処理が見つかりました',
+tx_FoundOnChain_1           : 'あなたの待機中の処理は発掘されてブロックチェーンに載りました。',
+tx_FoundOnChain_2           : '**もし赤い `( ! )`, `BAD INSTRUCTION` あるいは `OUT OF GAS` のエラーメッセージを見つけたら**, これは、処理送出に失敗したということです。処理の取り消しや置き換えはできません。代わりに、新しい処理を送出してください。 "Out of Gas" エラーの場合には, ガスリミットをはじめに指定した値の倍にしてください。',
+tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
+
+/* Gen Wallet Updates */
+GEN_Help_1                  : '次の', /* Use your */ 
+GEN_Help_2                  : 'で自分の口座にアクセスしてください。', /* to access your account. */
+GEN_Help_3                  : '自分のデバイスそのものが、自分のお財布です。',　/* Your device * is * your wallet. */
+GEN_Help_4                  : 'ガイドとＦＡＱ',　/* Guides & FAQ */
+GEN_Help_5                  : 'お財布の作り方', /* How to Create a Wallet */
+GEN_Help_6                  : 'ここから始める', /* Getting Started */ 
+GEN_Help_7                  : '安全な所で保管してください · バックアップを作成してください · 他の誰にも教えないでください · 絶対になくさないでください · 無くした時には回復する方法はありません。',
+GEN_Help_8                  : 'ファイルをダウンロードしませんでしたか？', /* Not Downloading a File? */
+GEN_Help_9                  : 'Google Chromeを使ってください', /* Try using Google Chrome */ 
+GEN_Help_10                 : '右クリックしてファイルを保存。ファイル名: ', /* Right click & save file as. Filename:  */
+GEN_Help_11                 : 'このファイルは自分のコンピューターで開かないでください', /*Don\'t open this file on your computer */
+GEN_Help_12                 : 'MyEtherWalletの上でこれを使って自分のお財布をアンロックしてください（Mist, Geth, Parityや他のお財布クライアントも可）', /*Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity and other wallet clients.) 
+*/
+GEN_Help_13                 : '自分のキーストアファイルのバックアップ作成方法', /*How to Back Up Your Keystore File */
+GEN_Help_14                 : 'これらの方式の違いは？',　/*What are these Different Formats? */
+GEN_Help_15                 : '自分の資金の紛失や盗難を防止する。', /* Preventing loss & theft of your funds. */
+GEN_Help_16                 : 'これらの方式の違いは？', /*What are these Different Formats?*/
+GEN_Help_17                 : 'なぜこれらを自分で？', /*Why Should I?*/
+GEN_Help_18                 : '２番目のバックアップ作成のため', /*To have a secondary backup.*/
+GEN_Help_19                 : 'パスワードを忘れた場合には', /*In case you ever forget your password.*/
+GEN_Help_20                 : '隔離された保管場所', /*Cold Storage*/ 
+GET_ConfButton              : '理解しました。続けます。', /*I understand. Continue.*/ 
+GEN_Label_5                 : '自分の秘密鍵を保存する。', /*Save Your `Private Key`. */
+GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する', /*Unlock your wallet to see your address*/
+GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかる料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」かつ、自分の処理をブロックに配置するためにマイナーに支払われます。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「21 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.*/
+GAS_LIMIT_Desc              : 'ガスリミットは、自分の処理にかかる料金の額です。「使用料金」 = ガス価格 ＊ ガスリミット」で、自分の処理をブロックに配置するための料金に支払われます。 この数字を増やしても、自分の処理が早く発掘されることはありません。ETHの送出 = 「２１０００」。トークンの送出 = ~「２０００００」。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
+NONCE_Desc                  : 'そのnonceは、指定のアドレスから送出される処理の数です。処理が正しい順番で、二重にならないよう確実にするものです。',
+TXFEE_Desc                  : 'その処理料金は自分の処理をブロックに配置するためにマイナーに支払われます。「ガスリミット」＊「ガス価格」です。 [GWEI -> ETHの変換はここです。](https://www.myetherwallet.com/helpers.html)',　/*The TX Fee is paid to miners for including your TX in a block. It is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)*/
+
+
+
+
 /* Navigation*/
 NAV_AddWallet               : 'お財布の追加 ',
 NAV_BulkGenerate            : 'バルク作成 ',
@@ -59,7 +123,7 @@ MEW_Tagline                 : 'オープンソース JavaScript クライアン�
 CX_Tagline                  : 'オープンソース JavaScript クライアントサイド Etherお財布 Chrome Extension ',
 
 /* Footer */
-FOOTER_1                    : 'イサリアムお財布の作成とトランザクション実行のためのオープンソース、javascript、 クライアントサイドツール。 ',
+FOOTER_1                    : 'イサーリアムお財布の作成とトランザクション実行のためのオープンソース、javascript、 クライアントサイドツール。 ',
 FOOTER_1b                   : '制作 ',
 FOOTER_2                    : '投げ銭に感謝致します！: ',
 FOOTER_3                    : 'クライアントサイドお財布制作 ',
@@ -388,7 +452,6 @@ HELP_1_Desc_3               : 'Enter a strong password. If you think you may for
 HELP_1_Desc_4               : 'Click "GENERATE". ',
 HELP_1_Desc_5               : 'Your wallet has now been generated. ',
 
-HELP_2a_Title               : '2a) How do I save/backup my wallet? ',
 HELP_2a_Desc_1              : 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. ',
 HELP_2a_Desc_2              : 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. ',
 HELP_2a_Desc_3              : 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys: ',
