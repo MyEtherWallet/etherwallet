@@ -50,6 +50,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(true)"
          ng-model="swapOrder.fromVal"
+         ng-click="showedMinMaxError = false"
          ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <span class="dropdown">
@@ -68,6 +69,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(false)"
          ng-model="swapOrder.toVal"
+         ng-click="showedMinMaxError = false"
          ng-class="Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <div class="dropdown">

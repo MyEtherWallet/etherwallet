@@ -159,7 +159,6 @@ uiFuncs.generateTx = function(txData, callback) {
                         isError: true,
                         error: e
                     });
-                    return;
                 } else {
                     data = data.data;
                     data.isOffline = txData.isOffline ? txData.isOffline : false;
@@ -214,20 +213,20 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
 }
 uiFuncs.notifier = {
     alerts: {},
-    warning: function(msg) {
-        this.addAlert("warning", msg);
+    warning: function(msg, duration = 5000) {
+        this.addAlert("warning", msg, duration);
     },
-    info: function(msg) {
-        this.addAlert("info", msg);
+    info: function(msg, duration = 5000) {
+        this.addAlert("info", msg, duration);
     },
-    danger: function(msg) {
+    danger: function(msg, duration = 0) {
         msg = msg.message ? msg.message : msg;
         // Danger messages can be translated based on the type of node
         msg = globalFuncs.getEthNodeMsg(msg);
-        this.addAlert("danger", msg, 0);
+        this.addAlert("danger", msg, duration);
     },
-    success: function(msg) {
-        this.addAlert("success", msg);
+    success: function(msg, duration = 5000) {
+        this.addAlert("success", msg, duration);
     },
     addAlert: function(type, msg, duration) {
         if (duration == undefined)

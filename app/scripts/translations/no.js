@@ -4,6 +4,66 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
+/* New Generics */
+x_CancelReplaceTx           : 'Kanseller eller erstatt transaksjon',
+x_CancelTx                  : 'Kanseller transaksjon',
+x_PasswordDesc              : 'Dette passordet * krypterer * din private nøkkel. Det fungerer ikke som "seed" for å generere nøklene dine. **Du vil trenge dette passordet + din private nøkkel for å låse opp lommeboken din.**',
+x_ReadMore                  : 'Les mer',
+x_ReplaceTx                 : 'Erstatt transaksjon',
+x_TransHash                 : 'Transaksjonens hash',
+x_TXFee                     : 'Tr.avgift',
+x_TxHash                    : 'Tr.hash',
+
+/* Check TX Status */
+NAV_CheckTxStatus           : 'Sjekk tr.status',
+NAV_TxStatus                : 'Tr.status',
+tx_Details                  : 'Transaksjonsdetaljer',
+tx_Summary                  : 'I perioder med høy aktivitet (som f.eks. under ICO-er), kan transaksjoner stå på vent i flere timer, og i verste fall i flere dager. Dette verktøyet har som mål å gi deg muligheten til å finne og "avbryte" / erstatte disse transaksjonene. ** Dette er ikke vanligvis noe du kan gjøre. Det bør ikke stoles på, og vil bare kunne fungere når det ligger mange transaksjoner i kø. [Vennligst les mer om dette verktøyet her.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_notFound                 : 'Transaksjon ikke funnet',
+tx_notFound_1               : 'Denne transaksjonen finnes ikke i transaksjonskøen til noden du er tilkoblet.',
+tx_notFound_2               : 'Hvis du nettopp har sendt transaksjonen, vennligst vent 15 sekunder og trykk "Sjekk tr.status"-knappen igjen. ',
+tx_notFound_3               : 'Den kan fortsatt befinne seg i transaksjonskøen til en annen node, i påvente av å bli behandlet (inkludert i blokkjeden). ',
+tx_notFound_4               : 'Bruk rullegardinmenyen øverst til høyre og velg en annen ETH-node. (f.eks. `ETH (Etherscan.io)` eller `ETH (Infura.io)` eller `ETH (MyEtherWallet)`), og sjekk igjen.',
+tx_foundInPending           : 'Ventende transaksjon funnet',
+tx_foundInPending_1         : 'Din transaksjon ble funnet i transaksjonskøen til noden du er tilkoblet. ',
+tx_foundInPending_2         : 'Den står for øyeblikket på vent (på å bli inkludert i blokkjeden). ',
+tx_foundInPending_3         : 'Det er en mulighet for at du kan "kansellere" eller erstatte denne transaksjonen. Lås opp lommeboken din nedenfor.',
+tx_FoundOnChain             : 'Transaksjon funnet',
+tx_FoundOnChain_1           : 'Transaksjonen din var vellykket og ligger i blokkkjeden.',
+tx_FoundOnChain_2           : '**Hvis du ser et rødt utropstegn `( ! )` eller `BAD INSTRUCTION` eller `OUT OF GAS` feilmelding**, så betyr dette at transaksjonen ikke var vellykket. Du kan ikke "kansellere" eller erstatte denne transaksjonen. I stedet kan du sende en ny transaksjon. Hvis du fikk en "Out of Gas"-feilmelding, bør du doble gas-grensen som du spesifiserte i utgangspunktet. ',
+tx_FoundOnChain_3           : '**Hvis du ikke ser noen feil, var transaksjonen vellykket.** Dine ETH eller Tokens er der du sendte dem. Hvis du ikke ser disse ETH eller Tokens der du sendte dem, og det har gått mer enn 24 timer, vennligst [kontakt vedkommende service](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Send dem en *lenke* til transaksjonen din og spør dem pent om å se på situasjonen din.',
+
+/* Gen Wallet Updates */
+GEN_Help_1                  : 'Bruk',
+GEN_Help_2                  : 'for å få tilgang til kontoen din.',
+GEN_Help_3                  : 'Enheten din * er * lommeboken din.',
+GEN_Help_4                  : 'Guider & FAQ',
+GEN_Help_5                  : 'Hvordan opprette en lommebok',
+GEN_Help_6                  : 'Komme i gang',
+GEN_Help_7                  : 'Ta godt vare på det · Lag en sikkerhetskopi · Ikke del den med noen · Ikke mist det · Det kan ikke gjenopprettes hvis du mister det.',
+GEN_Help_8                  : 'Lastes ikke filen ned? ', 
+GEN_Help_9                  : 'Prøv å bruke Google Chrome ',
+GEN_Help_10                 : 'Høyreklikk & velg "lagre linken som". Filnavn: ',
+GEN_Help_11                 : 'Ikke åpne denne filen på datamaskinen din ',
+GEN_Help_12                 : 'Bruk den sammen med passordet du oppga til å låse opp lommeboken din via MyEtherWallet (eller Mist, Geth, Parity og andre lommebok-klienter.) ',
+GEN_Help_13                 : 'Hvordan sikkerhetskopiere Keystore-filen ',
+GEN_Help_14                 : 'Hva er disse ulike formatene? ',
+GEN_Help_15                 : 'Unngå tap &amp; tyveri av midlene dine.',
+GEN_Help_16                 : 'Hva er disse ulike formatene? ',
+GEN_Help_17                 : 'Hvorfor bør jeg gjøre dette?',
+GEN_Help_18                 : 'For å ha en ekstra sikkerhetskopi.',
+GEN_Help_19                 : 'I tilfelle du noen gang glemmer passordet ditt.',
+GEN_Help_20                 : 'Kald-lagring',
+GET_ConfButton              : 'Jeg forstår. Fortsett. ',
+GEN_Label_5                 : 'Lagre din `Private Nøkkel`. ',
+GEN_Unlock                  : 'Lås opp lommeboken for å se adressen. ',
+GAS_PRICE_Desc              : 'Gas-pris er beløpet du betaler per gas-enhet. `Transaksjonsavgift = gas-pris * gas-grense` & betales til "miner-ene" får å inkludere transaksjonen din i en blokk. Høyere gas-pris = raskere transaksjon, men dyrere. Standardinnstillingen er `21 GWEI`. ',
+GAS_LIMIT_Desc              : 'Gas-grense er mengden gas som sendes med transaksjonen din. `Tr.avg.` = gas-pris * gas-grense & betales til "miner-ene" får å inkludere transaksjonen din i en blokk. Å øke dette tallet vil ikke få gjennom transaksjonen din raskere. Ulike typer transaksjoner krever ulik mengde gas. F.eks. koster det `21 000` å sende ETH og ~`200 000` å sende tokens. ',
+NONCE_Desc                  : '"Nonce" er antall transaksjoner som noensinne har blitt sendt fra en gitt adresse. Det sikrer at transaksjoner sendes i riktig rekkefølge, og ikke mer enn én gang. ',
+TXFEE_Desc                  : 'Transaksjonsavgiften betales til "miner-ene" får å inkludere transaksjonen din i en blokk. Det er `gas-grense` * `gas-pris`. [Du kan regne om GWEI -> ETH her](https://www.myetherwallet.com/helpers.html)',
+
+
+
 /* Navigation*/
 NAV_AddWallet               : 'Legg til lommebok ',
 NAV_BulkGenerate            : 'Opprett flere lommebøker ',
@@ -11,7 +71,7 @@ NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Kontrakt ',
 NAV_DeployContract          : 'Utplasser kontrakt ',
 NAV_ENS                     : 'ENS',
-NAV_GenerateWallet_alt      : 'New Wallet ',
+NAV_GenerateWallet_alt      : 'Ny lommebok ',
 NAV_GenerateWallet          : 'Opprett lommebok ',
 NAV_Help                    : 'Hjelp ',
 NAV_InteractContract        : 'Samhandle med Kontrakt ',
@@ -27,7 +87,7 @@ NAV_YourWallets             : 'Dine lommebøker ',
 
 /* General */
 x_Access                    : 'Åpne ',
-x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. Du kjenner kanskje dette som ditt "kontonummer" eller din "offentlige nøkkel". Dette er informasjonen som du sender til folk så de kan sende deg ether (en lang rekke tilfeldige tall og bokstaver som starter med "0x"). Ikonet er en enkel måte å kjenne igjen adressen din på. ',
+x_AddessDesc                : 'Adressen din, også kalt `Kontonummer` eller `Offentlig nøkkel`, er den informasjonen du deler med folk slik at de kan sende deg ether eller tokens. Finn det fargerike adresse-ikonet. Vær sikker på at det stemmer overens med ikonet på papir-lommeboken din, og ellers når du oppgir adressen noe sted. ',
 x_Address                   : 'Din adresse ',
 x_Cancel                    : 'x_Annuler ',
 x_CSV                       : 'CSV-fil (ukryptert) ',
@@ -287,11 +347,11 @@ ERROR_3                     : 'Dette er ikke en gyldig lommebok-fil. ',
 ERROR_4                     : 'Denne enheten eksisterer ikke, vennligst benytt en av de følgende enhetene ',
 ERROR_5                     : 'Ugyldig adresse. ',
 ERROR_6                     : 'Ugyldig passord. ',
-ERROR_7                     : 'Ugyldig beløp. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Ugyldig gas-grense. (Must be integer. Try 21000-4000000.) ', // 8
-ERROR_9                     : 'Ugyldig dataverdi. (Must be hex.) ', // 9
-ERROR_10                    : 'Ugyldig gas-mengde. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
-ERROR_11                    : 'Ugyldig nonce. (Must be integer.) ', // 11
+ERROR_7                     : 'Ugyldig beløp. (Må være heltall. Prøv 0-18.) ', // 7
+ERROR_8                     : 'Ugyldig gas-grense. (Må være heltall. Prøv 21000-4000000.) ', // 8
+ERROR_9                     : 'Ugyldig dataverdi. (Må være hex.) ', // 9
+ERROR_10                    : 'Ugyldig gas-mengde. (Må være heltall. Prøv 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Ugyldig nonce. (Må være heltall.) ', // 11
 ERROR_12                    : 'Ugyldig signert transaksjon. ',
 ERROR_13                    : 'En lommebok med dette kallenavnet eksisterer allerede. ',
 ERROR_14                    : 'Lommebok ikke funnet. ',
@@ -312,14 +372,14 @@ ERROR_28                    : '**Du trenger din Keystore-fil & passord eller din
 ERROR_29                    : 'Vennligst oppgi gyldig brukernavn og passord ',
 ERROR_30                    : 'Vennligst oppgi et gyldig ENS-navn ',
 ERROR_31                    : 'Ugyldig hemmelig frase ',
-ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte.  Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte.  Last inn siden på nytt, prøv en annen node (øverste høyre hjørnet), sjekk brannmur-innstillingene. Hvis du bruker din egen node, sjekk konfigurasjonen.', // 32
 ERROR_33                    : 'Lommeboken du har låst opp stemmer ikke overens med eierens adresse. ', // 33
 ERROR_34                    : 'Navnet du prøver å avsløre er ikke likt navnet du har tastet inn. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input-adressen har ingen sjekk-sum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 
 SUCCESS_1                   : 'Gyldig adresse ',
 SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',
-SUCCESS_3                   : 'Transaksjonen ble kringkastet til blokkjeden. Klikk for å se transaksjonen din og verifisere at den ble inkludert (mined), og at den ikke ga noen tom-for-gas- eller kontrakt-utførelsesfeil.  TX ID:  ', //'Transaksjonen ble sendt inn. TX ID ',
+SUCCESS_3                   : 'Transaksjonen ble kringkastet til blokkjeden. Klikk for å se transaksjonen din og verifisere at den ble inkludert (mined), og at den ikke ga noen tom-for-gas- eller kontrakt-utførelsesfeil.  TX Hash:  ', //'Transaksjonen ble sendt inn. TX Hash ',
 SUCCESS_4                   : 'Lommeboken din ble lagt til ',
 SUCCESS_5                   : 'Valgt fil ',
 SUCCESS_6                   : 'Tilkobling ble opprettet ',
@@ -388,7 +448,7 @@ HELP_1_Desc_3               : 'Oppgi et sterkt passord. Hvis du ikke tror du kla
 HELP_1_Desc_4               : 'Klikk "OPPRETT". ',
 HELP_1_Desc_5               : 'Din lommebok har nå blitt opprettet. ',
 
-HELP_2a_Title               : '2a) Hvordan lagrer/sikkerhetskopierer jeg lommeboken min? ',
+HELP_2a_Title               : 'Hvordan lagrer/sikkerhetskopierer jeg lommeboken min? ',
 HELP_2a_Desc_1              : 'Du bør alltid sikkerhetskopiere lommeboken din eksternt og på flere fysiske lokasjoner - som f.eks. på en USB-disk og/eller på et papirark. ',
 HELP_2a_Desc_2              : 'Lagre adressen. Du kan holde den for deg selv eller dele den med andre. På den måten kan andre overføre ether til deg. ',
 HELP_2a_Desc_3              : 'Lagre versjoner av den private nøkkelen. Ikke del den med noen andre. Din private nøkkel er nødvendig hvis du vil ha tilgang til (og sende) etheren din! Det er 3 typer private nøkler: ',
@@ -428,7 +488,7 @@ HELP_4_Desc_9               : 'Klikk "Generer transaksjon". ',
 HELP_4_Desc_10              : 'En del felter vil dukke opp. Dette er nettleseren din som genererer transaksjonen. ',
 HELP_4_Desc_11              : 'Klikk den blå "Send transaksjon"-knappen nedenfor dette. ',
 HELP_4_Desc_12              : 'En pop-up vil dukke opp. Verifiser at beløp og adresse du sender til er korrekt. Klikk så "Ja, jeg er sikker! Gjennomfør transaksjonen."-knappen. ',
-HELP_4_Desc_13              : 'Transaksjonen vil bli sendt inn. Transaksjons-ID-en (TX-ID) vil vises. Du kan klikke på TX ID for å se den på blokkjeden. ',
+HELP_4_Desc_13              : 'Transaksjonen vil bli sendt inn. Transaksjons-ID-en (TX-ID) vil vises. Du kan klikke på TX Hash for å se den på blokkjeden. ',
 
 HELP_4CX_Title              : '4) Hvordan sender jeg ether med MyEtherWallet CX (Chrome-utvidelsen)? ',
 HELP_4CX_Desc_1             : 'Først må du legge til en lommebok. Når du har gjort det, har du 2 muligheter: den kjappe "Send"-funksjonaliteten fra Chrome-utvidelsesikonet eller "Send Ether & Tokens"-siden. ',
@@ -475,7 +535,7 @@ HELP_7_Desc_11              : 'Klikk "Generer transaksjon". ',
 HELP_7_Desc_12              : 'Noen flere felter vil dukke opp. Dette er nettleseren din som genererer transaksjonen. ',
 HELP_7_Desc_13              : 'Klikk den blå "Send transaksjon"-knappen nedenfor dette. ',
 HELP_7_Desc_14              : 'En pop-up vil dukke opp. Verifiser at beløp og adresse du sender til er korrekt. Klikk så "Ja, jeg er sikker! Gjennomfør transaksjonen."-knappen. ',
-HELP_7_Desc_15              : 'Transaksjonen vil bli sendt inn. Transaksjons-ID-en (TX-ID) vil vises. Du kan klikke på TX ID for å se den på blokkjeden. ',
+HELP_7_Desc_15              : 'Transaksjonen vil bli sendt inn. Transaksjons-ID-en (TX-ID) vil vises. Du kan klikke på TX Hash for å se den på blokkjeden. ',
 
 HELP_8_Title                : '8) Hva skjer hvis nettsiden går ned? ',
 HELP_8_Desc_1               : 'MyEtherWallet er ikke en nett-lommebok (web wallet). Du har ingen innlogging og ingenting blir noensinne lagret på våre servere. Det er ganske enkelt et grensesnitt som tillater deg å samhandle med blokkjeden. ',

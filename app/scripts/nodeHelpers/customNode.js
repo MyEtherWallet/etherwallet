@@ -37,6 +37,15 @@ customNode.prototype.getBalance = function(addr, callback) {
         else callback({ error: false, msg: '', data: { address: addr, balance: new BigNumber(data.result).toString() } });
     });
 }
+customNode.prototype.getTransaction = function(txHash, callback) {
+    this.post({
+        method: 'eth_getTransactionByHash',
+        params: [txHash]
+    }, function(data) {
+        if (data.error) callback({ error: true, msg: data.error.message, data: '' });
+        else callback({ error: false, msg: '', data: data.result });
+    });
+}
 customNode.prototype.getTransactionData = function(addr, callback) {
     var response = { error: false, msg: '', data: { address: addr, balance: '', gasprice: '', nonce: '' } };
     var parentObj = this;

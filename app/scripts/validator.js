@@ -20,6 +20,9 @@ validator.isValidENSName = function(str) {
         return false;
     }
 }
+validator.isValidTxHash = function(txHash) {
+    return txHash.substring(0, 2) == "0x" && txHash.length == 66 && this.isValidHex(txHash);
+}
 validator.isValidENSAddress = function(address) {
     address = ens.normalise(address);
     var tld = address.substr(address.lastIndexOf('.') + 1);
@@ -42,7 +45,7 @@ validator.isValidHex = function(hex) {
     return ethFuncs.validateHexString(hex);
 }
 validator.isValidPrivKey = function(privkeyLen) {
-    return privkeyLen == 64 || privkeyLen == 128 || privkeyLen == 132;
+    return privkeyLen == 64 || privkeyLen == 66 || privkeyLen == 128 || privkeyLen == 132;
 }
 validator.isValidMnemonic = function(mnemonic) {
     return hd.bip39.validateMnemonic(mnemonic);

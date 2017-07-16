@@ -2,11 +2,11 @@
 <html lang="en" ng-app="mewApp">
 <head>
   <meta charset="utf-8">
-  <title>MyEtherWallet: Open-Source & Client-Side Ether Wallet</title>
+  <title>MyEtherWallet.com</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="Open-Source & Client-Side Ethereum Wallet">
-
+  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
   <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
   <script type="text/javascript" src="js/etherwallet-master.js"></script>
@@ -19,25 +19,21 @@
   <link rel="shortcut icon" href="images/fav/favicon.ico">
   <meta name="msapplication-config" content="images/fav/browserconfig.xml">
   <meta name="theme-color" content="#163151">
-
-  <meta property="og:url"         content="https://www.MyEtherWallet.com" />
+  <meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
+  <meta property="og:url"         content="https://www.myetherwallet.com" />
   <meta property="og:title"       content="MyEtherWallet.com" />
-  <meta property="og:description" content="MyEtherWallet: Open-Source & Client-Side Ether Wallet" />
-  <meta property="og:image"       content="images/fb-myetherwallet.png" />
-  <meta property="og:image"       content="images/fb-mewtwo.jpg" />
+  <meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet." />
+  <meta property="og:image"       content="images/myetherwallet-logo-banner.png" />
+  <meta property="og:image"       content="images/myetherwallet-logo.png" />
+  <meta property="og:image"       content="images/myetherwallet-logo-square.png" />
+  <meta property="og:image"       content="images/myetherwallet-banner-fun.jpg" />
 </head>
 
 <body>
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
-
-<!--
-    <div class="small announcement annoucement-warning">
-      <div class="container">The #FOMO is Real. Breath. If you are trying to get in on Status.im, <strong> wait until BLOCK 3903900!</strong> <br /> If your TX is not urgent, we recommend NOT SENDING TODAY. Thank you for understanding. </div>
-    </div>
--->
     @@if (site === 'cx' ) {
-    <div class="small announcement annoucement-warning">
+    <div class="small announcement annoucement-danger">
         <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any
             wallets you store here. Many things could happen that would cause you to lose the data in this Chrome
             Extension, including uninstalling the extension. This extension is a way to easily access your wallets,
@@ -47,13 +43,19 @@
     }
   <section class="bg-gradient header-branding">
     <section class="container">
-
-      @@if (site === 'mew' ) { <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage"> <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" /></a> }
-      @@if (site === 'cx'  ) { <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">                <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" /></a> }
-
+      @@if (site === 'mew' ) {
+        <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage">
+          <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
+        </a>
+      }
+      @@if (site === 'cx'  ) {
+        <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">
+          <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
+        </a>
+      }
       <div class="tagline">
 
-        <span style="padding-right: 1rem;line-height: 1;">v3.9.5</span>
+        <span>v3.9.9.1</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -93,14 +95,13 @@
           </a>
           <ul class="dropdown-menu" ng-show="dropdownGasPrice">
             <div class="header--gas">
-              <a aria-label="What is Gas?" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener" role="link" tabindex="0">
-                <img src="images/icon-help.svg" class="help-icon" />
-              </a>
               <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
               <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
               <p class="small col-xs-4 text-left">Not So Fast</p>
               <p class="small col-xs-4 text-center">Fast</p>
               <p class="small col-xs-4 text-right">Fast AF</p>
+              <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
+              <a class="small" translate="x_ReadMore" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener"></a>
             </div>
           </ul>
         </span>
@@ -125,6 +126,12 @@
     </section>
   </section>
 
+  @@if (site === 'mew' ) {
+    <div class="small announcement annoucement-warning">
+      <div class="container">⚠ Please beware of phishing websites. Do not enter your key on a website you arrived at by clicking a link. Use bookmarks. Always triple-check the domain. Ours is dot com. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">You are responsible for your safety &amp; security</a>.</div>
+    </div>
+  }
+
   <nav role="navigation" aria-label="main navigation" class="container nav-container overflowing" >
     <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
     <div class="nav-scroll">
@@ -135,6 +142,7 @@
         @@if (site === 'cx' ) {
         <li ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="tab.cx" ng-click="tabClick($index)"> <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a></li>
         }
+        <li class="nav-item help"><a href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener">Help</a></li>
       </ul>
     </div>
     <a aria-hidden="true" ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>

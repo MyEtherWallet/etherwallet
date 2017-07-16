@@ -28,6 +28,16 @@ etherscan.getBalance = function(addr, callback) {
         else callback({ error: false, msg: '', data: { address: addr, balance: data.result } });
     });
 }
+etherscan.getTransaction = function(txHash, callback) {
+    this.post({
+        module: 'proxy',
+        action: 'eth_getTransactionByHash',
+        txhash: txHash,
+    }, function(data) {
+        if (data.error) callback({ error: true, msg: data.error.message, data: '' });
+        else callback({ error: false, msg: '', data: data.result });
+    });
+}
 etherscan.getTransactionData = function(addr, callback) {
     var response = { error: false, msg: '', data: { address: addr, balance: '', gasprice: '', nonce: '' } };
     var parentObj = this;
@@ -105,7 +115,7 @@ etherscan.queuePost = function() {
         callback(data.data);
         parentObj.pendingPosts.splice(0, 1);
         if (parentObj.pendingPosts.length > 0) parentObj.queuePost();
-    }, function(data){
+    }, function(data) {
         callback({ error: true, msg: "connection error", data: "" });
     });
 }

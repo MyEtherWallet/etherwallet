@@ -38,7 +38,7 @@ var addWalletCtrl = function($scope, $sce) {
         $scope.addWalletStats = "";
         $scope.showBtnUnlock = $scope.showDPaths = hd.bip39.validateMnemonic($scope.manualmnemonic);
     };
-    $scope.showContent = function($fileCowntent) {
+    $scope.showContent = function($fileContent) {
         $scope.notifier.info(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name);
         try {
             $scope.requireFPass = Wallet.walletRequirePass($fileContent);
@@ -151,6 +151,17 @@ var addWalletCtrl = function($scope, $sce) {
         $scope.showBtnGen = $scope.showBtnUnlock = $scope.showBtnAdd = $scope.showAddWallet = false;
         $scope.addNewNick = $scope.addNewPass = "";
         $scope.addWalletStats = "";
+        $scope.addAccount = {
+            address: "",
+            nickName: "",
+            encStr: "",
+            password: ""
+        };
+        $scope.requireFPass = false;
+        $scope.fileContent = null;
+        $scope.manualprivkey = null;
+        $scope.requirePPass = false;
+        $scope.manualmnemonic = null;
     });
     $scope.addWalletToStorage = function() {
         if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
@@ -205,6 +216,18 @@ var addWalletCtrl = function($scope, $sce) {
                 });
             }
         });
+    }
+    $scope.onHDDPathChange = function(password = $scope.manualmnemonic) {
+        $scope.HDWallet.numWallets = 0;
+        if ($scope.walletType == 'pastemnemonic') {
+            $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim(), password));
+            $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+        } else if ($scope.walletType == 'ledger') {
+            $scope.scanLedger();
+        } else if ($scope.walletType == 'trezor') {
+            $scope.scanTrezor();
+        }
+
     }
 };
 module.exports = addWalletCtrl;

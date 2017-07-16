@@ -96,7 +96,7 @@ gulp.task('styles', function() {
 
 
 // js: Browserify
-let js_watchFolder = app + 'scripts/**/*.{js,html}';
+let js_watchFolder = app + 'scripts/**/*.{js,json,html}';
 let js_srcFile = app + 'scripts/main.js';
 let js_destFolder = dist + 'js/';
 let js_destFolder_CX = dist_CX + 'js/';
