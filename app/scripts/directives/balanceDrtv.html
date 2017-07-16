@@ -29,8 +29,8 @@
             ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
           <td class="mono wrap point" title="{{token.getBalance()}} (Double-Click)" ng-dblclick="showLongToken=!showLongToken">
             <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
-            <span ng-show="!showLongToken || token.type=='default'">{{token.getBalance() | number}}</span>
-            <span ng-show="showLongToken || token.type!=='default'">{{token.getBalance() }}</span>
+            <span ng-show="!showLongToken && token.type=='default'">{{token.getBalance() | number}}</span>
+            <span ng-show="showLongToken">{{token.getBalance() }}</span>
           </td>
           <td>{{token.getSymbol()}}</td>
         </tr>
