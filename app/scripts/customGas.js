@@ -104,6 +104,13 @@ module.exports = [
   msg:        'SGelder ICO starts 07th of August 2017'
 },
 {
+  // BlockCAT Token Sale
+  to:         '0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8',
+  gasLimit:   200000,
+  data:       '0xb4427263',
+  msg:        'The BlockCAT Token Sale (CAT) starts July 15th, 2017 on Ethereum block number 4027470.'
+},
+{
   // NVC
   to:         '0xd88755197e107603C139df6E709ed09EEC6b6bB3',
   gasLimit:   200000,
