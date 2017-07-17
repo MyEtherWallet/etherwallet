@@ -546,5 +546,11 @@
     "symbol":"XID",
     "decimal":8,
     "type":"default"
+  },
+  {
+    "address":"0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0",
+    "symbol":"EOS",
+    "decimal":18,
+    "type":"default"
   }
 ]
