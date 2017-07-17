@@ -118,11 +118,18 @@ module.exports = [
   msg:        'NVC Fund'
 },
 {
-  // NVC
+  // fake coindash
   to:         '0x6a164122d5cf7c840d26e829b46dcc4ed6c0ae48',
   gasLimit:   -1,
   data:       '',
   msg:        'fake coindash do not send pleaseeeeeeeee!'
+},
+{
+  // maybe fake coindash??
+  to:         '0x7da6955457b72fdd0e80709d704520ff85d79e39',
+  gasLimit:   -1,
+  data:       '',
+  msg:        'this may be a fake address promoted by phishers. go research first please.'
 }
 ]
 
