@@ -150,6 +150,12 @@
     "type":"default"
   },
   {
+    "address":"0x0abdace70d3790235af448c88547603b945604ea",
+    "symbol":"DNT",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x08711D3B02C8758F2FB3ab4e80228418a7F8e39c",
     "symbol":"EDG",
     "decimal":0,
