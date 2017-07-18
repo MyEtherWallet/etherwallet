@@ -20,11 +20,11 @@ module.exports = [
   msg:        'Thank you for your donation! TO THE MOON! 🌝'
 },
 {
-  // DCORP
-  to:         '0xD42433A8a0A1CEB73c8ff4e432463e2ee109039d',
-  gasLimit:   100000,
+  // District0x
+  to:         '0xF8094e15c897518B5Ac5287d7070cA5850eFc6ff',
+  gasLimit:   200000,
   data:       '',
-  msg:        'DCORP. Ends June 30, 2017.'
+  msg:        'district0x. WEBSITE: contribution.district0x.io STARTS: Tue, 18 Jul 2017 08:00:00 REMEMBER: Use gas price of 50 GWEI (look in header) ENS: district0x.eth'
 },
 {
   // BattleDrome
