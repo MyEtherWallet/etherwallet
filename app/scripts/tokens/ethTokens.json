@@ -563,5 +563,17 @@
     "symbol":"XRL",
     "decimal":9,
     "type":"default"
+  },
+  {
+    "address":"0x5a84969bb663fb64F6d015DcF9F622Aedc796750",
+    "symbol":"ICE",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
+    "symbol":"PLR",
+    "decimal":18,
+    "type":"default"
   }
 ]
