@@ -186,6 +186,12 @@
     "type":"default"
   },
   {
+    "address":"0x24083bb30072643c3bb90b44b7285860a755e687",
+    "symbol":"GELD",
+    "decimal":18,
+    "type":"default"
+  },  
+  {
     "address":"0x6810e776880C02933D47DB1b9fc05908e5386b96",
     "symbol":"GNO",
     "decimal":18,
