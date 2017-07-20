@@ -13,7 +13,7 @@ var genericCtrl = function($scope, globalService, $sce) {
      {
        $scope.showLoading = false;
      });
-   }, 8000);
+   }, 5000);
 
     var randNumber = Math.floor(Math.random() * $scope.mewtip.length);
     $scope.loadingMsg = {

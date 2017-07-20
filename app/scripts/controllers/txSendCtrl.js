@@ -42,6 +42,13 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
         id: -1,
         tokenSymbol: 'ether'
     };
+    //set initial offline
+    $scope.onlyOffline ={
+      isOnline  : '',
+      isOffline : 'disabled',
+      offMsg    : 'ERROR_38',
+      onMsg     : 'TX_Broadcast'
+    };
 
     $scope.setSendMode = function(sendMode, tokenId = '', tokenSymbol = '') {
         $scope.unitReadable = '';
@@ -75,13 +82,11 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
     }
 
     $scope.getNonce = function() {
-        if (ethFuncs.validateEtherAddress($scope.tx.from)) {
-            ajaxReq.getTransactionData($scope.tx.from, function(data) {
-                if ( data.error ) throw data.msg;
+        ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
+            if ( data.error ) throw data.msg;
                 data = data.data;
                 $scope.tx.nonce = ethFuncs.hexToDecimal(data.nonce);
-            })
-        }
+      });
     }
 
 
@@ -272,7 +277,7 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
         offMsg    : 'ERROR_38',
         onMsg     : 'TX_Broadcast'
       };
-      if ($scope.wd == false) {
+      if ($scope.wd == false){
       $scope.wallet = walletService.wallet;
       $scope.wd = true;
       $scope.showEnc = walletService.password != '';
@@ -286,13 +291,14 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
       }
       $scope.wallet.setBalance();
       $scope.wallet.setTokens();
+      $scope.getNonce();
     }
     } else {
-      $scope.wd = true;
+      $scope.wd = false;
       $scope.onlyOffline = {
       isOnline : 'disabled',
       isOffline :'',
-      offMsg    : 'TX_Sign_Offline',
+      offMsg    : 'WALL_Unlock',
       onMsg     : 'ERROR_39'
       }
      }
@@ -300,11 +306,7 @@ var txSendCtrl = function($scope, $sce, $interval, walletService) {
 
 
     $scope.generateTx = function() {
-        $scope.offlineSignModal.close();
-        if (!$scope.Validator.isValidAddress($scope.tx.to)) {
-            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
-            return;
-        }
+
         var txData = uiFuncs.getTxData($scope);
 
         txData.gasPrice = $scope.gas.value   ? '0x' + new BigNumber($scope.gas.value).toString(16) : null;

@@ -14,29 +14,18 @@
       <br />
       <span translate="TX_Send_Desc_3">3) Broadcast TX: Send the signed TX off to the network to be mined.</span>
     </p>
+    <!--offline signer -->
+    <div class="clearfix form-group">
+      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}">
+        Access Wallet
+      </a>
+    </div>
+    <!-- Decrypt -->
+    <article class="clearfix">
+      <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
+    </article>
 
-    <!-- Label -->
-    <h4 translate="ADDR_From"> From Address </h4>
-
-    <!-- Input -->
-    <input type="text"
-           class="form-control"
-           ng-change="onAddressChange()"
-           ng-class="Validator.isValidAddress($parent.$parent.addressOnly) ? 'is-valid' : 'is-invalid'"
-           ng-model="$parent.$parent.addressOnly"
-           placeholder="{{ 'ADDR_' | translate }}"
-           id="addrChecker" />
-
-    <!-- Button -->
-    <button tabindex="0"
-            class="btn btn-primary"
-            ng-click="decryptAddressOnly()"
-            role="button"
-            translate="x_Continue"> Continue </a>
-
-  </article>
-  <!-- / Block : Title -->
-
+    <!-- /decrypt -->
 
   <!-- Send Tx Content -->
   <article class="row" ng-show="wallet!=null">

@@ -163,7 +163,7 @@
   <!-- / Section 3:  Unlock -->
 
   <!-- Send Tx Content -->
- <section class="row" ng-show="wallet!=null" ng-controller='txSendCtrl'>
+ <section class="row" ng-show="wallet!=null" ng-controller='txViewCtrl'>
       <div ng-show="wallet.getChecksumAddressString() == txInfo.from">
       @@if (site === 'mew' ) { @@include( './txSend-content.tpl', { "site": "mew" } ) }
       @@if (site === 'cx'  ) { @@include( './txSend-content.tpl', { "site": "cx"  } ) }
