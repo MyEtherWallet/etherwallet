@@ -575,5 +575,11 @@
     "symbol":"PLR",
     "decimal":18,
     "type":"default"
+  },
+  {
+    "address":"0x725803315519de78d232265a8f1040f054e70b98",
+    "symbol":"BET",
+    "decimal":18,
+    "type":"default"
   }
 ]
