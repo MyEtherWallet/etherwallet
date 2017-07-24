@@ -87,7 +87,7 @@ NAV_YourWallets             : 'Dine lommebøker ',
 
 /* General */
 x_Access                    : 'Åpne ',
-x_AddessDesc                : 'Adressen din, også kalt `Kontonummer` eller `Offentlig nøkkel`, er den informasjonen du deler med folk slik at de kan sende deg ether eller tokens. Finn det fargerike adresse-ikonet. Vær sikker på at det stemmer overens med ikonet på papir-lommeboken din, og ellers når du oppgir adressen noe sted. ',
+x_AddessDesc                : 'Din `adresse` kalles også for `kontonummer` eller `offentlig nøkkel`. Det er denne du sender til folk så de kan sende deg Ether eller Tokens. Find det fargerike adresse-ikonet. Forsikre deg om at det er likt med ikonet på papir-lommeboken din og ellers hver gang du oppgir adressen din. ',
 x_Address                   : 'Din adresse ',
 x_Cancel                    : 'x_Annuler ',
 x_CSV                       : 'CSV-fil (ukryptert) ',
@@ -410,8 +410,7 @@ PARITY_InvalidGasLimit      : "Tilført mengde gas er over grensen.",
 /* Tranlsation Info */
 translate_version           : '0.4 ',
 Translator_Desc             : 'Takk til oversetterne våre ',
-TranslatorName_1            : '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08&value=1.0#send-transaction) ',
-TranslatorAddr_1            : '0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08 ',
+TranslatorName_1            : '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=mrstormlars.eth&value=1.0#send-transaction) ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : '',
 TranslatorAddr_2            : '',
