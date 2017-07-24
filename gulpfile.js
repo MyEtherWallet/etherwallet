@@ -256,7 +256,10 @@ gulp.task('getVersion', function() {
 gulp.task('zip', ['getVersion'], function() {
     gulp.src(dist + '**/**/*')
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(zip('./dist-' + versionNum + '.zip'))
+        .pipe(rename(function (path) {
+          path.dirname = './etherwallet-' + versionNum + '/' + path.dirname;
+        }))
+        .pipe(zip('./etherwallet-' + versionNum + '.zip'))
         .pipe(gulp.dest('./releases/'))
         .pipe(notify(onSuccess('Zip Dist ' + versionNum)));
     return gulp.src(dist_CX + '**/**/*')
@@ -304,7 +307,10 @@ function archive() {
 gulp.task('travisZip', ['getVersion'], function() {
     gulp.src(dist + '**/**/*')
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(zip('./dist-' + versionNum + '.zip'))
+        .pipe(rename(function (path) {
+          path.dirname = './etherwallet-' + versionNum + '/' + path.dirname;
+        }))
+        .pipe(zip('./etherwallet-' + versionNum + '.zip'))
         .pipe(gulp.dest('./deploy/'))
         .pipe(notify(onSuccess('Zip Dist ' + versionNum)));
     return gulp.src(dist_CX + '**/**/*')
