@@ -71,22 +71,22 @@ NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Verträge ',
 NAV_DeployContract          : 'Vertrag aufstellen ',
 NAV_ENS                     : 'ENS',
-NAV_GenerateWallet_alt      : 'New Wallet ',
+NAV_GenerateWallet_alt      : 'Neues Wallet ',
 NAV_GenerateWallet          : 'Wallet erstellen ',
 NAV_Help                    : 'Hilfe ',
-NAV_InteractContract        : 'Interact with Contract ',
+NAV_InteractContract        : 'Interagieren mit Vertrag ',
 NAV_Multisig                : 'Multisig ',
 NAV_MyWallets               : 'Meine Wallets ',
 NAV_Offline                 : 'Sende offline ',
 NAV_SendEther               : 'Sende Ether und Tokens ',
 NAV_SendTokens              : 'Sende Tokens ',
 NAV_SignMsg                 : 'Sign Message ',
-NAV_Swap                    : 'Swap ',
+NAV_Swap                    : 'Wechseln ',
 NAV_ViewWallet              : 'Wallet Infos anzeigen ',
 NAV_YourWallets             : 'Deine Wallets ',
 
 /* General */
-x_Access                    : 'Access ',
+x_Access                    : 'Zugriff ',
 x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. Dies ist deine "Kontonummer" oder dein "Öffentlicher Schlüssel". Du benötigst diese Adresse, wenn dir jemand Ether senden möchte. Das Icon ist eine einfache Möglichkeit, die Adresse zu überprüfen ',
 x_Address                   : 'Deine Adresse ',
 x_Cancel                    : 'Abbrechen ',
@@ -135,8 +135,8 @@ sidebar_donate              : 'Spenden ',
 sidebar_thanks              : 'Dankeschön!!! ',
 
 /* Decrypt Panel */
-decrypt_Access              : 'Wie möchtst du auf dein wallet zugreifen? ',
-decrypt_Title               : 'Wähle das format deines privaten schlüssels ',
+decrypt_Access              : 'Wie möchtst du auf dein Wallet zugreifen? ',
+decrypt_Title               : 'Wähle das Format deines privaten Schlüssels ',
 decrypt_Select              : 'Wallet auswählen ',
 
 /* Add Wallet */
@@ -184,7 +184,7 @@ SEND_generate               : 'Erzeuge Transaktion ',
 SEND_raw                    : 'Transaktion (Binärformat) ',
 SEND_signed                 : 'Signierte Transaktion ',
 SEND_trans                  : 'Sende Transaktion ',
-SEND_custom                 : 'Add Custom Token ',
+SEND_custom                 : 'Benutzerdefinierten Token hinzufügen ',
 SENDModal_Title             : 'Achtung! ',
 /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
 SENDModal_Content_1         : 'Du bist dabei, ',
@@ -314,11 +314,11 @@ SWAP_order_CTA              : "Bitte sende ", // Please send 1 ETH...
 SWAP_unlock                 : "Schalte dein Wallet frei um ETH oder Tokens direkt von dieser Seite aus zu senden ",
 
 /* Sign Message */
-MSG_message                 : 'Nachticht ',
+MSG_message                 : 'Nachricht ',
 MSG_date                    : 'Datum ',
 MSG_signature               : 'Signatur ',
 MSG_verify                  : 'Nachricht verifizieren ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
+MSG_info1                   : 'Füge das aktuelle Datum ein, sodass die Signatur an einem anderem Datum nicht wiederbenutzt wird ',
 MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
 MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
 
@@ -338,11 +338,11 @@ ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connectio
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
 x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
+ADD_Trezor_scan             : 'Zu TREZOR Verbinden ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
 
 /* Error Messages */
-ERROR_0                     : 'Bitte gebe eine gültige betrag ein ',
+ERROR_0                     : 'Bitte gebe einen gültigen Betrag ein ',
 ERROR_1                     : 'Dein Passwort muss mindestens 9 Zeichen lang sein. Bitte wähle ein sicheres Passwort. ',
 ERROR_2                     : 'Oh oh! Wir haben den Typ der Wallet-Datei nicht erkannt. ',
 ERROR_3                     : 'Dies ist keine gültige Wallet-Datei. ',
@@ -362,7 +362,7 @@ ERROR_16                    : 'Es ist bereits ein Wallet mit dieser Adresse gesp
 ERROR_17                    : 'Unzureichendes Guthaben für Gasverbrauch * Gaspreis + Wert. Du brauchst **0.01 ETH** in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
 ERROR_18                    : 'Diese Transaktion würde dein gesamtes verbleibendes Gas verbrauchen. Das bedeutet, du hast bereits über dieses Proposal abgestimmt oder die Debattierphase ist zu Ende. ',
 ERROR_19                    : 'Ungültiges Symbol ',
-ERROR_20                    : 'Not a valid ERC-20 token ',
+ERROR_20                    : 'Kein gültiger ERC-20 Token ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Bitte gebe einen gültigen Knotennamen ein ',
 ERROR_23                    : 'Bitte gebe eine gültige URL ein. Falls du dich mit HTTPS verbindest, muss auch der Knoten mit HTTPS ausgestattet werden. ',
@@ -381,11 +381,11 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : 'Gültige Addresse ',
 SUCCESS_2                   : 'Wallet erfolgreich entschlüsselt ',
-SUCCESS_3                   : 'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:   ', //'Transaktion übermittelt. TX Hash ',
+SUCCESS_3                   : 'Deine Transaktion wurde **in das Netzwerk geschickt**. Sie muss noch gemined & validiert werden. (1) Drück auf den Link. Zähle bis 20. Lade die Seite neu. Schau dass dort keine roten ( ! ) Fehler kommen. Wenn keine Transaktionsdetails kommen, warte. Deine Transaktion wartet gemined zu werden. TX ID:   ',
 SUCCESS_4                   : 'Dein Wallet wurde erfolgreich hinzugefügt ',
 SUCCESS_5                   : 'Ausgewählte Datei ',
 SUCCESS_6                   : 'Erfolgreich verbunden ',
-SUCCESS_7                   : 'Nachtichten Signatur verifiziert',
+SUCCESS_7                   : 'Nachrichten Signatur verifiziert',
 
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Invalid sender Ungültiger Sender ',
@@ -425,14 +425,14 @@ TranslatorAddr_3            : '0x1DAd1765381460db9A44846cDfA6f74c65A06B77 ',
 TranslatorName_4            : '[FelixA](https://www.myetherwallet.com/?gaslimit=21000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
 TranslatorAddr_4            : '0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D ',
 /* Translator 4             : Insert Comments Here */
-TranslatorName_5            : 'danielsun174 · ffidan61 ',
+TranslatorName_5            : 'danielsun174 · ffidan61 · [u/Preisschild](https://www.myetherwallet.com/?gaslimit=21000&to=0x700Eb9142a0CC709fce80709cfbF5Ac25438c584&value=0.1#send-transaction) ',
 TranslatorAddr_5            : '',
 /* Translator 5             : Insert Comments Here */
 
 /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
 HELP_Warning                : 'Falls du vor dem **31.12.2015** ein Wallet generiert, oder das Repository heruntergeladen hast, bitte überprüfe deine Wallets &amp; lade eine neue Version des Repositories herunter. Klick für details. ',
 HELP_Desc                   : 'Hast du das Gefühl etwas fehlt? Hast du eine andere Frage? [Schreib uns](mailto:support@myetherwallet.com) und wir werden nicht nur deine Frage beantworten, wir werden auch die Seite updaten, damit diese in der Zukunft noch einfacher zu bedienen sein wird! ',
-HELP_Remind_Title           : 'Ein paar Reminder ',
+HELP_Remind_Title           : 'Ein paar Erinnerungshilfen ',
 HELP_Remind_Desc_1          : '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, sowie einige der verwendeten Javascript Bibliotheken, die wir verwenden, befinden sich noch in Entwicklung.** Zwar haben wir alles umfassend getestet und es wurden erfolgeich tausende Wallets von Menschen aus aller Welt kreiert, jedoch bestimmt immer eine gewisse Gefahr, dass etwas unerwartetes passiert und dein Ether verloren geht. Bitte investiere nicht mehr als du verlieren kannst, und sei immer vorsichtig. Sollte etwas schlimmes passieren, **können wir uns leider nicht verantwortlich für einen Verlust zeichnen**. ',
 HELP_Remind_Desc_2          : 'MyEtherWallet.com & MyEtherWallet CX sind keine "web wallets". Du erstellst keinen Account oder sendest uns Ether den wir halten. Alle Daten bleiben auf deinem Computer, bzw. Browser. Unser Auftrag ist es, dir das Erstellen, Speichern und Zugreifen auf deine Accounts zu vereinfachen, sowie dir eine simple Möglichkeit zur Interaktion mit der Blockchain zu bieten. ',
 HELP_Remind_Desc_3          : 'Falls du deinen privaten Schlüssel und Passwort nicht speicherst, gibt es keine Möglichkeit den Zugriff auf das Konto und die darauf befindlichen Mittel wieder herzustellen. Bitte erstelle Back-ups und speichere deine Zugriffsdaten an verschiedenen Orten &ndash; nicht nur deinem Computer! ',
@@ -487,7 +487,7 @@ HELP_4_Desc_4               : 'If the wallet is encrypted, a text box will autom
 HELP_4_Desc_5               : 'Click the "Unlock Wallet" button. ',
 HELP_4_Desc_6               : 'Enter the address you would like to send to in the "To Address:" field. ',
 HELP_4_Desc_7               : 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. ',
-HELP_4_Desc_9               : 'Click "Generate Transaction". ',
+HELP_4_Desc_9               : 'Drücke auf "Generate Transaction". ',
 HELP_4_Desc_10              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_4_Desc_11              : 'Click the blue "Send Transaction" button below that. ',
 HELP_4_Desc_12              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
@@ -648,8 +648,8 @@ HELP_Sec_Desc_5             : 'For generating wallets, you can download the [sou
 HELP_Sec_Desc_6             : 'Generate a test wallet and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred. ',
 HELP_Sec_Desc_8             : 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
 
-HELP_FAQ_Title              : 'More Helpful Answers to Frequent Questions ',
-HELP_Contact_Title          : 'Ways to Get in Touch'
+HELP_FAQ_Title              : 'Mehr hilfreiche Antworten zu oft gefragten Fragen ',
+HELP_Contact_Title          : 'Kontakt zu uns'
 };
 
 module.exports = de;
