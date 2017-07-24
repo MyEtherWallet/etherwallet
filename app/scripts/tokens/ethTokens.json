@@ -330,6 +330,12 @@
     "type":"default"
   },
   {
+    "address":"0x5c6183d10A00CD747a6Dbb5F658aD514383e9419",
+    "symbol":"NXX",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0x701C244b988a513c945973dEFA05de933b23Fe1D",
     "symbol":"OAX",
     "decimal":18,
