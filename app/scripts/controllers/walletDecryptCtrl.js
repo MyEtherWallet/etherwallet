@@ -198,6 +198,7 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
             $scope.notifier.info(globalFuncs.successMsgs[1]); /* TODO: Update success Message */
             walletService.walletType = "addressOnly";
             walletService.wallet = $scope.wallet;
+
         }
     }
     $scope.HWWalletCreate = function(publicKey, chainCode, ledger, path) {
@@ -250,5 +251,6 @@ var walletDecryptCtrl = function($scope, $sce, walletService) {
         }
         return key;
     }
+
 };
 module.exports = walletDecryptCtrl;

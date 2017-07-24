@@ -10,6 +10,13 @@ var walletViewCtrl = function($scope, $interval, walletService) {
     $scope.offlineSignModal = new Modal(document.getElementById('offlineDecrypt'));
     walletService.wallet = null;
     walletService.password = '';
+    //set online initially
+    $scope.onlyOffline ={
+      isOnline  : '',
+      isOffline : 'disabled',
+      offMsg    : 'ERROR_38',
+      onMsg     : 'TX_Broadcast'
+  };
 
     $scope.ajaxReq = ajaxReq;
     $scope.$watch(function() {
@@ -55,7 +62,7 @@ var walletViewCtrl = function($scope, $interval, walletService) {
       $scope.wallet.setTokens();
     }
     } else {
-      $scope.wd = true;
+      $scope.wd = false;
       $scope.onlyOffline = {
       isOnline : 'disabled',
       isOffline :'',
@@ -63,7 +70,7 @@ var walletViewCtrl = function($scope, $interval, walletService) {
       onMsg     : 'ERROR_39'
       }
      }
-    },5000);
+   },2000);
 
     $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {

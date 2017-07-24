@@ -10,7 +10,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
   <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
-  <script type="text/javascript" src="js/etherwallet-master.js"></script>
+
+  
+
+  
+    <script type="text/javascript" src="js/etherwallet-master.js"></script>
+  
 
   <link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
@@ -42,12 +47,12 @@
     
 
     
-  <section class="bg-gradient header-branding">
+  <section class="bg-gradient-{{curNode.name}} header-branding">
     <section class="container">
 
       
         <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage">
-          <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
+          <img src="images/myetherwallet-logo-{{oLogo}}"   height="64px" width="245px" alt="MyEtherWallet" />
         </a>
       
       
@@ -569,7 +574,7 @@
   </div>
 </section>
 
-<footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
+<footer class="footer footer-{{nodeType}}" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
   <article class="block__wrap" style="max-width: 1780px; margin: auto;">
 

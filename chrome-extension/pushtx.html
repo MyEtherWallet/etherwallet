@@ -37,7 +37,7 @@
 </header>
 
 
-  <section class="container" style="min-height: 50%" ng-controller='genericCtrl'>
+  <section class="container" style="min-height: 50%" ng-controller='genericCtrl' ng-init="globalService.currentTab = 4 ">
 
       <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.txBroadcast.id" ng-controller='txBroadcastCtrl' ng-cloak >
 

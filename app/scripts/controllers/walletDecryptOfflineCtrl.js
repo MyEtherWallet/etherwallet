@@ -168,8 +168,9 @@ var walletDecryptOfflineCtrl = function($scope, $sce, walletService) {
                 walletService.password = $scope.filePassword;
             } else if ($scope.showMDecrypt) {
                 $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
-                $scope.mnemonicModel.open();
+                $scope.mnemonicModel.open(document.getElementById('mnemonicModel'));
                 $scope.onHDDPathChange($scope.mnemonicPassword);
+
             } else if ($scope.showParityDecrypt) {
                 $scope.wallet = Wallet.fromParityPhrase($scope.parityPhrase);
             }
@@ -177,7 +178,10 @@ var walletDecryptOfflineCtrl = function($scope, $sce, walletService) {
         } catch (e) {
             $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
         }
-        if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
+        if ($scope.wallet != null){
+           $scope.notifier.info(globalFuncs.successMsgs[1]);
+           closeModal();
+         }
     };
 
     $scope.decryptAddressOnly = function() {
@@ -198,6 +202,7 @@ var walletDecryptOfflineCtrl = function($scope, $sce, walletService) {
             $scope.notifier.info(globalFuncs.successMsgs[1]); /* TODO: Update success Message */
             walletService.walletType = "addressOnly";
             walletService.wallet = $scope.wallet;
+            //closeModal();
         }
     }
     $scope.HWWalletCreate = function(publicKey, chainCode, ledger, path) {
@@ -249,6 +254,9 @@ var walletDecryptOfflineCtrl = function($scope, $sce, walletService) {
             return key.slice(2);
         }
         return key;
+    }
+    function closeModal() {
+      $scope.offlineSignModal.close();
     }
 };
 module.exports = walletDecryptOfflineCtrl;

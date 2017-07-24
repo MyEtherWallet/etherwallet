@@ -11,6 +11,9 @@ var footerCtrl = function($scope, globalService) {
     }
     $scope.setBlockNumbers();
     $scope.globalService = globalService;
+    $scope.ajaxReq = ajaxReq;
+    $scope.nodeType = $scope.ajaxReq.type
+    $scope.$watch('ajaxReq.type', function() { $scope.nodeType = $scope.ajaxReq.type })
 
     $scope.curLang = globalFuncs.curLang;
 };

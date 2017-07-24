@@ -18,7 +18,7 @@
              ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
       <div class="input-group-btn">
         <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
-          <strong>{{unitReadable}}<i class="caret"></i></strong>
+          <strong>{{ajaxReq.type}}<i class="caret"></i></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
           <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
@@ -131,21 +131,18 @@
     </div>
 
 
-    <!--offline signer -->
-    <div class="clearfix form-group">
-      <a class="btn btn-primary btn-block col-sm-11 {{onlyOffline.isOffline}}" data-toggle="modal" data-target="#offlineDecrypt" translate="{{onlyOffline.offMsg}}">
-        Send Transaction
-      </a>
+
+
+
+    <!--Generate -->
+    <section>
+    <div class="row form-group">
+      <div class="col-xs-12 clearfix">
+        <a ng-show="wallet !== null" class="btn btn-info btn-block " ng-click="generateTx()" translate="TX_Generate"> Generate Transaction </a>
+      </div>
     </div>
-
-    <!-- Decrypt -->
-    <article class="clearfix">
-      <wallet-decrypt-offline-drtv></wallet-decrypt-offline-drtv>
-    </article>
-
-    <!-- /decrypt -->
-
-
+    </section>
+    <!-- /Generate -->
     <!-- transaction information -->
     <div class="row form-group" ng-show="showRaw">
       <div class="col-sm-6">
