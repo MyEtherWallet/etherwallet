@@ -101,9 +101,16 @@ module.exports = [
   to:         '0x08FF699987510D299Eca5cfE258B19d7F4d53ae9',
   gasLimit:   200000,
   data:       '',
-  msg:        'SGelder ICO starts 07th of August 2017'
+  msg:        'The above address was preICO-adress valid til 23rd of July 2017! Greets from Soeren Gelder'
 },
-{
+  {
+  // SoerenGelderCom
+  to:         '0xA64AD5dA94137327F0895AC8C3A10924af73400d',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'SGelderGER (symbol: GELD) coin ICO starts 07th of August 2017'
+},
+  {
   // BlockCAT Token Sale
   to:         '0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8',
   gasLimit:   200000,
