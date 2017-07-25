@@ -30,6 +30,12 @@
     "type":"default"
   },
   {
+    "address":"0x23ae3c5b39b12f0693e05435eeaa1e51d8c61530",
+    "symbol":"APT",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xAc709FcB44a43c35F0DA4e3163b117A17F3770f5",
     "symbol":"ARC",
     "decimal":18,
