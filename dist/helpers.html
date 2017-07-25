@@ -23,11 +23,41 @@
   <meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
   <meta property="og:url"         content="https://www.myetherwallet.com" />
   <meta property="og:title"       content="MyEtherWallet.com" />
-  <meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet." />
   <meta property="og:image"       content="images/myetherwallet-logo-banner.png" />
   <meta property="og:image"       content="images/myetherwallet-logo.png" />
   <meta property="og:image"       content="images/myetherwallet-logo-square.png" />
   <meta property="og:image"       content="images/myetherwallet-banner-fun.jpg" />
+  <meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet." />
+  <script type='application/ld+json'>
+  {
+    "@context":"http://schema.org",
+    "@type":"Organization",
+    "@id":"#organization",
+    "url":"https://www.myetherwallet.com/",
+    "name":"MyEtherWallet",
+    "logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png",
+    "description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.",
+    "sameAs":[
+      "https://www.myetherwallet.com/",
+      "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
+      "https://www.facebook.com/MyEtherWallet/",
+      "https://twitter.com/myetherwallet",
+      "https://medium.com/@myetherwallet_96408",
+      "https://myetherwallet.groovehq.com/help_center",
+      "https://github.com/kvhnuke/etherwallet",
+      "https://github.com/MyEtherWallet",
+      "https://kvhnuke.github.io/etherwallet/",
+      "https://github.com/kvhnuke/etherwallet/releases/latest",
+      "https://github.com/409H/EtherAddressLookup",
+      "https://myetherwallet.slack.com/",
+      "https://myetherwallet.herokuapp.com/",
+      "https://www.reddit.com/r/MyEtherWallet/",
+      "https://www.reddit.com/user/insomniasexx/",
+      "https://www.reddit.com/user/kvhnuke/",
+      "https://www.reddit.com/user/myetherwallet"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -44,7 +74,7 @@
       
       <div class="tagline">
 
-        <span>v3.9.9.5</span>
+        <span>v3.9.9.7</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -573,13 +603,23 @@
 
     <section class="footer--left">
 
-      <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
+      <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="45px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
       <p><span translate="FOOTER_1">Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.</span></p>
 
-      <p><span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.</p>
+      <p><a aria-label="knowledge base" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
+        Knowledge Base
+      </a></p>
 
-      <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
+      <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">
+        Helpers &amp; ENS Debugging
+      </a></p>
+
+      <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">
+        Sign Message
+      </a></p>
+
+      <p><a data-target="#disclaimerModal" data-toggle="modal" target="_blank" rel="noopener" role="link" tabindex="0"  translate="FOOTER_4"> Disclaimer </a></p>
 
       <p> &copy; 2017 MyEtherWallet, LLC </p>
 
@@ -590,13 +630,15 @@
         <h5> <i aria-hidden="true">👫</i> You can support us by supporting our blockchain-family.</h5>
         <p>Consider using our affiliate links to...</p>
         <p><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener">Swap ETH/BTC/EUR/CHF via Bity.com</a></p>
-        <p><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Buy a Ledger Nano S</a>
-          &nbsp;&middot;&nbsp;
-          <a href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">Buy a TREZOR</a></p>
+        <p><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Buy a Ledger Nano S</a></p>
+        <p><a href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">Buy a TREZOR</a></p>
 
-        <h5> <i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
-        <p> ETH: <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span> </p>
-        <p> BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span> </p>
+        <h5><i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
+        <p>ETH: <span class="mono wrap">mewtopia.eth <small>0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</small></span></p>
+        <p>BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span></p>
+        <!--
+        <p>MYD: <span class="mono wrap">mewsupport.eth <small>0xf7e983781609012307f2514f63D526D83D24F466</small></span></p>
+        -->
 
         <h5 ng-hide="curLang=='en'"> <i>🏅</i> <span translate="Translator_Desc"> Thank you to our translators </span></h5>
         <p ng-hide="curLang=='en'">
@@ -611,78 +653,48 @@
 
     <section class="footer--righ">
 
-      <h5><i aria-hidden="true">🌎</i> Links </h5>
-
-      <p>🌟 Help:
-        <a aria-label="knowledge base" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
-          Knowledge Base
-        </a>
-      </p>
-
-      <p>Web:
-        <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
-          MyEtherWallet.com
-        </a>
-        &middot;
-        <a aria-label="website via github URL" href="https://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener" role="link" tabindex="0">
-          kvhnuke.github.io/etherwallet
-        </a>
-      </p>
-
-      <p>Github:
-        <a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
-          Current Site &amp; CX
-        </a>
-        &middot;
-        <a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
-          MEW Org
-        </a>
-        &middot;
-        <a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener" role="link" tabindex="0">
-          Latest Release
-        </a>
-
-      </p>
-
-      <p>Chrome Extension:
-        <a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener" role="link" tabindex="0">
-          MyEtherWallet
-        </a>
-        &middot;
-        <a aria-label="Anti-Phishing chrome extension" href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener" role="link" tabindex="0">
-          Anti-Phishing
-        </a>
-      </p>
-
-      <p>Social &amp; Suppport:
-        <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" role="link" tabindex="0">
-          Slack
-        </a>
-        &middot;
-        <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
-          Twitter
-        </a>
-        &middot;
-        <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
-          Reddit
-        </a>
-        &middot;
-        <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
-          Facebook
-        </a>
-        &middot;
-        <a aria-label="medium" href="https://medium.com/@myetherwallet_96408" target="_blank" rel="noopener" role="link" tabindex="0">
-          Medium
-        </a>
-      </p>
-
-      <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">
-        Helpers &amp; ENS Debugging
+      <p><a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
+        MyEtherWallet.com
       </a></p>
 
-      <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">
-        Sign Message
+      <p><a aria-label="website via github URL" href="https://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+        kvhnuke.github.io/etherwallet
       </a></p>
+
+      <p><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
+        Github: Current Site &amp; CX
+      </a></p>
+
+      <p><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
+        Github: MEW Org
+      </a></p>
+
+      <p><a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener" role="link" tabindex="0">
+        Github: Latest Release
+      </a></p>
+
+      <p><a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener" role="link" tabindex="0">
+        MyEtherWallet CX
+      </a></p>
+
+      <p><a aria-label="Anti-Phishing chrome extension" href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener" role="link" tabindex="0">
+        Anti-Phishing CX
+      </a></p>
+
+      <p>
+        <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" role="link" tabindex="0">Slack</a>
+        &middot;
+        <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">Reddit</a>
+        &middot;
+        <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">Twitter</a>
+        &middot;
+        <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">Facebook</a>
+        &middot;
+        <a aria-label="medium" href="https://medium.com/@myetherwallet_96408" target="_blank" rel="noopener" role="link" tabindex="0">Medium</a>
+      </p>
+
+
+
 
       <p ng-show="showBlocks">Latest Block#: {{currentBlockNumber}} </p>
 
@@ -692,37 +704,6 @@
 
 </div>
 
-
-<script type='application/ld+json'>
-{
-  "@context":"http://schema.org",
-  "@type":"Organization",
-  "@id":"#organization",
-  "url":"https://www.myetherwallet.com/",
-  "name":"MyEtherWallet",
-  "logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png",
-  "description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.",
-  "sameAs":[
-    "https://www.myetherwallet.com/",
-    "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
-    "https://www.facebook.com/MyEtherWallet/",
-    "https://twitter.com/myetherwallet",
-    "https://medium.com/@myetherwallet_96408",
-    "https://myetherwallet.groovehq.com/help_center",
-    "https://github.com/kvhnuke/etherwallet",
-    "https://github.com/MyEtherWallet",
-    "https://kvhnuke.github.io/etherwallet/",
-    "https://github.com/kvhnuke/etherwallet/releases/latest",
-    "https://github.com/409H/EtherAddressLookup",
-    "https://myetherwallet.slack.com/",
-    "https://myetherwallet.herokuapp.com/",
-    "https://www.reddit.com/r/MyEtherWallet/",
-    "https://www.reddit.com/user/insomniasexx/",
-    "https://www.reddit.com/user/kvhnuke/",
-    "https://www.reddit.com/user/myetherwallet"
-  ]
-}
-</script>
 
 </footer>
 

@@ -47,12 +47,24 @@
         <span translate="SEND_custom">Add Custom Token</span>
       </a>
       <div class="custom-token-fields" ng-show="customTokenField">
-        <label translate="TOKEN_Addr"> Address: </label>
-        <input class="form-control input-sm" type="text" ng-model="localToken.contractAdd" ng-class="Validator.isValidAddress(localToken.contractAdd) ? 'is-valid' : 'is-invalid'" />
+        <div class="row">
+          <address-field
+            placeholder="mewsupport.eth"
+            var-name="localToken.contractAdd"
+            labelTranslated="TOKEN_Addr">
+          </address-field>
+        </div>
+
         <label translate="TOKEN_Symbol"> Token Symbol: </label>
-        <input class="form-control input-sm" type="text" ng-model="localToken.symbol" ng-class="localToken.symbol!='' ? 'is-valid' : 'is-invalid'" />
+        <input class="form-control input-sm"
+               type="text"
+               ng-model="localToken.symbol"
+               ng-class="localToken.symbol!='' ? 'is-valid' : 'is-invalid'" />
         <label translate="TOKEN_Dec"> Decimals: </label>
-        <input class="form-control input-sm" type="text" ng-model="localToken.decimals" ng-class="Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'" />
+        <input class="form-control input-sm"
+               type="text"
+               ng-model="localToken.decimals"
+               ng-class="Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'" />
         <button class="btn btn-primary btn-xs" ng-click="saveTokenToLocal()" translate="x_Save">Save</button>
         <div ng-bind-html="validateLocalToken"></div>
       </div>

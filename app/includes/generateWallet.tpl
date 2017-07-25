@@ -79,14 +79,16 @@
       </a>
 
       <div class="warn">
-        <p translate="ERROR_28"></p>
-        <p><strong translate="GEN_Help_7">Keep it safe &middot; Make a backup &middot; Don't share it with anyone &middot; Don't lose it &middot; It cannot be recovered if you lose it.</strong></p>
-        <p>
-          <a tabindex="0" role="button" class="btn btn-danger" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()" translate="GET_ConfButton">
-            I understand. Continue.
-          </a>
-        </p>
+        <p><strong>Do not lose it!</strong> It cannot be recovered if you lose it.</p>
+        <p><strong>Do not share it!</strong> Your funds will be stolen if you use this file on a malicious/phishing site.</p>
+        <p><strong>Make a backup!</strong> Secure it like the millions of dollars it may one day be worth.</p>
       </div>
+
+      <p>
+        <a tabindex="0" role="button" class="btn btn-danger" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()" translate="GET_ConfButton">
+          I understand. Continue.
+        </a>
+      </p>
 
     </section>
 
@@ -94,8 +96,8 @@
       <h2 translate="GEN_Help_8"> Not Downloading a File? </h2>
       <ul>
         <li translate="GEN_Help_9">  Try using Google Chrome </li>
-        <li translate="GEN_Help_10"> Right click & save file as. Filename:</li>
-        <li><small><small><code> {{encFileName}} </code></small></small></li>
+        <li translate="GEN_Help_10"> Right click &amp; save file as. Filename:</li>
+        <input value="{{encFileName}}" class="form-control input-sm" />
       </ul>
 
       <h2 translate="GEN_Help_11">Don't open this file on your computer</h2>
@@ -118,7 +120,7 @@
 
       <br />
 
-      <h1 translate="GEN_Label_5"> Save your Private Key (unencrypted)</h1>
+      <h1 translate="GEN_Label_5"> Save your Private Key</h1>
       <input aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc"
              value="{{wallet.getPrivateKeyString()}}"
              class="form-control"
@@ -128,10 +130,15 @@
 
       <br />
 
-      <h1 translate="x_Print">Print Paper Wallet</h1>
       <a tabindex="0" aria-label="{{'x_Print'|translate}}" aria-describedby="x_PrintDesc" role="button" class="btn btn-primary" ng-click="printQRCode()" translate="x_Print">PRINT</a>
 
-      <br /><br />
+      <div class="warn">
+        <p><strong>Do not lose it!</strong> It cannot be recovered if you lose it.</p>
+        <p><strong>Do not share it!</strong> Your funds will be stolen if you use this file on a malicious/phishing site.</p>
+        <p><strong>Make a backup!</strong> Secure it like the millions of dollars it may one day be worth.</p>
+      </div>
+
+      <br />
 
       <a class="btn btn-default btn-sm" ng-click="getAddress()">
         <span translate="GEN_Label_3"> Save your Address </span> →

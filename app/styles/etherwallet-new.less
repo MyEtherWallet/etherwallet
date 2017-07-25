@@ -64,7 +64,7 @@
   text-align: left;
   padding: @space-md;
   flex-basis: 98%;
-  margin: @space @cont-padding;
+  margin: @space @cont-padding/2;
   @media screen and (min-width: @screen-sm) {
     flex-basis: 68%;
   }
@@ -142,8 +142,8 @@
 .gen__2--inner {
   text-align: center;
   h1     {  margin: @space   auto   }
-  > .btn {  margin: @space   auto 0 }
-  .warn  {  margin: @space*4 auto @space*2;   }
+  > .btn {  margin: @space   auto  @space*2 }
+  .warn  {  margin: @space*2 auto   }
 }
 
 .gen__3--inner {
@@ -169,10 +169,10 @@
 .footer {
   background-color: @ether-navy;
   color: white;
-  font-size: @font-size-small;
+  font-size: .8rem;
   h5{
-    font-size: @font-size-bump;
-    margin: @font-size-small 0 0;
+    font-size: .95rem;
+    margin: .25em 0 0;
     i {
       margin-left: -1.5em;
       margin-right: .25em;
@@ -190,9 +190,9 @@
     padding-left: 0;
     margin: 0;
   }
-  li {
-    font-size: @font-size-small;
-    margin: @space-sm 0;
+  li, p {
+    font-size: .8rem;
+    margin: .25em 0;
   }
   a {
     color: #7fe5ff;
@@ -201,6 +201,9 @@
     &:focus {
       color: darken(#7fe5ff, 10%);
     }
+  }
+  small {
+    font-size: .6rem;
   }
 }
 
@@ -234,17 +237,24 @@
 
 .footer--left {
   .footer--col();
-  max-width: 25rem;
+  max-width: 22rem;
   flex-grow: 1;
 }
 .footer--cent {
   .footer--col();
-  max-width: 32rem;
+  max-width: 34rem;
   flex-grow: 2;
   ul, li:last-child { margin-bottom: 0; }
 }
 .footer--righ {
   .footer--col();
-  max-width: 31rem;
+  max-width: 28rem;
   flex-grow: 1;
+}
+
+.custom-token-fields input {
+  .input-sm();
+  .mono {
+    font-size: @font-size-xs;
+  }
 }

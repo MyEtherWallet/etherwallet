@@ -10,6 +10,8 @@ var addWalletCtrl = function($scope, $sce) {
         encStr: "",
         password: ""
     };
+    $scope.ajaxReq = ajaxReq;
+    $scope.nodeType = $scope.ajaxReq.type;
     $scope.HDWallet = {
         numWallets: 0,
         walletsPerDialog: 5,
@@ -18,13 +20,63 @@ var addWalletCtrl = function($scope, $sce) {
         hdk: null,
         dPath: '',
         defaultDPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
-        alternativeDPath: "m/44'/60'/0'", // first address: m/44'/60'/0'/0
-        customDPath: "m/44'/60'/1'/0"
+        alternativeDPath: "m/44'/60'/0'", // first address: m/44'/60'/0/0
+        customDPath: "m/44'/60'/1'/0", // first address: m/44'/60'/1'/0/0
+        ledgerPath: "m/44'/60'/0'", // first address: m/44'/60'/0/0
+        ledgerClassicPath: "m/44'/60'/160720'/0'", // first address: m/44'/60'/160720'/0/0
+        trezorTestnetPath: "m/44'/1'/0'/0", // first address: m/44'/1'/0'/0/0
+        trezorClassicPath: "m/44'/61'/0'/0", // first address: m/44'/61'/0'/0/0
+        trezorPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
+    $scope.$watch('ajaxReq.type', function() {
+        $scope.nodeType = $scope.ajaxReq.type;
+    });
+    $scope.$watch('walletType', function() {
+        if ($scope.walletType == "ledger") {
+            switch ($scope.nodeType) {
+                case nodes.nodeTypes.ETH:
+                    $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
+                    break;
+                case nodes.nodeTypes.ETC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.ledgerClassicPath;
+                    break;
+                default:
+                    $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
+            }
+        } else if ($scope.walletType == "trezor") {
+            switch ($scope.nodeType) {
+                case nodes.nodeTypes.ETH:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
+                    break;
+                case nodes.nodeTypes.ETC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorClassicPath;
+                    break;
+                case nodes.nodeTypes.Ropsten:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
+                    break;
+                default:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
+            }
+        } else {
+            $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
+        }
+    });
+    $scope.onHDDPathChange = function(password = $scope.mnemonicPassword) {
+        $scope.HDWallet.numWallets = 0;
+        if ($scope.walletType == 'pastemnemonic') {
+            $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim(), password));
+            $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+        } else if ($scope.walletType == 'ledger') {
+            $scope.scanLedger();
+        } else if ($scope.walletType == 'trezor') {
+            $scope.scanTrezor();
+        }
+    }
     $scope.onCustomHDDPathChange = function() {
         $scope.HDWallet.dPath = $scope.HDWallet.customDPath;
+        $scope.onHDDPathChange();
     }
     $scope.onPrivKeyChange = function() {
         $scope.addWalletStats = "";
@@ -216,18 +268,6 @@ var addWalletCtrl = function($scope, $sce) {
                 });
             }
         });
-    }
-    $scope.onHDDPathChange = function(password = $scope.manualmnemonic) {
-        $scope.HDWallet.numWallets = 0;
-        if ($scope.walletType == 'pastemnemonic') {
-            $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim(), password));
-            $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
-        } else if ($scope.walletType == 'ledger') {
-            $scope.scanLedger();
-        } else if ($scope.walletType == 'trezor') {
-            $scope.scanTrezor();
-        }
-
     }
 };
 module.exports = addWalletCtrl;

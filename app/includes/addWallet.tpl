@@ -180,68 +180,194 @@
   </article>
 
 
-<!-- MODAL -->
-  <article class="modal fade" id="mnemonicModel" tabindex="-1">
+  <!-- MODAL -->
+  <article class="modal fade" id="mnemonicModel" tabindex="-1" role="dialog" aria-labelledby="Mnemonic Phrase Modal">
     <section class="modal-dialog">
       <section class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-body" role="document">
+          <button aria-label="Close" type="button" class="close" data-dismiss="modal">&times;</button>
+
           <!-- Select HD Path -->
-          <span ng-show="showDPaths">
-            <h3 class="modal-title" translate="ADD_Radio_5_Path"> Select HD derivation path:</h3>
-            <label class="radio">
-              <input type="radio" id="hd_derivation_path_default" ng-model="HDWallet.dPath" value="{{HDWallet.defaultDPath}}" ng-change="onHDDPathChange()"/>
-              <span ng-bind="HDWallet.defaultDPath"></span>
-              <span ng-if="!showTrezorSeparate" translate="ADD_Radio_5_withTrezor">(default with trezor)</span>
-              <span ng-if="showTrezorSeparate" translate="ADD_Radio_5_woTrezor">(default without trezor)</span>
-            </label>
-            <label class="radio">
-              <input type="radio" id="hd_derivation_path_alternative" ng-model="HDWallet.dPath" value="{{HDWallet.alternativeDPath}}" ng-change="onHDDPathChange()"/>
-              <span ng-bind="HDWallet.alternativeDPath"></span>
-              <span translate="ADD_Radio_5_PathAlternative">(alternative)</span>
-            </label>
-            <label class="radio" ng-if="showTrezorSeparate">
-              <input type="radio" id="hd_derivation_path_trezor" ng-model="HDWallet.dPath" value="{{getTrezorPath()}}" ng-change="onHDDPathChange()" />
-              <span ng-bind="getTrezorPath()"></span>
-              <span translate="ADD_Radio_5_PathTrezor">(Trezor)</span>
-            </label>
-            <label class="radio">
-              <input type="radio" id="hd_derivation_path_custom" ng-model="HDWallet.dPath" value="{{HDWallet.customDPath}}" ng-change="onHDDPathChange()" />
-              <input type="text" class="form-control" style="display:inline;width:70%;max-width:15rem;" ng-model="HDWallet.customDPath" id="hd_derivation_path_custom_value" ng-change="onCustomHDDPathChange()" />
-              <span translate="ADD_Radio_5_PathCustom">(Custom)</span>
-            </label>
-          </span>
-          <!-- END Select HD Path --><!-- Select Address --><hr />
-          <h3 class="modal-title" translate="MNEM_1">Please select the address you would like to interact with.</h3>
-          <p class="small" translate="MNEM_2">Your single HD mnemonic phrase can access a number of wallets / addresses.</p>
-          <table class="small table table-striped table-mnemonic"><tr><th></th>
-            <th translate="x_Address">Address</th>
-            <th translate="MYWAL_Bal">Balance</th>
-          </tr>
-          <tr ng-repeat="wallet in HDWallet.wallets track by $index">
-            <td><label>
-                    <input type="radio" name="addressSelect" value="{{$index}}" ng-model="HDWallet.id"/>
-                </label></td>
-            <td>{{wallet.getChecksumAddressString()}}</td>
-            <td>{{wallet.getBalance()}} ETH</td>
-          </tr>
-          <tr class="m-addresses">
-            <td class="small">
-            <a ng-show="HDWallet.numWallets > 5" ng-click="AddRemoveHDAddresses(false)" translate="MNEM_prev">Previous Addresses</a>
-            </td>
-            <td></td>
-            <td class="small"><a ng-click="AddRemoveHDAddresses(true)" translate="MNEM_more">More Addresses</a></td>
-          </tr></table>
+          <h3 id="modalTitle" class="modal-title" translate="ADD_Radio_5_Path">
+            Select HD derivation path:
+          </h3>
+
+          <table class="small table table-striped table-mnemonic">
+
+            <tr>
+              <th> Path </th>
+              <th> Used By </th>
+            </tr>
+
+            <tr>
+              <td>
+                <label class="radio">
+                  <input aria-describedby="Path: Jaxx, Metamask, Exodus, imToken - {{HDWallet.defaultDPath}}"
+                         ng-change="onHDDPathChange()"
+                         ng-model="HDWallet.dPath"
+                         type="radio"
+                         value="{{HDWallet.defaultDPath}}"/>
+                  <span ng-bind="HDWallet.defaultDPath"></span>
+                </label>
+              </td>
+              <td> Jaxx, Metamask, Exodus, imToken &amp; TREZOR (ETH)</td>
+            </tr>
+
+            <tr>
+              <td>
+                <label class="radio">
+                  <input aria-describedby="Path: Ledger (ETH) {{HDWallet.ledgerPath}}"
+                         ng-change="onHDDPathChange()"
+                         ng-model="HDWallet.dPath"
+                         type="radio"
+                         value="{{HDWallet.ledgerPath}}"/>
+                  <span ng-bind="HDWallet.ledgerPath"></span>
+                </label>
+              </td>
+              <td> Ledger (ETH)</td>
+            </tr>
+
+            <tr>
+              <td>
+                <label class="radio">
+                  <input aria-describedby="Path: Ledger (ETC) {{HDWallet.ledgerClassicPath}}"
+                         ng-change="onHDDPathChange()"
+                         ng-model="HDWallet.dPath"
+                         type="radio"
+                         value="{{HDWallet.ledgerClassicPath}}"/>
+                  <span ng-bind="HDWallet.ledgerClassicPath"></span>
+                </label>
+              </td>
+              <td> Ledger (ETC) </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label class="radio">
+                  <input aria-describedby="Path: TREZOR (ETC) {{HDWallet.trezorClassicPath}}"
+                         ng-change="onHDDPathChange()"
+                         ng-model="HDWallet.dPath"
+                         type="radio"
+                         value="{{HDWallet.trezorClassicPath}}"/>
+                  <span ng-bind="HDWallet.trezorClassicPath"></span>
+                </label>
+              </td>
+              <td> TREZOR (ETC) </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label class="radio">
+                  <input aria-describedby="Path: TREZOR - TESTNET - {{HDWallet.trezorTestnetPath}}"
+                         ng-change="onHDDPathChange()"
+                         ng-model="HDWallet.dPath"
+                         type="radio"
+                         value="{{HDWallet.trezorTestnetPath}}"/>
+                  <span ng-bind="HDWallet.trezorTestnetPath"></span>
+                </label>
+              </td>
+              <td> TREZOR (TESTNET) </td>
+            </tr>
+
+            <tr class="mnemonic-custom-row">
+              <td>
+                <label class="radio">
+                  <input aria-describedby="Path: Enter your own - {{HDWallet.customDPath}}"
+                         ng-change="onHDDPathChange()"
+                         ng-model="HDWallet.dPath"
+                         type="radio"
+                         value="{{HDWallet.customDPath}}" />
+                  <input aria-describedby="Path: Enter your own - {{HDWallet.customDPath}}"
+                         type="text" class="form-control"
+                         ng-model="HDWallet.customDPath"
+                         ng-change="onCustomHDDPathChange()" />
+                </label>
+              </td>
+              <td> Your Custom Path </td>
+            </tr>
+
+          </table>
+          <!-- END Select HD Path -->
+
+          <!-- Select Address -->
+          <hr />
+          <h3 id="modalTitle2" class="modal-title" translate="MNEM_1">
+            Please select the address you would like to interact with.
+          </h3>
+          <p class="small" translate="MNEM_2">
+            Your single HD mnemonic phrase can access a number of wallets / addresses.
+          </p>
+          <table class="small table table-striped table-mnemonic">
+            <tr>
+              <th translate="x_Address">Address</th>
+              <th translate="MYWAL_Bal">Balance</th>
+              <th translate="sidebar_TokenBal" class="text-center" >Token<br>Balances</th>
+            </tr>
+            <tr ng-repeat="wallet in HDWallet.wallets track by $index">
+              <td>
+                <label>
+                  <input aria-describedby="modalTitle2"
+                         aria-label="Unlock wallet with {{wallet.getBalance()}} {{nodeType}}. Address: {{wallet.getChecksumAddressString()}}"
+                         name="addressSelect"
+                         ng-model="HDWallet.id"
+                         type="radio"
+                         value="{{$index}}"
+                  />{{wallet.getChecksumAddressString()}}
+                </label>
+              </td>
+              <td>
+                <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">
+                  {{wallet.getBalance()}} {{nodeType}}
+                </a>
+              </td>
+              <td class="text-center">
+                <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener" title="https://ethplorer.io/address/{{wallet.getAddressString()}}">
+                  <img src="images/icon-external-link.svg" title="https://ethplorer.io/address/{{wallet.getAddressString()}}" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
+                </a>
+              </td>
+            </tr>
+            <tr class="m-addresses">
+              <td>
+                <a ng-click="AddRemoveHDAddresses(false)"
+                   ng-show="HDWallet.numWallets > 5"
+                   role="link"
+                   tabindex="0"
+                   translate="MNEM_prev"
+                > Previous Addresses </a>
+              </td>
+              <td></td>
+              <td>
+                <a ng-click="AddRemoveHDAddresses(true)"
+                   role="link"
+                   tabindex="0"
+                   translate="MNEM_more"
+                > More Addresses </a>
+              </td>
+            </tr>
+          </table>
+
           <!-- END Select Address -->
         </div>
         <div class="modal-footer">
-          <button class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>
-          <button class="btn btn-primary" ng-click="setHDWallet()" translate="ADD_Label_6_short">Access Wallet</button>
+          <button aria-label="Cancel - Will close dialog"
+                  class="btn btn-default"
+                  data-dismiss="modal"
+                  role="button"
+                  tabindex="0"
+                  translate="x_Cancel"
+          > Cancel </button>
+          <button aria-label="Unlock this Wallet"
+                  class="btn btn-primary"
+                  ng-click="setHDWallet()"
+                  role="button"
+                  tabindex="0"
+                  translate="ADD_Label_6"
+          > Access Wallet </button>
         </div>
       </section>
     </section>
   </article>
-  <!-- / MODAL -->
+
 
 
 </main>

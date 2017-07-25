@@ -48,6 +48,12 @@
     "type":"default"
   },
   {
+    "address":"0x725803315519de78d232265a8f1040f054e70b98",
+    "symbol":"BET",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x1e797Ce986C3CFF4472F7D38d5C4aba55DfEFE40",
     "symbol":"BCDN",
     "decimal":15,
@@ -190,7 +196,7 @@
     "symbol":"GELD",
     "decimal":18,
     "type":"default"
-  },  
+  },
   {
     "address":"0x6810e776880C02933D47DB1b9fc05908e5386b96",
     "symbol":"GNO",
@@ -225,6 +231,12 @@
     "address":"0xcbCC0F036ED4788F63FC0fEE32873d6A7487b908",
     "symbol":"HMQ",
     "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0x5a84969bb663fb64F6d015DcF9F622Aedc796750",
+    "symbol":"ICE",
+    "decimal":18,
     "type":"default"
   },
   {
@@ -306,9 +318,15 @@
     "type":"default"
   },
   {
-    "address":"0xf433089366899d83a9f26a773d59ec7ecf30355e",
+    "address":"0xF433089366899D83a9f26A773D59ec7eCF30355e",
     "symbol":"MTL",
     "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0xf7e983781609012307f2514f63D526D83D24F466",
+    "symbol":"MYD",
+    "decimal":16,
     "type":"default"
   },
   {
@@ -372,16 +390,16 @@
     "type":"default"
   },
  {
-    "address":"0xd4fa1460f537bb9085d22c7bccb5dd450ef28e3a",
+    "address":"0xd4fa1460F537bb9085d22C7bcCB5DD450Ef28e3a",
     "symbol":"PPT",
     "decimal":8,
     "type":"default"
   },
   {
-    "address":"0xe3818504c1b32bf1557b16c238b2e01fd3149c17",
+    "address":"0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
     "symbol":"PLR",
     "decimal":18,
-    "type":"default"   
+    "type":"default"
   },
   {
     "address":"0x8Ae4BF2C33a8e667de34B54938B0ccD03Eb8CC06",
@@ -597,24 +615,6 @@
     "address":"0xB24754bE79281553dc1adC160ddF5Cd9b74361a4",
     "symbol":"XRL",
     "decimal":9,
-    "type":"default"
-  },
-  {
-    "address":"0x5a84969bb663fb64F6d015DcF9F622Aedc796750",
-    "symbol":"ICE",
-    "decimal":18,
-    "type":"default"
-  },
-  {
-    "address":"0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
-    "symbol":"PLR",
-    "decimal":18,
-    "type":"default"
-  },
-  {
-    "address":"0x725803315519de78d232265a8f1040f054e70b98",
-    "symbol":"BET",
-    "decimal":18,
     "type":"default"
   }
 ]
