@@ -509,6 +509,12 @@
     "decimal":18,
     "type":"default"
   },
+   {
+    "address":"0x58bf7df57d9DA7113c4cCb49d8463D4908C735cb",
+    "symbol":"SPARC",
+    "decimal":18,
+    "type":"default"
+  },
   {
     "address":"0x1dCE4Fa03639B7F0C38ee5bB6065045EdCf9819a",
     "symbol":"SRC",
