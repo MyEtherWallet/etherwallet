@@ -226,15 +226,21 @@ globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
             break;
         }
 };
+
+
 globalFuncs.localStorage = {
         isAvailable: function() {
-            return typeof localStorage != "undefined";
+            // return typeof localStorage != "undefined";
+            // return globalFuncs.storageAvailable('localStorage');
+            
+            // Polyfilled if not available/accessible 
+            return true;
         },
         setItem: function(key, value) {
             if (this.isAvailable()) {
                 localStorage.setItem(key, value);
             } else {
-
+                // console.log("localStorage is available? " + this.isAvailable());
             }
         },
         getItem: function(key, dValue = "") {
@@ -245,6 +251,36 @@ globalFuncs.localStorage = {
             }
         }
     }
+
+
+/* Check for 'localStorage' or 'sessionStorage' */
+/*
+globalFuncs.storageAvailable = function(type) {
+    try {
+        var storage = window[type],
+            x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage.length !== 0;
+    }
+    
+}
+*/
+
     // globalFuncs.getUrlParameter = function getUrlParameter(url) {
     //   // get query string from url (optional) or window
     //   var queryString = url ? url.split('=')[1] : window.location.search.slice(1);
