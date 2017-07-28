@@ -454,7 +454,7 @@ HELP_2a_Desc_6              : 'Houd in gedachte dat je moet voorkomen dan je je 
 
 HELP_2b_Title               : '2b) Hoe doe ik veilig / offline / cold storage met MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Ga naar onze github: [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Klik `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Klik `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Verplaats de zip naar een offline (airgapped) computer. ',
 HELP_2b_Desc_4              : 'Unzip het en dubbel-klik `index.html`. ',
 HELP_2b_Desc_5              : 'Genereer een wallet met een sterk wachtwoord. ',

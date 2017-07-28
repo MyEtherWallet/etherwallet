@@ -450,7 +450,7 @@ HELP_2a_Desc_6              : 'Ricorda, devi evitare la perdita delle chiavi e d
 
 HELP_2b_Title               : '2b) Come implemento un portafoglio offline in maniera sicura con MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Vai su [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Fai clic su `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Fai clic su `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Sposta il file zip su un computer *air-gapped*. ',
 HELP_2b_Desc_4              : 'Decomprimilo e fai doppio clic su `index.html`. ',
 HELP_2b_Desc_5              : 'Genera un portafoglio con una password robusta. ',

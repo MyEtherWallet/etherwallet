@@ -459,7 +459,7 @@ HELP_2a_Desc_6              : 'Keep in mind, you must prevent loss of the keys a
 
 HELP_2b_Title               : '2b) Làm thế nào dễ bảo mật Ví / offline / lưu trữ lạnh cùng với MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Đến trang github của chúng tôi: [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Chọn vào ô `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Chọn vào ô `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Chuyển tiếp tập tin zip đi đến máy tính airgapped. ',
 HELP_2b_Desc_4              : 'Giải nén tập tin Zip và nhấn kép chuột vào tập tin `index.html`. ',
 HELP_2b_Desc_5              : 'Khởi tạo một Ví cá nhân mới cùng với một mật khẩu mạnh. ',

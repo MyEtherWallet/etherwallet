@@ -457,7 +457,7 @@ HELP_2a_Desc_6              : 'Figyel arra is, hogy olyankor is legyen másolato
 
 HELP_2b_Title               : '2b) Hogyan tudom biztonságosan/offline/hidegen használni a MyEtherWallet-et? ',
 HELP_2b_Desc_1              : 'Menj a github oldalunkra: [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Kattints a `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Kattints a `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Másold a letöltött zip fájlt egy airgap-elt számítógépre. ',
 HELP_2b_Desc_4              : 'Csomagold ki, és indítsd el az "index.html" fájlt. ',
 HELP_2b_Desc_5              : 'Generálj egy tárcát egy erős jelszóval. ',

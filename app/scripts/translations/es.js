@@ -459,7 +459,7 @@ HELP_2a_Desc_6              : 'Recuerda, debes evitar la pérdida de las claves 
 
 HELP_2b_Title               : '2b) ¿Cómo almaceno con seguridad/sin conexión/en frío con MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Ve a nuestro github: [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Haz clic en `dist-vX.X.X.X.zip` en la parte inferior. ',
+HELP_2b_Desc_2              : 'Haz clic en `etherwallet-vX.X.X.X.zip` en la parte inferior. ',
 HELP_2b_Desc_3              : 'Mueve el ZIP a un equipo aislado de internet (airgapped). ',
 HELP_2b_Desc_4              : 'Descomprímelo y haz doble clic en `index.html`. ',
 HELP_2b_Desc_5              : 'Genera una cartera con una contraseña fuerte. ',

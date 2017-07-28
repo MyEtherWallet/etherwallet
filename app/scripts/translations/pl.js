@@ -459,7 +459,7 @@ HELP_2a_Desc_6              : 'Pamiętaj, że musisz się zabezpieczyć przed ut
 
 HELP_2b_Title               : '2b) Jak mogę utworzyć portfel w 100% odizolowany od sieci globalnej (Cold Wallet) wykorzystując MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Wejdź na nasze konto github: [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Pobierz `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Pobierz `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Przenieś paczkę zip na odizolowany system. ',
 HELP_2b_Desc_4              : 'Rozpakuj paczkę i kliknij 2-krotnie `index.html`. ',
 HELP_2b_Desc_5              : 'Wygeneruj portfel przy użyciu silnego hasła. ',

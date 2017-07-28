@@ -36,18 +36,18 @@ tx_FoundOnChain_2           : '**もし赤い `( ! )`, `BAD INSTRUCTION` ある�
 tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
 
 /* Gen Wallet Updates */
-GEN_Help_1                  : '次の', /* Use your */ 
+GEN_Help_1                  : '次の', /* Use your */
 GEN_Help_2                  : 'で自分の口座にアクセスしてください。', /* to access your account. */
 GEN_Help_3                  : '自分のデバイスそのものが、自分のお財布です。',　/* Your device * is * your wallet. */
 GEN_Help_4                  : 'ガイドとＦＡＱ',　/* Guides & FAQ */
 GEN_Help_5                  : 'お財布の作り方', /* How to Create a Wallet */
-GEN_Help_6                  : 'ここから始める', /* Getting Started */ 
+GEN_Help_6                  : 'ここから始める', /* Getting Started */
 GEN_Help_7                  : '安全な所で保管してください · バックアップを作成してください · 他の誰にも教えないでください · 絶対になくさないでください · 無くした時には回復する方法はありません。',
 GEN_Help_8                  : 'ファイルをダウンロードしませんでしたか？', /* Not Downloading a File? */
-GEN_Help_9                  : 'Google Chromeを使ってください', /* Try using Google Chrome */ 
+GEN_Help_9                  : 'Google Chromeを使ってください', /* Try using Google Chrome */
 GEN_Help_10                 : '右クリックしてファイルを保存。ファイル名: ', /* Right click & save file as. Filename:  */
 GEN_Help_11                 : 'このファイルは自分のコンピューターで開かないでください', /*Don\'t open this file on your computer */
-GEN_Help_12                 : 'MyEtherWalletの上でこれを使って自分のお財布をアンロックしてください（Mist, Geth, Parityや他のお財布クライアントも可）', /*Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity and other wallet clients.) 
+GEN_Help_12                 : 'MyEtherWalletの上でこれを使って自分のお財布をアンロックしてください（Mist, Geth, Parityや他のお財布クライアントも可）', /*Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity and other wallet clients.)
 */
 GEN_Help_13                 : '自分のキーストアファイルのバックアップ作成方法', /*How to Back Up Your Keystore File */
 GEN_Help_14                 : 'これらの方式の違いは？',　/*What are these Different Formats? */
@@ -56,8 +56,8 @@ GEN_Help_16                 : 'これらの方式の違いは？', /*What are th
 GEN_Help_17                 : 'なぜこれらを自分で？', /*Why Should I?*/
 GEN_Help_18                 : '２番目のバックアップ作成のため', /*To have a secondary backup.*/
 GEN_Help_19                 : 'パスワードを忘れた場合には', /*In case you ever forget your password.*/
-GEN_Help_20                 : '隔離された保管場所', /*Cold Storage*/ 
-GET_ConfButton              : '理解しました。続けます。', /*I understand. Continue.*/ 
+GEN_Help_20                 : '隔離された保管場所', /*Cold Storage*/
+GET_ConfButton              : '理解しました。続けます。', /*I understand. Continue.*/
 GEN_Label_5                 : '自分の秘密鍵を保存する。', /*Save Your `Private Key`. */
 GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する', /*Unlock your wallet to see your address*/
 GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかる料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」かつ、自分の処理をブロックに配置するためにマイナーに支払われます。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「21 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.*/
@@ -461,7 +461,7 @@ HELP_2a_Desc_6              : 'Keep in mind, you must prevent loss of the keys a
 
 HELP_2b_Title               : '2b) How do I safely / offline / cold storage with MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Click on `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Click on `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Move zip to an airgapped computer. ',
 HELP_2b_Desc_4              : 'Unzip it and double-click `index.html`. ',
 HELP_2b_Desc_5              : 'Generate a wallet with a strong password. ',

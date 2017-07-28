@@ -449,7 +449,7 @@ HELP_2a_Desc_6              : '하드 디스크, USB, 종이의 손상을 방지
 
 HELP_2b_Title               : '2b) 어떻게 하면 MyEtherWallet을 이용해 안전하게 오프라인, 콜드 스토리지로 자산을 보관할 수 있나요?  ',
 HELP_2b_Desc_1              : '다음을 참고 해주세요. [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : '"dist-vX.X.X.X.zip" 파일을 클릭합니다. ',
+HELP_2b_Desc_2              : '"etherwallet-vX.X.X.X.zip" 파일을 클릭합니다. ',
 HELP_2b_Desc_3              : 'zip 파일을 인터넷이 연결되지 않은 컴퓨터로 옮깁니다. ',
 HELP_2b_Desc_4              : '압축을 푼 후, ‘index.html’ 을 더블 클릭합니다. ',
 HELP_2b_Desc_5              : '강력한 비밀번호와 함께 지갑을 생성합니다.  ',

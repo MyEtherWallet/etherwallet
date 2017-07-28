@@ -457,7 +457,7 @@ HELP_2a_Desc_6              : 'Gardez à l\'esprit qu\'il faut vous préserver d
 
 HELP_2b_Title               : '2b) Comment puis-je gérer en toute sécurité un stockage hors ligne avec MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Allez sur notre Github : [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Cliquez sur `dist-vX.X.X.X.zip` ',
+HELP_2b_Desc_2              : 'Cliquez sur `etherwallet-vX.X.X.X.zip` ',
 HELP_2b_Desc_3              : 'Transportez le zip sur un ordinateur hors ligne. ',
 HELP_2b_Desc_4              : 'Dézippez-le et double-cliquez sur `index.html`. ',
 HELP_2b_Desc_5              : 'Générez un portefeuille avec un mot de passe fort. ',
