@@ -594,6 +594,12 @@
     "type":"default"
   },
   {
+    "address":"0x6a0a97e47d15aad1d132a1ac79a480e3f2079063",
+    "symbol":"WCT",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x667088b212ce3d06a1b553a7221E1fD19000d9aF",
     "symbol":"WINGS",
     "decimal":18,
