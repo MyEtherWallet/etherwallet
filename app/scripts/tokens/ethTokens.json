@@ -634,5 +634,11 @@
     "symbol":"XRL",
     "decimal":9,
     "type":"default"
-  }
+  },
+  {
+    "address":"0x99d439455991f7f4885f20c634c9a31918d366e5",
+    "symbol":"REX",
+    "decimal":18,
+    "type":"default"
+  }  
 ]
