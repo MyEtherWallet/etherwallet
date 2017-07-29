@@ -438,6 +438,12 @@
     "type":"default"
   },
   {
+    "address":"0x99d439455991f7f4885f20c634c9a31918d366e5",
+    "symbol":"REX",
+    "decimal":18,
+    "type":"default"
+  },    
+  {
     "address":"0x607F4C5BB672230e8672085532f7e901544a7375",
     "symbol":"RLC",
     "decimal":9,
