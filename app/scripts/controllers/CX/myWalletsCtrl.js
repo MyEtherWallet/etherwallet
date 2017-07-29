@@ -65,6 +65,12 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
             if (data.error) {
                 $scope[varWal][id].balance = data.msg;
             } else {
+                $scope[varWal][id].balance = etherUnits.toEther(data.data.balance, 'wei');
+                $scope[varWal][id].balanceR = new BigNumber($scope[varWal][id].balance).toPrecision(5);
+                $scope[varWal][id].usd = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.usd);
+                $scope[varWal][id].eur = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.eur);
+                $scope[varWal][id].btc = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.btc);
+
                 $scope[varWal][id].balance = $scope.wallet.setBalance();
                 $scope[varWal][id].balanceR = $scope.wallet.setTokens();
             }
@@ -145,6 +151,12 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
             $scope.removeModal.close();
         });
     };
+    ajaxReq.getETHvalue(function (data) {
+        $scope.fiatVal.usd = data.usd;
+        $scope.fiatVal.eur = data.eur;
+        $scope.fiatVal.btc = data.btc;
+        $scope.setAllWallets();
+    });
     $scope.setNickNames();
 };
 module.exports = myWalletsCtrl;
