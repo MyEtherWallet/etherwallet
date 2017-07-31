@@ -48,6 +48,13 @@ module.exports = [
   msg:        'Adchain. Starts June 26, 2017.'
 },
 {
+  // LookRev
+  to:         '0x8fa1EaD5d8d774b27d288711abE4d4258224ae26',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'LookRev ICO address - lookrev.com'
+},
+{
   // OmiseGo
   to:         '0x0000',
   gasLimit:   200000,
