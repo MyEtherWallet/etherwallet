@@ -264,6 +264,12 @@
     "type":"default"
   },
   {
+    "address":"0x8fa1EaD5d8d774b27d288711abE4d4258224ae26",
+    "symbol":"LOK",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xfa05A73FfE78ef8f1a739473e462c54bae6567D9",
     "symbol":"LUN",
     "decimal":18,
