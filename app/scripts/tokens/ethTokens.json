@@ -222,8 +222,8 @@
     "type":"default"
   },
   {
-    "address":"0x1D921EeD55a6a9ccaA9C79B1A4f7B25556e44365",
-    "symbol":"GT",
+    "address":"0x025abad9e518516fdaafbdcdb9701b37fb7ef0fa",
+    "symbol":"GTKT",
     "decimal":0,
     "type":"default"
   },
@@ -528,8 +528,8 @@
     "type":"default"
   },
   {
-    "address":"0x1dCE4Fa03639B7F0C38ee5bB6065045EdCf9819a",
-    "symbol":"SRC",
+    "address":"0x46492473755e8dF960F8034877F61732D718CE96",
+    "symbol":"STRC",
     "decimal":8,
     "type":"default"
   },
