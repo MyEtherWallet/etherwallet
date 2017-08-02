@@ -1,5 +1,5 @@
 {
-  "name": "MyEtherWallet CX",
+  "name": "MyEtherWallet",
   "version": "3.10.0.2",
   "manifest_version": 2,
   "description": "MyEtherWallet Chrome Extension",
@@ -19,5 +19,5 @@
     "storage",
     "clipboardWrite"
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-0Gsidap6748RQlB69d8CLcBCD2A1kL9luXuhxAKpgXQ=' 'sha256-Z7zS8qcr4BZTeVyPP1sIfzQLoVSrzOW0qLHyZCds1WE='; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-uxI0oLy+6OpnvTApEkmCzuxkvu4J47b6yHCV93fjHN0=' 'sha256-0Gsidap6748RQlB69d8CLcBCD2A1kL9luXuhxAKpgXQ=' 'sha256-Z7zS8qcr4BZTeVyPP1sIfzQLoVSrzOW0qLHyZCds1WE='; object-src 'self'"
 }
