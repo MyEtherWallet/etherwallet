@@ -1,17 +1,17 @@
 {
   "name": "MyEtherWallet CX",
-  "version": "3.10.0",
+  "version": "3.10.0.2",
   "manifest_version": 2,
   "description": "MyEtherWallet Chrome Extension",
   "homepage_url": "https://www.myetherwallet.com/",
   "icons": {
     "16": "images/icons/icon16.png",
-    "48": "images/icons/icon48.png",
-    "128": "images/icons/icon128.png"
+    "32": "images/icons/icon32.png",
+    "192": "images/icons/icon192.png"
   },
   "options_page": "cx-wallet.html",
   "browser_action": {
-    "default_icon": "images/icons/icon48.png",
+    "default_icon": "images/icons/icon32.png",
     "default_title": "MyEtherWallet CX",
     "default_popup": "browser_action/browser_action.html"
   },
