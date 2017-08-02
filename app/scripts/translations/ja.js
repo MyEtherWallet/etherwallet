@@ -36,7 +36,7 @@ tx_FoundOnChain_2           : '**もし赤い `( ! )`, `BAD INSTRUCTION` ある�
 tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
 
 /* Gen Wallet Updates */
-GEN_Help_1                  : '次の', /* Use your */
+GEN_Help_1                  : 'この', /* Use your */
 GEN_Help_2                  : 'で自分の口座にアクセスしてください。', /* to access your account. */
 GEN_Help_3                  : '自分のデバイスそのものが、自分のお財布です。',　/* Your device * is * your wallet. */
 GEN_Help_4                  : 'ガイドとＦＡＱ',　/* Guides & FAQ */
@@ -44,7 +44,7 @@ GEN_Help_5                  : 'お財布の作り方', /* How to Create a Wallet
 GEN_Help_6                  : 'ここから始める', /* Getting Started */
 GEN_Help_7                  : '安全な所で保管してください · バックアップを作成してください · 他の誰にも教えないでください · 絶対になくさないでください · 無くした時には回復する方法はありません。',
 GEN_Help_8                  : 'ファイルをダウンロードしませんでしたか？', /* Not Downloading a File? */
-GEN_Help_9                  : 'Google Chromeを使ってください', /* Try using Google Chrome */
+GEN_Help_9                  : 'Google Chromeをお使いください', /* Try using Google Chrome */
 GEN_Help_10                 : '右クリックしてファイルを保存。ファイル名: ', /* Right click & save file as. Filename:  */
 GEN_Help_11                 : 'このファイルは自分のコンピューターで開かないでください', /*Don\'t open this file on your computer */
 GEN_Help_12                 : 'MyEtherWalletの上でこれを使って自分のお財布をアンロックしてください（Mist, Geth, Parityや他のお財布クライアントも可）', /*Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity and other wallet clients.)
@@ -53,16 +53,16 @@ GEN_Help_13                 : '自分のキーストアファイルのバック�
 GEN_Help_14                 : 'これらの方式の違いは？',　/*What are these Different Formats? */
 GEN_Help_15                 : '自分の資金の紛失や盗難を防止する。', /* Preventing loss & theft of your funds. */
 GEN_Help_16                 : 'これらの方式の違いは？', /*What are these Different Formats?*/
-GEN_Help_17                 : 'なぜこれらを自分で？', /*Why Should I?*/
+GEN_Help_17                 : 'なぜこれらをすべきか？', /*Why Should I?*/
 GEN_Help_18                 : '２番目のバックアップ作成のため', /*To have a secondary backup.*/
 GEN_Help_19                 : 'パスワードを忘れた場合には', /*In case you ever forget your password.*/
 GEN_Help_20                 : '隔離された保管場所', /*Cold Storage*/
-GET_ConfButton              : '理解しました。続けます。', /*I understand. Continue.*/
+GET_ConfButton              : '理解できました。続けます。', /*I understand. Continue.*/
 GEN_Label_5                 : '自分の秘密鍵を保存する。', /*Save Your `Private Key`. */
 GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する', /*Unlock your wallet to see your address*/
 GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかる料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」かつ、自分の処理をブロックに配置するためにマイナーに支払われます。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「21 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.*/
 GAS_LIMIT_Desc              : 'ガスリミットは、自分の処理にかかる料金の額です。「使用料金」 = ガス価格 ＊ ガスリミット」で、自分の処理をブロックに配置するための料金に支払われます。 この数字を増やしても、自分の処理が早く発掘されることはありません。ETHの送出 = 「２１０００」。トークンの送出 = ~「２０００００」。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
-NONCE_Desc                  : 'そのnonceは、指定のアドレスから送出される処理の数です。処理が正しい順番で、二重にならないよう確実にするものです。',
+NONCE_Desc                  : 'そのnonceは、指定のアドレスから送出される処理の数です。処理が正しい順番で重複しないように確実にするためのものです。',
 TXFEE_Desc                  : 'その処理料金は自分の処理をブロックに配置するためにマイナーに支払われます。「ガスリミット」＊「ガス価格」です。 [GWEI -> ETHの変換はここです。](https://www.myetherwallet.com/helpers.html)',　/*The TX Fee is paid to miners for including your TX in a block. It is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)*/
 
 
@@ -245,7 +245,7 @@ TRANSModal_Content_3        : '**ETCのみ: ** [Timon Rappのリプレイコン�
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** スタンダードトランザクションのみで送出します。どちらかのみのコントラクトで送出する場合には、サポートスタッフに連絡して、手動で残高に追加したり払い戻しをする必要があります。[Shapeshiftの「スプリット」ツールも使用可能です。(https://split.shapeshift.io/) ',
 TRANSModal_Content_5        : '**Kraken & Poloniex:** 問題は確認されていません。どれでもお使いください。 ',
 TRANSModal_Yes              : '理解しました。 ',
-TRANSModal_No               : '理解できません。ヘルプが必要です。 ',
+TRANSModal_No               : 'わかりません。おしえてください。 ',
 
 /* Offline Transaction */
 OFFLINE_Title               : 'オフライントランザクションを作成し送出 ',
@@ -341,7 +341,7 @@ MSG_info3                   : '異なった目的で使用されないように�
 /* View Wallet Details */
 VIEWWALLET_Subtitle         : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。[import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)する時に必要です。残高をチェックするためには、[etherscan.io](http://etherscan.io/)のようなブロックチェーンエクスプローラーサービスを使う事をおすすめします。 ',
 VIEWWALLET_Subtitle_Short   : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。 ',
-VIEWWALLET_SuccessMsg       : '成功! お財布の詳細は以下の通りです。 ',
+VIEWWALLET_SuccessMsg       : '成功しました! お財布の詳細は以下の通りです。 ',
 
 /* Error Messages */
 ERROR_0                     : '正しい値を入力してください。 ',
@@ -413,7 +413,7 @@ GETH_NegativeValue          : '負の値です ',
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',
-Translator_Desc             : 'トランスレーターにお恵みの投げ銭： ',
+Translator_Desc             : '日本語開発者に投げ銭： ',
 TranslatorName_1            : '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ',
 /* Translator 1             : Kazunori Seki / 関一典 */
