@@ -13,6 +13,13 @@
 
 module.exports = [
 {
+  // Social (SCL)
+  to:         '0x582e3d8dcd41f586fbcc6559f16476d20b2a3b95',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Social (SCL) ICO/Crowdsale - ico.nexus.social'
+},
+{
   // DCORP
   to:         '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
   gasLimit:   21000,
