@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mewApp">
+<head>
+  <meta charset="utf-8">
+  <title>MyEtherWallet.com</title>
+  <link rel="canonical" href="https://www.myetherwallet.com" />
+  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/etherwallet-master.min.css">
+  <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
+  <script type="text/javascript" src="js/etherwallet-master.js"></script>
+  <link rel="apple-touch-icon" sizes="60x60" href="images/fav/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/fav/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="images/fav/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="images/fav/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/fav/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="images/fav/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="images/fav/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="images/fav/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="images/fav/manifest.json">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2e4868">
+  <meta name="msapplication-TileImage" content="images/fav/mstile-144x144.png">
+  <meta name="msapplication-config" content="images/fav/browserconfig.xml">
+  <meta name="theme-color" content="#2e4868">
+</head>
+
+<body>
+
+<header class="bg-gradient text-white">
+<section class="container text-center">
+  <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="50px" width="auto" alt="Ether Wallet" class="embedded-logo" /></a>
+</section>
+</header>
+
+
+  <section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+
+  <!-- tab panes -->
+
+    <div class="tab-content" >
+
+      <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl' role="main" ng-cloak>
+
+  <article class="block__wrap gen__1" ng-show="!wallet && !showGetAddress">
+
+    <section class="block__main gen__1--inner">
+      <br />
+      <h1 translate="NAV_GenerateWallet" aria-live="polite"> Create New Wallet</h1>
+      <h4 translate="GEN_Label_1"> Enter password </h4>
+      <div class="input-group">
+        <input name="password"
+             class="form-control"
+             type="{{showPass && 'password' || 'text'}}"
+             placeholder="{{'GEN_Placeholder_1' | translate }}"
+             ng-model="password"
+             ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"
+             aria-label="{{'GEN_Label_1' |translate}}"/>
+        <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="showPass=!showPass"></span>
+      </div>
+      <a tabindex="0" role="button" class="btn btn-primary" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
+      <p translate="x_PasswordDesc"> </p>
+      <br>
+    </section>
+
+    <section class="block__help">
+      <h2>Ledger / TREZOR:</h2>
+      <ul><li>
+        <span translate="GEN_Help_1">Use your</span>
+        <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Ledger or TREZOR</a>
+        <span translate="GEN_Help_2">to access your account.</span>
+        <span translate="GEN_Help_3">Your device * is * your wallet.</span>
+      </li></ul>
+
+      <h2>Jaxx / Metamask:</h2>
+      <ul><li>
+        <span translate="GEN_Help_1">Use your</span>
+        <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id" translate="x_Mnemonic">Mnemonic Phrase</a>
+        <span translate="GEN_Help_2">to access your account.</span>
+      </li></ul>
+
+      <h2>Mist / Geth / Parity:</h2>
+      <ul><li>
+        <span translate="GEN_Help_1">Use your</span>
+        <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id" translate="x_Keystore2">Keystore File (UTC / JSON)</a>
+        <span translate="GEN_Help_2">to access your account.</span>
+      </li></ul>
+
+      <h2 translate="GEN_Help_4">Guides &amp; FAQ</h2>
+      <ul>
+        <li><strong>
+          <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet" target="_blank" rel="noopener" translate="GEN_Help_5">
+            How to Create a Wallet
+          </a>
+        </strong></li>
+        <li><strong>
+          <a href="https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443" target="_blank" rel="noopener" translate="GEN_Help_6">
+            Getting Started
+          </a></strong></li>
+      </ul>
+    </section>
+
+  </article>
+
+
+  <article role="main" class="block__wrap gen__2" ng-show="wallet && !showPaperWallet" > <!-- -->
+
+    <section class="block__main gen__2--inner">
+      <br />
+      <h1 translate="GEN_Label_2">Save your Keystore File (UTC / JSON) </h1>
+
+      <a tabindex="0" role="button"
+         class="btn btn-primary"
+         href="{{blobEnc}}"
+         download="{{encFileName}}"
+         aria-label="{{'x_Download'|translate}} {{'x_Keystore'|translate}}"
+         aria-describedby="x_KeystoreDesc"
+         ng-click="downloaded()"
+         target="_blank" rel="noopener">
+        <span translate="x_Download"> DOWNLOAD </span> <span translate="x_Keystore2"> Keystore File (UTC / JSON) </span>
+      </a>
+
+      <div class="warn">
+        <p><strong>Do not lose it!</strong> It cannot be recovered if you lose it.</p>
+        <p><strong>Do not share it!</strong> Your funds will be stolen if you use this file on a malicious/phishing site.</p>
+        <p><strong>Make a backup!</strong> Secure it like the millions of dollars it may one day be worth.</p>
+      </div>
+
+      <p>
+        <a tabindex="0" role="button" class="btn btn-danger" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()" translate="GET_ConfButton">
+          I understand. Continue.
+        </a>
+      </p>
+
+    </section>
+
+    <section class="block__help">
+      <h2 translate="GEN_Help_8"> Not Downloading a File? </h2>
+      <ul>
+        <li translate="GEN_Help_9">  Try using Google Chrome </li>
+        <li translate="GEN_Help_10"> Right click &amp; save file as. Filename:</li>
+        <input value="{{encFileName}}" class="form-control input-sm" />
+      </ul>
+
+      <h2 translate="GEN_Help_11">Don't open this file on your computer</h2>
+      <ul><li translate="GEN_Help_12">Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity &amp; other wallet clients.)</li></ul>
+
+      <h2 translate="GEN_Help_4">Guides &amp; FAQ</h2>
+      <ul>
+        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank" rel="noopener"><strong translate="GEN_Help_13">How to Back Up Your Keystore File</strong></a></li>
+        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank" rel="noopener"><strong translate="GEN_Help_14">What are these Different Formats?</a></strong></li>
+      </ul>
+
+    </section>
+
+  </article>
+
+
+  <article role="main" class="block__wrap gen__3" ng-show="showPaperWallet">
+
+    <section class="block__main gen__3--inner">
+
+      <br />
+
+      <h1 translate="GEN_Label_5"> Save your Private Key</h1>
+      <input aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc"
+             value="{{wallet.getPrivateKeyString()}}"
+             class="form-control"
+             type="text"
+             readonly="readonly"
+             style="max-width: 50rem;margin: auto;"/>
+
+      <br />
+
+      <a tabindex="0" aria-label="{{'x_Print'|translate}}" aria-describedby="x_PrintDesc" role="button" class="btn btn-primary" ng-click="printQRCode()" translate="x_Print">PRINT</a>
+
+      <div class="warn">
+        <p><strong>Do not lose it!</strong> It cannot be recovered if you lose it.</p>
+        <p><strong>Do not share it!</strong> Your funds will be stolen if you use this file on a malicious/phishing site.</p>
+        <p><strong>Make a backup!</strong> Secure it like the millions of dollars it may one day be worth.</p>
+      </div>
+
+      <br />
+
+      <a class="btn btn-default btn-sm" ng-click="getAddress()">
+        <span translate="GEN_Label_3"> Save your Address </span> →
+      </a>
+
+    </section>
+
+    <section class="block__help">
+      <h2 translate="GEN_Help_4">Guides &amp; FAQ</h2>
+      <ul>
+        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank" rel="noopener">
+          <strong translate="HELP_2a_Title">How to Save & Backup Your Wallet.</strong>
+        </a></li>
+        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">
+          <strong translate="GEN_Help_15">Preventing loss &amp; theft of your funds.</strong>
+        </a></li>
+        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank" rel="noopener">
+          <strong translate="GEN_Help_16">What are these Different Formats?</strong>
+        </a></li>
+      </ul>
+
+      <h2 translate="GEN_Help_17"> Why Should I? </h2>
+      <ul>
+        <li translate="GEN_Help_18"> To have a secondary backup. </li>
+        <li translate="GEN_Help_19"> In case you ever forget your password. </li>
+        <li>
+          <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-safely-slash-offline-slash-cold-storage-with-myetherwallet" target="_blank" rel="noopener" translate="GEN_Help_20">Cold Storage</a>
+        </li>
+      </ul>
+
+      <h2 translate="x_PrintDesc"></h2>
+
+    </section>
+
+  </article>
+
+  <article class="text-left" ng-show="showGetAddress">
+    <div class="clearfix collapse-container">
+      <div ng-click="wd = !wd">
+        <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+        <h1 traslate="GEN_Unlock">Unlock your wallet to see your address</h1>
+        <p translate="x_AddessDesc"></p>
+      </div>
+      <div ng-show="!wd">
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+          
+      </div>
+    </div>
+
+    <div class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
+
+      
+        <article class="col-sm-8 view-wallet-content">
+
+  <section class="block">
+    <div class="col-xs-11">
+      <div class="account-help-icon">
+        <img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
+        <h5 translate="x_Address">Your Address:</h5>
+      </div>
+      <input class="form-control" type="text" ng-value="wallet.getChecksumAddressString()" readonly="readonly">
+    </div>
+
+    <div class="col-xs-1 address-identicon-container">
+      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+    </div>
+
+    <div class="col-xs-12" ng-show='showEnc'>
+      <div class="account-help-icon">
+        <img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
+        <h5 translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h5>
+      </div>
+      <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
+    </div>
+
+    <div class="col-xs-12" ng-show="wallet.type=='default'">
+      <div class="account-help-icon">
+        <img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
+        <h5>
+          <span translate="x_PrivKey">Private Key (unencrypted)</span>
+        </h5>
+      </div>
+      <div class="input-group">
+        <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
+        <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+      </div>
+    </div>
+
+
+    <div class="col-xs-12" ng-show="wallet.type=='default'">
+      <div class="account-help-icon">
+        <img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF, even if you do not own a printer!</p>
+        <h5 translate="x_Print">Print Paper Wallet:</h5>
+      </div>
+      <a class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_Print">Print Paper Wallet</a>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="col-xs-6">
+      <h5 translate="x_Address">Your Address:</h5>
+      <div class="qr-code" qr-code="{{wallet.getChecksumAddressString()}}" watch-var="wallet" width="100%"></div>
+    </div>
+    <div class="col-xs-6">
+      <h5 ng-show="wallet.type=='default'">
+        <span translate="x_PrivKey">Private Key (unencrypted)</span>
+      </h5>
+      <div class="qr-pkey-container" ng-show="wallet.type=='default'">
+        <div class="qr-overlay" ng-show="!pkeyVisible"></div>
+        <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+        <div class="input-group">
+          <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly" style="display:none;width:0;height:0;padding:0">
+          <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" ng-show="wallet.type=='default'">
+    
+    
+      <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl' >
+          <!-- Sign Message Panel -->
+  <h2>
+    <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
+    or
+    <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
+  </h2>
+
+  <article class="col-xs-12 clearfix" ng-switch on="visibility">
+
+    <!-- Sign Message Stuff -->
+    <section ng-switch-when="signView">
+
+      <!-- Message -->
+      <div class="account-help-icon">
+        <img src="images/icon-help.svg" class="help-icon" />
+        <ul class="account-help-text">
+          <li translate="MSG_info2">Include your nickname and where you use the nickname so someone else cannot use it.</li>
+          <li translate="MSG_info3">Include a specific reason for the message so it cannot be reused for a different purpose.</li>
+        </ul>
+        <h5 translate="MSG_message"> Message </h5>
+      </div>
+
+
+      <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purpose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="5"></textarea>
+
+      <!-- Date -->
+      <div class="account-help-icon">
+        <img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" translate="MSG_info1">Include the current date so the signature cannot be reused on a different date.</p>
+        <h5 translate="MSG_date"> Date </h5>
+      </div>
+      <input class="form-control" ng-model="signMsg.dateTime" type="text" placeholder="1 JAN 2016 14:15" />
+
+      <!-- Sign Message Button -->
+      <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
+
+
+      <!-- Signed Message -->
+      <div ng-show="signMsg.signedMsg">
+        <h5 translate="MSG_signature"> Signature </h5>
+        <textarea class="form-control" rows="4" readonly title="Signature">{{signMsg.signedMsg }}</textarea>
+      </div>
+    </section>
+    <!-- / Sign Message Stuff -->
+
+
+
+    <!-- Verify Message Stuff -->
+    <section ng-switch-when="verifyView">
+      <!-- Signature -->
+      <h5 translate="MSG_signature"> Signature </h5>
+      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{ "address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
+
+      <!-- Verify Signature Message Button -->
+      <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
+
+
+
+    </section>
+    <!-- / Verify Message Stuff -->
+
+  </article>
+<!-- / Sign Message Panel -->
+   
+      </main>
+    
+  </section>
+
+</article>
+
+<article class="col-sm-4">
+  <wallet-balance-drtv></wallet-balance-drtv>
+</article>
+   
+
+    </div>
+  </article>
+
+</main>
+
+
+    </div>
+
+    <!-- /tab panes -->
+
+  <div data-ng-repeat="alert in notifier.alerts">
+  <div class="alert popup alert-{{alert.type}} animated-show-hide"
+       style="bottom: {{85*$index}}px; z-index: {{999+$index}};">
+    <div class="container">
+      <div class='alert-message' ng-bind-html="alert.message"></div>
+    </div>
+    <i class="icon-close" ng-click="alert.close()"></i>
+  </div>
+</div>
+
+
+
+  </section>
+
+
+<footer>
+  <div class="container">
+    <p>
+      <a href="https://www.myetherwallet.com" target="_blank" rel="noopener">MyEtherWallet.com</a>:
+
+      Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.
+
+      Created by
+      <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a>
+      &amp;
+      <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>
+      &middot;
+      <a href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" aria-label="my ether wallet.com">
+        MyEtherWallet.com
+      </a>
+      &middot;
+      <a href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" aria-label="my ether wallet github">
+        Github
+      </a>
+      &middot;
+      <a href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" aria-label="join our slack">
+        Slack
+      </a>
+      &middot;
+      <a href="https://twitter.com/myetherwallet" target="_blank" rel="noopener" aria-label="twitter">
+        Twitter
+      </a>
+      &middot;
+      <a href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" aria-label="facebook">
+        Facebook
+      </a>
+      &middot;
+      <a href="mailto:support@myetherwallet.com" target="_blank" rel="noopener" aria-label="email support at myetherwallet.com">
+        Email
+      </a>
+      &middot;
+      <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
+
+      &middot;
+
+      &copy; 2017 MyEtherWallet, LLC </p>
+
+    </div>
+  </footer>
+
+<script type='application/ld+json'>
+{
+  "@context":"http://schema.org",
+  "@type":"Organization",
+  "@id":"#organization",
+  "url":"https://www.myetherwallet.com/",
+  "name":"MyEtherWallet",
+  "logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png",
+  "description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.",
+  "sameAs":[
+    "https://www.myetherwallet.com/",
+    "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
+    "https://www.facebook.com/MyEtherWallet/",
+    "https://twitter.com/myetherwallet",
+    "https://medium.com/@myetherwallet_96408",
+    "https://myetherwallet.groovehq.com/help_center",
+    "https://github.com/kvhnuke/etherwallet",
+    "https://github.com/MyEtherWallet",
+    "https://kvhnuke.github.io/etherwallet/",
+    "https://github.com/kvhnuke/etherwallet/releases/latest",
+    "https://github.com/409H/EtherAddressLookup",
+    "https://myetherwallet.slack.com/",
+    "https://myetherwallet.herokuapp.com/",
+    "https://www.reddit.com/r/MyEtherWallet/",
+    "https://www.reddit.com/user/insomniasexx/",
+    "https://www.reddit.com/user/kvhnuke/",
+    "https://www.reddit.com/user/myetherwallet"
+  ]
+}
+</script>
+
+ <article class="modal fade" id="disclaimerModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h2 class="modal-title text-info" translate="FOOTER_4">Disclaimer</h2>
+
+        <p class="small"><strong>Be safe &amp; secure:</strong> <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener"> We highly recommend that you read our guide on How to Prevent Loss &amp; Theft for some recommendations on how to be proactive about your security.</a></p>
+
+        <p class="small"><strong>Always backup your keys: </strong> MyEtherWallet.com &amp; MyEtherWallet CX are not "web wallets". You do not create an account or give us your funds to hold onto. No data leaves your computer / your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</p>
+
+        <p class="small"><strong>We are not responsible for any loss: </strong> Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development. While we have thoroughly tested &amp; tens of thousands of wallets have been successfully created by people all over the globe, there is always the possibility something unexpected happens that causes your funds to be lost. Please do not invest more than you are willing to lose, and please be careful.</p>
+
+        <p class="small"><strong> Translations of MyEtherWallet: </strong> The community has done an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
+
+        <p class="small"><strong>MIT License</strong> Copyright &copy; 2015-2017 MyEtherWallet LLC</p>
+
+        <p class="small">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+        <p class="small">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+        <p class="small"><strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</strong></p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Okay</button>
+      </div>
+
+    </section>
+  </section>
+</article>
+ 
+
+
+</body>
+</html>
+
