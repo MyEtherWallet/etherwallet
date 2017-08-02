@@ -324,6 +324,12 @@
     "type":"default"
   },
   {
+    "address":"0xAB6CF87a50F17d7F5E1FEaf81B6fE9FfBe8EBF84",
+    "symbol":"MRV",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x68AA3F232dA9bdC2343465545794ef3eEa5209BD",
     "symbol":"MSP",
     "decimal":18,
