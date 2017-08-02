@@ -6,21 +6,21 @@ it.code = 'it';
 it.data = {
 
 /* New Generics */
-x_CancelReplaceTx           : 'Cancella o Sostituisci la Transazione',
-x_CancelTx                  : 'Cancella la Transazione',
+x_CancelReplaceTx           : 'Annulla o sostituisci la transazione',
+x_CancelTx                  : 'Annulla transazione',
 x_PasswordDesc              : 'This password * encrypts * your private key. This does not act as a seed to generate your keys. **You will need this password + your private key to unlock your wallet.**',
 x_ReadMore                  : 'Read More',
-x_ReplaceTx                 : 'Sostituisci la Transazione',
-x_TransHash                 : 'Hash della Transazione',
+x_ReplaceTx                 : 'Sostituisci transazione',
+x_TransHash                 : 'Hash della transazione',
 x_TXFee                     : 'TX Fee',
 x_TxHash                    : 'TX Hash',
 
 /* Check TX Status */
-NAV_CheckTxStatus           : 'Controlla lo Stato della Transazione',
+NAV_CheckTxStatus           : 'Controlla lo stato della transazione',
 NAV_TxStatus                : 'TX Status',
-tx_Details                  : 'Dettagli della Transazione',
+tx_Details                  : 'Dettagli della transazione',
 tx_Summary                  : 'During times of high volume (like during ICOs) transactions can be pending for hours, if not days. This tool aims to give you the ability to find and "cancel" / replace these TXs. ** This is not typically something you can do. It should not be relied upon & will only work when the TX Pools are full. [Please, read about this tool here.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
-tx_notFound                 : 'Transazione Non Trovata',
+tx_notFound                 : 'Transazione non trovata',
 tx_notFound_1               : 'This TX cannot be found in the TX Pool of the node you are connected to.',
 tx_notFound_2               : 'If you just sent the transaction, please wait 15 seconds and press the "Check TX Status" button again. ',
 tx_notFound_3               : 'It could still be in the TX Pool of a different node, waiting to be mined.',
@@ -36,10 +36,10 @@ tx_FoundOnChain_3           : '**If you do not see any errors, your transaction 
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Usa il tuo',
-GEN_Help_2                  : 'per accedere al tuo account.',
+GEN_Help_2                  : 'per accedere al tuo conto.',
 GEN_Help_3                  : 'Il tuo dispositivo * è * il tuo portafoglio.',
 GEN_Help_4                  : 'Guide & FAQ',
-GEN_Help_5                  : 'Come Creare un Portafoglio',
+GEN_Help_5                  : 'Come creare un portafoglio',
 GEN_Help_6                  : 'Per iniziare',
 GEN_Help_7                  : 'Keep it safe · Make a backup · Don\'t share it with anyone · Don\'t lose it · It cannot be recovered if you lose it.',
 GEN_Help_8                  : 'Not Downloading a File? ',
