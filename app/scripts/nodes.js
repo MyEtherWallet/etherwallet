@@ -80,7 +80,7 @@ nodes.nodeList = {
         'blockExplorerTX': 'https://orbiter.musicoin.org/tx/[[txHash]]',
         'blockExplorerAddr': 'https://orbiter.musicoin.org/addr/[[address]]',
         'type': nodes.nodeTypes.MUS,
-        'eip155': true,
+        'eip155': false,
         'chainId': 7762959,
         'tokenList': require('./tokens/musicTokens.json'),
         'abiList': require('./abiDefinitions/musicAbi.json'),
