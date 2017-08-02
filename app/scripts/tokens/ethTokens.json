@@ -222,8 +222,8 @@
     "type":"default"
   },
   {
-    "address":"0x1D921EeD55a6a9ccaA9C79B1A4f7B25556e44365",
-    "symbol":"GT",
+    "address":"0x025abad9e518516fdaafbdcdb9701b37fb7ef0fa",
+    "symbol":"GTKT",
     "decimal":0,
     "type":"default"
   },
@@ -260,6 +260,12 @@
   {
     "address":"0x773450335eD4ec3DB45aF74f34F2c85348645D39",
     "symbol":"JetCoins",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x8fa1EaD5d8d774b27d288711abE4d4258224ae26",
+    "symbol":"LOK",
     "decimal":18,
     "type":"default"
   },
@@ -315,6 +321,12 @@
     "address":"0x1a95B271B0535D15fa49932Daba31BA612b52946",
     "symbol":"MNE",
     "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0xAB6CF87a50F17d7F5E1FEaf81B6fE9FfBe8EBF84",
+    "symbol":"MRV",
+    "decimal":18,
     "type":"default"
   },
   {
@@ -438,6 +450,12 @@
     "type":"default"
   },
   {
+    "address":"0xf05a9382A4C3F29E2784502754293D88b835109C",
+    "symbol":"REX",
+    "decimal":18,
+    "type":"default"
+  },    
+  {
     "address":"0x607F4C5BB672230e8672085532f7e901544a7375",
     "symbol":"RLC",
     "decimal":9,
@@ -516,8 +534,8 @@
     "type":"default"
   },
   {
-    "address":"0x1dCE4Fa03639B7F0C38ee5bB6065045EdCf9819a",
-    "symbol":"SRC",
+    "address":"0x46492473755e8dF960F8034877F61732D718CE96",
+    "symbol":"STRC",
     "decimal":8,
     "type":"default"
   },
