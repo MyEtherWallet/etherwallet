@@ -29,7 +29,7 @@ tx_notFound_4               : 'Please use the dropdown in the top-right & select
 tx_foundInPending           : 'Βρέθηκε συναλλαγή σε εκκρεμότητα',
 tx_foundInPending_1         : 'Your transaction was located in the TX Pool of the node you are connected to. ',
 tx_foundInPending_2         : 'Αυτή τη στιγμή είναι σε εκκρεμότητα (περιμένοντας να εξορυχθεί). ',
-tx_foundInPending_3         : 'There is a chance you can "cancel" or replace this transaction. Unlock your wallet below.',
+tx_foundInPending_3         : 'Υπάρχει μια πιθανότητα να μπορείτε να «ακυρώσετε» ή να αντικαταστήσετε αυτήν τη συναλλαγή. Ξεκλειδώστε το πορτοφόλι σας παρακάτω.',
 tx_FoundOnChain             : 'Βρέθηκε συναλλαγή',
 tx_FoundOnChain_1           : 'Η συναλλαγή σας εξορύχθηκε επιτυχώς και βρίσκεται πάνω στο blockchain.',
 tx_FoundOnChain_2           : '**Αν δείτε κόκκινο μήνυμα λάθους `( ! )`, `BAD INSTRUCTION` ή `OUT OF GAS`**, σημαίνει ότι η συναλλαγή *δεν εστάλη* επιτυχώς. Δεν μπορείτε να ακυρώσετε ή να αντικαταστήσετε αυτήν τη συναλλαγή. Αντί αυτού, στείλτε μια νέα συναλλαγή. Αν λάβατε σφάλμα «Out of Gas», πρέπει να διπλασιάσετε το όριο gas που καθορίσατε αρχικά.',
