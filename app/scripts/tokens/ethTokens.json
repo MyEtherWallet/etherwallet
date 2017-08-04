@@ -72,6 +72,12 @@
     "type":"default"
   },
   {
+    "address":"0x6dC70d22ee8540796AB5b02f98f9f24dC879E10a",
+    "symbol":"BLX",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C",
     "symbol":"BNT",
     "decimal":18,
