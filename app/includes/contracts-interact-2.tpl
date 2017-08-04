@@ -6,10 +6,10 @@
     <h4 translate="CONTRACT_Interact_Title">Read / Write Contract </h4>
     <h5> {{ contract.address }} </h5>
 
-
-    <div class="form-group well" ng-show="contract.address=='0x0101010101010101010101010101010101010101'">
-      <p> You probably want to change the address to your Mist Multisig Address....</p>
+    <div class="form-group well" ng-show="contract.address=='0x0101010101010101010101010101010101010101' || contract.address=='0x1010101010101010101010101010101010101010'">
+      <p> Please change the address to your Multisig Address to your own address.</p>
     </div>
+
     <div class="form-group well" ng-show="contract.address=='0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf'">
       <ol>
         <li><strong>Generate EOS Key-pair</strong></li>
@@ -46,8 +46,6 @@
       </ul>
     </div>
   </span>
-
-
 
   <!-- Write -->
   <span class="form-group" ng-show="contract.selectedFunc!=null">

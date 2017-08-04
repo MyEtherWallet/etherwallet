@@ -454,7 +454,7 @@
     "symbol":"REX",
     "decimal":18,
     "type":"default"
-  },    
+  },
   {
     "address":"0x607F4C5BB672230e8672085532f7e901544a7375",
     "symbol":"RLC",
@@ -473,13 +473,19 @@
     "decimal":18,
     "type":"default"
   },
- {
+  {
     "address":"0x7C5A0CE9267ED19B22F8cae653F198e3E8daf098",
     "symbol":"SAN",
     "decimal":18,
     "type":"default"
   },
-    {
+  {
+    "address":"0xd7631787b4dcc87b1254cfd1e5ce48e96823dee8",
+    "symbol":"SCL",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xa1ccc166faf0E998b3E33225A1A0301B1C86119D",
     "symbol":"SGEL",
     "decimal":18,
@@ -544,6 +550,12 @@
     "symbol":"STORJ",
     "decimal":8,
     "type":"default"
+  },
+  {
+   "address":"0x006BeA43Baa3f7A6f765F14f10A1a1b08334EF45",
+   "symbol":"STX",
+   "decimal":18,
+   "type":"default"
   },
   {
    "address":"0xB9e7F8568e08d5659f5D29C4997173d84CdF2607",
