@@ -13,6 +13,14 @@
 
 module.exports = [
 {
+
+  // Social (SCL)
+  to:         '0x582e3d8dcd41f586fbcc6559f16476d20b2a3b95',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Social (SCL) ICO/Crowdsale - ico.nexus.social'
+},
+{
   // Stox Token Sale
   to:         '0x40349A89114BB34d4E82e5Bf9AE6B2ac3c78b00a',
   gasLimit:   200000,
