@@ -4,6 +4,10 @@
   <section class="col-md-4 col-sm-6">
     <h4 translate="decrypt_Access"> Select the format of your private key: </h4>
     <label class="radio">
+      <input aria-flowto="aria6" type="radio" aria-label="MetaMask / Mist" ng-model="walletType" value="metamask" />
+      <span translate="x_MetaMask">MetaMask / Mist</span>
+    </label>
+    <label class="radio">
       <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
       <span translate="x_Keystore2">Keystore / JSON File</span>
     </label>
@@ -39,6 +43,21 @@
 
   <!-- Column 2 - Unlock That Key -->
   <section class="col-md-4 col-sm-6">
+
+    <!-- if selected type MetaMask-->
+    <br />
+    <div id="selectedTypeMetamask" ng-if="walletType=='metamask'">
+      <div class="form-group">
+        <a id="aria6"
+           class="btn btn-primary btn-block"
+           ng-click="scanMetamask()"
+           ng-show="walletType=='metamask'"
+           tabindex="0" role="button"
+           translate="ADD_MetaMask"
+        > Connect to MetaMask </a>
+      </div>
+    </div>
+    <!-- /if selected type MetaMask-->
 
     <!-- if selected upload -->
     <div id="selectedUploadKey" ng-if="walletType=='fileupload'">

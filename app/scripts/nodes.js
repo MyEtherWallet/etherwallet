@@ -2,6 +2,7 @@
 var nodes = function() {}
 nodes.customNode = require('./nodeHelpers/customNode');
 nodes.infuraNode = require('./nodeHelpers/infura');
+nodes.metamaskNode = require('./nodeHelpers/metamask');
 nodes.nodeTypes = {
     ETH: "ETH",
     ETC: "ETC",
@@ -39,6 +40,18 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/ethAbi.json'),
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
+    },
+    'eth_metamask': {
+        'name': 'ETH',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
+        'eip155': true,
+        'chainId': 1,
+        'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
+        'service': 'MetaMask/Mist',
+        'lib': new nodes.metamaskNode()
     },
     'eth_ethscan': {
         'name': 'ETH',
@@ -188,5 +201,7 @@ nodes.nodeList = {
         'lib': new nodes.customNode('https://rpc1.ubiqscan.io', '')
     }
 };
+
+
 nodes.ethPrice = require('./nodeHelpers/ethPrice');
 module.exports = nodes;

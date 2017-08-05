@@ -244,6 +244,21 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.getTrezorPath = function() {
         return $scope.HDWallet.dPath;
     };
+    $scope.scanMetamask = function() {
+        window.web3.eth.getAccounts(function (err, accounts) {
+          if (err) throw err
+
+          var address = accounts[0]
+          var addressBuffer = Buffer.from(address.slice(2), 'hex');
+          var wallet = new Web3Wallet(addressBuffer);
+          wallet.setBalance(false);
+
+          // set wallet
+          $scope.wallet = wallet
+          walletService.wallet = wallet
+          $scope.notifier.info(globalFuncs.successMsgs[6])
+        });
+    };
 
     // helper function that removes 0x prefix from strings
     function fixPkey(key) {
