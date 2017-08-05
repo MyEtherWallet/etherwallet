@@ -17,6 +17,7 @@
   padding: @space-lg @space-xl;
   min-height: @space-lg;
   margin: @space auto;
+  position: relative;
   .clearfix();
   @media screen and (max-width: @screen-xs) { padding: 1.25rem; }
   & > *:first-child {
@@ -27,37 +28,37 @@
   }
 }
 
+.block--text-white {
+  * { color: white }
+  a { color: white }
+  a:hover,
+  a:focus { color: rgba(255,255,255,.9) }
+}
+
 .block--danger {
   background-color: @brand-danger;
-  color: white;
-  * { color: white }
+  .block--text-white();
 }
 
 .block--warning {
   background-color: @brand-warning;
-  color: white;
-  * { color: white }
+  .block--text-white();
 }
 
 .block--info {
   background-color: @brand-info;
-  color: white;
-  * { color: white }
+  .block--text-white();
 }
 
 .block--primary {
   background-color: @brand-primary;
-  color: white;
-  * { color: white }
+  .block--text-white();
 }
 
 .block--success {
   background-color: @brand-success;
-  color: white;
-  * { color: white }
+  .block--text-white();
 }
-
-
 
 .block__main {
   .block();
@@ -257,4 +258,86 @@
   .mono {
     font-size: @font-size-xs;
   }
+}
+
+.swap--usd,
+.swap--btc,
+.swap--hw {
+  text-align:center;
+  display: flex;
+  padding: 1rem .15rem;
+  .col-sm-7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.swap--usd {
+  .block--text-white();
+  background-color: #2B71B1;
+  .swap-flag--bal,
+  .swap-flag--price {
+    background-color: lighten(saturate(#2B71B1, 7%), 8%);
+  }
+}
+.swap--btc {
+  .block--text-white();
+  background-color: #006e79;
+  .swap-flag--bal,
+  .swap-flag--price {
+    background-color: lighten(saturate(#02818e, 7%), 7%);
+  }
+}
+
+.swap--hw {
+  .block--text-white();
+  background-color: #6e9a3e;
+  .swap-flag--bal,
+  .swap-flag--price {
+    background-color: lighten(saturate(#6e9a3e, 7%), 7%);
+  }
+  .swap__logo {
+    margin: .45rem 0;
+  }
+}
+
+.swap-flag--bal,
+.swap-flag--price {
+  background-color: @brand-success;
+  color: white;
+  padding: .1rem .5rem;
+  font-size: .7rem;
+  border-radius: 5rem;
+  margin: .7rem 0 0;
+  line-height: 1.4;
+  font-family: @font-family-monospace;
+}
+
+.swap__subhead {
+  font-size: .8rem;
+  margin: .15rem 0;
+}
+
+.swap__cta {
+  font-size: 1.25rem;
+  margin: .15rem 0;
+}
+
+.swap__logo {
+  margin: 0;
+}
+
+.swap__nav {
+  margin-top: -1.2rem;
+  margin-bottom: -.9rem;
+  text-align: center;
+  a {
+    color: @gray-light;
+    padding: 0 .2rem .6rem;
+  }
+}
+
+.send-modal__addr {
+  font-size: 12px;
 }

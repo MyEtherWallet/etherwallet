@@ -14,7 +14,7 @@
   <article class="collapse-container">
     <div ng-click="wd = !wd">
       <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-      <h1 translate="NAV_SendEther"> Send Ether & Tokens </h1>
+      <h1 translate="NAV_SendEther"> Send Ether &amp; Tokens </h1>
     </div>
     <div ng-show="!wd">
         @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }

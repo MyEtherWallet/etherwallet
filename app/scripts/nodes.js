@@ -76,18 +76,6 @@ nodes.nodeList = {
         'service': 'Epool.io',
         'lib': new nodes.customNode('https://mewapi.epool.io', '')
     },
-    'music_tfarm': {
-        'name': 'MUSIC',
-        'blockExplorerTX': 'https://orbiter.musicoin.org/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://orbiter.musicoin.org/addr/[[address]]',
-        'type': nodes.nodeTypes.MUS,
-        'eip155': false,
-        'chainId': 7762959,
-        'tokenList': require('./tokens/musicTokens.json'),
-        'abiList': require('./abiDefinitions/musicAbi.json'),
-        'service': 'trustfarm.io',
-        'lib': new nodes.customNode('https://mcdnode.trustfarm.io/api', '')
-    },
     'rop_mew': {
         'name': 'Ropsten',
         'type': nodes.nodeTypes.Ropsten,
@@ -173,6 +161,18 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'Expanse.tech',
         'lib': new nodes.customNode('https://node.expanse.tech/', '')
+    },
+    'music_tfarm': {
+        'name': 'MUSIC',
+        'blockExplorerTX': 'https://orbiter.musicoin.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://orbiter.musicoin.org/addr/[[address]]',
+        'type': nodes.nodeTypes.MUS,
+        'eip155': false,
+        'chainId': 7762959,
+        'tokenList': require('./tokens/musicTokens.json'),
+        'abiList': require('./abiDefinitions/musicAbi.json'),
+        'service': 'trustfarm.io',
+        'lib': new nodes.customNode('https://mcdnode.trustfarm.io/api', '')
     },
     'ubq': {
         'name': 'UBQ',

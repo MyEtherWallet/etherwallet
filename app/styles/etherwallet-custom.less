@@ -471,10 +471,13 @@ label small {
 
 // color code the nodes
 @brand-eth: @brand-primary;
-@brand-etc: #9c27b0;
-@brand-test: #cddc39;
-@brand-cust: #9c27b0;
+@brand-etc: #009241;
+@brand-test: #adc101;
 @brand-rsk: #ff794f;
+@brand-exp: #673ab7;
+@brand-music: #b37aff;
+@brand-ubq: #00ad85;
+@brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
   li:nth-last-child(3) {
@@ -518,6 +521,19 @@ label small {
   }
   li:nth-child(10) {
     border-left: 2px solid @brand-rsk;
+    border-bottom: 1px solid @gray-lighter;
+  }
+  li:nth-child(11) {
+    border-left: 2px solid @brand-exp;
+    border-bottom: 1px solid @gray-lighter;
+  }
+  li:nth-child(12) {
+    border-left: 2px solid @brand-music;
+    border-bottom: 1px solid @gray-lighter;
+  }
+  li:nth-child(13) {
+    border-left: 2px solid @brand-ubq;
+    border-bottom: 1px solid @gray-lighter;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -528,60 +544,47 @@ label small {
 header {
   margin-bottom: 1em;
 }
-header.ETH,
-header.ETH + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-eth;
-  & + .container .modal-content {
-    border: 0.25rem solid @brand-eth;
-  }
-}
-header.ETC,
-header.ETC + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-etc;
-  .NAV_ENS { }
-  & + .container .modal-content {
-    border: 0.25rem solid @brand-etc;
-  }
-}
-header.Ropsten,
-header.Ropsten + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-test;
-  & + .container .modal-content {
-    border: 0.25rem solid @brand-test;
-  }
-}
-header.Kovan,
-header.Kovan + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-test;
-  .NAV_ENS { }
-  & + .container .modal-content {
-    border: 0.25rem solid @brand-test;
-  }
-}
-header.Rinkeby,
-header.Rinkeby + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-test;
-  .NAV_ENS {}
-  & + .container .modal-content {
-    border: 0.25rem solid @brand-test;
-  }
-}
-header.RSK,
-header.RSK + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-rsk;
-  .NAV_ENS {}
-  & + .container .modal-content {
-    border: 0.25rem solid @brand-rsk;
-  }
-}
-header.Custom,
-header.Custom + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-cust;
-  .NAV_ENS { }
-  & + .container .modal-content {
-    border: 0.25rem solid @brand-cust;
-  }
-}
+header.ETH .nav-container                           {  border-top: 0.25rem solid @brand-eth;  }
+header.ETH + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-eth;  }
+header.ETH + .container .modal-content              {  border: 0.25rem solid @brand-eth;      }
+header.ETH + .container .alert-info                 {  background-color:@brand-eth;           }
 
+header.ETC .nav-container                           {  border-top: 0.25rem solid @brand-etc;  }
+header.ETC + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-etc;  }
+header.ETC + .container .modal-content              {  border: 0.25rem solid @brand-etc;      }
+header.ETC + .container .alert-info                 {  background-color:@brand-etc;           }
 
+header.Ropsten .nav-container                       {  border-top: 0.25rem solid @brand-test; }
+header.Ropsten + .container + .pre-footer + .footer {  border-top: 0.25rem solid @brand-test; }
+header.Ropsten + .container .modal-content          {  border: 0.25rem solid @brand-test;     }
+header.Ropsten + .container .alert-info             { background-color:@brand-test;           }
 
+header.Kovan .nav-container                         {  border-top: 0.25rem solid @brand-test; }
+header.Kovan + .container + .pre-footer + .footer   {  border-top: 0.25rem solid @brand-test; }
+header.Kovan + .container .modal-content            {  border: 0.25rem solid @brand-test;     }
+header.Kovan + .container .alert-info               {  background-color:@brand-test;          }
+
+header.Rinkeby .nav-container                       {  border-top: 0.25rem solid @brand-test; }
+header.Rinkeby + .container + .pre-footer + .footer {  border-top: 0.25rem solid @brand-test; }
+header.Rinkeby + .container .modal-content          {  border: 0.25rem solid @brand-test;     }
+header.Rinkeby + .container .alert-info             {  background-color:@brand-test;          }
+
+header.RSK .nav-container                           {  border-top: 0.25rem solid @brand-rsk;  }
+header.RSK + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-rsk;  }
+header.RSK + .container .modal-content              {  border: 0.25rem solid @brand-rsk;      }
+header.RSK + .container .alert-info                 {  background-color: @brand-rsk;          }
+
+header.Custom .nav-container                        {  border-top: 0.25rem solid @brand-cust; }
+header.Custom + .container + .pre-footer + .footer  {  border-top: 0.25rem solid @brand-cust; }
+header.Custom + .container .modal-content           {  border: 0.25rem solid @brand-cust;     }
+header.Custom + .container .alert-info              {  background-color:@brand-cust;          }
+
+header.EXP .nav-container                           {  border-top: 0.25rem solid @brand-exp;  }
+header.EXP + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-exp;  }
+header.EXP + .container .modal-content              {  border: 0.25rem solid @brand-exp;      }
+header.EXP + .container .alert-info                 {  background-color:@brand-exp;           }
+
+header.UBQ .nav-container                           {  border-top: 0.25rem solid @brand-ubq;  }
+header.UBQ + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-ubq;  }
+header.UBQ + .container .modal-content              {  border: 0.25rem solid @brand-ubq;      }
+header.UBQ + .container .alert-info                 {  background-color:@brand-ubq;           }

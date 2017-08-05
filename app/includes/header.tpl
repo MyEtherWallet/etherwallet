@@ -9,15 +9,15 @@
 <link rel="stylesheet" href="css/etherwallet-master.min.css">
 <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
 <script type="text/javascript" src="js/etherwallet-master.js"></script>
-<link rel="apple-touch-icon" sizes="180x180" href="/images/fav/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/fav/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/fav/favicon-16x16.png">
-<link rel="manifest" href="/images/fav/manifest.json">
-<link rel="mask-icon" href="/images/fav/safari-pinned-tab.svg" color="#2f99b0">
-<link rel="shortcut icon" href="/images/fav/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/fav/favicon-16x16.png">
+<link rel="manifest" href="images/fav/manifest.json">
+<link rel="mask-icon" href="images/fav/safari-pinned-tab.svg" color="#2f99b0">
+<link rel="shortcut icon" href="images/fav/favicon.ico">
 <meta name="apple-mobile-web-app-title" content="MyEtherWallet">
 <meta name="application-name" content="MyEtherWallet">
-<meta name="msapplication-config" content="/images/fav/browserconfig.xml">
+<meta name="msapplication-config" content="images/fav/browserconfig.xml">
 <meta name="theme-color" content="#1d6986">
 <meta property="og:url" content="https://www.myetherwallet.com" />
 <meta property="og:title" content="MyEtherWallet.com" />
@@ -33,7 +33,7 @@
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
   @@if (site === 'mew' ) {
-    <div class="small announcement annoucement-warning">
+    <div class="small announcement annoucement-danger">
       <div class="container">"You can't patch stupid. A fool and his money will soon part." - advice from reddit. <br />
       How do you avoid being the fool? Check the URL and look for a fat MYETHERWALLET LLC [US] Certificate up there. Look for https://www.myetherwallet.com/. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">Be safe &amp; secure</a>.</div>
     </div>
@@ -59,7 +59,7 @@
       }
       <div class="tagline">
 
-        <span>3.10.0.2</span>
+        <span>3.10.0.4</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
