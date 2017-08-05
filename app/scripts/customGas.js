@@ -159,7 +159,7 @@ module.exports = [
   gasLimit:   -1,
   data:       '',
   msg:        'this may be a fake address promoted by phishers. go research first please.'
-}
+},
 {
   // Ohni
   to:         '	0x2a8a7afa955d8616e2e60e454e5a9c6b6c0a60fc',
