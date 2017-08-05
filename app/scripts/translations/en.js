@@ -96,6 +96,7 @@ x_JsonDesc                  : 'This is the unencrypted, JSON format of your priv
 x_Keystore                  : 'Keystore File (UTC / JSON · Recommended · Encrypted) ',
 x_Keystore2                 : 'Keystore File (UTC / JSON) ',
 x_KeystoreDesc              : 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic Phrase ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Password ',
@@ -153,6 +154,9 @@ ADD_Ledger_4                : 'If no Browser Support is found in settings, verif
 ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
+
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 
