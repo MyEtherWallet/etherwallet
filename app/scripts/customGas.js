@@ -158,14 +158,14 @@ module.exports = [
   to:         '0x7da6955457b72fdd0e80709d704520ff85d79e39',
   gasLimit:   -1,
   data:       '',
-  msg:        'this may be a fake address promoted by phishers. go research first please.'
+  msg:        'This may be a fake address promoted by phishers. go research first please.'
 },
 {
   // Ohni
-  to:         '	0x2a8a7afa955d8616e2e60e454e5a9c6b6c0a60fc',
+  to:         '0x2a8a7afa955d8616e2e60e454e5a9c6b6c0a60fc',
   gasLimit:   200000,
   data:       '',
-  msg:        'Restoration of our communities!'
-},
+  msg:        'OHNI ICO. Restoration of our communities!'
+}
 ]
 

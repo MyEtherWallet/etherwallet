@@ -10,15 +10,15 @@
 <link rel="stylesheet" href="css/etherwallet-master.min.css">
 <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
 <script type="text/javascript" src="js/etherwallet-master.js"></script>
-<link rel="apple-touch-icon" sizes="180x180" href="/images/fav/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/fav/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/fav/favicon-16x16.png">
-<link rel="manifest" href="/images/fav/manifest.json">
-<link rel="mask-icon" href="/images/fav/safari-pinned-tab.svg" color="#2f99b0">
-<link rel="shortcut icon" href="/images/fav/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/fav/favicon-16x16.png">
+<link rel="manifest" href="images/fav/manifest.json">
+<link rel="mask-icon" href="images/fav/safari-pinned-tab.svg" color="#2f99b0">
+<link rel="shortcut icon" href="images/fav/favicon.ico">
 <meta name="apple-mobile-web-app-title" content="MyEtherWallet">
 <meta name="application-name" content="MyEtherWallet">
-<meta name="msapplication-config" content="/images/fav/browserconfig.xml">
+<meta name="msapplication-config" content="images/fav/browserconfig.xml">
 <meta name="theme-color" content="#1d6986">
 <meta property="og:url" content="https://www.myetherwallet.com" />
 <meta property="og:title" content="MyEtherWallet.com" />
@@ -34,7 +34,7 @@
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
   
-    <div class="small announcement annoucement-warning">
+    <div class="small announcement annoucement-danger">
       <div class="container">"You can't patch stupid. A fool and his money will soon part." - advice from reddit. <br />
       How do you avoid being the fool? Check the URL and look for a fat MYETHERWALLET LLC [US] Certificate up there. Look for https://www.myetherwallet.com/. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">Be safe &amp; secure</a>.</div>
     </div>
@@ -51,7 +51,7 @@
       
       <div class="tagline">
 
-        <span>3.10.0.2</span>
+        <span>3.10.0.4</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -590,7 +590,7 @@
   <article class="collapse-container">
     <div ng-click="wd = !wd">
       <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-      <h1 translate="NAV_SendEther"> Send Ether & Tokens </h1>
+      <h1 translate="NAV_SendEther"> Send Ether &amp; Tokens </h1>
     </div>
     <div ng-show="!wd">
         
@@ -761,12 +761,6 @@
 
   <wallet-balance-drtv></wallet-balance-drtv>
 
-  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
-    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-  </div>
-
   <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
 
 </section>
@@ -787,6 +781,7 @@
 
           <td>
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{wallet.getChecksumAddressString()}}</strong></p>
           </td>
 
           <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
@@ -794,9 +789,11 @@
 
           <td ng-show="tx.sendMode=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{tx.to}}</strong></p>
           </td>
           <td ng-show="tx.sendMode!=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{tokenTx.to}}</strong></p>
           </td>
 
         </tr></tbody></table>
@@ -1248,12 +1245,6 @@
 
   <wallet-balance-drtv></wallet-balance-drtv>
 
-  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
-    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-  </div>
-
   <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
 
 </section>
@@ -1274,6 +1265,7 @@
 
           <td>
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{wallet.getChecksumAddressString()}}</strong></p>
           </td>
 
           <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
@@ -1281,9 +1273,11 @@
 
           <td ng-show="tx.sendMode=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{tx.to}}</strong></p>
           </td>
           <td ng-show="tx.sendMode!=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{tokenTx.to}}</strong></p>
           </td>
 
         </tr></tbody></table>
@@ -3150,12 +3144,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <wallet-balance-drtv></wallet-balance-drtv>
 
-  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
-    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-  </div>
-
   <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
 
 </section>
@@ -3176,6 +3164,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
           <td>
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{wallet.getChecksumAddressString()}}</strong></p>
           </td>
 
           <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
@@ -3183,9 +3172,11 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
           <td ng-show="tx.sendMode=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{tx.to}}</strong></p>
           </td>
           <td ng-show="tx.sendMode!=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{tokenTx.to}}</strong></p>
           </td>
 
         </tr></tbody></table>
@@ -3371,10 +3362,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 <section class="pre-footer">
   <div class="container">
-    <p>MyEtherWallet.com is a client-side interface &amp; does not hold your keys. We cannot access accounts, recover keys, reset passwords, nor reverse transactions.</p>
-    <p>
-      <span>If you go to a fake MyEtherWallet.com, they can. Check the URL. Use a bookmark.</span>
-      <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal"> You are responsible for your security. </a>
+    <p>MyEtherWallet.com does not hold your keys for you. We cannot access accounts, recover keys, reset passwords, nor reverse transactions. Protect your keys &amp; always check that you are on correct URL. <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal"> You are responsible for your security.</a>
     </p>
   </div>
 </section>
