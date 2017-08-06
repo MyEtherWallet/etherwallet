@@ -187,6 +187,18 @@ nodes.nodeList = {
         'service': 'trustfarm.io',
         'lib': new nodes.customNode('https://mcdnode.trustfarm.io/api', '')
     },
+    'music_twmc': {
+        'name': 'MUSIC',
+        'blockExplorerTX': 'https://orbiter.musicoin.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://orbiter.musicoin.org/addr/[[address]]',
+        'type': nodes.nodeTypes.MUS,
+        'eip155': false,
+        'chainId': 7762959,
+        'tokenList': require('./tokens/musicTokens.json'),
+        'abiList': require('./abiDefinitions/musicAbi.json'),
+        'service': 'pool.musicoin.tw',
+        'lib': new nodes.customNode('https://mewapi.musicoin.tw', '')
+    },
     'ubq': {
         'name': 'UBQ',
         'blockExplorerTX': 'https://ubiqscan.io/en/tx/[[txHash]]',
