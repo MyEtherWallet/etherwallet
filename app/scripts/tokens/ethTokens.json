@@ -203,6 +203,12 @@
     "decimal":8,
     "type":"default"
   },
+    {
+    "address":"0x88FCFBc22C6d3dBaa25aF478C578978339BDe77a",
+    "symbol":"FYN",
+    "decimal":18,
+    "type":"default"
+  },
   {
     "address":"0x24083bb30072643c3bb90b44b7285860a755e687",
     "symbol":"GELD",
