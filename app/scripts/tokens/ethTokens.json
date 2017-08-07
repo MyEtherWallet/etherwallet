@@ -174,6 +174,12 @@
     "type":"default"
   },
   {
+    "address":"0xa578acc0cb7875781b7880903f4594d13cfa8b98",
+    "symbol":"ECN",
+    "decimal":2,
+    "type":"default"
+  },
+  {
     "address":"0x08711D3B02C8758F2FB3ab4e80228418a7F8e39c",
     "symbol":"EDG",
     "decimal":0,
