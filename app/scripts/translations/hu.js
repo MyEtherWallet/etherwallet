@@ -327,13 +327,13 @@ MSG_info2                   : 'Include your nickname and where you use the nickn
 MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_scan             : 'Csatlakozás a Ledger Nano S-hez ',
-ADD_Ledger_1                : 'Csatlakoztasd a Ledger Nano S-et ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_scan             : 'Csatlakozás a Ledger Wallet-hez ',
+ADD_Ledger_1                : 'Csatlakoztasd a Ledger Wallet-et ',
 ADD_Ledger_2                : 'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt) ',
 ADD_Ledger_3                : 'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support) ',
 ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
 x_Trezor                    : 'TREZOR ',

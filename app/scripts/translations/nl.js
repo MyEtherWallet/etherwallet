@@ -146,14 +146,14 @@ MNEM_more                   : 'Meer Adressen ',
 MNEM_prev                   : 'Vorige Adressen ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Verbind je Ledger Nano S ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_1                : 'Verbind je Ledger Wallet ',
 ADD_Ledger_2                : 'Open de Ethereum applicatie (of een contract applicatie) ',
 ADD_Ledger_3                : 'Controleer of "Browser Support" is ingeschakeld in je instellingen ',
 ADD_Ledger_4                : 'Als je "Browser Support" niet in je instellingen kunt vinden, controleer dan dat je [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) is ',
 ADD_Ledger_0a               : 'Her-open MyEtherWallet met een veilige (SSL) verbinding ',
 ADD_Ledger_0b               : 'Her-open MyEtherWallet door gebruik te maken van [Chrome](https://www.google.com/chrome/browser/desktop/) of [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Verbind met Ledger Nano S ',
+ADD_Ledger_scan             : 'Verbind met Ledger Wallet ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Verbind met TREZOR ',
 

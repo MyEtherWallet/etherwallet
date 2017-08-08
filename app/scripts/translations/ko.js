@@ -146,14 +146,14 @@ MNEM_more                   : '나머지 주소 ',
 MNEM_prev                   : '이전 주소 ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : '사용자의 Ledger Nano S를 연결해주세요 ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_1                : '사용자의 Ledger Wallet를 연결해주세요 ',
 ADD_Ledger_2                : '이더리움 어플리케이션을 실행해주세요 (또는 컨트랙트 어플리케이션)  ',
 ADD_Ledger_3                : 'Browser Support가 활성화된 상태인지 확인해주세요 ',
 ADD_Ledger_4                : '설정에서 Browser Support를 확인할 수 없으면, Ledger [Firmware 1.2] (https://www.ledgerwallet.com/apps/manager) 버전이 설치되어 있는지 확인해주세요. ',
 ADD_Ledger_0a               : 'MyEtherWallet을 보안 연결(SSL)로 다시 연결해주세요. ',
 ADD_Ledger_0b               : 'MyEtherWallet을 [Chrome](https://www.google.com/chrome/browser/desktop/) 또는 [Opera](https://www.opera.com/) 브라우저로 다시 열어주세요. ',
-ADD_Ledger_scan             : 'Ledger Nano S 에 연결하기 ',
+ADD_Ledger_scan             : 'Ledger Wallet 에 연결하기 ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'TREZOR 에 연결하기 ',
 

@@ -4,67 +4,65 @@
   <section class="col-md-4 col-sm-6">
     <h4 translate="decrypt_Access"> Select the format of your private key: </h4>
     <label class="radio">
-      <input aria-flowto="aria6" type="radio" aria-label="MetaMask / Mist" ng-model="walletType" value="metamask" />
-      <span translate="x_MetaMask">MetaMask / Mist</span>
-    </label>
-    <label class="radio">
       <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
       <span translate="x_Keystore2">Keystore / JSON File</span>
     </label>
-    <label class="radio">
-      <input aria-flowto="aria2" aria-label="private key" type="radio" ng-model="walletType" value="pasteprivkey" />
-      <span translate="x_PrivKey2">Private Key</span>
+
+    <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
+      <input aria-flowto="aria2" type="radio" aria-label="Ledger Wallet hardware wallet" ng-model="walletType" value="ledger" />Ledger Wallet
     </label>
+
     <label class="radio">
-      <input aria-flowto="aria3" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" />
+      <input aria-flowto="aria3" type="radio" aria-label="MetaMask / Mist" ng-model="walletType" value="metamask" />
+      <span translate="x_MetaMask">MetaMask / Mist</span>
+    </label>
+
+    <label class="radio">
+      <input aria-flowto="aria4" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" />
       <span translate="x_Mnemonic">Mnemonic Phrase</span>
     </label>
-    <label class="radio" style="display: none;" id="showMeTheMoney">
-      <input aria-flowto="aria4" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" />
-      <span translate="x_ParityPhrase">Parity Phrase</span>
-    </label>
+
     <label class="radio">
-      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/parity-phrases-no-longer-supported" target="_blank" rel="noopener">No longer supported</a>
+      <input aria-flowto="aria5" aria-label="private key" type="radio" ng-model="walletType" value="pasteprivkey" />
+      <span translate="x_PrivKey2">Private Key</span>
     </label>
-    <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
-      <input aria-flowto="aria5" type="radio" aria-label="Ledger Nano S hardware wallet" ng-model="walletType" value="ledger" />
-      Ledger Nano S
-    </label>
+
     <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
       <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
       TREZOR
     </label>
-    <label class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id">
+
+    <label aria-flowto="aria7" class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id">
       <input aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
       View with Address Only
     </label>
+
+    <label class="radio" style="display: none;" id="showMeTheMoney">
+      <input aria-flowto="aria8" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" />
+      <span translate="x_ParityPhrase">Parity Phrase</span>
+    </label>
+
+    <label aria-flowto="aria9" class="radio">
+      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/parity-phrases-no-longer-supported" target="_blank" rel="noopener">No longer supported</a>
+    </label>
+
   </section>
   <!-- Column 1 - Select Type of Key -->
 
   <!-- Column 2 - Unlock That Key -->
   <section class="col-md-4 col-sm-6">
 
-    <!-- if selected type MetaMask-->
-    <br />
-    <div id="selectedTypeMetamask" ng-if="walletType=='metamask'">
-      <div class="form-group">
-        <a id="aria6"
-           class="btn btn-primary btn-block"
-           ng-click="scanMetamask()"
-           ng-show="walletType=='metamask'"
-           tabindex="0" role="button"
-           translate="ADD_MetaMask"
-        > Connect to MetaMask </a>
-      </div>
-    </div>
-    <!-- /if selected type MetaMask-->
-
-    <!-- if selected upload -->
+    <!-- if selected keystore -->
     <div id="selectedUploadKey" ng-if="walletType=='fileupload'">
       <h4 translate="ADD_Radio_2_alt">Select your wallet file:</h4>
       <div class="form-group">
         <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector" />
-        <a class="btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short" id="aria1" tabindex="0" role="button">SELECT WALLET FILE... </a>
+        <a class="btn-file marg-v-sm"
+           ng-click="openFileDialog()"
+           translate="ADD_Radio_2_short"
+           id="aria1"
+           tabindex="0"
+           role="button">SELECT WALLET FILE... </a>
       </div>
       <div class="form-group" ng-if="requireFPass">
         <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
@@ -73,92 +71,20 @@
                ng-class="Validator.isPasswordLenValid($parent.$parent.filePassword,0) ? 'is-valid' : 'is-invalid'"
                ng-model="$parent.$parent.filePassword"
                placeholder="{{ 'x_Password' | translate }}"
-               type="password"
-        />
+               type="password" />
       </div>
     </div>
-    <!-- /if selected upload -->
+    <!-- /if selected keystore -->
 
-    <!-- if selected type key-->
-    <div id="selectedTypeKey" ng-if="walletType=='pasteprivkey'">
-      <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>
-      <div class="form-group">
-        <textarea id="aria2"
-                  class="form-control"
-                  ng-change="onPrivKeyChange()"
-                  ng-class="Validator.isValidPrivKey($parent.$parent.manualprivkey.length) ? 'is-valid' : 'is-invalid'"
-                  ng-keyup="$event.keyCode == 13 && decryptWallet()"
-                  ng-model="$parent.$parent.manualprivkey"
-                  placeholder="{{ 'x_PrivKey2' | translate }}"
-                  rows="4"
-        ></textarea>
-      </div>
-      <div class="form-group" ng-if="requirePPass">
-        <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
-        <input class="form-control"
-               ng-change="onPrivKeyPassChange()"
-               ng-class="Validator.isPasswordLenValid($parent.$parent.privPassword,0) ? 'is-valid' : 'is-invalid'"
-               ng-keyup="$event.keyCode == 13 && decryptWallet()"
-               ng-model="$parent.$parent.privPassword"
-               placeholder="{{ 'x_Password' | translate }}"
-               type="password"
-        />
-      </div>
-    </div>
-    <!-- /if selected type key-->
-
-    <!-- if selected type mnemonic-->
-    <div id="selectedTypeMnemonic" ng-if="walletType=='pastemnemonic'">
-      <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
-      <div class="form-group">
-        <textarea id="aria3"
-                  class="form-control"
-                  ng-change="onMnemonicChange()"
-                  ng-class="Validator.isValidMnemonic($parent.$parent.manualmnemonic) ? 'is-valid' : 'is-invalid'"
-                  ng-keyup="$event.keyCode == 13 && decryptWallet()"
-                  ng-model="$parent.$parent.manualmnemonic"
-                  placeholder="{{ 'x_Mnemonic' | translate}}"
-                  rows="4"
-        ></textarea>
-      </div>
-      <div class="form-group">
-        <p translate="ADD_Label_8">Password (optional): </p>
-        <div>
-          <input class="form-control"
-                 ng-keyup="$event.keyCode == 13 && decryptWallet()"
-                 ng-model="$parent.$parent.mnemonicPassword"
-                 placeholder="{{ 'x_Password' | translate }}"
-                 type="password"
-          / >
-        </div>
-      </div>
-    </div>
-    <!-- /if selected type mnemonic-->
-
-    <!-- if selected parity phrase-->
-    <div id="selectedTypeMnemonic" ng-if="walletType=='parityBWallet'">
-      <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
-      <div class="form-group">
-        <textarea rows="4"
-                  class="form-control"
-                  ng-change="onParityPhraseChange()"
-                  ng-class="$parent.$parent.parityPhrase != '' ? 'is-valid' : 'is-invalid'"
-                  ng-keyup="$event.keyCode == 13 && decryptWallet()"
-                  ng-model="$parent.$parent.parityPhrase"
-                  placeholder="{{ 'x_ParityPhrase' | translate}}"
-        ></textarea>
-      </div>
-    </div>
-    <!-- /if selected parity phrase-->
 
     <!-- if selected type ledger-->
     <div id="selectedTypeLedger" ng-if="walletType=='ledger'">
       <ol>
-        <li id="aria7" tabinex="0" translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL">
-          Re-open MyEtherWallet on a secure (SSL) connection
+        <li id="aria2" tabinex="0" translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL">
+          You must access MyEtherWallet via a secure(SSL / HTTPS) connection to connect to your Ledger device.
         </li>
         <li tabinex="0">
-          <span translate="ADD_Ledger_1">Connect your Ledger Nano S</span> &amp;
+          <span translate="ADD_Ledger_1">Connect your Ledger Wallet</span> &amp;
           <span translate="ADD_Ledger_2">Open the Ethereum application (or a contract application)</span>
         </li>
         <li tabinex="0" translate="ADD_Ledger_3">
@@ -184,11 +110,99 @@
     </div>
     <!-- /if selected type ledger-->
 
+
+    <!-- if selected type MetaMask-->
+    <br />
+    <div id="selectedTypeMetamask" ng-if="walletType=='metamask'">
+      <p id="aria2" tabinex="0" translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL">
+          You must access MyEtherWallet via a secure(SSL / HTTPS) connection to connect.
+      </p>
+      <div class="form-group">
+        <a id="aria3"
+           class="btn btn-primary btn-block"
+           ng-click="scanMetamask()"
+           ng-show="walletType=='metamask'"
+           tabindex="0" role="button"
+           translate="ADD_MetaMask"
+        > Connect to MetaMask </a>
+      </div>
+      <div class="text-center" style="margin-top: 1rem;">
+        <a tabindex="0"
+           role="button"
+           class="btn btn-default btn-xs"
+           href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
+           target="_blank"
+           rel="noopener">
+              Download MetaMask
+        </a>
+      </div>
+    </div>
+    <!-- /if selected type MetaMask-->
+
+
+    <!-- if selected type mnemonic-->
+    <div id="selectedTypeMnemonic" ng-if="walletType=='pastemnemonic'">
+      <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+      <div class="form-group">
+        <textarea id="aria4"
+                  class="form-control"
+                  ng-change="onMnemonicChange()"
+                  ng-class="Validator.isValidMnemonic($parent.$parent.manualmnemonic) ? 'is-valid' : 'is-invalid'"
+                  ng-keyup="$event.keyCode == 13 && decryptWallet()"
+                  ng-model="$parent.$parent.manualmnemonic"
+                  placeholder="{{ 'x_Mnemonic' | translate}}"
+                  rows="4"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <p translate="ADD_Label_8">Password (optional): </p>
+        <div>
+          <input class="form-control"
+                 id="aria5"
+                 ng-keyup="$event.keyCode == 13 && decryptWallet()"
+                 ng-model="$parent.$parent.mnemonicPassword"
+                 placeholder="{{ 'x_Password' | translate }}"
+                 type="password" / >
+        </div>
+      </div>
+    </div>
+    <!-- /if selected type mnemonic-->
+
+
+    <!-- if selected type private key-->
+    <div id="selectedTypeKey" ng-if="walletType=='pasteprivkey'">
+      <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>
+      <div class="form-group">
+        <textarea id="aria6"
+                  class="form-control"
+                  ng-change="onPrivKeyChange()"
+                  ng-class="Validator.isValidPrivKey($parent.$parent.manualprivkey.length) ? 'is-valid' : 'is-invalid'"
+                  ng-keyup="$event.keyCode == 13 && decryptWallet()"
+                  ng-model="$parent.$parent.manualprivkey"
+                  placeholder="{{ 'x_PrivKey2' | translate }}"
+                  rows="4"
+        ></textarea>
+      </div>
+      <div class="form-group" ng-if="requirePPass">
+        <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
+        <input class="form-control"
+               ng-change="onPrivKeyPassChange()"
+               ng-class="Validator.isPasswordLenValid($parent.$parent.privPassword,0) ? 'is-valid' : 'is-invalid'"
+               ng-keyup="$event.keyCode == 13 && decryptWallet()"
+               ng-model="$parent.$parent.privPassword"
+               placeholder="{{ 'x_Password' | translate }}"
+               type="password"
+        />
+      </div>
+    </div>
+    <!-- /if selected type private key-->
+
+
     <!-- if selected type trezor-->
     <br />
     <div id="selectedTypeTrezor" ng-if="walletType=='trezor'">
       <div class="form-group">
-        <a id="aria6"
+        <a id="aria7"
            class="btn btn-primary btn-block"
            ng-click="scanTrezor()"
            ng-show="walletType=='trezor'"
@@ -213,11 +227,13 @@
     </div>
     <!-- /if selected type ledger-->
 
+
     <!-- if selected addressOnly-->
     <div id="selectedTypeKey" ng-if="walletType=='addressOnly'">
       <h4 translate="x_Address"> Your Address </h4>
       <div class="form-group">
         <textarea rows="4"
+                  id="aria8"
                   class="form-control"
                   ng-change="onAddressChange()"
                   ng-class="Validator.isValidAddress($parent.$parent.addressOnly) ? 'is-valid' : 'is-invalid'"
@@ -227,6 +243,24 @@
       </div>
     </div>
     <!-- /if selected addressOnly-->
+
+
+    <!-- if selected parity phrase-->
+    <div id="selectedTypeMnemonic" ng-if="walletType=='parityBWallet'">
+      <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+      <div class="form-group">
+        <textarea rows="4"
+                  id="aria9"
+                  class="form-control"
+                  ng-change="onParityPhraseChange()"
+                  ng-class="$parent.$parent.parityPhrase != '' ? 'is-valid' : 'is-invalid'"
+                  ng-keyup="$event.keyCode == 13 && decryptWallet()"
+                  ng-model="$parent.$parent.parityPhrase"
+                  placeholder="{{ 'x_ParityPhrase' | translate}}"
+        ></textarea>
+      </div>
+    </div>
+    <!-- /if selected parity phrase-->
 
   </section>
   <!-- / Column 2 - Unlock That Key -->

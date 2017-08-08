@@ -330,14 +330,14 @@ MNEM_more                   : 'Περισσότερες διευθύνσεις '
 MNEM_prev                   : 'Προηγούμενες διευθύνσεις ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Συνδέστε το Ledger Nano S σας ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_1                : 'Συνδέστε το Ledger Wallet σας ',
 ADD_Ledger_2                : 'Ανοίξτε την εφαρμογή Ethereum (ή μια εφαρμογή συμβολαίου) ',
 ADD_Ledger_3                : 'Βεβαιωθείτε ότι η υποστήριξη περιηγητή είναι ενεργοποιημένη στις ρυθμίσεις ',
 ADD_Ledger_4                : 'Εάν δεν υπάρχει υποστήριξη περιηγητή στις ρυθμίσεις, βεβαιωθείτε ότι έχετε [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Ξανα-ανοίξτε το MyEtherWallet σε ασφαλή (SSL) σύνδεση ',
 ADD_Ledger_0b               : 'Ξανα-ανοίξτε το MyEtherWallet χρησιμοποιώντας το [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Συνδεθείτε στο Ledger Nano S ',
+ADD_Ledger_scan             : 'Συνδεθείτε στο Ledger Wallet ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Συνδεθείτε στο TREZOR ',
 ADD_Trezor_select           : 'Αυτός είναι σπόρος του TREZOR ',

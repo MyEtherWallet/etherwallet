@@ -329,14 +329,14 @@ MNEM_more                   : 'Mehrere Adressen ',
 MNEM_prev                   : 'Letzte Adressen ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Verbinde deinen Ledger Nano S ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_1                : 'Verbinde deinen Ledger Wallet ',
 ADD_Ledger_2                : 'Öffne das Ethereum Programm (oder ein Vertragsprogramm) ', //Statt Programm -> Applikation?
 ADD_Ledger_3                : 'Gehe sicher, dass Browser Support aktiviert ist. ',
 ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
+ADD_Ledger_scan             : 'Connect to Ledger Wallet ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Zu TREZOR Verbinden ',
 ADD_Trezor_select           : 'Dies ist ein TREZOR seed ',

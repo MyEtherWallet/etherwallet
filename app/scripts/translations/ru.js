@@ -333,14 +333,14 @@ TRANS_gas                   : 'Лимит газа ', // changd in ENG to Gas Li
 WARN_Send_Link              : 'Вы попали сюда по ссылке, которая уже содержит в себе адрес, сумму, лимит газа и дополнительные параметры транзакции. ВЫ можете изменить эти данные перед отправкой транзакции. Для начала отоприте ваш кошелёк. ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Присоедините ваш Ledger Nano S ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_1                : 'Присоедините ваш Ledger Wallet ',
 ADD_Ledger_2                : 'Запустите приложение Ethereum (или приложение контракта) ',
 ADD_Ledger_3                : 'Убедитесь, что использование из браузера разрешено в настройках ',
 ADD_Ledger_4                : 'Если в настройках нет использования из браузера, убедитесь, что у вас [прошивка версии >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Перезапустите MyEtherWallet через безопасное (SSL) соединение ',
 ADD_Ledger_0b               : 'Перезапустите MyEtherWallet с браузере [Chrome](https://www.google.com/chrome/browser/desktop/) или [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Подключиться к Ledger Nano S ',
+ADD_Ledger_scan             : 'Подключиться к Ledger Wallet ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Подключиться к TREZOR ',
 ADD_Trezor_select           : 'Это код восстановления TREZOR ',

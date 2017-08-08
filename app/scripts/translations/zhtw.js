@@ -149,13 +149,13 @@ MNEM_more                   : '更多地址 ',
 MNEM_prev                   : '之前的地址 ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S 錢包',
-ADD_Ledger_1                : '連接至你的 Ledger Nano S ',
+x_Ledger                    : 'Ledger Wallet 錢包',
+ADD_Ledger_1                : '連接至你的 Ledger Wallet ',
 ADD_Ledger_2                : '開啟基於以太坊開發的應用程式（或一個寫成合約的應用程式） ',
 ADD_Ledger_3                : '確認已經開啟設定選項中的瀏覽器支援選項',
 ADD_Ledger_4                : '如果在設定選項中找不到瀏覽器支援選項，請確認你的韌體版本新於[1.2版](https://www.ledgerwallet.com/apps/manager)',
 ADD_Ledger_0b               : '以 [Chrome](https://www.google.com/chrome/browser/desktop/) 或 [Opera](https://www.opera.com/) 瀏覽器重新開啟MyEtherWallet',
-ADD_Ledger_scan             : '連接至 Ledger Nano S ',
+ADD_Ledger_scan             : '連接至 Ledger Wallet ',
 x_Trezor                    : 'TREZOR 錢包 ',
 ADD_Trezor_scan             : '連接至 TREZOR ',
 
