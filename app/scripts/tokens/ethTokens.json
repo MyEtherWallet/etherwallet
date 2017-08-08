@@ -144,6 +144,12 @@
     "type":"default"
   },
   {
+    "address":"0x3597bfd533a99c9aa083587b074434e61eb0a258",
+    "symbol":"DENT",
+    "decimal":8,
+    "type":"default"
+  },  
+  {
     "address":"0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A",
     "symbol":"DGD",
     "decimal":9,
@@ -201,6 +207,12 @@
     "address":"0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b",
     "symbol":"FUN",
     "decimal":8,
+    "type":"default"
+  },
+    {
+    "address":"0x88FCFBc22C6d3dBaa25aF478C578978339BDe77a",
+    "symbol":"FYN",
+    "decimal":18,
     "type":"default"
   },
   {
