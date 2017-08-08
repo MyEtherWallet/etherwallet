@@ -13,11 +13,6 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.tx.readOnly = globalFuncs.urlGet('readOnly') == null ? false : true;
     var currentTab = $scope.globalService.currentTab;
     var tabs = $scope.globalService.tabs;
-
-    if (currentTab == tabs.sendTransaction.id) {
-        //this is for you @tayvano
-    }
-    // Tokens
     $scope.tokenVisibility = "hidden";
     $scope.tokenTx = {
         to: '',

@@ -68,19 +68,6 @@
     </div>
   </section>
 
-  <section class="block" ng-show="wallet.type=='default'">
-    @@if (site === 'cx' )  {
-      <main ng-controller='signMsgCtrl' ng-show="wallet!=null">
-        @@if (site === 'cx' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }
-      </main>
-    }
-    @@if (site === 'mew' ) {
-      <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl' >
-        @@if (site === 'mew') {  @@include( './signMsg.tpl', { "site": "mew" } )   }
-      </main>
-    }
-  </section>
-
 </article>
 
 <article class="col-sm-4">
