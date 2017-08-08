@@ -133,6 +133,7 @@ sidebar_TransHistory        : 'Lịch Sử Giao Dịch ',
 sidebar_donation            : 'MyEtherWallet là một ứng dụng miễn phí được xây dựng trên mã nguồn mở nhằm bảo vệ quyền riêng tư và sự bảo mật của người sử dụng. các khoản quyên góp mà chúng tôi nhận được sẽ giúp chúng tôi có cơ hội dành nhiều thơi gian hơn cho việc lắng nghe những phản hồi từ người sử dụng nhằm tạo ra những ứng dụng mới nhằm đáp ứng những mong muốn từ người sử dụng. Chúng tôi hiện tại là hai cá nhân đang cố gắng làm cho thế giới ngày một tốt hơn. Hãy cùng chung giúp chúng tôi ',
 sidebar_donate              : 'Quyên Góp ',
 sidebar_thanks              : 'Xin Chân Thành Cảm Ơn!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Làm thế nào đễ truy cập vào ví của bạn? ',

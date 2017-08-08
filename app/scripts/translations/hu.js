@@ -133,6 +133,7 @@ sidebar_TransHistory        : 'Tranzakció Történet ',
 sidebar_donation            : 'A MyEtherWallet egy szabad, nyílt forrású szolgáltatás az adatod védelmének és a biztonságodnak szentelve. Minél több adomány érkezik, annál több időt tudunk fordítani új funkciók létrehozására, a visszajelzéseidre és olyan szolgáltatást nyújtani, amilyet szeretnél. Mindössze két ember, akik megpróbálnak változtatni a világon. Segítesz nekünk? ',
 sidebar_donate              : 'Adományozok ',
 sidebar_thanks              : 'KÖSZÖNJÜK!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Hogyan szeretnéd elérni a tárcádat? ',

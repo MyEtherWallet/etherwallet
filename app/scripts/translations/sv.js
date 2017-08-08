@@ -137,6 +137,7 @@ sidebar_Equiv               : 'Motsvarande Värden ',
 sidebar_thanks              : 'TACK!!! ',
 sidebar_TokenBal            : 'Token Saldon ',
 sidebar_TransHistory        : 'Transaktionshistorik ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Decrypt Panel */
 decrypt_Access              : 'How would you like to access your wallet? ',

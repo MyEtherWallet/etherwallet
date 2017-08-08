@@ -137,6 +137,7 @@ sidebar_TransHistory        : 'Sejarah Transaksi ',
 sidebar_donation            : 'MyEtherWallet dapat dipergunakan secara cuma-cuma berdasarkan prinsip open source dengan tetap menjaga privasi dan keamanan. Semakin banyak donasi yang kami terima, semakin banyak waktu yang kami dapat luangkan untuk membuat fitur-fitur baru dan mewujudkan usulan dan keinginan para penggunanya. Tim kami yang terdiri dari hanya dua orang sangat membutuhkan dukungan Anda untuk mewujudkan cita-cita kami dalam membuat dunia yang semakin baik ',
 sidebar_donate              : 'Kirim Donasi ',
 sidebar_thanks              : 'Terima Kasih!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Pilihan cara mengakses dompet Anda? ',

@@ -133,6 +133,7 @@ sidebar_TransHistory        : '트랜잭션 내역 ',
 sidebar_donation            : 'MyEtherWallet은 개인정보보호와 보안을 위한 무료 오픈 서비스입니다. 기부를 많이 받을수록 우리는 새로운 기능과 다양한 의견을 반영하여 사용자의 희망 사항을 위한 개발 시간을 늘리는 것이 가능해질 수 있습니다. 우리는 단 두명이 세상을 바꾸려 하고 있습니다. 도와주시겠습니까? ',
 sidebar_donate              : '기부 ',
 sidebar_thanks              : '감사합니다!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Decrypt Panel */
 decrypt_Access              : '지갑 액세스 방법 선택 ',

@@ -133,6 +133,7 @@ sidebar_TransHistory        : 'Transactie Geschiedenis ',
 sidebar_donation            : 'MyEtherWallet is een gratis, open-source service toegewijd aan jouw privacy en beveiliging. Des te meer donaties we ontvangen, des te meer tijd we zullen spenderen aan nieuwe functies, aan de hand van jouw terugkoppeling, en we je kunnen geven wat jij wilt. Wij zijn slechts twee mensen die de wereld een stukje beter willen maken. Help jij mee? ',
 sidebar_donate              : 'Doneer ',
 sidebar_thanks              : 'BEDANKT!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Hoe wil je toegang tot je wallet? ',

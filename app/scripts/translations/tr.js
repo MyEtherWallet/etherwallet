@@ -136,6 +136,7 @@ sidebar_TransHistory        : 'Işlem geçmişi ',
 sidebar_donation            : 'MyEtherWallet gizlilik ve güvenlike adanmış ücretsiz ve açık kaynak kodlu bir hizmettir. Ne kadar cok bagis edilirse o kadar cok yeni özellik programlamaya, görüşlerinizi işlemeye yatitim yapabiliriz. Biz sadece dünyayı değiştirmek isteyen iki kişiyiz. Bize yardım edermisin? ',
 sidebar_donate              : 'Bağışta bulun ',
 sidebar_thanks              : 'TEŞEKKÜRLER!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Cüzdanını nasıl acmak istersin? ',
