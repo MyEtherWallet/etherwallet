@@ -168,6 +168,12 @@
     "type":"default"
   },
   {
+    "address":"0x3c75226555FC496168d48B88DF83B95F16771F37",
+    "symbol":"DROP",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0x621d78f2ef2fd937bfca696cabaf9a779f59b3ed",
     "symbol":"DRP",
     "decimal":2,
