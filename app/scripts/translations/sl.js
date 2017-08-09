@@ -206,6 +206,7 @@ sidebar_TransHistory        : 'Zgodovina Transakcij ',
 sidebar_donation            : 'MyEtherWallet je brezplačna, odprto-kodna, platforma, ki skrbi za vaše privatne informacije in vašo varnost. Več donacij ko dobimo, več časa lahko posvetimo ustvarjanju novih funkcij, ter se lahko bolje posvetimo vašim željam, da tko da vam vedno lahko ponudimo karseda najboljši produkt. MyEtherWallet je ekipa dveh ljudi, ki se trudi spremeniti svet. Hvaležni bomo vaše pomoči. ',
 sidebar_donate              : 'Doniraj ',
 sidebar_thanks              : 'Najlepša vam hvala!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Kako bi želeli dostopati do vaše denarnice? ',

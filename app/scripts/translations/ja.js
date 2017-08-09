@@ -139,6 +139,7 @@ sidebar_TransHistory        : 'トランザクション履歴 ',
 sidebar_donation            : 'MyEtherWalletは、プライバシーとセキュリティのための無料のオープンソースサービスです。　寄付が増えることによって、新機能やフィードバックの反映を行い、よりユーザーの皆様のご希望に沿った制作の時間を増やす事が可能になります。私たちは、たった二人で世界を変えようとしています。お手伝いいただけますか? ',
 sidebar_donate              : '寄付する ',
 sidebar_thanks              : '感謝します!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Chrome Extension */
 CX_error_1                  : 'お財布が保存されていません。["Add Wallet"](/cx-wallet.html#add-wallet)をクリックして追加してください。 ',

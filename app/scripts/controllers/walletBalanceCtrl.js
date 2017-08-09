@@ -53,5 +53,12 @@ var walletBalanceCtrl = function($scope, $sce) {
         globalFuncs.removeTokenFromLocal(tokensymbol, $scope.wallet.tokenObjs);
     }
 
+    $scope.showDisplayOnTrezor = function() {
+        return ($scope.wallet != null && $scope.wallet.hwType === 'trezor');
+    }
+
+    $scope.displayOnTrezor = function() {
+        TrezorConnect.ethereumGetAddress($scope.wallet.path, function() {});
+    }
 };
 module.exports = walletBalanceCtrl;

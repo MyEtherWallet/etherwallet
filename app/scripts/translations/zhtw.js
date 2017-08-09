@@ -136,6 +136,7 @@ sidebar_TransHistory        : '交易歷史 ',
 sidebar_donation            : 'MyEtherWallet是注重你的隱私和安全的免費、開源服務。如果有更多捐贈，我們就能花更多時間開發新功能、聽取你的建議並且滿足你的需要。我們只是兩個想要改變世界的人。幫助我們？ ',
 sidebar_donate              : '捐贈 ',
 sidebar_thanks              : '謝謝你!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
 
 /* Decrypt Panel */
 decrypt_Access              : '你想要如何存取你的錢包？ ',
