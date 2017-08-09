@@ -34,8 +34,7 @@
 
   @@if (site === 'mew' ) {
     <div class="small announcement annoucement-danger">
-      <div class="container">"You can't patch stupid. A fool and his money will soon part." - advice from reddit. <br />
-      How do you avoid being the fool? Check the URL and look for a fat MYETHERWALLET LLC [US] Certificate up there. Look for https://www.myetherwallet.com/. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">Be safe &amp; secure</a>.</div>
+      <div class="container">Always check the URL and look for MYETHERWALLET LLC [US] Certificate up there. Look for https://www.myetherwallet.com/. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">Be safe &amp; secure</a>.</div>
     </div>
   }
 
