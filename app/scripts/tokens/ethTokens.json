@@ -6,6 +6,12 @@
     "type":"default"
   },
   {
+    "address":"0xaEc98A708810414878c3BCDF46Aad31dEd4a4557",
+    "symbol":"300",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x422866a8F0b032c5cf1DfBDEf31A20F4509562b0",
     "symbol":"ADST",
     "decimal":0,
@@ -38,6 +44,12 @@
   {
     "address":"0xAc709FcB44a43c35F0DA4e3163b117A17F3770f5",
     "symbol":"ARC",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x17052d51E954592C1046320c2371AbaB6C73Ef10",
+    "symbol":"ATH",
     "decimal":18,
     "type":"default"
   },
@@ -452,6 +464,12 @@
   {
     "address":"0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
     "symbol":"PLR",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x163733bcc28dbf26B41a8CfA83e369b5B3af741b",
+    "symbol":"PRS",
     "decimal":18,
     "type":"default"
   },
