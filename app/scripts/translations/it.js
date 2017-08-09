@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js     : commit 155e38315b59ef68474c05d29f233c529ba6e128
+// Last sync with en.js     : commit f08d88b679b4c9af4136fdcd8b75e92ecfffe7dd
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -98,6 +98,7 @@ x_JsonDesc                  : 'Questa è la tua chiave privata in formato JSON n
 x_Keystore                  : 'File Keystore (UTC / JSON · Consigliato · Crittografato) ',
 x_Keystore2                 : 'File Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Frase mnemonica ',
 x_ParityPhrase              : 'Frase di Parity ',
 x_Password                  : 'Password ',
@@ -276,13 +277,16 @@ MNEM_prev                   : 'Indirizzi precedenti ',
 
 /* Hardware wallets */
 x_Ledger                    : 'Ledger Wallet ',
-ADD_Ledger_0a               : 'Riapri MyEtherWallet su una connessione sicura (SSL) ',
+ADD_Ledger_0a               : 'Devi accedere a MyEtherWallet tramite una connessione sicura (SSL / HTTPS) per poterti collegare. ',
 ADD_Ledger_0b               : 'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/) ',
 ADD_Ledger_1                : 'Collega il tuo Ledger Wallet ',
 ADD_Ledger_2                : 'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto) ',
 ADD_Ledger_3                : 'Verifica che il supporto browser sia abilitato nelle impostazioni ',
 ADD_Ledger_4                : 'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_scan             : 'Collegati al Ledger Wallet ',
+
+ADD_MetaMask                : 'Collegati a MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Collegati al TREZOR ',
 
