@@ -270,6 +270,12 @@
     "type":"default"
   },
   {
+    "address":"0xED19698C0abdE8635413aE7AD7224DF6ee30bF22",
+    "symbol":"IMT",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0xc1E6C6C681B286Fb503B36a9dD6c1dbFF85E73CF",
     "symbol":"JET",
     "decimal":18,
