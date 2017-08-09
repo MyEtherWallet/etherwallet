@@ -137,6 +137,7 @@ sidebar_donation            : 'MyEtherWallet是注重你的隱私和安全的免
 sidebar_donate              : '捐贈 ',
 sidebar_thanks              : '謝謝你!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : '你想要如何存取你的錢包？ ',

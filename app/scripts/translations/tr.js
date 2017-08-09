@@ -137,6 +137,7 @@ sidebar_donation            : 'MyEtherWallet gizlilik ve güvenlike adanmış ü
 sidebar_donate              : 'Bağışta bulun ',
 sidebar_thanks              : 'TEŞEKKÜRLER!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Cüzdanını nasıl acmak istersin? ',

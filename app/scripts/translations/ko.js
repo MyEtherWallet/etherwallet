@@ -134,6 +134,7 @@ sidebar_donation            : 'MyEtherWallet은 개인정보보호와 보안을 
 sidebar_donate              : '기부 ',
 sidebar_thanks              : '감사합니다!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : '지갑 액세스 방법 선택 ',

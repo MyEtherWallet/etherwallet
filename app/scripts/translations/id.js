@@ -138,6 +138,7 @@ sidebar_donation            : 'MyEtherWallet dapat dipergunakan secara cuma-cuma
 sidebar_donate              : 'Kirim Donasi ',
 sidebar_thanks              : 'Terima Kasih!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Pilihan cara mengakses dompet Anda? ',

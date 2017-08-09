@@ -138,6 +138,7 @@ sidebar_thanks              : 'TACK!!! ',
 sidebar_TokenBal            : 'Token Saldon ',
 sidebar_TransHistory        : 'Transaktionshistorik ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'How would you like to access your wallet? ',

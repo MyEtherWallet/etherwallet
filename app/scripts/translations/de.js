@@ -134,6 +134,7 @@ sidebar_donation            : 'MyEtherWallet ist ein freier, quelloffener Servic
 sidebar_donate              : 'Spenden ',
 sidebar_thanks              : 'Dankeschön!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Wie möchtst du auf dein Wallet zugreifen? ',

@@ -134,6 +134,7 @@ sidebar_donation            : 'MyEtherWallet là một ứng dụng miễn phí 
 sidebar_donate              : 'Quyên Góp ',
 sidebar_thanks              : 'Xin Chân Thành Cảm Ơn!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Làm thế nào đễ truy cập vào ví của bạn? ',

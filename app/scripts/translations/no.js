@@ -134,6 +134,7 @@ sidebar_donation            : 'MyEtherWallet er en gratis åpen-kildekode-servic
 sidebar_donate              : 'Doner ',
 sidebar_thanks              : 'TAKK!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Hvordan ønsker du å få tilgang til lommeboken din? ',
