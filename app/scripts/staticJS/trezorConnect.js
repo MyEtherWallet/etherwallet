@@ -21,7 +21,7 @@ function _fwStrFix(obj, fw) {
     return obj;
 }
 
-this.TrezorConnect = (function () {
+
     'use strict';
 
     var chrome = window.chrome;
@@ -908,12 +908,6 @@ this.TrezorConnect = (function () {
         };
     }
 
-    var exports = new TrezorConnect();
+var connect = new TrezorConnect();
 
-    if (!IS_CHROME_APP && !DISABLE_LOGIN_BUTTONS) {
-        exports.renderLoginButtons();
-    }
-
-    return exports;
-
-}());
+module.exports = {TrezorConnect: connect};
