@@ -243,7 +243,7 @@ uiFuncs.notifier = {
     info: function(msg, duration = 5000) {
         this.addAlert("info", msg, duration);
     },
-    danger: function(msg, duration = 0) {
+    danger: function(msg, duration = 7000) {
         msg = msg.message ? msg.message : msg;
         // Danger messages can be translated based on the type of node
         msg = globalFuncs.getEthNodeMsg(msg);
@@ -254,7 +254,7 @@ uiFuncs.notifier = {
     },
     addAlert: function(type, msg, duration) {
         if (duration == undefined)
-            duration = 5000;
+            duration = 7000;
         // Save all messages by unique id for removal
         var id = Date.now();
         alert = this.buildAlert(id, type, msg);

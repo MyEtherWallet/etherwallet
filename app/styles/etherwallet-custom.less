@@ -263,16 +263,16 @@ input[type="password"]+.eye {
 
 // collapsable containers
 .collapse-container {
-  h2, h4 {
-    cursor: pointer;
+  h1 {
+    margin: .25rem 0;
   }
   .collapse-button {
     float: left;
     font-weight: 500;
     user-select: none;
-    padding: 10px;
-    margin: -10px -35px;
-    font-size: 24px;
+    padding: .25rem;
+    margin: .25rem -30px;
+    font-size: 1.6rem;
     line-height: 1.6;
   }
 }
@@ -341,6 +341,10 @@ h2 a.isActive {
   }
 }
 
+label .small {
+  font-size: .9rem;
+}
+
 label small {
   color: @gray-light
 }
@@ -363,6 +367,10 @@ label small {
   padding: @space 0;
   label.radio {
     padding: 0 @space-lg;
+    margin: .5rem 0;
+  }
+  h4 {
+    margin-top: 0;
   }
 }
 
@@ -480,111 +488,118 @@ label small {
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
-  li:nth-last-child(3) {
-    padding-bottom: 5px;
+  li {
+    border-left: 2px solid @brand-cust;
   }
-
-  li:nth-child(3),
-  li:nth-child(4),
-  li:nth-child(9) {
-    border-bottom: 1px solid @gray-lighter;
-    padding-bottom: 5px;
-  }
-  li:nth-child(3) + li,
-  li:nth-child(4) + li,
-  li:nth-child(7) + li {
-    padding-top: 5px;
-  }
-
   li:last-child {
     border-top: 1px solid @gray-lighter;
     padding-top: 5px;
   }
-
-  li {
-    border-left: 2px solid @brand-cust;
-  }
   li:nth-child(1),
   li:nth-child(2),
-  li:nth-child(3) {
+  li:nth-child(3),
+  li:nth-child(4) {
     border-left: 2px solid @brand-eth;
   }
-  li:nth-child(4) {
+  li:nth-child(5) {
     border-left: 2px solid @brand-etc;
   }
-  li:nth-child(5),
   li:nth-child(6),
   li:nth-child(7),
   li:nth-child(8),
-  li:nth-child(9), {
+  li:nth-child(9),
+  li:nth-child(10) {
     border-left: 2px solid @brand-test;
   }
-  li:nth-child(10) {
-    border-left: 2px solid @brand-rsk;
-    border-bottom: 1px solid @gray-lighter;
-  }
   li:nth-child(11) {
-    border-left: 2px solid @brand-exp;
-    border-bottom: 1px solid @gray-lighter;
+    border-left: 2px solid @brand-rsk;
   }
   li:nth-child(12) {
-    border-left: 2px solid @brand-music;
-    border-bottom: 1px solid @gray-lighter;
+    border-left: 2px solid @brand-exp;
   }
-  li:nth-child(13) {
+  li:nth-child(13),
+  li:nth-child(14) {
+    border-left: 2px solid @brand-music;
+  }
+  li:nth-child(15) {
     border-left: 2px solid @brand-ubq;
-    border-bottom: 1px solid @gray-lighter;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
   }
-
+  li:nth-child(4),
+  li:nth-child(5),
+  li:nth-child(10),
+  li:nth-child(11),
+  li:nth-child(12),
+  li:nth-child(14),
+  li:nth-child(15) {
+    border-bottom: 1px solid @gray-lighter;
+  }
 }
 
 header {
   margin-bottom: 1em;
 }
-header.ETH .nav-container                           {  border-top: 0.25rem solid @brand-eth;  }
-header.ETH + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-eth;  }
-header.ETH + .container .modal-content              {  border: 0.25rem solid @brand-eth;      }
-header.ETH + .container .alert-info                 {  background-color:@brand-eth;           }
+header.ETH {
+  .nav-container                         { border-top: 0.25rem solid @brand-eth;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-eth;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-eth;      }
+  & + .container .alert-info             { background-color:@brand-eth;           }
+}
 
-header.ETC .nav-container                           {  border-top: 0.25rem solid @brand-etc;  }
-header.ETC + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-etc;  }
-header.ETC + .container .modal-content              {  border: 0.25rem solid @brand-etc;      }
-header.ETC + .container .alert-info                 {  background-color:@brand-etc;           }
+header.ETC {
+  .nav-container                         { border-top: 0.25rem solid @brand-etc;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-etc;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-etc;      }
+  & + .container .alert-info             { background-color:@brand-etc;           }
+}
 
-header.Ropsten .nav-container                       {  border-top: 0.25rem solid @brand-test; }
-header.Ropsten + .container + .pre-footer + .footer {  border-top: 0.25rem solid @brand-test; }
-header.Ropsten + .container .modal-content          {  border: 0.25rem solid @brand-test;     }
-header.Ropsten + .container .alert-info             { background-color:@brand-test;           }
+header.Ropsten {
+  .nav-container                         { border-top: 0.25rem solid @brand-test; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-test; }
+  & + .container .modal-content          { border: 0.25rem solid @brand-test;     }
+  & + .container .alert-info             { background-color:@brand-test;          }
+}
 
-header.Kovan .nav-container                         {  border-top: 0.25rem solid @brand-test; }
-header.Kovan + .container + .pre-footer + .footer   {  border-top: 0.25rem solid @brand-test; }
-header.Kovan + .container .modal-content            {  border: 0.25rem solid @brand-test;     }
-header.Kovan + .container .alert-info               {  background-color:@brand-test;          }
+header.Kovan {
+  .nav-container                         { border-top: 0.25rem solid @brand-test; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-test; }
+  & + .container .modal-content          { border: 0.25rem solid @brand-test;     }
+  & + .container .alert-info             { background-color:@brand-test;          }
+}
 
-header.Rinkeby .nav-container                       {  border-top: 0.25rem solid @brand-test; }
-header.Rinkeby + .container + .pre-footer + .footer {  border-top: 0.25rem solid @brand-test; }
-header.Rinkeby + .container .modal-content          {  border: 0.25rem solid @brand-test;     }
-header.Rinkeby + .container .alert-info             {  background-color:@brand-test;          }
+header.Rinkeby {
+  .nav-container                         { border-top: 0.25rem solid @brand-test; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-test; }
+  & + .container .modal-content          { border: 0.25rem solid @brand-test;     }
+  & + .container .alert-info             { background-color:@brand-test;          }
+}
 
-header.RSK .nav-container                           {  border-top: 0.25rem solid @brand-rsk;  }
-header.RSK + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-rsk;  }
-header.RSK + .container .modal-content              {  border: 0.25rem solid @brand-rsk;      }
-header.RSK + .container .alert-info                 {  background-color: @brand-rsk;          }
+header.RSK {
+  .nav-container                         { border-top: 0.25rem solid @brand-rsk;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-rsk;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-rsk;      }
+  & + .container .alert-info             { background-color: @brand-rsk;          }
+}
 
-header.Custom .nav-container                        {  border-top: 0.25rem solid @brand-cust; }
-header.Custom + .container + .pre-footer + .footer  {  border-top: 0.25rem solid @brand-cust; }
-header.Custom + .container .modal-content           {  border: 0.25rem solid @brand-cust;     }
-header.Custom + .container .alert-info              {  background-color:@brand-cust;          }
+header.Custom {
+  .nav-container                         { border-top: 0.25rem solid @brand-cust; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-cust; }
+  & + .container .modal-content          { border: 0.25rem solid @brand-cust;     }
+  & + .container .alert-info             { background-color:@brand-cust;          }
+}
 
-header.EXP .nav-container                           {  border-top: 0.25rem solid @brand-exp;  }
-header.EXP + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-exp;  }
-header.EXP + .container .modal-content              {  border: 0.25rem solid @brand-exp;      }
-header.EXP + .container .alert-info                 {  background-color:@brand-exp;           }
+header.EXP {
+  .nav-container                         { border-top: 0.25rem solid @brand-exp;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-exp;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-exp;      }
+  & + .container .alert-info             { background-color:@brand-exp;           }
+}
 
-header.UBQ .nav-container                           {  border-top: 0.25rem solid @brand-ubq;  }
-header.UBQ + .container + .pre-footer + .footer     {  border-top: 0.25rem solid @brand-ubq;  }
-header.UBQ + .container .modal-content              {  border: 0.25rem solid @brand-ubq;      }
-header.UBQ + .container .alert-info                 {  background-color:@brand-ubq;           }
+header.UBQ {
+  .nav-container                         { border-top: 0.25rem solid @brand-ubq;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ubq;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-ubq;      }
+  & + .container .alert-info             { background-color:@brand-ubq;           }
+}
