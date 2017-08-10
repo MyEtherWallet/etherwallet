@@ -100,6 +100,7 @@ x_JsonDesc                  : '這是未加密的JSON格式私鑰檔。這表示
 x_Keystore                  : 'Keystore 檔 (UTC / JSON · 推薦 · 經過加密) ',
 x_Keystore2                 : 'Keystore 檔 (UTC / JSON) ',
 x_KeystoreDesc              : '此Keystore檔和Mist錢包相容，因此你可以輕鬆地匯入錢包。我們推薦你下載並備份此檔案。 ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : '助憶口令 ',
 x_ParityPhrase              : 'Parity口令 ',
 x_Password                  : '密碼 ',
@@ -152,12 +153,16 @@ MNEM_prev                   : '之前的地址 ',
 
 /* Hardware wallets */
 x_Ledger                    : 'Ledger Wallet 錢包',
+ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_1                : '連接至你的 Ledger Wallet ',
 ADD_Ledger_2                : '開啟基於以太坊開發的應用程式（或一個寫成合約的應用程式） ',
 ADD_Ledger_3                : '確認已經開啟設定選項中的瀏覽器支援選項',
 ADD_Ledger_4                : '如果在設定選項中找不到瀏覽器支援選項，請確認你的韌體版本新於[1.2版](https://www.ledgerwallet.com/apps/manager)',
 ADD_Ledger_0b               : '以 [Chrome](https://www.google.com/chrome/browser/desktop/) 或 [Opera](https://www.opera.com/) 瀏覽器重新開啟MyEtherWallet',
 ADD_Ledger_scan             : '連接至 Ledger Wallet ',
+
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR 錢包 ',
 ADD_Trezor_scan             : '連接至 TREZOR ',
 
@@ -171,6 +176,10 @@ ADD_Radio_3                 : '貼上/輸入 你的私鑰 ',
 ADD_Radio_4                 : '監視一個帳戶 ',
 ADD_Radio_5                 : '貼上/輸入 你的助憶口令 ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : '新增一個暱稱 ',
 ADD_Label_3                 : '你的錢包經過加密。請輸入密碼。 ',
@@ -180,6 +189,7 @@ ADD_Label_5                 : '輸入地址 ',
 ADD_Label_6                 : '解鎖你的錢包 ',
 ADD_Label_6_short           : '解鎖 ',
 ADD_Label_7                 : '新增帳戶 ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* My Wallet */
 MYWAL_Nick                  : '錢包暱稱 ',
@@ -261,6 +271,7 @@ OFFLINE_Step2_Label_3       : '每單位gas的費用',
 OFFLINE_Step2_Label_3b      : '這會顯示於你步驟一連網裝置上。',
 OFFLINE_Step2_Label_4       : 'Gas 總量 ',
 OFFLINE_Step2_Label_4b      : '21000 是預設的gas總量（單純轉錢）。如果你是要執行合約，則會不一樣。多給的gas如果沒有用完會退還給你。',
+OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : '這會顯示於你步驟一連網裝置上。',
 OFFLINE_Step2_Label_6       : '交易的Data ',
 OFFLINE_Step2_Label_6b      : '並非必需的，Data通常只有在你執行合約的時候才需要。 ',
@@ -325,6 +336,7 @@ MSG_info3                   : '填入這個訊息的源由來避免被用在其�
 VIEWWALLET_Subtitle         : '這可以讓你下載不同版本的私鑰並且重新印製出你的紙錢包。你可能會需要這個功能來將你的帳戶[讀入Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)。 如果你想要檢查你的帳號餘額，我們建議你使用區塊鏈瀏覽網頁像是[etherscan.io](http://etherscan.io/)。 ',
 VIEWWALLET_Subtitle_Short   : '這可以讓你下載不同版本的私鑰並且重新印製出你的紙錢包。 ',
 VIEWWALLET_SuccessMsg       : '成功！這些是你的錢包內容。 ',
+VIEWWALLET_ShowPrivKey      : '(show)',
 
 /* Chrome Extension */
 CX_error_1                  : '你沒有儲存過任何錢包。 點擊["新增錢包"](/cx-wallet.html#add-wallet)來新增一個錢包！ ',
@@ -367,6 +379,8 @@ ERROR_32                    : 'Could not connect to the node. Refresh your page,
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : '有效的地址 ',
 SUCCESS_2                   : '成功解密錢包 ',
