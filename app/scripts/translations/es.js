@@ -97,6 +97,7 @@ x_JsonDesc                  : 'Esta es tu clave privada sin encriptar en formato
 x_Keystore                  : 'Archivo Keystore (UTC / JSON · Recomendado · Encriptado) ',
 x_Keystore2                 : 'Archivo Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Este archivo Keystore/JSON concuerda con el formato usado por Mist para una fácil importación en el futuro. Es el archivo recomendado para descargar y guardar como copia de seguridad. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic Phrase ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Contraseña ',
@@ -151,6 +152,10 @@ ADD_Radio_3                 : 'Pega/escribe tu clave privada ',
 ADD_Radio_4                 : 'Añade una cuenta para supervisar ',
 ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Personalizado',
 ADD_Label_2                 : 'Crear un alias: ',
 ADD_Label_3                 : 'Tu cartera está encriptada. Introduce tu contraseña ',
@@ -160,6 +165,7 @@ ADD_Label_5                 : 'Introduce la dirección ',
 ADD_Label_6                 : 'Desbloquea tu cartera ',
 ADD_Label_6_short           : 'Desbloquear ',
 ADD_Label_7                 : 'Añadir cuenta ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Si quieres generar varias carteras, puedes hacerlo aquí ',
@@ -271,6 +277,8 @@ MYWAL_Content_3             : 'Si en el futuro quieres utilizar esta cartera con
 VIEWWALLET_Subtitle         : 'Esto te permite descargar múltiples versiones de claves privadas e imprimir de nuevo tu cartera en papel. Puede que te interese hacer esto para [importar tu cuenta en Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si quieres comprobar tu saldo, recomendamos utilizar un explorador de blockchain como [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Esto te permite descargar múltiples versiones de claves privadas e imprimir de nuevo tu cartera en papel. ',
 VIEWWALLET_SuccessMsg       : '¡Enhorabuena! Estos son los detalles de tu cartera. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : 'No tienes ninguna cartera guardada. ¡Haz clic en ["Añadir cartera"](/cx-wallet.html#add-wallet) para añadir una! ',
@@ -307,6 +315,7 @@ SWAP_rec_add                : "Tu dirección de destino ",
 SWAP_start_CTA              : "Iniciar intercambio ",
 SWAP_ref_num                : "Tu número de referencia ",
 SWAP_time                   : "Tiempo restante para enviar ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Pedido iniciado ",
 SWAP_progress_2             : "Esperando recibir tus ", // Waiting for your BTC...
 SWAP_progress_3             : "¡Recibido! ", // ETH Received!
@@ -339,6 +348,9 @@ ADD_Ledger_4                : 'Si no encuentras la opción "Browser Support" en 
 ADD_Ledger_0a               : 'Volver a abrir MyEtherWallet en una conexión segura (SSL) ',
 ADD_Ledger_0b               : 'Volver a abrir MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) u [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Conectar a Ledger Wallet ',
+  
+ADD_MetaMask                : 'Connectar a MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Conectar a TREZOR ',
 ADD_Trezor_select           : 'Esto es una semilla TREZOR ',
@@ -376,9 +388,12 @@ ERROR_28                    : '**Necesitas tu archivo Keystore/JSON y la contras
 ERROR_29                    : 'Introduce un user & password válido. ', // 29
 ERROR_30                    : 'Introduce un name válido (7+ characters, limited punctuation) ', // 30
 ERROR_31                    : 'Introduce un secret phrase válido. ', // 31
-ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Dirección válida ',
 SUCCESS_2                   : 'Cartera descifrada con éxito ',
