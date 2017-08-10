@@ -97,6 +97,7 @@ x_JsonDesc                  : '이것은 암호화되지 않은 JSON 형식의 �
 x_Keystore                  : 'Keystore 파일 (UTC / JSON · 권장 · 암호화됨) ',
 x_Keystore2                 : 'Keystore 파일 (UTC / JSON) ',
 x_KeystoreDesc              : '이 Keystore / JSON 파일은 Mist에서 사용하는 형식과 일치하므로 나중에 쉽게 가져올 수 있습니다. 다운로드하고 백업하는 것을 권장합니다. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic 문구 ',
 x_ParityPhrase              : 'Parity 문구 ',
 x_Password                  : '비밀번호 ',
@@ -156,6 +157,9 @@ ADD_Ledger_4                : '설정에서 Browser Support를 확인할 수 없
 ADD_Ledger_0a               : 'MyEtherWallet을 보안 연결(SSL)로 다시 연결해주세요. ',
 ADD_Ledger_0b               : 'MyEtherWallet을 [Chrome](https://www.google.com/chrome/browser/desktop/) 또는 [Opera](https://www.opera.com/) 브라우저로 다시 열어주세요. ',
 ADD_Ledger_scan             : 'Ledger Wallet 에 연결하기 ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'TREZOR 에 연결하기 ',
 
@@ -169,6 +173,10 @@ ADD_Radio_3                 : '개인 키를 복사해서 입력해주세요. ',
 ADD_Radio_4                 : '모니터링 계좌 추가 ',
 ADD_Radio_5                 : 'Mnemonic 붙여넣기/입력 ',
 ADD_Radio_5_Path            : 'HD derivation 경로 선택 ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : '커스텀 ',
 ADD_Label_2                 : '닉네임 만들기 ',
 ADD_Label_3                 : '당신의 지갑은 암호화되었습니다. 비밀번호를 입력해주세요. ',
@@ -369,6 +377,8 @@ ERROR_32                    : '노드에 연결할 수 없습니다. 새로고�
 ERROR_33                    : '입찰자의 주소와 잠금 해제된 지갑이 일치하지 않습니다. ',
 ERROR_34                    : '해당 이름이 문자열의 이름과 일치하지 않습니다. ',
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : '유효한 주소 ',
 SUCCESS_2                   : '지갑이 성공적으로 복호화 되었습니다. ',
