@@ -97,6 +97,7 @@ x_JsonDesc                  : 'Định Dạng JSON là một tập tin chứa d�
 x_Keystore                  : 'Định Dạng Keystore (UTC / JSON) (Đã mã hoá. Định Dạng này sử dụng cho Mist) ',
 x_Keystore2                 : 'Định Dạng Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Cụm từ dễ nhớ ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Mật Khẩu ',
@@ -151,6 +152,10 @@ ADD_Radio_3                 : 'Dán/Gõ Private Key Ví Của Bạn ',
 ADD_Radio_4                 : 'Thêm Tài Khoản đễ Theo Dõi ',
 ADD_Radio_5                 : 'Dán/Điền ký tự dễ nhớ của bạn ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : 'Tạo Tên Gọi: ',
 ADD_Label_3                 : 'Ví của bạn sẽ được giải mã. Xin vui lòng điền mật khẩu ',
@@ -160,6 +165,7 @@ ADD_Label_5                 : 'Điền Địa Chỉ Ví ',
 ADD_Label_6                 : 'Mở Khoá Cho Ví Của Bạn ',
 ADD_Label_6_short           : 'Mở Khoá ',
 ADD_Label_7                 : 'Thêm Tài Khoản ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Nếu bạn muốn tạo nhiều ví cùng một lúc, bạn có thể thực hiện tại đây ',
@@ -274,6 +280,7 @@ SWAP_rec_add                : "Your Receiving Address ",
 SWAP_start_CTA              : "Start Swap ",
 SWAP_ref_num                : "Your reference number ",
 SWAP_time                   : "Time remaining to send ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Order Initiated ",
 SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
 SWAP_progress_3             : "Received! ", // ETH Received!
@@ -303,6 +310,7 @@ ADD_Ledger_4                : 'Nếu mục Hổ Trợ dành cho Trình duyệt k
 ADD_Ledger_0a               : 'Hảy mở lại trang MyEtherWallet trên một kết nối có tính bảo mật (SSL) ',
 ADD_Ledger_0b               : 'Sử dụng [Chrome](https://www.google.com/chrome/browser/desktop/) hoặc [Opera](https://www.opera.com/) Để mở lại trang MyEtherWallet ',
 ADD_Ledger_scan             : 'Kết nối với Ledger Wallet ',
+ADD_MetaMask                : 'Connect to MetaMask ',
 
 /* Deploy Contracts */
 DEP_generate                : 'Tạo Bytecode ',
@@ -331,6 +339,8 @@ MYWAL_Content_3             : 'Nếu bạn muốn sử dụng địa chỉ Ví n
 VIEWWALLET_Subtitle         : 'Việc này cho phép bạn tải về các phiên bản khác nhau của Private Key và in lại ví giấy của bạn. Bạn có thể muốn làm điều này để [nhập tài khoản của bạn vào Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Nếu bạn muốn kiễm tra số dư của bạn, chúng tôi khuyên bạn sử dụng một blockchain explorer như [etherscan.io] (http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Việc này cho phép bạn tải về các phiên bản khác nhau của Private Key và in lại ví giấy của bạn. ',
 VIEWWALLET_SuccessMsg       : 'Đã Thành Công! Đây là thông tin chi tiết về Ví của bạn. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Mnemonic */
 MNEM_1                      : 'Xin vui lòng, Chọn địa chỉ mà bạn muốn tương tác. ',
@@ -379,6 +389,8 @@ ERROR_32                    : 'Could not connect to the node. Refresh your page,
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Địa Chỉ Hợp Lệ ',
 SUCCESS_2                   : 'Ví đã được giải mã thành công ',
