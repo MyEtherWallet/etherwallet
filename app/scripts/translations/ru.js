@@ -100,6 +100,7 @@ x_JsonDesc                  : 'Это Ваш незашифрованный за
 x_Keystore                  : 'Файл Keystore (UTC / JSON · рекомендуется · зашифрован) ',
 x_Keystore2                 : 'Файл Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Этот файл Keystore использует формат совместимый с Mist. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Кодовая фраза ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Пароль ',
@@ -154,6 +155,10 @@ ADD_Radio_3                 : 'Вставить или ввести Ваш за�
 ADD_Radio_4                 : 'Добавить счёт в список слежения ',
 ADD_Radio_5                 : 'Скопируйте или введите кодовую фразу ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : '(Custom) ',
 ADD_Label_2                 : 'Присвоить название: ',
 ADD_Label_3                 : 'Ваш кошелёк зашифрован.  Пожалуйста, введите пароль ',
@@ -163,6 +168,7 @@ ADD_Label_5                 : 'Введите адрес ',
 ADD_Label_6                 : 'Отпереть кошелёк ',
 ADD_Label_6_short           : 'Отпереть ',
 ADD_Label_7                 : 'Добавить счёт ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Если Вы хотите создать несколько кошельков, Вы можете сделать это здесь ',
@@ -270,6 +276,8 @@ MYWAL_Content_3             : 'Если Вы планируете в будущ�
 VIEWWALLET_Subtitle         : 'Позволяет скачать закрытые ключи в различных форматах, а также повторно напечатать Ваши бумажные кошельки. Вам это понадобится, когда Вы захотите [импортировать Ваши счета в geth или Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Для проверки баланса Ваших счетов мы рекомендуем использовать браузер блокчейна, например [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Позволяет Вам скачать Ваши закрытые ключи в различных форматах, а также повторно напечатать Ваши бумажные кошельки. ',
 VIEWWALLET_SuccessMsg       : 'Поздравляем! Вот информация о Вашем кошельке. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : 'У Вас нет сохранённых кошельков. Чтобы создать кошелёк, нажмите ["Создать кошелёк"](/cx-wallet.html#add-wallet)! ',
@@ -306,6 +314,7 @@ SWAP_rec_add                : "Адрес получателя ",
 SWAP_start_CTA              : "Начать обмен ",
 SWAP_ref_num                : "Идентификатор операции ",
 SWAP_time                   : "Время до отправки ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Заявка выставлена ",
 SWAP_progress_2             : "Ждём получения ваших ", // Waiting for your BTC...
 SWAP_progress_3             : "Получено! ", // ETH Received!
@@ -343,6 +352,9 @@ ADD_Ledger_4                : 'Если в настройках нет испо�
 ADD_Ledger_0a               : 'Перезапустите MyEtherWallet через безопасное (SSL) соединение ',
 ADD_Ledger_0b               : 'Перезапустите MyEtherWallet с браузере [Chrome](https://www.google.com/chrome/browser/desktop/) или [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Подключиться к Ledger Wallet ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Подключиться к TREZOR ',
 ADD_Trezor_select           : 'Это код восстановления TREZOR ',
@@ -384,6 +396,8 @@ ERROR_32                    : 'Could not connect to the node. Refresh your page,
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Адрес указан верно ',
 SUCCESS_2                   : 'Кошелёк успешно расшифрован ',
