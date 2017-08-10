@@ -166,6 +166,13 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'OHNI ICO. Restoration of our communities!'
+},
+{
+  // Avalon
+  to:         '0xeD247980396B10169BB1d36f6e278eD16700a60f',
+  gasLimit:   60000,
+  data:       '',
+  msg:        'Avalon ICO starts August 25, 2017 - avalon.nu'
 }
 ]
 
