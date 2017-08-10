@@ -151,6 +151,10 @@ ADD_Radio_3                 : 'Kopiere/Tippe deinen privaten Schlüssel ein ',
 ADD_Radio_4                 : 'Kontoadresse zur Beobachtung hinzufügen ',
 ADD_Radio_5                 : 'Füge deinen Mnemonic ein ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Benutzerdefiniert ',
 ADD_Label_2                 : 'Wähle ein Kürzel ',
 ADD_Label_3                 : 'Deine Datei ist verschlüsselt. Bitte gib das Passwort ein ',
@@ -271,6 +275,8 @@ MYWAL_Content_3             : 'Wenn du dieses Wallet in Zukunft mit MyEtherWalle
 VIEWWALLET_Subtitle         : 'Dies erlaubt dir den Download verschiedener Versionen deines privaten Schlüssel sowie das erneute Drucken deines Papier-Wallets. Es wird empfohlen, dies zu tun um [Deinen Account in Geth/Mist zu importieren.](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Zum Überprüfen deines Kontostands empfehlen wir, einen Blockchain Explorer wie [etherscan.io](http://etherscan.io/) zu verwenden. ',
 VIEWWALLET_Subtitle_Short   : 'Dies erlaubt dir den Download verschiedener Versionen deines privaten Schlüssel sowie das erneute Drucken deines Papier-Wallets. ',
 VIEWWALLET_SuccessMsg       : 'Erfolgreich! Hier sind die Daten deines Wallets. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : 'Du hast keine Wallets gespeichert. Klicke ["Wallet hinzufügen"](/cx-wallet.html#add-wallet) um eines hinzuzufügen! ',
@@ -307,6 +313,7 @@ SWAP_rec_add                : "Deine Empfangsadresse ",
 SWAP_start_CTA              : "Starte Wechsel ",
 SWAP_ref_num                : "Deine Referenznummer ",
 SWAP_time                   : "Zum Senden verbleibende Zeit   ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Auftrag initialisiert ",
 SWAP_progress_2             : "Warte auf deine ", // Waiting for your BTC...
 SWAP_progress_3             : "Erhalten! ", // ETH Received!
@@ -339,6 +346,9 @@ ADD_Ledger_4                : 'If no Browser Support is found in settings, verif
 ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Connect to Ledger Wallet ',
+
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Zu TREZOR Verbinden ',
 ADD_Trezor_select           : 'Dies ist ein TREZOR seed ',
@@ -380,6 +390,8 @@ ERROR_32                    : 'Verbindung zum Knoten nicht möglich. Refresh you
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Gültige Addresse ',
 SUCCESS_2                   : 'Wallet erfolgreich entschlüsselt ',
