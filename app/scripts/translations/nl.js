@@ -97,6 +97,7 @@ x_JsonDesc                  : 'Dit is het onversleutelde, JSON formaat van je pr
 x_Keystore                  : 'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld) ',
 x_Keystore2                 : 'Keystore Bestand (UTC / JSON) ',
 x_KeystoreDesc              : 'Dit Keystore bestand voldoet aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic Zin ',
 x_ParityPhrase              : 'Parity herstelzin ',
 x_Password                  : 'Wachtwoord ',
@@ -158,6 +159,7 @@ ADD_Ledger_0b               : 'Her-open MyEtherWallet door gebruik te maken van 
 ADD_Ledger_scan             : 'Verbind met Ledger Wallet ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Verbind met TREZOR ',
+ADD_MetaMask                : 'Connect to MetaMask ',
 
 /* Add Wallet */
 ADD_Label_1                 : 'Wat wil je doen? ',
