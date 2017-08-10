@@ -99,6 +99,7 @@ x_JsonDesc                  : 'This is the unencrypted, JSON format of your priv
 x_Keystore                  : 'Keystore File (UTC / JSON · Recommended · Encrypted) ',
 x_Keystore2                 : 'Keystore File (UTC / JSON) ',
 x_KeystoreDesc              : 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic Phrase ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Password ',
@@ -158,6 +159,9 @@ ADD_Ledger_4                : 'If no Browser Support is found in settings, verif
 ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Connect to Ledger Wallet ',
+
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 
@@ -171,6 +175,10 @@ ADD_Radio_3                 : 'Paste/Type Your Private Key ',
 ADD_Radio_4                 : 'Add an Account to Watch ',
 ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : 'Create a Nickname ',
 ADD_Label_3                 : 'Your wallet is encrypted. Please enter the password. ',
@@ -371,6 +379,8 @@ ERROR_32                    : 'Could not connect to the node. Refresh your page,
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank"  rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
