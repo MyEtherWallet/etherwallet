@@ -54,6 +54,12 @@
     "type":"default"
   },
   {
+    "address":"0xeD247980396B10169BB1d36f6e278eD16700a60f",
+    "symbol":"AVA 🐴",
+    "decimal":4,
+    "type":"default"
+  },
+  {
     "address":"0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
     "symbol":"BAT",
     "decimal":18,
