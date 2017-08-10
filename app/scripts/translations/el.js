@@ -100,6 +100,7 @@ x_JsonDesc                  : 'Αυτή είναι η μη κρυπτογραφ�
 x_Keystore                  : 'Αρχείο Keystore (UTC / JSON · Συνιστάται · Κρυπτογραφημένο) ',
 x_Keystore2                 : 'Αρχείο Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Αυτό το αρχείο Keystore έχει την ίδια μορφή που χρησιμοποιείται από το Mist ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Μνημονικό ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Συνθηματικό ',
@@ -167,6 +168,7 @@ ADD_Label_5                 : 'Εισαγάγετε τη διεύθυνση ',
 ADD_Label_6                 : 'Ξεκλειδώστε το πορτοφόλι σας ',
 ADD_Label_6_short           : 'Ξεκλείδωμα ',
 ADD_Label_7                 : 'Προσθήκη λογαριασμού ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Αν επιθυμείτε να δημιουργήσετε πολλά πορτοφόλια, μπορείτε να το κάνετε εδώ: ',
