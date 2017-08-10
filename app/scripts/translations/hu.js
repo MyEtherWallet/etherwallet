@@ -96,6 +96,7 @@ x_JsonDesc                  : 'Ez a titkosítotatlan, JSON formátumú változat
 x_Keystore                  : 'Keystore Fájl (UTC / JSON · Ajánlott · Titkosított) ',
 x_Keystore2                 : 'Keystore Fájl (UTC / JSON) ',
 x_KeystoreDesc              : 'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonikus frázis ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Jelszó ',
@@ -152,6 +153,10 @@ ADD_Radio_3                 : 'Illeszd be vagy írd be a Privát Kulcsodat ',
 ADD_Radio_4                 : 'Tárca hozzáadása megfigyelésre ',
 ADD_Radio_5                 : 'Másold/írd be a mnemonikus frázist ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : 'Hozz létre egy Nicknevet: ',
 ADD_Label_3                 : 'A Tárcád titkosítva van. Írj be a jelszót ',
@@ -161,6 +166,7 @@ ADD_Label_5                 : 'Add meg a címet ',
 ADD_Label_6                 : 'Tárcád feloldása ',
 ADD_Label_6_short           : 'Feloldás ',
 ADD_Label_7                 : 'Számla Hozzáadása ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Ha több tárcát szeretnél egyszerre generálni, azt megteheted itt ',
@@ -265,6 +271,8 @@ MYWAL_Content_3             : 'Ha használni akarod ezt a tárcát a MyEtherWall
 VIEWWALLET_Subtitle         : 'Ez lehetővé teszi számodra, hogy különböző változatú privát kulcsokat tölts le és újranyomtasd a papírtárcádat.  Ezt megteheted úgy, hogy [importálod a számládat a Geth/Mist-be](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Ha ellenőrizni akarod a számládat, azt ajánljuk, hogy használj blokklánc explorert mint az [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Ez lehetővé teszi számodra, hogy különböző változatú privát kulcsokat tölts le és újranyomtasd a papírtárcádat. ',
 VIEWWALLET_SuccessMsg       : 'Sikerült! Itt vannak a tárcád részletei. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Mnemonic */
 MNEM_1                      : 'Válaszd ki a címet amelyiket használni szeretnéd. ',
@@ -311,6 +319,7 @@ SWAP_rec_add                : "Your Receiving Address ",
 SWAP_start_CTA              : "Start Swap ",
 SWAP_ref_num                : "Your reference number ",
 SWAP_time                   : "Time remaining to send ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Order Initiated ",
 SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
 SWAP_progress_3             : "Received! ", // ETH Received!
@@ -341,6 +350,7 @@ WARN_Send_Link              : 'You arrived via a link that has the address, valu
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
+ADD_MetaMask                : 'Connect to MetaMask ',
 
 /* Error Messages */
 ERROR_0                     : 'Kérlek írj be érvényes összeget ',
@@ -379,6 +389,8 @@ ERROR_32                    : 'Could not connect to the node. Refresh your page,
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Érvényes cím ',
 SUCCESS_2                   : 'Tárca sikeresen dekódolva ',
