@@ -82,6 +82,7 @@ NAV_Multisig                : 'Multisig ',
 NAV_MyWallets               : '我的钱包 ',
 NAV_Offline                 : '离线发送 ',
 NAV_SendEther               : '发送以太币 / 发送代币 ', //combined these tabs
+NAV_SendTokens              : 'Send Tokens ',
 NAV_SignMsg                 : 'Sign Message ',
 NAV_Swap                    : 'Swap ',
 NAV_ViewWallet              : '查看钱包信息 ',
@@ -99,6 +100,7 @@ x_JsonDesc                  : '这是你的未加密JSON格式的私钥文件。
 x_Keystore                  : 'Keystore File (UTC / JSON · 推荐加密的) ',
 x_Keystore2                 : 'Keystore File (UTC / JSON) ',
 x_KeystoreDesc              : '这个Keystore/JSON文件和Mist、Geth使用的钱包文件是一样的，所以将来你可以非常容易地导入。 It is the recommended file to download and back up.推荐下载和备份这个文件。 ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic Phrase ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : '密码 ',
@@ -153,6 +155,10 @@ ADD_Radio_3                 : '粘贴/输入你的私钥 ',
 ADD_Radio_4                 : '添加一个查看账户 ',
 ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : '生成一个钱包昵称： ',
 ADD_Label_3                 : '你的钱包被加密，请输入密码： ',
@@ -162,6 +168,7 @@ ADD_Label_5                 : '输入地址： ',
 ADD_Label_6                 : '解锁钱包 ',
 ADD_Label_6_short           : '解锁 ',
 ADD_Label_7                 : '增加账户 ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : '如果你想生成多个钱包，你可以在这里进行： ',
@@ -273,6 +280,8 @@ MYWAL_Content_3             : '如果你想将来在MyEtherWallet插件中使用
 VIEWWALLET_Subtitle         : '这允许你下载不同格式的私钥和重新打印你的纸钱包。为了将[你的账户导入到Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)，你可能需要这个操作。如果你想查看你的余额，我们推荐使用区块浏览器，例如[etherscan.io](http://etherscan.io/)。 ',
 VIEWWALLET_Subtitle_Short   : '这允许你下载不同格式的私钥和重新打印你的纸钱包。 ',
 VIEWWALLET_SuccessMsg       : '成功！这是你的钱包细节！ ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : '你没有已保存的钱包。点击["添加钱包"](/cx-wallet.html#add-wallet)，添加一个钱包。 ',
@@ -309,6 +318,7 @@ SWAP_rec_add                : "Your Receiving Address ",
 SWAP_start_CTA              : "Start Swap ",
 SWAP_ref_num                : "Your reference number ",
 SWAP_time                   : "Time remaining to send ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Order Initiated ",
 SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
 SWAP_progress_3             : "Received! ", // ETH Received!
@@ -341,6 +351,9 @@ ADD_Ledger_4                : 'If no Browser Support is found in settings, verif
 ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Connect to Ledger Wallet ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
@@ -382,6 +395,8 @@ ERROR_32                    : 'Could not connect to the node. Refresh your page,
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : '有效地址 ',
 SUCCESS_2                   : '钱包解密成功 ',
