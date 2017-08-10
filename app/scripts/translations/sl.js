@@ -207,6 +207,7 @@ sidebar_donation            : 'MyEtherWallet je brezplačna, odprto-kodna, platf
 sidebar_donate              : 'Doniraj ',
 sidebar_thanks              : 'Najlepša vam hvala!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Kako bi želeli dostopati do vaše denarnice? ',

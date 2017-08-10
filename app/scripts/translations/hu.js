@@ -134,6 +134,7 @@ sidebar_donation            : 'A MyEtherWallet egy szabad, nyílt forrású szol
 sidebar_donate              : 'Adományozok ',
 sidebar_thanks              : 'KÖSZÖNJÜK!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Hogyan szeretnéd elérni a tárcádat? ',

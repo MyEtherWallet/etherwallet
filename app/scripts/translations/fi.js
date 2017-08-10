@@ -138,6 +138,7 @@ sidebar_donation            : 'MyEtherWallet on ilmainen, avoimen lähdekoodin p
 sidebar_donate              : 'Lahjoita ',
 sidebar_thanks              : 'KIITOS!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Kuinka haluaisit saada pääsyn lompakkoosi? ',

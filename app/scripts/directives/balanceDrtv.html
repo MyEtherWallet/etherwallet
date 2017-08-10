@@ -15,6 +15,12 @@
         <li><a href="" ng-click="displayOnTrezor()" translate="sidebar_DisplayOnTrezor">Display address on TREZOR</a></li>
       </ul>
     </div>
+    <div ng-show="showDisplayOnLedger()">
+      <h5 translate="sidebar_DisplayOnLedger">Display address on Ledger</h5>
+      <ul class="account-info">
+        <li><a href="" ng-click="displayOnLedger()" translate="sidebar_DisplayOnLedger">Display address on Ledger</a></li>
+      </ul>
+    </div>    
     <h5 translate="sidebar_AccountBal">Account Balance</h5>
     <ul class="account-info point" ng-dblclick="showLongBal=!showLongBal" title="{{wallet.balance}} (Double-Click)">
       <li>

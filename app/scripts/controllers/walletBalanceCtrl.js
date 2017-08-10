@@ -60,5 +60,15 @@ var walletBalanceCtrl = function($scope, $sce) {
     $scope.displayOnTrezor = function() {
         TrezorConnect.ethereumGetAddress($scope.wallet.path, function() {});
     }
+
+    $scope.showDisplayOnLedger = function() {
+        return ($scope.wallet != null && $scope.wallet.hwType === 'ledger');
+    }
+
+    $scope.displayOnLedger = function() {
+        var app = new ledgerEth($scope.wallet.getHWTransport());
+        app.getAddress($scope.wallet.path, function(){}, true, false);
+    }
+
 };
 module.exports = walletBalanceCtrl;

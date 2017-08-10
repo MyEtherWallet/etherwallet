@@ -134,6 +134,7 @@ sidebar_donation            : 'MyEtherWallet jest darmową, otwarto-źródłową
 sidebar_donate              : 'Prześlij darowiznę ',
 sidebar_thanks              : 'DZIĘKUJEMY!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Jak chciałbyś uzyskać dostęp do Twojego portfela? ',

@@ -140,6 +140,7 @@ sidebar_donation            : 'MyEtherWalletは、プライバシーとセキュ
 sidebar_donate              : '寄付する ',
 sidebar_thanks              : '感謝します!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Chrome Extension */
 CX_error_1                  : 'お財布が保存されていません。["Add Wallet"](/cx-wallet.html#add-wallet)をクリックして追加してください。 ',

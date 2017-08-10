@@ -137,6 +137,7 @@ sidebar_donation            : 'MyEtherWallet — это бесплатный с�
 sidebar_donate              : 'Пожертвовать ',
 sidebar_thanks              : 'СПАСИБО!!! ',
 sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Каким способом Вы хотите получать доступ к своему кошельку? ',
