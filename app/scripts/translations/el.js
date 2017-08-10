@@ -148,12 +148,17 @@ decrypt_Select              : 'Επιλέξτε πορτοφόλι: ',
 ADD_Label_1                 : 'Τι θα θέλατε να κάνετε; ',
 ADD_Radio_1                 : 'Δημιουργία νέου πορτοφολιού ',
 ADD_Radio_2                 : 'Επιλέξτε το αρχείο πορτοφολιού σας (Keystore / JSON) ',
+ADD_Radio_2_alt             : 'Επιλέξτε το αρχείο πορτοφολιού σας ',
 ADD_Radio_2_short           : 'ΕΠΙΛΕΞΤΕ ΑΡΧΕΙΟ ΠΟΡΤΟΦΟΛΙΟΥ... ',
 ADD_Radio_3                 : 'Επικολλήστε/πληκτρολογήστε το ιδιωτικό κλειδί σας ',
 ADD_Radio_4                 : 'Προσθήκη λογαριασμού προς παρακολούθηση ',
 ADD_Radio_5                 : 'Επικολλήστε/πληκτρολογήστε το μνημονικό σας ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
 ADD_Radio_5_PathCustom      : 'Custom',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Label_2                 : 'Δημιουργία ψευδωνύμου: ',
 ADD_Label_3                 : 'Το πορτοφόλι σας είναι κρυπτογραφημένο. Παρακαλούμε εισαγάγετε το συνθηματικό ',
 ADD_Label_4                 : 'Προσθήκη λογαριασμού προς παρακολούθηση ',
@@ -258,7 +263,7 @@ MYWAL_RemoveWal             : 'Αφαίρεση πορτοφολιού: ',
 MYWAL_WatchOnly             : 'Οι λογαρισμοί μόνο-προς-παρακολούθηση ',
 MYWAL_Viewing               : 'Προβάλλεται το πορτοφόλι ',
 MYWAL_Hide                  : 'Απόκρυψη πληροφοριών πορτοφολιού ',
-MYWAL_Edit                  : 'Επεξεργασία πορτοφολιού ',
+MYWAL_Edit_2                : 'Επεξεργασία πορτοφολιού ',
 MYWAL_Name                  : 'Όνομα πορτοφολιού ',
 MYWAL_Content_1             : 'Προσοχή! Πρόκειται να αφαιρέσετε το πορτοφόλι σας. ',
 MYWAL_Content_2             : 'Σιγουρευτείτε ότι έχετε **αποθηκεύσει το αρχείο keystore/JSON και το συνθηματικό** του πορτοφολιού αυτού πριν το αφαιρέσετε. ',
@@ -268,6 +273,8 @@ MYWAL_Content_3             : 'Αν θέλετε να χρησιμοποιήσε
 VIEWWALLET_Subtitle         : 'Αυτό σας επιτρέπει να κατεβάσετε διαφορετικές εκδοχές των ιδιωτικών κλειδιών σας και να επανεκτυπώσετε το χάρτινο πορτοφόλι σας. Ίσως επιθυμείτε να το κάνετε προκειμένου να [εισαγάγετε το λογαριασμό σας στο Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Αν επιθυμείτε να ελέγξετε το υπόλοιπό σας, συνιστούμε να χρησιμοποιήσετε ένα εργαλείο εξερεύνησης blockchain όπως το [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Αυτό σας επιτρέπει να κατεβάσετε διαφορετικές εκδοχές των ιδιωτικών κλειδιών σας και να επανεκτυπώσετε το χάρτινο πορτοφόλι σας. ',
 VIEWWALLET_SuccessMsg       : 'Επιτυχία! Εδώ είναι οι πληροφορίες για το πορτοφόλι σας. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* CX */
 CX_error_1                  : 'Δεν έχετε αποθηκευμένα πορτοφόλια. Κάντε κλικ στο [«Προσθήκη πορτοφολιού»](/cx-wallet.html#add-wallet) για να προσθεσετε ένα! ',
@@ -308,6 +315,7 @@ SWAP_rec_add                : "Η διεύθυνση λήψης σας ",
 SWAP_start_CTA              : "Έναρξη ανταλλαγής ",
 SWAP_ref_num                : "Ο αριθμός αναφοράς σας ",
 SWAP_time                   : "Υπολειπόμενος χρόνος για την αποστολή ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Η εντολή ξεκίνησε ",
 SWAP_progress_2             : "Εν αναμονή για ", // Waiting for your BTC...
 SWAP_progress_3             : "Ελήφθησαν! ", // ETH Received!
@@ -340,6 +348,9 @@ ADD_Ledger_4                : 'Εάν δεν υπάρχει υποστήριξη
 ADD_Ledger_0a               : 'Ξανα-ανοίξτε το MyEtherWallet σε ασφαλή (SSL) σύνδεση ',
 ADD_Ledger_0b               : 'Ξανα-ανοίξτε το MyEtherWallet χρησιμοποιώντας το [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Συνδεθείτε στο Ledger Wallet ',
+
+ADD_MetaMask                : 'Συνδεθείτε στο MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Συνδεθείτε στο TREZOR ',
 ADD_Trezor_select           : 'Αυτός είναι σπόρος του TREZOR ',
@@ -378,9 +389,12 @@ ERROR_29                    : 'Παρακαλούμε εισαγάγετε έγ�
 ERROR_30                    : 'Παρακαλούμε εισαγάγετε έγκυρο όνομα (7+ χαρακτήρες, περιορισμένα σημεία στίξης) ', // 30
 ERROR_31                    : 'Παρακαλούμε εισαγάγετε έγκυρη μυστική φράση. ', // 31
 ERROR_32                    : 'Δεν ήταν δυνατή η σύνδεση στον κόμβο. Ανανεώστε τη σελίδα σας, δοκιμάστε κάποιον διαφορετικό κόμβο (πάνω δεξιά γωνία), ελέγξτε τις ρυθμίσεις του τείχους προστασίας. Εάν πρόκειται για προσαρμοσμένο κόμβο, ελέγξτε τις διαμορφώσεις σας.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'Το όνομα που προσπαθείτε να αποκαλύψετε δεν ταιριάζει με το όνομα που έχετε εισαγάγει. ', // 34
 ERROR_35                    : 'Η διεύθυνση εισόδου δεν περιέχει άθροισμα ελέγχου. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Περισσότερες πληροφορίες</a>', // 35
-
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+  
 SUCCESS_1                   : 'Έγκυρη διεύθυνση ',
 SUCCESS_2                   : 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς ',
 SUCCESS_3                   : 'Η συναλλαγή σας έχει μεταδοθεί στο δίκτυο. Αναμένει να εξορυχθεί και να επιβεβαιωθεί. Κατά τη διάρκεια ενός ICO, μπορεί να χρειαστούν 3+ ώρες για επιβεβαίωση. Χρησιμοποιήστε τα κουμπιά επαλήθευσης και ελέγχου παρακάτω για να δείτε. Hash συναλλαγής:   ', //'Η συναλλαγή υποβλήθηκε. TX Hash ',
