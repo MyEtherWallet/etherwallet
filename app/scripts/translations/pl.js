@@ -97,6 +97,7 @@ x_JsonDesc                  : 'Nieszyfrowany klucz prywatny, plik w formacie JSO
 x_Keystore                  : 'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany) ',
 x_Keystore2                 : 'Plik Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonik ',
 x_ParityPhrase              : 'Fraza Parity ',
 x_Password                  : 'Hasło ',
@@ -151,6 +152,10 @@ ADD_Radio_3                 : 'Wklej/Wpisz Twój Klucz Prywatny ',
 ADD_Radio_4                 : 'Dodaj Konto do Obserwacji ',
 ADD_Radio_5                 : 'Wklej/Wpisz Swój Mnemonik ',
 ADD_Radio_5_Path            : 'Wybierz ścieżkę portfela HD ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : '(Niestandardowy) ',
 ADD_Label_2                 : 'Utwórz Nazwę Użytkownika: ',
 ADD_Label_3                 : 'Twój portfel jest zaszyfrowany. Podaj hasło ',
@@ -160,6 +165,7 @@ ADD_Label_5                 : 'Wpisz Adres ',
 ADD_Label_6                 : 'Odblokuj Portfel ',
 ADD_Label_6_short           : 'Odblokuj ',
 ADD_Label_7                 : 'Dodaj konto ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Jeżeli chcesz wygenerować wiele portfeli możesz to zrobić tu ',
@@ -279,6 +285,8 @@ MYWAL_Content_3             : 'Jeśli będziesz chciał w przyszłości używać
 VIEWWALLET_Subtitle         : 'Ta zakładka pozwoli Ci na odczyt kluczy prywatnych, pobranie kopii portfeli oraz wydrukowanie portfeli papierowych. Pobrane za jej pomocą portfele możesz [zaimportować do Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jeśli chcesz sprawdzić stan Twojego konta, zalecamy użyć eksploratora bloków np. [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Ta zakładka pozwala Ci na pobranie różnych typów kluczy prywatnych oraz ponowne wydrukowanie portfeli papierowych. ',
 VIEWWALLET_SuccessMsg       : 'Sukces! Oto dane twojego portfela. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Mnemonic */
 MNEM_1                      : 'Wybierz adres, którego chcesz użyć. ',
@@ -295,6 +303,9 @@ ADD_Ledger_4                : 'Jeżeli w ustawieniach brak jest opcji Obsługa P
 ADD_Ledger_0a               : 'Otwórz MyEtherWallet ponownie na bezpiecznym połączeniu (SSL) ',
 ADD_Ledger_0b               : 'Otwórz MyEtherWallet w [Chrome](https://www.google.com/chrome/browser/desktop/) lub [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Połącz z Ledger Wallet ',
+
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Połącz z TREZOR ',
 ADD_Trezor_select           : 'To jest ziarno (seed) TREZOR',
@@ -334,6 +345,7 @@ SWAP_rec_add                : "Twój Adres Odbiorczy ",
 SWAP_start_CTA              : "Rozpocznij Wymianę ",
 SWAP_ref_num                : "Twój numer referencyjny ",
 SWAP_time                   : "Pozostały czas na wysyłkę ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Zlecenie Rozpoczęte ",
 SWAP_progress_2             : "Oczekiwanie na Twoje ", // Waiting for your BTC...
 SWAP_progress_3             : "Otrzymano! ", // ETH Received!
@@ -379,6 +391,8 @@ ERROR_32                    : 'Nie można połączyć z węzłem.  Refresh your 
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Prawidłowy adres ',
 SUCCESS_2                   : 'Portfel został odszyfrowany ',
