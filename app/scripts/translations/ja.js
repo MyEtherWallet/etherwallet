@@ -102,6 +102,7 @@ x_Keystore                  : 'Keystore ファイル (UTC / JSON · 推奨 · �
 x_Keystore2                 : 'Keystore ファイル (UTC / JSON) ',
 x_KeystoreDesc              : 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。 ',
 x_Ledger                    : 'Ledger Wallet ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'ニーモニック文節 ',
 x_ParityPhrase              : 'パリティ文節 ',
 x_Password                  : 'パスワード ',
@@ -161,6 +162,10 @@ ADD_Radio_3                 : '秘密鍵をペースト/タイプ ',
 ADD_Radio_4                 : '監視するアカウントを追加 ',
 ADD_Radio_5                 : 'ニーモニックを上書き/タイプ ',
 ADD_Radio_5_Path            : 'HD derivation pathを選択 ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'カスタム',
 ADD_Label_2                 : 'ニックネームの作成： ',
 ADD_Label_3                 : 'お財布が暗号化されています。パスワードを入力してください： ',
@@ -170,6 +175,7 @@ ADD_Label_5                 : 'アドレスを入力 ',
 ADD_Label_6                 : 'お財布をアンロック： ',
 ADD_Label_6_short           : 'アンロック ',
 ADD_Label_7                 : 'アカウント追加 ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Mnemonic */
 MNEM_1                      : '操作したいアドレスを選択してください。 ',
@@ -185,6 +191,9 @@ ADD_Ledger_4                : '設定にブラウザサポートが見つから�
 ADD_Ledger_0a               : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
 ADD_Ledger_0b               : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
 ADD_Ledger_scan             : 'Ledger Wallet　に接続 ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 ADD_Trezor_scan             : 'TREZORに接続する ',
 ADD_Trezor_select           : 'これはTREZORのシードです ',
 
@@ -323,6 +332,7 @@ SWAP_rec_add                : "受け取りアドレス ",
 SWAP_start_CTA              : "交換開始 ",
 SWAP_ref_num                : "参照番号 ",
 SWAP_time                   : "送出するまでにあと、 ",
+SWAP_elapsed				        : "Time elapsed since sent ", 
 SWAP_progress_1             : "注文を開始しました ",
 SWAP_progress_2             : "到着待機中 ", // Waiting for your BTC...
 SWAP_progress_3             : "ETH受け取り完了 ", // ETH Received!
@@ -344,6 +354,8 @@ MSG_info3                   : '異なった目的で使用されないように�
 VIEWWALLET_Subtitle         : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。[import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)する時に必要です。残高をチェックするためには、[etherscan.io](http://etherscan.io/)のようなブロックチェーンエクスプローラーサービスを使う事をおすすめします。 ',
 VIEWWALLET_Subtitle_Short   : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。 ',
 VIEWWALLET_SuccessMsg       : '成功しました! お財布の詳細は以下の通りです。 ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Error Messages */
 ERROR_0                     : '正しい値を入力してください。 ',
@@ -382,6 +394,8 @@ ERROR_32                    : 'ノードに接続できませんでした。Refr
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : '有効なアドレス ',
 SUCCESS_2                   : 'お財布は正常に暗号解除されました。 ',
