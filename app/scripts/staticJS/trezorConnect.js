@@ -3,7 +3,7 @@
  *
  * GPLv3
  */
-var VERSION = 2;
+var VERSION = 3;
 
 if (!Array.isArray) {
     Array.isArray = function(arg) {
@@ -41,8 +41,8 @@ var POPUP_ORIGIN = window.TREZOR_POPUP_ORIGIN || 'https://connect.trezor.io';
 
 var INSIGHT_URLS = window.TREZOR_INSIGHT_URLS || 
     [
-        'https://bitcore1.trezor.io/api/',
-        'https://bitcore3.trezor.io/api/',
+        'https://btc-bitcore1.trezor.io/api/',
+        'https://btc-bitcore3.trezor.io/api/',
     ];
 
 var POPUP_INIT_TIMEOUT = 15000;
@@ -96,6 +96,45 @@ function TrezorConnect() {
       * @param {boolean} value
       */
     this.closeAfterFailure = function (value) { manager.closeAfterFailure = value; };
+
+    /**
+     * Set bitcore server
+     * @param {string|Array<string>} value
+     */
+    this.setBitcoreURLS = function(value) {
+        if (typeof value === 'string') {
+            manager.bitcoreURLS = [ value ];
+        }else if (value instanceof Array) {
+            manager.bitcoreURLS = value;
+        }
+    }
+
+    /**
+     * Set max. limit for account discovery
+     * @param {number} value
+     */
+    this.setAccountDiscoveryLimit = function(value) {
+        if(!isNaN(value))
+            manager.accountDiscoveryLimit = value;
+    }
+
+    /**
+     * Set max. gap for account discovery
+     * @param {number} value
+     */
+    this.setAccountDiscoveryGapLength = function(value) {
+        if(!isNaN(value))
+            manager.accountDiscoveryGapLength = value;
+    }
+
+    /**
+     * Set discovery BIP44 coin type
+     * @param {number} value
+     */
+    this.setAccountDiscoveryBip44CoinType = function(value) {
+        if(!isNaN(value))
+            manager.accountDiscoveryBip44CoinType = value;
+    }
 
     /**
       * @typedef XPubKeyResult
@@ -164,17 +203,6 @@ function TrezorConnect() {
         }
     }
 
-    this.claimBitcoinCashAccountsInfo = function(callback, requiredFirmware){
-        try {
-            manager.sendWithChannel(_fwStrFix({
-                type: 'claimBitcoinCashAccountsInfo',
-                description: 'all'
-            }, requiredFirmware), callback);
-        } catch(e) {
-            callback({success: false, error: e});
-        }
-    }
-
     this.getBalance = function (callback, requiredFirmware) {
         manager.sendWithChannel(_fwStrFix({
             type: 'accountinfo'
@@ -209,6 +237,12 @@ function TrezorConnect() {
         }, requiredFirmware), callback);
     };
 
+    // new implementation with ethereum at beginnig
+    this.ethereumSignTx = function() {
+        this.signEthereumTx.apply(this, arguments);
+    }
+
+    // old fallback
     this.signEthereumTx = function (
         address_n,
         nonce,
@@ -348,6 +382,34 @@ function TrezorConnect() {
     };
 
     /**
+     * Sign an Ethereum message
+     *
+     * @param {string|array} path
+     * @param {string} message to sign (ascii)
+     * @param {string|function(SignMessageResult)} callback
+     * @param {?(string|array<number>)} requiredFirmware
+     *
+     */
+    this.ethereumSignMessage = function (
+        path,
+        message,
+        callback,
+        requiredFirmware
+    ) {
+        if (typeof path === 'string') {
+            path = parseHDPath(path);
+        }
+        if (!callback) {
+            throw new TypeError('TrezorConnect: callback not found');
+        }
+        manager.sendWithChannel(_fwStrFix({
+            type: 'signethmsg',
+            path: path,
+            message: message,
+        }, requiredFirmware), callback);
+    };
+
+    /**
       * Verify message
       *
       * @param {string} address
@@ -378,6 +440,34 @@ function TrezorConnect() {
             signature: signature,
             message: message,
             coin: {coin_name: opt_coin},
+        }, requiredFirmware), callback);
+    };
+
+    /**
+     * Verify ethereum message
+     *
+     * @param {string} address
+     * @param {string} signature (base64)
+     * @param {string} message (string)
+     * @param {string|function()} callback
+     * @param {?(string|array<number>)} requiredFirmware
+     *
+     */
+    this.ethereumVerifyMessage = function (
+        address,
+        signature,
+        message,
+        callback,
+        requiredFirmware
+    ) {
+        if (!callback) {
+            throw new TypeError('TrezorConnect: callback not found');
+        }
+        manager.sendWithChannel(_fwStrFix({
+            type: 'verifyethmsg',
+            address: address,
+            signature: signature,
+            message: message,
         }, requiredFirmware), callback);
     };
 
@@ -876,6 +966,10 @@ function PopupManager() {
     };
 
     this.sendWithChannel = function (message, callback) {
+        message.bitcoreURLS = this.bitcoreURLS || null;
+        message.accountDiscoveryLimit = this.accountDiscoveryLimit || null;
+        message.accountDiscoveryGapLength = this.accountDiscoveryGapLength || null;
+        message.accountDiscoveryBip44CoinType = this.accountDiscoveryBip44CoinType || null;
 
         var respond = function (response) {
             var succ = response.success && this.closeAfterSuccess;
