@@ -60,7 +60,7 @@ LedgerEth.prototype.getAddress = function(path, callback, boolDisplay, boolChain
 			response = new Buffer(response, 'hex');
 			var sw = response.readUInt16BE(response.length - 2);
 			if (sw != 0x9000) {
-				callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure contract data is on?");
+				callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure the right application is selected ?");
 				return;
 			}
 			var publicKeyLength = response[0];
@@ -113,7 +113,7 @@ LedgerEth.prototype.signTransaction = function(path, rawTxHex, callback) {
 			response = new Buffer(response, 'hex');
 			var sw = response.readUInt16BE(response.length - 2);
 			if (sw != 0x9000) {
-        callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure contract data is on?");
+        callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure contract data is on ?");
 				return;
 			}
 			if (apdus.length == 0) {
@@ -148,7 +148,7 @@ LedgerEth.prototype.getAppConfiguration = function(callback) {
 			var result = {};
 			var sw = response.readUInt16BE(response.length - 2);
 			if (sw != 0x9000) {
-				callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure contract data is on?");
+				callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure the right application is selected ?");
 				return;
 			}
 			result['arbitraryDataEnabled'] = (response[0] & 0x01);
@@ -198,7 +198,7 @@ LedgerEth.prototype.signPersonalMessage_async = function(path, messageHex, callb
       response = new Buffer(response, 'hex');
       var sw = response.readUInt16BE(response.length - 2);
       if (sw != 0x9000) {
-        callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure contract data is on?");
+        callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure the right application is selected ?");
         return;
       }
       if (apdus.length == 0) {
