@@ -97,6 +97,7 @@ x_JsonDesc                  : 'Dette er det ukrypterte JSON-formatet av din priv
 x_Keystore                  : 'Keystore-fil (UTC / JSON · Anbefalt · Kryptert) ',
 x_Keystore2                 : 'Keystore-fil (UTC / JSON) ',
 x_KeystoreDesc              : 'Denne Keystore-filen samsvarer med formatet som brukes av Mist, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonisk Frase ',
 x_ParityPhrase              : 'Parity-frase ',
 x_Password                  : 'Passord ',
@@ -150,6 +151,10 @@ ADD_Radio_2_short           : 'VELG LOMMEBOK-FIL... ',
 ADD_Radio_3                 : 'Lim/skriv inn din private nøkkel ',
 ADD_Radio_4                 : 'Legg til en konto for overvåkning ',
 ADD_Radio_5_Path            : 'Velg "HD derivation" variant ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : '(tilpasset) ',
 ADD_Radio_5                 : 'Lim inn/tast din mnemoniske frase ',
 ADD_Label_2                 : 'Lag et kallenavn: ',
@@ -160,6 +165,7 @@ ADD_Label_5                 : 'Oppgi adressen ',
 ADD_Label_6                 : 'Lås opp lommeboen din ',
 ADD_Label_6_short           : 'Lås opp ',
 ADD_Label_7                 : 'Legg til konto ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Hardware wallets */
 x_Ledger                    : 'Ledger Wallet ',
@@ -170,6 +176,9 @@ ADD_Ledger_4                : 'Hvis du ikke finner noen nettleserstøtte i innst
 ADD_Ledger_0a               : 'Åpne MyEtherWallet på nytt på en sikker (SSL) forbindelse. ',
 ADD_Ledger_0b               : 'Åpne MyEtherWallet på nytt med [Chrome](https://www.google.com/chrome/browser/desktop/) eller [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Koble til Ledger Wallet ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Koble til TREZOR ',
 ADD_Trezor_select           : 'Dette er en TREZOR seed ',
@@ -307,6 +316,7 @@ SWAP_rec_add                : "Din mottakeradresse ",
 SWAP_start_CTA              : "Start byttet ",
 SWAP_ref_num                : "Ditt referansenummer ",
 SWAP_time                   : "Gjenstående tid til å sende ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Ordre initiert ",
 SWAP_progress_2             : "Venter på dine ", // Waiting for your BTC...
 SWAP_progress_3             : "Mottatt! ", // ETH Received!
@@ -336,6 +346,8 @@ MYWAL_Content_3             : 'Hvis du ønsker å bruke denne lommeboken med din
 VIEWWALLET_Subtitle         : 'Dette gir deg muligheten til å laste ned ulike versjoner av private nøkler og skrive ut papirlommeboken din på nytt. Du vil kanskje gjøre dette for å [importere kontoen din til Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Hvis du bare ønsker å sjekke saldoen din, anbefaler vi at du bruker en "blockchain explorer" som f.eks. [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Dette gir deg muligheten til å laste ned ulike versjoner av private nøkler og skrive ut papirlommeboken din på nytt. ',
 VIEWWALLET_SuccessMsg       : 'Suksess! Her er detaljene om din lommebok. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : 'Du har ennå ikke lagret noen lommebok. Klikk ["Legg til lommebok"](/cx-wallet.html#add-wallet) for å legge til en! ',
@@ -378,6 +390,8 @@ ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du va
 ERROR_33                    : 'Lommeboken du har låst opp stemmer ikke overens med eierens adresse. ', // 33
 ERROR_34                    : 'Navnet du prøver å avsløre er ikke likt navnet du har tastet inn. ', // 34
 ERROR_35                    : 'Input-adressen har ingen sjekk-sum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Gyldig adresse ',
 SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',
@@ -413,6 +427,7 @@ PARITY_InvalidGasLimit      : "Tilført mengde gas er over grensen.",
 translate_version           : '0.4 ',
 Translator_Desc             : 'Takk til oversetterne våre ',
 TranslatorName_1            : '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=mrstormlars.eth&value=1.0#send-transaction) ',
+TranslatorAddr_1            : '',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : '',
 TranslatorAddr_2            : '',
