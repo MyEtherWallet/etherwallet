@@ -95,6 +95,9 @@
           If no Browser Support is found in settings, verify that you have Firmware >1.2
         </li>
       </ol>
+      <p role="alert" ng-show="ledgerError" class="text-center text-danger"><strong>
+        {{ledgerErrorString}}
+      </strong></p>      
       <div class="text-center">
         <p>Guides:<br />
           <a href="http://support.ledgerwallet.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener">
