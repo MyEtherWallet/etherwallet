@@ -97,6 +97,7 @@ x_JsonDesc                  : 'Dies ist die unverschlüsselte Version deines pri
 x_Keystore                  : 'Keystore File (UTC / JSON · Empfohlen · Verschlüsselt) ',
 x_Keystore2                 : 'Keystore File (UTC / JSON) ',
 x_KeystoreDesc              : 'Diese Keystore-Datei passt zu dem Format, das von Mist verwendet wird, sodass du diese Datei dort zukünftig einfach importieren kannst. Es ist empfehlenswert, diese Datei herunterzuladen und zu sichern. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic Phrase ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Passwort ',
@@ -164,6 +165,7 @@ ADD_Label_5                 : 'Kontoadresse eingeben ',
 ADD_Label_6                 : 'Wallet entsperren ',
 ADD_Label_6_short           : 'Entsperren ',
 ADD_Label_7                 : 'Kontoadresse hinzufügen ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Wenn du mehrere Wallets auf einmal erstellen möchtest, kannst du dies hier tun ',
