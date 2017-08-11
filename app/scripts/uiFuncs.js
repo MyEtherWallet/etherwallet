@@ -253,8 +253,7 @@ uiFuncs.notifier = {
         this.addAlert("success", msg, duration);
     },
     addAlert: function(type, msg, duration) {
-        if (duration == undefined)
-            duration = 7000;
+        if (duration == undefined) duration = 7000;
         // Save all messages by unique id for removal
         var id = Date.now();
         alert = this.buildAlert(id, type, msg);
