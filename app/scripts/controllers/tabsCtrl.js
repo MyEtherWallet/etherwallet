@@ -82,7 +82,10 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     }
     $scope.setCurNodeFromStorage = function() {
         var node = globalFuncs.localStorage.getItem('curNode', null);
-        if (node == null) {
+        if (node === JSON.stringify({"key":"eth_metamask"})) {
+          node = JSON.stringify({"key":"eth_infura"})
+        }
+       if (node == null) {
             $scope.changeNode($scope.defaultNodeKey);
         } else {
             node = JSON.parse(node);
