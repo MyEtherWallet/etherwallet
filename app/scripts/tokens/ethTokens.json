@@ -324,6 +324,12 @@
     "type":"default"
   },
   {
+    "address":"0xEF68e7C694F40c8202821eDF525dE3782458639f",
+    "symbol":"LRC",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xfa05A73FfE78ef8f1a739473e462c54bae6567D9",
     "symbol":"LUN",
     "decimal":18,
