@@ -731,4 +731,11 @@
     "decimal":9,
     "type":"default"
   }
+  ,
+  {
+    "address":"0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+    "symbol":"ZRX",
+    "decimal":18,
+    "type":"default"
+  }
 ]
