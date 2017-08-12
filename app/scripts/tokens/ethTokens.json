@@ -48,6 +48,12 @@
     "type":"default"
   },
   {
+    "address":"0xBA5F11b16B155792Cf3B2E6880E8706859A8AEB6",
+    "symbol":"ARN",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x17052d51E954592C1046320c2371AbaB6C73Ef10",
     "symbol":"ATH",
     "decimal":18,
