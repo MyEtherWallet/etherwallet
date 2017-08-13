@@ -690,6 +690,12 @@
     "type":"default"
   },
   {
+    "address":"0xEe22430595aE400a30FFBA37883363Fbf293e24e",
+    "symbol":"TME",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xCb94be6f13A1182E4A4B6140cb7bf2025d28e41B",
     "symbol":"TRST",
     "decimal":6,
