@@ -64,10 +64,10 @@ module.exports = [
 },
 {
   // LookRev
-  to:         '0x8fa1EaD5d8d774b27d288711abE4d4258224ae26',
+  to:         '0x21ae23b882a340a22282162086bc98d3e2b73018',
   gasLimit:   200000,
   data:       '',
-  msg:        'LookRev ICO address - lookrev.com'
+  msg:        'LookRev. ICO Starts August 30, 2017.'
 },
 {
   // OmiseGo
