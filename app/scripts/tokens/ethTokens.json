@@ -305,6 +305,12 @@
     "decimal":0,
     "type":"default"
   },
+    {
+    "address":"0xf8e386EDa857484f5a12e4B5DAa9984E06E73705",
+    "symbol":"IND",
+    "decimal":18,
+    "type":"default"
+  },
   {
     "address":"0xc1E6C6C681B286Fb503B36a9dD6c1dbFF85E73CF",
     "symbol":"JET",
