@@ -75,6 +75,22 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                 }
                 app.signPersonalMessage_async( $scope.wallet.getPath(), msg, localCallback);
 
+            // Sign via trezor
+            } else if ((typeof hwType != "undefined") && (hwType == "trezor")) {
+                TrezorConnect.ethereumSignMessage($scope.wallet.getPath(), thisMessage, function(response){
+                    if (response.success) {
+                        $scope.signMsg.signedMsg = JSON.stringify({
+                            address: '0x' + response.address,
+                            msg: thisMessage,
+                            sig: '0x' + response.signature,
+                            version: '2'
+                        }, null, 2)
+                        $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString())
+                    } else{ 
+                        $scope.notifier.danger(response.error);
+                    }
+                })
+
             // Sign via PK
             } else {
                 var msg         = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage))
@@ -100,6 +116,29 @@ var signMsgCtrl = function($scope, $sce, walletService) {
     }
 
     $scope.verifySignedMessage = function() {
+        var hwType = $scope.wallet.getHWType()
+        // Verify via trezor
+        if ((typeof hwType != "undefined") && (hwType == "trezor")) {
+            var json = JSON.parse($scope.verifyMsg.signedMsg)
+            var address = ethFuncs.getNakedAddress(json.address)
+            var sig = ethFuncs.getNakedAddress(json.sig);
+            var message = json.msg;
+            TrezorConnect.ethereumVerifyMessage(address, sig, message, function(response) {
+                if (response.success) {
+                    $scope.notifier.success(globalFuncs.successMsgs[6])
+                    $scope.verifiedMsg = {
+                        address: json.address,
+                        msg: json.msg,
+                        sig: json.sig,
+                        version: json.version
+                    }
+                } else {
+                    $scope.notifier.danger(response.error);
+                }
+            })
+            return;
+        }
+
         try {
 
             var json = JSON.parse($scope.verifyMsg.signedMsg)
