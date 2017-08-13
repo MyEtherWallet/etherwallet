@@ -318,7 +318,7 @@
     "type":"default"
   },
   {
-    "address":"0x8fa1EaD5d8d774b27d288711abE4d4258224ae26",
+    "address":"0x21ae23b882a340a22282162086bc98d3e2b73018",
     "symbol":"LOK",
     "decimal":18,
     "type":"default"
@@ -327,6 +327,12 @@
     "address":"0xEF68e7C694F40c8202821eDF525dE3782458639f",
     "symbol":"LRC",
     "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0xFB12e3CcA983B9f59D90912Fd17F8D745A8B2953",
+    "symbol":"LUCK",
+    "decimal":0,
     "type":"default"
   },
   {
