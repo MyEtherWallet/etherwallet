@@ -33,8 +33,13 @@
       TREZOR
     </label>
 
+    <label class="radio">
+      <input aria-flowto="aria7" type="radio" aria-label="Digital Bitbox hardware wallet" ng-model="walletType" value="digitalBitbox" />
+      Digital Bitbox
+    </label>
+
     <label aria-flowto="aria7" class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id">
-      <input aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
+      <input aria-flowto="aria8" aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
       View with Address Only
     </label>
 
@@ -97,7 +102,7 @@
       </ol>
       <p role="alert" ng-show="ledgerError" class="text-center text-danger"><strong>
         {{ledgerErrorString}}
-      </strong></p>      
+      </strong></p>
       <div class="text-center">
         <p>Guides:<br />
           <a href="http://support.ledgerwallet.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener">
@@ -231,6 +236,36 @@
     </div>
     <!-- /if selected type trezor-->
 
+    <!-- if selected type digitalBitbox-->
+    <div id="selectedTypeDigitalBitbox" ng-if="walletType=='digitalBitbox'">
+      <div class="form-group">
+        <a tabindex="0" role="button" class="btn btn-primary btn-block" ng-click="scanDigitalBitbox()" translate="ADD_DigitalBitbox_scan">
+          SCAN
+        </a>
+      </div>
+      <input class="form-control" aria-label="Enter the Digital Bitbox password" aria-describedby="selectedTypeDigitalBitbox" type="password" placeholder="Digital Bitbox password" spellcheck="false" value="" ng-model="HDWallet.digitalBitboxSecret" />
+      <ol>
+        <li id="aria7" tabinex="0" translate="ADD_DigitalBitbox_0a" class="text-danger" ng-hide="isSSL">
+          Re-open MyEtherWallet on a secure (SSL) connection
+        </li>
+        <li tabinex="0" translate="ADD_DigitalBitbox_0b" class="text-danger" ng-hide="isChrome">
+          Re-open MyEtherWallet using Google Chrome or Opera
+        </li>
+      </ol>
+      <div class="text-center">
+        <br /><br />
+        <p>Guides:<br />
+          <a href="https://digitalbitbox.com/ethereum" target="_blank">
+            How to use MyEtherWallet with your Digital Bitbox
+          </a><br />
+          <a tabindex="0" role="button" class="btn btn-default btn-sm" href="https://digitalbitbox.com/?ref=mew" target="_blank">
+            Don't have a Digital Bitbox? Buy one today.
+          </a>
+        </p>
+      </div>
+    </div>
+    <!-- /if selected type digitalbitbox-->
+
 
     <!-- if selected addressOnly-->
     <div id="selectedTypeKey" ng-if="walletType=='addressOnly'">
@@ -270,7 +305,7 @@
   <!-- / Column 2 - Unlock That Key -->
 
   <!-- Column 3 - The Unlock Button -->
-  <section class="col-md-4 col-sm-6" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType=='ledger'||walletType=='trezor'||showAOnly||showParityDecrypt">
+  <section class="col-md-4 col-sm-6" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType=='ledger'||walletType=='trezor'||walletType=='digitalBitbox'||showAOnly||showParityDecrypt">
     <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt||showPDecrypt||showMDecrypt" translate="ADD_Label_6">
       Access Your Wallet:
     </h4>
@@ -325,7 +360,7 @@
                        type="radio"
                       value="{{HDWallet.defaultDPath}}"/>
                 <span ng-bind="HDWallet.defaultDPath"></span>
-                <p class="small">Jaxx, Metamask, Exodus, imToken &amp; TREZOR (ETH)</p>
+                <p class="small">Jaxx, Metamask, Exodus, imToken, TREZOR (ETH) &amp; Digital Bitbox</p>
               </label>
             </div>
 

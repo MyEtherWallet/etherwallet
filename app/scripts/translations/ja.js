@@ -196,6 +196,10 @@ ADD_MetaMask                : 'Connect to MetaMask ',
 
 ADD_Trezor_scan             : 'TREZORに接続する ',
 ADD_Trezor_select           : 'これはTREZORのシードです ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
+ADD_DigitalBitbox_0b        : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
+ADD_DigitalBitbox_scan      : 'DigitalBitboxに接続する ',
 
 /* Generate Wallets */
 GEN_desc                    : '複数のお財布の作成をこのタブで行う事ができます： ',

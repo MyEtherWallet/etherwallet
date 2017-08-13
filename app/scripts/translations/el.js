@@ -356,6 +356,12 @@ ADD_MetaMask                : 'Συνδεθείτε στο MetaMask ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Συνδεθείτε στο TREZOR ',
 ADD_Trezor_select           : 'Αυτός είναι σπόρος του TREZOR ',
+ADD_Trezor_scan             : 'Connect to TREZOR ',
+ADD_Trezor_select           : 'This is a TREZOR seed ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_DigitalBitbox_0b        : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
 
 /* Error Messages */
 ERROR_0                     : 'Παρακαλούμε εισαγάγετε έγκυρο ποσό. ',
@@ -396,7 +402,7 @@ ERROR_34                    : 'Το όνομα που προσπαθείτε ν�
 ERROR_35                    : 'Η διεύθυνση εισόδου δεν περιέχει άθροισμα ελέγχου. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Περισσότερες πληροφορίες</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
-  
+
 SUCCESS_1                   : 'Έγκυρη διεύθυνση ',
 SUCCESS_2                   : 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς ',
 SUCCESS_3                   : 'Η συναλλαγή σας έχει μεταδοθεί στο δίκτυο. Αναμένει να εξορυχθεί και να επιβεβαιωθεί. Κατά τη διάρκεια ενός ICO, μπορεί να χρειαστούν 3+ ώρες για επιβεβαίωση. Χρησιμοποιήστε τα κουμπιά επαλήθευσης και ελέγχου παρακάτω για να δείτε. Hash συναλλαγής:   ', //'Η συναλλαγή υποβλήθηκε. TX Hash ',

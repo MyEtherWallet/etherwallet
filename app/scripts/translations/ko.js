@@ -162,6 +162,10 @@ ADD_MetaMask                : 'Connect to MetaMask ',
 
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'TREZOR 에 연결하기 ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'MyEtherWallet을 보안 연결(SSL)로 다시 연결해주세요. ',
+ADD_DigitalBitbox_0b        : 'MyEtherWallet을 [Chrome](https://www.google.com/chrome/browser/desktop/) 또는 [Opera](https://www.opera.com/) 브라우저로 다시 열어주세요. ',
+ADD_DigitalBitbox_scan      : 'Digital Bitbox 에 연결하기 ',
 
 /* Add Wallet */
 ADD_Label_1                 : '어떤 걸 진행하시겠습니까? ',
