@@ -191,6 +191,10 @@ ADD_MetaMask                : 'Connect to MetaMask ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Hubungkan ke TREZOR ',
 ADD_Trezor_select           : 'Ini adalah TREZOR seed ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman ',
+ADD_DigitalBitbox_0b        : 'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Hubungkan ke Digital Bitbox ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Jika Anda memerlukan lebih dari satu dompet, Anda dapat memakai fitur ',

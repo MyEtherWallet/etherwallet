@@ -329,6 +329,31 @@ VIEWWALLET_Subtitle_Short   : 'This allows you to download different versions of
 VIEWWALLET_SuccessMsg       : 'Success! Here are your wallet details. ',
 VIEWWALLET_ShowPrivKey      : '(show)',
 VIEWWALLET_HidePrivKey      : '(hide)',
+VIEWWALLET_Subtitle         : 'Ceci vous permet de télécharger plusieurs versions des clefs privées et de ré-imprimer votre portefeuille papier. Vous devrez le faire pour [importer votre compte dans Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vous voulez consulter votre solde, nous recommandons d\'utiliser un explorateur de blockchain comme [etherscan.io](http://etherscan.io/). ',
+VIEWWALLET_Subtitle_Short   : 'Ceci vous permet de télécharger plusieurs versions des clefs privées et de ré-imprimer votre portefeuille papier. ',
+VIEWWALLET_SuccessMsg       : 'Succès ! Voici les détails de votre portefeuille. ',
+
+/* Mnemonic */
+MNEM_1                      : 'Sélectionnez l\'adresse avec laquelle vous désirez interagir. ',
+MNEM_2                      : 'Votre phrase mnémonique HD unique peut accéder à un certain nombre de portefeuilles/adresses. Sélectionnez l\'adresse avec laquelle vous désirez interagir actuellement. ',
+MNEM_more                   : 'Plus d\'adresses ',
+MNEM_prev                   : 'Adresses précédentes ',
+
+/* Hardware wallets */
+ADD_Ledger_1                : 'Connectez votre Ledger Nano S ',
+ADD_Ledger_2                : 'Ouvrez l\'application Ethereum (ou une application de contrat) ',
+ADD_Ledger_3                : 'Vérifiez que l\'option Browser Support est activée dans Settings ',
+ADD_Ledger_scan             : 'Se connecter au Ledger Nano S ',
+ADD_Ledger_4                : 'Si l\'option Browser Support n\'est pas présente dans Settings, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
+ADD_Ledger_0a               : 'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL) ',
+ADD_Ledger_0b               : 'Réouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/) ',
+x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Connexion au TREZOR ',
+ADD_Trezor_select           : 'Ceci est une _seed_ TREZOR ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL) ',
+ADD_DigitalBitbox_0b        : 'Réouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Connexion au Digital Bitbox ',
 
 /* Chrome Extension */
 CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',

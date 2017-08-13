@@ -354,6 +354,10 @@ ADD_MetaMask                : 'Connectar a MetaMask ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Conectar a TREZOR ',
 ADD_Trezor_select           : 'Esto es una semilla TREZOR ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Volver a abrir MyEtherWallet en una conexión segura (SSL) ',
+ADD_DigitalBitbox_0b        : 'Volver a abrir MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) u [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Conectar a Digital Bitbox ',
 
 /* Error Messages */
 ERROR_0                     : 'Introduce una cantidad válida. ',

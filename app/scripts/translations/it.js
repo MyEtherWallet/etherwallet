@@ -291,6 +291,10 @@ ADD_MetaMask                : 'Collegati a MetaMask ',
 
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Collegati al TREZOR ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Riapri MyEtherWallet su una connessione sicura (SSL) ',
+ADD_DigitalBitbox_0b        : 'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Collegati al Digital Bitbox ',
 
 /* CX */
 CX_error_1                  : 'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno! ',

@@ -165,6 +165,9 @@ ADD_MetaMask                : 'Connect to MetaMask ',
 
 x_Trezor                    : 'TREZOR 錢包 ',
 ADD_Trezor_scan             : '連接至 TREZOR ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0b        : '以 [Chrome](https://www.google.com/chrome/browser/desktop/) 或 [Opera](https://www.opera.com/) 瀏覽器重新開啟MyEtherWallet',
+ADD_DigitalBitbox_scan      : '連接至 Digital Bitbox ',
 
 /* Add Wallet */
 ADD_Label_1                 : '你想要做什麼？ ',

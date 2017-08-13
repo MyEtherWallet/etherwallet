@@ -309,6 +309,10 @@ ADD_MetaMask                : 'Connect to MetaMask ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Połącz z TREZOR ',
 ADD_Trezor_select           : 'To jest ziarno (seed) TREZOR',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Otwórz MyEtherWallet ponownie na bezpiecznym połączeniu (SSL) ',
+ADD_DigitalBitbox_0b        : 'Otwórz MyEtherWallet w [Chrome](https://www.google.com/chrome/browser/desktop/) lub [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Połącz z Digital Bitbox ',
 
 /* Chrome Extension */
 CX_error_1                  : 'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)! ',

@@ -80,6 +80,30 @@ uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     }
     app.signTransaction(txData.path, txToSign.toString('hex'), localCallback);
 }
+uiFuncs.signTxDigitalBitbox = function(eTx, rawTx, txData, callback) {
+    var localCallback = function(result, error) {
+        if (typeof error != "undefined") {
+            error = error.errorCode ? u2f.getErrorByCode(error.errorCode) : error;
+            if (callback !== undefined) callback({
+                isError: true,
+                error: error
+            });
+            return;
+        }
+        uiFuncs.notifier.info("The transaction was signed but not sent. Click the blue 'Send Transaction' button to continue.");
+        rawTx.v = ethFuncs.sanitizeHex(result['v']);
+        rawTx.r = ethFuncs.sanitizeHex(result['r']);
+        rawTx.s = ethFuncs.sanitizeHex(result['s']);
+        var eTx_ = new ethUtil.Tx(rawTx);
+        rawTx.rawTx = JSON.stringify(rawTx);
+        rawTx.signedTx = ethFuncs.sanitizeHex(eTx_.serialize().toString('hex'));
+        rawTx.isError = false;
+        if (callback !== undefined) callback(rawTx);
+    }
+    uiFuncs.notifier.info("Touch the LED for 3 seconds to sign the transaction. Or tap the LED to cancel.");
+    var app = new DigitalBitboxEth(txData.hwTransport, '');
+    app.signTransaction(txData.path, eTx, localCallback);
+}
 uiFuncs.trezorUnlockCallback = function(txData, callback) {
     TrezorConnect.open(function(error) {
         if (error) {
@@ -146,6 +170,8 @@ uiFuncs.generateTx = function(txData, callback) {
               rawTx.signedTx = JSON.stringify(txParams);
               rawTx.isError = false;
               callback(rawTx)
+            } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "digitalBitbox")) {
+                uiFuncs.signTxDigitalBitbox(eTx, rawTx, txData, callback);
             } else {
                 eTx.sign(new Buffer(txData.privKey, 'hex'));
                 rawTx.rawTx = JSON.stringify(rawTx);
