@@ -336,6 +336,12 @@
     "type":"default"
   },
   {
+    "address":"0xEF68e7C694F40c8202821eDF525dE3782458639f",
+    "symbol":"LRC",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xFB12e3CcA983B9f59D90912Fd17F8D745A8B2953",
     "symbol":"LUCK",
     "decimal":0,
