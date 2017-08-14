@@ -3,9 +3,15 @@
   <!-- Column 1 - Select Type of Key -->
   <section class="col-md-4 col-sm-6">
     <h4 translate="decrypt_Access" style="margin-top:0;"> Select the format of your private key: </h4>
+
     <label class="radio">
-      <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
-      <span translate="x_Keystore2">Keystore / JSON File</span>
+      <input aria-flowto="aria3" type="radio" aria-label="MetaMask / Mist" ng-model="walletType" value="metamask" />
+      <span translate="x_MetaMask">MetaMask / Mist</span>
+    </label>
+
+    <label class="radio">
+      <input aria-flowto="aria7" type="radio" aria-label="Digital Bitbox hardware wallet" ng-model="walletType" value="digitalBitbox" />
+      Digital Bitbox
     </label>
 
     <label class="radio">
@@ -14,8 +20,18 @@
     </label>
 
     <label class="radio">
-      <input aria-flowto="aria3" type="radio" aria-label="MetaMask / Mist" ng-model="walletType" value="metamask" />
-      <span translate="x_MetaMask">MetaMask / Mist</span>
+      <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
+      TREZOR
+    </label>
+
+    <label class="radio" style="display: none;" id="showMeTheMoney">
+      <input aria-flowto="aria8" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" />
+      <span translate="x_ParityPhrase">Parity Phrase</span>
+    </label>
+
+    <label class="radio">
+      <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
+      <span translate="x_Keystore2">Keystore / JSON File</span>
     </label>
 
     <label class="radio">
@@ -28,24 +44,9 @@
       <span translate="x_PrivKey2">Private Key</span>
     </label>
 
-    <label class="radio">
-      <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
-      TREZOR
-    </label>
-
-    <label class="radio">
-      <input aria-flowto="aria7" type="radio" aria-label="Digital Bitbox hardware wallet" ng-model="walletType" value="digitalBitbox" />
-      Digital Bitbox
-    </label>
-
     <label aria-flowto="aria7" class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id">
       <input aria-flowto="aria8" aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
       View with Address Only
-    </label>
-
-    <label class="radio" style="display: none;" id="showMeTheMoney">
-      <input aria-flowto="aria8" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" />
-      <span translate="x_ParityPhrase">Parity Phrase</span>
     </label>
 
     <label aria-flowto="aria9" class="radio">
@@ -258,7 +259,7 @@
           <a href="https://digitalbitbox.com/ethereum" target="_blank">
             How to use MyEtherWallet with your Digital Bitbox
           </a><br />
-          <a tabindex="0" role="button" class="btn btn-default btn-sm" href="https://digitalbitbox.com/?ref=mew" target="_blank">
+          <a tabindex="0" role="button" class="btn btn-xs btn-default btn-sm" href="https://digitalbitbox.com/?ref=mew" target="_blank">
             Don't have a Digital Bitbox? Buy one today.
           </a>
         </p>
