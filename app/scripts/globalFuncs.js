@@ -1,6 +1,6 @@
 'use strict';
 var globalFuncs = function() {}
-globalFuncs.lightMode = true;
+globalFuncs.lightMode = false;
 globalFuncs.getBlockie = function(address) {
     return blockies.create({
         seed: address.toLowerCase(),
