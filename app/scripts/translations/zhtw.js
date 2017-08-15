@@ -166,6 +166,7 @@ ADD_MetaMask                : 'Connect to MetaMask ',
 x_Trezor                    : 'TREZOR 錢包 ',
 ADD_Trezor_scan             : '連接至 TREZOR ',
 x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Re-open MyEtherWallet on a secure (SSL) connection ',
 ADD_DigitalBitbox_0b        : '以 [Chrome](https://www.google.com/chrome/browser/desktop/) 或 [Opera](https://www.opera.com/) 瀏覽器重新開啟MyEtherWallet',
 ADD_DigitalBitbox_scan      : '連接至 Digital Bitbox ',
 
@@ -340,6 +341,7 @@ VIEWWALLET_Subtitle         : '這可以讓你下載不同版本的私鑰並且�
 VIEWWALLET_Subtitle_Short   : '這可以讓你下載不同版本的私鑰並且重新印製出你的紙錢包。 ',
 VIEWWALLET_SuccessMsg       : '成功！這些是你的錢包內容。 ',
 VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : '你沒有儲存過任何錢包。 點擊["新增錢包"](/cx-wallet.html#add-wallet)來新增一個錢包！ ',
