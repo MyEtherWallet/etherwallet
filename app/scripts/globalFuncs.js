@@ -1,6 +1,6 @@
 'use strict';
 var globalFuncs = function() {}
-globalFuncs.lightMode = false;
+globalFuncs.lightMode = true;
 globalFuncs.getBlockie = function(address) {
     return blockies.create({
         seed: address.toLowerCase(),
@@ -232,8 +232,8 @@ globalFuncs.localStorage = {
         isAvailable: function() {
             // return typeof localStorage != "undefined";
             // return globalFuncs.storageAvailable('localStorage');
-            
-            // Polyfilled if not available/accessible 
+
+            // Polyfilled if not available/accessible
             return true;
         },
         setItem: function(key, value) {
@@ -277,7 +277,7 @@ globalFuncs.storageAvailable = function(type) {
             // acknowledge QuotaExceededError only if there's something already stored
             storage.length !== 0;
     }
-    
+
 }
 */
 
