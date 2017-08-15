@@ -306,6 +306,12 @@
     "type":"default"
   },
   {
+    "address":"0x814cafd4782d2e728170fda68257983f03321c58",
+    "symbol":"IDEA",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0xED19698C0abdE8635413aE7AD7224DF6ee30bF22",
     "symbol":"IMT",
     "decimal":0,
@@ -351,6 +357,12 @@
     "address":"0xfa05A73FfE78ef8f1a739473e462c54bae6567D9",
     "symbol":"LUN",
     "decimal":18,
+    "type":"default"
+  },
+   {
+    "address":"0x386467f1f3ddbe832448650418311a479eecfc57",
+    "symbol":"MBRS",
+    "decimal":0,
     "type":"default"
   },
   {
