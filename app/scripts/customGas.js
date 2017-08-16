@@ -13,7 +13,13 @@
 
 module.exports = [
 {
-
+  // Substratum (SUB) Network ICO Sale
+  to:         '0xaf518d65f84e4695a4da0450ec02c1248f56b668',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Substratum Network ICO Sale. Thank you for your support!'
+},
+  {
   // Social (SCL)
   to:         '0x582e3d8dcd41f586fbcc6559f16476d20b2a3b95',
   gasLimit:   200000,
