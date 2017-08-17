@@ -269,7 +269,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.scanTrezor = function() {
         // trezor is using the path without change level id
         var path = $scope.getTrezorPath();
-        TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.4.0');
+        TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.5.2');
     };
     $scope.getLedgerPath = function() {
         return $scope.HDWallet.dPath;
