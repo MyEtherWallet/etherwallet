@@ -91,7 +91,7 @@ NAV_YourWallets             : '自分のお財布 ',
 
 /* General */
 x_Access                    : 'アクセス ',
-x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
+x_AddessDesc                : '自分のアドレスは、アカウント番号やパブリックキーでも知ることができます。誰かとETHやトークンの受け渡しをするために、これらを用います。きれいな色のついたアドレスアイコンを見つけてください。自分のペーパーウォレットや、アドレスを入力する際に、同じアイコンであることをしっかりと確認してください。 これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
 x_Address                   : '自分のアドレス ',
 x_Cancel                    : '取り消す ',
 x_CSV                       : 'CSV ファイル (未暗号化) ',
@@ -140,8 +140,8 @@ sidebar_TransHistory        : 'トランザクション履歴 ',
 sidebar_donation            : 'MyEtherWalletは、プライバシーとセキュリティのための無料のオープンソースサービスです。　寄付が増えることによって、新機能やフィードバックの反映を行い、よりユーザーの皆様のご希望に沿った制作の時間を増やす事が可能になります。私たちは、たった二人で世界を変えようとしています。お手伝いいただけますか? ',
 sidebar_donate              : '寄付する ',
 sidebar_thanks              : '感謝します!!! ',
-sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
-sidebar_DisplayOnLedger     : 'Display address on Ledger',
+sidebar_DisplayOnTrezor     : 'TREZORでアドレスを表示',
+sidebar_DisplayOnLedger     : 'Ledgerでアドレスを表示',
 
 /* Chrome Extension */
 CX_error_1                  : 'お財布が保存されていません。["Add Wallet"](/cx-wallet.html#add-wallet)をクリックして追加してください。 ',
@@ -175,7 +175,7 @@ ADD_Label_5                 : 'アドレスを入力 ',
 ADD_Label_6                 : 'お財布をアンロック： ',
 ADD_Label_6_short           : 'アンロック ',
 ADD_Label_7                 : 'アカウント追加 ',
-ADD_Label_8                 : 'Password (optional): ',
+ADD_Label_8                 : 'パスワード（任意）: ',
 
 /* Mnemonic */
 MNEM_1                      : '操作したいアドレスを選択してください。 ',
@@ -394,16 +394,16 @@ ERROR_28                    : 'お財布を操作するためには**Keystore/JS
 ERROR_29                    : '正しいユーザーとパスワードを入力してください ',
 ERROR_30                    : '正しい ENS名を入力してください ',
 ERROR_31                    : '無効な秘密フレーズです ',
-ERROR_32                    : 'ノードに接続できませんでした。Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
-ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
-ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
-ERROR_36                    : 'Enter valid TX hash', // 36
-ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+ERROR_32                    : 'ノードに接続できませんでした。ページを再表示したり、別のノード（画面の右上にあります）を試したり,ファイアーウォールの設定を確認してください。 カスタムノードの使用時には、構成設定を確認してください。', // 32
+ERROR_33                    : 'アンロックしたお財布のアドレスがオーナーのアドレスと一致しません。', // 33
+ERROR_34                    : '以前に入力したものと異なる名前です。 ', // 34
+ERROR_35                    : 'チェックサムが付いていません。 <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> 詳細</a>', // 35
+ERROR_36                    : '正しいトランザクションハッシュを入力してください', // 36
+ERROR_37                    : '１６進数を正しく入力してください (0-9, a-f)', // 37
 
 SUCCESS_1                   : '有効なアドレス ',
 SUCCESS_2                   : 'お財布は正常に暗号解除されました。 ',
-SUCCESS_3                   : 'トランザクションはブロックチェイン上に展開されています。そのトランザクションを表示し、ガス不足や契約実行エラーがないことを確認しするためにクリックしてください。 TX Hash:  ', //'トランザクションが送出されました。 TX Hash ',
+SUCCESS_3                   : 'トランザクションはブロックチェイン上に展開されています。ガス不足や契約実行エラーがないことを確認するために、下のボタンをクリックしてトランザクション(TX)を表示してください。 TX Hash:  ', //'トランザクションが送出されました。 TX Hash ',
 SUCCESS_4                   : 'お財布が追加されました： ',
 SUCCESS_5                   : '選択されました： ',
 SUCCESS_6                   : '接続完了しました ',
