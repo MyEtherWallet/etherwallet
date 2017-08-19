@@ -660,6 +660,12 @@
    "type":"default"
   },
   {
+   "address":"0x12480E24eb5bec1a9D4369CaB6a80caD3c0A377A",
+   "symbol":"SUB",
+   "decimal":2,
+   "type":"default"
+  },
+  {
    "address":"0xB9e7F8568e08d5659f5D29C4997173d84CdF2607",
    "symbol":"SWT",
    "decimal":18,
