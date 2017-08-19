@@ -744,6 +744,12 @@
     "type":"default"
   },
   {
+    "address": "0xD850942eF8811f2A866692A623011bDE52a462C1",
+    "symbol": "VEN",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address":"0x6a0A97E47d15aAd1D132a1Ac79a480E3F2079063",
     "symbol":"WCT",
     "decimal":18,
