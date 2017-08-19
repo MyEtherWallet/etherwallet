@@ -19,12 +19,12 @@ module.exports = [
   data:       '',
   msg:        'Substratum Network ICO Sale. Thank you for your support!'
 },
-  {
-  // Social (SCL)
-  to:         '0x582e3d8dcd41f586fbcc6559f16476d20b2a3b95',
-  gasLimit:   200000,
+{
+  // YUPIE (YUPIE)
+  to:         '0x0F33bb20a282A7649C7B3AFf644F084a9348e933',
+  gasLimit:   400000,
   data:       '',
-  msg:        'Social (SCL) ICO/Crowdsale - ico.nexus.social'
+  msg:        'YUPIE (YUPIE) ICO'
 },
 {
   // Stox Token Sale
