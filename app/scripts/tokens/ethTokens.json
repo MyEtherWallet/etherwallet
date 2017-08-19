@@ -786,4 +786,11 @@
     "decimal":18,
     "type":"default"
   }
+  ,
+  {
+    "address":"0x0F33bb20a282A7649C7B3AFf644F084a9348e933",
+    "symbol":"YUPIE",
+    "decimal":18,
+    "type":"default"
+  }
 ]
