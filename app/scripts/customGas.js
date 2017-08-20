@@ -20,6 +20,13 @@ module.exports = [
   msg:        'Substratum Network ICO Sale. Thank you for your support!'
 },
 {
+  // CryptoMart
+  to:         '0xEa37e384a7188DBEd1B86740F83C70399c033Ec5',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'CryptoMart ICO | 25/082017-25/09/2017'
+},
+{
   // YUPIE (YUPIE)
   to:         '0x0F33bb20a282A7649C7B3AFf644F084a9348e933',
   gasLimit:   400000,
