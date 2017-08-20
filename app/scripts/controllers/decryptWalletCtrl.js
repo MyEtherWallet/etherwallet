@@ -229,7 +229,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     }
     $scope.ledgerCallback = function(result, error) {
         if (typeof result != "undefined") {
-            $scope.HWWalletCreate(result['publicKey'], result['chainCode'], "ledger", $scope.HDWallet.ledgerPath);
+            $scope.HWWalletCreate(result['publicKey'], result['chainCode'], "ledger", $scope.getLedgerPath());
         }
         else {
             $scope.ledgerError = true;
@@ -255,6 +255,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             $scope.notifier.danger(error);
     }
     $scope.scanLedger = function() {
+        $scope.ledgerError = false;
         $scope.ledger = new Ledger3("w0w");
         var app = new ledgerEth($scope.ledger);
         var path = $scope.getLedgerPath();
