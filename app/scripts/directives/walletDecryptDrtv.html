@@ -9,19 +9,19 @@
       <span translate="x_MetaMask">MetaMask / Mist</span>
     </label>
 
-    <label class="radio">
-      <input aria-flowto="aria7" type="radio" aria-label="Digital Bitbox hardware wallet" ng-model="walletType" value="digitalBitbox" />
-      Digital Bitbox
-    </label>
-
-    <label class="radio">
-      <input aria-flowto="aria2" type="radio" aria-label="Ledger Wallet hardware wallet" ng-model="walletType" value="ledger" />
+    <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'">
+      <input aria-flowto="aria2" type="radio" aria-label="Ledger Wallet hardware wallet" ng-model="walletType" value="ledger"/>
       <span>Ledger Wallet</span>
     </label>
 
-    <label class="radio">
-      <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
+    <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'">
+      <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor"/>
       TREZOR
+    </label>
+
+    <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'">
+      <input aria-flowto="aria7" type="radio" aria-label="Digital Bitbox hardware wallet" ng-model="walletType" value="digitalBitbox"/>
+      Digital Bitbox
     </label>
 
     <label class="radio" style="display: none;" id="showMeTheMoney">
@@ -352,7 +352,10 @@
           <h4 id="modalTitle" class="modal-title" translate="ADD_Radio_5_Path" style="margin-bottom: .25rem">
             Select HD derivation path:
           </h4>
-          <div class="row">
+
+          <p class="alert alert-danger" ng-hide="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'"> We do not know the correct path for this network. <a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank" rel="noopener">Please open a github issue</a> so we can discuss / be enlightened.</p>
+          <section class="row">
+
             <div class="col-sm-4">
               <label class="radio small">
                 <input aria-describedby="Path: Jaxx, Metamask, Exodus, imToken - {{HDWallet.defaultDPath}}"
@@ -375,9 +378,7 @@
                 <span ng-bind="HDWallet.ledgerPath"></span>
                 <p class="small">Ledger (ETH)</p>
               </label>
-            </div>
 
-            <div class="col-sm-4">
               <label class="radio small">
                 <input aria-describedby="Path: Ledger (ETC) {{HDWallet.ledgerClassicPath}}"
                        ng-change="onHDDPathChange()"
@@ -388,9 +389,21 @@
                 <p class="small">Ledger (ETC)</p>
               </label>
             </div>
-          </div>
-          <div class="row">
+            <div class="col-sm-4">
+              <label class="radio small">
+                <input aria-describedby="Path: TREZOR (ETC) {{HDWallet.trezorClassicPath}}"
+                       ng-change="onHDDPathChange()"
+                       ng-model="HDWallet.dPath"
+                       type="radio"
+                      value="{{HDWallet.trezorClassicPath}}"/>
+                <span ng-bind="HDWallet.trezorClassicPath"></span>
+                <p class="small">TREZOR (ETC)</p>
+              </label>
+            </div>
 
+          </section>
+
+          <section class="row">
             <div class="col-sm-4">
               <label class="radio small">
               <p class="small"><strong>Your Custom Path</strong></p>
@@ -409,28 +422,28 @@
 
             <div class="col-sm-4">
               <label class="radio small">
-                <input aria-describedby="Path: TREZOR (ETC) {{HDWallet.trezorClassicPath}}"
-                       ng-change="onHDDPathChange()"
-                       ng-model="HDWallet.dPath"
-                       type="radio"
-                      value="{{HDWallet.trezorClassicPath}}"/>
-                <span ng-bind="HDWallet.trezorClassicPath"></span>
-                <p class="small">TREZOR (ETC)</p>
-              </label>
-            </div>
-
-            <div class="col-sm-4">
-              <label class="radio small">
                 <input aria-describedby="Path: TREZOR - TESTNET - {{HDWallet.trezorTestnetPath}}"
                        ng-change="onHDDPathChange()"
                        ng-model="HDWallet.dPath"
                        type="radio"
                       value="{{HDWallet.trezorTestnetPath}}"/>
                 <span ng-bind="HDWallet.trezorTestnetPath"></span>
-                <p class="small">TREZOR (TESTNET)</p>
+                <p class="small">Network: Testnets</p>
               </label>
             </div>
-          </div>
+
+            <div class="col-sm-4">
+              <label class="radio small">
+                <input aria-describedby="Path: TREZOR (ETC) {{HDWallet.hwExpansePath}}"
+                       ng-change="onHDDPathChange()"
+                       ng-model="HDWallet.dPath"
+                       type="radio"
+                      value="{{HDWallet.hwExpansePath}}"/>
+                <span ng-bind="HDWallet.hwExpansePath"></span>
+                <p class="small">Network: Expanse</p>
+              </label>
+            </div>
+          </section>
 
 
           <h4 id="modalTitle2" class="modal-title" translate="MNEM_1" style="margin: .5rem 0">
@@ -446,7 +459,7 @@
               <td>
                 <label>
                   <input aria-describedby="modalTitle2"
-                       aria-label="Unlock wallet with {{wallet.getBalance()}} {{nodeType}}. Address: {{wallet.getChecksumAddressString()}}"
+                       aria-label="Unlock wallet with {{wallet.getBalance()}} {{ajaxReq.type}}. Address: {{wallet.getChecksumAddressString()}}"
                        name="addressSelect"
                        ng-model="HDWallet.id"
                        type="radio"
@@ -458,7 +471,7 @@
               </td>
               <td>
                 <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">
-                  {{wallet.getBalance()}} {{nodeType}}
+                  {{wallet.getBalance()}} {{ajaxReq.type}}
                 </a>
               </td>
               <td class="text-center">
