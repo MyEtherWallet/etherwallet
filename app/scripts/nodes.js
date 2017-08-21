@@ -163,6 +163,7 @@ nodes.nodeList = {
         'service': 'Expanse.tech',
         'lib': new nodes.customNode('https://node.expanse.tech/', '')
     },
+    /*
     'music_tfarm': {
         'name': 'MUSIC',
         'blockExplorerTX': 'https://orbiter.musicoin.org/tx/[[txHash]]',
@@ -187,6 +188,7 @@ nodes.nodeList = {
         'service': 'pool.musicoin.tw',
         'lib': new nodes.customNode('https://mewapi.musicoin.tw', '')
     },
+    */
     'ubq': {
         'name': 'UBQ',
         'blockExplorerTX': 'https://ubiqscan.io/en/tx/[[txHash]]',
