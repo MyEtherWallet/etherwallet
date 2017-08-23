@@ -8,5 +8,5 @@
   <textarea class="form-control" rows="3" ng-model="signedTx"></textarea>
 
   <a class="btn btn-primary" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
-
+<div class="qr-code" qr-code="{{signedTx}}" watch-var="signedTx" width="100%"></div>
 </article>
