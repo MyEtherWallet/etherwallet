@@ -168,6 +168,12 @@
     "type":"default"
   },
   {
+    "address":"0x0cf0ee63788a0849fe5297f3407f701e122cc023",
+    "symbol":"DATA",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xcC4eF9EEAF656aC1a2Ab886743E98e97E090ed38",
     "symbol":"DDF",
     "decimal":18,
