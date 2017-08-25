@@ -258,6 +258,12 @@
     "type":"default"
   },
   {
+    "address":"0x7585F835ae2d522722d2684323a0ba83401f32f5",
+    "symbol":"GBT",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x24083Bb30072643C3bB90B44B7285860a755e687",
     "symbol":"GELD",
     "decimal":18,
@@ -285,6 +291,12 @@
     "address":"0x025abAD9e518516fdaAFBDcdB9701b37fb7eF0FA",
     "symbol":"GTKT",
     "decimal":0,
+    "type":"default"
+  },
+  {
+    "address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
+    "symbol":"HGT",
+    "decimal":8,
     "type":"default"
   },
   {
