@@ -21,7 +21,7 @@ module.exports = [
 },
 {
   // CryptoMart
-  to:         '0xEa37e384a7188DBEd1B86740F83C70399c033Ec5',
+  to:         '0x96028Fc22499A7Bad7727baB017eC2352308C15a',
   gasLimit:   200000,
   data:       '',
   msg:        'CryptoMart ICO | 25/082017-25/09/2017'
