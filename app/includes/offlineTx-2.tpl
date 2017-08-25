@@ -111,15 +111,12 @@
   <section class="col-xs-12 clearfix">
     <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">Generate Signed Transaction</a>
   </section>
-  <section class="col-sm-5 clearfix">
+  <section class="col-sm-6 clearfix">
     <label translate="SEND_raw"> Raw Transaction </label>
     <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="rawTx"></textarea>
   </section>
-  <section class="col-sm-5 clearfix">
+  <section class="col-sm-6 clearfix">
     <label translate="SEND_signed"> Signed Transaction </label>
     <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="signedTx"></textarea>
-  </section>
-  <section class="col-sm-2 cleafix">
-    <div class="qr-code" qr-code="{{signedTx}}" watch-var="signedTx" width="100%"></div>
   </section>
 </article>
