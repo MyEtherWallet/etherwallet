@@ -15,15 +15,16 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         id: 0,
         hdk: null,
         dPath: '',
-        defaultDPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
-        alternativeDPath: "m/44'/60'/0'", // first address: m/44'/60'/0/0
-        customDPath: "m/44'/60'/1'/0", // first address: m/44'/60'/1'/0/0
-        ledgerPath: "m/44'/60'/0'", // first address: m/44'/60'/0/0
+        defaultDPath:      "m/44'/60'/0'/0",       // first address: m/44'/60'/0'/0/0
+        alternativeDPath:  "m/44'/60'/0'",         // first address: m/44'/60'/0/0
+        customDPath:       "m/44'/60'/1'/0",       // first address: m/44'/60'/1'/0/0
+        ledgerPath:        "m/44'/60'/0'",         // first address: m/44'/60'/0/0
         ledgerClassicPath: "m/44'/60'/160720'/0'", // first address: m/44'/60'/160720'/0/0
-        trezorTestnetPath: "m/44'/1'/0'/0", // first address: m/44'/1'/0'/0/0
-        trezorClassicPath: "m/44'/61'/0'/0", // first address: m/44'/61'/0'/0/0
-        trezorPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
-        hwExpansePath: "m/44'/40'/0'/0" // first address : m/44'/40'/0'/0/0
+        trezorTestnetPath: "m/44'/1'/0'/0",        // first address: m/44'/1'/0'/0/0
+        trezorClassicPath: "m/44'/61'/0'/0",       // first address: m/44'/61'/0'/0/0
+        trezorPath:        "m/44'/60'/0'/0",       // first address: m/44'/60'/0'/0/0
+        hwUbqPath:         "m/44'/108'/0'/0",      // first address: m/44'/40'/0'/0/0
+        hwExpansePath:     "m/44'/40'/0'/0"        // first address: m/44'/40'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
@@ -45,6 +46,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.EXP:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
+                    break;
+                case nodes.nodeTypes.UBQ:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
                     break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
@@ -69,6 +73,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.EXP:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
                     break;
+                case nodes.nodeTypes.UBQ:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
+                    break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
             }
@@ -91,6 +98,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.EXP:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
+                    break;
+                case nodes.nodeTypes.UBQ:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
                     break;
                 default:
                   $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
