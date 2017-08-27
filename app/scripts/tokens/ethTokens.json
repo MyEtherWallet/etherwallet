@@ -792,6 +792,18 @@
     "type":"default"
   },
   {
+    "address":"0x882448f83d90b2bf477af2ea79327fdea1335d93",
+    "symbol":"VIBEX",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0xe8ff5c9c75deb346acac493c463c8950be03dfba",
+    "symbol":"VIBE",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xeDBaF3c5100302dCddA53269322f3730b1F0416d",
     "symbol":"VRS",
     "decimal":5,
