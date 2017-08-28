@@ -18,7 +18,7 @@ x_TxHash                    : 'TX Hash',
 NAV_CheckTxStatus           : 'Comprova l\'estat d\'una TX',
 NAV_TxStatus                : 'Estat de la TX',
 tx_Details                  : 'Detalls de transacció',
-tx_Summary                  : 'Durant períodes de molt volum (quan hi ha ICOs per exemple) les transaccions poder restar pendets durant hores, o dies. Aquesta eina té com a objectiu permetre\'t trobar i "cancel·lar" / reemplaçar aquestes TXs. ** Això no sol ser una cosa que puguis fer. No s\'hi hauria de confirar i només funcionarà quan les TX Pools siguin plenes. [Si us plau, llegiu sobre aquesta eina aquí.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : 'Durant períodes de molt volum (quan hi ha ICOs per exemple) les transaccions poder restar pendents durant hores, o dies. Aquesta eina té com a objectiu permetre\'t trobar i "cancel·lar" / reemplaçar aquestes TXs. ** Això no sol ser una cosa que puguis fer. No s\'hi hauria de confirmar i només funcionarà quan les TX Pools siguin plenes. [Si us plau, llegiu sobre aquesta eina aquí.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
 tx_notFound                 : 'Transacció no trobada',
 tx_notFound_1               : 'Aquesta TX no es pot trobar al TX Pool del node amb el qual estàs connectat.',
 tx_notFound_2               : 'Si acabes d\'enviar la transacció, espera 15 segons i prem el botó "Comprova l\'estat d\'una TX" de nou. ',
@@ -30,7 +30,7 @@ tx_foundInPending_2         : 'Actualment està pendent (esperant ser minada). '
 tx_foundInPending_3         : 'Hi ha una oportunitat de "cancel·lar" or reemplaçar aquesta transacció. Desbloqueja la teva cartera a continuació.',
 tx_FoundOnChain             : 'Transacció trobada',
 tx_FoundOnChain_1           : 'La teva transacció s\'ha minat correctament i és a la blockchain.',
-tx_FoundOnChain_2           : '**Si veus un `( ! )` vermell, un missatge d\'error `BAD INSTRUCTION` o `OUT OF GAS` **, vol dir que la transacció no s\'ha *enviat* correctament. No es pot cancel·lar o reemplaár aquesta transacció. En lloc d\'això, envia una transacció nova. Si rebs un error "Out of Gas" error, hauries de duplicar el limit de gas especificat originalment.',
+tx_FoundOnChain_2           : '**Si veus un `( ! )` vermell, un missatge d\'error `BAD INSTRUCTION` o `OUT OF GAS` **, vol dir que la transacció no s\'ha *enviat* correctament. No es pot cancel·lar o reemplaçar aquesta transacció. En lloc d\'això, envia una transacció nova. Si reps un error "Out of Gas", hauries de duplicar el límit de gas especificat originalment.',
 tx_FoundOnChain_3           : '**Si no veus cap error, la teva transacció s\'ha enviat amb èxit.** El teu ETH o Tokens són on els has enviat. Si no pots veure aquest ETH o Tokens a la teva cartera / compte de bescanvi, i han passat més de 24 hores des de l\'enviament, si us plau [contacta amb aquest servei](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Envia *l\'enllaç* de la teva transacció si demana amablement que investiguin.',
 
 /* Gen Wallet Updates */
@@ -41,26 +41,26 @@ GEN_Help_4                  : 'Guies & PMF',
 GEN_Help_5                  : 'Com Crear una cartera',
 GEN_Help_6                  : 'Començant',
 GEN_Help_7                  : 'Mantén-l\'ho segur · Fes-ne una còpia de seguretat · No el comparteixis amb ningú · No el perdis · No es pot recuperar si el perds.',
-GEN_Help_8                  : 'No es descarrega un fixer? ',
+GEN_Help_8                  : 'No es descarrega un fitxer? ',
 GEN_Help_9                  : 'Intentar fer servir Google Chrome ',
-GEN_Help_10                 : 'Fés clic amb el botó dret i deseu el fitxer com a. Nom del fitxer: ',
+GEN_Help_10                 : 'Fes clic amb el botó dret i deseu el fitxer com a. Nom del fitxer: ',
 GEN_Help_11                 : 'No obris aquest fitxer al teu ordinador ',
 GEN_Help_12                 : 'Utilitza\'l per desbloquejar la teva cartera amb MyEtherWallet (o Mist, Geth, Parity i altres clients de carteres.) ',
 GEN_Help_13                 : 'Com fer una copia de seguretat del teu fitxer Keystore ',
 GEN_Help_14                 : 'Que són aquests formats diferents? ',
-GEN_Help_15                 : 'Evitant perdues i robatòris dels teus fons.',
+GEN_Help_15                 : 'Evitant perdues i robatoris dels teus fons.',
 GEN_Help_16                 : 'Que són aquests formats diferents?',
-GEN_Help_17                 : 'Peruqè hauria?',
+GEN_Help_17                 : 'Perquè hauria?',
 GEN_Help_18                 : 'Per tenir-ne una segona copia de seguretat.',
 GEN_Help_19                 : 'En cas que oblidis la teva contrasenya.',
 GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Ho entenc. Continua.',
 GEN_Label_5                 : 'Desa la teva `Clau Privada`. ',
-GEN_Unlock                  : 'Desbloqueja la teva cartera per verure\'n l\'adreça',
-GAS_PRICE_Desc              : 'El preu del gas és la quantitat que pagues per unitat de gas. `TX fee = preu del gas * limit de gas` i es paga als miners per incloure la teva TX a un block. Preu de gas més elevat = transacció més ràpida, però més cara. Per defecte és `21 GWEI`.',
-GAS_LIMIT_Desc              : 'El limit de gas és la quantitat de gas a enviar amb la teva TX. `TX fee` = preu del gas * limit de gas; i es paga als miners per incloure la teva TX a un block. Incrementat aquest nombre no farà que la teva TX sigui minada més rapidament. Enviant ETH = `21000`. Enviant Tokens = ~`200000`.',
-NONCE_Desc                  : 'El nonce és el nomhbre de transaccións enviades des d\'una adreça determinada. Assegura que les transaccions  s\'envien en ordre i no més d\'una vegada.',
-TXFEE_Desc                  : 'La TX Fee es paga als miners per incloure la teva TX en un block. És el `limit de gas` * `preu del gas`. [Pots convertir GWEI -> ETH aquí](https://www.myetherwallet.com/helpers.html)',
+GEN_Unlock                  : 'Desbloqueja la teva cartera per veure\'n l\'adreça',
+GAS_PRICE_Desc              : 'El preu del gas és la quantitat que pagues per unitat de gas. `TX fee = preu del gas * límit de gas` i es paga als miners per incloure la teva TX a un block. Preu de gas més elevat = transacció més ràpida, però més cara. Per defecte és `21 GWEI`.',
+GAS_LIMIT_Desc              : 'El límit de gas és la quantitat de gas a enviar amb la teva TX. `TX fee` = preu del gas * límit de gas; i es paga als miners per incloure la teva TX a un block. Incrementat aquest nombre no farà que la teva TX sigui minada més ràpidament. Enviant ETH = `21000`. Enviant Tokens = ~`200000`.',
+NONCE_Desc                  : 'El nonce és el nombre de transaccions enviades des d\'una adreça determinada. Assegura que les transaccions  s\'envien en ordre i no més d\'una vegada.',
+TXFEE_Desc                  : 'La comissió per la TX es paga als miners per incloure la teva TX en un block. És el `límit de gas` * `preu del gas`. [Pots convertir GWEI -> ETH aquí](https://www.myetherwallet.com/helpers.html)',
 
 
 /* Navigation*/
@@ -100,7 +100,7 @@ x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Frase Mnemònica',
 x_ParityPhrase              : 'Frase de Parity ',
 x_Password                  : 'Contrasenya ',
-x_Print                     : 'Imprimir cartera de papaer ',
+x_Print                     : 'Imprimir cartera de paper ',
 x_PrintDesc                 : 'ProTip: Fes clic a imprimir i desa\'l com a PDF, encara que no tinguis una impressora! ',
 x_PrintShort                : 'Imprimir ',
 x_PrivKey                   : 'Clau privada (no xifrada) ',
@@ -117,7 +117,7 @@ MEW_Tagline                 : 'Cartera d\'Ether de codi obert programada amb Jav
 MEW_Warning_1               : 'Comprova sempre l\'URL abans d\'accedir a la vostra cartera o crear una cartera nova. Ves amb compte amb els llocs de phishing! ',
 
 /* Footer */
-FOOTER_1                    : 'Eina gratuïta, de codi obert que s\'executa en el client per generar carteres d\'Ethereum i més. Interactua fàcilment amb la blockchaing d\'Ethereum de manera fàcil i segura. Comprova l\'URL (.com) abans de desbloquejar la teva cartera.',
+FOOTER_1                    : 'Eina gratuïta, de codi obert que s\'executa en el client per generar carteres d\'Ethereum i més. Interactua fàcilment amb la blockchain d\'Ethereum de manera fàcil i segura. Comprova l\'URL (.com) abans de desbloquejar la teva cartera.',
 FOOTER_1b                   : 'Creat per ',
 FOOTER_2                    : 'Donacions molt agraïdes ',
 FOOTER_3                    : 'Generació de carteres al client per ',
@@ -149,8 +149,8 @@ MNEM_prev                   : 'Adreces anteriors ',
 
 /* Hardware wallets */
 x_Ledger                    : 'Ledger Wallet ',
-ADD_Ledger_1                : 'Conecta amb el teu Ledger Wallet ',
-ADD_Ledger_2                : 'Obre l\'apicació d\'Ethereum (o una aplicació de contracte) ',
+ADD_Ledger_1                : 'Connecta amb el teu Ledger Wallet ',
+ADD_Ledger_2                : 'Obre l\'aplicació d\'Ethereum (o una aplicació de contracte) ',
 ADD_Ledger_3                : 'Verifica que "Browser Support" està habilitat a "Settings" ',
 ADD_Ledger_4                : 'Si no trobes "Browser Support" a "Settings", verifica que tens instal·lat el [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Has d\'accedir a MyEtherWallet utilitzant una connexió segura (SSL / HTTPS). ',
@@ -163,7 +163,7 @@ x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connecta a TREZOR ',
 x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'Torna a obrir MyEtherWallet utilitzant una connexió segura (SSL) ',
-ADD_DigitalBitbox_0b        : 'RTorna a obrir MyEtherWallet utilitzant [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_0b        : 'Torna a obrir MyEtherWallet utilitzant [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'Connecta el teu Digital Bitbox ',
 
 /* Add Wallet */
@@ -199,7 +199,7 @@ MYWAL_Edit                  : 'Edita ',
 MYWAL_View                  : 'Veure ',
 MYWAL_Remove                : 'Elimina ',
 MYWAL_RemoveWal             : 'Elimina una cartera ',
-MYWAL_WatchOnly             : 'ELs teus comptes supervisats ',
+MYWAL_WatchOnly             : 'Els teus comptes supervisats ',
 MYWAL_Viewing               : 'Veient cartera ',
 MYWAL_Hide                  : 'Amagar informació de la cartera ',
 MYWAL_Edit_2                : 'Editar la cartera ',
@@ -254,7 +254,7 @@ TRANS_desc                  : 'Si vols enviar tokens, si us plau utilitza la pà
 TRANS_advanced              : '+Avançat: Afegir dades ',
 TRANS_data                  : 'Dades ',
 TRANS_gas                   : 'Limit de gas ',
-TRANS_sendInfo              : 'Una transacció estàndard utilitzant 21000 gas costarà 0.000441 ETH. Utilitzem un preu una mica per sobre del mínim de 0.000000021 ETH per assegurar que es mina ràpidament. No ens quedem cap comisió per la transacció. ',
+TRANS_sendInfo              : 'Una transacció estàndard utilitzant 21000 gas costarà 0.000441 ETH. Utilitzem un preu una mica per sobre del mínim de 0.000000021 ETH per assegurar que es mina ràpidament. No ens quedem cap comissió per la transacció. ',
 
 /* Offline Transaction */
 OFFLINE_Title               : 'Crea i envia una transacció sense connexió ',
@@ -262,14 +262,14 @@ OFFLINE_Desc                : 'Es poden crear transaccions sense connexió amb t
 OFFLLINE_Step1_Title        : 'Pas 1: Genera la informació (Ordinador amb connexió) ',
 OFFLINE_Step1_Button        : 'Genera la informació ',
 OFFLINE_Step1_Label_1       : 'Des de l\'adreça ',
-OFFLINE_Step1_Label_2       : 'Nota: Aquesta és l\'adreça ORIGEN, no l\'adreça de destí. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account. ',
+OFFLINE_Step1_Label_2       : 'Nota: Aquesta és l\'adreça ORIGEN, no l\'adreça de destí. El Nonce es genera des de la compte origen. Si utilitzer un ordinador sense connexió, seria l\'adreça del compte del "cold-storage". ',
 OFFLINE_Step2_Title         : 'Pas 2: Genera la transacció (Ordinador sense connexió) ',
 OFFLINE_Step2_Label_1       : 'A l\'adreça ',
 OFFLINE_Step2_Label_2       : 'Valor / Quantitat a enviar ',
 OFFLINE_Step2_Label_3       : 'Preu del gas ',
 OFFLINE_Step2_Label_3b      : 'Això s\'ha mostrat al pas 1 al teu ordinador amb connexió. ',
 OFFLINE_Step2_Label_4       : 'Límit de gas ',
-OFFLINE_Step2_Label_4b      : '21000 és el limit de gas per defecte. Quan envies contractes o dades adicionals, pot ser que el que necessitis sigui diferent. El gas no utilitzat se\'t retornarà. ',
+OFFLINE_Step2_Label_4b      : '21000 és el límit de gas per defecte. Quan envies contractes o dades addicionals, pot ser que el que necessitis sigui diferent. El gas no utilitzat se\'t retornarà. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Això s\'ha mostrat al pas 1 al teu ordinador amb connexió. ',
 OFFLINE_Step2_Label_6       : 'Dades ',
@@ -332,85 +332,85 @@ MSG_info2                   : 'Inclou el teu àlies i on el fas servir per tal q
 MSG_info3                   : 'Inclou una raó específica per tal que el missatge no pugui ser reutilitzat per un altre propòsit. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Això et permet descarregar diferents versions de les claus privades i tornar a imprimir la teva cartera de paper. És possible que vulguis fer això per [importar el teu compte a Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vols comprovar el teu saldo, recomanem utilizar un explorador de la blockchain com [etherscan.io](http://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Això et permet descarregar diferents versions de les claus privades i tornar a imprimir la teva cartera de paper. És possible que vulguis fer això per [importar el teu compte a Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vols comprovar el teu saldo, recomanem utilitzar un explorador de la blockchain com [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Això et permet descarregar diferents versions de les claus privades i tornar a imprimir la teva cartera de paper. ',
-VIEWWALLET_SuccessMsg       : 'Enhorabona! Aquests són els detals de la teva cartera. ',
+VIEWWALLET_SuccessMsg       : 'Enhorabona! Aquests són els detalls de la teva cartera. ',
 VIEWWALLET_ShowPrivKey      : '(mostra)',
 VIEWWALLET_HidePrivKey      : '(amaga)',
 
 /* Chrome Extension */
-CX_error_1                  : 'No tens cap cartera desada. Fés clic ["Afegeix cartera"](/cx-wallet.html#add-wallet) per afegir-ne una! ',
+CX_error_1                  : 'No tens cap cartera desada. Fes clic ["Afegeix cartera"](/cx-wallet.html#add-wallet) per afegir-ne una! ',
 CX_quicksend                : 'Envia ', // if no appropriate translation, just use "Send"
 
 /* Error Messages */
-ERROR_0                     : 'Please enter a valid amount.', // 0
-ERROR_1                     : 'Your password must be at least 9 characters. Please ensure it is a strong password. ', // 1
-ERROR_2                     : 'Sorry! We don\'t recognize this type of wallet file. ', // 2
-ERROR_3                     : 'This is not a valid wallet file. ', // 3
-ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units ', // 4
-ERROR_5                     : 'Please enter a valid address. ', // 5
-ERROR_6                     : 'Please enter a valid password. ', // 6
-ERROR_7                     : 'Please enter valid decimals     (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Please enter a valid gas limit  (Must be integer. Try 21000-4000000.) ', // 8
-ERROR_9                     : 'Please enter a valid data value (Must be hex.) ', // 9
-ERROR_10                    : 'Please enter a valid gas price. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
-ERROR_11                    : 'Please enter a valid nonce      (Must be integer.) ', // 11
-ERROR_12                    : 'Invalid signed transaction. ', // 12
-ERROR_13                    : 'A wallet with this nickname already exists. ', // 13
-ERROR_14                    : 'Wallet not found. ', // 14
-ERROR_15                    : 'Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ', // 15 - NOT USED
-ERROR_16                    : 'A wallet with this address already exists in storage. Please check your wallets page. ', // 16
-ERROR_17                    : 'Account you are sending from does not have enough funds. If sending tokens, you must have 0.01 ETH in your account to cover the cost of gas. ', // 17
-ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
-ERROR_19                    : 'Please enter a valid symbol', // 19
-ERROR_20                    : 'Not a valid ERC-20 token', // 20
-ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
-ERROR_22                    : 'Please enter a valid node name', // 22
-ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
-ERROR_24                    : 'Please enter a valid port. ', // 24
-ERROR_25                    : 'Please enter a valid chain ID. ', // 25
-ERROR_26                    : 'Please enter a valid ABI. ', // 26
-ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
-ERROR_28                    : 'You need this `Keystore File + Password` or the `Private Key` (next page) to access this wallet in the future.  ', // 28
-ERROR_29                    : 'Please enter a valid user and password. ', // 29
-ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
-ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
-ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
-ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
-ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
-ERROR_36                    : 'Enter valid TX hash', // 36
-ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+ERROR_0                     : 'Si us plau, introdueix una quantitat vàlida.', // 0
+ERROR_1                     : 'La teva contrasenya ha de tenir 9 caràcters com a mínim. Si us plau, assegura\´t que és una contrasenya forta. ', // 1
+ERROR_2                     : 'Perdó! No reconeixem aquest tipus de fitxer de cartera. ', // 2
+ERROR_3                     : 'Aquest fitxer de cartera no és vàlid. ', // 3
+ERROR_4                     : 'Aquesta unitat no existeix, si us plau utilitza\'n una de les següents ', // 4
+ERROR_5                     : 'Si us plau introdueix una adreça vàlida. ', // 5
+ERROR_6                     : 'Si us plau introdueix una contrasenya vàlida. ', // 6
+ERROR_7                     : 'Si us plau introdueix decimals vàlids (Ha de ser enter. Prova 0-18.) ', // 7
+ERROR_8                     : 'Si us plau introdueix un gas límit vàlid (Ha de ser  enter. Prova 21000-4000000.) ', // 8
+ERROR_9                     : 'Si us plau introdueix un valor per les dades vàlid (Ha de ser hex.) ', // 9
+ERROR_10                    : 'Si us plau introdueix un preu de gas vàlid. (Enter. Prova 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Si us plau introdueix un nonce vàlid (Ha de ser enter.) ', // 11
+ERROR_12                    : 'Transacció signada no vàlida. ', // 12
+ERROR_13                    : 'Ja existeix una cartera amb aquest àlies. ', // 13
+ERROR_14                    : 'Cartera no trobada. ', // 14
+ERROR_15                    : 'No sembla que existeixi una proposta amb aquest ID o hi ha hagut un error llegint-la. ', // 15 - NOT USED
+ERROR_16                    : 'Ja hi ha emmagatzemada una cartera amb aquesta adreça. Si us plau comprova la pàgina de carteres. ', // 16
+ERROR_17                    : 'El compte d\'origen no té prou saldo. Si estàs enviant tokens, has de tenir 0.01 ETH al teu compte per cobrir el cost del gas. ', // 17
+ERROR_18                    : 'Tot el gas seria utilitzat en aquesta transacció. Això vol dir que ja has votat aquesta proposta o que el període de debat ja ha acabat.', // 18
+ERROR_19                    : 'Si us play introdueix un símbol vàlid', // 19
+ERROR_20                    : 'No és un token ERC-20 vàlid', // 20
+ERROR_21                    : 'No s\'ha pogut calcular el gas necessari. No hi ha prou saldo en el compte, o el contracte destí ha llençat un error. Pots ajustar el gas manualment i continuar. És possible que el missatge d\'error al enviar contingui més informació.', // 21
+ERROR_22                    : 'Si us plau introdueix un nom de node vàlid', // 22
+ERROR_23                    : 'Si us plau introdueix una URL vàlida URL. Si estàs sota https, la teva URL ha de ser https', // 23
+ERROR_24                    : 'Si us plau introdueix un port vàlid. ', // 24
+ERROR_25                    : 'Si us plau introdueix un ID de cadena vàlid. ', // 25
+ERROR_26                    : 'PSi us plau introdueix un ABI vàlid. ', // 26
+ERROR_27                    : 'Quantitat mínima: 0.01. Quantitat max.: ', // 27
+ERROR_28                    : 'Necessites aquest `Fitxer Keystore + Contrasenya` o la `Clau Privada` (següent pàgina) per tal d\'accedir a aquesta cartera en el futur.  ', // 28
+ERROR_29                    : 'Si us plau introdueix un usuari i contrasenya vàlids. ', // 29
+ERROR_30                    : 'Si us plau introdueix un nom vàlid (+7 caràcters, puntuació límitada) ', // 30
+ERROR_31                    : 'Introdueix una frase secreta vàlida. ', // 31
+ERROR_32                    : 'No s\'ha pogut connectar al node. Refresca la teva pàgina, prova-ho amb un altre node (cantonada superior-dreta), comprova el teu firewall. En mode personalitzar, comprova les teves preferències.', // 32
+ERROR_33                    : 'La cartera que has desbloquejat no correspon amb l\'adreça del propietari. ', // 33
+ERROR_34                    : 'El nom que estàs intentant mostrar no coincideix amb el nom que has introduït. ', // 34
+ERROR_35                    : 'L\'adreça introduïda no s\'ha comprovat mitjantçant checksum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Més informació</a>', // 35
+ERROR_36                    : 'Introdueix un hash de TX vàlid', // 36
+ERROR_37                    : 'Introdueix una cadena hex (0-9, a-f) vàlida', // 37
 
-SUCCESS_1                   : 'Valid address ',
-SUCCESS_2                   : 'Wallet successfully decrypted ',
-SUCCESS_3                   : 'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:  ',
-SUCCESS_4                   : 'Your wallet was successfully added ',
-SUCCESS_5                   : 'File Selected ',
-SUCCESS_6                   : 'You are successfully connected ',
-SUCCESS_7                   : 'Message Signature Verified',
-WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
+SUCCESS_1                   : 'Adreça vàlida ',
+SUCCESS_2                   : 'Cartera desxifrada amb èxit ',
+SUCCESS_3                   : 'La teva TX s\'ha emès a la xarxa. Està esperant ha ser minada i confirmada. Durant ICOs, pot trigar més de 3 hores a ser confirmada. Utilitza els següents botons de Verificar & Comprovar per veur-ho. TX Hash:  ',
+SUCCESS_4                   : 'La teva cartera s\'ha afegit correctament ',
+SUCCESS_5                   : 'Fitxer seleccionat ',
+SUCCESS_6                   : 'Estàs connectat correctament ',
+SUCCESS_7                   : 'Signatura del missatge verificada',
+WARN_Send_Link              : 'Has arribat mitjançant un enllaç que conté una adreça, valor, gas, dades o tipus de transacció (mode enviar) omplerts. Pots canviar qualsevol informació abans d\'enviar. Desbloqueja la teva cartera per començar. ',
 
 /* Geth Error Messages */
-GETH_InvalidSender          : 'Invalid sender ',
-GETH_Nonce                  : 'Nonce too low ',
-GETH_Cheap                  : 'Gas price too low for acceptance ',
-GETH_Balance                : 'Insufficient balance ',
-GETH_NonExistentAccount     : 'Account does not exist or account balance too low ',
-GETH_InsufficientFunds      : 'Insufficient funds for gas * price + value ',
-GETH_IntrinsicGas           : 'Intrinsic gas too low ',
-GETH_GasLimit               : 'Exceeds block gas limit ',
-GETH_NegativeValue          : 'Negative value ',
+GETH_InvalidSender          : 'Emissor no vàlid ',
+GETH_Nonce                  : 'Nonce massa baix ',
+GETH_Cheap                  : 'El preu del gas és massa petit per ser acceptat ',
+GETH_Balance                : 'Saldo insuficient',
+GETH_NonExistentAccount     : 'El compte no existeix o el saldo és massa baix ',
+GETH_InsufficientFunds      : 'Saldo insuficient per gas * preu + valor ',
+GETH_IntrinsicGas           : 'Gas intrínsec massa baix ',
+GETH_GasLimit               : 'Excedeix del block gas límit ',
+GETH_NegativeValue          : 'Valor negatiu ',
 
 /* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
-PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
-PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei.",
-PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
+PARITY_AlreadyImported      : "Ja s'havia importat la transacció amb el mateix hash.",
+PARITY_Old                  : "El nonce de la transacció és massa baix. Proveu d'augmentar-lo.",
+PARITY_TooCheapToReplace    : "La comissió de la transacció és massa baixa. Hi ha una altra transacció amb el mateix nonce a la cua. Intenta augmentar la comissió o el nonce.",
+PARITY_LimitReached         : "Hi ha massa transaccions a la cua. La teva transacció ha sigut eliminada degut al límit. Prova incrementant la comissió.",
+PARITY_InsufficientGasPrice : "La comissió de la transacció és massa baixa. No satisfà la comissió mínima dle node (minimal: {}, got: {}). Intenta augmentar la comissió.",
+PARITY_InsufficientBalance  : "Saldo insuficient. El compte d\'origen que estàs utilitzant no té prou saldo. Obligatori {} wei i tens: {} wei.",
+PARITY_GasLimitExceeded     : "El cost de la transacció sobrepassa el límit actual de gas. Limit: {}, tens: {}. Intenta disminuir el gas proporcionat.",
+PARITY_InvalidGasLimit      : "El gas proporcionat és més enllà del límit.",
 
 /* Tranlsation Info */
 translate_version           : '0.1 ',
@@ -562,8 +562,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas límit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas límit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
