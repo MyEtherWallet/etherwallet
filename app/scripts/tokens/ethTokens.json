@@ -533,6 +533,12 @@
     "decimal":18,
     "type":"default"
   },
+   {
+    "address":"0x8eFFd494eB698cc399AF6231fCcd39E08fd20B15",
+    "symbol":"PIX",
+    "decimal":0,
+    "type":"default"
+  },
   {
     "address":"0x226bb599a12C826476e3A771454697EA52E9E220",
     "symbol":"PRO",
