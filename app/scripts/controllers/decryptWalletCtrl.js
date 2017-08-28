@@ -281,7 +281,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         $scope.HDWallet.digitalBitboxSecret = '';
         if (typeof result != "undefined") {
             $scope.HWWalletCreate(result['publicKey'], result['chainCode'], "digitalBitbox", $scope.HDWallet.dPath);
-            $scope.notifier.close();
         } else
             $scope.notifier.danger(error);
     }

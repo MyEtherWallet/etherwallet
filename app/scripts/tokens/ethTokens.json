@@ -762,6 +762,12 @@
     "type":"default"
   },
   {
+    "address":"0x08f5a9235b08173b7569f83645d2c7fb55e8ccd8",
+    "symbol":"TNT",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xCb94be6f13A1182E4A4B6140cb7bf2025d28e41B",
     "symbol":"TRST",
     "decimal":6,
@@ -788,6 +794,18 @@
   {
     "address":"0x8f3470A7388c05eE4e7AF3d01D8C722b0FF52374",
     "symbol":"VERI",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x882448f83d90b2bf477af2ea79327fdea1335d93",
+    "symbol":"VIBEX",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0xe8ff5c9c75deb346acac493c463c8950be03dfba",
+    "symbol":"VIBE",
     "decimal":18,
     "type":"default"
   },
