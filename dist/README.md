@@ -47,10 +47,10 @@
 #### Features
 
 - Create new wallets completely client side.
-- Access your wallet via unencrypted private key, encrypted private key, keystore files, mnemonics, Ledger Nano S & TREZOR hardware wallet.
+- Access your wallet via unencrypted private key, encrypted private key, keystore files, mnemonics, or Digital Bitbox, Ledger Nano S or TREZOR hardware wallet.
 - Easily send ETH and *any* ERC-20 Standard Token. [Many tokens included as default.](https://myetherwallet.groovehq.com/knowledge_base/topics/can-i-send-my-steem-slash-btc-slash-ltc-slash-nem-slash-to-myetherwallet)
 - Generate, sign & send transactions offline, ensuring your private keys never touch an internet-connected device.
-- Securely access your ETH & Tokens on your [Ledger or TREZOR Hardware Wallet](https://myetherwallet.groovehq.com/knowledge_base/topics/hardware-wallet-recommends) via the MyEtherWallet interface (Chrome & Opera natively, Firefox w/ [add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/))
+- Securely access your ETH & Tokens on your [Digital Bitbox, Ledger or TREZOR Hardware Wallet](https://myetherwallet.groovehq.com/knowledge_base/topics/hardware-wallet-recommends) via the MyEtherWallet interface (Chrome & Opera natively, Firefox w/ [add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/))
 - Now in 18 languages thanks 100% to the amazing Ethereum community.
 - Supports URI Strings on Send Transaction Page.
     - to=[address]

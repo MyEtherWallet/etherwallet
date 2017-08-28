@@ -50,11 +50,12 @@
       
       <div class="tagline">
 
-        <span>3.10.2.6</span>
+        <span>3.10.2.7</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
           <ul class="dropdown-menu" ng-show="dropdown">
+            <li><a ng-class="{true:'active'}[curLang=='Català']"      ng-click="changeLanguage('ca','Català'     )"> Català         </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']"      ng-click="changeLanguage('de','Deutsch'     )"> Deutsch         </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']"     ng-click="changeLanguage('el','Ελληνικά'    )"> Ελληνικά        </a></li>
             <li><a ng-class="{true:'active'}[curLang=='English']"      ng-click="changeLanguage('en','English'     )"> English         </a></li>
@@ -657,7 +658,7 @@
         &middot;
         <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">Facebook</a>
         &middot;
-        <a aria-label="medium" href="https://medium.com/@myetherwallet_96408" target="_blank" rel="noopener" role="link" tabindex="0">Medium</a>
+        <a aria-label="medium" href="https://medium.com/@myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">Medium</a>
       </p>
 
 
