@@ -98,7 +98,7 @@
         &middot;
         <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">Facebook</a>
         &middot;
-        <a aria-label="medium" href="https://medium.com/@myetherwallet_96408" target="_blank" rel="noopener" role="link" tabindex="0">Medium</a>
+        <a aria-label="medium" href="https://medium.com/@myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">Medium</a>
       </p>
 
 
