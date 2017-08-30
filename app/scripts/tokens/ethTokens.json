@@ -264,6 +264,12 @@
     "type":"default"
   },
   {
+    "address":"0xe6f74dcfa0e20883008d8c16b6d9a329189d0c30",
+    "symbol":"FTC",
+    "decimal":2,
+    "type":"default"
+  },
+  {
     "address":"0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b",
     "symbol":"FUN",
     "decimal":8,
