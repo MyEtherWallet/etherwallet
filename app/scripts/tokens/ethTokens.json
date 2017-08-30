@@ -410,7 +410,7 @@
   {
     "address":"0xB9e0FC2a1C9d567Af555E07E72f27E686f2c6872",
     "symbol":"MCI",
-    "decimal":8,
+    "decimal":18,
     "type":"default"
   },
   {
