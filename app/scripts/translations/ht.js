@@ -87,7 +87,7 @@ NAV_Swap                    : 'CHANJE ',
 NAV_ViewWallet              : 'GADE ANNDAN YON BOUS ',														
 NAV_YourWallets             : 'BOUS OU YO ', 
 
-/* General */                       /*TOUT BAGAY*/
+/* General */                       
 x_Access                    : 'ANTRE ', 								
 x_AddessDesc                : 'LI RELE ANKÒ‘’NIMEWO KONT’’ OSWA ‘’ KLE PIBLIK’’ SE SA W’ KA VOYE BAY TOUT MOUN POU YO KA VOYE ETHER YO BA W’. PYON SA SE YON FASON SENP POU KONNEN ADRÈS OU ', 					
 x_Address                   : 'ADRÈS OU ',							
@@ -113,20 +113,20 @@ x_Save                      : 'KENBE L’ ',
 x_TXT                       : 'PAJ  TXT (SAN-KÒD) ',						
 x_Wallet                    : 'BOUS ',
 
-/* Header */                             /*TÈT*/
+/* Header */ 
 CX_Tagline                  : 'EKSTANSYON CHROME BOUS d\'Ether Open Source JavaScript POU KLIYAN  AN ',										
 CX_Warning_1                : 'VEYE  POU W’ KA GEN** YON LÒT KOTE POU KENBE DEYÒ** AK TOUT BOUS W’AP JERE LA. GEN ANPIL BAGAY KI KAPAB FÈ W’ PÈDI DONE NIVO CHROME SA,  AK ANKÒ  RETIRE ENSTALASYON AN AK NAN ENSTALE NIVO A. NIVO SA SE YON FASON POU W’ ANTRE FASILMAN NAN BOUS OU YO, **SE PA** YON FASON POU W’ KENBE YO ',										
 MEW_Tagline                 : 'BOUS d\'Ether Open Source JavaScript POU KLIYAN AN ',												
 MEW_Warning_1               : 'TOUJOU BYEN VERIFYE L’URL ANVAN W’ ANTRE NAN BOUS OU A OSWA POU KREYE YON LÒT BOUS. ATANSYON AK FO SIT YO ',													
 
-/* Footer */                     /* PYE PAJ LA */							
+/* Footer */							
 FOOTER_1                    : 'YON ZOUTI OPEN SOURCE NAN JAVASCRIPT LI FÈT POU KLIYAN KREYE BOUS  ETHEREUM YO EPI FÈ ANPIL TRANSFÈ ',						
 FOOTER_1b                   : 'MOUN KI FÈ L’ LA SE	 ',					
 FOOTER_2                    : 'DON YO APRESYE ANPIL ',  											
 FOOTER_3                    : 'KREYASYON  BOUS POU KLIYAN AK ',									
 FOOTER_4                    : 'AVÈTISMAN ',					
 
-/* Sidebar */                /*BA LATERAL*/
+/* Sidebar */ 
 sidebar_AccountInfo         : 'ENFÒMASYON YO SOU KONT LA ',
 sidebar_AccountAddr         : 'ADRÈS KONT LA ',
 sidebar_AccountBal          : 'KOBYEN  KÒB KONT LA GENYEN ',
@@ -139,7 +139,7 @@ sidebar_thanks              : 'MÈSI !!!  ',
 sidebar_DisplayOnTrezor     : 'Afficher l\'adresse sur TREZOR',
 sidebar_DisplayOnLedger     : 'Afficher l\'adresse sur Ledger',	
 
-/* Decrypt Panel */                       /* PANO DECHIFRE */							
+/* Decrypt Panel */							
 decrypt_Access              : 'KÒMAN W’ VLE ANTRE NAN BOUS OU A ? ',						
 decrypt_Title               : 'CHWAZI FÒM OU VLE METE KLE SEKRÈ W’ LA ',							
 decrypt_Select              : 'CHWAZI YON BOUS ',
@@ -169,7 +169,7 @@ ADD_DigitalBitbox_0a        : 'Re-open MyEtherWallet on a secure (SSL) connectio
 ADD_DigitalBitbox_0b        : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
 
-/* Add Wallet */             /* METE YON BOUS */					
+/* Add Wallet */					
 ADD_Label_1                 : 'KISA W’ VLE FÈ ?  ',						
 ADD_Radio_1                 : 'KREYE YON LÒT BOUS ',												
 ADD_Radio_2                 : 'CHWAZI PAJ BOUS OU A (KEYSTORE/JSON) ',					
@@ -194,7 +194,7 @@ ADD_Label_6_short           : 'OUVRI ',
 ADD_Label_7                 : 'METE YON KONT ',						
 ADD_Label_8                 : 'Password (optional): ',
 
-/* My Wallet */                               /*BOUS MWEN*/
+/* My Wallet */
 MYWAL_Nick                  : 'NON BOUS LA ',												
 MYWAL_Address               : 'ADRÈS BOUS LA ',														
 MYWAL_Bal                   : 'KANTITE  KÒB ',											
@@ -211,7 +211,7 @@ MYWAL_Content_1             : 'ANTANSYON ! OU PRAL EFASE BOUS OU A ',
 MYWAL_Content_2             : 'BYEN VEYE  KE W’ **KENBE KLE SEKRÈ W’ LA/PAJ JSON AK KÒD SEKRÈ A**KI ASOSYE AK BOUS LA ANVAN W’ EFASE L’ ',												
 MYWAL_Content_3             : 'SI W’ VLE SÈVI AK BOUS SA  AVÈK MyEtherWallet CX NAN LÒT JOU YO, OU DWE METE L’ ANKÒ  SÈVI AK KLE SEKRÈ A /PAJ JSON AK KÒD SEKRÈ A ',							
  
-/* Generate Wallets */                  /* KREYE BOUS YO*/
+/* Generate Wallets */
 GEN_desc                    : 'SI W’ VLE KREYE PLIZYÈ LÒT BOUS, OU KAPAB FÈL LA ',
 GEN_Label_1                 : 'METE YON GWO KÒD SEKRÈ (POU PI PITI 9 KARAKTÈ ',											
 GEN_Placeholder_1           : 'PA BLIYE KENBE  SA ',											
@@ -220,12 +220,12 @@ GEN_Label_2                 : 'KENBE PAJ KEYSTORE W ‘ LA  OSWA KLE SEKRÈ W �
 GEN_Label_3                 : 'KENBE BOUS OU A ',					
 GEN_Label_4                 : 'OPSYON : FÈ SÒTI BOUS OU A SOU PAPYE OSWA SERE version QR code ',   
 
-/* Bulk Generate Wallets */          /* KREYE BOUS YO PA PAKE*/
+/* Bulk Generate Wallets */
 BULK_Label_1                : 'KANTITE BOUS KI KA KREYE ',											
 BULK_Label_2                : 'KREYE BOUS YO ',							
 BULK_SuccessMsg             : 'SIKSÈ ! BOUS OU YO KREYE ',									
 
-/* Sending Ether and Tokens */   /*VOYE ETHER AK TOKENS*/
+/* Sending Ether and Tokens */
 SEND_addr                   : 'ADRÈS KOTE W’AP VOYE L’ ',											
 SEND_amount                 : 'KANTITE W’AP VOYE A ',									
 SEND_amount_short           : 'KANTITE ',															
@@ -245,14 +245,14 @@ SENDModal_Content_4         : 'NÒT :SI JWENN AK YON ERÈ, OU TA GEN POU METE ET
 SENDModal_No                : 'NON, MWEN VLE SÒTI LA ',												
 SENDModal_Yes               : 'WI, MWEN KONFYAN ! FÈ TRANSFÈ A ',
 
-/* Tokens */                         /*TOKENS YO*/
+/* Tokens */
 TOKEN_Addr                  : 'ADRÈS ',							
 TOKEN_Symbol                : 'SENBÒL TOKEN NAN ',					
 TOKEN_Dec                   : 'KONTE AN DIS (10) ',						
 TOKEN_show                  : 'MONTRE TOKENS YO ',					
 TOKEN_hide                  : 'KACHE TOKENS YO ',
 
-/* Send Transaction */                 /*VOYE TRANSFÈ A*/
+/* Send Transaction */
 TRANS_desc                  : 'SI W’ VLE VOYE TOKENS YO, ALE PITO NAN PAJ « VOYE TOKENS » ',										
 TRANS_warning               : 'METE FONKSYON ‘’ETH’’ YO SÈLMAN  AK ‘’ETC SÈLMAN’’ OU FÈ W’ PASE NAN YON KONTRA. KÈK NAN SÈVIS SA YO KONN GEN PWOBLÈM  AK TRANSFÈ SA YO. POU W’  KONN PLIS ',		
 TRANS_advanced              : '+AVANSE : METE GAZ ',								
@@ -260,7 +260,7 @@ TRANS_data                  : 'DONE ',
 TRANS_gas                   : 'LIMIT AN GAZ ;// CHANJE AN ENG POU LIMIT GAZ LA ',					
 TRANS_sendInfo              : 'YON TRANSFÈ NÒMAL SÈVI  AK 21000 GAZ KI KOUTE 0.000441  ETH. PRI GAZ LA 0.000000021 ETH  KE NOU TE CHWAZI A ON TI JAN PI WO KE  PI PITI A ASIRE W’ POU W’ YON KONFIMASYON RAPID. NOU PA PRAN FRÈ POU TRANSFÈ A.  ',
 
-/* Offline Transaction */   /*TRANSFÈ SAN SIYAL*/
+/* Offline Transaction */
 OFFLINE_Title               : 'KREYE EPI VOYE YON TRANFÈ SAN SIYAL ',						
 OFFLINE_Desc                : 'KREYASYON YON TRANSFÈ SAN SIYAL FÈT NAN TWA ETAP. ETAP 1 AK 3 YO FÈT NAN YON KOMPITÈ KI GEN SIYAL AK ETAP 2 A NAN YON KOMPITÈ KI PA KONEKTE AK REZO A. SA PÈMÈT OU IZOLE NÈT  KLE SEKRÈ W’ LA POU TOUT MACHIN KI KONEKTE AK INTÈNÈT ',									
 OFFLLINE_Step1_Title        : 'ETAP 1 : KREYASYON ENFÒMASYON AN (KOMPITÈ AK SIYAL) ',									
@@ -296,7 +296,7 @@ DEP_generated               : 'Bytecode généré ',
 DEP_signtx                  : 'Signer la transaction ',
 DEP_interface               : 'Interface générée '
  
-/* Misc *//* Node Switcher */                 /*PLIZYÈ*/ /* NE YOUN AL NAN LÒT*/
+/* Node Switcher */
 NODE_Title                  : 'ENSTALE NE SEKRÈ W’ LA ',																												
 NODE_Subtitle               : 'POU W’ KAPAB KONENTE AK YON NE LOKAL ',									
 NODE_Warning                : 'NE W’ LA DWE AN HTTPS POU W’ KONEKTE AVÈK MYETHERWALLET.COM. OU KAPAB [PRAN REPO MYWALLET LA EPI OUVRI  L’ LOKALMAN ](https://github.com/kvhnuke/etherwallet/releases/latest) POU W’ KONEKTE A KÈK LÒT NE , OSWA POU W’ GENYEN SÈTIFIKA SSL GRATIS AVÈK[LetsEncrypt](https://letsencrypt.org/).',						
@@ -304,7 +304,7 @@ NODE_Name                   : 'NON NE A ',
 NODE_Port                   : 'PÒ NE A ',									
 NODE_CTA                    : 'ANREJISTRE EPI SÈVI AK YON NE SEKRÈ ',	
   
-/* Swap / Exchange */                /*CHANJE*/							
+/* Swap / Exchange */							
 SWAP_rates                  : 'VALÈ LI YE KOUNYE A ',			
 SWAP_init_1                 : 'M VLE CHANJE ',						
 SWAP_init_2                 : 'POU ', //M’ VLE CHANJE X ETH POU X BTC '
@@ -326,7 +326,7 @@ SWAP_progress_5             : 'LÒD AKONPLI ',
 SWAP_order_CTA              : 'TANPRI VOYE 1 ETH ',		
 SWAP_unlock                 : 'OUVRI BOUS OU A POU W’ VOYE ETH YO OSWA TOKENS YO SÒTI DIRÈKTEMAN NAN SA ',		
 
-/* Sign Message */                    /*SIYEN YON MESAJ*/
+/* Sign Message */
 MSG_message                 : 'MESAJ ',										
 MSG_date                    : 'DAT ',						 							
 MSG_signature               : 'SIYATI.',								
@@ -335,18 +335,18 @@ MSG_info1                   : 'METE DAT JOU A POU SIYATI A PA SÈVI ANKÒ NAN YO
 MSG_info2                   : 'METE TI NON W’ NAN KOTE W’ KONN SÈVI AK LI A POU YON LÒT MOUN PA SÈVI AK LI ',		
 MSG_info3                   : 'METE YON SÈL BON REZON POU MESAJ LA  POU L’ PA SÈVI ANKÒ POU YON LÒT  REZON ',			
 	
-/* View Wallet Details */            /*GADE DETAY YO KI NAN BOUS MWEN AN.*/										
+/* View Wallet Details */										
 VIEWWALLET_Subtitle         : 'SA PÈMÈT OU POU W’ PRAN PLIZYÈ VÈZSYON KLE SEKRÈ  YO EPI AK SÒTI BOUS OU A ANKÒ SOU PAPYE. OU DWE FÈ L’ POU [ PRAN KONT OU A NAN GETH/MIST] (http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). SI W’ VLE  WÈ VALÈ KÒB OU A, NOU MANDE W’ POU SÈVI AK YON EKSPLORATÈ POU BLOCKCHAIN TANKOU[etherscan.io](http://etherscan.io/).',   						
 VIEWWALLET_Subtitle_Short   : 'SA PÈMÈT OU POU W’ PRAN PLIZYÈ VÈZSYON KLE SEKRÈ  YO EPI POU SÒTI BOUS OU A ANKÒ SOU PAPYE ',									
 VIEWWALLET_SuccessMsg       : 'SIKSÈ ! MEN DETAY YO POU BOUS OU A ',
 VIEWWALLET_ShowPrivKey      : '(show)',
 VIEWWALLET_HidePrivKey      : '(hide)',
 
-/* Chrome Extension */  /* CHROME EKSTANSYON */						
+/* Chrome Extension */						
 CX_error_1                  : 'OU PA GEN BOUS KI ANREJISTRE. PEZE SOU[‘’METE YON BOUS’’] (/cx-wallet.html#add-wallet) POU METE YOUN !.	',					
 CX_quicksend                : 'VOYE RAPID ; // SI JAN L’ TRADWI A PA NAN GOU W’ JIS SÈVI AK ”SEND” ',												
 
-/* Error Messages */       /*MESAJ PA BON	*/								
+/* Error Messages */								
 ERROR_0                     : 'ANTRE YON KANTITE KI VALAB ',																	
 ERROR_1                     : 'KÒD SEKRÈ W’ LA DWE GEN POU PI PITI 9 KARAKTÈ. BYEN VEYE KE SE YON GWO KÒD SEKRÈ ',						
 ERROR_2                     : 'DEZOLE ! SÈVIS NOU AN PA PÈMÈT NOU JERE  JAN DE PAJ BOUS SA ',										
@@ -395,7 +395,7 @@ SUCCESS_6                   : 'OU BYEN KONEKTE ',
 SUCCESS_7                   : 'SIYATI MESAJ LA VERIFYE ',
 WARN_Send_Link              : 'OU RIVE LA GRAS AK YON LYEN KI PLEN ADRÈS LA, KANTITE A, GAZ LA OSWA ESPAS DONE  W’ YO. OU KAPAB KORIJE TOUT ENFÒMASYON YO  ANVAN W’ VOYE YO . OUVRI BOUS OU A POU W ‘ KÒMANSE ',
 
-/* Geth Error Messages */       /* GETH MESAJ ERÈ YO*/						
+/* Geth Error Messages */						
 GETH_InvalidSender          : 'MOUN K’AP VOYE L’ PA BON ',					
 GETH_Nonce                  : 'NONCE TWÒ BA ',												
 GETH_Cheap                  : 'PRI GAZ LA TWO BA POU L’ AKSEPTE ',									
@@ -406,7 +406,7 @@ GETH_IntrinsicGas           : 'VALÈ GAZ LA TWO BA ',
 GETH_GasLimit               : 'LIMIT GAZ LA DEPASE ',						
 GETH_NegativeValue          : 'VALÈ A PA BON ',
 
-/* Parity Error Messages */        /* ERÈ MESAJ SANBLE YO*/						
+/* Parity Error Messages */						
 PARITY_AlreadyImported      : 'GEN YON TRANSFÈ KI GEN MENM HASH SA KI SÒTI LA DEJA ',											
 PARITY_Old                  : 'NONCE TRANSFÈ A TWÒ BA. ESEYE METE SOU NONCE LAN ANKÒ	 ',										
 PARITY_TooCheapToReplace    : 'FRÈ TRANSFÈ YO TWÒ BA. GEN YON LÒT TRANSFÈ KI GEN MENM NONCE LA K’AP TANN. ESEYE METE SOU FRÈ A OSWA METE SOU NONCE LAN ',															
@@ -416,7 +416,7 @@ PARITY_InsufficientBalance  : 'IFONDS YO PA SIFI. KONT KOTE W’AP ESEYE VOYE  T
 PARITY_GasLimitExceeded     : 'KÒB TRANSFÈ A DEPASE LIMIT GAZ  KOUNYE A. LIMIT :{}. ESEYE RETIRE NAN GAZ OU JWENN NAN ',									
 PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 
-/* Tranlsation Info */      : /*ENFÒMASYON SOU TRADIKSYON AN*/			
+/* Tranlsation Info */			
 translate_version           : '0.5 ',								
 Translator_Desc             : ' YON MÈSI POU TRADIKTÈ N’YO ', 				
 TranslatorName_1            : '[Nogo10](https://www.myetherwallet.com/?gaslimit=21000&to= 0x152e77CC3Dd8d86471ebEa8e93B9924A41e7055a&value=1.0#VOYE-TRANSFÈ A) · ',											
@@ -435,7 +435,7 @@ TranslatorName_5            : 'NON TRADIKTÈ_5 ',
 TranslatorAddr_5            : 'TRADIKTÈADDR_5 ',
 /* Translator 5             : TRADIKTÈ 5   : METE KOMANTÈ W’ YO LA.*/
 
-/* ÈD – PA GEN ANYEN KI POU TRADWI APRE PWEN SA. SI W ‘ SANTI OU KA EDE PLIS , EDE NOU.*/
+/* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
 HELP_Warning                : 'SI W’ TE KREYE YON BOUS- OSWA-  OU TE PRAN REPO A ANVAN ** 31 DESANM 2015**, TANPRI VERIFYE BOUS OU YO /  AL PRAN YON LÒT VÈSYON REPO A ANKÒ. PEZE LA POU W’ KA JWENN PLIS DETAY. ',
 HELP_Desc                   : 'MANKE YON BAGAY ? SI W’ GEN LÒT KESYON ? [PALE AK NOU]( mailto:support@myetherwallet.com), N’AP REPONN OU EPI N’AP TOU METE PAJ LA A JOU POU L’ KA ITIL PI PLIS AK TOUT LÒT MOUN YO NAN LÒT JOU YO ! ',
 HELP_Remind_Title           : 'KÈK NAN SA POU SONJE YO: ',
