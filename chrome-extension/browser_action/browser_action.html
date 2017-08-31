@@ -2,7 +2,8 @@
 <html lang="en" ng-app="mewApp">
 <head>
   <meta charset="utf-8">
-  <title>MyEtherWallet: Open Source JavaScript Client-Side Ether Wallet</title>
+  <title>MyEtherWallet Chrome Extension</title>
+  <meta name="description" content="MyEtherWallet is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely.">
   <link rel="stylesheet" href="../css/etherwallet-master.min.css">
   <script type="text/javascript" src="../js/etherwallet-static.min.js"></script>
   <script type="text/javascript" src="../js/etherwallet-master.js"></script>
@@ -22,7 +23,7 @@
     <tbody>
       <tr ng-show="allWallets.length==0">
         <td colspan="2" translate="CX_error_1">
-          You don't have any wallets saved yet! Click the <a class="text-primary" href="/cx-wallet.html#add-wallet" target="_blank">"Add Wallet"</a> button to add one!
+          You don't have any wallets saved yet! Click the <a class="text-primary" href="/cx-wallet.html#add-wallet" target="_blank" rel="noopener">"Add Wallet"</a> button to add one!
         </td>
         <td></td>
       </tr>
@@ -53,9 +54,9 @@
   </table>
 
   <div class="text-center marg-v-sm" style="white-space: nowrap;">
-    <a href="/cx-wallet.html#my-wallet" class="btn btn-sm btn-info" target="_blank" translate="NAV_MyWallets">My Wallets</a>
-    <a href="/cx-wallet.html#add-wallet" class="btn btn-sm btn-primary" target="_blank" translate="NAV_AddWallet">Add Wallet</a>
-    <a href="cx-quicksend.html" class="btn btn-sm btn-success" translate="CX_quicksend">QuickSend</a>
+    <a href="/cx-wallet.html#my-wallet" class="btn btn-xs btn-info" target="_blank" rel="noopener" translate="NAV_MyWallets">My Wallets</a>
+    <a href="/cx-wallet.html#add-wallet" class="btn btn-xs btn-primary" target="_blank" rel="noopener" translate="NAV_AddWallet">Add Wallet</a>
+    <a href="cx-quicksend.html" class="btn btn-xs btn-success" translate="CX_quicksend">QuickSend</a>
   </div>
 
 </div>

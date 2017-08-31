@@ -1,63 +1,75 @@
-<!-- Sign Message Panel -->
-  <h3>
-    <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
-    or
-    <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
-  </h3>
+<article class="col-xs-12 clearfix">
+  <div class="block text-center">
+    <h2>
+      <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
+      or
+      <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
+    </h2>
+  </div>
+</article>
 
-  <article ng-switch on="visibility">
+<article class="col-xs-12 clearfix" ng-switch on="visibility">
 
-    <!-- Sign Message Stuff -->
-    <section ng-switch-when="signView">
+  <section class="block" ng-switch-when="signView">
 
-      <!-- Message -->
-      <div class="account-help-icon">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <ul class="account-help-text">
-          <li translate="MSG_info2">Include your nickname and where you use the nickname so someone else cannot use it.</li>
-          <li translate="MSG_info3">Include a specific reason for the message so it cannot be reused for a different purpose.</li>
-        </ul>
-        <h5 translate="MSG_message"> Message </h5>
-      </div>
+    <h4 translate="MSG_message"> Message </h4>
 
+    <textarea class="form-control"
+              ng-model="signMsg.message"
+              placeholder="This is a sweet message that you are signing to prove that you own the address you say you own."
+              rows="5"
+              ng-disabled="signMsg.signedMsg">
+    </textarea>
 
-      <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purpose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="5"></textarea>
+    <p class="small">
+      <em translate="MSG_info2">
+        Include your nickname and where you use the nickname so someone else cannot use it.
+      </em>
+      <em translate="MSG_info3">
+        Include a specific reason for the message so it cannot be reused for a different purpose.
+      </em>
+    </p>
 
-      <!-- Date -->
-      <div class="account-help-icon">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="MSG_info1">Include the current date so the signature cannot be reused on a different date.</p>
-        <h5 translate="MSG_date"> Date </h5>
-      </div>
-      <input class="form-control" ng-model="signMsg.dateTime" type="text" placeholder="1 JAN 2016 14:15" />
+    <br />
 
-      <!-- Sign Message Button -->
-      <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
+    <a class="btn btn-info btn-block"
+       ng-click="generateSignedMsg()"
+       translate="NAV_SignMsg"
+       ng-show="wallet!=null">
+         Sign Message
+    </a>
 
-
-      <!-- Signed Message -->
-      <div ng-show="signMsg.signedMsg">
-        <h5 translate="MSG_signature"> Signature </h5>
-        <textarea class="form-control" rows="4" readonly>{{ signMsg.signedMsg }}</textarea>
-      </div>
-    </section>
-    <!-- / Sign Message Stuff -->
-
-
-
-    <!-- Verify Message Stuff -->
-    <section ng-switch-when="verifyView">
-      <!-- Signature -->
-      <h5 translate="MSG_signature"> Signature </h5>
-      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{"address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
-
-      <!-- Verify Signature Message Button -->
-      <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
+    <div ng-show="signMsg.signedMsg">
+      <h4 translate="MSG_signature"> Signature </h4>
+      <textarea class="form-control"
+                rows="8"
+                style="word-break: break-all;"
+                readonly
+                title="Signature">{{ signMsg.signedMsg }}</textarea>
+    </div>
+  </section>
 
 
+  <section class="block" ng-switch-when="verifyView">
 
-    </section>
-    <!-- / Verify Message Stuff -->
+    <h5 translate="MSG_signature"> Signature </h5>
+    <textarea class="form-control"
+              ng-model="verifyMsg.signedMsg"
+              rows="8"
+              placeholder='{"address":"0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8","msg":"asdfasdfasdf","sig":"0x4771d78f13ba8abf608457f12471f427ca8f2fb046c1acb3f5969eefdfe452a10c9154136449f595a654b44b3b0163e86dd099beaca83bfd52d64c21da2221bb1c","version":"mew_v2"}'>
+    </textarea>
 
-  </article>
-<!-- / Sign Message Panel -->
+    <a class="btn btn-info btn-block"
+       ng-click="verifySignedMessage()"
+       translate="MSG_verify"
+       ng-show="verifyMsg.signedMsg!=''"> Verify Message
+    </a>
+
+    <p class="alert alert-success"
+       ng-show="verifiedMsg.address!=null">
+        <strong>{{ verifiedMsg.address }}</strong> did sign the message <strong>{{ verifiedMsg.msg }}</strong>.
+    </p>
+
+  </section>
+
+</article>

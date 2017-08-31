@@ -4,6 +4,40 @@
   <!-- Contract Info CONTRACT_Interact_CTA -->
   <span class="form-group">
     <h4 translate="CONTRACT_Interact_Title">Read / Write Contract </h4>
+    <h5> {{ contract.address }} </h5>
+
+    <div class="form-group well" ng-show="contract.address=='0x0101010101010101010101010101010101010101' || contract.address=='0x1010101010101010101010101010101010101010'">
+      <p> Please change the address to your Multisig Address to your own address.</p>
+    </div>
+
+    <div class="form-group well" ng-show="contract.address=='0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf'">
+      <ol>
+        <li><strong>Generate EOS Key-pair</strong></li>
+        <li><strong>Register / Map your EOS Key</strong>
+          <ul>
+            <li>Select <code>register</code></li>
+            <li> Enter your <strong><u>EOS Public Key</u></strong> <--- CAREFUL! EOS PUBLIC KEY!</li>
+            <li>Unlock wallet</li>
+            <li><span translate="SEND_amount">Amount to Send</span>: <code>0</code> &middot; <span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
+          </ul>
+        </li>
+        <li><strong>Fund EOS Contract on Send Page</strong>
+          <ul>
+            <li>Go to Send Ether & Tokens Page</li>
+            <li>Unlock same wallet you are unlocking here.</li>
+            <li>Send Amount you want to Contribute to <code>0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf</code></li>
+            <li><span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
+          </ul>
+        </li>
+        <li><strong>Claim EOS Tokens</strong>
+          <ul>
+            <li>Select <code>claimAll</code>.</li>
+            <li>Unlock wallet</li>
+            <li><span translate="SEND_amount">Amount to Send</span>: <code>0</code> &middot; <span translate="TRANS_gas">Gas Limit</span>: at least <code>90000</code></li>
+          </ul>
+        </li>
+    </div>
+
     <div class="btn-group">
       <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
       {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}<i class="caret"></i></a>
@@ -12,7 +46,6 @@
       </ul>
     </div>
   </span>
-
 
   <!-- Write -->
   <span class="form-group" ng-show="contract.selectedFunc!=null">
@@ -53,7 +86,7 @@
 
 
   <!-- Output -->
-  <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
+  <span class="form-group output" ng-show="contract.functions[contract.selectedFunc.index].constant">
     <div ng-repeat="output in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
       <div ng-switch on="output.type">
         <!-- Address -->
@@ -82,8 +115,8 @@
         <!-- Boolean -->
         <p class="item write-boolean" ng-switch-when="bool">
           <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check.svg" width="16px" height="16px" /> TRUE </span>
-          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="16px" height="16px" />  FALSE </span>
+          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check-green.svg" width="22px" height="22px" /> TRUE </span>
+          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="22px" height="22px" />  FALSE </span>
         </p>
         <!--  -->
         <p class="item" ng-switch-default>

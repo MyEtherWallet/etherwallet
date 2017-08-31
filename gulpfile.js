@@ -1,34 +1,34 @@
-var fs = require('fs')
+const fs = require('fs');
 
-var autoprefixer = require('gulp-autoprefixer')
-var archiver     = require('archiver');
-var bump         = require('gulp-bump')
-var babelify     = require('babelify')
-var browserify   = require('browserify')
-var buffer       = require('vinyl-buffer')
-var clean        = require('gulp-clean')
-var concat       = require('gulp-concat')
-var cssnano      = require('gulp-cssnano')
-var fileinclude  = require('gulp-file-include')
-var gulp         = require('gulp')
-var less         = require('gulp-less')
-var notify       = require('gulp-notify')
-var plumber      = require('gulp-plumber' )
-var rename       = require('gulp-rename')
-var runSequence  = require('run-sequence');
-var shell        = require('gulp-shell')
-var source       = require('vinyl-source-stream')
-var uglify       = require('gulp-uglify')
-var zip          = require('gulp-zip')
-var html2js      = require('html2js-browserify')
+const autoprefixer = require('gulp-autoprefixer');
+const archiver     = require('archiver');
+const bump         = require('gulp-bump');
+const babelify     = require('babelify');
+const browserify   = require('browserify');
+const buffer       = require('vinyl-buffer');
+const clean        = require('gulp-clean');
+const concat       = require('gulp-concat');
+const cssnano      = require('gulp-cssnano');
+const fileinclude  = require('gulp-file-include');
+const gulp         = require('gulp');
+const less         = require('gulp-less');
+const notify       = require('gulp-notify');
+const plumber      = require('gulp-plumber' );
+const rename       = require('gulp-rename');
+const runSequence  = require('run-sequence');
+const shell        = require('gulp-shell');
+const source       = require('vinyl-source-stream');
+const uglify       = require('gulp-uglify');
+const zip          = require('gulp-zip');
+const html2js      = require('html2js-browserify');
 
-var app          = './app/'
-var dist         = './dist/'
-var dist_CX      = './chrome-extension/'
+const app          = './app/';
+const dist         = './dist/';
+const dist_CX      = './chrome-extension/';
 
 
 // Error / Success Handling
-var onError = function(err) {
+let onError = function(err) {
     notify.onError({
         title: "Error: " + err.plugin,
         subtitle: "<%= file.relative %>",
@@ -36,9 +36,9 @@ var onError = function(err) {
         sound: "Beep",
         icon: app + "images/icons/icon48.png",
     })(err);
-    console.log(err.toString())
+    console.log(err.toString());
     this.emit('end');
-}
+};
 
 function onSuccess(msg) {
     return {
@@ -57,8 +57,8 @@ function notifyFunc(msg) {
 
 
 // HTML / TPL Pages
-var htmlFiles = app + 'layouts/*.html'
-var tplFiles = app + 'includes/*.tpl'
+let htmlFiles = app + 'layouts/*.html';
+let tplFiles = app + 'includes/*.tpl';
 
 gulp.task('html', function(done) {
     return gulp.src(htmlFiles)
@@ -67,23 +67,23 @@ gulp.task('html', function(done) {
         .pipe(gulp.dest(dist))
         .pipe(gulp.dest(dist_CX))
         .pipe(notify(onSuccess('HTML')))
-})
+});
 
 
 
 // styles: Compile and Minify Less / CSS Files
-var less_watchFolder = app + 'styles/**/*.less'
-var less_srcFile = app + 'styles/etherwallet-master.less'
-var less_destFolder = dist + 'css'
-var less_destFolder_CX = dist_CX + 'css'
-var less_destFile = 'etherwallet-master.css'
-var less_destFileMin = 'etherwallet-master.min.css'
+let less_watchFolder = app + 'styles/**/*.less';
+let less_srcFile = app + 'styles/etherwallet-master.less';
+let less_destFolder = dist + 'css';
+let less_destFolder_CX = dist_CX + 'css';
+let less_destFile = 'etherwallet-master.css';
+let less_destFileMin = 'etherwallet-master.min.css';
 
 gulp.task('styles', function() {
     return gulp.src(less_srcFile)
         .pipe(plumber({ errorHandler: onError }))
         .pipe(less({ compress: false }))
-        .pipe(autoprefixer({ browsers: ['last 2 versions', 'iOS > 8'], remove: false }))
+        .pipe(autoprefixer({ browsers: ['last 4 versions', 'iOS > 7'], remove: false }))
         .pipe(rename(less_destFile))
         //.pipe( gulp.dest   (  less_destFolder                                         )) // unminified css
         //.pipe( gulp.dest   (  less_destFolder_CX                                      )) // unminified css
@@ -92,21 +92,21 @@ gulp.task('styles', function() {
         .pipe(gulp.dest(less_destFolder))
         .pipe(gulp.dest(less_destFolder_CX))
         .pipe(notify(onSuccess('Styles')))
-})
+});
 
 
 // js: Browserify
-var js_watchFolder = app + 'scripts/**/*.{js,html}'
-var js_srcFile = app + 'scripts/main.js'
-var js_destFolder = dist + 'js/'
-var js_destFolder_CX = dist_CX + 'js/'
-var js_destFile = 'etherwallet-master.js'
-var browseOpts = { debug: true } // generates inline source maps - only in js-debug
-var babelOpts = {
+let js_watchFolder = app + 'scripts/**/*.{js,json,html}';
+let js_srcFile = app + 'scripts/main.js';
+let js_destFolder = dist + 'js/';
+let js_destFolder_CX = dist_CX + 'js/';
+let js_destFile = 'etherwallet-master.js';
+let browseOpts = { debug: true }; // generates inline source maps - only in js-debug
+let babelOpts = {
     presets: ['es2015'],
     compact: false,
     global: true
-}
+};
 
 function bundle_js(bundler) {
     return bundler.bundle()
@@ -132,26 +132,26 @@ function bundle_js_debug(bundler) {
 
 
 gulp.task('js', function() {
-    var bundler = browserify(js_srcFile).transform(babelify).transform(html2js)
+    let bundler = browserify(js_srcFile).transform(babelify).transform(html2js);
     bundle_js(bundler)
-})
+});
 
 gulp.task('js-production', function() {
-    var bundler = browserify(js_srcFile).transform(babelify, babelOpts).transform(html2js)
+    let bundler = browserify(js_srcFile).transform(babelify, babelOpts).transform(html2js);
     bundle_js(bundler)
-})
+});
 
 gulp.task('js-debug', function() {
-    var bundler = browserify(js_srcFile, browseOpts).transform(babelify, babelOpts).transform(html2js)
+    let bundler = browserify(js_srcFile, browseOpts).transform(babelify, babelOpts).transform(html2js);
     bundle_js_debug(bundler)
-})
+});
 
 
 
 // Rebuild Static JS
-var js_srcFilesStatic = app + 'scripts/staticJS/to-compile-to-static/*.js'
-var js_destFolderStatic = app + 'scripts/staticJS/'
-var js_destFileStatic = 'etherwallet-static.min.js'
+let js_srcFilesStatic = app + 'scripts/staticJS/to-compile-to-static/*.js';
+let js_destFolderStatic = app + 'scripts/staticJS/';
+let js_destFileStatic = 'etherwallet-static.min.js';
 
 gulp.task('staticJS', function() {
     return gulp.src(js_srcFilesStatic)
@@ -160,53 +160,53 @@ gulp.task('staticJS', function() {
         .pipe(uglify())
         .pipe(gulp.dest(js_destFolderStatic))
         .pipe(notify(onSuccess('StaticJS')))
-})
+});
 
 
 
 // Copy
-var imgSrcFolder = app + 'images/**/*'
-var fontSrcFolder = app + 'fonts/*.*'
-var cxSrcFiles = app + 'includes/browser_action/*.*'
-var jsonFile = app + '*.json'
-var jQueryFile = app + 'scripts/staticJS/jquery-1.12.3.min.js'
-var bin = app + '/bin/*'
-var staticJSSrcFile = js_destFolderStatic + js_destFileStatic
-var readMe = './README.md'
+let imgSrcFolder = app + 'images/**/*';
+let fontSrcFolder = app + 'fonts/*.*';
+let cxSrcFiles = app + 'includes/browser_action/*.*';
+let jsonFile = app + '*.json';
+let jQueryFile = app + 'scripts/staticJS/jquery-1.12.3.min.js';
+let bin = app + '/bin/*';
+let staticJSSrcFile = js_destFolderStatic + js_destFileStatic;
+let readMe = './README.md';
 
 
 gulp.task('copy', ['staticJS'], function() {
     gulp.src(imgSrcFolder)
         .pipe(gulp.dest(dist + 'images'))
-        .pipe(gulp.dest(dist_CX + 'images'))
+        .pipe(gulp.dest(dist_CX + 'images'));
 
     gulp.src(fontSrcFolder)
         .pipe(gulp.dest(dist + 'fonts'))
-        .pipe(gulp.dest(dist_CX + 'fonts'))
+        .pipe(gulp.dest(dist_CX + 'fonts'));
 
     gulp.src(staticJSSrcFile)
         .pipe(gulp.dest(dist + 'js'))
-        .pipe(gulp.dest(dist_CX + 'js'))
+        .pipe(gulp.dest(dist_CX + 'js'));
 
     gulp.src(jQueryFile)
         .pipe(gulp.dest(dist + 'js'))
-        .pipe(gulp.dest(dist_CX + 'js'))
+        .pipe(gulp.dest(dist_CX + 'js'));
 
     gulp.src(jsonFile)
         .pipe(gulp.dest(dist))
-        .pipe(gulp.dest(dist_CX))
+        .pipe(gulp.dest(dist_CX));
 
     gulp.src(readMe)
-        .pipe(gulp.dest(dist))
+        .pipe(gulp.dest(dist));
 
     gulp.src(bin)
-        .pipe(gulp.dest(dist + 'bin'))
+        .pipe(gulp.dest(dist + 'bin'));
 
     return gulp.src(cxSrcFiles)
         .pipe(gulp.dest(dist_CX + 'browser_action'))
 
     .pipe(notify(onSuccess(' Copy ')))
-})
+});
 
 
 
@@ -226,7 +226,7 @@ gulp.task('clean', function() {
         .pipe(plumber({ errorHandler: onError }))
         .pipe(clean())
         .pipe(notify(onSuccess(' Clean ')))
-})
+});
 
 
 
@@ -241,35 +241,38 @@ function bumpFunc(t) {
 
 
 // Get Version Number
-var versionNum
-var versionMsg
+let versionNum;
+let versionMsg;
 gulp.task('getVersion', function() {
-    manifest = JSON.parse(fs.readFileSync(app + 'manifest.json'))
-    versionNum = 'v' + manifest.version
+    manifest = JSON.parse(fs.readFileSync(app + 'manifest.json'));
+    versionNum = 'v' + manifest.version;
     versionMsg = 'Release: ' + versionNum
         //return gulp.src( './' )
         //.pipe( notify ( onSuccess('Version Number ' + versionNum ) ))
-})
+});
 
 
 // zips dist folder
 gulp.task('zip', ['getVersion'], function() {
     gulp.src(dist + '**/**/*')
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(zip('./dist-' + versionNum + '.zip'))
+        .pipe(rename(function (path) {
+          path.dirname = './etherwallet-' + versionNum + '/' + path.dirname;
+        }))
+        .pipe(zip('./etherwallet-' + versionNum + '.zip'))
         .pipe(gulp.dest('./releases/'))
-        .pipe(notify(onSuccess('Zip Dist ' + versionNum)))
+        .pipe(notify(onSuccess('Zip Dist ' + versionNum)));
     return gulp.src(dist_CX + '**/**/*')
         .pipe(plumber({ errorHandler: onError }))
         .pipe(zip('./chrome-extension-' + versionNum + '.zip'))
         .pipe(gulp.dest('./releases/'))
         .pipe(notify(onSuccess('Zip CX ' + versionNum)))
-})
+});
 
 
 function archive() {
-  var outputZip = fs.createWriteStream(__dirname + '/example.zip');
-  var archiveZip = archiver('zip', {
+  let outputZip = fs.createWriteStream(__dirname + '/example.zip');
+  let archiveZip = archiver('zip', {
       gzip: true,
   });
   outputZip.on('close', function() {
@@ -284,8 +287,8 @@ function archive() {
   archiveZip.finalize();
 
 
-  var outputTar = fs.createWriteStream(__dirname + '/example.tgz');
-  var archiveTar = archiver('tar', {
+  let outputTar = fs.createWriteStream(__dirname + '/example.tgz');
+  let archiveTar = archiver('tar', {
       gzip: true,
   });
   outputTar.on('close', function() {
@@ -304,15 +307,18 @@ function archive() {
 gulp.task('travisZip', ['getVersion'], function() {
     gulp.src(dist + '**/**/*')
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(zip('./dist-' + versionNum + '.zip'))
+        .pipe(rename(function (path) {
+          path.dirname = './etherwallet-' + versionNum + '/' + path.dirname;
+        }))
+        .pipe(zip('./etherwallet-' + versionNum + '.zip'))
         .pipe(gulp.dest('./deploy/'))
-        .pipe(notify(onSuccess('Zip Dist ' + versionNum)))
+        .pipe(notify(onSuccess('Zip Dist ' + versionNum)));
     return gulp.src(dist_CX + '**/**/*')
         .pipe(plumber({ errorHandler: onError }))
         .pipe(zip('./chrome-extension-' + versionNum + '.zip'))
         .pipe(gulp.dest('./deploy/'))
         .pipe(notify(onSuccess('Zip CX ' + versionNum)))
-})
+});
 
 
 // add all
@@ -322,7 +328,7 @@ gulp.task('add', function() {
             'git add -A'
         ]))
         //.pipe( notify ( onSuccess('Git Add' ) ))
-})
+});
 
 // commit with current v# in manifest
 gulp.task('commit', ['getVersion'], function() {
@@ -331,7 +337,7 @@ gulp.task('commit', ['getVersion'], function() {
             'git commit -m "Rebuilt and cleaned everything. Done for now."'
         ]))
         .pipe(notify(onSuccess('Commit')))
-})
+});
 
 // commit with current v# in manifest
 gulp.task('commitV', ['getVersion'], function() {
@@ -340,7 +346,7 @@ gulp.task('commitV', ['getVersion'], function() {
             'git commit -m " ' + versionMsg + ' "'
         ]))
         .pipe(notify(onSuccess('Commit w ' + versionMsg)))
-})
+});
 
 // tag with current v# in manifest
 gulp.task('tag', ['getVersion'], function() {
@@ -349,7 +355,7 @@ gulp.task('tag', ['getVersion'], function() {
             'git tag -a ' + versionNum + ' -m " ' + versionMsg + '"'
         ]))
         .pipe(notify(onSuccess('Tagged Commit' + versionMsg)))
-})
+});
 
 // Push Release to Mercury
 gulp.task('push', ['getVersion'], function() {
@@ -358,7 +364,7 @@ gulp.task('push', ['getVersion'], function() {
             'git push origin mercury ' + versionNum
         ]))
         .pipe(notify(onSuccess('Push')))
-})
+});
 
 // Push Live
 // Pushes dist folder to gh-pages branch
@@ -368,7 +374,7 @@ gulp.task('pushlive', ['getVersion'], function() {
             'git subtree push --prefix dist origin gh-pages'
         ]))
         .pipe(notify(onSuccess('Push Live')))
-})
+});
 
 // Prep & Release
 // gulp prep
@@ -385,11 +391,11 @@ gulp.task('watchPAGES',   function() { gulp.watch(htmlFiles,        ['html']    
 gulp.task('watchTPL',     function() { gulp.watch(tplFiles,         ['html']          ) })
 gulp.task('watchCX',      function() { gulp.watch(cxSrcFiles,       ['copy']          ) })
 
-gulp.task('bump',          function() { return bumpFunc( 'patch' ) })
-gulp.task('bump-patch',    function() { return bumpFunc( 'patch' ) })
-gulp.task('bump-minor',    function() { return bumpFunc( 'minor' ) })
+gulp.task('bump',          function() { return bumpFunc( 'patch' ) });
+gulp.task('bump-patch',    function() { return bumpFunc( 'patch' ) });
+gulp.task('bump-minor',    function() { return bumpFunc( 'minor' ) });
 
-gulp.task('archive',       function() { return archive() })
+gulp.task('archive',       function() { return archive() });
 
 gulp.task('prep',   function(cb) { runSequence('js-production', 'html', 'styles', 'copy', cb); });
 
@@ -402,10 +408,7 @@ gulp.task('commit', function(cb) { runSequence('add', 'commitV', 'tag', cb);    
 gulp.task('watch',     ['watchJS',     'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
 gulp.task('watchProd', ['watchJSProd', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
 
-gulp.task('build', ['js', 'html', 'styles', 'copy'])
+gulp.task('build', ['js', 'html', 'styles', 'copy']);
 gulp.task('build-debug', ['js-debug', 'html', 'styles', 'watchJSDebug', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
 
-gulp.task('default', ['build', 'watch'])
-
-
-
+gulp.task('default', ['build', 'watch']);

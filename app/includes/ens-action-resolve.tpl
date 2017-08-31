@@ -29,12 +29,12 @@
         <ul><li>node (bytes32): <code>{{objENS.namehash}}</code></li></ul>
       </li>
       <li>Enter the Public Resolver Address under "resolver (address)".
-        <ul><li>resolver (address): <code>0x1da022710df5002339274aadee8d58218e9d6ab5</code></li></ul>
+        <ul><li>resolver (address): <code>0x5FfC014343cd971B7eb70732021E26C35B744cc4</code></li></ul>
       </li>
       <li>Unlock the owner's account.</li>
       <li>Click <code>WRITE</code>.</li>
       <li>Generate and send this transaction &ndash; leave "Amount to Send" as <strong>0</strong></li>
-      <li><a href="https://etherscan.io/tx/0x60eec50b492375bce25684f806599873b7f682e1ba504c8bed7cc90c33368118" target="_blank">TX should look like this.</a></li>
+      <li><a href="https://etherscan.io/tx/0x60eec50b492375bce25684f806599873b7f682e1ba504c8bed7cc90c33368118" target="_blank" rel="noopener">TX should look like this.</a></li>
     </ol>
   </div>
 
@@ -43,7 +43,7 @@
     <h3>Set the Address That your Name will Resolve To</h3>
     <ol>
       <li>Go to the contracts tab.</li>
-      <li>Choose <code>ENS-Public Resolver:</code> <code>0x1da022710df5002339274aadee8d58218e9d6ab5</code>. Click "Access". </li>
+      <li>Choose <code>ENS-Public Resolver:</code> <code>0x5FfC014343cd971B7eb70732021E26C35B744cc4</code>. Click "Access". </li>
       <li>Select <code>setAddr</code>. </li>
       <li>Enter the Namehash of your name under "node (bytes32)".
         <ul><li>node (bytes32): <code>{{objENS.namehash}}</code></li></ul>

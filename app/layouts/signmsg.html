@@ -1,16 +1,27 @@
 @@include( '../includes/headerEmbedded.tpl', { "site": "mew" } )
-<section ng-controller="tabsCtrl">
+
+<section ng-controller="tabsCtrl" ng-cloak>
+
     <section class="container" style="min-height: 50%" ng-controller='signMsgCtrl'>
-        <!-- tab panes -->
+
         <div class="tab-content">
+
+          <div class="clearfix">
             @@include( '../includes/signMsg.tpl', { "site": "mew" } )
-          <div ng-show="visibility=='signView' && wallet==null"><wallet-decrypt-drtv></wallet-decrypt-drtv></div>
+          </div>
+
+          <div class="clearfix col-xs-12" ng-show="visibility=='signView' && wallet==null">
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>
+          </div>
+
         </div>
-        <!-- /tab panes -->
-        <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
-            <div class="container" ng-bind-html="notifier.message"></div>
-            <i class="icon-close" ng-click="notifier.close()"></i>
-        </article>
+
+        @@include('../includes/alerts.tpl')
+
     </section>
+
 </section>
+
+<br /><br /><br /><br /><br />
+
 @@include( '../includes/footerEmbedded.tpl', { "site": "mew" } )

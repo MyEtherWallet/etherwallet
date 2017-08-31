@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>MyEtherWallet: Open Source JavaScript Client-Side Ether Wallet</title>
+  <title>Quicksend - MyEtherWallet Chrome Extension</title>
+  <meta name="description" content="MyEtherWallet is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely.">
   <link rel="stylesheet" href="../css/etherwallet-master.min.css">
   <script type="text/javascript" src="../js/etherwallet-static.min.js"></script>
   <script type="text/javascript" src="../js/etherwallet-master.js"></script>
@@ -26,7 +27,7 @@
         <table width="100%" class="table table-striped table-condensed quicksend" id="popupMainAccountTbl">
           <tbody>
             <tr ng-show="allWallets.length==0">
-              <td colspan="2" translate="CX_error_1">You don't have any wallets saved yet! <a class="text-primary" href="/cx-wallet.html#add-wallet" target="_blank">Click here to add a wallet.</a></td>
+              <td colspan="2" translate="CX_error_1">You don't have any wallets saved yet! <a class="text-primary" href="/cx-wallet.html#add-wallet" rel="noopener" target="_blank">Click here to add a wallet.</a></td>
             </tr>
             <tr ng-repeat="twallet in allWallets track by $index">
               <td>
@@ -88,8 +89,8 @@
       <label class="strong" translate="x_Password">Password:</label>
       <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="password" />
       <div class="text-center marg-v-sm">
-        <a class="btn btn-default btn-sm" href="browser_action.html" translate="x_Cancel"> Cancel </a>
-        <a class="btn btn-primary btn-sm" ng-click="unlockAndSend()" translate="SEND_trans"> Send Transaction </a>
+        <a class="btn btn-default btn-xs" href="browser_action.html" translate="x_Cancel"> Cancel </a>
+        <a class="btn btn-primary btn-xs" ng-click="unlockAndSend()" translate="SEND_trans"> Send Transaction </a>
       </div>
       <div ng-bind-html="validateTxStatus" class="word-wrap"></div>
       <div ng-bind-html="sendTxStatus" class="word-wrap"></div>

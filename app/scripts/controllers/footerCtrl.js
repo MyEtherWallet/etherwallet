@@ -14,25 +14,19 @@ var footerCtrl = function($scope, globalService) {
 
     $scope.curLang = globalFuncs.curLang;
     $scope.gasChanged = function() {
-        if ($scope.gas.value == 50) return;
-        localStorage.setItem(gasPriceKey, $scope.gas.value);
+        globalFuncs.localStorage.setItem(gasPriceKey, $scope.gas.value);
         ethFuncs.gasAdjustment = $scope.gas.value;
     }
     var setGasValues = function() {
-        ajaxReq.getTransactionData(globalFuncs.donateAddress, function(data) {
-            if (!data.error) {
-                data = data.data;
-                var curVal = new BigNumber(data.gasprice).div(etherUnits.getValueOfUnit('gwei')).toNumber();
-                $scope.gas = {
-                    curVal: curVal,
-                    value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 21,
-                    max: curVal + 20,
-                    min: 1
-                }
-                ethFuncs.gasAdjustment = $scope.gas.value;
-            }
-        });
+        $scope.gas = {
+            curVal: 21,
+            value: globalFuncs.localStorage.getItem(gasPriceKey, null) ? parseInt(globalFuncs.localStorage.getItem(gasPriceKey)) : 21,
+            max: 60,
+            min: 1
+        }
+        ethFuncs.gasAdjustment = $scope.gas.value;
     }
     setGasValues();
+    $scope.gasChanged();
 };
 module.exports = footerCtrl;

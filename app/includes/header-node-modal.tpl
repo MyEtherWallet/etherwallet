@@ -7,18 +7,10 @@
 
         <h2 class="modal-title text-info" translate="NODE_Title"> Set Up Your Custom Node </h2>
 
-        <p class="small" ng-show="browserProtocol!='https:'">
-          <strong translate="NODE_Subtitle">To connect to a local node...</strong>
-          <ul class="small">
-            <li> URL: http://127.0.0.1</li>
-            <li> Port: 8545 </li>
-            <li> Run geth: <code>geth --rpc --rpccorsdomain "null" --keystore "dont_put_secret_files_here_ever"</code></li>
-            <li> Run Parity: <code>parity --rpccorsdomain "*" --keys-path "dont_put_secret_files_here_ever"</code></li>
-          </ul>
-        </p>
+        <p class="small"><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node" target="_blank" rel="noopener"> Instructions can be found here </a></p>
 
         <div ng-show="browserProtocol=='https:'" class="alert alert-danger small" translate="NODE_Warning">
-          Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
+          Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to your local node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
         </div>
 
         <section class="row">

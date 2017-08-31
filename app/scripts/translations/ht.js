@@ -1,11 +1,11 @@
-// Kreyol
+
 'use strict';
 var ht = function() {}
 ht.code = 'ht';
 ht.data = {
 
-  HELP_2a_Title : 'How do I save/backup my wallet? ',
-  
+HELP_2a_Title               : 'How do I save/backup my wallet? ',
+
 /* New Generics */
 x_CancelReplaceTx           : 'Cancel or Replace Transaction',
 x_CancelTx                  : 'Cancel Transaction',
@@ -169,7 +169,7 @@ ADD_DigitalBitbox_0a        : 'Re-open MyEtherWallet on a secure (SSL) connectio
 ADD_DigitalBitbox_0b        : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
 
-  /* Add Wallet */             /* METE YON BOUS */					
+/* Add Wallet */             /* METE YON BOUS */					
 ADD_Label_1                 : 'KISA W’ VLE FÈ ?  ',						
 ADD_Radio_1                 : 'KREYE YON LÒT BOUS ',												
 ADD_Radio_2                 : 'CHWAZI PAJ BOUS OU A (KEYSTORE/JSON) ',					

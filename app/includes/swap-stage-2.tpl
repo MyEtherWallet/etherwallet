@@ -5,7 +5,7 @@
   <!-- Title -->
   <section class="row">
     <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
-    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener">
       <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
     </a></div>
   </section>
@@ -31,28 +31,28 @@
 
 
   <!-- Your Address -->
-  <!-- TODO ADD ENS NAME SUPPORT -->
-  <section class="row">
-    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-      <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
-      <input class="form-control"
-              type="text"
-              placeholder="{{swapOrder.toCoin=='BTC' ? '1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6' : '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8'}}"
-              ng-model="swapOrder.toAddress"
-              ng-class="(swapOrder.toCoin!='BTC' && Validator.isValidAddress(swapOrder.toAddress)) || (swapOrder.toCoin=='BTC' && Validator.isValidBTCAddress(swapOrder.toAddress)) ? 'is-valid' : 'is-invalid'"/>
-    </div>
-    <div class="col-sm-2 col-xs-12 address-identicon-container">
-      <div ng-show="swapOrder.toCoin == 'ETH' || swapOrder.toCoin=='REP'" class="addressIdenticon" title="Address Indenticon" blockie-address="{{swapOrder.toAddress}}" watch-var="swapOrder.toAddress"></div>
-    </div>
+  <section class='swap-address block'>
+    <section class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
+        <div class="form-group" ng-show="swapOrder.toCoin!='BTC'">
+          <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="swapOrder.toAddress"></address-field>
+        </div>
+        <input class="form-control"
+                ng-show="swapOrder.toCoin=='BTC'"
+                type="text"
+                placeholder="1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6"
+                ng-model="swapOrder.toAddress"
+                ng-class="Validator.isValidBTCAddress(swapOrder.toAddress) ? 'is-valid' : 'is-invalid'"/>
+      </div>
+    </section>
+    <!-- /Your Address -->
+    <!-- CTA -->
+    <section class="row text-center">
+      <a ng-click="openOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+    </section>
+    <!-- / CTA -->
   </section>
-  <!-- /Your Address -->
-
-
-  <!-- CTA -->
-  <section class="row text-center">
-    <a ng-click="openOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
-  </section>
-  <!-- / CTA -->
 
 
 </article>

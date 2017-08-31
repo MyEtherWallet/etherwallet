@@ -5,6 +5,21 @@
   border: 1px solid gray;
   margin-bottom: 50px;
   position: relative;
+  #identicon {
+    -webkit-print-color-adjust: exact;
+    position: absolute;
+    right: 7.5rem;
+    bottom: 3rem;
+  }
+  #identicon:after {
+    content: "Always look for this icon when sending to this wallet.";
+    font-size: 9px;
+    width: 120px;
+    position: absolute;
+    bottom: .75rem;
+    text-align: center;
+    right: -7.5rem;
+  }
 }
 
 .print-title {

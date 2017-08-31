@@ -123,6 +123,7 @@ th {
 }
 .table-mnemonic {
   border-bottom: 0;
+  font-weight: 400;
   th {
     border-bottom: 1px solid @gray-lighter;
     vertical-align: bottom;
@@ -137,6 +138,9 @@ th {
   tr:first-child {
     background-color: white!important;
   }
+  &.table>tbody>tr>td, &.table>tbody>tr>th, &.table>tfoot>tr>td, &.table>tfoot>tr>th, &.table>thead>tr>td, &.table>thead>tr>th {
+    padding: .25rem;
+  }
   .mnemonic-custom-row {
     input[type="text"]  {
       margin: -5px;
@@ -144,6 +148,9 @@ th {
       width: 70%;
       max-width: 15rem;
     }
+  }
+  label {
+    margin: .15rem;
   }
 
 }

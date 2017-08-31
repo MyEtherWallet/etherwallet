@@ -1,5 +1,5 @@
 'use strict';
-var etherUnits = function() {}
+var etherUnits = function() {};
 etherUnits.unitMap = {
 	'wei': '1',
 	'kwei': '1000',
@@ -33,30 +33,30 @@ etherUnits.getValueOfUnit = function(unit) {
 		throw new Error(globalFuncs.errorMsgs[4] + JSON.stringify(this.unitMap, null, 2));
 	}
 	return new BigNumber(unitValue, 10);
-}
+};
 etherUnits.fiatToWei = function(number, pricePerEther) {
 	var returnValue = new BigNumber(String(number)).div(pricePerEther).times(this.getValueOfUnit('ether')).round(0);
 	return returnValue.toString(10);
-}
+};
 
 etherUnits.toFiat = function(number, unit, multi) {
 	var returnValue = new BigNumber(this.toEther(number, unit)).times(multi).round(5);
 	return returnValue.toString(10);
-}
+};
 
 etherUnits.toEther = function(number, unit) {
 	var returnValue = new BigNumber(this.toWei(number, unit)).div(this.getValueOfUnit('ether'));
 	return returnValue.toString(10);
-}
+};
 
 etherUnits.toWei = function(number, unit) {
 	var returnValue = new BigNumber(String(number)).times(this.getValueOfUnit(unit));
 	return returnValue.toString(10);
-}
+};
 
 etherUnits.unitToUnit = function(number, from, to) {
 	var returnValue = new BigNumber(String(number)).times(this.getValueOfUnit(from)).div(this.getValueOfUnit(to));
 	return returnValue.toString(10);
-}
+};
 
 module.exports = etherUnits;
