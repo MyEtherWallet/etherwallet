@@ -40,6 +40,8 @@
         <p><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Buy a Ledger Wallet</a></p>
         <p><a href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">Buy a TREZOR</a></p>
         <p><a href="https://digitalbitbox.com/?ref=mew" target="_blank" rel="noopener">Buy a Digital Bitbox</a></p>
+        <p><a href="https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site" target="_blank" rel="noopener">Buy an ether.card</a></p>
+
 
         <h5><i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
         <p>ETH: <span class="mono wrap">mewtopia.eth <small>0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</small></span></p>
@@ -74,7 +76,7 @@
       </a></p>
 
       <p><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
-        Github: MEW Org
+        Github: Other MEW Repos
       </a></p>
 
       <p><a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener" role="link" tabindex="0">
@@ -99,10 +101,9 @@
         <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">Facebook</a>
         &middot;
         <a aria-label="medium" href="https://medium.com/@myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">Medium</a>
+        &middot;
+        <a aria-label="linkedin" href="https://www.linkedin.com/company/myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">Linkedin</a>
       </p>
-
-
-
 
       <p ng-show="showBlocks">Latest Block#: {{currentBlockNumber}} </p>
 
