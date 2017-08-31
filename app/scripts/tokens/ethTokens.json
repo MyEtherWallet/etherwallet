@@ -168,6 +168,12 @@
     "type":"default"
   },
   {
+    "address":"0x07d9e49ea402194bf48a8276dafb16e4ed633317",
+    "symbol":"DALC",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413",
     "symbol":"DAO",
     "decimal":16,
