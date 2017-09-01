@@ -187,6 +187,13 @@ module.exports = [
   data:       '',
   msg:        'OHNI ICO. Restoration of our communities!'
 },
+ {
+  // Relex
+  to:         '0xb306b47b36705332f48537b02b581ea36d108b79',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Developing real estate, at the speed of crowd. Relex ICO October 16, 2017'
+},
 {
   // Avalon
   to:         '0xeD247980396B10169BB1d36f6e278eD16700a60f',
