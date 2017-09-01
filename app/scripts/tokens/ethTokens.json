@@ -908,4 +908,11 @@
     "decimal":8,
     "type":"default"
   }
+  ,
+  {
+    "address":"0x8a187d5285d316bcbc9adafc08b51d70a0d8e000",
+    "symbol":"SIFT",
+    "decimal":0,
+    "type":"default"
+  }
 ]
