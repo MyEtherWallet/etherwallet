@@ -575,6 +575,12 @@
     "decimal":6,
     "type":"default"
   },
+  {
+    "address":"0x0e0989b1f9b8a38983c2ba8053269ca62ec9b195",
+    "symbol":"POE",
+    "decimal":8,
+    "type":"default"
+  }, 
  {
     "address":"0xd4fa1460F537bb9085d22C7bcCB5DD450Ef28e3a",
     "symbol":"PPT",
