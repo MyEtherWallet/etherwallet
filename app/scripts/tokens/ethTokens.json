@@ -54,6 +54,12 @@
     "type":"default"
   },
   {
+    "address":"0xfec0cF7fE078a500abf15F1284958F22049c2C7e",
+    "symbol":"ART",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x17052d51E954592C1046320c2371AbaB6C73Ef10",
     "symbol":"ATH",
     "decimal":18,
