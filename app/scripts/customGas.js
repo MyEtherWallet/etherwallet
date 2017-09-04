@@ -200,6 +200,13 @@ module.exports = [
   gasLimit:   60000,
   data:       '',
   msg:        'Avalon ICO starts August 25, 2017 - avalon.nu'
+},
+{
+  // Maecenas
+  to:         '0x9B60874D7bc4e4fBDd142e0F5a12002e4F7715a6',
+  gasLimit:   400000,
+  data:       '',
+  msg:        'Maecenas ICO starts September 5, 2017 - www.maecenas.co'
 }
 ]
 
