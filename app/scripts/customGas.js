@@ -14,6 +14,12 @@
 module.exports = [
  {
   // Vibehub (VIBEX) ICO Sale
+  to:         '0x5454af9d2ba75a60fa5b0419c251810544cea21d',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'WeBetCrypto ICO Sale. Thank you for your support!'
+},{
+  // Vibehub (VIBEX) ICO Sale
   to:         '0x882448f83d90b2bf477af2ea79327fdea1335d93',
   gasLimit:   200000,
   data:       '',
