@@ -4,5 +4,11 @@
     "symbol":"GUP",
     "decimal":3,
     "type":"default"
+  },
+  {
+    "address":"0x8667559254241ddeD4d11392f868d72092765367",
+    "symbol":"Aeternity",
+    "decimal":18,
+    "type":"default"
   }
 ]
