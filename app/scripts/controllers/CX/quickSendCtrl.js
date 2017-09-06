@@ -92,6 +92,12 @@ var quickSendCtrl = function($scope, $sce) {
 		$scope.validateTxStatus = "";
 		$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.allWallets[$scope.selectedWallet].priv, $scope.password);
 	};
+  $scope.selectedWallet = "";
+  $scope.password = "";
+  $scope.$parent.selectedWallet ="";
+  $scope.tx.to = "";
+  $scope.tx.value = "";
+
 	$scope.setAllWallets();
 };
 module.exports = quickSendCtrl;
