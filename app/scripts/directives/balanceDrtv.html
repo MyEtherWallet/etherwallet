@@ -20,7 +20,7 @@
       <ul class="account-info">
         <li><a href="" ng-click="displayOnLedger()" translate="sidebar_DisplayOnLedger">Display address on Ledger</a></li>
       </ul>
-    </div>    
+    </div>
     <h5 translate="sidebar_AccountBal">Account Balance</h5>
     <ul class="account-info point" ng-dblclick="showLongBal=!showLongBal" title="{{wallet.balance}} (Double-Click)">
       <li>
@@ -102,7 +102,8 @@
   </div>
 
   <div class="block token-balances">
-    <h5 translate="sidebar_TokenBal">Token Balances:</h5>
+    <h5 translate="sidebar_TokenBal">Token Balances</h5>
+    <p class="text-danger" ng-hide="tokensLoaded"><small> Ahh! There are too many tokens for our poor nodes! Click "Load Token Balances" to see them all. You are limited to loading these once per minute. Try checking your balance on <span ng-show="ajaxReq.type != 'CUS'"><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">{{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}}</a></span> or <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener">Ethplorer.io</a> instead. </small></p>
     <table class="account-info">
       <tr ng-repeat="token in wallet.tokenObjs track by $index"
           ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
@@ -114,10 +115,10 @@
       </tr>
     </table>
     <a class="btn btn-default btn-xs" ng-click="wallet.setTokens(); tokensLoaded=true" ng-hide="tokensLoaded">
-      Load Tokens Balances
+      Load Token Balances
     </a>
     <a class="btn btn-default btn-xs" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'">
-      Show All Tokens
+      Show Tokens
     </a>
     <a class="btn btn-default btn-xs" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">
       Hide Tokens
