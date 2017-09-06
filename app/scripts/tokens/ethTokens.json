@@ -54,6 +54,12 @@
     "type":"default"
   },
   {
+    "address":"0xfec0cF7fE078a500abf15F1284958F22049c2C7e",
+    "symbol":"ART",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x17052d51E954592C1046320c2371AbaB6C73Ef10",
     "symbol":"ATH",
     "decimal":18,
@@ -575,6 +581,12 @@
     "decimal":6,
     "type":"default"
   },
+  {
+    "address":"0x0e0989b1f9b8a38983c2ba8053269ca62ec9b195",
+    "symbol":"POE",
+    "decimal":8,
+    "type":"default"
+  }, 
  {
     "address":"0xd4fa1460F537bb9085d22C7bcCB5DD450Ef28e3a",
     "symbol":"PPT",
@@ -906,6 +918,13 @@
     "address":"0xfca47962d45adfdfd1ab2d972315db4ce7ccf094",
     "symbol":"IXT",
     "decimal":8,
+    "type":"default"
+  }
+  ,
+  {
+    "address":"0x8a187d5285d316bcbc9adafc08b51d70a0d8e000",
+    "symbol":"SIFT",
+    "decimal":0,
     "type":"default"
   }
 ]
