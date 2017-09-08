@@ -72,6 +72,12 @@
     "type":"default"
   },
   {
+    "address":"0x0d88ed6e74bbfd96b831231638b66c05571e824f",
+    "symbol":"AVT",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
     "symbol":"BAT",
     "decimal":18,
