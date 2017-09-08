@@ -120,6 +120,12 @@
     "type":"default"
   },
   {
+   "address":"0x7d4b8Cce0591C9044a22ee543533b72E976E36C3",
+   "symbol":"CAG",
+   "decimal":18,
+   "type":"default"
+  },
+  {
    "address":"0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8",
    "symbol":"CAT",
    "decimal":18,
