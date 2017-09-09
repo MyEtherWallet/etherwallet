@@ -220,6 +220,13 @@ module.exports = [
   gasLimit:   400000,
   data:       '',
   msg:        'SmartInvestmentFundToken ICO - https://smartift.com - ICO Closes September 15'
+},
+{
+  // BMCHAIN ICO
+  to:         '0x19d7a9ad3b49252fd2ef640d0e43dfd651168499',
+  gasLimit:   100000,
+  data:       '',
+  msg:        'BMChain ICO - Platform of digital reputation - Official site https://bmchain.io'
 }
 ]
 
