@@ -413,7 +413,13 @@
     "decimal":18,
     "type":"default"
   },
-   {
+  {
+    "address":"0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
+    "symbol":"MANA",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x386467f1f3ddbe832448650418311a479eecfc57",
     "symbol":"MBRS",
     "decimal":0,
@@ -586,7 +592,7 @@
     "symbol":"POE",
     "decimal":8,
     "type":"default"
-  }, 
+  },
  {
     "address":"0xd4fa1460F537bb9085d22C7bcCB5DD450Ef28e3a",
     "symbol":"PPT",
