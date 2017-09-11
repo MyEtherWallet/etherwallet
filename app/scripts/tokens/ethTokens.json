@@ -369,6 +369,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x63e634330A20150DbB61B15648bC73855d6CCF07",
+"symbol":"LNC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xEF68e7C694F40c8202821eDF525dE3782458639f",
 "symbol":"LRC",
 "decimal":18,
