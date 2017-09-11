@@ -516,6 +516,12 @@
     "type":"default"
   },
   {
+    "address":"0x7FC408011165760eE31bE2BF20dAf450356692Af",
+    "symbol":"MTR",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xf7e983781609012307f2514f63D526D83D24F466",
     "symbol":"MYD",
     "decimal":16,
