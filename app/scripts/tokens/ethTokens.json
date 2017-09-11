@@ -378,8 +378,14 @@
     "type":"default"
   },
   {
+    "address":"0x8727c112C712c4a03371AC87a74dD6aB104Af768",
+    "symbol":"JET (new)",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xc1E6C6C681B286Fb503B36a9dD6c1dbFF85E73CF",
-    "symbol":"JET",
+    "symbol":"JET (old)",
     "decimal":18,
     "type":"default"
   },
