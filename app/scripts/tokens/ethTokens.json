@@ -108,6 +108,12 @@
     "type":"default"
   },
   {
+    "address":"0xf028adee51533b1b47beaa890feb54a457f51e89",
+    "symbol":"BMT",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C",
     "symbol":"BNT",
     "decimal":18,
