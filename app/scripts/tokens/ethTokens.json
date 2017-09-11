@@ -769,6 +769,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x2C974B2d0BA1716E644c1FC59982a89DDD2fF724",
+"symbol":"VIB",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xeDBaF3c5100302dCddA53269322f3730b1F0416d",
 "symbol":"VRS",
 "decimal":5,
