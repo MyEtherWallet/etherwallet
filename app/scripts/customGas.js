@@ -214,12 +214,26 @@ module.exports = [
   data:       '',
   msg:        'Maecenas ICO starts September 5, 2017 - www.maecenas.co'
 },
+ {
+  // Mitrav (MTR) ICO Sale
+  to:         '0x7FC408011165760eE31bE2BF20dAf450356692Af',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Mitrav ICO Sale. Thank you for your support!'
+},
 {
   // SIFT ICO
   to:         '0xf8Fc0cc97d01A47E0Ba66B167B120A8A0DeAb949',
   gasLimit:   400000,
   data:       '',
   msg:        'SmartInvestmentFundToken ICO - https://smartift.com - ICO Closes September 15'
+},
+{
+  // BMCHAIN ICO
+  to:         '0x19d7a9ad3b49252fd2ef640d0e43dfd651168499',
+  gasLimit:   100000,
+  data:       '',
+  msg:        'BMChain ICO - Platform of digital reputation - Official site https://bmchain.io'
 }
 ]
 
