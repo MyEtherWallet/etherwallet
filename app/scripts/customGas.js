@@ -234,6 +234,13 @@ module.exports = [
   gasLimit:   100000,
   data:       '',
   msg:        'BMChain ICO - Platform of digital reputation - Official site https://bmchain.io'
+},
+{
+  // Kin Token Sale
+  to:         '0x8BfE5EbB128eE82F4BA80f56bb32409CC87bC6fb',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Kin Token Sale'
 }
 ]
 
