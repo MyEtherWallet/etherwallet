@@ -204,7 +204,7 @@ module.exports = [
 {
   // SIFT ICO
   to:         '0xf8Fc0cc97d01A47E0Ba66B167B120A8A0DeAb949',
-  gasLimit:   400000,
+  gasLimit:   800000,
   data:       '',
   msg:        'SmartInvestmentFundToken ICO - https://smartift.com - ICO Closes September 15'
 }
