@@ -364,6 +364,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x8B5Da3e29E968B743A8fb00914c5053bdf750e6e",
+"symbol":"KSK",
+"decimal":18,
+"type":"default"
+}{
 "address":"0x21aE23B882A340A22282162086bC98D3E2B73018",
 "symbol":"LOK",
 "decimal":18,
