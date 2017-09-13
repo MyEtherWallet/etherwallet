@@ -54,6 +54,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x78B7FADA55A64dD895D8c8c35779DD8b67fA8a05",
+"symbol":"ATL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xeD247980396B10169BB1d36f6e278eD16700a60f",
 "symbol":"AVA 🐴",
 "decimal":4,
