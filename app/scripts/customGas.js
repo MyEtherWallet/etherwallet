@@ -47,11 +47,11 @@ module.exports = [
   msg:        'YUPIE (YUPIE) ICO'
 },
 {
-  // Stox Token Sale
-  to:         '0x40349A89114BB34d4E82e5Bf9AE6B2ac3c78b00a',
-  gasLimit:   200000,
+  // Atlant.io ATLANT ICO Sale
+  to:         '0xF46ede17c0bAb20d87Cd079a2632f71433A407b9',
+  gasLimit:   150000,
   data:       '',
-  msg:        'Stox Token Sale'
+  msg:        'ATLANT ICO Sale. Thank you for your support. '
 },
 {
   // DCORP
