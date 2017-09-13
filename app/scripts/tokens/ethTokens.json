@@ -469,6 +469,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x0AF44e2784637218dD1D32A322D44e603A8f0c6A",
+"symbol":"MTX",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xf7e983781609012307f2514f63D526D83D24F466",
 "symbol":"MYD",
 "decimal":16,
