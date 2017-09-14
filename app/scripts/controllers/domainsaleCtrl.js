@@ -297,7 +297,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
             // TODO confirm that buy price is > 0
             $scope.tx.gasLimit = $scope.gasLimitDefaults.buy;
             $scope.tx.data = DomainSale.getBuyData($scope.objDomainSale.name, $scope.referrer);
-            $scope.tx.value = $scope.objDomainSale.price;
+            $scope.tx.value = $scope.objDomainSale.priceEth;
             $scope.doTx();
         } catch (e) {
             $scope.notifier.danger(e);
