@@ -589,6 +589,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x0c04d4f331da8df75f9e2e271e3f3f1494c66c36",
+"symbol":"PRSP",
+"decimal":9,
+"type":"default"
+},{
 "address":"0x66497a283e0a007ba3974e837784c6ae323447de",
 "symbol":"PT",
 "decimal":18,
