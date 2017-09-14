@@ -34,10 +34,10 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         bid: '200000',
         buy: '200000',
         cancel: '200000',
+        finish: '200000',
         withdraw: '200000'
     }
     $scope.tx = {
-        gasLimit: '500000',
         data: '',
         to: '',
         unit: "ether",
@@ -94,7 +94,12 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         $scope.objDomainSale.reserve = 0;
         $scope.objDomainSale.reserveEth = 0;
         $scope.objDomainSale.timeRemaining = null;
-        $scope.tx = {};
+        $scope.tx = {
+          data: '',
+          to: '',
+          unit: 'ether',
+          value: 0
+        };
         clearInterval($scope.objDomainSale.timer);
     }
     $scope.checkName = function() {
@@ -272,6 +277,31 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
             $scope.tx.to = DomainSale.getContractAddress();
             $scope.tx.gasLimit = $scope.gasLimitDefaults.cancel;
             $scope.tx.data = DomainSale.getCancelData($scope.objDomainSale.name);
+            $scope.tx.value = 0;
+            $scope.doTx();
+        } catch (e) {
+            $scope.notifier.danger(e);
+        }
+    }
+    $scope.generateFinishTx = function() {
+        try {
+            $scope.objDomainSale.tx = domainsale.transactions.finish;
+            if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
+            $scope.tx.to = DomainSale.getContractAddress();
+            $scope.tx.gasLimit = $scope.gasLimitDefaults.finsh;
+            $scope.tx.data = DomainSale.getFinishData($scope.objDomainSale.name);
+            $scope.tx.value = 0;
+            $scope.doTx();
+        } catch (e) {
+            $scope.notifier.danger(e);
+        }
+    }
+    $scope.generateWithdrawTx = function() {
+        try {
+            $scope.objDomainSale.tx = domainsale.transactions.withdraw;
+            $scope.tx.to = DomainSale.getContractAddress();
+            $scope.tx.gasLimit = $scope.gasLimitDefaults.withdraw;
+            $scope.tx.data = DomainSale.getWithdrawData();
             $scope.tx.value = 0;
             $scope.doTx();
         } catch (e) {

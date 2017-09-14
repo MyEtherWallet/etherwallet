@@ -103,6 +103,20 @@ domainsale.prototype.getBidData = function(name, referrer) {
     return _this.getDataString(funcABI, [name, referrer]);
 };
 
+domainsale.prototype.getFinishData = function(name) {
+    var _this = this;
+    name = ens.normalise(name);
+    var funcABI = _this.domainsaleABI.finish;
+    return _this.getDataString(funcABI, [name]);
+};
+
+domainsale.prototype.getWithdrawData = function() {
+    var _this = this;
+    name = ens.normalise(name);
+    var funcABI = _this.domainsaleABI.withdraw;
+    return _this.getDataString(funcABI, []);
+};
+
 domainsale.prototype.getDataString = function(func, inputs) {
     var fullFuncName = ethUtil.solidityUtils.transformToFullName(func);
     var funcSig = ethFuncs.getFunctionSignature(fullFuncName);
@@ -117,7 +131,7 @@ domainsale.modes = {
         notoffered: 2,
         available: 3,
         auctioning: 4,
-        finished: 5
+        closed: 5
 };
 domainsale.transactions = {
         transfer: 1,

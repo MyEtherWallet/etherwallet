@@ -65,10 +65,12 @@
   @@if (site === 'mew' ) { @@include( './domainsale-status-auctioning.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './domainsale-status-auctioning.tpl', { "site": "cx"  } ) }
 
-  <!-- If auction finished then provide finish information -->
+  <!-- If auction closed then provide finish information -->
+  @@if (site === 'mew' ) { @@include( './domainsale-status-closed.tpl', { "site": "mew" } ) }
+  @@if (site === 'cx'  ) { @@include( './domainsale-status-closed.tpl', { "site": "cx"  } ) }
 
   <!-- Unlock Directive: Everything but ineligible -->
-  <article class="row" ng-show="(objDomainSale.status==domainsaleModes.nottransferred || objDomainSale.status==domainsaleModes.notoffered || objDomainSale.status==domainsaleModes.available || objDomainSale.status==domainsaleModes.auctioning || objDomainSale.status==domainsaleModes.finished)">
+  <article class="row" ng-show="(objDomainSale.status==domainsaleModes.nottransferred || objDomainSale.status==domainsaleModes.notoffered || objDomainSale.status==domainsaleModes.available || objDomainSale.status==domainsaleModes.auctioning || objDomainSale.status==domainsaleModes.closed)">
     <section class="clearfix collapse-container">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
@@ -80,7 +82,7 @@
           <span ng-show="objDomainSale.status==domainsaleModes.available && objDomainSale.price==0 && objDomainSale.reserve!=0 && wallet==null">    Do you want to bid for {{objDomainSale.name}}.eth? Unlock your Wallet to place a bid </span>
           <span ng-show="objDomainSale.status==domainsaleModes.available && objDomainSale.price!=0 && objDomainSale.reserve!=0 && wallet==null">    Do you want to buy or bid for {{objDomainSale.name}}.eth? Unlock your Wallet to continue </span>
           <span ng-show="objDomainSale.status==domainsaleModes.auctioning && wallet==null">    Do you want to bid for {{objDomainSale.name}}.eth? Unlock your Wallet to place a bid </span>
-          <span ng-show="objDomainSale.status==domainsaleModes.finished && wallet==null">    Did you buy or sell {{objDomainSale.name}}.eth? Unlock your Wallet to finish the auction </span>
+          <span ng-show="objDomainSale.status==domainsaleModes.closed && wallet==null">    Did you buy or sell {{objDomainSale.name}}.eth? Unlock your Wallet to finish the auction </span>
 
         </h4>
       </div>
