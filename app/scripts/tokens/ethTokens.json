@@ -369,6 +369,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xdd974D5C2e2928deA5F71b9825b8b646686BD200",
+"symbol":"KNC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x21aE23B882A340A22282162086bC98D3E2B73018",
 "symbol":"LOK",
 "decimal":18,
