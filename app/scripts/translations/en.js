@@ -70,6 +70,7 @@ NAV_Contact                 : 'Contact ',
 NAV_Contracts               : 'Contracts ',
 NAV_DeployContract          : 'Deploy Contract ',
 NAV_ENS                     : 'ENS',
+NAV_DomainSale              : 'DomainSale',
 NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'Create New Wallet ',
 NAV_Help                    : 'Help ',
@@ -381,6 +382,8 @@ ERROR_34                    : 'The name you are attempting to reveal does not ma
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+ERROR_38                    : 'Offer must have either price or reserve set to more than 0', // 38
+ERROR_39                    : 'Bid must be more than the specified minimum', // 39
 
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
