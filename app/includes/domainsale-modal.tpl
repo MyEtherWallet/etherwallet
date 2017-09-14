@@ -10,11 +10,12 @@
         <h2 class="modal-title">
           You are about to
           <span ng-show="objDomainSale.tx==domainsaleTransactions.transfer"> transfer a domain to DomainSale</span>
-          <span ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.buyEth!=0 && objDomainSale.reserveEth==0"> set the price for a domain</span>
-          <span ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.buyEth==0 && objDomainSale.reserveEth!=0"> set the reserve auction price for a domain</span>
-          <span ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.buyEth!=0 && objDomainSale.reserveEth!=0"> set the price and reserve auction price for a domain</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.priceEth!=0 && objDomainSale.reserveEth==0"> set the price for a domain</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.priceEth==0 && objDomainSale.reserveEth!=0"> set the reserve auction price for a domain</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.priceEth!=0 && objDomainSale.reserveEth!=0"> set the price and reserve auction price for a domain</span>
           <span ng-show="objDomainSale.tx==domainsaleTransactions.buy"> buy a domain</span>
           <span ng-show="objDomainSale.tx==domainsaleTransactions.bid"> bid on a domain</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.cancel"> cancel a domain sale</span>
         </h2>
 
         <table ng-show="objDomainSale.tx==domainsaleTransactions.buy || objDomainSale.tx==domainsaleTransactions.bid" class="table">

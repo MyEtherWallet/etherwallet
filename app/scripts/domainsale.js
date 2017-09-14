@@ -67,7 +67,7 @@ domainsale.prototype.getMinimumBid = function(name, callback) {
             
             data.data = {
                 minimumBid: res[0],
-                minimumBidEth: etherUnits.toEther(res[0].toString(), 'wei')
+                minimumBidEth: Number(etherUnits.toEther(res[0].toString(), 'wei'))
             };
             callback(data);
         }
@@ -86,6 +86,13 @@ domainsale.prototype.getBuyData = function(name, referrer) {
     var _this = this;
     name = ens.normalise(name);
     var funcABI = _this.domainsaleABI.buy;
+    return _this.getDataString(funcABI, [name, referrer]);
+};
+
+domainsale.prototype.getBidData = function(name, referrer) {
+    var _this = this;
+    name = ens.normalise(name);
+    var funcABI = _this.domainsaleABI.bid;
     return _this.getDataString(funcABI, [name, referrer]);
 };
 

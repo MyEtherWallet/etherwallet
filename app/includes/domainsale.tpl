@@ -61,7 +61,9 @@
   @@if (site === 'mew' ) { @@include( './domainsale-status-available.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './domainsale-status-available.tpl', { "site": "cx"  } ) }
 
-  <!-- If auction not finished then provide bid information -->
+  <!-- If auction active then provide bid information -->
+  @@if (site === 'mew' ) { @@include( './domainsale-status-auctioning.tpl', { "site": "mew" } ) }
+  @@if (site === 'cx'  ) { @@include( './domainsale-status-auctioning.tpl', { "site": "cx"  } ) }
 
   <!-- If auction finished then provide finish information -->
 
@@ -71,7 +73,7 @@
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
         <h4>
-          <span ng-show="wallet!=null">Change your wallet</span>
+          <span ng-show="wallet!=null">Want a different wallet?  Change it here.</span>
           <span ng-show="objDomainSale.status==domainsaleModes.nottransferred && wallet==null">    Do you own and want to sell {{objDomainSale.name}}.eth? Unlock your Wallet to transfer the domain to DomainSale </span>
           <span ng-show="objDomainSale.status==domainsaleModes.notoffered && wallet==null">    Do you own and want to set prices for {{objDomainSale.name}}.eth? Unlock your Wallet to set buy and bid price </span>
           <span ng-show="objDomainSale.status==domainsaleModes.available && objDomainSale.price!=0 && objDomainSale.reserve==0 && wallet==null">    Do you want to buy {{objDomainSale.name}}.eth? Unlock your Wallet to buy it immediately </span>
@@ -95,9 +97,9 @@
   @@if (site === 'mew' ) { @@include( './domainsale-action-transfer.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './domainsale-action-transfer.tpl', { "site": "cx"  } ) }
 
-  <!-- Action: offer -->
-  @@if (site === 'mew' ) { @@include( './domainsale-action-offer.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './domainsale-action-offer.tpl', { "site": "cx"  } ) }
+  <!-- Action: offer or cancel -->
+  @@if (site === 'mew' ) { @@include( './domainsale-action-offercancel.tpl', { "site": "mew" } ) }
+  @@if (site === 'cx'  ) { @@include( './domainsale-action-offercancel.tpl', { "site": "cx"  } ) }
 
   <!-- Action: bid or buy -->
   @@if (site === 'mew' ) { @@include( './domainsale-action-bidbuy.tpl', { "site": "mew" } ) }

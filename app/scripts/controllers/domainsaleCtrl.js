@@ -15,10 +15,6 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
     $scope.domainsaleTransactions = domainsale.transactions;
     $scope.minNameLength = 7;
     $scope.objDomainSale = {
-        name: '',
-        nameReadOnly: false,
-    };
-    $scope.objENS = {
         status: -1,
         name: '',
         price: 0,
@@ -27,7 +23,11 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         reserveEth: 0,
         bid: 0,
         bidEth: 0,
-
+        seller: '',
+        nameReadOnly: false,
+        timeRemaining: null,
+    };
+    $scope.objENS = {
         namehash: '',
         nameSHA3: '',
         resolvedAddress: null,
@@ -64,7 +64,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         if (walletService.wallet == null) return;
         $scope.wallet = walletService.wallet;
         $scope.wd = true;
-        $scope.objENS.nameReadOnly = true;
+        $scope.objDomainSale.nameReadOnly = true;
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
     });
@@ -78,23 +78,20 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         var rem = timeUntil - new Date();
         if (rem < 0) {
             clearInterval($scope.objENS.timer);
-            $scope.objENS.timeRemaining = "EXPIRED";
+            $scope.objDomainSale.timeRemaining = "FINISHED";
             return
         }
         var _second = 1000;
         var _minute = _second * 60;
         var _hour = _minute * 60;
         var _day = _hour * 24;
-        var days = Math.floor(rem / _day);
         var hours = Math.floor((rem % _day) / _hour);
         var minutes = Math.floor((rem % _hour) / _minute);
         var seconds = Math.floor((rem % _minute) / _second);
-        days = days < 10 ? '0' + days : days;
         hours = hours < 10 ? '0' + hours : hours;
         minutes = minutes < 10 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
-        $scope.objENS.timeRemaining = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
-        $scope.objENS.timeRemainingReveal = (days - 2) + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
+        $scope.objDomainSale.timeRemaining = hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
         updateScope();
     }
     $scope.nameOnChange = function() {
@@ -137,33 +134,38 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
                                 $scope.objDomainSale.status = $scope.domainsaleModes.nottransferred;
                                 updateScope();
                             } else {
-                                DomainSale.getSale($scope.objDomainSale.name, function(data) {
-                                    var entries = data.data;
-                                    for (var key in entries) $scope.objDomainSale[key] = entries[key];
-                                    if ($scope.objDomainSale.price == 0 && $scope.objDomainSale.reserve == 0) {
-                                        // Not yet offered for sale
-                                        $scope.objDomainSale.status = $scope.domainsaleModes.notoffered;
-                                    } else if ($scope.objDomainSale.auctionStarted.getTime() == 0) {
-                                        // Available for sale
-                                        $scope.objDomainSale.status = $scope.domainsaleModes.available;
-                                        $scope.objDomainSale.minimumBid = $scope.objDomainSale.reserve;
-                                        $scope.objDomainSale.minimumBidEth = $scope.objDomainSale.reserveEth;
-                                        $scope.objDomainSale.bid = $scope.objDomainSale.minimumBid;
-                                        $scope.objDomainSale.bidEth = $scope.objDomainSale.minimumBidEth;
-                                    } else if ($scope.objDomainSale.auctionEnds.getTime() >= new Date().getTime()) {
-                                        // Being auctioned
-                                        $scope.objDomainSale.status = $scope.domainsaleModes.auctioning;
-                                        DomainSale.getMinimumBid($scope.objDomainSale.name, function(data) {
-                                            for (var key in entries) $scope.objDomainSale[key] = entries[key];
+                                ENS.getDeedPreviousOwner($scope.objDomainSale.deed, function(data) {
+                                    $scope.objDomainSale.seller = data.data;
+                                    DomainSale.getSale($scope.objDomainSale.name, function(data) {
+                                        var entries = data.data;
+                                        for (var key in entries) $scope.objDomainSale[key] = entries[key];
+                                        if ($scope.objDomainSale.price == 0 && $scope.objDomainSale.reserve == 0) {
+                                            // Not yet offered for sale
+                                            $scope.objDomainSale.status = $scope.domainsaleModes.notoffered;
+                                        } else if ($scope.objDomainSale.auctionStarted.getTime() == 0) {
+                                            // Available for sale
+                                            $scope.objDomainSale.status = $scope.domainsaleModes.available;
+                                            $scope.objDomainSale.minimumBid = $scope.objDomainSale.reserve;
+                                            $scope.objDomainSale.minimumBidEth = $scope.objDomainSale.reserveEth;
                                             $scope.objDomainSale.bid = $scope.objDomainSale.minimumBid;
                                             $scope.objDomainSale.bidEth = $scope.objDomainSale.minimumBidEth;
-                                            updateScope();
-                                        });
-                                    } else {
-                                        // Auction finished
-                                        $scope.objDomainSale.status = $scope.domainsaleModes.finished;
-                                    }
-                                    updateScope();
+                                        } else if ($scope.objDomainSale.auctionEnds.getTime() >= new Date().getTime()) {
+                                            // Being auctioned
+                                            $scope.objDomainSale.status = $scope.domainsaleModes.auctioning;
+                                            $scope.objDomainSale.timer = setInterval(() => timeRem($scope.objDomainSale.auctionEnds), 1000);
+                                            DomainSale.getMinimumBid($scope.objDomainSale.name, function(data) {
+                                                var entries = data.data;
+                                                for (var key in entries) $scope.objDomainSale[key] = entries[key];
+                                                $scope.objDomainSale.bid = $scope.objDomainSale.minimumBid;
+                                                $scope.objDomainSale.bidEth = $scope.objDomainSale.minimumBidEth;
+                                                updateScope();
+                                            });
+                                        } else {
+                                            // Auction finished
+                                            $scope.objDomainSale.status = $scope.domainsaleModes.finished;
+                                        }
+                                        updateScope();
+                                    });
                                 });
                             }
                         });
@@ -216,85 +218,40 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         $scope.objDomainSale.txSent = true;
         $scope.hideDomainSaleInfoPanel = false;
     }
+    // Transactions
     $scope.generateTransferTx = function() {
         try {
             $scope.objDomainSale.tx = domainsale.transactions.transfer;
-            $scope.sentTxs = [];
-            $scope.generatedTxs = [];
             if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
-            $scope.transferTx();
+            $scope.tx.to = ENS.getAuctionAddress();
+            $scope.tx.gasLimit = $scope.gasLimitDefaults.transfer;
+            $scope.tx.data = ENS.getTransferData($scope.objDomainSale.name, DomainSale.getContractAddress());
+            $scope.tx.value = 0;
+            $scope.doTx();
         } catch (e) {
             $scope.notifier.danger(e);
         }
-    }
-    $scope.transferTx = function(nonce, gasPrice) {
-        $scope.tx.gasLimit = $scope.gasLimitDefaults.transfer;
-        var _objDomainSale = $scope.objDomainSale;
-
-        // N.B. Transfer instruction is to ENS registrar
-        $scope.tx.data = ENS.getTransferData(_objDomainSale.name, DomainSale.getContractAddress());
-        $scope.tx.to = ENS.getAuctionAddress();
-        $scope.tx.value = 0;
-        var txData = uiFuncs.getTxData($scope);
-        if (nonce && gasPrice) {
-            txData.nonce = nonce;
-            txData.gasPrice = gasPrice;
-        } else {
-            txData.nonce = txData.gasPrice = null;
-        }
-        uiFuncs.generateTx(txData, function(rawTx) {
-            if (!rawTx.isError) {
-                $scope.generatedTxs.push(rawTx.signedTx);
-                $scope.domainsaleConfirmModalModal.open();
-            } else {
-                $scope.notifier.danger(rawTx.error);
-            }
-            if (!$scope.$$phase) $scope.$apply();
-        });
     }
     $scope.generateOfferTx = function() {
         try {
             $scope.objDomainSale.tx = domainsale.transactions.offer;
-            $scope.sentTxs = [];
-            $scope.generatedTxs = [];
             if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
             // TODO confirm that bid or price is > 0
-            $scope.offerTx();
+            $scope.tx.to = DomainSale.getContractAddress();
+            $scope.tx.gasLimit = $scope.gasLimitDefaults.offer;
+            $scope.tx.data = DomainSale.getOfferData($scope.objDomainSale.name, $scope.objDomainSale.price, $scope.objDomainSale.reserve, $scope.referrer);
+            $scope.tx.value = 0;
+            $scope.doTx();
         } catch (e) {
             $scope.notifier.danger(e);
         }
     }
-    $scope.offerTx = function(nonce, gasPrice) {
-        $scope.tx.gasLimit = $scope.gasLimitDefaults.offer;
-        var _objDomainSale = $scope.objDomainSale;
-
-        $scope.tx.data = DomainSale.getOfferData(_objDomainSale.name, _objDomainSale.price, _objDomainSale.reserve, $scope.referrer);
-        $scope.tx.to = DomainSale.getContractAddress();
-        $scope.tx.value = 0;
-        var txData = uiFuncs.getTxData($scope);
-        if (nonce && gasPrice) {
-            txData.nonce = nonce;
-            txData.gasPrice = gasPrice;
-        } else {
-            txData.nonce = txData.gasPrice = null;
-        }
-        uiFuncs.generateTx(txData, function(rawTx) {
-            if (!rawTx.isError) {
-                $scope.generatedTxs.push(rawTx.signedTx);
-                $scope.domainsaleConfirmModalModal.open();
-            } else {
-                $scope.notifier.danger(rawTx.error);
-            }
-            if (!$scope.$$phase) $scope.$apply();
-        });
-    }
     $scope.generateBuyTx = function() {
         try {
             $scope.objDomainSale.tx = domainsale.transactions.buy;
-            $scope.sentTxs = [];
-            $scope.generatedTxs = [];
             if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
             // TODO confirm that buy price is > 0
+            $scope.tx.to = DomainSale.getContractAddress();
             $scope.tx.gasLimit = $scope.gasLimitDefaults.buy;
             $scope.tx.data = DomainSale.getBuyData($scope.objDomainSale.name, $scope.referrer);
             $scope.tx.value = $scope.objDomainSale.priceEth;
@@ -303,8 +260,36 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
             $scope.notifier.danger(e);
         }
     }
+    $scope.generateBidTx = function() {
+        try {
+            $scope.objDomainSale.tx = domainsale.transactions.bid;
+            if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
+            // TODO confirm that bid is > 0
+            $scope.tx.to = DomainSale.getContractAddress();
+            $scope.tx.gasLimit = $scope.gasLimitDefaults.bid;
+            $scope.tx.data = DomainSale.getBidData($scope.objDomainSale.name, $scope.referrer);
+            $scope.tx.value = $scope.objDomainSale.bidEth;
+            $scope.doTx();
+        } catch (e) {
+            $scope.notifier.danger(e);
+        }
+    }
+    $scope.generateCancelTx = function() {
+        try {
+            $scope.objDomainSale.tx = domainsale.transactions.cancel;
+            if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
+            $scope.tx.to = DomainSale.getContractAddress();
+            $scope.tx.gasLimit = $scope.gasLimitDefaults.cancel;
+            $scope.tx.data = DomainSale.getCancelData($scope.objDomainSale.name);
+            $scope.tx.value = 0;
+            $scope.doTx();
+        } catch (e) {
+            $scope.notifier.danger(e);
+        }
+    }
     $scope.doTx = function(nonce, gasPrice) {
-        $scope.tx.to = DomainSale.getContractAddress();
+        $scope.sentTxs = [];
+        $scope.generatedTxs = [];
         var txData = uiFuncs.getTxData($scope);
         if (nonce && gasPrice) {
             txData.nonce = nonce;
