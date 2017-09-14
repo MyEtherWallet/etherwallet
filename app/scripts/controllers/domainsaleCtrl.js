@@ -27,16 +27,6 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         nameReadOnly: false,
         timeRemaining: null,
     };
-    $scope.objENS = {
-        namehash: '',
-        nameSHA3: '',
-        resolvedAddress: null,
-        revealObject: null,
-        timer: null,
-        timeRemaining: null,
-        timeRemainingReveal: null,
-        txSent: false
-    };
     $scope.gasLimitDefaults = {
         // TODO set sensible values
         transfer: '200000',
@@ -77,7 +67,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
     var timeRem = function(timeUntil) {
         var rem = timeUntil - new Date();
         if (rem < 0) {
-            clearInterval($scope.objENS.timer);
+            clearInterval($scope.objDomainSale.timer);
             $scope.objDomainSale.timeRemaining = "FINISHED";
             return
         }
@@ -307,25 +297,6 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
             }
             if (!$scope.$$phase) $scope.$apply();
         });
-    }
-    $scope.generateTx = function() {
-        try {
-            var _objDomainSale = $scope.objDomainSale;
-            $scope.sentTxs = [];
-            $scope.generatedTxs = [];
-            if (!$scope.Validator.isValidENSName(_objDomainSale.name)) throw globalFuncs.errorMsgs[30];
-            else if (!$scope.Validator.isPositiveNumber(_objDomainSale.bidValue) || _objENS.bidValue < 0.01) throw globalFuncs.errorMsgs[0];
-            else if (_objENS.status != $scope.ensModes.reveal && (!$scope.Validator.isPositiveNumber(_objENS.dValue) || _objENS.dValue < _objENS.bidValue || $scope.wallet.balance <= _objENS.dValue)) throw globalFuncs.errorMsgs[0];
-            else if (!$scope.Validator.isPasswordLenValid(_objENS.secret, 0)) throw globalFuncs.errorMsgs[31];
-            else if (_objENS.revealObject && _objENS.revealObject.name && ens.normalise(_objENS.revealObject.name) != _objENS.name) throw globalFuncs.errorMsgs[34];
-            else {
-                if ($scope.objENS.status == $scope.ensModes.open) $scope.openAndBidAuction();
-                else if ($scope.objENS.status == $scope.ensModes.auction) $scope.bidAuction();
-                else if ($scope.objENS.status == $scope.ensModes.reveal) $scope.revealBid();
-            }
-        } catch (e) {
-            $scope.notifier.danger(e);
-        }
     }
 }
 module.exports = domainsaleCtrl;
