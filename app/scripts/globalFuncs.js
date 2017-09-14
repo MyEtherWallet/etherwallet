@@ -69,7 +69,9 @@ globalFuncs.errorMsgs = [
     'The name you are attempting to reveal does not match the name you have entered. ', // 34
     'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
     'Enter valid TX hash', // 36
-    'Enter valid hex string (0-9, a-f)' // 37
+    'Enter valid hex string (0-9, a-f)', // 37
+    'Offer must have either price or reserve set to more than 0', // 38
+    'Bid must be more than the specified minimum' // 39
 ];
 
 // These are translated in the translation files

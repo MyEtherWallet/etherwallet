@@ -30,6 +30,12 @@
         <div>
           <!-- Title -->
           <h2>Bid for the domain</h2>
+          <div ng-show="objDomainSale.lastBidder==wallet.getAddressString()">
+            <hr/>
+            <strong>You are currently winning this auction with the highest bid.  You can bid higher fi you want, but it will delay the close of the auction for 24 hours.</strong>
+            <hr/>
+          </div>
+
           Bid at least <strong>{{objDomainSale.minimumBidEth}} {{ajaxReq.type}}</strong> for the domain.  You will win the domain if no higher bids are placed within the next 24 hours.
           <!-- / Title -->
 
@@ -52,9 +58,8 @@
       <!-- / Bid -->
 
       <!-- After Sent -->
-      <div class="form-group well" ng-show="objDomainSale.txSent">
-        @@if (site === 'mew' ) { @@include( './domainsale-confirm-table.tpl', { "site": "mew" } ) }
-        @@if (site === 'cx'  ) { @@include( './domainsale-confirm-table.tpl', { "site": "cx"  } ) }
+      <div class="form-group well">
+        Note that the domain has a locked value of {{objDomainSale.valueEth}} {{ajaxReq.type}}.  As part of the sale you will receive the deed with this value but cannot claim it unless you release the name.
       </div>
       <!-- / After Sent -->
 

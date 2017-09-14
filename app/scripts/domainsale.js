@@ -89,6 +89,13 @@ domainsale.prototype.getBuyData = function(name, referrer) {
     return _this.getDataString(funcABI, [name, referrer]);
 };
 
+domainsale.prototype.getCancelData = function(name) {
+    var _this = this;
+    name = ens.normalise(name);
+    var funcABI = _this.domainsaleABI.cancel;
+    return _this.getDataString(funcABI, [name]);
+};
+
 domainsale.prototype.getBidData = function(name, referrer) {
     var _this = this;
     name = ens.normalise(name);
@@ -120,9 +127,4 @@ domainsale.transactions = {
         cancel: 5,
         withdraw: 6
 };
-// TODO remove
-domainsale.prototype.stripEth = function(name) {
-    return name.replace(/\.eth$/, '');
-}
-
 module.exports = domainsale;

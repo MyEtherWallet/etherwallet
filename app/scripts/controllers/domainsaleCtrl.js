@@ -104,6 +104,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         $scope.objDomainSale.reserve = 0;
         $scope.objDomainSale.reserveEth = 0;
         $scope.objDomainSale.timeRemaining = null;
+        $scope.tx = {};
         clearInterval($scope.objDomainSale.timer);
     }
     $scope.checkName = function() {
@@ -127,6 +128,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
                         $scope.objDomainSale.status = $scope.domainsaleModes.ineligible;
                         updateScope();
                     } else {
+                        $scope.objDomainSale.valueEth = Number(etherUnits.toEther($scope.objDomainSale.value.toString(), 'wei'))
                         ENS.getDeedOwner($scope.objDomainSale.deed, function(data) {
                             $scope.objDomainSale.deedOwner = data.data;
                             if (data.data.toLowerCase() != DomainSale.getContractAddress().toLowerCase()) {
@@ -180,21 +182,21 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         if ($scope.objDomainSale.priceEth == null) {
                 $scope.objDomainSale.price = 0;
         } else { 
-            $scope.objDomainSale.price = etherUnits.toWei($scope.objDomainSale.priceEth, 'ether');
+            $scope.objDomainSale.price = Number(etherUnits.toWei($scope.objDomainSale.priceEth, 'ether'));
         }
     }
     $scope.syncReserve = function() {
         if ($scope.objDomainSale.reserveEth == null) {
                 $scope.objDomainSale.reserve = 0;
         } else { 
-            $scope.objDomainSale.reserve = etherUnits.toWei($scope.objDomainSale.reserveEth, 'ether');
+            $scope.objDomainSale.reserve = Number(etherUnits.toWei($scope.objDomainSale.reserveEth, 'ether'));
         }
     }
     $scope.syncBid = function() {
         if ($scope.objDomainSale.bidEth == null) {
                 $scope.objDomainSale.bid = 0;
         } else { 
-            $scope.objDomainSale.bid = etherUnits.toWei($scope.objDomainSale.bidEth, 'ether');
+            $scope.objDomainSale.bid = Number(etherUnits.toWei($scope.objDomainSale.bidEth, 'ether'));
         }
     }
 
@@ -236,7 +238,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         try {
             $scope.objDomainSale.tx = domainsale.transactions.offer;
             if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
-            // TODO confirm that bid or price is > 0
+            if ($scope.objDomainSale.price == 0 && $scope.objDomainSale.reserve == 0) throw globalFuncs.errorMsgs[38];
             $scope.tx.to = DomainSale.getContractAddress();
             $scope.tx.gasLimit = $scope.gasLimitDefaults.offer;
             $scope.tx.data = DomainSale.getOfferData($scope.objDomainSale.name, $scope.objDomainSale.price, $scope.objDomainSale.reserve, $scope.referrer);
@@ -250,7 +252,6 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         try {
             $scope.objDomainSale.tx = domainsale.transactions.buy;
             if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
-            // TODO confirm that buy price is > 0
             $scope.tx.to = DomainSale.getContractAddress();
             $scope.tx.gasLimit = $scope.gasLimitDefaults.buy;
             $scope.tx.data = DomainSale.getBuyData($scope.objDomainSale.name, $scope.referrer);
@@ -264,7 +265,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         try {
             $scope.objDomainSale.tx = domainsale.transactions.bid;
             if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
-            // TODO confirm that bid is > 0
+            if ($scope.objDomainSale.bidEth < $scope.objDomainSale.minimumBidEth) throw globalFuncs.errorMsgs[39];
             $scope.tx.to = DomainSale.getContractAddress();
             $scope.tx.gasLimit = $scope.gasLimitDefaults.bid;
             $scope.tx.data = DomainSale.getBidData($scope.objDomainSale.name, $scope.referrer);
