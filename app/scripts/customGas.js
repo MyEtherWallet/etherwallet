@@ -76,10 +76,10 @@ module.exports = [
 },
 {
   // OpenANX
-  to:         '0x701C244b988a513c945973dEFA05de933b23Fe1D',
-  gasLimit:   200000,
+  to:         '0xd6Cd31F283d24cfb442cBA1Bcf42290c07C15792',
+  gasLimit:   150000,
   data:       '',
-  msg:        'OpenANX. Starts June 22, 2017.'
+  msg:        'Kyber Network. Starts September 15, 2017.'
 },
 {
   // Adchain
