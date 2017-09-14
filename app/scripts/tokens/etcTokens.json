@@ -1,8 +1,13 @@
 [
   {
+    "address":"0x5acE17f87c7391E5792a7683069A8025B83bbd85",
+    "symbol":"PLAY",
+    "decimal":0,
+    "type":"default"
+  },{
     "address":"0x085fb4f24031eaedbc2b611aa528f22343eb52db",
     "symbol":"BEC",
     "decimal":8,
     "type":"default"
   }
- ]
+]
