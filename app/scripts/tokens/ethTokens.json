@@ -139,6 +139,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xb2f7eb1f2c37645be61d73953035360e768d81e6",
+"symbol":"COB",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xAef38fBFBF932D1AeF3B808Bc8fBd8Cd8E1f8BC5",
 "symbol":"CRB",
 "decimal":8,
