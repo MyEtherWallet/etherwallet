@@ -1,0 +1,121 @@
+var ens = require('./ens');
+var domainsaleInterface = require('./domainsaleConfigs/domainsaleABI.json');
+
+var domainsale = function() {
+    var _this = this;
+    this.domainsaleABI = {};
+    for (var i in domainsaleInterface) this.domainsaleABI[domainsaleInterface[i].name] = domainsaleInterface[i];
+    switch (ajaxReq.type) {
+        case nodes.nodeTypes.ETH:
+            _this.setContractAddress('0x00');
+            break;
+        case nodes.nodeTypes.Rinkeby:
+            _this.setContractAddress('0x00');
+            break;
+        case nodes.nodeTypes.Ropsten:
+            _this.setContractAddress('0x61789d9c9ABb93f6d498CfC81A6d808C8A47dcd5');
+            break;
+        default:
+            _this.setContractAddress('0x00');
+    }
+};
+
+domainsale.prototype.setContractAddress = function(_address) {
+    this.contractAddress = _address;
+};
+domainsale.prototype.getContractAddress = function() {
+    return this.contractAddress;
+};
+domainsale.prototype.getSale = function(name, callback) {
+    var _this = this;
+    name = ens.normalise(name);
+    var funcABI = _this.domainsaleABI.sale;
+    ajaxReq.getEthCall({ to: _this.getContractAddress(), data: _this.getDataString(funcABI, [name]) }, function(data) {
+        if (data.error) callback(data);
+        else {
+            var outTypes = funcABI.outputs.map(function(i) {
+                return i.type;
+            });
+            var res = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''));
+            
+            data.data = {
+                price: res[0],
+                priceEth: Number(etherUnits.toEther(res[0].toString(), 'wei')),
+                reserve: res[1],
+                reserveEth: Number(etherUnits.toEther(res[1].toString(), 'wei')),
+                lastBid: res[2],
+                lastBidEth: Number(etherUnits.toEther(res[2].toString(), 'wei')),
+                lastBidder: res[3],
+                auctionStarted: new Date(res[4].toNumber() * 1000),
+                auctionEnds: new Date(res[5].toNumber() * 1000)
+            };
+            callback(data);
+        }
+    });
+};
+domainsale.prototype.getMinimumBid = function(name, callback) {
+    var _this = this;
+    name = ens.normalise(name);
+    var funcABI = _this.domainsaleABI.minimumBid;
+    ajaxReq.getEthCall({ to: _this.getContractAddress(), data: _this.getDataString(funcABI, [name]) }, function(data) {
+        if (data.error) callback(data);
+        else {
+            var outTypes = funcABI.outputs.map(function(i) {
+                return i.type;
+            });
+            var res = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''));
+            
+            data.data = {
+                minimumBid: res[0],
+                minimumBidEth: etherUnits.toEther(res[0].toString(), 'wei')
+            };
+            callback(data);
+        }
+    });
+}
+
+
+domainsale.prototype.getOfferData = function(name, price, reserve, referrer) {
+    var _this = this;
+    name = ens.normalise(name);
+    var funcABI = _this.domainsaleABI.offer;
+    return _this.getDataString(funcABI, [name, price, reserve, referrer]);
+};
+
+domainsale.prototype.getBuyData = function(name, referrer) {
+    var _this = this;
+    name = ens.normalise(name);
+    var funcABI = _this.domainsaleABI.buy;
+    return _this.getDataString(funcABI, [name, referrer]);
+};
+
+domainsale.prototype.getDataString = function(func, inputs) {
+    var fullFuncName = ethUtil.solidityUtils.transformToFullName(func);
+    var funcSig = ethFuncs.getFunctionSignature(fullFuncName);
+    var typeName = ethUtil.solidityUtils.extractTypeName(fullFuncName);
+    var types = typeName.split(',');
+    types = types[0] == "" ? [] : types;
+    return '0x' + funcSig + ethUtil.solidityCoder.encodeParams(types, inputs);
+};
+domainsale.modes = {
+        ineligible: 0,
+        nottransferred: 1,
+        notoffered: 2,
+        available: 3,
+        auctioning: 4,
+        finished: 5
+};
+domainsale.transactions = {
+        transfer: 1,
+        offer: 2,
+        buy: 3,
+        bid: 4,
+        cancel: 5,
+        withdraw: 6
+};
+// TODO remove
+domainsale.prototype.stripEth = function(name) {
+    return name.replace(/\.eth$/, '');
+}
+
+module.exports = domainsale;

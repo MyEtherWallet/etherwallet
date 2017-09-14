@@ -89,6 +89,13 @@ var tabs = {
     url: "bulk-generate",
     mew: false,
     cx: false
+  },
+  domainsale: {
+    id: 12,
+    name: "NAV_DomainSale",
+    url: "domainsale",
+    mew: true,
+    cx: true
   }
 };
 var currentTab = 0;

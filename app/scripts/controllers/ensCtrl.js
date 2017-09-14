@@ -9,8 +9,10 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.wd = false;
     $scope.haveNotAlreadyCheckedLength = true;
     var ENS = new ens();
+    var DomainSale = new domainsale();
     $scope.ensModes = ens.modes;
     $scope.minNameLength = 7;
+    $scope.objDomainSale = {};
     $scope.objENS = {
         bidValue: 0.01,
         dValue: 0.01,
@@ -115,6 +117,9 @@ var ensCtrl = function($scope, $sce, walletService) {
                             })
                             ENS.getAddress($scope.objENS.name + '.eth', function(data) {
                                 $scope.objENS.resolvedAddress = data.data;
+                            })
+                            DomainSale.getSale($scope.objENS.name, function(data) {
+                                $scope.objDomainSale.sale = data.data;
                             })
                             break;
                         case $scope.ensModes.notAvailable:
