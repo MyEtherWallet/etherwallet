@@ -47,11 +47,11 @@ module.exports = [
   msg:        'YUPIE (YUPIE) ICO'
 },
 {
-  // Stox Token Sale
-  to:         '0x40349A89114BB34d4E82e5Bf9AE6B2ac3c78b00a',
-  gasLimit:   200000,
+  // Atlant.io ATLANT ICO Sale
+  to:         '0xF46ede17c0bAb20d87Cd079a2632f71433A407b9',
+  gasLimit:   150000,
   data:       '',
-  msg:        'Stox Token Sale'
+  msg:        'ATLANT ICO Sale. Thank you for your support. '
 },
 {
   // DCORP
@@ -76,10 +76,10 @@ module.exports = [
 },
 {
   // OpenANX
-  to:         '0x701C244b988a513c945973dEFA05de933b23Fe1D',
-  gasLimit:   200000,
+  to:         '0xd6Cd31F283d24cfb442cBA1Bcf42290c07C15792',
+  gasLimit:   150000,
   data:       '',
-  msg:        'OpenANX. Starts June 22, 2017.'
+  msg:        'Kyber Network. Starts September 15, 2017.'
 },
 {
   // Adchain
@@ -224,7 +224,7 @@ module.exports = [
 {
   // SIFT ICO
   to:         '0xf8Fc0cc97d01A47E0Ba66B167B120A8A0DeAb949',
-  gasLimit:   400000,
+  gasLimit:   800000,
   data:       '',
   msg:        'SmartInvestmentFundToken ICO - https://smartift.com - ICO Closes September 15'
 },
@@ -241,6 +241,13 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'Kin Token Sale'
+},
+{
+  // Cobinhood Token Sale
+  to:         '0xb2f7eb1f2c37645be61d73953035360e768d81e6',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Cobinhood Token Sale'
 }
 ]
 
