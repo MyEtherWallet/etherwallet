@@ -158,8 +158,8 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
                                                 updateScope();
                                             });
                                         } else {
-                                            // Auction finished
-                                            $scope.objDomainSale.status = $scope.domainsaleModes.finished;
+                                            // Auction closed
+                                            $scope.objDomainSale.status = $scope.domainsaleModes.closed;
                                         }
                                         updateScope();
                                     });
@@ -288,7 +288,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
             $scope.objDomainSale.tx = domainsale.transactions.finish;
             if (!$scope.Validator.isValidENSName($scope.objDomainSale.name)) throw globalFuncs.errorMsgs[30];
             $scope.tx.to = DomainSale.getContractAddress();
-            $scope.tx.gasLimit = $scope.gasLimitDefaults.finsh;
+            $scope.tx.gasLimit = $scope.gasLimitDefaults.finish;
             $scope.tx.data = DomainSale.getFinishData($scope.objDomainSale.name);
             $scope.tx.value = 0;
             $scope.doTx();

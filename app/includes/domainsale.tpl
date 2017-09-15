@@ -107,6 +107,10 @@
   @@if (site === 'mew' ) { @@include( './domainsale-action-bidbuy.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './domainsale-action-bidbuy.tpl', { "site": "cx"  } ) }
 
+  <!-- Action: finish -->
+  @@if (site === 'mew' ) { @@include( './domainsale-action-finish.tpl', { "site": "mew" } ) }
+  @@if (site === 'cx'  ) { @@include( './domainsale-action-finish.tpl', { "site": "cx"  } ) }
+
   <!-- Modal: confirm -->
   @@if (site === 'mew' ) { @@include( './domainsale-modal.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './domainsale-modal.tpl', { "site": "cx"  } ) }

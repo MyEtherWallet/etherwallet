@@ -2,6 +2,8 @@
 
   <br /><br />
 
-  <h1><strong>{{objDomainSale.name}}.eth</strong> was won by <strong>{{objDomainSale.lastBidder}}</strong>.</h1>
+  <h1><strong>{{objDomainSale.name}}.eth</strong> auction finished</h1>
+
+  The auction for this domain was won by <strong>{{objDomainSale.lastBidder}}</strong>.
 
 </article>
