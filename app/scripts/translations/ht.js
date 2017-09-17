@@ -294,7 +294,7 @@ CONTRACT_Write              : 'ECRIRE ',
 DEP_generate                : 'Générer le bytecode ',
 DEP_generated               : 'Bytecode généré ',
 DEP_signtx                  : 'Signer la transaction ',
-DEP_interface               : 'Interface générée '
+DEP_interface               : 'Interface générée ',
 
 /* Node Switcher */
 NODE_Title                  : 'ENSTALE NE SEKRÈ W’ LA ',
@@ -468,7 +468,7 @@ HELP_2b_Title               : '2b) KÒMAN POU M’ JERE AK TOUT SEKIRITE YON MAG
 HELP_2b_Desc_1              : 'ALE NAN GITHUB NOU AN : [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
 HELP_2b_Desc_2              : 'PEZE SOU DIST-VX.X.X.X.ZIP` ',
 HELP_2b_Desc_3              : 'METE ZIP LASOU YON KOMPITÈ SAN SIYAL. ',
-HELP_2b_Desc_4              : 'DEZIPE L’ PEZE 2 FWA SOU INDEX.HTML`. '
+HELP_2b_Desc_4              : 'DEZIPE L’ PEZE 2 FWA SOU INDEX.HTML`. ',
 HELP_2b_Desc_5              : ' YON BOUS AVÈK YON GWO KÒD SEKRÈ. ',
 HELP_2b_Desc_6              : 'KENBE  ADRÈS LA. KENBE BAGAY YO OU METE KLE SEKRÈ A. KENBE KÒD SEKRÈ A SI W’ PA TA VLE  TOUJOU AP SONJE L’. ',
 HELP_2b_Desc_7              : 'BYEN SERE PAPYE YO EPI/ OSWA KLE USB  SA YO NAN YON KOTE BYEN LWEN. ',
