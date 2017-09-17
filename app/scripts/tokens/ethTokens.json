@@ -589,6 +589,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xee609fe292128cad03b786dbb9bc2634ccdbe7fc",
+"symbol":"POS",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xd4fa1460F537bb9085d22C7bcCB5DD450Ef28e3a",
 "symbol":"PPT",
 "decimal":8,
