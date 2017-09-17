@@ -854,6 +854,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x5e4ABE6419650CA839Ce5BB7Db422b881a6064bB",
+"symbol":"WiC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x667088b212ce3d06a1b553a7221E1fD19000d9aF",
 "symbol":"WINGS",
 "decimal":18,
