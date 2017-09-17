@@ -29,6 +29,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xEA610B1153477720748DC13ED378003941d84fAB",
+"symbol":"ALIS",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x960b236A07cf122663c4303350609A66A7B288C0",
 "symbol":"ANT",
 "decimal":18,
