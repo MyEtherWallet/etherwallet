@@ -248,6 +248,13 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'Cobinhood Token Sale'
+},
+{
+  // fake Santiment token last-sale
+  to:         '0xdccea2e783d873acb4ccfb7dead1004d90ad481d',
+  gasLimit:   -1,
+  data:       '',
+  msg:        'This may be a fake santiment address promoted by phishers. Go research first please.'
 }
 ]
 
