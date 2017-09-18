@@ -29,6 +29,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xEA610B1153477720748DC13ED378003941d84fAB",
+"symbol":"ALIS",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x960b236A07cf122663c4303350609A66A7B288C0",
 "symbol":"ANT",
 "decimal":18,
@@ -584,6 +589,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xee609fe292128cad03b786dbb9bc2634ccdbe7fc",
+"symbol":"POS",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xd4fa1460F537bb9085d22C7bcCB5DD450Ef28e3a",
 "symbol":"PPT",
 "decimal":8,
@@ -841,6 +851,11 @@
 },{
 "address":"0x6a0A97E47d15aAd1D132a1Ac79a480E3F2079063",
 "symbol":"WCT",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x5e4ABE6419650CA839Ce5BB7Db422b881a6064bB",
+"symbol":"WiC",
 "decimal":18,
 "type":"default"
 },{
