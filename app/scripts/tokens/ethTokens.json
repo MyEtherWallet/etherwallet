@@ -104,6 +104,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xdf6ef343350780bf8c3410bf062e0c015b1dd671",
+"symbol":"BMC",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xf028adee51533b1b47beaa890feb54a457f51e89",
 "symbol":"BMT",
 "decimal":18,
