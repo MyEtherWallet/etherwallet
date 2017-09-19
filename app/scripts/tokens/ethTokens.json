@@ -913,4 +913,9 @@
 "symbol":"ZRX",
 "decimal":18,
 "type":"default"
+},{
+"address":"0x7f1e2c7d6a69bf34824d72c53b4550e895c0d8c2",
+"symbol":"BOP",
+"decimal":8,
+"type":"default"
 }]
