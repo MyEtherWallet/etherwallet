@@ -7,8 +7,6 @@
 
     @@include( '../includes/generateWallet.tpl',     { "site": "mew" } )
 
-    @@include( '../includes/viewWalletInfo.tpl',     { "site": "mew" } )
-
     @@include( '../includes/sendTx.tpl',             { "site": "mew" } )
 
     @@include( '../includes/swap.tpl',               { "site": "mew" } )
@@ -19,7 +17,9 @@
 
     @@include( '../includes/ens.tpl',                { "site": "mew" } )
 
-    @@include( '../includes/help.tpl',               { "site": "mew" } )
+    @@include( '../includes/viewWalletInfo.tpl',     { "site": "mew" } )
+
+    @@include( '../includes/txStatus.tpl',           { "site": "mew" } )
 
     @@include( '../includes/bulkGenerate.tpl',       { "site": "mew" } )
 
@@ -28,10 +28,8 @@
   </div>
 
 
-  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show" role="alert" aria-live="assertive">
-    <span class="sr-only">{{notifier.class}}</span><div class="container" ng-bind-html="notifier.message"></div>
-    <i tabindex="0" aria-label="dismiss" class="icon-close" ng-click="notifier.close()"></i>
-  </div>
+  @@include('../includes/alerts.tpl')
+
 
   <!--
   <section class="loading-wrap" ng-hide="1==1">

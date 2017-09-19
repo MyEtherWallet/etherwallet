@@ -1,0 +1,14 @@
+[
+  {
+    "address":"0xd245207cfbf6eb6f34970db2a807ab1d178fde6c",
+    "symbol":"APX",
+    "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0x4b4899a10f3e507db207b0ee2426029efa168a67",
+    "symbol":"QWARK",
+    "decimal":8,
+    "type":"default"
+  }
+]

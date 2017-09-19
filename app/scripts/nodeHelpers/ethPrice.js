@@ -6,15 +6,17 @@ var getValue = function(arr, pair) {
         if (arr[i].pair == pair) return arr[i].rate;
 }
 var BITYRATEAPI = "https://bity.com/api/v1/rate2/";
+var CCRATEAPI = "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,EUR,GBP,BTC,CHF,REP";
 ethPrice.getETHvalue = function(callback) {
-    ajaxReq.http.get(BITYRATEAPI).then(function(data) {
-        data = data['data']['objects'];
+    ajaxReq.http.get(CCRATEAPI).then(function(data) {
+        data = data['data'];
         var priceObj = {
-            usd: parseFloat(getValue(data, 'ETHUSD')).toFixed(6),
-            eur: parseFloat(getValue(data, 'ETHEUR')).toFixed(6),
-            btc: parseFloat(getValue(data, 'ETHBTC')).toFixed(6),
-            chf: parseFloat(getValue(data, 'ETHCHF')).toFixed(6),
-            rep: parseFloat(getValue(data, 'ETHREP')).toFixed(6)
+            usd: parseFloat(data['USD']).toFixed(6),
+            eur: parseFloat(data['EUR']).toFixed(6),
+            btc: parseFloat(data['BTC']).toFixed(6),
+            chf: parseFloat(data['CHF']).toFixed(6),
+            rep: parseFloat(data['REP']).toFixed(6),
+            gbp: parseFloat(data['GBP']).toFixed(6),
         };
         callback(priceObj);
     });

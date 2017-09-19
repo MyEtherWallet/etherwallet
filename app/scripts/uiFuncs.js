@@ -16,7 +16,7 @@ uiFuncs.getTxData = function($scope) {
 }
 uiFuncs.isTxDataValid = function(txData) {
     if (txData.to != "0xCONTRACT" && !ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];
-    else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[7];
+    else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[0];
     else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
     else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
     if (txData.to == "0xCONTRACT") txData.to = '';
@@ -80,6 +80,30 @@ uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     }
     app.signTransaction(txData.path, txToSign.toString('hex'), localCallback);
 }
+uiFuncs.signTxDigitalBitbox = function(eTx, rawTx, txData, callback) {
+    var localCallback = function(result, error) {
+        if (typeof error != "undefined") {
+            error = error.errorCode ? u2f.getErrorByCode(error.errorCode) : error;
+            if (callback !== undefined) callback({
+                isError: true,
+                error: error
+            });
+            return;
+        }
+        uiFuncs.notifier.info("The transaction was signed but not sent. Click the blue 'Send Transaction' button to continue.");
+        rawTx.v = ethFuncs.sanitizeHex(result['v']);
+        rawTx.r = ethFuncs.sanitizeHex(result['r']);
+        rawTx.s = ethFuncs.sanitizeHex(result['s']);
+        var eTx_ = new ethUtil.Tx(rawTx);
+        rawTx.rawTx = JSON.stringify(rawTx);
+        rawTx.signedTx = ethFuncs.sanitizeHex(eTx_.serialize().toString('hex'));
+        rawTx.isError = false;
+        if (callback !== undefined) callback(rawTx);
+    }
+    uiFuncs.notifier.info("Touch the LED for 3 seconds to sign the transaction. Or tap the LED to cancel.");
+    var app = new DigitalBitboxEth(txData.hwTransport, '');
+    app.signTransaction(txData.path, eTx, localCallback);
+}
 uiFuncs.trezorUnlockCallback = function(txData, callback) {
     TrezorConnect.open(function(error) {
         if (error) {
@@ -103,7 +127,7 @@ uiFuncs.generateTx = function(txData, callback) {
         var genTxWithInfo = function(data) {
             var rawTx = {
                 nonce: ethFuncs.sanitizeHex(data.nonce),
-                gasPrice: ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
+                gasPrice: data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
                 gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
                 to: ethFuncs.sanitizeHex(txData.to),
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
@@ -137,6 +161,17 @@ uiFuncs.generateTx = function(txData, callback) {
                 app.getAppConfiguration(localCallback);
             } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "trezor")) {
                 uiFuncs.signTxTrezor(rawTx, txData, callback);
+            } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "web3")) {
+              // for web3, we dont actually sign it here
+              // instead we put the final params in the "signedTx" field and
+              // wait for the confirmation dialogue / sendTx method
+              var txParams = Object.assign({ from: txData.from }, rawTx)
+              rawTx.rawTx = JSON.stringify(rawTx);
+              rawTx.signedTx = JSON.stringify(txParams);
+              rawTx.isError = false;
+              callback(rawTx)
+            } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "digitalBitbox")) {
+                uiFuncs.signTxDigitalBitbox(eTx, rawTx, txData, callback);
             } else {
                 eTx.sign(new Buffer(txData.privKey, 'hex'));
                 rawTx.rawTx = JSON.stringify(rawTx);
@@ -150,6 +185,7 @@ uiFuncs.generateTx = function(txData, callback) {
                 nonce: txData.nonce,
                 gasprice: txData.gasPrice
             }
+            data.isOffline = txData.isOffline ? txData.isOffline : false;
             genTxWithInfo(data);
         } else {
             ajaxReq.getTransactionData(txData.from, function(data) {
@@ -158,9 +194,9 @@ uiFuncs.generateTx = function(txData, callback) {
                         isError: true,
                         error: e
                     });
-                    return;
                 } else {
                     data = data.data;
+                    data.isOffline = txData.isOffline ? txData.isOffline : false;
                     genTxWithInfo(data);
                 }
             });
@@ -173,6 +209,21 @@ uiFuncs.generateTx = function(txData, callback) {
     }
 }
 uiFuncs.sendTx = function(signedTx, callback) {
+  // check for web3 late signed tx
+    if (signedTx.slice(0,2) !== '0x') {
+      var txParams = JSON.parse(signedTx)
+      window.web3.eth.sendTransaction(txParams, function(err, txHash){
+        if (err) {
+          return callback({
+            isError: true,
+            error: err.stack,
+          })
+        }
+        callback({ data: txHash })
+      });
+      return
+    }
+
     ajaxReq.sendRawTx(signedTx, function(data) {
         var resp = {};
         if (data.error) {
@@ -211,49 +262,45 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
     }
 }
 uiFuncs.notifier = {
-    show: false,
-    close: function() {
-        this.show = false;
-        if (!this.scope.$$phase) this.scope.$apply()
+    alerts: {},
+    warning: function(msg, duration = 5000) {
+        this.addAlert("warning", msg, duration);
     },
-    open: function() {
-        this.show = true;
+    info: function(msg, duration = 5000) {
+        this.addAlert("info", msg, duration);
+    },
+    danger: function(msg, duration = 7000) {
+        msg = msg.message ? msg.message : msg;
+        // Danger messages can be translated based on the type of node
+        msg = globalFuncs.getEthNodeMsg(msg);
+        this.addAlert("danger", msg, duration);
+    },
+    success: function(msg, duration = 5000) {
+        this.addAlert("success", msg, duration);
+    },
+    addAlert: function(type, msg, duration) {
+        if (duration == undefined) duration = 7000;
+        // Save all messages by unique id for removal
+        var id = Date.now();
+        alert = this.buildAlert(id, type, msg);
+        this.alerts[id] = alert
+        var that = this;
+        if (duration > 0) { // Support permanent messages
+            setTimeout(alert.close, duration);
+        }
         if (!this.scope.$$phase) this.scope.$apply();
     },
-    class: '',
-    message: '',
-    timer: null,
-    sce: null,
-    scope: null,
-    overrideMsg: function(msg){
-        return globalFuncs.getEthNodeMsg(msg);
+    buildAlert: function(id, type, msg) {
+        var that = this;
+        return {
+            show: true,
+            type: type,
+            message: msg,
+            close: function() {
+                delete that.alerts[id];
+                if (!that.scope.$$phase) that.scope.$apply();
+            }
+        }
     },
-    warning: function(msg) {
-        this.setClassAndOpen("alert-warning", msg);
-    },
-    info: function(msg) {
-        this.setClassAndOpen("", msg);
-        this.setTimer();
-    },
-    danger: function(msg) {
-        msg = this.overrideMsg(msg);
-        this.setClassAndOpen("alert-danger", msg);
-    },
-    success: function(msg) {
-        this.setClassAndOpen("alert-success", msg);
-    },
-    setClassAndOpen: function(_class, msg) {
-        this.class = _class;
-        this.message = msg.message ? this.sce.trustAsHtml(msg.message) : this.sce.trustAsHtml(msg);
-        this.open();
-    },
-    setTimer: function() {
-        var _this = this;
-        clearTimeout(_this.timer);
-        _this.timer = setTimeout(function() {
-            _this.show = false;
-            if (!_this.scope.$$phase) _this.scope.$apply();
-        }, 5000);
-    }
-}
+  }
 module.exports = uiFuncs;

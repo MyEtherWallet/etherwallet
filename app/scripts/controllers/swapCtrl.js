@@ -2,6 +2,7 @@
 var swapCtrl = function($scope, $sce, walletService) {
     var lStorageKey = "swapOrder";
     $scope.ajaxReq = ajaxReq;
+    $scope.showedMinMaxError = false;
     $scope.Validator = Validator;
     $scope.bity = new bity();
     $scope.bity.refreshRates(function() {
@@ -28,8 +29,7 @@ var swapCtrl = function($scope, $sce, walletService) {
         }
     }
     $scope.verifyMinMaxValues = function() {
-        if (!$scope.orderResult) uiFuncs.notifier.close();
-        if($scope.swapOrder.toVal=='' || $scope.swapOrder.fromVal == '') return false;
+        if($scope.swapOrder.toVal=='' || $scope.swapOrder.fromVal == '' || $scope.swapOrder.toVal=='0' || $scope.swapOrder.fromVal == '0' || $scope.showedMinMaxError ) return false;
         var errors = {
             priceNotLoaded: 0,
             lessThanMin: 1,
@@ -48,7 +48,10 @@ var swapCtrl = function($scope, $sce, walletService) {
         if (vResult == errors.noErrors) return true;
         else if (vResult == errors.priceNotLoaded) return false;
         else if (vResult == errors.lessThanMin || vResult == errors.greaterThanMax) {
-            if (!isStorageOrderExists()) uiFuncs.notifier.danger(globalFuncs.errorMsgs[27] + bity.max + " BTC, " + (bity.max / $scope.bity.curRate['ETHBTC']).toFixed(3) + " ETH, or " + (bity.max / $scope.bity.curRate['REPBTC']).toFixed(3) + " REP");
+            if (!isStorageOrderExists()) {
+              uiFuncs.notifier.danger((globalFuncs.errorMsgs[27] + bity.max + " BTC, " + (bity.max / $scope.bity.curRate['ETHBTC']).toFixed(3) + " ETH, or " + (bity.max / $scope.bity.curRate['REPBTC']).toFixed(3) + " REP"), 2500);
+              $scope.showedMinMaxError = true;
+            }
             return false;
         }
     }
@@ -72,6 +75,7 @@ var swapCtrl = function($scope, $sce, walletService) {
         $scope.swapOrder.isFrom = isFrom;
     }
     $scope.setFinalPrices = function() {
+        $scope.showedMinMaxError = false;
         try {
 
             if (!$scope.Validator.isPositiveNumber($scope.swapOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.swapOrder.toVal)) throw globalFuncs.errorMsgs[0];
@@ -94,17 +98,17 @@ var swapCtrl = function($scope, $sce, walletService) {
         return tempArr;
     }
     var isStorageOrderExists = function() {
-        var order = localStorage.getItem(lStorageKey);
+        var order = globalFuncs.localStorage.getItem(lStorageKey, null);
         return order && $scope.Validator.isJSON(order);
     }
     var setOrderFromStorage = function() {
-        var order = JSON.parse(localStorage.getItem(lStorageKey));
+        var order = JSON.parse(globalFuncs.localStorage.getItem(lStorageKey, null));
         $scope.orderResult = order;
         $scope.swapOrder = order.swapOrder;
         processOrder();
     }
     var saveOrderToStorage = function(order) {
-        localStorage.setItem(lStorageKey, JSON.stringify(order));
+        globalFuncs.localStorage.setItem(lStorageKey, JSON.stringify(order));
     }
     var processOrder = function() {
         var orderResult = $scope.orderResult;
@@ -150,19 +154,19 @@ var swapCtrl = function($scope, $sce, walletService) {
                             orderResult.progress.status = "RCVE";
                             orderResult.progress.bar = getProgressBarArr(3, 5);
                         } else if (orderResult.progress.status == "RCVE" && bity.validStatus.indexOf(data.output.status) != -1) {
-                            uiFuncs.notifier.close();
+
                             orderResult.progress.status = "FILL";
                             orderResult.progress.bar = getProgressBarArr(5, 5);
                             orderResult.progress.showTimeRem = false;
                             var url = orderResult.output.currency == 'BTC' ? bity.btcExplorer.replace("[[txHash]]", data.output.reference) : bity.ethExplorer.replace("[[txHash]]", data.output.reference)
-                            var bExStr = "<a href='" + url + "' target='_blank'> View your transaction </a>";
+                            var bExStr = "<a href='" + url + "' target='_blank' rel='noopener'> View your transaction </a>";
                             $scope.notifier.success(globalFuncs.successMsgs[2] + data.output.reference + "<br />" + bExStr);
                             clearInterval(progressCheck);
                             clearInterval(timeRem);
                         } else if (bity.invalidStatus.indexOf(data.status) != -1) {
                             orderResult.progress.status = "CANC";
                             orderResult.progress.bar = getProgressBarArr(-1, 5);
-                            $scope.notifier.danger("Order cancelled");
+                            $scope.notifier.danger("Time has run out. If you have already sent, please wait 1 hour. If your order has not be processed after 1 hour, please press the orange 'Issue with your Swap?' button.");
                             orderResult.progress.secsRemaining = 0;
                             clearInterval(progressCheck);
                         }
@@ -176,10 +180,10 @@ var swapCtrl = function($scope, $sce, walletService) {
         if ($scope.orderResult.input.currency == 'BTC') $scope.showStage3Btc = true;
         else {
             $scope.parentTxConfig = {
-                to: $scope.orderResult.payment_address,
+                to: ethUtil.toChecksumAddress($scope.orderResult.payment_address),
                 value: $scope.orderResult.input.amount,
                 sendMode: $scope.orderResult.input.currency == 'ETH' ? 'ether' : 'token',
-                tokenSymbol: $scope.orderResult.input.currency == 'ETH' ? '' : $scope.orderResult.input.currency,
+                tokensymbol: $scope.orderResult.input.currency == 'ETH' ? '' : $scope.orderResult.input.currency,
                 readOnly: true
             }
             new Modal(document.getElementById('sendTransaction'));
@@ -210,7 +214,7 @@ var swapCtrl = function($scope, $sce, walletService) {
         }
     }
     $scope.newSwap = function() {
-        localStorage.setItem(lStorageKey, '');
+        globalFuncs.localStorage.setItem(lStorageKey, '');
         initValues();
     }
     initValues();

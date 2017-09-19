@@ -1,26 +1,38 @@
 'use strict';
 var validator = function() {}
+
 validator.isValidAddress = function(address) {
     if (address && address == "0x0000000000000000000000000000000000000000") return false;
     if (address)
         return ethFuncs.validateEtherAddress(address);
     return false;
 }
+validator.isChecksumAddress = function(address) {
+    return ethFuncs.isChecksumAddress(address);
+}
 validator.isValidENSorEtherAddress = function(address) {
     return (validator.isValidAddress(address) || validator.isValidENSAddress(address));
 }
 validator.isValidENSName = function(str) {
     try {
-        return (str.length > 6 && ens.normalise(str) != '');
+        return (str.length > 6 && ens.normalise(str) != '' && str.substring(0, 2) != '0x');
     } catch (e) {
         return false;
     }
+}
+validator.isValidTxHash = function(txHash) {
+    return txHash.substring(0, 2) == "0x" && txHash.length == 66 && this.isValidHex(txHash);
 }
 validator.isValidENSAddress = function(address) {
     address = ens.normalise(address);
     var tld = address.substr(address.lastIndexOf('.') + 1);
     var _ens = new ens();
-    if (_ens.curRegistry.tlds[tld]) return true;
+    var validTLDs = {
+        eth: true,
+        test: true,
+        reverse: true
+    }
+    if (validTLDs[tld]) return true;
     return false;
 }
 validator.isValidBTCAddress = function(address) {
@@ -33,7 +45,7 @@ validator.isValidHex = function(hex) {
     return ethFuncs.validateHexString(hex);
 }
 validator.isValidPrivKey = function(privkeyLen) {
-    return privkeyLen == 64 || privkeyLen == 128 || privkeyLen == 132;
+    return privkeyLen == 64 || privkeyLen == 66 || privkeyLen == 128 || privkeyLen == 132;
 }
 validator.isValidMnemonic = function(mnemonic) {
     return hd.bip39.validateMnemonic(mnemonic);

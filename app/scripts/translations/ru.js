@@ -4,6 +4,69 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+HELP_2a_Title               : 'How do I save/backup my wallet? ',
+
+/* New Generics */
+x_CancelReplaceTx           : 'Cancel or Replace Transaction',
+x_CancelTx                  : 'Cancel Transaction',
+x_PasswordDesc              : 'This password * encrypts * your private key. This does not act as a seed to generate your keys. **You will need this password + your private key to unlock your wallet.**',
+x_ReadMore                  : 'Read More',
+x_ReplaceTx                 : 'Replace Transaction',
+x_TransHash                 : 'Transaction Hash',
+x_TXFee                     : 'TX Fee',
+x_TxHash                    : 'TX Hash',
+
+/* Check TX Status */
+NAV_CheckTxStatus           : 'Check TX Status',
+NAV_TxStatus                : 'TX Status',
+tx_Details                  : 'Transaction Details',
+tx_Summary                  : 'During times of high volume (like during ICOs) transactions can be pending for hours, if not days. This tool aims to give you the ability to find and "cancel" / replace these TXs. ** This is not typically something you can do. It should not be relied upon & will only work when the TX Pools are full. [Please, read about this tool here.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_notFound                 : 'Transaction Not Found',
+tx_notFound_1               : 'This TX cannot be found in the TX Pool of the node you are connected to.',
+tx_notFound_2               : 'If you just sent the transaction, please wait 15 seconds and press the "Check TX Status" button again. ',
+tx_notFound_3               : 'It could still be in the TX Pool of a different node, waiting to be mined.',
+tx_notFound_4               : 'Please use the dropdown in the top-right & select a different ETH node (e.g. `ETH (Etherscan.io)` or `ETH (Infura.io)` or `ETH (MyEtherWallet)`) and check again.',
+tx_foundInPending           : 'Pending Transaction Found',
+tx_foundInPending_1         : 'Your transaction was located in the TX Pool of the node you are connected to. ',
+tx_foundInPending_2         : 'It is currently pending (waiting to be mined). ',
+tx_foundInPending_3         : 'There is a chance you can "cancel" or replace this transaction. Unlock your wallet below.',
+tx_FoundOnChain             : 'Transaction Found',
+tx_FoundOnChain_1           : 'Your transaction was successfully mined and is on the blockchain.',
+tx_FoundOnChain_2           : '**If you see a red `( ! )`, a `BAD INSTRUCTION` or `OUT OF GAS` error message**, it means that the transaction was not successfully *sent*. You cannot cancel or replace this transaction. Instead, send a new transaction. If you received an "Out of Gas" error, you should double the gas limit you specified originally.',
+tx_FoundOnChain_3           : '**If you do not see any errors, your transaction was successfully sent.** Your ETH or Tokens are where you sent them. If you cannot see this ETH or Tokens credited in your other wallet / exchange account, and it has been 24+ hours since you sent, please [contact that service](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Send them the *link* to your transaction and ask them, nicely, to look into your situation.',
+
+/* Gen Wallet Updates */
+GEN_Help_1                  : 'Use your',
+GEN_Help_2                  : 'to access your account.',
+GEN_Help_3                  : 'Your device * is * your wallet.',
+GEN_Help_4                  : 'Guides & FAQ',
+GEN_Help_5                  : 'How to Create a Wallet',
+GEN_Help_6                  : 'Getting Started',
+GEN_Help_7                  : 'Keep it safe · Make a backup · Don\'t share it with anyone · Don\'t lose it · It cannot be recovered if you lose it.',
+GEN_Help_8                  : 'Not Downloading a File? ',
+GEN_Help_9                  : 'Try using Google Chrome ',
+GEN_Help_10                 : 'Right click & save file as. Filename: ',
+GEN_Help_11                 : 'Don\'t open this file on your computer ',
+GEN_Help_12                 : 'Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity and other wallet clients.) ',
+GEN_Help_13                 : 'How to Back Up Your Keystore File ',
+GEN_Help_14                 : 'What are these Different Formats? ',
+GEN_Help_15                 : 'Preventing loss &amp; theft of your funds.',
+GEN_Help_16                 : 'What are these Different Formats?',
+GEN_Help_17                 : 'Why Should I?',
+GEN_Help_18                 : 'To have a secondary backup.',
+GEN_Help_19                 : 'In case you ever forget your password.',
+GEN_Help_20                 : 'Cold Storage',
+GET_ConfButton              : 'I understand. Continue.',
+GEN_Label_5                 : 'Save Your `Private Key`. ',
+GEN_Unlock                  : 'Unlock your wallet to see your address',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
+TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
+
+
+
+
 /* Navigation*/
 NAV_AddWallet               : 'Добавить кошелёк ',
 NAV_BulkGenerate            : 'Создать несколько кошельков ',
@@ -11,6 +74,7 @@ NAV_Contact                 : 'Контакты ',
 NAV_Contracts               : 'контракт ',
 NAV_DeployContract          : 'Опубликовать контракт ',
 NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'Создать кошелёк ',
 NAV_Help                    : 'Справка ',
 NAV_InteractContract        : 'Interact with Contract ',
@@ -26,7 +90,7 @@ NAV_YourWallets             : 'Ваши кошельки ',
 
 /* General */
 x_Access                    : 'Подключиться ',
-x_AddessDesc                : 'Это можно назвать "номер Вашего счёта" или "Ваш открытый ключ". Вы сообщаете этот адрес людям, чтобы они могли отправлять Вам эфир (ether). Картинка позволяет легко опознать Ваш адрес среди других адресов. ',
+x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. Это можно назвать "номер Вашего счёта" или "Ваш открытый ключ". Вы сообщаете этот адрес людям, чтобы они могли отправлять Вам эфир (ether). Картинка позволяет легко опознать Ваш адрес среди других адресов. ',
 x_Address                   : 'Ваш адрес ',
 x_Cancel                    : 'Отменить ',
 x_CSV                       : 'Файл CSV (не зашифрован) ',
@@ -36,6 +100,7 @@ x_JsonDesc                  : 'Это Ваш незашифрованный за
 x_Keystore                  : 'Файл Keystore (UTC / JSON · рекомендуется · зашифрован) ',
 x_Keystore2                 : 'Файл Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Этот файл Keystore использует формат совместимый с Mist. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Кодовая фраза ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Пароль ',
@@ -72,6 +137,8 @@ sidebar_TransHistory        : 'История транзакций ',
 sidebar_donation            : 'MyEtherWallet — это бесплатный сервис с открытым исходным кодом, заботящийся о Вашей безопасности и неприкосновенности Вашей частной жизни. Чем больше пожертвований мы получаем, тем больше времени мы проводим, добавляя новые возможности, прислушиваясь к Вашим пожеланиям и предоставляя Вам то, что Вам необходимо. Мы — всего лишь два человека, пытающиеся изменить Мир. Вы поможете нам? ',
 sidebar_donate              : 'Пожертвовать ',
 sidebar_thanks              : 'СПАСИБО!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Каким способом Вы хотите получать доступ к своему кошельку? ',
@@ -88,6 +155,10 @@ ADD_Radio_3                 : 'Вставить или ввести Ваш за�
 ADD_Radio_4                 : 'Добавить счёт в список слежения ',
 ADD_Radio_5                 : 'Скопируйте или введите кодовую фразу ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : '(Custom) ',
 ADD_Label_2                 : 'Присвоить название: ',
 ADD_Label_3                 : 'Ваш кошелёк зашифрован.  Пожалуйста, введите пароль ',
@@ -97,6 +168,7 @@ ADD_Label_5                 : 'Введите адрес ',
 ADD_Label_6                 : 'Отпереть кошелёк ',
 ADD_Label_6_short           : 'Отпереть ',
 ADD_Label_7                 : 'Добавить счёт ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Если Вы хотите создать несколько кошельков, Вы можете сделать это здесь ',
@@ -204,6 +276,8 @@ MYWAL_Content_3             : 'Если Вы планируете в будущ�
 VIEWWALLET_Subtitle         : 'Позволяет скачать закрытые ключи в различных форматах, а также повторно напечатать Ваши бумажные кошельки. Вам это понадобится, когда Вы захотите [импортировать Ваши счета в geth или Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Для проверки баланса Ваших счетов мы рекомендуем использовать браузер блокчейна, например [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Позволяет Вам скачать Ваши закрытые ключи в различных форматах, а также повторно напечатать Ваши бумажные кошельки. ',
 VIEWWALLET_SuccessMsg       : 'Поздравляем! Вот информация о Вашем кошельке. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : 'У Вас нет сохранённых кошельков. Чтобы создать кошелёк, нажмите ["Создать кошелёк"](/cx-wallet.html#add-wallet)! ',
@@ -240,6 +314,7 @@ SWAP_rec_add                : "Адрес получателя ",
 SWAP_start_CTA              : "Начать обмен ",
 SWAP_ref_num                : "Идентификатор операции ",
 SWAP_time                   : "Время до отправки ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Заявка выставлена ",
 SWAP_progress_2             : "Ждём получения ваших ", // Waiting for your BTC...
 SWAP_progress_3             : "Получено! ", // ETH Received!
@@ -269,27 +344,24 @@ TRANS_gas                   : 'Лимит газа ', // changd in ENG to Gas Li
 WARN_Send_Link              : 'Вы попали сюда по ссылке, которая уже содержит в себе адрес, сумму, лимит газа и дополнительные параметры транзакции. ВЫ можете изменить эти данные перед отправкой транзакции. Для начала отоприте ваш кошелёк. ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Присоедините ваш Ledger Nano S ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_1                : 'Присоедините ваш Ledger Wallet ',
 ADD_Ledger_2                : 'Запустите приложение Ethereum (или приложение контракта) ',
 ADD_Ledger_3                : 'Убедитесь, что использование из браузера разрешено в настройках ',
 ADD_Ledger_4                : 'Если в настройках нет использования из браузера, убедитесь, что у вас [прошивка версии >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Перезапустите MyEtherWallet через безопасное (SSL) соединение ',
 ADD_Ledger_0b               : 'Перезапустите MyEtherWallet с браузере [Chrome](https://www.google.com/chrome/browser/desktop/) или [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Подключиться к Ledger Nano S ',
+ADD_Ledger_scan             : 'Подключиться к Ledger Wallet ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Подключиться к TREZOR ',
 ADD_Trezor_select           : 'Это код восстановления TREZOR ',
-
-/* Parity Error Messages */
-PARITY_AlreadyImported      : "Транзакция с данным хэшем уже импортирована.",
-PARITY_Old                  : "Номер перевода (nonce) слишком маленький. Попробуйте увеличить номер перевода (nonce).",
-PARITY_TooCheapToReplace    : "Комиссия транзакции слишком низкая. В очереди уже есть другая транзакция с таким же номером перевода (nonce). Попробуйте увеличитьразмер комиссии или номер перевода (nonce).",
-PARITY_LimitReached         : "Слишком много транзакций в очереди. Ваша транзакция была удалена из-за превышения лимита. Попробуйте увеличить размер комиссии.",
-PARITY_InsufficientGasPrice : "Комиссия транзакции слишком низкая. Она не соответствует минимальному размеру комиссии для вашего узла (минимальная комиссия: {}, ваша комиссия: {}). Попробуйте увеличить размер комиссии.",
-PARITY_InsufficientBalance  : "Недостаточно средств. На счёте, с которого вы пытаетесь отправить транзакцию, не хватает средств. Требуется {}, а имеется только: {}.",
-PARITY_GasLimitExceeded     : "Цена транзакции превышает текущий лимит газа. Лимит: {}, цена: {}. Поробуйте уменьшить отведённое количество газа.",
-PARITY_InvalidGasLimit      : "Отведённое количество газа меньше лимита.",
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Перезапустите MyEtherWallet через безопасное (SSL) соединение ',
+ADD_DigitalBitbox_0b        : 'Перезапустите MyEtherWallet с браузере [Chrome](https://www.google.com/chrome/browser/desktop/) или [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Подключиться к Digital Bitbox ',
 
 /* Error Messages */
 ERROR_0                     : 'Пожалуйста, введите сумму корректно. ',
@@ -299,39 +371,46 @@ ERROR_3                     : 'Этот файл не является файл�
 ERROR_4                     : 'Такая единица измерения не существует. Пожалуйста, укажите одну из следующих единиц измерения ',
 ERROR_5                     : 'Неправильный адрес. ',
 ERROR_6                     : 'Неверный пароль. ',
-ERROR_7                     : 'Некорректная сумма. ',
-ERROR_8                     : 'Некорректно указан лимит газа. ',
-ERROR_9                     : 'Недопустимые данные. ',
-ERROR_10                    : 'Некорректно указано количество газа. ',
-ERROR_11                    : 'Неверный номер перевода (nonce). ',
+ERROR_7                     : 'Некорректная сумма. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Некорректно указан лимит газа. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Недопустимые данные. (Must be hex.) ', // 9
+ERROR_10                    : 'Некорректно указано количество газа. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Неверный номер перевода (nonce). (Must be integer.) ', // 11
 ERROR_12                    : 'Подписанная транзакция некорректна. ',
 ERROR_13                    : 'Кошелёк с таким названием уже существует. ',
 ERROR_14                    : 'Кошелёк не найден. ',
 ERROR_15                    : 'Предложение с таким идентификатором не существует или при чтении предложения произошла ошибка. ',
 ERROR_16                    : 'Кошелёк с таким адресом уже находится в хранилище. Просмотрите в списке кошельков. ',
-ERROR_17                    : 'Вам необходимо иметь не менее 0.01 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
+ERROR_17                    : 'Недостаточно средств. На счёте, с которого вы пытаетесь отправить транзакцию, не хватает средств. Вам необходимо иметь не менее 0.01 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
 ERROR_18                    : 'Транзакция могла бы истратить весь газ. Это значит, что Вы уже голосовали по данному предложению, или период обсуждения данного предложения закончился. ',
 ERROR_19                    : 'Неправильный символ ',
-ERROR_20                    : 'Not a valid ERC-20 token ',
-ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
+ERROR_20                    : 'Not a valid ERC-20 token', // 20
+ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                    : 'Please enter a valid node name', // 22
+ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                    : 'Please enter a valid port. ', // 24
+ERROR_25                    : 'Please enter a valid chain ID. ', // 25
+ERROR_26                    : 'Please enter a valid ABI. ', // 26
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : 'В будущем, для доступа к этому кошельку **Вам понадобится либо файл Keystore/JSON вместе с паролем,  либо закрытый ключ**. Пожалуйста, сохраните их и сделайте резервную копию! Если Вы потеряете их, то не сможете восстановить доступ к Вашему кошельку. Обратитесь к [справке](https://www.myetherwallet.com/#help) за инструкциями. ',
-ERROR_29                    : 'Please enter valid user and password ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_29                    : 'Please enter a valid user and password. ', // 29
+ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+
 SUCCESS_1                   : 'Адрес указан верно ',
 SUCCESS_2                   : 'Кошелёк успешно расшифрован ',
-SUCCESS_3                   : 'Транзакция отправлена на выполнение. TX ID ',
+SUCCESS_3                   : 'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:   ',
 SUCCESS_4                   : 'Ваш кошелёк успешно добавлен ',
 SUCCESS_5                   : 'Выбранный файл ',
 SUCCESS_6                   : 'You are successfully connected ',
 SUCCESS_7                   : 'Message Signature Verified',
+
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Неверный адрес отправителя ',
 GETH_Nonce                  : 'Номер перевода (nonce) слишком мал ',
@@ -342,6 +421,16 @@ GETH_InsufficientFunds      : 'Недостаточно средств для Г
 GETH_IntrinsicGas           : 'Недостаточно газа для выполнения транзакции ',
 GETH_GasLimit               : 'Превышен лимит газа на блок ',
 GETH_NegativeValue          : 'Отрицательная сумма ',
+
+/* Parity Error Messages */
+PARITY_AlreadyImported      : "Транзакция с данным хэшем уже импортирована.",
+PARITY_Old                  : "Номер перевода (nonce) слишком маленький. Попробуйте увеличить номер перевода (nonce).",
+PARITY_TooCheapToReplace    : "Комиссия транзакции слишком низкая. В очереди уже есть другая транзакция с таким же номером перевода (nonce). Попробуйте увеличитьразмер комиссии или номер перевода (nonce).",
+PARITY_LimitReached         : "Слишком много транзакций в очереди. Ваша транзакция была удалена из-за превышения лимита. Попробуйте увеличить размер комиссии.",
+PARITY_InsufficientGasPrice : "Комиссия транзакции слишком низкая. Она не соответствует минимальному размеру комиссии для вашего узла (минимальная комиссия: {}, ваша комиссия: {}). Попробуйте увеличить размер комиссии.",
+PARITY_InsufficientBalance  : "Недостаточно средств. На счёте, с которого вы пытаетесь отправить транзакцию, не хватает средств. Требуется {}, а имеется только: {}.",
+PARITY_GasLimitExceeded     : "Цена транзакции превышает текущий лимит газа. Лимит: {}, цена: {}. Поробуйте уменьшить отведённое количество газа.",
+PARITY_InvalidGasLimit      : "Отведённое количество газа меньше лимита.",
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',
@@ -384,7 +473,6 @@ HELP_1_Desc_3               : 'Enter a strong password. If you think you may for
 HELP_1_Desc_4               : 'Click "GENERATE". ',
 HELP_1_Desc_5               : 'Your wallet has now been generated. ',
 
-HELP_2a_Title               : '2a) How do I save/backup my wallet? ',
 HELP_2a_Desc_1              : 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. ',
 HELP_2a_Desc_2              : 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. ',
 HELP_2a_Desc_3              : 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys: ',
@@ -394,7 +482,7 @@ HELP_2a_Desc_6              : 'Keep in mind, you must prevent loss of the keys a
 
 HELP_2b_Title               : '2b) How do I safely / offline / cold storage with MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Click on `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Click on `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Move zip to an airgapped computer. ',
 HELP_2b_Desc_4              : 'Unzip it and double-click `index.html`. ',
 HELP_2b_Desc_5              : 'Generate a wallet with a strong password. ',
@@ -424,7 +512,7 @@ HELP_4_Desc_9               : 'Click "Generate Transaction". ',
 HELP_4_Desc_10              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_4_Desc_11              : 'Click the blue "Send Transaction" button below that. ',
 HELP_4_Desc_12              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_4_Desc_13              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_4_Desc_13              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_4CX_Title              : '4) How do I send Ether using MyEtherWallet CX? ',
 HELP_4CX_Desc_1             : 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Перевести эфир (ether) и токены" page. ',
@@ -471,7 +559,7 @@ HELP_7_Desc_11              : 'Click "Generate Transaction". ',
 HELP_7_Desc_12              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_7_Desc_13              : 'Click the blue "Send Transaction" button below that. ',
 HELP_7_Desc_14              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_7_Desc_15              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_7_Desc_15              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_8_Title                : '8) What happens if your site goes down? ',
 HELP_8_Desc_1               : 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. ',

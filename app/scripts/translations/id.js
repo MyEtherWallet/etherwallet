@@ -4,6 +4,69 @@ var id = function() {}
 id.code = 'id';
 id.data = {
 
+HELP_2a_Title               : 'Bagaimana cara menyimpan/membackup dompet saya? ',
+
+
+/* New Generics */
+x_CancelReplaceTx           : 'Batalkan atau Ganti Transaksi',
+x_CancelTx                  : 'Batalkan Transaksi',
+x_PasswordDesc              : 'Password ini * meng-enkripsi * private key Anda. Ini bukan berfungsi sebagai "seed" untuk membuat "keys". **Anda akan memerlukan password ini + private key Anda untuk membuka dompet Anda.**',
+x_ReadMore                  : 'Lebih lanjut',
+x_ReplaceTx                 : 'Ganti Transaksi',
+x_TransHash                 : 'Hash Transaksi',
+x_TXFee                     : 'Biaya TX',
+x_TxHash                    : 'Hash TX',
+
+/* Check TX Status */
+NAV_CheckTxStatus           : 'Check Status TX',
+NAV_TxStatus                : 'Status TX',
+tx_Details                  : 'Detail Transaksi',
+tx_Summary                  : 'Saat volume sedang tinggi (misalnya saat ICOs) transaksi dapat tertunda selama berjam-jam, bahkan hari. Fitur ini memberikan kemampuan untuk menemukan dan membatalkan / mengganti TX. ** Ini bukanlah hal yang pada umumnya dapat dilakukan. Jangan bergantung pada fitur ini & fitur ini hanya akan bekerja saat TX pool penuh. [Penjelasan tentang firur ini bisa dibaca di sini.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_notFound                 : 'Transaksi tidak ditemukan',
+tx_notFound_1               : 'TX ini tidak dapat ditemukan di TX Pool dari node yang anda pakai.',
+tx_notFound_2               : 'Jika transaksi baru saja terkirim, tunggu 15 detik dan tekan tombol "Check TX Status" lagi. ',
+tx_notFound_3               : 'Kemungkinan masih di TX pool dari node lain, menunggu untuk ditambang (mined).',
+tx_notFound_4               : 'Gunakan dropdown di kanan atas & pilih node ETH lainnya (e.g. `ETH (Etherscan.io)` atau `ETH (Infura.io)` atau `ETH (MyEtherWallet)`) dan check kembali.',
+tx_foundInPending           : 'Transaksi yang tertunda ditemukan',
+tx_foundInPending_1         : 'Transaksi Anda berlokasi di TX pool dari node yang Anda pakai. ',
+tx_foundInPending_2         : 'Saat ini statusnya tertunda (menunggu untuk ditamnbang (mined). ',
+tx_foundInPending_3         : 'Ada kemungkinan Anda dapat membatalkan atau mengganti transaksi ini. Buka dompet Anda di bawah ini.',
+tx_FoundOnChain             : 'Transaksi ditemukan',
+tx_FoundOnChain_1           : 'Transaksi Anda telah berhasil ditambang (mined) dan sudah masuk di blockchain.',
+tx_FoundOnChain_2           : '**Jika muncul Error `( ! )`, atau `BAD INSTRUCTION` atau `OUT OF GAS` berwarna merah**, artinya transaksi tidak berhasil terkirim. Transaksi ini tidak dapat dibatalkan ataupun diganti. Yang dapat Anda lakukan adalah mengirim transaksi baru. Jika muncul Error "Out of Gas" error, lipat dua-kan jumlah gas limit dari yang dipakai sebelumnya.',
+tx_FoundOnChain_3           : '**Jika tidak ada Error, artinya transaksi Anda berhasil terkirim.** ETH atau Token akan masuk ke alamat yang dituju. Jika ETH atau Token tidak muncul di alamat dompet / exchange account yang dituju, dan sudah lebih dari 24 jam sejak pengiriman, segera [hubungi penerima kiriman](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Lampirkan *link* dari transaksi Anda dan mintalah bantuan untuk memeriksa apa yang terjadi.',
+
+/* Gen Wallet Updates */
+GEN_Help_1                  : 'Pakailah',
+GEN_Help_2                  : 'untuk mengakses account Anda.',
+GEN_Help_3                  : 'Device Anda * adalah * dompet Anda.',
+GEN_Help_4                  : 'Panduan & FAQ',
+GEN_Help_5                  : 'Bagaimana membuat Dompet',
+GEN_Help_6                  : 'Mulai',
+GEN_Help_7                  : 'Jaga keamanan-nya · Buat backup · Jangan berikan kepada siapapun · Jangan sampai hilang · Kehilangan bersifat permanen.',
+GEN_Help_8                  : 'Tidak mengunduh file? ',
+GEN_Help_9                  : 'Coba memakai Google Chrome ',
+GEN_Help_10                 : 'Klik kanan dan "Save file as". Nama file: ',
+GEN_Help_11                 : 'Jangan buka file ini di komouter Anda ',
+GEN_Help_12                 : 'Pakailah untuk membuka dompet Anda melalui MyEtherWallet (atau Mist, Geth, Parity maupun perangkat lunak dompet lainnya.) ',
+GEN_Help_13                 : 'Cara membuat Back Up dari Keystore File Anda ',
+GEN_Help_14                 : 'Format apakah yang bermacam-macam ini? ',
+GEN_Help_15                 : 'Mencegah kehilangan dan pencurian dana Anda.',
+GEN_Help_16                 : 'Format apakah yang bermacam-macam ini?',
+GEN_Help_17                 : 'Kenapa saya harus?',
+GEN_Help_18                 : 'Untuk memiliki backup sekunder.',
+GEN_Help_19                 : 'Pada saat Anda lupa password.',
+GEN_Help_20                 : 'Cold Storage',
+GET_ConfButton              : 'Saya paham. Lanjutkan.',
+GEN_Label_5                 : 'SSimpan `Private Key` Anda. ',
+GEN_Unlock                  : 'Buka kunci dompet Anda untuk melihat alamat Anda',
+GAS_PRICE_Desc              : 'Harga Gas Price adalah jumlah yang Anda bayar per unit gas. `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Makin tinggi harga gas = transaksi makin cepat, tapi makin mahal. Default-nya `21 GWEI`.',
+GAS_LIMIT_Desc              : 'Batas Gas (Gas limit) adalah jumlah gas untuk dikirim bersama TX Anda.  `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Menaikkan angka ini tidak mempercepat TX Anda untuk ditambang. Pengiriman ETH = `21000`. Pengiriman Token = ~`200000`.',
+NONCE_Desc                  : 'Nonce adalah nomor transaksi yang dikirimn dari sebuah alamat. Ini untuk menjamin agar pengiriman terlaksana secara runtut dan tidak ada yang dilakukan lebih dari sekali.',
+TXFEE_Desc                  : 'Biaya TX Fee dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Jumlahnya =  `gas limit` * `gas price`. [Anda dapat mengkonversi GWEI -> ETH](https://www.myetherwallet.com/helpers.html)',
+
+
+
 /* Navigation*/
 NAV_AddWallet               : 'Tambahkan Dompet ',
 NAV_BulkGenerate            : 'Pembuatan Multiple Dompet ',
@@ -11,6 +74,7 @@ NAV_Contact                 : 'Kontak ',
 NAV_Contracts               : 'Contracts ',
 NAV_DeployContract          : 'Buat Contract ',
 NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'Buat Dompet ',
 NAV_Help                    : 'Bantuan ',
 NAV_InteractContract        : 'Interact with Contract ',
@@ -26,7 +90,7 @@ NAV_YourWallets             : 'Dompet Anda ',
 
 /* General */
 x_Access                    : 'Akses ',
-x_AddessDesc                : 'Biasa dikenal dengan "Account #" atau "Public Key". Berikan alamat ini kepada yang ingin mengirim ether ke Anda. Icon yang ditampilkan di sampingnya memudahkan mengenal alamat Anda. ',
+x_AddessDesc                : 'Address Anda dikenal juga sebagai `Account #` atau `Public Key` Anda. Address inilah yang diberikan kepada pihak lain agar mereka bisa mengirim Ether atau Token. Pilihlah icon alamat berwarna untuk memudahkan identifikasi. Pastikan Address ini sama persis dengan yang tertulis di Dompet Kertas Anda maupun saat dipakai untuk keperluan lainnya. ',
 x_Address                   : 'Alamat Anda ',
 x_Cancel                    : 'Batal ',
 x_CSV                       : 'File CSV (tidak ter-enkripsi) ',
@@ -36,7 +100,8 @@ x_JsonDesc                  : 'Ini adalah "Private Key" Anda dalam format JSON y
 x_Keystore                  : 'File Keystore (UTC / JSON · Format yang direkomendasikan · Ter-enkripsi) ',
 x_Keystore2                 : 'File Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'File Keystore ini sesuai dengan format yang dipakai Mist sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup. ',
-x_Ledger                    : 'Ledger Nano S ',
+x_Ledger                    : 'Ledger Wallet ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : '"Mnemonic Phrase" ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Password ',
@@ -73,6 +138,8 @@ sidebar_TransHistory        : 'Sejarah Transaksi ',
 sidebar_donation            : 'MyEtherWallet dapat dipergunakan secara cuma-cuma berdasarkan prinsip open source dengan tetap menjaga privasi dan keamanan. Semakin banyak donasi yang kami terima, semakin banyak waktu yang kami dapat luangkan untuk membuat fitur-fitur baru dan mewujudkan usulan dan keinginan para penggunanya. Tim kami yang terdiri dari hanya dua orang sangat membutuhkan dukungan Anda untuk mewujudkan cita-cita kami dalam membuat dunia yang semakin baik ',
 sidebar_donate              : 'Kirim Donasi ',
 sidebar_thanks              : 'Terima Kasih!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Pilihan cara mengakses dompet Anda? ',
@@ -89,6 +156,10 @@ ADD_Radio_3                 : 'Paste/Ketik Private Key Anda ',
 ADD_Radio_4                 : 'Tambah akun untuk dilihat ',
 ADD_Radio_5                 : 'Paste/Ketik Mnemonic Anda ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : 'Buat Alias: ',
 ADD_Label_3                 : 'File Dompet anda ter-enkripsi. Masukkan password ',
@@ -98,6 +169,7 @@ ADD_Label_5                 : 'Masukkan alamat ',
 ADD_Label_6                 : 'Unlock dompet ',
 ADD_Label_6_short           : 'Unlock ',
 ADD_Label_7                 : 'Tambah Akun ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Mnemonic */
 MNEM_1                      : 'Pilih alamat yang Anda inginkan untuk berinteraksi. ',
@@ -106,16 +178,23 @@ MNEM_more                   : 'Tampilkan Alamat berikutnya ',
 MNEM_prev                   : 'Tampilkan Alamat sebelumnya ',
 
 /* Hardware wallets */
-ADD_Ledger_1                : 'Hubungkan ke Ledger Nano S Anda ',
+ADD_Ledger_1                : 'Hubungkan ke Ledger Wallet Anda ',
 ADD_Ledger_2                : 'Buka Aplikasi Ethereum (atau aplikasi kontrak) ',
 ADD_Ledger_3                : 'Periksa bahwa "Browser Support" sudah di aktifkan di "Settings" ',
 ADD_Ledger_4                : 'Jika "Browser Support" tidak ditemukan di "Settings", pastikan sudah mengupdate ke [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman ',
 ADD_Ledger_0b               : 'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Hubungkan ke Ledger Nano S ',
+ADD_Ledger_scan             : 'Hubungkan ke Ledger Wallet ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Hubungkan ke TREZOR ',
 ADD_Trezor_select           : 'Ini adalah TREZOR seed ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman ',
+ADD_DigitalBitbox_0b        : 'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Hubungkan ke Digital Bitbox ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Jika Anda memerlukan lebih dari satu dompet, Anda dapat memakai fitur ',
@@ -229,10 +308,12 @@ MYWAL_Content_3             : 'Jika Anda akan memakai dompet ini dengan MyEtherW
 VIEWWALLET_Subtitle         : 'Memungkinkan Anda untuk mencetak Dompet Kertas dari berbagai format atau versi "private key". Hal ini diperlukan pada saat anda ingin [mengimpor akun Anda ke Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jika Anda hanya ingin pengecekan saldo, pakailah salah satu layanan blockchain explorer seperti [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Untuk pencetakan Dompet Kertas dari berbagai format "private key". ',
 VIEWWALLET_SuccessMsg       : 'Berhasil! Berikut detil dari dompet Anda. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : 'Anda tidak memiliki Dompet yang disimpan sebelumnya. Klik ["Buat Dompet"](/cx-wallet.html#add-wallet) untuk membuatnya! ',
-CX_quicksend                : 'QuickSend ', // if no appropriate translation, just use "Send"
+CX_quicksend                : 'Kirim ', // if no appropriate translation, just use "Send"
 
 /* Node Switcher */
 NODE_Title                  : 'Set Up Node Custom Anda',
@@ -269,6 +350,7 @@ SWAP_rec_add                : "Alamat penerima Anda ",
 SWAP_start_CTA              : "Tukarkan ",
 SWAP_ref_num                : "Nomor referensi Anda ",
 SWAP_time                   : "Sisa waktu untuk mengirim ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Perintah Dijalankan ",
 SWAP_progress_2             : "Menunggu ", // Waiting for your BTC...
 SWAP_progress_3             : "Diterima! ", // ETH Received!
@@ -285,39 +367,45 @@ ERROR_3                     : 'Ini bukan file dompet yang valid. ',
 ERROR_4                     : 'Unit tidak valid, gunakan salah satu dari unit berikut ',
 ERROR_5                     : 'Alamat tidak valid. ',
 ERROR_6                     : 'Password tidak valid. ',
-ERROR_7                     : 'Jumlah tidak valid. ',
-ERROR_8                     : 'Gas limit tidak valid. ',
-ERROR_9                     : 'Nilai data tidak valid. ',
-ERROR_10                    : 'Jumlah Gas tidak valid. ',
-ERROR_11                    : 'Nonce tidak valid. ',
+ERROR_7                     : 'Jumlah tidak valid. (Harus integer. Coba 0-18.) ', // 7
+ERROR_8                     : 'Gas limit tidak valid. (Harus integer. Coba 21000-4000000.) ', // 8
+ERROR_9                     : 'Nilai data tidak valid. (Harus hex.) ', // 9
+ERROR_10                    : 'Jumlah Gas tidak valid. (Harus integer. Coba 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Nonce tidak valid. (Harus integer.) ', // 11
 ERROR_12                    : 'Signed transaction tidak valid. ',
 ERROR_13                    : 'Sudah ada Dompet dengan nickname ini. ',
 ERROR_14                    : 'Dompet tidak ditemukan. ',
 ERROR_15                    : 'Tidak ditemukan proposal dengan ID ini atau terjadi error saat membaca proposal ini. ',
 ERROR_16                    : 'Terdapat dompet dengan alamat yang sama di storage. Cek kembali halaman dompet Anda. ',
-ERROR_17                    : 'Minimal harus ada **0.01 ETH** di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
+ERROR_17                    : 'Dana tidak mencukupi. Akun yang dipakai untuk mengirim tidak memiliki dana yang cukup. Minimal harus ada **0.01 ETH** di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
 ERROR_18                    : 'Semua gas akan digunakan pada transaksi ini. Ini berarti Anda telah memberikan suara pada proposal ini atau periode perdebatan telah berakhir. ',
 ERROR_19                    : 'Simbol tidak valid ',
 ERROR_20                    : 'Bukan ERC-20 token yang valid.',
 ERROR_21                    : 'Tidak dapat memperkirakan gas. Saldo di akun tidak cukup, atau alamat kontrak penerima bisa mengeluarkan error. Cobalah untuk secara manual mengatur gas dan melanjutkan. Keterangan Error saat pengiriman mungkin lebih informatif. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
+ERROR_22                    : 'Masukkan nama node yang valid', // 22
+ERROR_23                    : 'Masukkan URL yang valid. Jika Anda menggunakan https, URL Anda harus https', // 23
+ERROR_24                    : 'Masukkan port yang valid. ', // 24
+ERROR_25                    : 'Masukkan chain ID yang valid. ', // 25
+ERROR_26                    : 'Masukkan ABI yang valid. ', // 26
+ERROR_27                    : 'Jumlah Minimum: 0.01. Jumlah Max: ', // 27
 ERROR_28                    : '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help). ',
-ERROR_29                    : 'Please enter valid user and password ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_29                    : 'Masukkan user dan password yang valid. ', // 29
+ERROR_30                    : 'Masukkan nama yang vaklid (7+ karakter, tanda baca terbatas) ', // 30
+ERROR_31                    : 'Masukkan frase rahasia yang valid. ', // 31
+ERROR_32                    : 'Tidak dapat tersambung ke node. Coba lakukan "Refresh" dan ganti node (pojok kanan atas), dan check setting firewall. Jika node-nya custom, periksa configs-nya.', // 32
+ERROR_33                    : 'Dompet yang Anda buka tidak sesuai dengan address pemiliknya. ', // 33
+ERROR_34                    : 'Nama yang Anda coba buka tidak sama dengan nama yang dimasukkan. ', // 34
+ERROR_35                    : 'Address yang dimasukkan tidak di checksum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Informasi lebih lanjut</a>', // 35
+ERROR_36                    : 'Masukkan TX hash yang valid', // 36
+ERROR_37                    : 'Masukkan hex string yang valid (0-9, a-f)', // 37
+
 SUCCESS_1                   : 'Alamat valid ',
 SUCCESS_2                   : 'Dompet telah ter-dekripsi ',
-SUCCESS_3                   : 'Transaksi diajukan. TX ID ',
+SUCCESS_3                   : 'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:   ', //'Transaksi diajukan. TX Hash ',
 SUCCESS_4                   : 'Dompet Anda telah ditambahkan ',
 SUCCESS_5                   : 'File Terpilih ',
 SUCCESS_6                   : 'You are successfully connected ',
-SUCCESS_7                   : 'Message Signature Verified',
+SUCCESS_7                   : 'Message Signature ter-verifikasi',
 WARN_Send_Link              : 'Alamat, jumlah, gas atau informasi telah diisikan untuk Anda. Informasi tersebut dapat Anda rubah sebelum pengiriman. Buka kunci dompet Anda Untuk memulai. ',
 
 /* Geth Error Messages */
@@ -346,7 +434,7 @@ translate_version           : '0.3 ',
 Translator_Desc             : 'Thank you to our translators ',
 TranslatorName_1            : '[Yos Ginting](https://www.myetherwallet.com/?gaslimit=21000&to=0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c ',
-/* Translator 1             : 05 Sep 2016: Translation completed (except HELP texts); 09 Sep 2016: Revisions on some words and phrases */
+/* Translator 1             : 05 Sep 2016: Translation completed (except HELP texts); 09 Sep 2016: Revisions on some words and phrases; 3 Sep 2017 added more translations*/
 TranslatorName_2            : '',
 TranslatorAddr_2            : '',
 /* Translator 2             : Insert Comments Here */
@@ -382,7 +470,6 @@ HELP_1_Desc_3               : 'Enter a strong password. If you think you may for
 HELP_1_Desc_4               : 'Click "GENERATE". ',
 HELP_1_Desc_5               : 'Your wallet has now been generated. ',
 
-HELP_2a_Title               : '2a) How do I save/backup my wallet? ',
 HELP_2a_Desc_1              : 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. ',
 HELP_2a_Desc_2              : 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. ',
 HELP_2a_Desc_3              : 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys: ',
@@ -392,7 +479,7 @@ HELP_2a_Desc_6              : 'Keep in mind, you must prevent loss of the keys a
 
 HELP_2b_Title               : '2b) How do I safely / offline / cold storage with MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Click on `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Click on `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Move zip to an airgapped computer. ',
 HELP_2b_Desc_4              : 'Unzip it and double-click `index.html`. ',
 HELP_2b_Desc_5              : 'Generate a wallet with a strong password. ',
@@ -422,7 +509,7 @@ HELP_4_Desc_9               : 'Click "Generate Transaction". ',
 HELP_4_Desc_10              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_4_Desc_11              : 'Click the blue "Send Transaction" button below that. ',
 HELP_4_Desc_12              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_4_Desc_13              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_4_Desc_13              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_4CX_Title              : '4) How do I send Ether using MyEtherWallet CX? ',
 HELP_4CX_Desc_1             : 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Kirim Ether dan Tokens" page. ',
@@ -469,7 +556,7 @@ HELP_7_Desc_11              : 'Click "Generate Transaction". ',
 HELP_7_Desc_12              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_7_Desc_13              : 'Click the blue "Send Transaction" button below that. ',
 HELP_7_Desc_14              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_7_Desc_15              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_7_Desc_15              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_8_Title                : '8) What happens if your site goes down? ',
 HELP_8_Desc_1               : 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. ',

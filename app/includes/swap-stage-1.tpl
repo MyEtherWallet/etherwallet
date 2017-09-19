@@ -29,7 +29,7 @@
         <span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span>
       </p>
     </div>
-    <a class="link bity-logo" href="https://bity.com/af/jshkb37v" target="_blank"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
+    <a class="link bity-logo" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
   </section>
   <!-- / Colored Columns -->
 
@@ -39,15 +39,18 @@
 
 
 <!-- Swap Init Panel -->
-<article class="swap-panel" ng-show="showStage1">
+<article class="swap-panel block clearfix" ng-show="showStage1">
 
   <h1 translate="SWAP_init_1"> I want to swap my </h1>
+
+  <br />
 
   <input class="form-control"
          type="text"
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(true)"
          ng-model="swapOrder.fromVal"
+         ng-click="showedMinMaxError = false"
          ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <span class="dropdown">
@@ -66,6 +69,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(false)"
          ng-model="swapOrder.toVal"
+         ng-click="showedMinMaxError = false"
          ng-class="Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <div class="dropdown">
@@ -77,9 +81,11 @@
     </ul>
   </div>
 
-  <div class="col-xs-12 clearfix text-center"><a ng-click="setFinalPrices()" class="btn btn-info btn-lg">
-    <span translate="SWAP_init_CTA"> Let's do this! </span>
-  </a></div>
+  <div class="col-xs-12 clearfix text-center">
+    <a ng-click="setFinalPrices()" class="btn btn-info btn-primary">
+      <span translate="SWAP_init_CTA"> Let's do this! </span>
+    </a>
+  </div>
 
 </article>
 <!-- / Swap Init Panel -->

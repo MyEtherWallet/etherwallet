@@ -1,8 +1,7 @@
 .btn {
   background-image: none;
-  border: 1px solid transparent;
-  box-shadow: inset 2px 2px 2px rgba(200,200,200,.1);
   cursor: pointer;
+  border: 1px solid gray;
   display: inline-block;
   font-weight: @btn-font-weight;
   letter-spacing: .05em;
@@ -12,7 +11,7 @@
   touch-action: manipulation;
   vertical-align: middle;
   white-space: nowrap;
-  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius);
+  .button-size(@padding-base-vertical; @padding-large-horizontal; @font-size-bump; @line-height-base; @border-radius);
   .user-select(none);
 
   &,
@@ -101,6 +100,16 @@
   .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
 }
 
+.btn-white {
+  .button-variant(@brand-info; rgba(255,255,255,.8); rgba(255,255,255,.8));
+  color: @brand-info;
+}
+
+.header-branding {
+  a.btn-white { color: @brand-info; }
+  a.btn-white:hover, a.btn-white:focus { background: white; opacity: 1; color: @brand-info; }
+}
+
 .btn-group .btn-default {
   border-bottom-width: 1px;
   &.active {
@@ -118,7 +127,6 @@
 .btn-link {
   color: @link-color;
   font-weight: normal;
-  border-radius: 0;
 
   &,
   &:active,
@@ -160,11 +168,11 @@
 }
 .btn-sm {
   // line-height: ensure proper height of button next to small input
-  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius);
-  padding: 0.1rem .5rem .2rem;
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-small; @border-radius);
 }
 .btn-xs {
   .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius);
+  padding: .1rem .6rem .2rem;
 }
 
 

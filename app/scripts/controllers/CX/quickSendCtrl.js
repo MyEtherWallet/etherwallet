@@ -58,7 +58,7 @@ var quickSendCtrl = function($scope, $sce) {
 	$scope.prepTX = function() {
 		try {
 			if (!ethFuncs.validateEtherAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
-			else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[7];
+			else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[0];
 			$scope.showConfirm = true;
 		} catch (e) {
 			$scope.prepTXStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
@@ -72,7 +72,7 @@ var quickSendCtrl = function($scope, $sce) {
 				if (!rawTx.isError) {
 					uiFuncs.sendTx(rawTx.signedTx, function(resp) {
 						if (!resp.isError) {
-							$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a>"));
+							$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank' rel='noopener'> ETH TX via EtherScan.io </a>"));
 							$scope.setBalance();
 						} else {
 							$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
@@ -92,6 +92,12 @@ var quickSendCtrl = function($scope, $sce) {
 		$scope.validateTxStatus = "";
 		$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.allWallets[$scope.selectedWallet].priv, $scope.password);
 	};
+  $scope.selectedWallet = "";
+  $scope.password = "";
+  $scope.$parent.selectedWallet ="";
+  $scope.tx.to = "";
+  $scope.tx.value = "";
+
 	$scope.setAllWallets();
 };
 module.exports = quickSendCtrl;

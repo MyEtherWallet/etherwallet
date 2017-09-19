@@ -1,8 +1,7 @@
 // Alerts
 .alert {
-  padding: @space-sm @space;
-  margin: @space 0;
-  border-radius: @alert-border-radius;
+  padding: @space-md @space-xl;
+  margin: @space auto;
   font-weight: 300;
   font-size: @font-size-bump;
   h4 {
@@ -10,8 +9,8 @@
     color: inherit;
   }
 
-  &*:first-child { margin-top: 0;                        }
-  &*:last-child  { margin-bottom: 0;                     }
+  > *:first-child { margin-top: 0;                        }
+  > *:last-child  { margin-bottom: 0;                     }
 
   .alert-link    { font-weight: @alert-link-font-weight; }
 
@@ -28,7 +27,6 @@
 
 .alert.popup {
   position: fixed;
-  border-radius: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -39,9 +37,9 @@
   margin: 0;
   .container {
     position: relative;
-    @media screen and (max-width: @screen-xs) {
-      padding: @space*2 2% 0 15%;
-    }
+    padding: 0 10rem 0 5rem;
+    @media screen and (max-width: @screen-sm) { padding: 1rem 8rem 1rem 4rem; }
+    @media screen and (max-width: @screen-xs) { padding: 3rem 1rem 0 4rem; }
     &:after {
       content: '';
       background-position: 50%;
@@ -53,9 +51,8 @@
       top: 0;
       bottom: 0;
       left: 1%;
-      width: @space*2;
-      @media screen and (max-width: @screen-sm) { left: 3%; }
-      @media screen and (max-width: @screen-xs) { left: 1%; }
+      width: 2.25rem;
+      @media screen and (max-width: @screen-xs) { top: 2.5rem; left:0.5rem; }
     }
   }
   .icon-close {
@@ -68,16 +65,16 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: @cont-padding;
+    width: 9rem;
     bottom: 0;
     border-left: 1px solid rgba(255, 255, 255, .7);
     transition: @transition;
     @media screen and (max-width: @screen-sm) {
-      width: @cont-padding-lg;
+      width: 7rem;
     }
     @media screen and (max-width: @screen-xs) {
       width: 100%;
-      height: @space*2.5;
+      height: 3rem;
       left: 0; right: 0;
       top: 0; bottom: auto;
       border-left: 0;

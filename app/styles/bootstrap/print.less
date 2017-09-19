@@ -4,110 +4,122 @@
 // Print styles.
 // Inlined to avoid the additional HTTP request: h5bp.com/r
 // ==========================================================================
-
 @media print {
-    *,
-    *:before,
-    *:after {
-        background: transparent !important;
-        color: #000 !important; // Black prints faster: h5bp.com/s
-        box-shadow: none !important;
-        text-shadow: none !important;
+  *,
+  *:before,
+  *:after {
+    //background: transparent !important;
+    color: #000 !important; // Black prints faster: h5bp.com/s
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+    color: #000;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  // Don't show links that are fragment identifiers,
+  // or use the `javascript:` pseudo protocol
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #000;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group; // h5bp.com/t
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  .navbar {
+    display: none;
+  }
+  .btn,
+  .dropup > .btn {
+    > .caret {
+      border-top-color: #000 !important;
     }
+  }
+  .label {
+    border: 1px solid #000;
+  }
+  .table {
+    border-collapse: collapse !important;
+    td,
+    th {
+      background-color: #fff !important;
+    }
+  }
+  .table-bordered {
+    th,
+    td {
+      border: 1px solid #ddd !important;
+    }
+  }
+  // Bootstrap specific changes end
+  .print-text {
+    color: darken(@ether-blue, 10%)!important;
+  }
+  footer {
+    border-top: 1px solid black;
+  }
+  header {
+    border-bottom: 1px solid black;
+    border-top: 0px solid white!important;
+  }
+  .btn {
+    border: 1px solid black;
+    color: 1px solid black;
+    background: transparent!important;
+  }
+  .nav-container {
+    display: none!important;
+  }
+  .footer-1 img {
+    width: 40px!important;
+  }
+  .footer-1,
+  .footer-2,
+  .footer-3 {
+    * {
+      font-size: 8px!important;
+      line-height: 1.1!important;
+    }
+    .footer-2,
+    .footer-3 {
+      float: left!important;
+    }
+  }
+  h1, .h1 { font-size: 18px; font-weight: bold; }
+  h2, .h2 { font-size: 17px; font-weight: bold; }
+  h3, .h3 { font-size: 16px; font-weight: bold; }
+  h4, .h4 { font-size: 15px; font-weight: bold; }
+  h5, .h5 { font-size: 14px; font-weight: bold; }
+  h6, .h6 { font-size: 13px; font-weight: bold; }
+  .modal { position: inherit!important; page-break-inside: avoid; page-break-before:always;}
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    // Don't show links that are fragment identifiers,
-    // or use the `javascript:` pseudo protocol
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    thead {
-        display: table-header-group; // h5bp.com/t
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
-
-    // Bootstrap specific changes start
-
-    // Bootstrap components
-    .navbar {
-        display: none;
-    }
-    .btn,
-    .dropup > .btn {
-        > .caret {
-            border-top-color: #000 !important;
-        }
-    }
-    .label {
-        border: 1px solid #000;
-    }
-
-    .table {
-        border-collapse: collapse !important;
-
-        td,
-        th {
-            background-color: #fff !important;
-        }
-    }
-    .table-bordered {
-        th,
-        td {
-            border: 1px solid #ddd !important;
-        }
-    }
-
-    // Bootstrap specific changes end
-
-    .print-text {
-      color: darken(@ether-blue,10%)!important;
-    }
-
-    footer {
-        border-top: 1px solid black;
-    }
-
-    header {
-        border-bottom: 1px solid black;
-    }
 }

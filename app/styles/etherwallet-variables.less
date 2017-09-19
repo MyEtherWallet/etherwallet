@@ -1,376 +1,506 @@
 // Colors
-@ether-navy                          : #163151;
-@ether-blue                          : #0e97c0;
+@ether-navy                                  : #163151;
+@ether-blue                                  : #0e97c0;
 
-@space-xs                            : 0.25rem;
-@space-sm                            : 0.50rem;
-@space-md                            : 0.75rem;
-@space                               : 1.00rem;
-@space-lg                            : 1.50rem;
-@space-xl                            : 2.00rem;
+@gray-base                                   : #000;
+@gray-darker                                 : lighten(@gray-base, 13.5%);
+@gray-dark                                   : lighten(@gray-base, 20%);
+@gray                                        : #737373;
+@gray-light                                  : #9A9A9A;
+@gray-lighter                                : #ECECEC;
+@gray-lightest                               : #FAFAFA;
 
-@gray-base                           : #000;
-@gray-darker                         : lighten(@gray-base, 13.5%);
-@gray-dark                           : lighten(@gray-base, 20%);
-@gray                                : #737373;
-@gray-light                          : #9A9A9A;
-@gray-lighter                        : #ECECEC;
-@gray-lightest                       : #FAFAFA;
+@brand-primary                               : @ether-blue;
+@brand-success                               : #5dba5a;
+@brand-info                                  : @ether-navy;
+@brand-warning                               : #ff9800;
+@brand-orangered                             : #ff5722;
+@brand-danger                                : #ea4b40;
 
-@brand-primary                       : @ether-blue;
-@brand-success                       : #5dba5a;
-@brand-info                          : @ether-navy;
-@brand-warning                       : #ff9800;
-@brand-danger                        : #ea4b40;
+@body-bg                                     : #fbfbfb;
+@text-color                                  : @gray-dark;
 
-@body-bg                             : #fff;
-@text-color                          : @gray-dark;
-
-@link-color                          : @brand-primary;
-@link-hover-color                    : darken(@link-color, 5%);
-@link-hover-decoration               : none;
-
-@transition                          : 500ms all ease-in-out;
-
+@link-color                                  : @brand-primary;
+@link-hover-color                            : darken(@link-color, 5%);
+@link-hover-decoration                       : none;
 
 // Typography
-@font-family-sans-serif              : 'Lato', sans-serif;
-@font-family-serif                   : Georgia, "Times New Roman", Times, serif;
-@font-family-monospace               : Menlo, Monaco, Consolas, "Courier New", monospace;
-@font-family-base                    : @font-family-sans-serif;
+@font-family-sans-serif                      : 'Lato', sans-serif;
+@font-family-serif                           : Georgia, "Times New Roman", Times, serif;
+@font-family-monospace                       : Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base                            : @font-family-sans-serif;
 
-@base                                : 15;
-@font-size-pixels                    : @base+px;
-@font-size-pixels-xl                 : @base+1px; // for xl screens
-@font-size-pixels-sm                 : @base+px; // for small screens
+@base                                        : 15;
+@font-size-pixels                            : @base+px;
+@font-size-pixels-xl                         : @base+1px; // for xl screens
+@font-size-pixels-sm                         : @base+px; // for small screens
 
-@font-size-large-bump                : 2.25rem; // 33.75
-@font-size-large                     : 1.90rem; // 28.5
-@font-size-medium-bump               : 1.50rem; // 22.5
-@font-size-medium                    : 1.30rem; // 19.5
-@font-size-bump-more                 : 1.15rem; // 17.25
-@font-size-bump                      : 1.07rem; // 16.05
-@font-size-base                      : 1.00rem; // 15
-@font-size-small                     : 0.92rem; // 13.8
-@font-size-xs                        : 0.80rem; // 12
+@font-size-large-bump                        : 2.25rem; // 33.75
+@font-size-large                             : 1.90rem; // 28.5
+@font-size-medium-bump                       : 1.50rem; // 22.5
+@font-size-medium                            : 1.30rem; // 19.5
+@font-size-bump-more                         : 1.15rem; // 17.25
+@font-size-bump                              : 1.07rem; // 16.05
+@font-size-base                              : 1.00rem; // 15
+@font-size-small                             : 0.90rem; // 13.8
+@font-size-xs                                : 0.75rem; // 12
 
-@font-size-h1                        : @font-size-large-bump;
-@font-size-h2                        : @font-size-large;
-@font-size-h3                        : @font-size-medium-bump;
-@font-size-h4                        : @font-size-medium;
-@font-size-h5                        : @font-size-bump-more;
-@font-size-h6                        : @font-size-bump;
+@font-size-h1                                : @font-size-large-bump;
+@font-size-h2                                : @font-size-large;
+@font-size-h3                                : @font-size-medium-bump;
+@font-size-h4                                : @font-size-medium;
+@font-size-h5                                : @font-size-bump-more;
+@font-size-h6                                : @font-size-bump;
 
-@line-height-base                    : 1.4;
-@line-height-computed                : 1.4;
+@line-height-base                            : 1.4;
+@line-height-computed                        : 1.4;
 
-@headings-font-family                : inherit;
-@headings-font-weight                : 700;
-@headings-line-height                : 1.2;
-@headings-color                      : inherit;
+@headings-font-family                        : inherit;
+@headings-font-weight                        : 700;
+@headings-line-height                        : 1.2;
+@headings-color                              : inherit;
 
+@icon-font-path                              : "../fonts/";
+@icon-font-name                              : "glyphicons-halflings-regular";
+@icon-font-svg-id                            : "glyphicons_halflingsregular";
 
 // Spacing
-@padding-base-vertical               : @space*.6;
-@padding-base-horizontal             : @space;
+@space-xs                                    : 0.25rem;
+@space-sm                                    : 0.50rem;
+@space-md                                    : 0.75rem;
+@space                                       : 1.00rem;
+@space-lg                                    : 1.50rem;
+@space-xl                                    : 2.00rem;
 
-@padding-large-vertical              : @space-md;
-@padding-large-horizontal            : @space-xl;
+@padding-base-vertical                       : @space*.75;
+@padding-base-horizontal                     : @space-lg;
 
-@padding-small-vertical              : 0.1rem;
-@padding-small-horizontal            : @space-sm;
+@padding-large-vertical                      : @space;
+@padding-large-horizontal                    : @space-xl;
 
-@padding-xs-vertical                 : @space-xs;
-@padding-xs-horizontal               : 0.2rem;
+@padding-small-vertical                      : @space-sm;
+@padding-small-horizontal                    : @space;
 
-@line-height-large                   : 1.2;
-@line-height-small                   : 1.5;
+@padding-xs-vertical                         : 0.1rem;
+@padding-xs-horizontal                       : 0.6rem;
 
-@border-radius                       : 2px;
+@line-height-large                           : 1.2;
+@line-height-small                           : 1.5;
 
-@component-active-color              : #fff;
-@component-active-bg                 : @brand-primary;
+@border-radius                               : 0px;
 
-@caret-width-base                    : @space-xs;
-@caret-width-large                   : @space-xs;
+@component-active-color                      : #fff;
+@component-active-bg                         : @brand-primary;
 
+@caret-width-base                            : @space-xs;
+@caret-width-large                           : @space-xs;
 
 // Tables
-@table-cell-padding                  : @space-sm;
-@table-condensed-cell-padding        : @space-xs;
-
-@table-bg                            : transparent;
-@table-bg-accent                     : #f9f9f9;
-@table-bg-hover                      : @gray-lightest;
-@table-bg-active                     : @table-bg-hover;
-
-@table-border-color                  : #ddd;
-
+@table-cell-padding                          : @space-sm;
+@table-condensed-cell-padding                : @space-xs;
+@table-bg                                    : transparent;
+@table-bg-accent                             : #f9f9f9;
+@table-bg-hover                              : @gray-lightest;
+@table-bg-active                             : @table-bg-hover;
+@table-border-color                          : #ddd;
 
 // Buttons
-@btn-font-weight                     : normal;
+@btn-font-weight                             : normal;
 
-@btn-default-color                   : #333;
-@btn-default-bg                      : #ececec;
-@btn-default-border                  : @gray-lighter;
+@btn-default-color                           : #222;
+@btn-default-bg                              : #c3c3c3;
+@btn-default-border                          : #bdbdbd;
 
-@btn-primary-color                   : #fff;
-@btn-primary-bg                      : @brand-primary;
-@btn-primary-border                  : darken(@btn-primary-bg, 5%);
+@btn-primary-color                           : #fff;
+@btn-primary-bg                              : @brand-primary;
+@btn-primary-border                          : @btn-primary-bg;
 
-@btn-success-color                   : #fff;
-@btn-success-bg                      : @brand-success;
-@btn-success-border                  : darken(@btn-success-bg, 5%);
+@btn-success-color                           : #fff;
+@btn-success-bg                              : @brand-success;
+@btn-success-border                          : @btn-success-bg;
 
-@btn-info-color                      : #fff;
-@btn-info-bg                         : @brand-info;
-@btn-info-border                     : darken(@btn-info-bg, 5%);
+@btn-info-color                              : #fff;
+@btn-info-bg                                 : @brand-info;
+@btn-info-border                             : @btn-info-bg;
 
-@btn-warning-color                   : #fff;
-@btn-warning-bg                      : @brand-warning;
-@btn-warning-border                  : darken(@btn-warning-bg, 5%);
+@btn-warning-color                           : #fff;
+@btn-warning-bg                              : @brand-warning;
+@btn-warning-border                          : @btn-warning-bg;
 
-@btn-danger-color                    : #fff;
-@btn-danger-bg                       : @brand-danger;
-@btn-danger-border                   : darken(@btn-danger-bg, 5%);
+@btn-danger-color                            : #fff;
+@btn-danger-bg                               : @brand-danger;
+@btn-danger-border                           : @btn-danger-bg;
 
-@btn-link-disabled-color             : @gray-light;
+@btn-link-disabled-color                     : @gray-light;
 
+@btn-border-radius-base                      : 0px;
+@btn-border-radius-large                     : 0px;
+@btn-border-radius-small                     : 0px;
 
 // Forms
-@input-bg                            : #fff;
-@input-bg-disabled                   : @gray-lightest;
-
-@input-color                         : @gray;
-@input-border                        : @gray-lighter;
-
-@input-border-focus                  : @brand-primary;
-
-@input-color-placeholder             : darken(@gray-lighter, 10%);
-
-@input-height-base                   : 2.55rem;
-@input-height-large                  : 4rem;
-@input-height-small                  : 2rem;
-
-@form-group-margin-bottom            : @space-sm;
-
-@legend-color                        : @gray-dark;
-@legend-border-color                 : #e5e5e5;
-
-@input-group-addon-bg                : @gray-lighter;
-@input-group-addon-border-color      : @input-border;
-
-@cursor-disabled                     : default;
-
-@dropdown-bg                         : #fff;
-@dropdown-border                     : rgba(0,0,0,.15);
-@dropdown-fallback-border            : @gray-lighter;
-@dropdown-divider-bg                 : #e5e5e5;
-
-@dropdown-link-color                 : @ether-navy;
-@dropdown-link-hover-color           : @ether-blue;
-@dropdown-link-hover-bg              : @gray-lightest;
-
-@dropdown-link-active-color          : @component-active-color;
-@dropdown-link-active-bg             : @component-active-bg;
-
-@dropdown-link-disabled-color        : @gray-light;
-
-@dropdown-header-color               : @gray-light;
-
-@dropdown-caret-color                : #000;
-
-
-@zindex-navbar                       : 1000;
-@zindex-dropdown                     : 1000;
-@zindex-popover                      : 1060;
-@zindex-tooltip                      : 1070;
-@zindex-navbar-fixed                 : 1030;
-@zindex-modal-background             : 1040;
-@zindex-modal                        : 1050;
-@zindex-alerts                       : 1060;
-
-
-@screen-xs                           : 32rem;
-@screen-xs-min                       : @screen-xs;
-
-
-@screen-sm                           : 51.2rem;
-@screen-sm-min                       : @screen-sm;
-
-
-@screen-md                           : 66.133333333rem;
-@screen-md-min                       : @screen-md;
-
-
-@screen-lg                           : 80rem;
-@screen-lg-min                       : @screen-lg;
-
-@screen-xl                           : 94rem;
-@screen-xl-min                       : @screen-xl;
-
-@screen-xs-max                       : (@screen-sm-min - 1);
-@screen-sm-max                       : (@screen-md-min - 1);
-@screen-md-max                       : (@screen-lg-min - 1);
-@screen-lg-max                       : (@screen-xl-min - 1);
-
-
-@grid-columns                        : 12;
-@grid-gutter-width                   : 3rem;
-@grid-float-breakpoint               : @screen-sm-min;
-@grid-float-breakpoint-max           : (@grid-float-breakpoint - 1);
-
-@cont-padding                        : 5%;
-@cont-padding-lg                     : 7.5%;
-
-@container-tablet                    : (@screen-sm + @grid-gutter-width);
-@container-sm                        : @container-tablet;
-
-@container-desktop                   : (@screen-md + @grid-gutter-width);
-@container-md                        : @container-desktop;
-
-@container-large-desktop             : (@screen-lg + @grid-gutter-width);
-@container-lg                        : @container-large-desktop;
-
-@state-success-text                  : darken(@brand-success, 10%);
-@state-success-bg                    : #dff0d8;
-@state-success-border                : darken(spin(@state-success-bg, -10), 5%);
-
-@state-info-text                     : darken(@brand-info, 10%);
-@state-info-bg                       : #d9edf7;
-@state-info-border                   : darken(spin(@state-info-bg, -10), 7%);
-
-@state-warning-text                  : darken(@brand-warning, 10%);
-@state-warning-bg                    : #fcf8e3;
-@state-warning-border                : darken(spin(@state-warning-bg, -10), 5%);
-
-@state-danger-text                   : darken(@brand-danger, 10%);
-@state-danger-bg                     : #f2dede;
-@state-danger-border                 : darken(spin(@state-danger-bg, -10), 5%);
-
-@tooltip-max-width                   : 200px;
-@tooltip-color                       : #fff;
-@tooltip-bg                          : #000;
-@tooltip-opacity                     : .9;
-
-@tooltip-arrow-width                 : @space-sm;
-@tooltip-arrow-color                 : @tooltip-bg;
-
-@label-default-bg                    : @gray-light;
-@label-primary-bg                    : @brand-primary;
-@label-success-bg                    : @brand-success;
-@label-info-bg                       : @brand-info;
-@label-warning-bg                    : @brand-warning;
-@label-danger-bg                     : @brand-danger;
-
-@label-color                         : #fff;
-@label-link-hover-color              : #fff;
-
-@modal-inner-padding                 : @space*1.5;
-
-@modal-title-padding                 : @space;
-@modal-title-line-height             : @line-height-base;
-
-@modal-content-bg                    : #fff;
-@modal-content-border-color          : rgba(0,0,0,.2);
-@modal-content-fallback-border-color : #999;
-
-@modal-backdrop-bg                   : #000;
-@modal-backdrop-opacity              : .5;
-@modal-header-border-color           : #e5e5e5;
-@modal-footer-border-color           : @modal-header-border-color;
-
-@modal-lg                            : 70rem;
-@modal-md                            : 50rem;
-@modal-sm                            : 30rem;
-
-@alert-border-radius                 : @border-radius;
-@alert-link-font-weight              : bold;
-
-
-@alert-success-bg                    : @brand-success;
-@alert-success-text                  : white;
-@alert-success-border                : @alert-success-bg;
-
-@alert-info-bg                       : @brand-primary;
-@alert-info-text                     : white;
-@alert-info-border                   : @alert-info-bg;
-
-@alert-warning-bg                    : @brand-warning;
-@alert-warning-text                  : white;
-@alert-warning-border                : @alert-warning-bg;
-
-@alert-danger-bg                     : @brand-danger;
-@alert-danger-text                   : white;
-@alert-danger-border                 : @alert-danger-bg;
-
-@progress-bg                         : @gray-lightest;
-@progress-bar-color                  : #fff;
-@progress-border-radius              : @border-radius;
-
-@progress-bar-bg                     : @brand-primary;
-@progress-bar-success-bg             : @brand-success;
-@progress-bar-warning-bg             : @brand-warning;
-@progress-bar-danger-bg              : @brand-danger;
-@progress-bar-info-bg                : @brand-info;
-
-
-@list-group-bg                       : #fff;
-@list-group-border                   : #ddd;
-@list-group-border-radius            : @border-radius;
-
-@list-group-hover-bg                 : @gray-lightest;
-@list-group-active-color             : @component-active-color;
-@list-group-active-bg                : @component-active-bg;
-@list-group-active-border            : @list-group-active-bg;
-@list-group-active-text-color        : lighten(@list-group-active-bg, 40%);
-
-@list-group-disabled-color           : @gray-light;
-@list-group-disabled-bg              : @gray-lighter;
-@list-group-disabled-text-color      : @list-group-disabled-color;
-
-@list-group-link-color               : #555;
-@list-group-link-hover-color         : @list-group-link-color;
-@list-group-link-heading-color       : #333;
-
-
-@thumbnail-padding                   : 4px;
-@thumbnail-bg                        : @body-bg;
-@thumbnail-border                    : #ddd;
-@thumbnail-border-radius             : @border-radius;
-
-@thumbnail-caption-color             : @text-color;
-@thumbnail-caption-padding           : 9px;
-
-@well-bg                             : @gray-lightest;
-@well-border                         : darken(@well-bg, 7%);
-
-@badge-font-weight                   : bold;
-@badge-line-height                   : 1;
-@badge-border-radius                 : 10px;
-
-@close-font-weight                   : bold;
-@close-color                         : #000;
-@close-text-shadow                   : 0 1px 0 #fff;
-
-@code-color                          : #c7254e;
-@code-bg                             : #f9f2f4;
-
-@kbd-color                           : #fff;
-@kbd-bg                              : #333;
-
-@pre-bg                              : @gray-lightest;
-@pre-color                           : @gray-dark;
-@pre-border-color                    : @gray-lighter;
-@pre-scrollable-max-height           : 340px;
-
-@component-offset-horizontal         : 180px;
-@text-muted                          : @gray-light;
-@abbr-border-color                   : @gray-light;
-@headings-small-color                : inherit;
-@blockquote-small-color              : @gray-light;
-@blockquote-font-size                : (@font-size-base * 1.25);
-@blockquote-border-color             : @gray-lighter;
-@page-header-border-color            : @gray-lighter;
-@dl-horizontal-offset                : @component-offset-horizontal;
-@hr-border                           : @gray-lighter;
+@input-bg                                    : #fff;
+@input-bg-disabled                           : @gray-lightest;
+@input-color                                 : #333333;
+@input-border                                : @gray-lighter;
+@input-border-focus                          : @brand-primary;
+@input-color-placeholder                     : darken(@gray-lighter, 10%);
+
+@input-height-base                           : 2.55rem;
+@input-height-large                          : 4rem;
+@input-height-small                          : 2rem;
+
+@form-group-margin-bottom                    : @space-sm;
+
+@legend-color                                : @gray-dark;
+@legend-border-color                         : #e5e5e5;
+
+@input-group-addon-bg                        : @gray-lighter;
+@input-group-addon-border-color              : @input-border;
+
+@cursor-disabled                             : default;
+
+@dropdown-bg                                 : #fff;
+@dropdown-border                             : rgba(0,0,0,.15);
+@dropdown-fallback-border                    : @gray-lighter;
+@dropdown-divider-bg                         : #e5e5e5;
+@dropdown-link-color                         : @ether-navy;
+@dropdown-link-hover-color                   : @ether-blue;
+@dropdown-link-hover-bg                      : @gray-lightest;
+@dropdown-link-active-color                  : @component-active-color;
+@dropdown-link-active-bg                     : @component-active-bg;
+@dropdown-link-disabled-color                : @gray-light;
+@dropdown-header-color                       : @gray-light;
+@dropdown-caret-color                        : #000;
+
+@zindex-navbar                               : 1000;
+@zindex-dropdown                             : 1000;
+@zindex-popover                              : 1060;
+@zindex-tooltip                              : 1070;
+@zindex-navbar-fixed                         : 1030;
+@zindex-modal-background                     : 1040;
+@zindex-modal                                : 1050;
+@zindex-alerts                               : 1060;
+
+@screen-xs                                   : 32rem;
+@screen-xs-min                               : @screen-xs;
+@screen-sm                                   : 51.2rem;
+@screen-sm-min                               : @screen-sm;
+@screen-md                                   : 66.133333333rem;
+@screen-md-min                               : @screen-md;
+@screen-lg                                   : 80rem;
+@screen-lg-min                               : @screen-lg;
+@screen-xl                                   : 94rem;
+@screen-xl-min                               : @screen-xl;
+@screen-xs-max                               : (@screen-sm-min - 1);
+@screen-sm-max                               : (@screen-md-min - 1);
+@screen-md-max                               : (@screen-lg-min - 1);
+@screen-lg-max                               : (@screen-xl-min - 1);
+
+@grid-columns                                : 12;
+@grid-gutter-width                           : 2rem;
+@grid-float-breakpoint                       : @screen-sm-min;
+@grid-float-breakpoint-max                   : (@grid-float-breakpoint - 1);
+
+@cont-padding                                : 1%;
+@cont-padding-lg                             : 3%;
+@cont-width                                  : 113rem;
+@container-tablet                            : (48rem + @grid-gutter-width);
+@container-sm                                : @container-tablet;
+@container-desktop                           : (62rem + @grid-gutter-width);
+@container-md                                : @container-desktop;
+@container-large-desktop                     : (76rem + @grid-gutter-width);
+@container-lg                                : @container-large-desktop;
+
+@border-radius-small                         : 0px;
+@border-radius-base                          : 0px;
+@border-radius-large                         : 0px;
+@input-border-radius                         : 0px;
+@input-border-radius-small                   : 0px;
+@input-border-radius-large                   : 0px;
+
+@navbar-height                               : 3.333rem;
+@navbar-margin-bottom                        : @line-height-computed;
+@navbar-border-radius                        : @border-radius-base;
+@navbar-padding-horizontal                   : floor((@grid-gutter-width / 2));
+@navbar-padding-vertical                     : ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height                  : 23rem;
+
+@navbar-default-color                        : #777;
+@navbar-default-bg                           : #f8f8f8;
+@navbar-default-border                       : darken(@navbar-default-bg, 6.5%);
+
+@navbar-default-link-color                   : #777;
+@navbar-default-link-hover-color             : #333;
+@navbar-default-link-hover-bg                : transparent;
+@navbar-default-link-active-color            : #555;
+@navbar-default-link-active-bg               : darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color          : #ccc;
+@navbar-default-link-disabled-bg             : transparent;
+
+@navbar-default-brand-color                  : @navbar-default-link-color;
+@navbar-default-brand-hover-color            : darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg               : transparent;
+
+@navbar-default-toggle-hover-bg              : #ddd;
+@navbar-default-toggle-icon-bar-bg           : #888;
+@navbar-default-toggle-border-color          : #ddd;
+
+@navbar-inverse-color                        : lighten(@gray-light, 15%);
+@navbar-inverse-bg                           : #222;
+@navbar-inverse-border                       : darken(@navbar-inverse-bg, 10%);
+
+@navbar-inverse-link-color                   : lighten(@gray-light, 15%);
+@navbar-inverse-link-hover-color             : #fff;
+@navbar-inverse-link-hover-bg                : transparent;
+@navbar-inverse-link-active-color            : @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg               : darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color          : #444;
+@navbar-inverse-link-disabled-bg             : transparent;
+
+@navbar-inverse-brand-color                  : @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color            : #fff;
+@navbar-inverse-brand-hover-bg               : transparent;
+
+@navbar-inverse-toggle-hover-bg              : #333;
+@navbar-inverse-toggle-icon-bar-bg           : #fff;
+@navbar-inverse-toggle-border-color          : #333;
+
+@nav-link-padding                            : @font-size-base;
+@nav-link-hover-bg                           : @gray-lighter;
+
+@nav-disabled-link-color                     : @gray-light;
+@nav-disabled-link-hover-color               : @gray-light;
+
+@nav-tabs-border-color                       : #ddd;
+
+@nav-tabs-link-hover-border-color            : @gray-lighter;
+
+@nav-tabs-active-link-hover-bg               : @body-bg;
+@nav-tabs-active-link-hover-color            : @gray;
+@nav-tabs-active-link-hover-border-color     : #ddd;
+
+@nav-tabs-justified-link-border-color        : #ddd;
+@nav-tabs-justified-active-link-border-color : @body-bg;
+
+@nav-pills-border-radius                     : @border-radius-base;
+@nav-pills-active-link-hover-bg              : @component-active-bg;
+@nav-pills-active-link-hover-color           : @component-active-color;
+
+@pagination-color                            : @link-color;
+@pagination-bg                               : #fff;
+@pagination-border                           : #ddd;
+@pagination-hover-color                      : @link-hover-color;
+@pagination-hover-bg                         : @gray-lighter;
+@pagination-hover-border                     : #ddd;
+@pagination-active-color                     : #fff;
+@pagination-active-bg                        : @brand-primary;
+@pagination-active-border                    : @brand-primary;
+@pagination-disabled-color                   : @gray-light;
+@pagination-disabled-bg                      : #fff;
+@pagination-disabled-border                  : #ddd;
+
+@pager-bg                                    : @pagination-bg;
+@pager-border                                : @pagination-border;
+@pager-border-radius                         : @font-size-base;
+@pager-hover-bg                              : @pagination-hover-bg;
+@pager-active-bg                             : @pagination-active-bg;
+@pager-active-color                          : @pagination-active-color;
+@pager-disabled-color                        : @pagination-disabled-color;
+
+@jumbotron-padding                           : @font-size-base*2;
+@jumbotron-color                             : inherit;
+@jumbotron-bg                                : @gray-lighter;
+@jumbotron-heading-color                     : inherit;
+@jumbotron-font-size                         : ceil((@font-size-base * 1.5));
+@jumbotron-heading-font-size                 : ceil((@font-size-base * 4.5));
+
+@state-success-text                          : darken(@brand-success, 10%);
+@state-success-bg                            : #dff0d8;
+@state-success-border                        : darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text                             : darken(@brand-info, 10%);
+@state-info-bg                               : #d9edf7;
+@state-info-border                           : darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text                          : darken(@brand-warning, 10%);
+@state-warning-bg                            : #fcf8e3;
+@state-warning-border                        : darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text                           : darken(@brand-danger, 10%);
+@state-danger-bg                             : #f2dede;
+@state-danger-border                         : darken(spin(@state-danger-bg, -10), 5%);
+
+@tooltip-max-width                           : 14rem;
+@tooltip-color                               : #fff;
+@tooltip-bg                                  : #000;
+@tooltip-opacity                             : .9;
+@tooltip-arrow-width                         : @space-sm;
+@tooltip-arrow-color                         : @tooltip-bg;
+
+@popover-bg                                  : #fff;
+@popover-max-width                           : 18.4rem;
+@popover-border-color                        : rgba(0,0,0,.2);
+@popover-fallback-border-color               : #ccc;
+@popover-title-bg                            : darken(@popover-bg, 3%);
+@popover-arrow-width                         : @font-size-base;
+@popover-arrow-color                         : @popover-bg;
+@popover-arrow-outer-width                   : (@popover-arrow-width + 1);
+@popover-arrow-outer-color                   : fadein(@popover-border-color, 5%);
+@popover-arrow-outer-fallback-color          : darken(@popover-fallback-border-color, 20%);
+
+@label-default-bg                            : @gray-light;
+@label-primary-bg                            : @brand-primary;
+@label-success-bg                            : @brand-success;
+@label-info-bg                               : @brand-info;
+@label-warning-bg                            : @brand-warning;
+@label-danger-bg                             : @brand-danger;
+
+@label-color                                 : #fff;
+@label-link-hover-color                      : #fff;
+
+@modal-inner-padding                         : @space*1.5;
+@modal-title-padding                         : @space;
+@modal-title-line-height                     : @line-height-base;
+@modal-content-bg                            : #fff;
+@modal-content-border-color                  : rgba(0,0,0,.2);
+@modal-content-fallback-border-color         : #999;
+@modal-backdrop-bg                           : #000;
+@modal-backdrop-opacity                      : .5;
+@modal-header-border-color                   : #e5e5e5;
+@modal-footer-border-color                   : @modal-header-border-color;
+@modal-lg                                    : 70rem;
+@modal-md                                    : 50rem;
+@modal-sm                                    : 30rem;
+
+@alert-padding                               : 1rem;
+@alert-border-radius                         : @border-radius;
+@alert-link-font-weight                      : bold;
+
+@alert-success-bg                            : @brand-success;
+@alert-success-text                          : white;
+@alert-success-border                        : @alert-success-bg;
+
+@alert-info-bg                               : @brand-primary;
+@alert-info-text                             : white;
+@alert-info-border                           : @alert-info-bg;
+
+@alert-warning-bg                            : @brand-warning;
+@alert-warning-text                          : white;
+@alert-warning-border                        : @alert-warning-bg;
+
+@alert-danger-bg                             : @brand-danger;
+@alert-danger-text                           : white;
+@alert-danger-border                         : @alert-danger-bg;
+
+@progress-bg                                 : @gray-lightest;
+@progress-bar-color                          : #fff;
+@progress-border-radius                      : @border-radius;
+
+@progress-bar-bg                             : @brand-primary;
+@progress-bar-success-bg                     : @brand-success;
+@progress-bar-warning-bg                     : @brand-warning;
+@progress-bar-danger-bg                      : @brand-danger;
+@progress-bar-info-bg                        : @brand-info;
+
+@list-group-bg                               : #fff;
+@list-group-border                           : #ddd;
+@list-group-border-radius                    : @border-radius;
+@list-group-hover-bg                         : @gray-lightest;
+@list-group-active-color                     : @component-active-color;
+@list-group-active-bg                        : @component-active-bg;
+@list-group-active-border                    : @list-group-active-bg;
+@list-group-active-text-color                : lighten(@list-group-active-bg, 40%);
+@list-group-disabled-color                   : @gray-light;
+@list-group-disabled-bg                      : @gray-lighter;
+@list-group-disabled-text-color              : @list-group-disabled-color;
+@list-group-link-color                       : #555;
+@list-group-link-hover-color                 : @list-group-link-color;
+@list-group-link-heading-color               : #333;
+
+@panel-bg                                    : #fff;
+@panel-body-padding                          : @font-size-base;
+@panel-heading-padding                       : @font-size-base;
+@panel-footer-padding                        : @panel-heading-padding;
+@panel-border-radius                         : @border-radius-base;
+@panel-inner-border                          : #ddd;
+@panel-footer-bg                             : #f5f5f5;
+@panel-default-text                          : @gray-dark;
+@panel-default-border                        : #ddd;
+@panel-default-heading-bg                    : #f5f5f5;
+@panel-primary-text                          : #fff;
+@panel-primary-border                        : @brand-primary;
+@panel-primary-heading-bg                    : @brand-primary;
+@panel-success-text                          : @state-success-text;
+@panel-success-border                        : @state-success-border;
+@panel-success-heading-bg                    : @state-success-bg;
+@panel-info-text                             : @state-info-text;
+@panel-info-border                           : @state-info-border;
+@panel-info-heading-bg                       : @state-info-bg;
+@panel-warning-text                          : @state-warning-text;
+@panel-warning-border                        : @state-warning-border;
+@panel-warning-heading-bg                    : @state-warning-bg;
+@panel-danger-text                           : @state-danger-text;
+@panel-danger-border                         : @state-danger-border;
+@panel-danger-heading-bg                     : @state-danger-bg;
+
+@thumbnail-padding                           : 0.2rem;
+@thumbnail-bg                                : @body-bg;
+@thumbnail-border                            : #ddd;
+@thumbnail-border-radius                     : @border-radius;
+@thumbnail-caption-color                     : @text-color;
+@thumbnail-caption-padding                   : @font-size-base/2;
+
+@well-bg                                     : @gray-lightest;
+@well-border                                 : darken(@well-bg, 7%);
+
+@badge-color                                 : #fff;
+@badge-link-hover-color                      : #fff;
+@badge-bg                                    : @gray-light;
+@badge-active-color                          : @link-color;
+@badge-active-bg                             : #fff;
+@badge-font-weight                           : bold;
+@badge-line-height                           : 1;
+@badge-border-radius                         : 0px;
+
+@breadcrumb-padding-vertical                 : @font-size-base/2;
+@breadcrumb-padding-horizontal               : @font-size-base;
+@breadcrumb-bg                               : #f5f5f5;
+@breadcrumb-color                            : #ccc;
+@breadcrumb-active-color                     : @gray-light;
+@breadcrumb-separator                        : "/";
+
+@carousel-text-shadow                        : 0 1px 2px rgba(0,0,0,.6);
+@carousel-control-color                      : #fff;
+@carousel-control-width                      : 15%;
+@carousel-control-opacity                    : .5;
+@carousel-control-font-size                  : @font-size-bump;
+@carousel-indicator-active-bg                : #fff;
+@carousel-indicator-border-color             : #fff;
+@carousel-caption-color                      : #fff;
+
+@close-font-weight                           : bold;
+@close-color                                 : #000;
+@close-text-shadow                           : 0 1px 0 #fff;
+
+@code-color                                  : #c7254e;
+@code-bg                                     : #f9f2f4;
+@kbd-color                                   : #fff;
+@kbd-bg                                      : #333;
+
+@pre-bg                                      : @gray-lightest;
+@pre-color                                   : @gray-dark;
+@pre-border-color                            : @gray-lighter;
+@pre-scrollable-max-height                   : 23rem;
+
+@component-offset-horizontal                 : 12rem;
+@text-muted                                  : @gray-light;
+@abbr-border-color                           : @gray-light;
+@headings-small-color                        : inherit;
+@blockquote-small-color                      : @gray-light;
+@blockquote-font-size                        : (@font-size-base * 1.25);
+@blockquote-border-color                     : @gray-lighter;
+@page-header-border-color                    : @gray-lighter;
+@dl-horizontal-offset                        : @component-offset-horizontal;
+@dl-horizontal-breakpoint                    : @grid-float-breakpoint;
+@hr-border                                   : @gray-lighter;
+@transition                                  : 150ms all ease-in-out;

@@ -1,18 +1,23 @@
 <!-- Step 1 -->
-<article class="row">
+<article class="row block">
 
-  <h4 class="col-xs-12 clearfix" translate="OFFLLINE_Step1_Title">Step 1: Generate Information (Online Computer)</h4>
+  <h2 class="col-xs-11 clearfix" translate="OFFLLINE_Step1_Title">Step 1: Generate Information (Online Computer)</h2>
 
   <!-- From Address Input -->
-  <section class="col-xs-10 clearfix">
+  <section class="col-xs-11 clearfix">
     <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
       <p class="account-help-text" translate="OFFLINE_Step1_Label_2">Note: This is the FROM address, not the TO address.</p>
       <label translate="OFFLINE_Step1_Label_1"> From Address: </label>
     </div>
-    <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'')"/>
+    <input class="form-control"
+           type="text"
+           placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
+           ng-model="tx.from"
+           ng-change="validateAddress(tx.from,'')"
+           ng-class="Validator.isValidAddress(tx.from) ? 'is-valid' : 'is-invalid'" />
   </section>
   <!-- From Address Icon -->
-  <section class="col-xs-2">
+  <section class="col-xs-1 address-identicon-container">
     <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.from}}" watch-var="tx.from"></div>
   </section>
 

@@ -29,44 +29,8 @@
           </tbody>
         </table>
 
-        <table class="table table-striped table-ens-modal">
-          <tbody>
-            <tr>
-              <td>Name:</td><td>{{objENS.name}}.eth</td>
-            </tr>
-            <tr>
-              <td>Bid Amount:</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>
-            </tr>
-            <tr>
-              <td>Secret Phrase:</td><td>{{objENS.secret}}</td>
-            </tr>
-            <tr ng-show="objENS.status!=ensModes.reveal">
-              <td>Amount to Send (disguise):</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
-            </tr>
-            <tr>
-              <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
-            </tr>
-            <tr ng-show="showRegistrationDate() && objENS.status!=ensModes.reveal">
-              <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
-            </tr>
-            <tr ng-show="showRegistrationDate()">
-              <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
-            </tr>
-
-            <tr ng-show="objENS.status==ensModes.open">
-              <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
-            </tr>
-            <tr ng-show="objENS.status==ensModes.open">
-              <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
-            </tr>
-
-            <tr ng-show="objENS.status!=ensModes.reveal">
-              <td colspan="2">
-                <small><p>Copy and save this:</p><textarea class="form-control small" readonly rows="4">{{bidObject}}</textarea></small>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        @@if (site === 'mew' ) { @@include( './ens-confirm-table.tpl', { "site": "mew" } ) }
+        @@if (site === 'cx'  ) { @@include( './ens-confirm-table.tpl', { "site": "cx"  } ) }
 
         <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 

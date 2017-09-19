@@ -4,6 +4,70 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
+HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
+
+/* New Generics */
+x_CancelReplaceTx           : '処理を中断、あるいは置換',
+x_CancelTx                  : '処理を中断',
+x_PasswordDesc              : 'このパスワードで秘密鍵を＊暗号化＊します。新しい鍵を作るための元種(seed)ではありません。＊＊このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します＊＊',
+x_ReadMore                  : 'もっと読む',
+x_ReplaceTx                 : '処理を置き換える',
+x_TransHash                 : '処理ハッシュ',
+x_TXFee                     : '処理料',
+x_TxHash                    : '処理ハッシュ',
+
+/* Check TX Status */
+NAV_CheckTxStatus           : '処理状況を確認',
+NAV_TxStatus                : '処理状況',
+tx_Details                  : '処理内容詳細',
+tx_Summary                  : 'もし数日経ってから処理状況を確認した場合でなければ、大量の処理発生時(ICO期間など)には、数時間待たされることがあります。本ツールは、そのような状況において処理待ちのものを探し出し取り消す、あるいは新しくする機能を提供します。＊＊これは一般的な操作ではありませんが、処理プールが満杯の場合にのみ有効です。  [このツールに関しては、こちらを参考にしてください。](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_notFound                 : '対象の処理が見つかりません',
+tx_notFound_1               : 'この処理は、現在接続中の処理プールの中にありませんでした。',
+tx_notFound_2               : 'もし今、処理を送出した直後であれば、１５秒待ってから「処理状況を確認」ボタンを再度押してください。',
+tx_notFound_3               : '別の処理プールで発掘待ちになっているかもしれません。',
+tx_notFound_4               : '右上の下展開メニューから、別のノードを選択してください。 (例： `ETH (Etherscan.io)` or `ETH (Infura.io)` or `ETH (MyEtherWallet)`) から選んで再度確認する。',
+tx_foundInPending           : '待機中の処理が見つかりました。',
+tx_foundInPending_1         : 'あなたの処理が、現在接続中のノードの処理待ちプールの中で見つかりました。',
+tx_foundInPending_2         : '現在待機中です（発掘待ち）。',
+tx_foundInPending_3         : 'この処理を取り消す、あるいは置き換えることができます。下記のお財布をアンロックしてください。 ',
+tx_FoundOnChain             : '処理が見つかりました',
+tx_FoundOnChain_1           : 'あなたの待機中の処理は発掘されてブロックチェーンに載りました。',
+tx_FoundOnChain_2           : '**もし赤い `( ! )`, `BAD INSTRUCTION` あるいは `OUT OF GAS` のエラーメッセージを見つけたら**, これは、処理送出に失敗したということです。処理の取り消しや置き換えはできません。代わりに、新しい処理を送出してください。 "Out of Gas" エラーの場合には, ガスリミットをはじめに指定した値の倍にしてください。',
+tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
+
+/* Gen Wallet Updates */
+GEN_Help_1                  : 'この', /* Use your */
+GEN_Help_2                  : 'で自分の口座にアクセスしてください。', /* to access your account. */
+GEN_Help_3                  : '自分のデバイスそのものが、自分のお財布です。',　/* Your device * is * your wallet. */
+GEN_Help_4                  : 'ガイドとＦＡＱ',　/* Guides & FAQ */
+GEN_Help_5                  : 'お財布の作り方', /* How to Create a Wallet */
+GEN_Help_6                  : 'ここから始める', /* Getting Started */
+GEN_Help_7                  : '安全な所で保管してください · バックアップを作成してください · 他の誰にも教えないでください · 絶対になくさないでください · 無くした時には回復する方法はありません。',
+GEN_Help_8                  : 'ファイルをダウンロードしませんでしたか？', /* Not Downloading a File? */
+GEN_Help_9                  : 'Google Chromeをお使いください', /* Try using Google Chrome */
+GEN_Help_10                 : '右クリックしてファイルを保存。ファイル名: ', /* Right click & save file as. Filename:  */
+GEN_Help_11                 : 'このファイルは自分のコンピューターで開かないでください', /*Don\'t open this file on your computer */
+GEN_Help_12                 : 'MyEtherWalletの上でこれを使って自分のお財布をアンロックしてください（Mist, Geth, Parityや他のお財布クライアントも可）', /*Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity and other wallet clients.)
+*/
+GEN_Help_13                 : '自分のキーストアファイルのバックアップ作成方法', /*How to Back Up Your Keystore File */
+GEN_Help_14                 : 'これらの方式の違いは？',　/*What are these Different Formats? */
+GEN_Help_15                 : '自分の資金の紛失や盗難を防止する。', /* Preventing loss & theft of your funds. */
+GEN_Help_16                 : 'これらの方式の違いは？', /*What are these Different Formats?*/
+GEN_Help_17                 : 'なぜこれらをすべきか？', /*Why Should I?*/
+GEN_Help_18                 : '２番目のバックアップ作成のため', /*To have a secondary backup.*/
+GEN_Help_19                 : 'パスワードを忘れた場合には', /*In case you ever forget your password.*/
+GEN_Help_20                 : '隔離された保管場所', /*Cold Storage*/
+GET_ConfButton              : '理解できました。続けます。', /*I understand. Continue.*/
+GEN_Label_5                 : '自分の秘密鍵を保存する。', /*Save Your `Private Key`. */
+GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する', /*Unlock your wallet to see your address*/
+GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかる料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」かつ、自分の処理をブロックに配置するためにマイナーに支払われます。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「21 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.*/
+GAS_LIMIT_Desc              : 'ガスリミットは、自分の処理にかかる料金の額です。「使用料金」 = ガス価格 ＊ ガスリミット」で、自分の処理をブロックに配置するための料金に支払われます。 この数字を増やしても、自分の処理が早く発掘されることはありません。ETHの送出 = 「２１０００」。トークンの送出 = ~「２０００００」。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
+NONCE_Desc                  : 'そのnonceは、指定のアドレスから送出される処理の数です。処理が正しい順番で重複しないように確実にするためのものです。',
+TXFEE_Desc                  : 'その処理料金は自分の処理をブロックに配置するためにマイナーに支払われます。「ガスリミット」＊「ガス価格」です。 [GWEI -> ETHの変換はここです。](https://www.myetherwallet.com/helpers.html)',　/*The TX Fee is paid to miners for including your TX in a block. It is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)*/
+
+
+
+
 /* Navigation*/
 NAV_AddWallet               : 'お財布の追加 ',
 NAV_BulkGenerate            : 'バルク作成 ',
@@ -11,6 +75,7 @@ NAV_Contact                 : '連絡する ',
 NAV_Contracts               : '契約 ',
 NAV_DeployContract          : '契約を展開 ',
 NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'お財布の作成 ',
 NAV_Help                    : 'ヘルプ ',
 NAV_InteractContract        : '契約を操作 ',
@@ -26,7 +91,7 @@ NAV_YourWallets             : '自分のお財布 ',
 
 /* General */
 x_Access                    : 'アクセス ',
-x_AddessDesc                : 'これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
+x_AddessDesc                : '自分のアドレスは、アカウント番号やパブリックキーでも知ることができます。誰かとETHやトークンの受け渡しをするために、これらを用います。きれいな色のついたアドレスアイコンを見つけてください。自分のペーパーウォレットや、アドレスを入力する際に、同じアイコンであることをしっかりと確認してください。 これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
 x_Address                   : '自分のアドレス ',
 x_Cancel                    : '取り消す ',
 x_CSV                       : 'CSV ファイル (未暗号化) ',
@@ -36,7 +101,8 @@ x_JsonDesc                  : 'これはパスワードが不要な暗号化さ�
 x_Keystore                  : 'Keystore ファイル (UTC / JSON · 推奨 · 暗号化) ',
 x_Keystore2                 : 'Keystore ファイル (UTC / JSON) ',
 x_KeystoreDesc              : 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。 ',
-x_Ledger                    : 'Ledger Nano S ',
+x_Ledger                    : 'Ledger Wallet ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'ニーモニック文節 ',
 x_ParityPhrase              : 'パリティ文節 ',
 x_Password                  : 'パスワード ',
@@ -58,7 +124,7 @@ MEW_Tagline                 : 'オープンソース JavaScript クライアン�
 CX_Tagline                  : 'オープンソース JavaScript クライアントサイド Etherお財布 Chrome Extension ',
 
 /* Footer */
-FOOTER_1                    : 'イサリアムお財布の作成とトランザクション実行のためのオープンソース、javascript、 クライアントサイドツール。 ',
+FOOTER_1                    : 'イサーリアムお財布の作成とトランザクション実行のためのオープンソース、javascript、 クライアントサイドツール。 ',
 FOOTER_1b                   : '制作 ',
 FOOTER_2                    : '投げ銭に感謝致します！: ',
 FOOTER_3                    : 'クライアントサイドお財布制作 ',
@@ -74,6 +140,8 @@ sidebar_TransHistory        : 'トランザクション履歴 ',
 sidebar_donation            : 'MyEtherWalletは、プライバシーとセキュリティのための無料のオープンソースサービスです。　寄付が増えることによって、新機能やフィードバックの反映を行い、よりユーザーの皆様のご希望に沿った制作の時間を増やす事が可能になります。私たちは、たった二人で世界を変えようとしています。お手伝いいただけますか? ',
 sidebar_donate              : '寄付する ',
 sidebar_thanks              : '感謝します!!! ',
+sidebar_DisplayOnTrezor     : 'TREZORでアドレスを表示',
+sidebar_DisplayOnLedger     : 'Ledgerでアドレスを表示',
 
 /* Chrome Extension */
 CX_error_1                  : 'お財布が保存されていません。["Add Wallet"](/cx-wallet.html#add-wallet)をクリックして追加してください。 ',
@@ -85,7 +153,7 @@ decrypt_Title               : '秘密鍵形式の選択： ',
 decrypt_Select              : 'お財布の選択 ',
 
 /* Add Wallet */
-ADD_Label_1                 : 'ご希望の操作をお選びください ',
+ADD_Label_1                 : 'ご希望の操作方法をお選びください ',
 ADD_Radio_1                 : 'お財布の新規作成 ',
 ADD_Radio_2                 : 'お財布ファイルの選択 (Keystore / JSON) ',
 ADD_Radio_2_alt             : 'お財布ファイルの選択： ',
@@ -93,16 +161,21 @@ ADD_Radio_2_short           : 'お財布ファイルを選択 ',
 ADD_Radio_3                 : '秘密鍵をペースト/タイプ ',
 ADD_Radio_4                 : '監視するアカウントを追加 ',
 ADD_Radio_5                 : 'ニーモニックを上書き/タイプ ',
-ADD_Radio_5_Path            : 'Select HD derivation path ',
-ADD_Radio_5_PathCustom      : 'Custom',
+ADD_Radio_5_Path            : 'HD derivation pathを選択 ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
+ADD_Radio_5_PathCustom      : 'カスタム',
 ADD_Label_2                 : 'ニックネームの作成： ',
 ADD_Label_3                 : 'お財布が暗号化されています。パスワードを入力してください： ',
 ADD_Label_4                 : '監視するアカウントを追加 ',
-ADD_Warning_1               : 'お財布タブには、秘密鍵をアップロードせずに任意の監視するアカウントを追加する事ができます。これによってお財布の操作や、ETHERの移動が可能になるわけではありません。 ',
+ADD_Warning_1               : '任意のアカウントを監視する目的で、秘密鍵をアップロードせずにお財布タブに追加することできます。これによってお財布の操作や、ETHERの移動が可能になるわけではありません。 ',
 ADD_Label_5                 : 'アドレスを入力 ',
 ADD_Label_6                 : 'お財布をアンロック： ',
 ADD_Label_6_short           : 'アンロック ',
 ADD_Label_7                 : 'アカウント追加 ',
+ADD_Label_8                 : 'パスワード（任意）: ',
 
 /* Mnemonic */
 MNEM_1                      : '操作したいアドレスを選択してください。 ',
@@ -111,15 +184,22 @@ MNEM_more                   : 'さらにアドレスを表示 ',
 MNEM_prev                   : '前のアドレス表示 ',
 
 /* Hardware wallets */
-ADD_Ledger_1                : '自分の Ledger Nano S　を接続する ',
+ADD_Ledger_1                : '自分の Ledger Wallet　を接続する ',
 ADD_Ledger_2                : 'イサリアムアプリケーション（あるいはコントラクトアプリケーション）を開く　。 ',
 ADD_Ledger_3                : '設定中で、ブラウザサポートが有効にされていることを確認してください。 ',
 ADD_Ledger_4                : '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
 ADD_Ledger_0b               : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
-ADD_Ledger_scan             : 'Ledger Nano S　に接続 ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
+ADD_Ledger_scan             : 'Ledger Wallet　に接続 ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
+ADD_Trezor_scan             : 'TREZORに接続する ',
+ADD_Trezor_select           : 'これはTREZORのシードです ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
+ADD_DigitalBitbox_0b        : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
+ADD_DigitalBitbox_scan      : 'DigitalBitboxに接続する ',
 
 /* Generate Wallets */
 GEN_desc                    : '複数のお財布の作成をこのタブで行う事ができます： ',
@@ -178,9 +258,9 @@ TRANSModal_Content_1        : '**ETH(標準トランザクション): ** これ�
 TRANSModal_Content_2        : '**ETHのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETH**チェーンのみに送出します。 ',
 TRANSModal_Content_3        : '**ETCのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETC**チェーンのみに送出します。 ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** スタンダードトランザクションのみで送出します。どちらかのみのコントラクトで送出する場合には、サポートスタッフに連絡して、手動で残高に追加したり払い戻しをする必要があります。[Shapeshiftの「スプリット」ツールも使用可能です。(https://split.shapeshift.io/) ',
-TRANSModal_Content_5        : '**Kraken & Poloniex:** No known issues. Use whatever. ',
+TRANSModal_Content_5        : '**Kraken & Poloniex:** 問題は確認されていません。どれでもお使いください。 ',
 TRANSModal_Yes              : '理解しました。 ',
-TRANSModal_No               : '理解できません。ヘルプが必要です。 ',
+TRANSModal_No               : 'わかりません。おしえてください。 ',
 
 /* Offline Transaction */
 OFFLINE_Title               : 'オフライントランザクションを作成し送出 ',
@@ -224,14 +304,14 @@ MYWAL_Address               : 'お財布アドレス ',
 MYWAL_Bal                   : '残高 ',
 MYWAL_Edit                  : '編集 ',
 MYWAL_View                  : '表示 ',
-MYWAL_Remove                : '除去 ',
-MYWAL_RemoveWal             : 'お財布を除去： ',
-MYWAL_WatchOnly             : '自分の監視専用アカウント ',
+MYWAL_Remove                : '消去 ',
+MYWAL_RemoveWal             : 'お財布を消去： ',
+MYWAL_WatchOnly             : '監視中のアカウント ',
 MYWAL_Viewing               : 'お財布を表示： ',
 MYWAL_Hide                  : 'お財布情報を隠す ',
 MYWAL_Edit_2                : 'お財布を編集： ',
 MYWAL_Name                  : 'お財布名 ',
-MYWAL_Content_1             : '警告！　お財布を除去しようとしています： ',
+MYWAL_Content_1             : '警告！　お財布を消去しようとしています： ',
 MYWAL_Content_2             : '**秘密鍵と鍵保存ファイル及びパスワード**が保管されているか確認してください。 ',
 MYWAL_Content_3             : 'MyEtherWallet CXでこのお財布を使用するためには、秘密鍵あるいはJSONとパスワードを手動で追加する必要があります。 ',
 
@@ -247,7 +327,7 @@ NODE_CTA                    : '保存してカスタムノードを使用',
 SWAP_rates                  : "現在のレート ",
 SWAP_init_1                 : "これから両替で ",
 SWAP_init_2                 : " を ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "やりましょう　！ ", // or "Continue"
+SWAP_init_CTA               : "次へ ", // or "Continue"
 SWAP_information            : "あなたの情報 ",
 SWAP_send_amt               : "送出総額 ",
 SWAP_rec_amt                : "受け取り総額 ",
@@ -256,6 +336,7 @@ SWAP_rec_add                : "受け取りアドレス ",
 SWAP_start_CTA              : "交換開始 ",
 SWAP_ref_num                : "参照番号 ",
 SWAP_time                   : "送出するまでにあと、 ",
+SWAP_elapsed				        : "Time elapsed since sent ", 
 SWAP_progress_1             : "注文を開始しました ",
 SWAP_progress_2             : "到着待機中 ", // Waiting for your BTC...
 SWAP_progress_3             : "ETH受け取り完了 ", // ETH Received!
@@ -276,7 +357,9 @@ MSG_info3                   : '異なった目的で使用されないように�
 /* View Wallet Details */
 VIEWWALLET_Subtitle         : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。[import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)する時に必要です。残高をチェックするためには、[etherscan.io](http://etherscan.io/)のようなブロックチェーンエクスプローラーサービスを使う事をおすすめします。 ',
 VIEWWALLET_Subtitle_Short   : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。 ',
-VIEWWALLET_SuccessMsg       : '成功! お財布の詳細は以下の通りです。 ',
+VIEWWALLET_SuccessMsg       : '成功しました! お財布の詳細は以下の通りです。 ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Error Messages */
 ERROR_0                     : '正しい値を入力してください。 ',
@@ -286,20 +369,20 @@ ERROR_3                     : '正しいお財布ファイルではありませ�
 ERROR_4                     : 'この単位は存在しませんので、下記の中からお選びください。 ',
 ERROR_5                     : '無効なアドレスです。 ',
 ERROR_6                     : '無効なパスワードです。 ',
-ERROR_7                     : '無効な総量です。 ',
-ERROR_8                     : '無効なガスリミットです。 ',
-ERROR_9                     : '無効なデータです。 ',
-ERROR_10                    : '無効なガス総量です。 ',
-ERROR_11                    : '無効な nonce　です。 ',
+ERROR_7                     : '無効な総量です。 (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : '無効なガスリミットです。 (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : '無効なデータです。 (Must be hex.) ', // 9
+ERROR_10                    : '無効なガス総量です。 (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : '無効な nonce　です。 (Must be integer.) ', // 11
 ERROR_12                    : '無効な署名のトランザクションです。 ',
 ERROR_13                    : '同じニックネームのお財布が既にあります。 ',
 ERROR_14                    : 'お財布が見つかりません。 ',
 ERROR_15                    : 'このIDのプロポーサルは存在しない、あるいは正常に読み込みできません。 ',
 ERROR_16                    : '同じアドレスのお財布が既に存在します。お財布のページをご確認ください。 ',
-ERROR_17                    : 'ガスとして使われるために、少なくとも0.01 etherがお財布上に必要です。 ',
+ERROR_17                    : '"ファンドが足りません。 トランザクション送出元のファンドが不足しています。ガスとして使われるために、少なくとも0.01 etherがお財布上に必要です。 ',
 ERROR_18                    : '全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。 ',
 ERROR_19                    : '無効なシンボル ',
-ERROR_20                    : '　は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。 ',
+ERROR_20                    : ' は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。 ',
 ERROR_21                    : 'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。 ',
 ERROR_22                    : '正しいノード名を入力してください ',
 ERROR_23                    : '正しいURLを入力してください。 HTTPS接続の場合には、ノードはHTPPSで接続しなければなりません。 ',
@@ -311,10 +394,16 @@ ERROR_28                    : 'お財布を操作するためには**Keystore/JS
 ERROR_29                    : '正しいユーザーとパスワードを入力してください ',
 ERROR_30                    : '正しい ENS名を入力してください ',
 ERROR_31                    : '無効な秘密フレーズです ',
-ERROR_32                    : 'ノードに接続できませんでした。ページを更新、あるいはヘルプページを参照して問題解決の指針にしてください。  ',
+ERROR_32                    : 'ノードに接続できませんでした。ページを再表示したり、別のノード（画面の右上にあります）を試したり,ファイアーウォールの設定を確認してください。 カスタムノードの使用時には、構成設定を確認してください。', // 32
+ERROR_33                    : 'アンロックしたお財布のアドレスがオーナーのアドレスと一致しません。', // 33
+ERROR_34                    : '以前に入力したものと異なる名前です。 ', // 34
+ERROR_35                    : 'チェックサムが付いていません。 <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> 詳細</a>', // 35
+ERROR_36                    : '正しいトランザクションハッシュを入力してください', // 36
+ERROR_37                    : '１６進数を正しく入力してください (0-9, a-f)', // 37
+
 SUCCESS_1                   : '有効なアドレス ',
 SUCCESS_2                   : 'お財布は正常に暗号解除されました。 ',
-SUCCESS_3                   : 'トランザクションが送出されました。 TX ID ',
+SUCCESS_3                   : 'トランザクションはブロックチェイン上に展開されています。ガス不足や契約実行エラーがないことを確認するために、下のボタンをクリックしてトランザクション(TX)を表示してください。 TX Hash:  ', //'トランザクションが送出されました。 TX Hash ',
 SUCCESS_4                   : 'お財布が追加されました： ',
 SUCCESS_5                   : '選択されました： ',
 SUCCESS_6                   : '接続完了しました ',
@@ -323,10 +412,10 @@ WARN_Send_Link              : '自分のアドレス、リンク、ガス、デ�
 
 /* Parity Error Messages */
 PARITY_AlreadyImported      : "同じハッシュのトランザクションがすでにインポートされています。",
-PARITY_Old                  : "Transaction nonceが小さすぎます。増やしてみてください。",
-PARITY_TooCheapToReplace    : "Transaction fee が小さすぎます。同じ nonce のトランザクションが別のキューにあります。fee または nonce を増やしてみてください。",
+PARITY_Old                  : "トランザクション nonceが小さすぎます。増やしてみてください。",
+PARITY_TooCheapToReplace    : "トランザクションフィー不足です。同じ nonce のトランザクションが別のキューにあります。fee または nonce を増やしてみてください。",
 PARITY_LimitReached         : "キューにあるトランザクションの数が多すぎます。上限を超えたため、対象のトランザクションは除外されています。その fee を増やしてみてください。",
-PARITY_InsufficientGasPrice : "Transaction fee が小さすぎます。 ノードの最小 fee を満たしていません。 (minimal: {}, got: {}). fee を増やしてください。",
+PARITY_InsufficientGasPrice : "トランザクションフィー不足です。 ノードの最小 fee を満たしていません。 (minimal: {}, got: {}). fee を増やしてください。",
 PARITY_InsufficientBalance  : "ファンドが足りません。 トランザクション送出元のファンドが不足しています。 必要量 {} で 現在： {}　　です。",
 PARITY_GasLimitExceeded     : "トランザクションコストがガスリミットを超過しました。 リミット： {}, 現在: {}. ガス供給量を減らして見てください。",　　　/* increasing gas limit??? */
 PARITY_InvalidGasLimit      : "ガス供給量が制限を超過しています。",
@@ -344,7 +433,7 @@ GETH_NegativeValue          : '負の値です ',
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',
-Translator_Desc             : 'トランスレーターにお恵みの投げ銭： ',
+Translator_Desc             : '日本語開発者に投げ銭： ',
 TranslatorName_1            : '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ',
 /* Translator 1             : Kazunori Seki / 関一典 */
@@ -383,7 +472,6 @@ HELP_1_Desc_3               : 'Enter a strong password. If you think you may for
 HELP_1_Desc_4               : 'Click "GENERATE". ',
 HELP_1_Desc_5               : 'Your wallet has now been generated. ',
 
-HELP_2a_Title               : '2a) How do I save/backup my wallet? ',
 HELP_2a_Desc_1              : 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. ',
 HELP_2a_Desc_2              : 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. ',
 HELP_2a_Desc_3              : 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys: ',
@@ -393,7 +481,7 @@ HELP_2a_Desc_6              : 'Keep in mind, you must prevent loss of the keys a
 
 HELP_2b_Title               : '2b) How do I safely / offline / cold storage with MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Click on `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Click on `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Move zip to an airgapped computer. ',
 HELP_2b_Desc_4              : 'Unzip it and double-click `index.html`. ',
 HELP_2b_Desc_5              : 'Generate a wallet with a strong password. ',
@@ -423,7 +511,7 @@ HELP_4_Desc_9               : 'Click "Generate Transaction". ',
 HELP_4_Desc_10              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_4_Desc_11              : 'Click the blue "Send Transaction" button below that. ',
 HELP_4_Desc_12              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_4_Desc_13              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_4_Desc_13              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_4CX_Title              : '4) How do I send Ether using MyEtherWallet CX? ',
 HELP_4CX_Desc_1             : 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Ether送出 トークン送出" page. ',
@@ -470,7 +558,7 @@ HELP_7_Desc_11              : 'Click "Generate Transaction". ',
 HELP_7_Desc_12              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_7_Desc_13              : 'Click the blue "Send Transaction" button below that. ',
 HELP_7_Desc_14              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_7_Desc_15              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_7_Desc_15              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_8_Title                : '8) What happens if your site goes down? ',
 HELP_8_Desc_1               : 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. ',

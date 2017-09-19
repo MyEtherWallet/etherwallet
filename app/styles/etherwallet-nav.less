@@ -19,9 +19,9 @@
       flex-basis: 245px;
     }
     img {
-      max-width: 1000px;
-      padding: 5px 0;
-      min-width: 220px;
+      max-width: 20rem;
+      padding: @space-xs 0;
+      min-width: 13rem;
     }
   }
   .tagline {
@@ -30,13 +30,9 @@
     color: white;
     flex: 1 auto;
     text-align: right;
-    padding: 5px 0;
+    padding: @space-xs 0;
     @media screen and (max-width: 900px) {
       text-align: center;
-    }
-    > * {
-      display: inline;
-      vertical-align: middle;
     }
   }
   a {
@@ -44,6 +40,7 @@
     cursor: pointer;
     font-weight: 400;
     transition: 250ms all ease;
+    display: inline-block;
   }
   a:hover,
   a:active {
@@ -53,18 +50,35 @@
     transition: 250ms all ease;
   }
   .dropdown {
-    padding: 0;
-    text-align: right;
+    padding: @space-xs 0;
     white-space: nowrap;
+    display: inline-block;
+    font-size: 14px;
     .dropdown-menu {
       right: -10px;
       left: auto;
       min-width: auto;
       left: auto;
+      top: 2.45rem;
+      font-size: 14px;
       & > li > a {
-        font-size: 15px;
-        padding: 5px 30px 5px 15px;
+        font-size: 14px;
+        padding: @space-xs 30px @space-xs 15px;
         position: relative;
+      }
+    }
+  }
+  .dropdown-toggle { font-size: 14px; padding: .4rem 1rem; }
+  .dropdown-gas {
+    display: inline-block;
+    .dropdown-menu{
+      min-width: 100%;
+      padding: .5rem;
+      margin: 0;
+      left: 0;
+      right: 0;
+      p {
+        padding: 0;
       }
     }
   }
@@ -92,7 +106,7 @@
       margin: 0 -5% -20px;
     }
     .nav-inner {
-      border-bottom: 2px solid @gray-lighter;
+      border-bottom: 2px solid white;
       display: inline-block;
       font-size: 0;
       margin-bottom: 20px;

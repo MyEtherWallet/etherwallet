@@ -1,18 +1,8 @@
 <footer>
-  <div class="container">
-    <p>
-      <a href="https://www.myetherwallet.com" target="_blank">MyEtherWallet.com</a>:
-      Open-Source, client-side tool for easily & securely interacting with the Ethereum network.
-      Created by <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.
-    </p>
-    <p>
-    <a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank">www.MyEtherWallet.com</a> &middot;
-    <a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com & CX</a> &middot;
-    <a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet (Org)</a> &middot;
-    <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank">Twitter</a> &middot;
-    <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank">Facebook</a> &middot;
-    <a aria-label="email support at myetherwallet.com" href="mailto:support@myetherwallet.com" target="_blank">Email</a>
-  </div>
-</footer>
+
+<script type='application/ld+json'>{"@context":"http://schema.org","@type":"Organization","@id":"#organization","url":"https://www.myetherwallet.com/","name":"MyEtherWallet",
+"logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png","description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.","sameAs":["https://www.myetherwallet.com/","https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm","https://www.facebook.com/MyEtherWallet/","https://twitter.com/myetherwallet","https://medium.com/@myetherwallet_96408","https://myetherwallet.groovehq.com/help_center","https://github.com/kvhnuke/etherwallet","https://github.com/MyEtherWallet","https://kvhnuke.github.io/etherwallet/","https://github.com/kvhnuke/etherwallet/releases/latest","https://github.com/409H/EtherAddressLookup","https://myetherwallet.slack.com/","https://myetherwallet.herokuapp.com/","https://www.reddit.com/r/MyEtherWallet/","https://www.reddit.com/user/insomniasexx/","https://www.reddit.com/user/kvhnuke/","https://www.reddit.com/user/myetherwallet"]}</script>
+
 </body>
+
 </html>

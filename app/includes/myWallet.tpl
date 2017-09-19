@@ -1,28 +1,26 @@
 <!-- My Wallet Page -->
-<article class="tab-pane active myWalletCtrl" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
-
-
+<main class="tab-pane active myWalletCtrl" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
 
 
   <!-- Your Wallet Table -->
   <h1 translate="NAV_YourWallets"> Your Wallets </h1>
   <table class="table table-striped" id="tblwalletsmain">
     <tr ng-repeat="twallet in allWallets track by $index">
-      <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
-      <td>
+      <td width="10"><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
+      <td width="10">
         <h2>{{twallet.nick}} </h2>
         <span class="mono small">{{twallet.addr}}</span>
       </td>
-      <td class="chrome-tokens">
-        <h3 class="text-success col-xs-12 point" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)" >{{twallet.balance|number}} ETH</h3>
-        <h3 class="text-success col-xs-12 point" ng-show="showLongBal" ng-dblclick="showLongBal=!showLongBal">{{twallet.balance }} ETH</h3>
-        <div class="small col-xs-6 point" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'" ng-dblclick="showLongToken=!showLongToken" title="{{token.getBalance()}} (Double-Click)">
+      <td width="500" class="chrome-tokens">
+        <h3 class="text-success point" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)" >{{twallet.balance|number}} ETH</h3>
+        <h3 class="text-success point" ng-show="showLongBal" ng-dblclick="showLongBal=!showLongBal">{{twallet.balance }} ETH</h3>
+        <span class="point" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'" ng-dblclick="showLongToken=!showLongToken" title="{{token.getBalance()}} (Double-Click)">
           <strong ng-show="!showLongToken">{{token.getBalance()|number}} </strong>
           <strong ng-show="showLongToken"> {{token.getBalance()}} </strong>
           {{token.getSymbol()}} &nbsp;&nbsp;
-        </div>
+        </span>
       </td>
-      <td class="text-center">
+      <td width="100" class="text-center" style="white-space: nowrap">
         <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a>
         <a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View" /></a>
         <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove-red.svg" title="Remove" /></a>
@@ -43,14 +41,14 @@
           <span class="mono small"> {{twallet.addr}} </span>
         </td>
         <td class="chrome-tokens">
-          <h3 class="text-success col-xs-12 point" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)" >{{twallet.balance|number}} ETH</h3>
-          <h3 class="text-success col-xs-12 point" ng-show="showLongBal" ng-dblclick="showLongBal=!showLongBal">{{twallet.balance }} ETH</h3>
+          <h3 class="text-success point" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)" >{{twallet.balance|number}} ETH</h3>
+          <h3 class="text-success point" ng-show="showLongBal" ng-dblclick="showLongBal=!showLongBal">{{twallet.balance }} ETH</h3>
 
-          <div class="small col-xs-6 point" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'" ng-dblclick="showLongToken=!showLongToken" title="{{token.getBalance()}} (Double-Click)">
+          <span class="point" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'" ng-dblclick="showLongToken=!showLongToken" title="{{token.getBalance()}} (Double-Click)">
             <strong ng-show="!showLongToken">{{token.getBalance()|number}} </strong>
             <strong ng-show="showLongToken"> {{token.getBalance()}} </strong>
             &nbsp;{{token.getSymbol()}} &nbsp;&nbsp;
-          </div>
+          </span>
         </td>
          <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove-red.svg" title="Remove" /></a></td>
       </tr>
@@ -61,29 +59,21 @@
 
   <!-- View Wallet Section -->
   <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
-    <section class="row">
-   <div class="col-sm-12 text-right" style="margin-top: 16px;" ng-show="wallet!=null">
+    <div class="col-sm-12 text-right" style="margin: 1rem 0;" ng-show="wallet!=null">
       <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
-      <br />
     </div>
+    @@include( './viewWalletInfo-content.tpl', { "site": "cx" } )
   </section>
-      @@include( './viewWalletInfo-content.tpl', { "site": "cx" } )
-      <br /><hr />
-      <main ng-controller='signMsgCtrl'>
-        @@include( './signMsg.tpl', { "site": "cx" } )
-      </main>
-      </section>
-    </section>
   <!-- / View Wallet Section -->
 
 
   <!-- Edit Modal -->
-  <div class="modal fade" id="editWallet" tabindex="-1" role="dialog" aria-labelledby="editWalletLabel">
+  <section class="modal fade" id="editWallet" tabindex="-1" role="dialog" aria-labelledby="editWalletLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title text-primary" id="myModalLabel">
+          <h3 class="modal-title text-primary">
             <span translate="MYWAL_Edit_2">Edit Wallet:</span>
             {{viewWallet.addr}}
           </h3>
@@ -103,17 +93,17 @@
 
       </div>
     </div>
-  </div>
+  </section>
   <!--/edit modal-->
 
 
   <!-- View Private Key Modal -->
-  <div class="modal fade" id="viewWalletDetails" tabindex="-1" role="dialog" aria-labelledby="viewKeyLabel" ng-init="showPass=true">
+  <section class="modal fade" id="viewWalletDetails" tabindex="-1" role="dialog" aria-labelledby="viewKeyLabel" ng-init="showPass=true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title text-warning" id="myModalLabel">
+          <h3 class="modal-title text-warning">
             <span translate="NAV_ViewWallet">View Wallet Info</span>:
             {{viewWallet.nick}}
           </h3>
@@ -137,17 +127,17 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!--/View Private Key Modal-->
 
 
   <!-- Remove Modal -->
-  <div class="modal fade" id="removeWallet" tabindex="-1" role="dialog" aria-labelledby="removeWalletLabel">
+  <section class="modal fade" id="removeWallet" tabindex="-1" role="dialog" aria-labelledby="removeWalletLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title text-danger" id="myModalLabel">
+          <h3 class="modal-title text-danger">
             <span translate="MYWAL_Content_1"> Warning! You are about to remove your wallet: </span> {{viewWallet.nick}}
           </h3>
         </div>
@@ -162,9 +152,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!--/ Remove modal-->
 
 
-</article>
+</main>
 <!-- / My Wallet Page -->

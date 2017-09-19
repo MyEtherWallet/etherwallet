@@ -1,9 +1,69 @@
 // Italian
-// Last sync with en.js     : commit d607fbe14c836b83c39a2e2b26ad6388786ba0d2
+// Last sync with en.js     : commit ff3b9cb53afbdf9936d4655f0a0af210f926daef
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
+
+/* New Generics */
+x_CancelReplaceTx           : 'Annulla o sostituisci la transazione',
+x_CancelTx                  : 'Annulla transazione',
+x_PasswordDesc              : 'Questa password * crittografa * la chiave privata. Non funge da seme per generare nuove chiavi. **Avrai bisogno di questa password e della chiave privata per sbloccare il portafoglio.**',
+x_ReadMore                  : 'Altre informazioni',
+x_ReplaceTx                 : 'Sostituisci transazione',
+x_TransHash                 : 'Hash della transazione',
+x_TXFee                     : 'Commissione transazione',
+x_TxHash                    : 'Hash transazione',
+
+/* Check TX Status */
+NAV_CheckTxStatus           : 'Controlla lo stato della transazione',
+NAV_TxStatus                : 'Stato transazione',
+tx_Details                  : 'Dettagli della transazione',
+tx_Summary                  : 'Nei periodi di traffico intenso (come durante le ICO) le transazioni possono rimanere in attesa per ore, o anche giorni. Questo strumento cerca di darti la possibilità di trovare e "annullare" / sostituire queste transazioni. ** Non è normalmente possibile farlo. Non dovresti farci affidamento, e funziona solo quando i *pool* delle transazioni sono pieni. [Altre informazioni su questo strumento qui.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_notFound                 : 'Transazione non trovata',
+tx_notFound_1               : 'Impossibile trovare questa transazione nel *pool* delle transazioni del nodo a cui sei connesso.',
+tx_notFound_2               : 'Se l\'hai appena inviata, attendi 15 secondi e premi di nuovo il pulsante "Controlla lo stato della transazione". ',
+tx_notFound_3               : 'Potrebbe trovarsi ancora nel *pool* delle transazioni di un altro nodo, in attesa di essere inclusa in un blocco.',
+tx_notFound_4               : 'Utilizza il menu a discesa in alto a destra e scegli un altro nodo ETH (ad esempio `ETH (Etherscan.io)` o `ETH (Infura.io)` o `ETH (MyEtherWallet)`) e ricontrolla.',
+tx_foundInPending           : 'Transazione in sospeso trovata',
+tx_foundInPending_1         : 'La transazione è stata individuata nel *pool* delle transazioni del nodo a cui sei connesso. ',
+tx_foundInPending_2         : 'Al momento è in sospeso (in attesa di essere inclusa in un blocco). ',
+tx_foundInPending_3         : 'Forse è possibile "annullare" o sostituire questa transazione. Sblocca il portafoglio qui sotto.',
+tx_FoundOnChain             : 'Transazione trovata',
+tx_FoundOnChain_1           : 'La transazione è stata correttamente inclusa in un blocco e ora si trova sulla *blockchain*.',
+tx_FoundOnChain_2           : '**Se vedi un `( ! )` rosso, un messaggio di errore `BAD INSTRUCTION` o `OUT OF GAS`**, significa che la transazione non è stata correttamente *inviata*. Non puoi annullare o sostituire questa transazione. Puoi però inviarne una nuova. Se hai ricevuto un messaggio di errore "Out of Gas", dovresti raddoppiare il limite gas che avevi indicato in origine.',
+tx_FoundOnChain_3           : '**Se non vedi errori, la transazione è stata inviata correttamente.** I tuoi ETH o i tuoi token sono dove li hai inviati. Se non vedi questi ETH o token nell\'altro portafoglio / nel conto della piattaforma di scambio, e se sono passate più di 24 ore dall\'invio, [contatta quel servizio esterno](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Invia loro il *link* alla transazione e chiedi, cortesemente, di controllare la tua situazione.',
+
+/* Gen Wallet Updates */
+GEN_Help_1                  : 'Usa il tuo',
+GEN_Help_2                  : 'per accedere al tuo conto.',
+GEN_Help_3                  : 'Il tuo dispositivo * è * il tuo portafoglio.',
+GEN_Help_4                  : 'Guide & FAQ',
+GEN_Help_5                  : 'Come creare un portafoglio',
+GEN_Help_6                  : 'Per iniziare',
+GEN_Help_7                  : 'Mantienilo al sicuro · Fai un backup · Non condividerlo con nessuno · Non perderlo · Non si può ripristinare se lo perdi.',
+GEN_Help_8                  : 'Non riesci a scaricare il file? ',
+GEN_Help_9                  : 'Prova ad usare Google Chrome ',
+GEN_Help_10                 : 'Fai clic col destro e scegli "Salva con nome". Nome file: ',
+GEN_Help_11                 : 'Non aprire questo file sul tuo computer ',
+GEN_Help_12                 : 'Usalo per sbloccare il portafoglio tramite MyEtherWallet (o Mist, Geth, Parity e altri client.) ',
+GEN_Help_13                 : 'Come fare il backup del file Keystore ',
+GEN_Help_14                 : 'Che cosa sono tutti questi formati? ',
+GEN_Help_15                 : 'Evitare la perdita &amp; il furto dei tuoi fondi.',
+GEN_Help_16                 : 'Che cosa sono tutti questi formati?',
+GEN_Help_17                 : 'Perché dovrei farlo?',
+GEN_Help_18                 : 'Per avere un backup secondario.',
+GEN_Help_19                 : 'Nel caso ti dimenticassi la password.',
+GEN_Help_20                 : 'Portafoglio offline',
+GET_ConfButton              : 'Ho capito. Continua.',
+GEN_Label_5                 : 'Salva la tua `chiave privata`. ',
+GEN_Unlock                  : 'Sblocca il portafoglio per vedere l\'indirizzo',
+GAS_PRICE_Desc              : 'Il prezzo gas è la somma che paghi per unità di gas. `Commissione transazione = prezzo gas * limite gas` e si paga ai *miner* perché includano la tua transazione in un blocco. Più alto il prezzo gas = più veloce la transazione, ma più costosa. Di default è `21 GWEI`.',
+GAS_LIMIT_Desc              : 'Il limite gas è la quantità di gas da inviare con la transazione. `Commissione transazione` = prezzo gas * limite gas e si paga ai *miner* perché includano la tua transazione in un blocco. Aumentare questo numero non farà in modo che la tua transazione sia inclusa prima. Invio di ETH = `21000`. Invio di token = ~`200000`.',
+NONCE_Desc                  : 'Il *nonce* è il numero di transazioni inviate da un certo indirizzo. Fa in modo che le transazioni siano inviate nel giusto ordine e non più di una volta.',
+TXFEE_Desc                  : 'La commissione transazione si paga ai *miner* perché includano la transazione in un blocco. Si calcola come `limite gas` * `prezzo gas`. [Puoi calcolare la conversione GWEI -> ETH qui](https://www.myetherwallet.com/helpers.html)',
+
+
 
 /* Navigation*/
 NAV_AddWallet               : 'Aggiungi portafoglio ',
@@ -12,7 +72,8 @@ NAV_Contact                 : 'Contatti ',
 NAV_Contracts               : 'Contratti ',
 NAV_DeployContract          : 'Pubblica contratto ',
 NAV_ENS                     : 'ENS',
-NAV_GenerateWallet          : 'Genera portafoglio ',
+NAV_GenerateWallet_alt      : 'Nuovo portafoglio ',
+NAV_GenerateWallet          : 'Crea nuovo portafoglio ',
 NAV_Help                    : 'Aiuto ',
 NAV_InteractContract        : 'Interagisci con un contratto ',
 NAV_Multisig                : 'Multifirma ',
@@ -27,7 +88,7 @@ NAV_YourWallets             : 'I tuoi portafogli ',
 
 /* General */
 x_Access                    : 'Accedi ',
-x_AddessDesc                : 'Potresti sentirlo chiamare "Numero di conto" o "Chiave pubblica". È ciò che dai a chi ti vuole inviare degli ether. L\'icona è un modo facile di riconoscere il tuo indirizzo. ',
+x_AddessDesc                : 'Il tuo indirizzo può anche essere chiamato `Numero di conto` o `Chiave pubblica`. È ciò che condividi con chi ti vuole inviare degli ether o dei token. Individua l\'icona colorata dell\'indirizzo. Assicurati che corrisponda al tuo portafoglio cartaceo e controllala ogni volta che inserisci il tuo indirizzo da qualche parte.',
 x_Address                   : 'Il tuo indirizzo ',
 x_Cancel                    : 'Annulla ',
 x_CSV                       : 'File CSV (non crittografato) ',
@@ -37,6 +98,7 @@ x_JsonDesc                  : 'Questa è la tua chiave privata in formato JSON n
 x_Keystore                  : 'File Keystore (UTC / JSON · Consigliato · Crittografato) ',
 x_Keystore2                 : 'File Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Frase mnemonica ',
 x_ParityPhrase              : 'Frase di Parity ',
 x_Password                  : 'Password ',
@@ -57,7 +119,7 @@ MEW_Tagline                 : 'Portafoglio ether JavaScript lato client Open Sou
 CX_Tagline                  : 'Portafoglio ether JavaScript lato client Open Source (Estensione Chrome) ',
 
 /* Footer */
-FOOTER_1                    : 'Strumento open source lato client per interagire facilmente e in modo sicuro con la rete Ethereum. ',
+FOOTER_1                    : 'Interfaccia gratuita, open source, lato client per generare portafogli Ethereum e altro. Interagisci con la *blockchain* Ethereum facilmente e in modo sicuro. Controlla bene l\'URL ( .com ) prima di sbloccare un portafoglio.',
 FOOTER_1b                   : 'Creato da ',
 FOOTER_2                    : 'Donazioni molto apprezzate: ',
 FOOTER_3                    : 'Generazione portafogli lato client da parte di ',
@@ -73,6 +135,8 @@ sidebar_TransHistory        : 'Storico transazioni ',
 sidebar_donation            : 'MyEtherWallet è un servizio gratuito e open-source votato alla tua privacy e sicurezza. Più donazioni riceviamo, più tempo dedichiamo a creare nuove funzionalità, considerare i tuoi commenti, e darti ciò che vuoi. Siamo solo due persone che provano a cambiare il mondo. Ci aiuti? ',
 sidebar_donate              : 'Dona ',
 sidebar_thanks              : 'GRAZIE!!! ',
+sidebar_DisplayOnTrezor     : 'Visualizza indirizzo sul TREZOR',
+sidebar_DisplayOnLedger     : 'Visualizza indirizzo sul Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Come vuoi accedere al tuo portafoglio? ',
@@ -89,6 +153,10 @@ ADD_Radio_3                 : 'Incolla/Inserisci la tua chiave privata ',
 ADD_Radio_4                 : 'Aggiungi un conto da osservare ',
 ADD_Radio_5                 : 'Incolla/Inserisci la tua frase mnemonica ',
 ADD_Radio_5_Path            : 'Seleziona un percorso di derivazione HD ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'altro',
 ADD_Label_2                 : 'Crea un nome: ',
 ADD_Label_3                 : 'Il portafoglio è crittografato. Inserire la password ',
@@ -102,12 +170,12 @@ ADD_Label_8                 : 'Password (facoltativo): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Se vuoi generare più portafogli, puoi farlo qui ',
-GEN_Label_1                 : 'Inserisci una password robusta (almeno 9 caratteri) ',
+GEN_Label_1                 : 'Inserisci una password',
 GEN_Placeholder_1           : 'NON dimenticarti di salvarla! ',
 GEN_SuccessMsg              : 'Perfetto! Il tuo portafoglio è stato generato. ',
-GEN_Label_2                 : 'Salva il file del tuo portafoglio. Non dimenticare la password che hai inserito. ',
+GEN_Label_2                 : 'Salva il file `Keystore`. ',
 GEN_Label_3                 : 'Salva il tuo indirizzo. ',
-GEN_Label_4                 : 'Facoltativo: stampa il tuo portafoglio cartaceo o salva una versione QR code. ',
+GEN_Label_4                 : 'Stampa il portafoglio cartaceo o un QR code. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Numero di portafogli da generare ',
@@ -143,7 +211,6 @@ TOKEN_hide                  : 'Nascondi token ',
 
 /* Send Transaction */
 TRANS_desc                  : 'Se invece volevi inviare dei token, utilizza la pagina "Invia token". ',
-TRANS_warning               : 'Se usi le opzioni "Solo ETH" o "Solo ETC" invierai tramite un contratto. Certi servizi hanno difficoltà ad accettare queste transazioni. Leggi tutto. ',
 TRANS_advanced              : '+Avanzate: aggiungi dati ',
 TRANS_data                  : 'Dati ',
 TRANS_gas                   : 'Limite gas ',
@@ -211,16 +278,23 @@ MNEM_more                   : 'Altri indirizzi ',
 MNEM_prev                   : 'Indirizzi precedenti ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_0a               : 'Riapri MyEtherWallet su una connessione sicura (SSL) ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_0a               : 'Devi accedere a MyEtherWallet tramite una connessione sicura (SSL / HTTPS) per poterti collegare. ',
 ADD_Ledger_0b               : 'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/) ',
-ADD_Ledger_1                : 'Collega il tuo Ledger Nano S ',
+ADD_Ledger_1                : 'Collega il tuo Ledger Wallet ',
 ADD_Ledger_2                : 'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto) ',
 ADD_Ledger_3                : 'Verifica che il supporto browser sia abilitato nelle impostazioni ',
 ADD_Ledger_4                : 'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_scan             : 'Collegati al Ledger Nano S ',
+ADD_Ledger_scan             : 'Collegati al Ledger Wallet ',
+
+ADD_MetaMask                : 'Collegati a MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Collegati al TREZOR ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Riapri MyEtherWallet su una connessione sicura (SSL) ',
+ADD_DigitalBitbox_0b        : 'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Collega il tuo Digital Bitbox ',
 
 /* CX */
 CX_error_1                  : 'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno! ',
@@ -276,37 +350,43 @@ ERROR_1                     : 'La password deve essere di almeno 9 caratteri. As
 ERROR_2                     : 'Siamo spiacenti! Non riconosciamo questo tipo di file portafoglio. ',
 ERROR_3                     : 'Questo non è un file portafoglio valido. ',
 ERROR_4                     : 'Questa unità non esiste, ti preghiamo di usare una delle seguenti unità ',
-ERROR_5                     : 'Indirizzo non valido. ',
-ERROR_6                     : 'Password non valida. ',
-ERROR_7                     : 'Numero non valido. ',
-ERROR_8                     : 'Limite gas non valido. ',
-ERROR_9                     : 'Valori dati non validi. ',
-ERROR_10                    : 'Quantità di gas non valida. ',
-ERROR_11                    : 'Nonce non valido. ',
+ERROR_5                     : 'Inserisci un indirizzo valido. ',
+ERROR_6                     : 'Inserisci una password valida. ',
+ERROR_7                     : 'Inserisci dei decimali validi. (Deve essere un intero. Prova 0-18.) ', // 7
+ERROR_8                     : 'Inserisci un limite gas valido. (Deve essere un intero. Prova 21000-4000000.) ', // 8
+ERROR_9                     : 'Inserisci un valore valido per i dati. (Deve essere una stringa esadecimale.) ', // 9
+ERROR_10                    : 'Inserisci prezzo valido per il gas. (Deve essere un intero. Prova 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Inserisci un nonce valido. (Deve essere un intero.) ', // 11
 ERROR_12                    : 'Transazione firmata non valida. ',
 ERROR_13                    : 'Esiste già un portafoglio con questo nome. ',
 ERROR_14                    : 'Portafoglio non trovato. ',
-ERROR_15                    : 'Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ',
+ERROR_15                    : 'Ops. Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ', // 15 - NOT USED
 ERROR_16                    : 'C\'è già un portafoglio con questo indirizzo fra quelli salvati. Controlla la pagina dei tuoi portafogli. ',
-ERROR_17                    : 'Ti servono **0,01 ETH** nel conto per coprire i costi del gas. Aggiungi un po\' di ETH e riprova. ',
+ERROR_17                    : 'L\'account dal quale stai provando ad inviare la transazione non ha abbastanza fondi. Se stai inviando token, ti servono 0,01 ETH nel conto per coprire i costi del gas. ',
 ERROR_18                    : 'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato. ',
-ERROR_19                    : 'Simbolo non valido ',
+ERROR_19                    : 'Inserisci un simbolo valido ',
 ERROR_20                    : 'Non è un token ERC-20 valido. ',
 ERROR_21                    : 'Impossibile eseguire una stima del gas necessario. Non ci sono abbastanza fondi nel conto, oppure l\'indirizzo del contratto ricevente genererebbe un errore. Puoi inserire il gas manualmente e procedere. Il messaggio di errore al momento dell\'invio potrebbe contenere ulteriori informazioni. ',
 ERROR_22                    : 'Inserisci un nome di nodo valido ',
-ERROR_23                    : 'Inserisci un URL valido. Se ti stai collegando tramite HTTPS anche il nodo deve utilizzare HTTPS ',
+ERROR_23                    : 'Inserisci un URL valido. Se usi https, l\'URL deve cominciare con https',
 ERROR_24                    : 'Inserisci una porta valida ',
 ERROR_25                    : 'Inserisci un ID catena valido ',
 ERROR_26                    : 'Inserisci una ABI valida ',
 ERROR_27                    : 'Importo minimo: 0.01. Importo massimo: ',
-ERROR_28                    : '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni. ',
+ERROR_28                    : 'Avrai bisogno del `file Keystore + la password` o della `chiave privata` (prossima pagina) per avere accesso a questo portafoglio in futuro.  ', // 28
 ERROR_29                    : 'Inserisci un nome utente e una password validi ',
-ERROR_30                    : 'Inserisci un nome ENS valido ',
-ERROR_31                    : 'Frase segreta non valida ',
-ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, o controlla la pagina di aiuto per ulteriori suggerimenti. ',
+ERROR_30                    : 'Inserisci un nome valido (almeno 7 caratteri, punteggiatura limitata)',
+ERROR_31                    : 'Inserisci una frase segreta valida ',
+ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, prova con un altro nodo (angolo in alto a destra), controlla le impostazioni del firewall. Se si tratta di un nodo personalizzato, controlla la configurazione.', // 32
+ERROR_33                    : 'L\'indirizzo del portafoglio non corrisponde a quello del proprietario. ',
+ERROR_34                    : 'Il nome che stai provando a rivelare non combacia con quello che hai inserito. ',
+ERROR_35                    : 'L\'indirizzo inserito non ha un checksum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Ulteriori informazioni</a>', // 35
+ERROR_36                    : 'Inserisci un hash transazione valido', // 36
+ERROR_37                    : 'Inserisci una stringa esadecimale valida (0-9, a-f)', // 37
+
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
-SUCCESS_3                   : 'Transazione inviata. TX ID ',
+SUCCESS_3                   : 'La transazione è stata inviata alla rete. È in attesa di essere inclusa in un blocco e confermata. Durante le ICO, potrebbero volerci 3 ore o più per la conferma. Utilizza i pulsanti Verifica e Controlla qui sotto per informazioni. Hash transazione:  ',
 SUCCESS_4                   : 'Il portafoglio è stato aggiunto correttamente ',
 SUCCESS_5                   : 'File selezionato ',
 SUCCESS_6                   : 'Ora sei connesso ',
@@ -375,7 +455,7 @@ HELP_1_Desc_3               : 'Inserisci una password robusta. Se pensi di poter
 HELP_1_Desc_4               : 'Fai clic su "GENERA PORTAFOGLIO". ',
 HELP_1_Desc_5               : 'Il tuo portafoglio è stato appena generato. ',
 
-HELP_2a_Title               : '2a) Come salvo o faccio il backup del mio portafoglio? ',
+HELP_2a_Title               : 'Come salvo o faccio il backup del mio portafoglio? ',
 HELP_2a_Desc_1              : 'Dovresti sempre fare dei backup esterni in diversi luoghi fisici - come su una penna USB e/o su un pezzo di carta. ',
 HELP_2a_Desc_2              : 'Salva l\'indirizzo. Puoi tenerlo per te o condividerlo. In questo modo gli altri possono inviarti degli ether. ',
 HELP_2a_Desc_3              : 'Salva delle versioni della chiave privata. Non condividerla con nessuno. La tua chiave privata è necessaria quando vuoi accedere ai tuoi ether per trasferirli! Ci sono 3 tipi di chiave privata: ',
@@ -385,7 +465,7 @@ HELP_2a_Desc_6              : 'Ricorda, devi evitare la perdita delle chiavi e d
 
 HELP_2b_Title               : '2b) Come implemento un portafoglio offline in maniera sicura con MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Vai su [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Fai clic su `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Fai clic su `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Sposta il file zip su un computer *air-gapped*. ',
 HELP_2b_Desc_4              : 'Decomprimilo e fai doppio clic su `index.html`. ',
 HELP_2b_Desc_5              : 'Genera un portafoglio con una password robusta. ',
@@ -415,7 +495,7 @@ HELP_4_Desc_9               : 'Fai clic su "Genera transazione". ',
 HELP_4_Desc_10              : 'Compariranno un paio di ulteriori campi. È perché il tuo browser ha generato la transazione. ',
 HELP_4_Desc_11              : 'Fai clic sul pulsante azzurro "Invia transazione" in basso. ',
 HELP_4_Desc_12              : 'Comparirà un pop-up. Verifica che l\'importo e l\'indirizzo a cui stai inviando siano corretti. Quindi fai clic sul pulsante "Sì, sono sicuro! Esegui la transazione.". ',
-HELP_4_Desc_13              : 'La transazione verrà inviata. Verrà mostrato l\'ID della transazione (*TX ID*). Puoi fare clic sul TX ID per vederla sulla *blockchain*. ',
+HELP_4_Desc_13              : 'La transazione verrà inviata. Verrà mostrato il codice hash della transazione. Puoi fare clic sul codice hash per visualizzarla sulla *blockchain*. ',
 
 HELP_4CX_Title              : '4) Come invio degli ether utilizzando MyEtherWallet CX? ',
 HELP_4CX_Desc_1             : 'Innanzitutto devi aggiungere un portafoglio. Dopo averlo fatto hai 2 opzioni: la funzionalità "Invio rapido" dall\'icona dell\'estensione di Chrome o la pagina "Invia ether e token". ',
@@ -462,7 +542,7 @@ HELP_7_Desc_11              : 'Fai clic su "Genera transazione". ',
 HELP_7_Desc_12              : 'Compariranno un paio di ulteriori campi. È perché il tuo browser ha generato la transazione. ',
 HELP_7_Desc_13              : 'Fai clic sul pulsante azzurro "Invia transazione" in basso. ',
 HELP_7_Desc_14              : 'Comparirà un pop-up. Verifica che l\'importo e l\'indirizzo a cui stai inviando siano corretti. Quindi fai clic sul pulsante "Sì, sono sicuro! Esegui la transazione.". ',
-HELP_7_Desc_15              : 'La transazione verrà inviata. Verrà mostrato l\'ID della transazione (*TX ID*). Puoi fare clic sul TX ID per vederla sulla *blockchain*. ',
+HELP_7_Desc_15              : 'La transazione verrà inviata. Verrà mostrato il codice hash della transazione. Puoi fare clic sul codice hash per visualizzarla sulla *blockchain*. ',
 
 HELP_8_Title                : '8) Che succede se il vostro sito va giù? ',
 HELP_8_Desc_1               : 'MyEtherWallet non è un portafoglio web. Non hai un login e niente viene mai salvato nei nostri server. È semplicemente un\'interfaccia che ti consente di interagire con la *blockchain*. ',

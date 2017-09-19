@@ -1,6 +1,7 @@
 'use strict';
 var viewWalletCtrl = function($scope, walletService) {
     $scope.usdBalance = "loading";
+    $scope.gbpBalance = "loading";
     $scope.eurBalance = "loading";
     $scope.btcBalance = "loading";
     $scope.etherBalance = "loading";
@@ -38,7 +39,7 @@ var viewWalletCtrl = function($scope, walletService) {
 
     $scope.printQRCode = function() {
         globalFuncs.printPaperWallets(JSON.stringify([{
-            address: $scope.wallet.getAddressString(),
+            address: $scope.wallet.getChecksumAddressString(),
             private: $scope.wallet.getPrivateKeyString()
         }]));
     }

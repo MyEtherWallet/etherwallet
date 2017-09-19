@@ -5,7 +5,7 @@
   }
 
   .btn-lg {
-    margin-top: @space*5;
+    margin-top: @space*3;
   }
   .btn svg, .btn img {
     margin-right: @space-sm;
@@ -64,19 +64,26 @@
   }
 
   .swap-panel {
-    padding-top: @space*5;
     text-align: center;
+    margin-top: @space-lg*2;
+    padding: @space-xl @space-sm;
     > * {
       display: inline-block;
-      margin: @space-xs @space-sm;
+      margin: @space-lg @space-sm;
       vertical-align: middle;
     }
     .form-control {
       width: 10rem;
+      margin-right: 0;
     }
     .dropdown {
       margin-left: 0;
     }
+  }
+
+  .swap-address {
+    text-align: center;
+    padding: @space*3 @space;
   }
 
   .swap-start {
@@ -108,7 +115,7 @@
 }
 
 .order-info-wrap {
-  margin-bottom: @space*5;
+  margin-bottom: @space*3;
   display: flex;
   .order-info {
     padding: @space 0;
@@ -255,4 +262,10 @@
   h5+p {
     margin-top: -.5em;
   }
+}
+
+.bity-contact {
+  .row;
+  margin-bottom: -5rem;
+  margin-top: 9rem;
 }

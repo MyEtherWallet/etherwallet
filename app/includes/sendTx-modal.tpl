@@ -11,16 +11,19 @@
 
           <td>
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{wallet.getChecksumAddressString()}}</strong></p>
           </td>
 
-          <td ng-show="tx.sendMode=='ether'" class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
-          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
+          <td ng-show="tx.sendMode=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
+          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br /><h4 class="text-danger">{{tx.value}} {{unitReadable}}</h4></td>
 
           <td ng-show="tx.sendMode=='ether'">
             <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{tx.to}}</strong></p>
           </td>
           <td ng-show="tx.sendMode!=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticåon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+            <p><strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">{{tokenTx.to}}</strong></p>
           </td>
 
         </tr></tbody></table>

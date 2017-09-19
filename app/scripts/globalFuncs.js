@@ -7,14 +7,14 @@ globalFuncs.getBlockie = function(address) {
         size: 8,
         scale: 16
     }).toDataURL();
-}
+};
 globalFuncs.printPaperWallets = function(strJson) {
     var win = window.open("about:blank", "_blank");
-    var data = "<html><head><link rel=\"stylesheet\" href=\"css\/etherwallet-master.min.css\"\/><script type=\"text\/javascript\" src=\"js\/jquery-1.12.3.min.js\"><\/script><script type=\"text\/javascript\" src=\"js\/etherwallet-static.min.js\"><\/script><script type=\"text\/javascript\">function generateWallets(){ var json = JSON.parse($(\"#printwalletjson\").html()); for(var i=0;i<json.length;i++){ var walletTemplate = $(\'<div\/>\').append($(\"#print-container\").clone()); new QRCode($(walletTemplate).find(\"#paperwalletaddqr\")[0], {\t\t  text: json[i][\'address\'],\t\t  colorDark: \"#000000\",\t\t  colorLight: \"#ffffff\",\t\tcorrectLevel: QRCode.CorrectLevel.H\t   });       new QRCode($(walletTemplate).find(\"#paperwalletprivqr\")[0], {\t\t  text: json[i][\'private\'],\t\t  colorDark: \"#000000\",\t\t  colorLight: \"#ffffff\",\t\tcorrectLevel: QRCode.CorrectLevel.H\t }); $(walletTemplate).find(\"#paperwalletadd\").html(json[i][\'address\']);$(walletTemplate).find(\"#paperwalletpriv\").html(json[i][\'private\']); walletTemplate = $(walletTemplate).find(\"#print-container\").show();$(\"body\").append(walletTemplate); } setTimeout(function(){window.print();},2000);}<\/script><\/head><body><span id=\"printwalletjson\" style=\"display: none;\">{{WALLETJSON}}<\/span><div class=\"print-container\" style=\"display: none; margin-bottom: 50px;\" id=\"print-container\"><img src=\"images\/logo-ethereum-1.png\" class=\"ether-logo-1\" height=\"100%\" width=\"auto\"\/><img src=\"images\/logo-ethereum-2.png\" class=\"ether-logo-2\"\/> <img src=\"images\/print-sidebar.png\" height=\"100%\" width=\"auto\" class=\"print-title\"\/><div class=\"print-qr-code-1\"> <div id=\"paperwalletaddqr\"><\/div> <p class=\"print-text\" style=\"padding-top: 25px;\">YOUR ADDRESS<\/p><\/div><div class=\"print-notes\"><img src=\"images\/notes-bg.png\" width=\"90%;\" height=\"auto\" class=\"pull-left\" \/><p class=\"print-text\">AMOUNT \/ NOTES<\/p><\/div><div class=\"print-qr-code-2\"> <div id=\"paperwalletprivqr\"><\/div> <p class=\"print-text\" style=\"padding-top: 30px;\">YOUR PRIVATE KEY<\/p><\/div><div class=\"print-address-container\"><p><strong>Your Address:<\/strong><br \/><span id=\"paperwalletadd\"><\/span><\/p><p><strong>Your Private Key:<\/strong><br \/><span id=\"paperwalletpriv\"><\/span><\/p><\/div><\/div><\/body><\/html>";
+    var data = "<html>\r\n\r\n<head>\r\n <link rel=\"stylesheet\" href=\"css\/etherwallet-master.min.css\" \/>\r\n <script type=\"text\/javascript\" src=\"js\/jquery-1.12.3.min.js\"><\/script>\r\n <script type=\"text\/javascript\" src=\"js\/etherwallet-static.min.js\"><\/script>\r\n <script type=\"text\/javascript\">\r\n function getBlockie(address) {\r\n return blockies.create({\r\n seed: address.toLowerCase(),\r\n size: 8,\r\n scale: 16\r\n }).toDataURL();\r\n    }\r\n    function generateWallets() {\r\n var json = JSON.parse($(\"#printwalletjson\").html());\r\n for (var i = 0; i < json.length; i++) {\r\n var walletTemplate = $(\'<div\/>\').append($(\"#print-container\").clone());\r\n new QRCode($(walletTemplate).find(\"#paperwalletaddqr\")[0], {\r\n text: json[i][\'address\'],\r\n colorDark: \"#000000\",\r\n colorLight: \"#ffffff\",\r\n correctLevel: QRCode.CorrectLevel.H\r\n });\r\n new QRCode($(walletTemplate).find(\"#paperwalletprivqr\")[0], {\r\n text: json[i][\'private\'],\r\n colorDark: \"#000000\",\r\n colorLight: \"#ffffff\",\r\n correctLevel: QRCode.CorrectLevel.H\r\n });\r\n $(walletTemplate).find(\"#paperwalletadd\").html(json[i][\'address\']);\r\n $(walletTemplate).find(\"#paperwalletpriv\").html(json[i][\'private\']);\r\n $(walletTemplate).find(\"#identicon\").css(\'background-image\',\'url(\' + getBlockie(json[i][\'address\']) +\')\');\r\n walletTemplate = $(walletTemplate).find(\"#print-container\").show();\r\n $(\"body\").append(walletTemplate);\r\n }\r\n setTimeout(function() {\r\n window.print();\r\n }, 2000);\r\n    }\r\n    <\/script>\r\n<\/head>\r\n\r\n<body><span id=\"printwalletjson\" style=\"display: none;\">{{WALLETJSON}}<\/span>\r\n    <div class=\"print-container\" style=\"display: none; margin-bottom: 50px;\" id=\"print-container\"><img src=\"images\/logo-ethereum-1.png\" class=\"ether-logo-1\" height=\"100%\" width=\"auto\" \/> <div id=\"identicon\" class=\"addressIdenticon med float\"><\/div>\r\n <img src=\"images\/print-sidebar.png\" height=\"100%\" width=\"auto\" class=\"print-title\" \/>\r\n <div class=\"print-qr-code-1\">\r\n <div id=\"paperwalletaddqr\"><\/div>\r\n <p class=\"print-text\" style=\"padding-top: 25px;\">YOUR ADDRESS<\/p>\r\n <\/div>\r\n <div class=\"print-notes\"><img src=\"images\/notes-bg.png\" width=\"90%;\" height=\"auto\" class=\"pull-left\" \/>\r\n <p class=\"print-text\">AMOUNT \/ NOTES<\/p>\r\n <\/div>\r\n <div class=\"print-qr-code-2\">\r\n <div id=\"paperwalletprivqr\"><\/div>\r\n <p class=\"print-text\" style=\"padding-top: 30px;\">YOUR PRIVATE KEY<\/p>\r\n <\/div>\r\n <div class=\"print-address-container\">\r\n <p><strong>Your Address:<\/strong>\r\n <br \/><span id=\"paperwalletadd\"><\/span><\/p>\r\n <p><strong>Your Private Key:<\/strong>\r\n <br \/><span id=\"paperwalletpriv\"><\/span><\/p>\r\n <\/div>\r\n    <\/div>\r\n<\/body>\r\n\r\n<\/html>\r\n";
     data = data.replace("{{WALLETJSON}}", strJson);
     win.document.write(data);
     win.document.write("<script>generateWallets();</script>");
-}
+};
 globalFuncs.getBlob = function(mime, str) {
     var str = (typeof str === 'object') ? JSON.stringify(str) : str;
     if (str == null) return '';
@@ -22,44 +22,92 @@ globalFuncs.getBlob = function(mime, str) {
         type: mime
     });
     return window.URL.createObjectURL(blob);
-}
+};
 globalFuncs.getSuccessText = function(str) {
     return '<p class="text-center text-success"><strong> ' + str + '</strong></p>'
-}
+};
 globalFuncs.getDangerText = function(str) {
-        return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
-    }
-    // These are translated in the translation files
-globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", // 10
-    "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
-    "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.",
-    "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID", "Please enter valid ABI", "Minimum amount: 0.01. Max amount: ", "You need your Keystore File & Password (or Private Key) to access this wallet in the future.", "Please enter valid user and password", "Invalid name", "Invalid secret phrase", "Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions.", "Unlocked wallet doesnt match the owner address"
-];
+    return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
+};
+
 // These are translated in the translation files
-globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "File Selected: ", "You are successfully connected to the node ", "Message Signature Verified"];
+globalFuncs.errorMsgs = [
+    'Please enter a valid amount.', // 0
+    'Your password must be at least 9 characters. Please ensure it is a strong password. ', // 1
+    'Sorry! We don\'t recognize this type of wallet file. ', // 2
+    'This is not a valid wallet file. ', // 3
+    'This unit doesn\'t exists, please use the one of the following units ', // 4
+    'Please enter a valid address. ', // 5
+    'Please enter a valid password. ', // 6
+    'Please enter valid decimals (Must be integer, 0-18). ', // 7
+    'Please enter a valid gas limit (Must be integer. Try 21000-4000000). ', // 8
+    'Please enter a valid data value (Must be hex). ', // 9
+    'Please enter a valid gas price. ', // 10 - NOT USED
+    'Please enter a valid nonce (Must be integer).', // 11
+    'Invalid signed transaction. ', // 12
+    'A wallet with this nickname already exists. ', // 13
+    'Wallet not found. ', // 14
+    'Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ', // 15 - NOT USED
+    'A wallet with this address already exists in storage. Please check your wallets page. ', // 16
+    'Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei. If sending tokens, you must have 0.01 ETH in your account to cover the cost of gas. ', // 17
+    'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
+    'Please enter a valid symbol', // 19
+    'Not a valid ERC-20 token', // 20
+    'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+    'Please enter valid node name', // 22
+    'Enter valid URL. If you are on https, your URL must be https', // 23
+    'Please enter a valid port. ', // 24
+    'Please enter a valid chain ID. ', // 25
+    'Please enter a valid ABI. ', // 26
+    'Minimum amount: 0.01. Max amount: ', // 27
+    'You need this `Keystore File + Password` or the `Private Key` (next page) to access this wallet in the future. ', // 28
+    'Please enter a valid user and password. ', // 29
+    'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+    'Please enter a valid secret phrase. ', // 31
+    'Could not connect to the node. Try refreshing, using different node in upper right corner, and checking firewall settings. If custom node, check your configs.', // 32
+    'The wallet you have unlocked does not match the owner\'s address. ', // 33
+    'The name you are attempting to reveal does not match the name you have entered. ', // 34
+    'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+    'Enter valid TX hash', // 36
+    'Enter valid hex string (0-9, a-f)' // 37
+];
+
+// These are translated in the translation files
+globalFuncs.successMsgs = [
+    'Valid address',
+    'Wallet successfully decrypted',
+    'Transaction submitted. TX Hash: ',
+    'Your wallet was successfully added: ',
+    'File Selected: ',
+    'You are connected to the node ',
+    'Message Signature Verified'
+];
+
 // These are translated in the translation files
 globalFuncs.gethErrors = {
-    "Invalid sender": "GETH_InvalidSender",
-    "Nonce too low": "GETH_Nonce",
-    "Gas price too low for acceptance": "GETH_Cheap",
-    "Insufficient balance": "GETH_Balance",
-    "Account does not exist or account balance too low": "GETH_NonExistentAccount",
-    "Insufficient funds for gas * price + value": "GETH_InsufficientFunds",
-    "Intrinsic gas too low": "GETH_IntrinsicGas",
-    "Exceeds block gas limit": "GETH_GasLimit",
-    "Negative value": "GETH_NegativeValue"
+    'Invalid sender': 'GETH_InvalidSender',
+    'Nonce too low': 'GETH_Nonce',
+    'Gas price too low for acceptance': 'GETH_Cheap',
+    'Insufficient balance': 'GETH_Balance',
+    'Account does not exist or account balance too low': 'GETH_NonExistentAccount',
+    'Insufficient funds for gas * price + value': 'GETH_InsufficientFunds',
+    'Intrinsic gas too low': 'GETH_IntrinsicGas',
+    'Exceeds block gas limit': 'GETH_GasLimit',
+    'Negative value': 'GETH_NegativeValue'
 };
+
 globalFuncs.gethErrorMsgs = {};
 globalFuncs.getGethMsg = function(str) {
-        if (str in this.gethErrors) {
-            var key = this.gethErrors[str];
-            if (key in this.gethErrorMsgs) {
-                return this.gethErrorMsgs[key];
-            }
+    if (str in this.gethErrors) {
+        var key = this.gethErrors[str];
+        if (key in this.gethErrorMsgs) {
+            return this.gethErrorMsgs[key];
         }
-        return str;
     }
-    // These are translated in the translation files
+    return str;
+};
+
+// These are translated in the translation files
 globalFuncs.parityErrors = {
     "Transaction with the same hash was already imported\\.": "PARITY_AlreadyImported",
     "Transaction nonce is too low\\. Try incrementing the nonce\\.": "PARITY_Old",
@@ -73,81 +121,84 @@ globalFuncs.parityErrors = {
 globalFuncs.parityErrorMsgs = {};
 globalFuncs.getParityMsg = function(str) {
     for (var reg in this.parityErrors) {
-        var args = str.match("^" + reg + "$");
+        if (this.parityErrors.hasOwnProperty(reg)) {
+            let args = str.match("^" + reg + "$");
         if (args) {
-            var key = this.parityErrors[reg];
+                let key = this.parityErrors[reg];
             if (key in this.parityErrorMsgs) {
                 args[0] = this.parityErrorMsgs[key];
                 return format.apply(this, args);
             }
-        }
+         }
+      }
     }
     return str;
-}
+};
 globalFuncs.getEthNodeName = function() {
     //  return "geth";
     return "parity";
-}
+};
 globalFuncs.getEthNodeMsg = function(str) {
     var ethNode = this.getEthNodeName();
     if (ethNode == "geth") return this.getGethMsg(str);
     else
         return this.getParityMsg(str);
-}
+};
 globalFuncs.scrypt = {
     n: 1024
 };
 globalFuncs.postDelay = 300;
 globalFuncs.kdf = "scrypt";
 globalFuncs.defaultTxGasLimit = 21000;
-globalFuncs.digixClaimTxGasLimit = 150000;
+globalFuncs.defaultTokenGasLimit = 200000;
 globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
 globalFuncs.isNumeric = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
-}
+};
 globalFuncs.urlGet = function(name) {
     name = name.toLowerCase();
     if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search.toLowerCase())) return this.stripTags(decodeURIComponent(name[1]));
-}
+};
 globalFuncs.stripTags = function(str) {
     var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
     while (SCRIPT_REGEX.test(str)) {
         str = str.replace(SCRIPT_REGEX, "");
     }
     return str;
-}
+};
 globalFuncs.checkAndRedirectHTTPS = function() {
     var host = "myetherwallet.com";
     var hostw = "https://www.myetherwallet.com";
-    if (host == window.location.host) window.location = hostw;
-}
+    var path = window.location.pathname;
+    if (host == window.location.host) window.location = hostw + path;
+};
 globalFuncs.isStrongPass = function(password) {
     return password.length > 8;
-}
+};
 globalFuncs.hexToAscii = function(hex) {
     return hex.match(/.{1,2}/g).map(function(v) {
         return String.fromCharCode(parseInt(v, 16));
     }).join('');
-}
+};
 globalFuncs.isAlphaNumeric = function(value) {
     return !/[^a-zA-Z0-9]/.test(value);
-}
+};
 globalFuncs.getRandomBytes = function(num) {
     return ethUtil.crypto.randomBytes(num);
-}
+};
 globalFuncs.saveTokenToLocal = function(localToken, callback) {
     try {
         if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
         else if (!globalFuncs.isNumeric(localToken.decimals) || parseFloat(localToken.decimals) < 0) throw globalFuncs.errorMsgs[7];
         else if (!globalFuncs.isAlphaNumeric(localToken.symbol) || localToken.symbol == "") throw globalFuncs.errorMsgs[19];
-        var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+        var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
         storedTokens.push({
             contractAddress: localToken.contractAdd,
             symbol: localToken.symbol,
             decimal: parseInt(localToken.decimals),
             type: "custom"
         });
-        localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+        globalFuncs.localStorage.setItem("localTokens", JSON.stringify(storedTokens));
         callback({
             error: false
         });
@@ -157,16 +208,16 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
             msg: e
         });
     }
-}
+};
 globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
-    var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+    var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens", null)) : [];
     // remove from localstorage so it doesn't show up on refresh
     for (var i = 0; i < storedTokens.length; i++)
         if (storedTokens[i].symbol === symbol) {
             storedTokens.splice(i, 1);
             break;
         }
-    localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+    globalFuncs.localStorage.setItem("localTokens", JSON.stringify(storedTokens));
     if (!tokenObj) return;
     // remove from tokenObj so it removes from display
     for (var i = 0; i < tokenObj.length; i++)
@@ -174,5 +225,72 @@ globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
             tokenObj.splice(i, 1);
             break;
         }
+};
+
+
+globalFuncs.localStorage = {
+        isAvailable: function() {
+            // return typeof localStorage != "undefined";
+            // return globalFuncs.storageAvailable('localStorage');
+
+            // Polyfilled if not available/accessible
+            return true;
+        },
+        setItem: function(key, value) {
+            if (this.isAvailable()) {
+                localStorage.setItem(key, value);
+            } else {
+                // console.log("localStorage is available? " + this.isAvailable());
+            }
+        },
+        getItem: function(key, dValue = "") {
+            if (this.isAvailable()) {
+                return localStorage.getItem(key);
+            } else {
+                return dValue;
+            }
+        }
+    }
+
+
+/* Check for 'localStorage' or 'sessionStorage' */
+/*
+globalFuncs.storageAvailable = function(type) {
+    try {
+        var storage = window[type],
+            x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage.length !== 0;
+    }
+
 }
+*/
+
+    // globalFuncs.getUrlParameter = function getUrlParameter(url) {
+    //   // get query string from url (optional) or window
+    //   var queryString = url ? url.split('=')[1] : window.location.search.slice(1);
+    //   return queryString;
+    // }
+    // globalFuncs.setUrlParameter = function setUrlParameter(value) {
+    //   //In case url contains already a parameter remove parameter
+    //   if(window.location.href.indexOf('=') != -1) {
+    //       location.href = location.href.substr(0,window.location.href.indexOf('='));
+    //   }
+    //   location.href = location.href + "=" + value
+    // }
 module.exports = globalFuncs;
