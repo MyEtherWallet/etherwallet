@@ -119,6 +119,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x7f1e2c7d6a69bf34824d72c53b4550e895c0d8c2",
+"symbol":"BOP",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x5Af2Be193a6ABCa9c8817001F45744777Db30756",
 "symbol":"BQX",
 "decimal":8,
@@ -914,8 +919,8 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x7f1e2c7d6a69bf34824d72c53b4550e895c0d8c2",
-"symbol":"BOP",
+"address":"0xe386b139ed3715ca4b18fd52671bdcea1cdfe4b1",
+"symbol":"ZST",
 "decimal":8,
 "type":"default"
 }]
