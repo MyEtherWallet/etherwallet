@@ -168,12 +168,13 @@
 
 
 .footer {
-  background-color: @ether-navy;
+  background-color: @ether-navy-dark;
   color: white;
   font-size: .8rem;
+  margin-top: 0;
   h5{
-    font-size: .95rem;
-    margin: .25em 0 0;
+    margin-top: .5rem;
+    margin-bottom: .25rem;
     i {
       margin-left: -1.5em;
       margin-right: .25em;
@@ -181,10 +182,6 @@
     &:first-child {
       margin-top: 0;
     }
-  }
-  .modal,
-  .modal p {
-    color: @text-color;
   }
   ul {
     list-style: none;
@@ -252,6 +249,32 @@
   max-width: 28rem;
   flex-grow: 1;
 }
+
+.footer__icon {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+}
+
+.footer__pill-wrap {
+  flex-direction: row;
+}
+
+a.footer__pill {
+  display: inline;
+  background: @brand-primary;
+  padding: 3px 12px;
+  border-radius: 30px;
+  color: white;
+  &:focus,
+  &:hover {
+    color: #0e97c0;
+    background: white;
+    opacity: 1;
+  }
+}
+
 
 .custom-token-fields input {
   .input-sm();
