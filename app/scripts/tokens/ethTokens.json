@@ -239,6 +239,11 @@
 "decimal":0,
 "type":"default"
 },{
+"address":"0x01b3Ec4aAe1B8729529BEB4965F27d008788B0EB",
+"symbol":"DPP",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x621d78f2EF2fd937BFca696CabaF9A779F59B3Ed",
 "symbol":"DRP",
 "decimal":2,
