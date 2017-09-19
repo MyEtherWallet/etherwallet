@@ -255,6 +255,13 @@ module.exports = [
   gasLimit:   -1,
   data:       '',
   msg:        'This may be a fake santiment address promoted by phishers. Go research first please.'
+},
+{
+  // Zeus exchange token sale
+  to:         '0xe386B139Ed3715Ca4B18Fd52671bDcea1cdFE4b1',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Zeus Exchange - The First Hybrid Trading Platform for Traditional Stock Investors and Crypto Traders. Official site https://zeus.exchange'
 }
 ]
 
