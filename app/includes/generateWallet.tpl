@@ -46,8 +46,8 @@
         <p>
           <strong>MetaMask</strong>
           <span>Connect via your</span>
-          <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">MetaMask Extension!</a>
-          <span>Phishers can't steal your keys. Try it today.</span>
+          <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">MetaMask Extension</a>.
+          <span>So easy! Keys stay in MetaMask, not on a phishing site! Try it today.</span>
         </p>
       </li></ul>
 
