@@ -124,6 +124,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x73dd069c299a5d691e9836243bcaec9c8c1d8734",
+"symbol":"BTE",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x7d4b8Cce0591C9044a22ee543533b72E976E36C3",
 "symbol":"CAG",
 "decimal":18,
