@@ -134,6 +134,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x9E77D5a1251b6F7D456722A6eaC6D2d5980bd891",
+"symbol":"BRAT",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x5Af2Be193a6ABCa9c8817001F45744777Db30756",
 "symbol":"BQX",
 "decimal":8,
