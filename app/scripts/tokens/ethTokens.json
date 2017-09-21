@@ -669,14 +669,14 @@
 "decimal":8,
 "type":"default"
 },{
-"address":"0x697beac28B09E122C4332D163985e8a73121b97F",
-"symbol":"QRL",
-"decimal":8,
-"type":"default"
-}, {
 "address":"0x9a642d6b3368ddc662CA244bAdf32cDA716005BC",
 "symbol":"QTUM",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x697beac28B09E122C4332D163985e8a73121b97F",
+"symbol":"QRL",
+"decimal":8,
 "type":"default"
 },{
 "address":"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6",
