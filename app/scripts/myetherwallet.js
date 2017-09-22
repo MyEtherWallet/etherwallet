@@ -43,7 +43,7 @@ Wallet.prototype.setTokens = function () {
 
     var conflictWithDefaultTokens = [];
     for (var e = 0; e < storedTokens.length; e++) {
-        if (isDuplicateStoredToken(storedTokens[e], defaultTokensAndNetworkType)) {
+        if (globalFuncs.doesTokenExistInDefaultTokens(storedTokens[e], defaultTokensAndNetworkType)) {
             conflictWithDefaultTokens.push(storedTokens[e]);
             // don't push to tokenObjs if token is default; continue to next element
             continue;
@@ -63,15 +63,6 @@ Wallet.prototype.setTokens = function () {
 
     removeAllTokenConflicts(conflictWithDefaultTokens, storedTokens)
 };
-
-function checkDuplicateToken(defaultToken, localStorageToken, currentNetwork) {
-    var hasNetwork = localStorageToken.network;
-    if (hasNetwork) {
-        return localStorageToken.network === currentNetwork && localStorageToken.symbol === defaultToken.symbol
-    } else {
-        return localStorageToken.symbol === defaultToken.symbol
-    }
-}
 
 function saveToLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value))
@@ -133,18 +124,6 @@ function removeAllTokenConflicts(conflictWithDefaultTokens, storedTokens) {
   var deConflictedTokens = removeConflictingTokens(conflictWithDefaultTokens, storedTokens);
   var deDuplicatedTokens = deDupTokens(deConflictedTokens);
   saveToLocalStorage("localTokens", deDuplicatedTokens)
-}
-
-function isDuplicateStoredToken(storedToken, defaultTokensAndNetworkType) {
-    for (var i = 0; i < defaultTokensAndNetworkType.defaultTokens.length; i++) {
-        var currentDefaultToken = defaultTokensAndNetworkType.defaultTokens[i];
-        var isDuplicateToken = checkDuplicateToken(currentDefaultToken, storedToken, defaultTokensAndNetworkType.networkType);
-        // do not simplify to return isDuplicateToken
-        if (isDuplicateToken) {
-            return true
-        }
-    }
-    return false
 }
 
 Wallet.prototype.setBalance = function(callback) {

@@ -259,6 +259,27 @@ globalFuncs.getDefaultTokensAndNetworkType =  function getDefaultTokensAndNetwor
     }
 }
 
+function checkDuplicateToken(tokenOne, tokenTwo, currentNetwork) {
+  var hasNetwork = tokenTwo.network;
+  if (hasNetwork) {
+    return tokenTwo.network === currentNetwork && tokenTwo.symbol === tokenOne.symbol
+  } else {
+    return tokenTwo.symbol === tokenOne.symbol
+  }
+}
+
+globalFuncs.doesTokenExistInDefaultTokens = function(token, defaultTokensAndNetworkType) {
+  for (var i = 0; i < defaultTokensAndNetworkType.defaultTokens.length; i++) {
+    var currentDefaultToken = defaultTokensAndNetworkType.defaultTokens[i];
+    var isDuplicateToken = checkDuplicateToken(currentDefaultToken, token, defaultTokensAndNetworkType.networkType);
+    // do not simplify to return isDuplicateToken
+    if (isDuplicateToken) {
+      return true
+    }
+  }
+  return false
+};
+
 globalFuncs.saveTokenToLocal = function(localToken, callback) {
     try {
         if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) {throw globalFuncs.errorMsgs[5]}
@@ -266,11 +287,17 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
         else if (!globalFuncs.isAlphaNumeric(localToken.symbol) || localToken.symbol == "") {throw globalFuncs.errorMsgs[19]}
         var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
 
-        //catch local storage bug when user adds a duplicate custom token
+        // catch if already in storedTokens
         for (var i = 0; i < storedTokens.length; i++){
             if (storedTokens[i].symbol.toLowerCase().replace(/ /g, '') === localToken.symbol.toLowerCase().replace(/ /g, '')) {
               throw Error('ERROR: Unable to add a custom token with the same symbol as an existing custom token')
             }
+        }
+
+        // catch if already in defaultTokens
+        var defaultTokensAndNetworkType = globalFuncs.getDefaultTokensAndNetworkType();
+        if (globalFuncs.doesTokenExistInDefaultTokens(localToken, defaultTokensAndNetworkType)) {
+          throw Error('ERROR: Unable to add a custom token with the same symbol as an existing default token')
         }
 
         storedTokens.push({
