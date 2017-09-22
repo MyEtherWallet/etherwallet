@@ -1,5 +1,5 @@
 'use strict';
-var walletBalanceCtrl = function($scope, $sce) {
+var walletBalanceCtrl = function($scope, $sce, $rootScope) {
     $scope.ajaxReq = ajaxReq;
     $scope.tokensLoaded = false;
     $scope.localToken = {
@@ -52,6 +52,7 @@ var walletBalanceCtrl = function($scope, $sce) {
 
     $scope.removeTokenFromLocal = function(tokensymbol) {
         globalFuncs.removeTokenFromLocal(tokensymbol, $scope.wallet.tokenObjs);
+        $rootScope.rootScopeShowRawTx = false;
     }
 
     $scope.showDisplayOnTrezor = function() {

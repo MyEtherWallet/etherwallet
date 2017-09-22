@@ -1,12 +1,12 @@
 'use strict';
-var sendTxCtrl = function($scope, $sce, walletService) {
+var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
     $scope.tx = {};
     $scope.ajaxReq = ajaxReq;
     $scope.unitReadable = ajaxReq.type;
     $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
     walletService.wallet = null;
     walletService.password = '';
-    $scope.showAdvance = $scope.showRaw = false;
+    $scope.showAdvance = $rootScope.rootScopeShowRawTx = false;
     $scope.dropdownEnabled = true;
     $scope.Validator = Validator;
     $scope.gasLimitChanged = false;
@@ -122,7 +122,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         }
     }, true);
     $scope.$watch('tx', function(newValue, oldValue) {
-        $scope.showRaw = false;
+        $rootScope.rootScopeShowRawTx = false;
         if (oldValue.sendMode && oldValue.sendMode != newValue.sendMode && newValue.sendMode == 'ether') {
             $scope.tx.data = globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data');
             $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
@@ -224,9 +224,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             if (!rawTx.isError) {
                 $scope.rawTx = rawTx.rawTx;
                 $scope.signedTx = rawTx.signedTx;
-                $scope.showRaw = true;
+                $rootScope.rootScopeShowRawTx = true;
             } else {
-                $scope.showRaw = false;
+                $rootScope.rootScopeShowRawTx = false;
                 $scope.notifier.danger(rawTx.error);
             }
             if (!$scope.$$phase) $scope.$apply();
@@ -258,7 +258,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
                     $scope.tx.unit = resp.unit;
                     $scope.tx.value = resp.value;
                 } else {
-                    $scope.showRaw = false;
+                    $rootScope.rootScopeShowRawTx = false;
                     $scope.notifier.danger(resp.error);
                 }
             });
