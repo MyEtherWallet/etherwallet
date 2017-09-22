@@ -15,6 +15,7 @@ var walletBalanceCtrl = function($scope, $sce) {
     $scope.saveTokenToLocal = function() {
         globalFuncs.saveTokenToLocal($scope.localToken, function(data) {
             if (!data.error) {
+                $scope.addressDrtv.ensAddressField = "";
                 $scope.localToken = {
                     contractAdd: "",
                     symbol: "",
