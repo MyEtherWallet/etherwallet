@@ -16,7 +16,6 @@ var walletBalanceCtrl = function ($scope, $sce) {
     contractAdd: '',
     symbol: '',
     decimals: '',
-    network: defaultTokensAndNetworkType.networkType,
     type: 'custom'
   };
 
@@ -31,7 +30,6 @@ var walletBalanceCtrl = function ($scope, $sce) {
         $scope.localToken = {
           contractAdd: '',
           symbol: '',
-          network: defaultTokensAndNetworkType.networkType,    
           decimals: '',
           type: 'custom'
         };
@@ -45,8 +43,8 @@ var walletBalanceCtrl = function ($scope, $sce) {
   };
 
 
-  
-  
+
+
   /*
     $scope.$watch('wallet', function() {
         if ($scope.wallet) $scope.reverseLookup();

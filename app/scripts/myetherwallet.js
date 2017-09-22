@@ -22,52 +22,50 @@ Wallet.generate = function(icapDirect) {
     }
 }
 Wallet.prototype.setTokens = function () {
-    console.error('SET TOKENS CALLED')
     this.tokenObjs = [];
-    var defaultTokensAndNetworkType = globalFuncs.getDefaultTokensAndNetworkType()  
-  var tokens = Token.popTokens;
-  for (var i = 0; i < tokens.length; i++) {
-    this.tokenObjs.push(
-      new Token(
-        tokens[i].address,
-        this.getAddressString(),
-        tokens[i].symbol,
-        tokens[i].decimal,
-        tokens[i].type
-      )
-    );
-    this.tokenObjs[this.tokenObjs.length - 1].setBalance();
-  }
-  var storedTokens =
-    globalFuncs.localStorage.getItem('localTokens', null) != null
-      ? JSON.parse(globalFuncs.localStorage.getItem('localTokens'))
-          : [];
-    
-  var conflictTokens = []
-  for (var i = 0; i < storedTokens.length; i++) {
-      if (isDuplicateStoredToken(storedTokens[i],defaultTokensAndNetworkType)) {
-          conflictTokens.push(storedTokens[i])
-          // don't push to tokenObjs if token is default 
-          continue;
-    } 
-      
-    this.tokenObjs.push(
-      new Token(
-        storedTokens[i].contractAddress,
-        this.getAddressString(),
-        globalFuncs.stripTags(storedTokens[i].symbol),
-        storedTokens[i].decimal,
-        storedTokens[i].type,
-        defaultTokensAndNetworkType.networkType
-      )
-    );
-    this.tokenObjs[this.tokenObjs.length - 1].setBalance();
-  }
-  removeAllTokenConflicts(conflictTokens, storedTokens)
+    var defaultTokensAndNetworkType = globalFuncs.getDefaultTokensAndNetworkType();
+    var tokens = Token.popTokens;
+
+    for (var i = 0; i < tokens.length; i++) {
+      this.tokenObjs.push(
+        new Token(
+          tokens[i].address,
+          this.getAddressString(),
+          tokens[i].symbol,
+          tokens[i].decimal,
+          tokens[i].type
+        )
+      );
+      this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+    }
+
+    var storedTokens = globalFuncs.localStorage.getItem('localTokens', null) != null ? JSON.parse(globalFuncs.localStorage.getItem('localTokens')) : [];
+
+    var conflictTokens = [];
+    for (var e = 0; e < storedTokens.length; e++) {
+        if (isDuplicateStoredToken(storedTokens[e], defaultTokensAndNetworkType)) {
+            conflictTokens.push(storedTokens[e]);
+            // don't push to tokenObjs if token is default; continue to next element
+            continue;
+      }
+
+      this.tokenObjs.push(
+        new Token(
+          storedTokens[e].contractAddress,
+          this.getAddressString(),
+          globalFuncs.stripTags(storedTokens[e].symbol),
+          storedTokens[e].decimal,
+          storedTokens[e].type,
+        )
+      );
+      this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+    }
+
+    removeAllTokenConflicts(conflictTokens, storedTokens)
 };
 
 function checkDuplicateToken(defaultToken, localStorageToken, currentNetwork) {
-    var hasNetwork = localStorageToken.network
+    var hasNetwork = localStorageToken.network;
     if (hasNetwork) {
         return localStorageToken.network === currentNetwork && localStorageToken.symbol === defaultToken.symbol
     } else {
@@ -75,11 +73,11 @@ function checkDuplicateToken(defaultToken, localStorageToken, currentNetwork) {
     }
 }
 
-function saveToLocalStorage(value) {
-    localStorage.setItem("localTokens", JSON.stringify(value))
+function saveToLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value))
 }
 
-function removeAllTokenConflicts(conflictTokens, storedTokens) {
+function removeConflictingTokens(conflictTokens, storedTokens) {
   for (var i = 0; i < storedTokens.length; i++) {
     var currentStoredToken = storedTokens[i];
     for (var e = 0; e < conflictTokens.length; e++) {
@@ -98,17 +96,50 @@ function removeAllTokenConflicts(conflictTokens, storedTokens) {
       }
     }
   }
-  saveToLocalStorage(storedTokens);
+  return storedTokens
+}
+
+function deDup(list) {
+  var uniq = new Set(list.map(e => JSON.stringify(e)));
+  return Array.from(uniq).map(e => JSON.parse(e));
+}
+
+// https://stackoverflow.com/questions/32238602/javascript-remove-duplicates-of-objects-sharing-same-property-value
+function removeDuplicates(originalArray, objKey) {
+  var trimmedArray = [];
+  var values = [];
+  var value;
+
+  for(var i = 0; i < originalArray.length; i++) {
+    value = originalArray[i][objKey];
+
+    if(values.indexOf(value) === -1) {
+      trimmedArray.push(originalArray[i]);
+      values.push(value);
+    }
+  }
+  return trimmedArray;
+}
+
+function deDupTokens(tokens) {
+  // generic de-dup;
+  var deDupedTokens = deDup(tokens);
+  var trimmedByContract = removeDuplicates(deDupedTokens, 'contractAddress');
+  var trimmedBySymbol = removeDuplicates(trimmedByContract, 'symbol');
+  return trimmedBySymbol
+}
+
+function removeAllTokenConflicts(conflictTokens, storedTokens) {
+  var deConflictedTokens = removeConflictingTokens(conflictTokens, storedTokens);
+  var deDuplicatedTokens = deDupTokens(deConflictedTokens);
+  saveToLocalStorage("localTokens", deDuplicatedTokens)
 }
 
 function isDuplicateStoredToken(storedToken, defaultTokensAndNetworkType) {
-
-    
     for (var i = 0; i < defaultTokensAndNetworkType.defaultTokens.length; i++) {
         var currentDefaultToken = defaultTokensAndNetworkType.defaultTokens[i];
-        var isDuplicateToken = checkDuplicateToken(currentDefaultToken, storedToken, defaultTokensAndNetworkType.networkType)
-        
-        // DONT SIMPLIFY IF YOU DON"T UNDERSTAND WHY WE CHECK isDuplicateToken
+        var isDuplicateToken = checkDuplicateToken(currentDefaultToken, storedToken, defaultTokensAndNetworkType.networkType);
+        // do not simplify to return isDuplicateToken
         if (isDuplicateToken) {
             return true
         }
