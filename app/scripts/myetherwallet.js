@@ -90,11 +90,6 @@ function removeConflictingTokens(conflictTokens, storedTokens) {
   return storedTokens
 }
 
-function deDup(list) {
-  var uniq = new Set(list.map(e => JSON.stringify(e)));
-  return Array.from(uniq).map(e => JSON.parse(e));
-}
-
 // https://stackoverflow.com/questions/32238602/javascript-remove-duplicates-of-objects-sharing-same-property-value
 function removeDuplicates(originalArray, objKey) {
   var trimmedArray = [];
@@ -114,8 +109,7 @@ function removeDuplicates(originalArray, objKey) {
 
 function deDupTokens(tokens) {
   // generic de-dup
-  var deDupedTokens = deDup(tokens);
-  var trimmedByContract = removeDuplicates(deDupedTokens, 'contractAddress');
+  var trimmedByContract = removeDuplicates(tokens, 'contractAddress');
   var trimmedBySymbol = removeDuplicates(trimmedByContract, 'symbol');
   return trimmedBySymbol
 }
