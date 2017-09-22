@@ -1,11 +1,12 @@
 'use strict';
-var Token = function(contractAddress, userAddress, symbol, decimal, type) {
+var Token = function(contractAddress, userAddress, symbol, decimal, type, network) {
     this.contractAddress = contractAddress;
     this.userAddress = userAddress;
     this.symbol = symbol;
     this.decimal = decimal;
     this.type = type;
     this.balance = "loading";
+    this.network = network;
 };
 Token.balanceHex = "0x70a08231";
 Token.transferHex = "0xa9059cbb";

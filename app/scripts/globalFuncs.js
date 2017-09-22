@@ -186,12 +186,121 @@ globalFuncs.isAlphaNumeric = function(value) {
 globalFuncs.getRandomBytes = function(num) {
     return ethUtil.crypto.randomBytes(num);
 };
+
+globalFuncs.normalize = function normalize(str) {
+    return str.toLowerCase().replace(/ /g, '')
+  }
+
+function getFromLS(key, errorMsg) {
+    var localStorageItemString = globalFuncs.localStorage.getItem(key);
+
+    if (!localStorageItemString && errorMsg) {
+        throw Error(errorMsg)
+    } else if (!localStorageItemString) {
+        return null
+    }
+    else {
+        return JSON.parse(localStorageItemString)
+    }
+
+}
+
+
+globalFuncs.getDefaultTokensAndNetworkType =  function getDefaultTokensAndNetworkType() {
+    console.log('0')
+    var defaultNodes = require('./nodes').nodeList
+
+    var tokenMappings = {
+        'eth': require('./tokens/ethTokens.json'),
+        'etc': require('./tokens/etcTokens.json'),
+        'rop': require('./tokens/ropstenTokens.json'),
+        'kov': require('./tokens/kovanTokens.json'),
+        'rin': require('./tokens/rinkebyTokens.json')
+    } 
+    console.log('1')
+    
+    var nodeErrMsg = 'Node does not exist, contact support@myetherwallet.com CODE:localstorageNodeMissing'
+
+    // localStorage selected node
+    var currentNodeKey = getFromLS("curNode", nodeErrMsg).key
+    // custom nodes in local storage
+    console.log('1.5')
+    var customLocalNodes = getFromLS("localNodes") || []
+
+    var customNodeNetworkType = currentNodeKey.split('_')[1]
+
+    var isCustomNode = !!customLocalNodes.find(function (currentLocalCustomNode) {
+      return currentLocalCustomNode.options === customNodeNetworkType
+    })
+    
+    var defaultNode;
+    var firstCustomNodeWithMatchingNetwork;
+    console.log('2')
+    if (isCustomNode) {
+      // NOTE: Different curNode value structure for default nodes and custom nodes. This will work because we are checking to make sure we are a custom node first.
+
+      firstCustomNodeWithMatchingNetwork = customLocalNodes.find(function (currentLocalCustomNode) {
+        return currentLocalCustomNode.options === customNodeNetworkType
+      })
+      
+      // if the reference the custom local node is invalid, throw
+      if (!firstCustomNodeWithMatchingNetwork) {
+        throw Error("Custom Local Node does not exist. Please clear local storage, and re-input your custom node.")
+      }
+    } else {
+      defaultNode = defaultNodes[currentNodeKey]
+      if (!defaultNode) {
+        throw Error("Default Node does not exist. Please clear local storage and try again.")
+      }
+    }
+    console.log('3')
+    
+    var defaultTokens;
+    console.log(isCustomNode)
+    
+    if (isCustomNode) {
+      // tokenMappings maps localStorage custom node key to corresponding default tokens of network. If we are unable to retrieve the default tokens of the custom network, we return an empty array.
+      defaultTokens = tokenMappings[firstCustomNodeWithMatchingNetwork.options] || []
+    }
+    else {
+      defaultTokens = defaultNode.tokenList
+    }
+  
+    return {
+      defaultTokens: defaultTokens,
+      networkType: isCustomNode ? firstCustomNodeWithMatchingNetwork.options : defaultNode.name.toLowerCase(),
+      isCustomNode: isCustomNode
+    }
+}
+  
 globalFuncs.saveTokenToLocal = function(localToken, callback) {
     try {
         if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
         else if (!globalFuncs.isNumeric(localToken.decimals) || parseFloat(localToken.decimals) < 0) throw globalFuncs.errorMsgs[7];
         else if (!globalFuncs.isAlphaNumeric(localToken.symbol) || localToken.symbol == "") throw globalFuncs.errorMsgs[19];
         var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
+
+        //catch local storage bug when user adds a duplicate custom token
+        for (var i = 0; i < storedTokens.length; i++){
+            if (storedTokens[i].symbol.toLowerCase().replace(/ /g, '') === localToken.symbol.toLowerCase().replace(/ /g, '')) {
+                console.log('throwing error')
+              throw Error('ERROR: Unable to add a custom token with the same symbol as an existing custom token')
+            }
+        }
+        // New default token list gets pushed to site, which conflicts with users already existing custom tokens
+        // Perform diff of default tokens vs custom tokens, remove any conflicting custom tokens
+        // When user adds a custom token thats already in local storage
+        // When user adds a a custom token, thats already a default token (JSON)
+        // CASE 2: needs to be checked vs chainId/network type
+        // CASE 1: QRL_ETC
+
+
+
+        //loop through all node tokens and see if user inputted token matches any in memory token
+        
+
+
+        
         storedTokens.push({
             contractAddress: localToken.contractAdd,
             symbol: localToken.symbol,
@@ -203,9 +312,10 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
             error: false
         });
     } catch (e) {
+        console.log('Error', e)
         callback({
-            error: false,
-            msg: e
+            error: true,
+            msg: e.message
         });
     }
 };

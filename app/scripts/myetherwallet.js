@@ -21,19 +21,101 @@ Wallet.generate = function(icapDirect) {
         return new Wallet(ethUtil.crypto.randomBytes(32))
     }
 }
-Wallet.prototype.setTokens = function() {
+Wallet.prototype.setTokens = function () {
+    console.error('SET TOKENS CALLED')
     this.tokenObjs = [];
-    var tokens = Token.popTokens;
-    for (var i = 0; i < tokens.length; i++) {
-        this.tokenObjs.push(new Token(tokens[i].address, this.getAddressString(), tokens[i].symbol, tokens[i].decimal, tokens[i].type));
-        this.tokenObjs[this.tokenObjs.length - 1].setBalance();
-    }
-    var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
-    for (var i = 0; i < storedTokens.length; i++) {
-        this.tokenObjs.push(new Token(storedTokens[i].contractAddress, this.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
-        this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+    var defaultTokensAndNetworkType = globalFuncs.getDefaultTokensAndNetworkType()  
+  var tokens = Token.popTokens;
+  for (var i = 0; i < tokens.length; i++) {
+    this.tokenObjs.push(
+      new Token(
+        tokens[i].address,
+        this.getAddressString(),
+        tokens[i].symbol,
+        tokens[i].decimal,
+        tokens[i].type
+      )
+    );
+    this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+  }
+  var storedTokens =
+    globalFuncs.localStorage.getItem('localTokens', null) != null
+      ? JSON.parse(globalFuncs.localStorage.getItem('localTokens'))
+          : [];
+    
+  var conflictTokens = []
+  for (var i = 0; i < storedTokens.length; i++) {
+      if (isDuplicateStoredToken(storedTokens[i],defaultTokensAndNetworkType)) {
+          conflictTokens.push(storedTokens[i])
+          // don't push to tokenObjs if token is default 
+          continue;
+    } 
+      
+    this.tokenObjs.push(
+      new Token(
+        storedTokens[i].contractAddress,
+        this.getAddressString(),
+        globalFuncs.stripTags(storedTokens[i].symbol),
+        storedTokens[i].decimal,
+        storedTokens[i].type,
+        defaultTokensAndNetworkType.networkType
+      )
+    );
+    this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+  }
+  removeAllTokenConflicts(conflictTokens, storedTokens)
+};
+
+function checkDuplicateToken(defaultToken, localStorageToken, currentNetwork) {
+    var hasNetwork = localStorageToken.network
+    if (hasNetwork) {
+        return localStorageToken.network === currentNetwork && localStorageToken.symbol === defaultToken.symbol
+    } else {
+        return localStorageToken.symbol === defaultToken.symbol
     }
 }
+
+function saveToLocalStorage(value) {
+    localStorage.setItem("localTokens", JSON.stringify(value))
+}
+
+function removeAllTokenConflicts(conflictTokens, storedTokens) {
+  for (var i = 0; i < storedTokens.length; i++) {
+    var currentStoredToken = storedTokens[i];
+    for (var e = 0; e < conflictTokens.length; e++) {
+      var currentConflictToken = conflictTokens[e];
+      if (currentConflictToken.network && currentStoredToken.network) {
+        if (
+          currentStoredToken.symbol === currentConflictToken.symbol &&
+          currentStoredToken.network === currentConflictToken.network
+        ) {
+          storedTokens.splice(i, 1);
+        }
+      } else {
+        if (currentStoredToken.symbol === currentConflictToken.symbol) {
+          storedTokens.splice(i, 1);
+        }
+      }
+    }
+  }
+  saveToLocalStorage(storedTokens);
+}
+
+function isDuplicateStoredToken(storedToken, defaultTokensAndNetworkType) {
+
+    
+    for (var i = 0; i < defaultTokensAndNetworkType.defaultTokens.length; i++) {
+        var currentDefaultToken = defaultTokensAndNetworkType.defaultTokens[i];
+        var isDuplicateToken = checkDuplicateToken(currentDefaultToken, storedToken, defaultTokensAndNetworkType.networkType)
+        
+        // DONT SIMPLIFY IF YOU DON"T UNDERSTAND WHY WE CHECK isDuplicateToken
+        if (isDuplicateToken) {
+            return true
+        }
+    }
+    return false
+}
+
 Wallet.prototype.setBalance = function(callback) {
     var parentObj = this;
     this.balance = this.usdBalance = this.eurBalance = this.btcBalance = this.chfBalance = this.repBalance =  this.gbpBalance = 'loading';
