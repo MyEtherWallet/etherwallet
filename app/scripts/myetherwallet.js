@@ -107,16 +107,9 @@ function removeDuplicates(originalArray, objKey) {
   return trimmedArray;
 }
 
-function deDupTokens(tokens) {
-  // generic de-dup
-  var trimmedByContract = removeDuplicates(tokens, 'contractAddress');
-  var trimmedBySymbol = removeDuplicates(trimmedByContract, 'symbol');
-  return trimmedBySymbol
-}
-
 function removeAllTokenConflicts(conflictWithDefaultTokens, storedTokens) {
   var deConflictedTokens = removeConflictingTokens(conflictWithDefaultTokens, storedTokens);
-  var deDuplicatedTokens = deDupTokens(deConflictedTokens);
+  var deDuplicatedTokens = removeDuplicates(deConflictedTokens, 'symbol');
   saveToLocalStorage("localTokens", deDuplicatedTokens)
 }
 
