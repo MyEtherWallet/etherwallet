@@ -41,10 +41,10 @@ Wallet.prototype.setTokens = function () {
 
     var storedTokens = globalFuncs.localStorage.getItem('localTokens', null) != null ? JSON.parse(globalFuncs.localStorage.getItem('localTokens')) : [];
 
-    var conflictTokens = [];
+    var conflictWithDefaultTokens = [];
     for (var e = 0; e < storedTokens.length; e++) {
         if (isDuplicateStoredToken(storedTokens[e], defaultTokensAndNetworkType)) {
-            conflictTokens.push(storedTokens[e]);
+            conflictWithDefaultTokens.push(storedTokens[e]);
             // don't push to tokenObjs if token is default; continue to next element
             continue;
       }
@@ -61,7 +61,7 @@ Wallet.prototype.setTokens = function () {
       this.tokenObjs[this.tokenObjs.length - 1].setBalance();
     }
 
-    removeAllTokenConflicts(conflictTokens, storedTokens)
+    removeAllTokenConflicts(conflictWithDefaultTokens, storedTokens)
 };
 
 function checkDuplicateToken(defaultToken, localStorageToken, currentNetwork) {
@@ -122,15 +122,15 @@ function removeDuplicates(originalArray, objKey) {
 }
 
 function deDupTokens(tokens) {
-  // generic de-dup;
+  // generic de-dup
   var deDupedTokens = deDup(tokens);
   var trimmedByContract = removeDuplicates(deDupedTokens, 'contractAddress');
   var trimmedBySymbol = removeDuplicates(trimmedByContract, 'symbol');
   return trimmedBySymbol
 }
 
-function removeAllTokenConflicts(conflictTokens, storedTokens) {
-  var deConflictedTokens = removeConflictingTokens(conflictTokens, storedTokens);
+function removeAllTokenConflicts(conflictWithDefaultTokens, storedTokens) {
+  var deConflictedTokens = removeConflictingTokens(conflictWithDefaultTokens, storedTokens);
   var deDuplicatedTokens = deDupTokens(deConflictedTokens);
   saveToLocalStorage("localTokens", deDuplicatedTokens)
 }

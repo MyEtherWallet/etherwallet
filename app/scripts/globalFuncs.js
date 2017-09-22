@@ -187,13 +187,8 @@ globalFuncs.getRandomBytes = function(num) {
     return ethUtil.crypto.randomBytes(num);
 };
 
-globalFuncs.normalize = function normalize(str) {
-    return str.toLowerCase().replace(/ /g, '')
-  }
-
 function getFromLS(key, errorMsg) {
     var localStorageItemString = globalFuncs.localStorage.getItem(key);
-
     if (!localStorageItemString && errorMsg) {
         throw Error(errorMsg)
     } else if (!localStorageItemString) {
