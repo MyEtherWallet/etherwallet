@@ -1,15 +1,5 @@
 'use strict';
 var walletBalanceCtrl = function ($scope, $sce) {
-  console.log($scope.wallet)
-  var defaultTokensAndNetworkType
-  // TODO: Everyone check this now especially Daniel
-  try {
-    defaultTokensAndNetworkType = globalFuncs.getDefaultTokensAndNetworkType()
-  } catch (e) {
-    console.log(e)
-    return $scope.notifier.danger(e.message);
-  }
-  console.log(defaultTokensAndNetworkType)
   $scope.ajaxReq = ajaxReq;
   $scope.tokensLoaded = false;
   $scope.localToken = {
@@ -19,13 +9,11 @@ var walletBalanceCtrl = function ($scope, $sce) {
     type: 'custom'
   };
 
-
   $scope.slide = 3;
 
   $scope.customTokenField = false;
   $scope.saveTokenToLocal = function () {
     globalFuncs.saveTokenToLocal($scope.localToken, function (data) {
-      console.log(data)
       if (!data.error) {
         $scope.localToken = {
           contractAdd: '',

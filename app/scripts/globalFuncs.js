@@ -202,9 +202,7 @@ function getFromLS(key, errorMsg) {
     else {
         return JSON.parse(localStorageItemString)
     }
-
 }
-
 
 globalFuncs.getDefaultTokensAndNetworkType =  function getDefaultTokensAndNetworkType() {
     var defaultNodes = require('./nodes').nodeList;
