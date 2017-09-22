@@ -304,6 +304,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0xEA38eAa3C86c8F9B751533Ba2E562deb9acDED40",
+"symbol":"FUEL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b",
 "symbol":"FUN",
 "decimal":8,
