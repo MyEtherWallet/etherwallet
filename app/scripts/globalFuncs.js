@@ -318,7 +318,7 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
         // catch if CONTRACT ADDRESS is already in storedTokens
         for (var i = 0; i < storedTokens.length; i++){
             if (storedTokens[i].contractAddress.toLowerCase().replace(/ /g, '') === localToken.contractAdd.toLowerCase().replace(/ /g, '')) {
-              throw Error('ERROR: Unable to add a custom token with the same contract address as an existing custom token')
+              throw Error('ERROR: Unable to add custom token. It has the same address as custom token ' + storedTokens[i].symbol + '.')
             }
         }
 
