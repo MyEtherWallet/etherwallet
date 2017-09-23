@@ -21,6 +21,7 @@ Wallet.generate = function(icapDirect) {
         return new Wallet(ethUtil.crypto.randomBytes(32))
     }
 }
+
 Wallet.prototype.setTokens = function () {
     this.tokenObjs = [];
     var defaultTokensAndNetworkType = globalFuncs.getDefaultTokensAndNetworkType();
@@ -47,20 +48,19 @@ Wallet.prototype.setTokens = function () {
             conflictWithDefaultTokens.push(storedTokens[e]);
             // don't push to tokenObjs if token is default; continue to next element
             continue;
-      }
+        }
 
-      this.tokenObjs.push(
-        new Token(
-          storedTokens[e].contractAddress,
-          this.getAddressString(),
-          globalFuncs.stripTags(storedTokens[e].symbol),
-          storedTokens[e].decimal,
-          storedTokens[e].type,
-        )
-      );
-      this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+        this.tokenObjs.push(
+          new Token(
+            storedTokens[e].contractAddress,
+            this.getAddressString(),
+            globalFuncs.stripTags(storedTokens[e].symbol),
+            storedTokens[e].decimal,
+            storedTokens[e].type,
+          )
+        );
+        this.tokenObjs[this.tokenObjs.length - 1].setBalance();
     }
-
     removeAllTokenConflicts(conflictWithDefaultTokens, storedTokens)
 };
 
@@ -68,26 +68,15 @@ function saveToLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value))
 }
 
-function removeConflictingTokens(conflictTokens, storedTokens) {
-  for (var i = 0; i < storedTokens.length; i++) {
-    var currentStoredToken = storedTokens[i];
-    for (var e = 0; e < conflictTokens.length; e++) {
-      var currentConflictToken = conflictTokens[e];
-      if (currentConflictToken.network && currentStoredToken.network) {
-        if (
-          currentStoredToken.symbol === currentConflictToken.symbol &&
-          currentStoredToken.network === currentConflictToken.network
-        ) {
-          storedTokens.splice(i, 1);
-        }
-      } else {
-        if (currentStoredToken.symbol === currentConflictToken.symbol) {
-          storedTokens.splice(i, 1);
-        }
+function removeConflictingTokensFromLocalStorage(conflictLocalTokens, localTokens) {
+  for (var i = 0; i < conflictLocalTokens.length; i++) {
+    for (var e = 0; e < localTokens.length; e++) {
+      if (conflictLocalTokens[i] === localTokens[e]) {
+        localTokens.splice(e, 1);
       }
     }
   }
-  return storedTokens
+  return localTokens;
 }
 
 // https://stackoverflow.com/questions/32238602/javascript-remove-duplicates-of-objects-sharing-same-property-value
@@ -107,8 +96,8 @@ function removeDuplicates(originalArray, objKey) {
   return trimmedArray;
 }
 
-function removeAllTokenConflicts(conflictWithDefaultTokens, storedTokens) {
-  var deConflictedTokens = removeConflictingTokens(conflictWithDefaultTokens, storedTokens);
+function removeAllTokenConflicts(conflictWithDefaultTokens, localTokens) {
+  var deConflictedTokens = removeConflictingTokensFromLocalStorage(conflictWithDefaultTokens, localTokens);
   var deDuplicatedTokens = removeDuplicates(deConflictedTokens, 'symbol');
   saveToLocalStorage("localTokens", deDuplicatedTokens)
 }

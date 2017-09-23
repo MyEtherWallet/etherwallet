@@ -257,9 +257,18 @@ globalFuncs.getDefaultTokensAndNetworkType =  function getDefaultTokensAndNetwor
       networkType: isCustomNode ? firstCustomNodeWithMatchingNetwork.options : defaultNode.name.toLowerCase(),
       isCustomNode: isCustomNode
     }
+};
+
+function isDuplicateTokenAddress(tokenOne, tokenTwo, currentNetwork) {
+  var hasNetwork = tokenTwo.network;
+  if (hasNetwork) {
+    return tokenTwo.network === currentNetwork && tokenTwo.contractAddress === tokenOne.address
+  } else {
+    return tokenTwo.contractAddress === tokenOne.address
+  }
 }
 
-function checkDuplicateToken(tokenOne, tokenTwo, currentNetwork) {
+function isDuplicateTokenSymbol(tokenOne, tokenTwo, currentNetwork) {
   var hasNetwork = tokenTwo.network;
   if (hasNetwork) {
     return tokenTwo.network === currentNetwork && tokenTwo.symbol === tokenOne.symbol
@@ -268,31 +277,14 @@ function checkDuplicateToken(tokenOne, tokenTwo, currentNetwork) {
   }
 }
 
+globalFuncs.isDuplicateToken = function(tokenOne, tokenTwo, currentNetwork) {
+  return isDuplicateTokenSymbol(tokenOne, tokenTwo, currentNetwork) || isDuplicateTokenAddress(tokenOne, tokenTwo, currentNetwork);
+}
+
 globalFuncs.doesTokenExistInDefaultTokens = function(token, defaultTokensAndNetworkType) {
   for (var i = 0; i < defaultTokensAndNetworkType.defaultTokens.length; i++) {
     var currentDefaultToken = defaultTokensAndNetworkType.defaultTokens[i];
-    var isDuplicateToken = checkDuplicateToken(currentDefaultToken, token, defaultTokensAndNetworkType.networkType);
-    // do not simplify to return isDuplicateToken
-    if (isDuplicateToken) {
-      return true
-    }
-  }
-  return false
-};
-
-function checkDuplicateTokenAddress(tokenOne, tokenTwo, currentNetwork) {
-  var hasNetwork = tokenTwo.network;
-  if (hasNetwork) {
-    return tokenTwo.network === currentNetwork && tokenTwo.contractAdd === tokenOne.address
-  } else {
-    return tokenTwo.contractAdd === tokenOne.address
-  }
-}
-
-globalFuncs.doesTokenAddressExistInDefaultTokenAddresses = function(token, defaultTokensAndNetworkType) {
-  for (var i = 0; i < defaultTokensAndNetworkType.defaultTokens.length; i++) {
-    var currentDefaultToken = defaultTokensAndNetworkType.defaultTokens[i];
-    var isDuplicateToken = checkDuplicateTokenAddress(currentDefaultToken, token, defaultTokensAndNetworkType.networkType);
+    var isDuplicateToken = globalFuncs.isDuplicateToken(currentDefaultToken, token, defaultTokensAndNetworkType.networkType);
     // do not simplify to return isDuplicateToken
     if (isDuplicateToken) {
       return true
@@ -326,15 +318,10 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
 
         // catch if TOKEN SYMBOL is already in defaultTokens
         if (globalFuncs.doesTokenExistInDefaultTokens(localToken, defaultTokensAndNetworkType)) {
-          throw Error('ERROR: Unable to add a custom token with the same symbol as an existing default token')
+          throw Error('ERROR: Unable to add a duplicate custom token.')
         }
 
-        // catch if CONTRACT ADDRESS is already in defaultTokens
-        if (globalFuncs.doesTokenAddressExistInDefaultTokenAddresses(localToken, defaultTokensAndNetworkType)) {
-          throw Error('ERROR: Unable to add a custom token with the same contract address as an existing default token')
-        }
-
-      storedTokens.push({
+        storedTokens.push({
             contractAddress: localToken.contractAdd,
             symbol: localToken.symbol,
             decimal: parseInt(localToken.decimals),
