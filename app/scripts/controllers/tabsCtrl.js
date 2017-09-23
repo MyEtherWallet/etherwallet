@@ -48,13 +48,31 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     setGasValues();
     $scope.gasChanged();
 
+    function makeNewNode(key) {
+      var curNode;
+      if ($scope.nodeList[key]) {
+        curNode = $scope.nodeList[key];
+      } else {
+        curNode = $scope.nodeList[$scope.defaultNodeKey];
+      }
+      return curNode;
+    }
 
+    var networkHasChanged = false;
     $scope.changeNode = function(key) {
-        if ($scope.nodeList[key]) {
-            $scope.curNode = $scope.nodeList[key];
+        var newNode = makeNewNode(key);
+        if (!$scope.curNode) {
+          networkHasChanged = false;
+          $scope.curNode = newNode;
         } else {
-            $scope.curNode = $scope.nodeList[$scope.defaultNodeKey];
+          if ($scope.curNode.type !== newNode.type) {
+            networkHasChanged = true;
+          } else {
+            networkHasChanged = false;
+          }
+          $scope.curNode = newNode;
         }
+
         $scope.dropdownNode = false;
         Token.popTokens = $scope.curNode.tokenList;
         ajaxReq['key'] = key;
@@ -76,6 +94,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
                 $scope.notifier.info( globalFuncs.successMsgs[5] + '— Now, check the URL: <strong>' + window.location.href + '.</strong> <br /> Network: <strong>' + $scope.nodeType + ' </strong> provided by <strong>' + $scope.nodeService + '.</strong>', 5000)
             }
         });
+        networkHasChanged && window.setTimeout(function() {location.reload() }, 250)
     }
     $scope.checkNodeUrl = function(nodeUrl) {
         return $scope.Validator.isValidURL(nodeUrl);
