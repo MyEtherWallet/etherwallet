@@ -51,7 +51,7 @@
     
     <div class="tagline">
 
-    <span>3.10.3.8</span>
+    <span>3.10.3.9</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -673,7 +673,7 @@
       </div>
     </div>
 
-    <div class="row form-group" ng-show="showRaw">
+    <div class="row form-group" ng-show="rootScopeShowRawTx">
       <div class="col-sm-6">
         <label translate="SEND_raw"> Raw Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
@@ -684,7 +684,7 @@
       </div>
     </div>
 
-    <div class="clearfix form-group" ng-show="showRaw">
+    <div class="clearfix form-group" ng-show="rootScopeShowRawTx">
       <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
     </div>
   </div>
@@ -1157,7 +1157,7 @@
       </div>
     </div>
 
-    <div class="row form-group" ng-show="showRaw">
+    <div class="row form-group" ng-show="rootScopeShowRawTx">
       <div class="col-sm-6">
         <label translate="SEND_raw"> Raw Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
@@ -1168,7 +1168,7 @@
       </div>
     </div>
 
-    <div class="clearfix form-group" ng-show="showRaw">
+    <div class="clearfix form-group" ng-show="rootScopeShowRawTx">
       <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
     </div>
   </div>
@@ -2987,7 +2987,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       </div>
     </div>
 
-    <div class="row form-group" ng-show="showRaw">
+    <div class="row form-group" ng-show="rootScopeShowRawTx">
       <div class="col-sm-6">
         <label translate="SEND_raw"> Raw Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
@@ -2998,7 +2998,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       </div>
     </div>
 
-    <div class="clearfix form-group" ng-show="showRaw">
+    <div class="clearfix form-group" ng-show="rootScopeShowRawTx">
       <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
     </div>
   </div>
