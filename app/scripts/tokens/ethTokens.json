@@ -804,6 +804,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x10b123fddde003243199aad03522065dc05827a0",
+"symbol":"SYN",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xE7775A6e9Bcf904eb39DA2b68c5efb4F9360e08C",
 "symbol":"TaaS",
 "decimal":6,
