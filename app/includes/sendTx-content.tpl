@@ -129,7 +129,7 @@
       </div>
     </div>
 
-    <div class="row form-group" ng-show="showRaw">
+    <div class="row form-group" ng-show="rootScopeShowRawTx">
       <div class="col-sm-6">
         <label translate="SEND_raw"> Raw Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
@@ -140,7 +140,7 @@
       </div>
     </div>
 
-    <div class="clearfix form-group" ng-show="showRaw">
+    <div class="clearfix form-group" ng-show="rootScopeShowRawTx">
       <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
     </div>
   </div>

@@ -133,7 +133,7 @@ app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
 app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
 app.controller('txStatusCtrl', ['$scope', txStatusCtrl]);
-app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', sendTxCtrl]);
+app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', '$rootScope', sendTxCtrl]);
 app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
@@ -141,7 +141,7 @@ app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);
 app.controller('domainsaleCtrl', ['$scope', '$sce', 'walletService', domainsaleCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
 app.controller('offlineTxCtrl', ['$scope', '$sce', 'walletService', offlineTxCtrl]);
-app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
+app.controller('walletBalanceCtrl', ['$scope', '$sce', '$rootScope', walletBalanceCtrl]);
 app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 if (IS_CX) {
   app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
