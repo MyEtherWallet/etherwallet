@@ -215,6 +215,13 @@ module.exports = [
   msg:        'Maecenas ICO starts September 5, 2017 - www.maecenas.co'
 },
  {
+  // Easy Homes Token (EHT)
+  to:         '0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Easy Homes ICO. Thank you!'
+},
+ {
   // Mitrav (MTR) ICO Sale
   to:         '0x7FC408011165760eE31bE2BF20dAf450356692Af',
   gasLimit:   200000,
