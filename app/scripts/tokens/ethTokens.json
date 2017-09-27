@@ -719,6 +719,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x3d1ba9be9f66b8ee101911bc36d3fb562eac2244",
+"symbol":"RVT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x7C5A0CE9267ED19B22F8cae653F198e3E8daf098",
 "symbol":"SAN",
 "decimal":18,
