@@ -274,6 +274,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2",
+"symbol":"EHT",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x08711D3B02C8758F2FB3ab4e80228418a7F8e39c",
 "symbol":"EDG",
 "decimal":0,
