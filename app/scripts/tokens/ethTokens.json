@@ -809,6 +809,11 @@
 "decimal":6,
 "type":"default"
 },{
+"address":"0xAFe60511341a37488de25Bef351952562E31fCc1",
+"symbol":"TBT",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xa7f976C360ebBeD4465c2855684D1AAE5271eFa9",
 "symbol":"TFL",
 "decimal":8,
