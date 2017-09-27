@@ -235,6 +235,13 @@ module.exports = [
   data:       '',
   msg:        'Kin Token Sale'
 },
+ {
+  // TBOT Token Sale
+  to:         '0xAFe60511341a37488de25Bef351952562E31fCc1',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Tbot ICO Sale.'
+},
 {
   // Cobinhood Token Sale
   to:         '0xb2f7eb1f2c37645be61d73953035360e768d81e6',
