@@ -379,6 +379,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x014B50466590340D41307Cc54DCee990c8D58aa8",
+"symbol":"ICOS",
+"decimal":6,
+"type":"default"
+},{
 "address":"0x814cafd4782d2e728170fda68257983f03321c58",
 "symbol":"IDEA",
 "decimal":0,
