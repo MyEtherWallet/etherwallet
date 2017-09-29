@@ -68,6 +68,13 @@ module.exports = [
   msg:        'district0x. WEBSITE: contribution.district0x.io STARTS: Tue, 18 Jul 2017 08:00:00 REMEMBER: Use gas price of 50 GWEI (look in header) ENS: district0x.eth'
 },
 {
+  // DataBrokerDAO
+  to:         '0x8aec8f09a840faea966f4b0e29a497d8f5b5a6b4',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'DataBrokerDAO. https://databrokerdao.com'
+},
+{
   // BattleDrome
   to:         '0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F',
   gasLimit:   85000,
