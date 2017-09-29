@@ -849,6 +849,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xFACCD5Fc83c3E4C3c1AC1EF35D15adf06bCF209C",
+"symbol":"TBC2",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x6531f133e6DeeBe7F2dcE5A0441aA7ef330B4e53",
 "symbol":"TIME",
 "decimal":8,
