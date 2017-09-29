@@ -769,6 +769,11 @@
 "decimal":0,
 "type":"default"
 },{
+"address":"0xf333b2ace992ac2bbd8798bf57bc65a06184a",
+"symbol":"SND",
+"decimal":0,
+"type":"default"
+},{
 "address":"0x983F6d60db79ea8cA4eB9968C6aFf8cfA04B3c63",
 "symbol":"SNM",
 "decimal":18,
