@@ -5,7 +5,7 @@
     <!-- Content -->
     <section class="col-sm-8">
       <div class="block">
-        <div ng-show="wallet.getAddressString()==objDomainSale.address">
+        <div ng-show="wallet.getAddressString().toLower()==objDomainSale.address.toLower()">
           <div>
             <!-- Title -->
             <h2>Withdraw funds</h2>
@@ -28,7 +28,7 @@
           <!-- / After Sent -->
         </div>
 
-        <div ng-show="wallet.getAddressString()!=objDomainSale.address">
+        <div ng-show="wallet.getAddressString().toLower()!=objDomainSale.address.toLower()">
           <div>
             <!-- Title -->
             <h2>Wallet mismatch</h2>

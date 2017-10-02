@@ -128,6 +128,12 @@ domainsale.prototype.getFinishData = function(name) {
     return _this.getDataString(funcABI, [name]);
 };
 
+domainsale.prototype.getWithdrawData = function() {
+    var _this = this;
+    var funcABI = _this.domainsaleABI.withdraw;
+    return _this.getDataString(funcABI, []);
+};
+
 domainsale.prototype.getDataString = function(func, inputs) {
     var fullFuncName = ethUtil.solidityUtils.transformToFullName(func);
     var funcSig = ethFuncs.getFunctionSignature(fullFuncName);

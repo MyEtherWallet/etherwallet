@@ -317,7 +317,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
             $scope.objDomainSale.tx = domainsale.transactions.withdraw;
             $scope.tx.to = DomainSale.getContractAddress();
             $scope.tx.gasLimit = $scope.gasLimitDefaults.withdraw;
-            $scope.tx.data = "";
+            $scope.tx.data = DomainSale.getWithdrawData();
             $scope.tx.value = 0;
             $scope.doTx();
         } catch (e) {
