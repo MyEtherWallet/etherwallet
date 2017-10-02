@@ -68,6 +68,13 @@ module.exports = [
   msg:        'district0x. WEBSITE: contribution.district0x.io STARTS: Tue, 18 Jul 2017 08:00:00 REMEMBER: Use gas price of 50 GWEI (look in header) ENS: district0x.eth'
 },
 {
+  // DataBrokerDAO
+  to:         '0x8aec8f09a840faea966f4b0e29a497d8f5b5a6b4',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'DataBrokerDAO. https://databrokerdao.com'
+},
+{
   // BattleDrome
   to:         '0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F',
   gasLimit:   85000,
@@ -215,6 +222,13 @@ module.exports = [
   msg:        'Maecenas ICO starts September 5, 2017 - www.maecenas.co'
 },
  {
+  // Easy Homes Token (EHT)
+  to:         '0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Easy Homes ICO. Thank you!'
+},
+ {
   // Mitrav (MTR) ICO Sale
   to:         '0x7FC408011165760eE31bE2BF20dAf450356692Af',
   gasLimit:   200000,
@@ -234,6 +248,13 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'Kin Token Sale'
+},
+ {
+  // TBOT Token Sale
+  to:         '0xAFe60511341a37488de25Bef351952562E31fCc1',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Tbot ICO Sale.'
 },
 {
   // Cobinhood Token Sale

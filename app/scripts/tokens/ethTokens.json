@@ -274,6 +274,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2",
+"symbol":"EHT",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x08711D3B02C8758F2FB3ab4e80228418a7F8e39c",
 "symbol":"EDG",
 "decimal":0,
@@ -297,6 +302,11 @@
 "address":"0x190e569bE071F40c704e15825F285481CB74B6cC",
 "symbol":"FAM",
 "decimal":12,
+"type":"default"
+},{
+"address":"0x0ABeFb7611Cb3A01EA3FaD85f33C3C934F8e2cF4",
+"symbol":"FRD",
+"decimal":18,
 "type":"default"
 },{
 "address":"0xe6f74dcfa0e20883008d8c16b6d9a329189d0c30",
@@ -349,10 +359,15 @@
 "decimal":3,
 "type":"default"
 },{
-"address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
-"symbol":"HGT",
-"decimal":8,
-"type":"default"
+    "address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
+    "symbol":"H2O",
+    "decimal":18,
+    "type":"default"
+},{
+    "address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
+    "symbol":"HGT",
+    "decimal":8,
+    "type":"default"
 },{
 "address":"0x14F37B574242D366558dB61f3335289a5035c506",
 "symbol":"HKG",
@@ -372,6 +387,11 @@
 "address":"0x888666CA69E0f178DED6D75b5726Cee99A87D698",
 "symbol":"ICN",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x014B50466590340D41307Cc54DCee990c8D58aa8",
+"symbol":"ICOS",
+"decimal":6,
 "type":"default"
 },{
 "address":"0x814cafd4782d2e728170fda68257983f03321c58",
@@ -397,6 +417,11 @@
 "address":"0xf8e386EDa857484f5a12e4B5DAa9984E06E73705",
 "symbol":"IND",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x0aeF06DcCCC531e581f0440059E6FfCC206039EE",
+"symbol":"ITT",
+"decimal":8,
 "type":"default"
 },{
 "address":"0xfca47962d45adfdfd1ab2d972315db4ce7ccf094",
@@ -426,6 +451,11 @@
 },{
 "address":"0xdd974D5C2e2928deA5F71b9825b8b646686BD200",
 "symbol":"KNC",
+"decimal":18,
+"type":"default"
+},{
+"address":"0xff18dbc487b4c2e3222d115952babfda8ba52f5f",
+"symbol":"LIFE",
 "decimal":18,
 "type":"default"
 },{
@@ -609,9 +639,9 @@
 "decimal":0,
 "type":"default"
 },{
-"address":"0x5acE17f87c7391E5792a7683069A8025B83bbd85",
+"address":"0xE477292f1B3268687A29376116B0ED27A9c76170",
 "symbol":"PLAY",
-"decimal":0,
+"decimal":18,
 "type":"default"
 },{
 "address":"0x0AfFa06e7Fbe5bC9a764C979aA66E8256A631f02",
@@ -714,6 +744,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x3d1ba9be9f66b8ee101911bc36d3fb562eac2244",
+"symbol":"RVT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x7C5A0CE9267ED19B22F8cae653F198e3E8daf098",
 "symbol":"SAN",
 "decimal":18,
@@ -764,6 +799,11 @@
 "decimal":0,
 "type":"default"
 },{
+"address":"0xf333b2ace992ac2bbd8798bf57bc65a06184a",
+"symbol":"SND",
+"decimal":0,
+"type":"default"
+},{
 "address":"0x983F6d60db79ea8cA4eB9968C6aFf8cfA04B3c63",
 "symbol":"SNM",
 "decimal":18,
@@ -804,13 +844,28 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x10b123fddde003243199aad03522065dc05827a0",
+"symbol":"SYN",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xE7775A6e9Bcf904eb39DA2b68c5efb4F9360e08C",
 "symbol":"TaaS",
 "decimal":6,
 "type":"default"
 },{
+"address":"0xAFe60511341a37488de25Bef351952562E31fCc1",
+"symbol":"TBT",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xa7f976C360ebBeD4465c2855684D1AAE5271eFa9",
 "symbol":"TFL",
+"decimal":8,
+"type":"default"
+},{
+"address":"0xFACCD5Fc83c3E4C3c1AC1EF35D15adf06bCF209C",
+"symbol":"TBC2",
 "decimal":8,
 "type":"default"
 },{
