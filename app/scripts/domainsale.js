@@ -13,7 +13,7 @@ var domainsale = function() {
             _this.setContractAddress('0x00');
             break;
         case nodes.nodeTypes.Ropsten:
-            _this.setContractAddress('0x61789d9c9ABb93f6d498CfC81A6d808C8A47dcd5');
+            _this.setContractAddress('0x5Fb681680d5C0d6d0c848a9D4527FFb7DfB9151d');
             break;
         default:
             _this.setContractAddress('0x00');
@@ -73,7 +73,25 @@ domainsale.prototype.getMinimumBid = function(name, callback) {
         }
     });
 }
+domainsale.prototype.getBalance = function(address, callback) {
+    var _this = this;
+    var funcABI = _this.domainsaleABI.balance;
+    ajaxReq.getEthCall({ to: _this.getContractAddress(), data: _this.getDataString(funcABI, [address]) }, function(data) {
+        if (data.error) callback(data);
+        else {
+            var outTypes = funcABI.outputs.map(function(i) {
+                return i.type;
+            });
+            var res = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''));
 
+            data.data = {
+                balance: res[0],
+                balanceEth: Number(etherUnits.toEther(res[0].toString(), 'wei'))
+            };
+            callback(data);
+        }
+    });
+}
 
 domainsale.prototype.getOfferData = function(name, price, reserve, referrer) {
     var _this = this;
@@ -108,13 +126,6 @@ domainsale.prototype.getFinishData = function(name) {
     name = ens.normalise(name);
     var funcABI = _this.domainsaleABI.finish;
     return _this.getDataString(funcABI, [name]);
-};
-
-domainsale.prototype.getWithdrawData = function() {
-    var _this = this;
-    name = ens.normalise(name);
-    var funcABI = _this.domainsaleABI.withdraw;
-    return _this.getDataString(funcABI, []);
 };
 
 domainsale.prototype.getDataString = function(func, inputs) {

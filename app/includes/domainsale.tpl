@@ -6,7 +6,7 @@
       <article class="cont-md">
         <h1 class="text-center" translate="NAV_DomainSale"> DomainSale </h1>
         <p>
-          The <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener">Ethereum Name Service</a> is a distributed, open, and extensible naming system based on the Ethereum blockchain. Once you have a name, you can tell your friends to send ETH to <code>mewtopia.eth</code> instead of <code>0x7cB57B5A97eAbe942.....</code>.
+          <a href="https://medium.com/@jgm.orinoco/domainsale-an-on-chain-secondary-ens-market-b3330f6e5dda" target="_blank" rel="noopener">DomainSale</a> is a secondary market for the <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener">Ethereum Name Service</a> that allows you to buy and sell domains that are already owned.
         </p>
       </article>
       <!-- / Title -->
@@ -31,7 +31,27 @@
         </section>
       </article>
       <!-- / IF DOMAINSALE CHAIN: Check Status of Name -->
-
+  </div>
+  <div class="block" ng-show="objDomainSale.status==-1 && wallet==null">
+      <article class="row" ng-show="showDomainSale()">
+        <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+          <p>
+            If you have used DomainSale to buy or sell domains and believe you have funds available for withdrawal you can enter your account address here and it will provide you with a balance
+          </p>
+          <div class="input-group">
+            <input class="form-control"
+                   type="text"
+                   size="60"
+                   placeholder="0x1234567890123456789012345678901234567890"
+                   ng-model="objDomainSale.address"
+                   ng-keyup="$event.keyCode==13 && checkBalance()"
+                   ng-change="addressOnChange()"
+                   ng-disabled="objDomainSale.addressReadOnly"
+                   ng-class="Validator.isValidAddress(objDomainSale.address) ? 'is-valid' : 'is-invalid'"/>
+          </div>
+          <button ng-show="objDomainSale.balance == -1" class="btn btn-primary" ng-click="checkBalance()"> Check DomainSale balance </button>
+        </section>
+      </article>
   </div>
 
 
@@ -69,8 +89,12 @@
   @@if (site === 'mew' ) { @@include( './domainsale-status-closed.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './domainsale-status-closed.tpl', { "site": "cx"  } ) }
 
+  <!-- If balance available provide balance information -->
+  @@if (site === 'mew' ) { @@include( './domainsale-status-balance.tpl', { "site": "mew" } ) }
+  @@if (site === 'cx'  ) { @@include( './domainsale-status-balance.tpl', { "site": "cx"  } ) }
+
   <!-- Unlock Directive: Everything but ineligible -->
-  <article class="row" ng-show="(objDomainSale.status==domainsaleModes.nottransferred || objDomainSale.status==domainsaleModes.notoffered || objDomainSale.status==domainsaleModes.available || objDomainSale.status==domainsaleModes.auctioning || objDomainSale.status==domainsaleModes.closed)">
+  <article class="row" ng-show="(objDomainSale.balance > 0 || objDomainSale.status==domainsaleModes.nottransferred || objDomainSale.status==domainsaleModes.notoffered || objDomainSale.status==domainsaleModes.available || objDomainSale.status==domainsaleModes.auctioning || objDomainSale.status==domainsaleModes.closed)">
     <section class="clearfix collapse-container">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
@@ -83,6 +107,7 @@
           <span ng-show="objDomainSale.status==domainsaleModes.available && objDomainSale.price!=0 && objDomainSale.reserve!=0 && wallet==null">    Do you want to buy or bid for {{objDomainSale.name}}.eth? Unlock your Wallet to continue </span>
           <span ng-show="objDomainSale.status==domainsaleModes.auctioning && wallet==null">    Do you want to bid for {{objDomainSale.name}}.eth? Unlock your Wallet to place a bid </span>
           <span ng-show="objDomainSale.status==domainsaleModes.closed && wallet==null">    Did you buy or sell {{objDomainSale.name}}.eth? Unlock your Wallet to finish the auction </span>
+          <span ng-show="objDomainSale.status==-1 && objDomainSale.balance>0 && wallet==null">    Want to withdraw your funds? Unlock your Wallet to withdraw </span>
 
         </h4>
       </div>
@@ -110,6 +135,10 @@
   <!-- Action: finish -->
   @@if (site === 'mew' ) { @@include( './domainsale-action-finish.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './domainsale-action-finish.tpl', { "site": "cx"  } ) }
+
+  <!-- Action: withdraw -->
+  @@if (site === 'mew' ) { @@include( './domainsale-action-withdraw.tpl', { "site": "mew" } ) }
+  @@if (site === 'cx'  ) { @@include( './domainsale-action-withdraw.tpl', { "site": "cx"  } ) }
 
   <!-- Modal: confirm -->
   @@if (site === 'mew' ) { @@include( './domainsale-modal.tpl', { "site": "mew" } ) }

@@ -1,6 +1,6 @@
 <table class="table table-striped table-domainsale-modal">
   <tbody>
-    <tr>
+    <tr ng-show="objDomainSale.tx!=domainsaleTransactions.withdraw">
       <td>Name</td><td>{{objDomainSale.name}}.eth</td>
     </tr>
     <tr ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.priceEth!=0">

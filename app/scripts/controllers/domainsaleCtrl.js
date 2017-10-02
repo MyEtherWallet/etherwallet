@@ -17,6 +17,9 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
     $scope.objDomainSale = {
         status: -1,
         name: '',
+        address: '',
+        balance: -1,
+        balanceEth: -1,
         price: 0,
         priceEth: 0,
         reserve: 0,
@@ -84,6 +87,10 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         $scope.objDomainSale.timeRemaining = hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
         updateScope();
     }
+    $scope.addressOnChange = function() {
+        // Resets information
+        $scope.objDomainSale.balance = -1;
+    }
     $scope.nameOnChange = function() {
         // Resets information
         $scope.objDomainSale.status = -1;
@@ -101,6 +108,15 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
           value: 0
         };
         clearInterval($scope.objDomainSale.timer);
+    }
+    $scope.checkBalance = function() {
+        if ($scope.Validator.isValidAddress($scope.objDomainSale.address)) {
+            DomainSale.getBalance($scope.objDomainSale.address, function(data) {
+                var entries = data.data;
+                for (var key in entries) $scope.objDomainSale[key] = entries[key];
+                $scope.hideDomainSaleInfoPanel = true;
+            });
+        }
     }
     $scope.checkName = function() {
         // checks if it's the same length as a PK and if so, warns them.
@@ -301,7 +317,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
             $scope.objDomainSale.tx = domainsale.transactions.withdraw;
             $scope.tx.to = DomainSale.getContractAddress();
             $scope.tx.gasLimit = $scope.gasLimitDefaults.withdraw;
-            $scope.tx.data = DomainSale.getWithdrawData();
+            $scope.tx.data = "";
             $scope.tx.value = 0;
             $scope.doTx();
         } catch (e) {

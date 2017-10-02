@@ -17,6 +17,7 @@
           <span ng-show="objDomainSale.tx==domainsaleTransactions.bid"> bid on a domain</span>
           <span ng-show="objDomainSale.tx==domainsaleTransactions.cancel"> cancel a domain sale</span>
           <span ng-show="objDomainSale.tx==domainsaleTransactions.finish"> finish a domain sale</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.withdraw"> withdraw funds from DomainSale to your account</span>
         </h2>
 
         <table ng-show="objDomainSale.tx==domainsaleTransactions.buy || objDomainSale.tx==domainsaleTransactions.bid" class="table">
