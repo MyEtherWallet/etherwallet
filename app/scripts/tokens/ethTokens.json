@@ -225,7 +225,12 @@
 "type":"default"
 },{
 "address":"0x0cf0ee63788a0849fe5297f3407f701e122cc023",
-"symbol":"DATA",
+"symbol":"DATA (Streamr)",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x1b5f21ee98eed48d292e8e2d3ed82b40a9728a22",
+"symbol":"DATA (DataBrokerDAO)",
 "decimal":18,
 "type":"default"
 },{
