@@ -294,6 +294,11 @@
 "decimal":0,
 "type":"default"
 },{
+"address":"0xc8C6A31A4A806d3710A7B38b7B296D2fABCCDBA8",
+"symbol":"ELIX",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xB802b24E0637c2B87D2E8b7784C055BBE921011a",
 "symbol":"EMV",
 "decimal":2,
