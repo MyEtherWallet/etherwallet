@@ -159,6 +159,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x28577A6d31559bd265Ce3ADB62d0458550F7b8a7",
+"symbol":"CCC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x177d39AC676ED1C67A2b268AD7F1E58826E5B0af",
 "symbol":"CDT",
 "decimal":18,
