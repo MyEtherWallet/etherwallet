@@ -161,7 +161,7 @@ ADD_Ledger_4                : 'If no Browser Support is found in settings, verif
 ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Connect to Ledger Wallet ',
-  
+
 ADD_MetaMask                : 'Connect to MetaMask ',
 
 x_Trezor                    : 'TREZOR ',
@@ -187,7 +187,7 @@ ADD_Radio_5_PathAlternative : '(Ledger)',
 ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : 'Create a Nickname ',
-ADD_Label_3                 : 'Your wallet is encrypted. Please enter the password. ',
+ADD_Label_3                 : 'Your wallet is encrypted. Good! Please enter the password. ',
 ADD_Label_4                 : 'Add an Account to Watch ',
 ADD_Warning_1               : 'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it. ',
 ADD_Label_5                 : 'Enter the Address ',
