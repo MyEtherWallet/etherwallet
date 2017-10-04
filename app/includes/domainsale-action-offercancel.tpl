@@ -29,14 +29,14 @@
         <!-- Title (not offered) -->
         <div ng-show="objDomainSale.status==domainsaleModes.notoffered">
           <h2>Offer {{objDomainSale.name}}.eth for sale</h2>
-          <p><em><small>Set either of both of the prices below to offer your domain for sale.  Remember that 10% of the funds when sold goes to referrers.</small></em></p>
+          <p><em><small>Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain's deed will go to the buyer and 10% of the funds when sold goes to referrers.</small></em></p>
         </div>
         <!-- / Title (not offered) -->
 
         <!-- Title (already offered) -->
         <div ng-show="objDomainSale.status==domainsaleModes.available">
           <h2>Alter {{objDomainSale.name}}.eth offer</h2>
-          <p><em><small>Change either of both of the prices below to alter your domain sale offer.  Remember that 10% of the funds when sold goes to referrers.</small></em></p>
+          <p><em><small>Change either of both of the prices below to alter your domain sale offer.  Remember that any funds you have locked in the domain's deed will go to the buyer and 10% of the funds when sold goes to referrers.</small></em></p>
         </div>
         <!-- / Title  (already offered) -->
 
