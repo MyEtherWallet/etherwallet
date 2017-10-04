@@ -829,6 +829,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x24aef3bf1a47561500f9430d74ed4097c47f51f2",
+"symbol":"SPARTA",
+"decimal":4,
+"type":"default"
+},{
 "address":"0xB64ef51C888972c908CFacf59B47C1AfBC0Ab8aC",
 "symbol":"STORJ",
 "decimal":8,
