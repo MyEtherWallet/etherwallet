@@ -774,6 +774,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x4ca74185532dc1789527194e5b9c866dd33f4e82",
+"symbol":"sense",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xa1ccc166faf0E998b3E33225A1A0301B1C86119D",
 "symbol":"SGEL",
 "decimal":18,
