@@ -53,6 +53,13 @@ module.exports = [
   data:       '',
   msg:        'ATLANT ICO Sale. Thank you for your support. '
 },
+ {
+  // horizonstate.com Horizon State Token Sale
+  to:         '0xbD2ED3E85faa3433c068c7B3f9C8C7d839CE88d7',
+  gasLimit:   210000,
+  data:       '',
+  msg:        'Horizon State Token Sale. Thank you for your support. '
+},
 {
   // DCORP
   to:         '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
