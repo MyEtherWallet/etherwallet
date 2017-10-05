@@ -754,6 +754,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x0996bfb5d057faa237640e2506be7b4f9c46de0b",
+"symbol":"RNDR",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x4993CB95c7443bdC06155c5f5688Be9D8f6999a5",
 "symbol":"ROUND",
 "decimal":18,
