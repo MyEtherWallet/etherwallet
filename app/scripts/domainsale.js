@@ -13,7 +13,7 @@ var domainsale = function() {
             _this.setContractAddress('0x00');
             break;
         case nodes.nodeTypes.Ropsten:
-            _this.setContractAddress('0x5Fb681680d5C0d6d0c848a9D4527FFb7DfB9151d');
+            _this.setContractAddress('0xe8E98228Ca36591952Efdf6F645C5B229E6Cf688');
             break;
         default:
             _this.setContractAddress('0x00');
