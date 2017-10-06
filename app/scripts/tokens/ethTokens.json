@@ -284,6 +284,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0xced4e93198734ddaff8492d525bd258d49eb388e",
+"symbol":"EDO",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2",
 "symbol":"EHT",
 "decimal":8,
@@ -374,15 +379,15 @@
 "decimal":3,
 "type":"default"
 },{
-    "address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
-    "symbol":"H2O",
-    "decimal":18,
-    "type":"default"
+"address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
+"symbol":"H2O",
+"decimal":18,
+"type":"default"
 },{
-    "address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
-    "symbol":"HGT",
-    "decimal":8,
-    "type":"default"
+"address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
+"symbol":"HGT",
+"decimal":8,
+"type":"default"
 },{
 "address":"0x14F37B574242D366558dB61f3335289a5035c506",
 "symbol":"HKG",
@@ -1037,10 +1042,5 @@
 "address":"0xe386b139ed3715ca4b18fd52671bdcea1cdfe4b1",
 "symbol":"ZST",
 "decimal":8,
-"type":"default"
-},{
-"address":"0xced4e93198734ddaff8492d525bd258d49eb388e",
-"symbol":"EDO",
-"decimal":18,
 "type":"default"
 }]

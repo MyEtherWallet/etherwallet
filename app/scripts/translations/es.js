@@ -348,7 +348,7 @@ ADD_Ledger_4                : 'Si no encuentras la opción "Browser Support" en 
 ADD_Ledger_0a               : 'Volver a abrir MyEtherWallet en una conexión segura (SSL) ',
 ADD_Ledger_0b               : 'Volver a abrir MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) u [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Conectar a Ledger Wallet ',
-  
+
 ADD_MetaMask                : 'Connectar a MetaMask ',
 
 x_Trezor                    : 'TREZOR ',
