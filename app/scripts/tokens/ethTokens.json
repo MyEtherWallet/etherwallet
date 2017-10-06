@@ -1028,4 +1028,9 @@
 "symbol":"ZST",
 "decimal":8,
 "type":"default"
+},{
+"address":"0xced4e93198734ddaff8492d525bd258d49eb388e",
+"symbol":"EDO",
+"decimal":18,
+"type":"default"
 }]
