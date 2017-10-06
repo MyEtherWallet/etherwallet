@@ -56,7 +56,7 @@ module.exports = [
  {
   // horizonstate.com Horizon State Token Sale
   to:         '0xbD2ED3E85faa3433c068c7B3f9C8C7d839CE88d7',
-  gasLimit:   210000,
+  gasLimit:   69153,
   data:       '',
   msg:        'Horizon State Token Sale. Thank you for your support. '
 },
