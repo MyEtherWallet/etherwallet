@@ -459,6 +459,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x27695E09149AdC738A978e9A678F99E4c39e9eb9",
+"symbol":"KICK",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x818Fc6C2Ec5986bc6E2CBf00939d90556aB12ce5",
 "symbol":"KIN",
 "decimal":18,
