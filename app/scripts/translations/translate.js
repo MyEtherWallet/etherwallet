@@ -4,6 +4,7 @@
   var el = require('./el');
   var en = require('./en');
   var es = require('./es');
+  var fa = require('./fa');
   var fi = require('./fi');
   var fr = require('./fr');
   var ht = require('./ht');
@@ -28,6 +29,7 @@
   $translateProvider.translations(el.code, translate.marked(el.data));
   $translateProvider.translations(en.code, translate.marked(en.data));
   $translateProvider.translations(es.code, translate.marked(es.data));
+  $translateProvider.translations(fa.code, translate.marked(fa.data));
   $translateProvider.translations(fi.code, translate.marked(fi.data));
   $translateProvider.translations(fr.code, translate.marked(fr.data));
   $translateProvider.translations(ht.code, translate.marked(ht.data));

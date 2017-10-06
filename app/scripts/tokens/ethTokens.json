@@ -159,6 +159,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x28577A6d31559bd265Ce3ADB62d0458550F7b8a7",
+"symbol":"CCC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x177d39AC676ED1C67A2b268AD7F1E58826E5B0af",
 "symbol":"CDT",
 "decimal":18,
@@ -220,7 +225,12 @@
 "type":"default"
 },{
 "address":"0x0cf0ee63788a0849fe5297f3407f701e122cc023",
-"symbol":"DATA",
+"symbol":"DATA (Streamr)",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x1b5f21ee98eed48d292e8e2d3ed82b40a9728a22",
+"symbol":"DATA (DataBrokerDAO)",
 "decimal":18,
 "type":"default"
 },{
@@ -274,6 +284,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0xced4e93198734ddaff8492d525bd258d49eb388e",
+"symbol":"EDO",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2",
 "symbol":"EHT",
 "decimal":8,
@@ -282,6 +297,11 @@
 "address":"0x08711D3B02C8758F2FB3ab4e80228418a7F8e39c",
 "symbol":"EDG",
 "decimal":0,
+"type":"default"
+},{
+"address":"0xc8C6A31A4A806d3710A7B38b7B296D2fABCCDBA8",
+"symbol":"ELIX",
+"decimal":18,
 "type":"default"
 },{
 "address":"0xB802b24E0637c2B87D2E8b7784C055BBE921011a",
@@ -359,15 +379,15 @@
 "decimal":3,
 "type":"default"
 },{
-    "address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
-    "symbol":"H2O",
-    "decimal":18,
-    "type":"default"
+"address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
+"symbol":"H2O",
+"decimal":18,
+"type":"default"
 },{
-    "address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
-    "symbol":"HGT",
-    "decimal":8,
-    "type":"default"
+"address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
+"symbol":"HGT",
+"decimal":8,
+"type":"default"
 },{
 "address":"0x14F37B574242D366558dB61f3335289a5035c506",
 "symbol":"HKG",
@@ -377,6 +397,11 @@
 "address":"0xcbCC0F036ED4788F63FC0fEE32873d6A7487b908",
 "symbol":"HMQ",
 "decimal":8,
+"type":"default"
+},{
+"address":"0x554C20B7c486beeE439277b4540A434566dC4C02",
+"symbol":"HST",
+"decimal":18,
 "type":"default"
 },{
 "address":"0x5a84969bb663fb64F6d015DcF9F622Aedc796750",
@@ -442,6 +467,11 @@
 "address":"0x773450335eD4ec3DB45aF74f34F2c85348645D39",
 "symbol":"JetCoins",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x27695E09149AdC738A978e9A678F99E4c39e9eb9",
+"symbol":"KICK",
+"decimal":8,
 "type":"default"
 },{
 "address":"0x818Fc6C2Ec5986bc6E2CBf00939d90556aB12ce5",
@@ -759,6 +789,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x4ca74185532dc1789527194e5b9c866dd33f4e82",
+"symbol":"sense",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xa1ccc166faf0E998b3E33225A1A0301B1C86119D",
 "symbol":"SGEL",
 "decimal":18,
@@ -817,6 +852,11 @@
 "address":"0x58bf7df57d9DA7113c4cCb49d8463D4908C735cb",
 "symbol":"SPARC",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x24aef3bf1a47561500f9430d74ed4097c47f51f2",
+"symbol":"SPARTA",
+"decimal":4,
 "type":"default"
 },{
 "address":"0xB64ef51C888972c908CFacf59B47C1AfBC0Ab8aC",
