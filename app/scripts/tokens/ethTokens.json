@@ -104,6 +104,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xb2bfeb70b903f1baac7f2ba2c62934c7e5b974c4",
+"symbol":"BKB",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xce59d29b09aae565feeef8e52f47c3cd5368c663",
 "symbol":"BLX",
 "decimal":18,
