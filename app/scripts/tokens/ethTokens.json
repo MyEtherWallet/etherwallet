@@ -154,6 +154,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x1d462414fe14cf489c7A21CaC78509f4bF8CD7c0",
+"symbol":"CAN",
+"decimal":6,
+"type":"default"
+},{
 "address":"0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8",
 "symbol":"CAT",
 "decimal":18,
