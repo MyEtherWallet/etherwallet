@@ -5,33 +5,33 @@ pl.code = 'pl';
 pl.data = {
 
 /* New Generics */
-x_CancelReplaceTx           : 'Cancel or Replace Transaction',
-x_CancelTx                  : 'Cancel Transaction',
-x_PasswordDesc              : 'This password * encrypts * your private key. This does not act as a seed to generate your keys. **You will need this password + your private key to unlock your wallet.**',
-x_ReadMore                  : 'Read More',
-x_ReplaceTx                 : 'Replace Transaction',
-x_TransHash                 : 'Transaction Hash',
-x_TXFee                     : 'TX Fee',
+x_CancelReplaceTx           : 'Anuluj lub Zastąp Transakcję',
+x_CancelTx                  : 'Anuluj Transakcję',
+x_PasswordDesc              : 'To hasło * szyfruje * Twój klucz prywatny. To nie jest ziarno (seed) generujące Twoje klucze. **Będziesz potrzebować tego hasła + Twojego klucza prywatnego aby odblokować swój portfel.**',
+x_ReadMore                  : 'Zobacz więcej',
+x_ReplaceTx                 : 'Zastąp Transakcję',
+x_TransHash                 : 'Hash Transakcji',
+x_TXFee                     : 'TX Fee (opłata)',
 x_TxHash                    : 'TX Hash',
 
 /* Check TX Status */
-NAV_CheckTxStatus           : 'Check TX Status',
-NAV_TxStatus                : 'TX Status',
-tx_Details                  : 'Transaction Details',
-tx_Summary                  : 'During times of high volume (like during ICOs) transactions can be pending for hours, if not days. This tool aims to give you the ability to find and "cancel" / replace these TXs. ** This is not typically something you can do. It should not be relied upon & will only work when the TX Pools are full. [Please, read about this tool here.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
-tx_notFound                 : 'Transaction Not Found',
-tx_notFound_1               : 'This TX cannot be found in the TX Pool of the node you are connected to.',
-tx_notFound_2               : 'If you just sent the transaction, please wait 15 seconds and press the "Check TX Status" button again. ',
-tx_notFound_3               : 'It could still be in the TX Pool of a different node, waiting to be mined.',
-tx_notFound_4               : 'Please use the dropdown in the top-right & select a different ETH node (e.g. `ETH (Etherscan.io)` or `ETH (Infura.io)` or `ETH (MyEtherWallet)`) and check again.',
-tx_foundInPending           : 'Pending Transaction Found',
-tx_foundInPending_1         : 'Your transaction was located in the TX Pool of the node you are connected to. ',
-tx_foundInPending_2         : 'It is currently pending (waiting to be mined). ',
-tx_foundInPending_3         : 'There is a chance you can "cancel" or replace this transaction. Unlock your wallet below.',
-tx_FoundOnChain             : 'Transaction Found',
-tx_FoundOnChain_1           : 'Your transaction was successfully mined and is on the blockchain.',
-tx_FoundOnChain_2           : '**If you see a red `( ! )`, a `BAD INSTRUCTION` or `OUT OF GAS` error message**, it means that the transaction was not successfully *sent*. You cannot cancel or replace this transaction. Instead, send a new transaction. If you received an "Out of Gas" error, you should double the gas limit you specified originally.',
-tx_FoundOnChain_3           : '**If you do not see any errors, your transaction was successfully sent.** Your ETH or Tokens are where you sent them. If you cannot see this ETH or Tokens credited in your other wallet / exchange account, and it has been 24+ hours since you sent, please [contact that service](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Send them the *link* to your transaction and ask them, nicely, to look into your situation.',
+NAV_CheckTxStatus           : 'Sprawdź Status Transakcji',
+NAV_TxStatus                : 'Status Transakcji',
+tx_Details                  : 'Szczegóły Transakcji',
+tx_Summary                  : 'Zdarza się (szczególnie podczas ICO), że transakcje są oczekujące przez godziny, a nawet dni. To narzędzie ma na celu umożliwić Ci znalezienie i \"anulowanie\" / zastąpienie tych transakcji. ** To nie jest narzędzie, które można użyć w każdej sytuacji. Nie gwarantuje ono osiągnięcia sukcesu i będzie działać tylko jeśli pule transakcji są pełne. [Więcej informacji tutaj.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
+tx_notFound                 : 'Transakcja nie została znaleziona',
+tx_notFound_1               : 'Transakcja nie zostala znaleziona w puli transakcji węzła, do którego jesteś połączony.',
+tx_notFound_2               : 'Jeśli wysłałeś transakcję przed chwilą, poczekaj 15 sekund i naciśnij przycisk "Sprawdź Status Transakcji" ponownie. ',
+tx_notFound_3               : 'Wciąż może być w puli transakcji innego węzła oczekując na potwierdzenie.',
+tx_notFound_4               : 'Użyj menu w prawym górnym rogu aby wybrać inny węzeł ETH (np. `ETH (Etherscan.io)` lub `ETH (Infura.io)` lub `ETH (MyEtherWallet)`) i sprawdź ponownie.',
+tx_foundInPending           : 'Znaleziono oczekującą transakcję',
+tx_foundInPending_1         : 'Twoja transakcja została znaleziona w puli transakcji węzła, z którym jesteś połączony. ',
+tx_foundInPending_2         : 'Transakcja oczekuje na wydobycie/potwierdzenie. ',
+tx_foundInPending_3         : 'Istnieje szansa \"anulować\" lub zastąpić tę transakcję. Odblokuj swój portfel poniżej.',
+tx_FoundOnChain             : 'Transakcja została znaleziona',
+tx_FoundOnChain_1           : 'Twoja transakcja została pomyślnie zrealizowana i pojawiła się na bloku.',
+tx_FoundOnChain_2           : '**Jeśli zobaczysz czerwony wykrzyknik `( ! )`, `ZŁA INSTRUKCJA` lub `ZABRAKŁO PALIWA` w komunikacie o błędzie**, oznacza to, że transakcji nie udało się wysłać pomyślnie. Nie możesz anulować ani zastąpić tej transakcji. Zamiast tego, wyślij nową transakcję. Jeśli otrzymałeś komunikat o niewystarczającej ilości paliwa, powinieneś podwoić limit gazu.',
+tx_FoundOnChain_3           : '**Jeśli nie pojawią się żadne komunikaty o błędzie, to Twoja transakcja została pomyślnie wysłana.** Twój ETH lub Tokeny są tam, gdzie zostały wysłane. Jeśli jednak ETH lub Tokeny nie pojawią się tam, gdzie zostały wysłane i minęły ponad 24 godziny od momentu wysłania, [skontaktuj się z którymś z serwisów](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Wyślij im *link* do Twojej transakcji i uprzejmie poproś o zbadanie sytuacji.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Use your',
@@ -71,7 +71,7 @@ NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Kontrakt ',
 NAV_DeployContract          : 'Wyślij Kontrakt ',
 NAV_ENS                     : 'ENS',
-NAV_GenerateWallet_alt      : 'New Wallet ',
+NAV_GenerateWallet_alt      : 'Nowy Portfel ',
 NAV_GenerateWallet          : 'Wygeneruj Portfel ',
 NAV_Help                    : 'Pomoc ',
 NAV_InteractContract        : 'Pracuj z Kontraktem ',
@@ -134,8 +134,8 @@ sidebar_TransHistory        : 'Historia Transakcji ',
 sidebar_donation            : 'MyEtherWallet jest darmową, otwarto-źródłową usługą stworzoną dla Twojej prywatności i bezpieczeństwa. Im więcej darowizn zbierzemy, tym więcej czasu będziemy w stanie poświęcić na dodawanie nowych funkcjonalności, analizowanie informacji zwrotnych oraz spełnianie waszych oczekiwań. Jesteśmy jedynie dwójką ludzi starającą się zmienić świat. Pomóż nam! ',
 sidebar_donate              : 'Prześlij darowiznę ',
 sidebar_thanks              : 'DZIĘKUJEMY!!! ',
-sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
-sidebar_DisplayOnLedger     : 'Display address on Ledger',
+sidebar_DisplayOnTrezor     : 'Wyświetl adres w TREZOR',
+sidebar_DisplayOnLedger     : 'Wyświetl adres w Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Jak chciałbyś uzyskać dostęp do Twojego portfela? ',
@@ -304,7 +304,7 @@ ADD_Ledger_0a               : 'Otwórz MyEtherWallet ponownie na bezpiecznym po�
 ADD_Ledger_0b               : 'Otwórz MyEtherWallet w [Chrome](https://www.google.com/chrome/browser/desktop/) lub [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Połącz z Ledger Wallet ',
 
-ADD_MetaMask                : 'Connect to MetaMask ',
+ADD_MetaMask                : 'Połącz z MetaMask ',
 
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Połącz z TREZOR ',
@@ -391,16 +391,16 @@ ERROR_28                    : '**Potrzebujesz plik Keystore i hasło, lub Klucz 
 ERROR_29                    : 'Wpisz poprawny login i hasło ',
 ERROR_30                    : 'Wpisz poprawną nazwę ENS ',
 ERROR_31                    : 'Błędna tajna fraza (secret phrase) ',
-ERROR_32                    : 'Nie można połączyć z węzłem.  Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
-ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_32                    : 'Nie można połączyć z węzłem. Odśwież stronę, spróbuj inny węzeł (w prawym górnym rogu), sprawdź swoje ustawienia firewall. Jeśli łączysz się z węzłem niestandardowym, sprawdź konfigurację.', // 32
+ERROR_33                    : 'Odblokowany portfel nie zgadza się z adresem właściciela. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> More info</a>', // 35
-ERROR_36                    : 'Enter valid TX hash', // 36
-ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+ERROR_35                    : 'Wprowadzony adres nie jest sprawdzony (checksummed). <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> Więcej informacji</a>', // 35
+ERROR_36                    : 'Wprowadź poprawny TX hash', // 36
+ERROR_37                    : 'Wprowadź poprawny ciąg znaków (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Prawidłowy adres ',
 SUCCESS_2                   : 'Portfel został odszyfrowany ',
-SUCCESS_3                   : 'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:   ', //'Transakcja zgłoszona. TX Hash ',
+SUCCESS_3                   : 'Twoja transakcja została zgłoszona i czeka na potwierdzenie. Podczas ICO może to zająć ponad 3 godziny. Użyj przycisków poniżej żeby sprawdzić status transakcji. TX Hash:   ', //'Transakcja zgłoszona. TX Hash ',
 SUCCESS_4                   : 'Twój portfel został dodany ',
 SUCCESS_5                   : 'Wybrany plik ',
 SUCCESS_6                   : 'Uzyskano połączenie: ',
