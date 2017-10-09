@@ -21,7 +21,7 @@ x_TxHash                    : 'Hash TX',
 NAV_CheckTxStatus           : 'Check Status TX',
 NAV_TxStatus                : 'Status TX',
 tx_Details                  : 'Detail Transaksi',
-tx_Summary                  : 'Saat volume sedang tinggi (misalnya saat ICOs) transaksi dapat tertunda selama berjam-jam, bahkan hari. Fitur ini memberikan kemampuan untuk menemukan dan membatalkan / mengganti TX. ** Ini bukanlah hal yang pada umumnya dapat dilakukan. Jangan bergantung pada fitur ini & fitur ini hanya akan bekerja saat TX pool penuh. [Penjelasan tentang firur ini bisa dibaca di sini.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : 'Saat volume sedang tinggi (misalnya saat ICOs) transaksi dapat tertunda selama berjam-jam, bahkan hari. Fitur ini memberikan kemampuan untuk menemukan dan membatalkan / mengganti TX. ** Ini bukanlah hal yang pada umumnya dapat dilakukan. Jangan bergantung pada fitur ini & fitur ini hanya akan bekerja saat TX pool penuh. [Penjelasan tentang firur ini bisa dibaca di sini.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Transaksi tidak ditemukan',
 tx_notFound_1               : 'TX ini tidak dapat ditemukan di TX Pool dari node yang anda pakai.',
 tx_notFound_2               : 'Jika transaksi baru saja terkirim, tunggu 15 detik dan tekan tombol "Check TX Status" lagi. ',
@@ -34,7 +34,7 @@ tx_foundInPending_3         : 'Ada kemungkinan Anda dapat membatalkan atau mengg
 tx_FoundOnChain             : 'Transaksi ditemukan',
 tx_FoundOnChain_1           : 'Transaksi Anda telah berhasil ditambang (mined) dan sudah masuk di blockchain.',
 tx_FoundOnChain_2           : '**Jika muncul Error `( ! )`, atau `BAD INSTRUCTION` atau `OUT OF GAS` berwarna merah**, artinya transaksi tidak berhasil terkirim. Transaksi ini tidak dapat dibatalkan ataupun diganti. Yang dapat Anda lakukan adalah mengirim transaksi baru. Jika muncul Error "Out of Gas" error, lipat dua-kan jumlah gas limit dari yang dipakai sebelumnya.',
-tx_FoundOnChain_3           : '**Jika tidak ada Error, artinya transaksi Anda berhasil terkirim.** ETH atau Token akan masuk ke alamat yang dituju. Jika ETH atau Token tidak muncul di alamat dompet / exchange account yang dituju, dan sudah lebih dari 24 jam sejak pengiriman, segera [hubungi penerima kiriman](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Lampirkan *link* dari transaksi Anda dan mintalah bantuan untuk memeriksa apa yang terjadi.',
+tx_FoundOnChain_3           : '**Jika tidak ada Error, artinya transaksi Anda berhasil terkirim.** ETH atau Token akan masuk ke alamat yang dituju. Jika ETH atau Token tidak muncul di alamat dompet / exchange account yang dituju, dan sudah lebih dari 24 jam sejak pengiriman, segera [hubungi penerima kiriman](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Lampirkan *link* dari transaksi Anda dan mintalah bantuan untuk memeriksa apa yang terjadi.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Pakailah',
@@ -185,7 +185,7 @@ ADD_Ledger_4                : 'Jika "Browser Support" tidak ditemukan di "Settin
 ADD_Ledger_0a               : 'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman ',
 ADD_Ledger_0b               : 'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Hubungkan ke Ledger Wallet ',
-  
+
 ADD_MetaMask                : 'Connect to MetaMask ',
 
 x_Trezor                    : 'TREZOR ',
@@ -395,7 +395,7 @@ ERROR_31                    : 'Masukkan frase rahasia yang valid. ', // 31
 ERROR_32                    : 'Tidak dapat tersambung ke node. Coba lakukan "Refresh" dan ganti node (pojok kanan atas), dan check setting firewall. Jika node-nya custom, periksa configs-nya.', // 32
 ERROR_33                    : 'Dompet yang Anda buka tidak sesuai dengan address pemiliknya. ', // 33
 ERROR_34                    : 'Nama yang Anda coba buka tidak sama dengan nama yang dimasukkan. ', // 34
-ERROR_35                    : 'Address yang dimasukkan tidak di checksum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Informasi lebih lanjut</a>', // 35
+ERROR_35                    : 'Address yang dimasukkan tidak di checksum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> Informasi lebih lanjut</a>', // 35
 ERROR_36                    : 'Masukkan TX hash yang valid', // 36
 ERROR_37                    : 'Masukkan hex string yang valid (0-9, a-f)', // 37
 

@@ -52,9 +52,9 @@
           <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank" rel="noopener">Announcing the Ethereum Name Service Relaunch Date!</a></li>
       </ul>
       <hr />
-      <h6><a href="https://myetherwallet.groovehq.com/knowledge_base/categories/ens" target="_blank" rel="noopener">Help Center: ENS</a>
+      <h6><a href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener">Help Center: ENS</a>
       &nbsp;&middot;&nbsp;
-      <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/debugging-a-bad-instruction-reveal" target="_blank" rel="noopener">Debugging a [BAD INSTRUCTION] Reveal</a></h6>
+      <a href="https://myetherwallet.github.io/knowledge-base/ens/ens-debugging-a-bad-instruction-reveal.html" target="_blank" rel="noopener">Debugging a [BAD INSTRUCTION] Reveal</a></h6>
       <p>Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We're so sorry. :( </p>
 
   </div>

@@ -18,7 +18,7 @@ x_TxHash                    : 'TX Hash',
 NAV_CheckTxStatus           : 'Check TX Status',
 NAV_TxStatus                : 'TX Status',
 tx_Details                  : 'Transactie Details',
-tx_Summary                  : 'Ten tijden van hoog transactie volume (zoals tijdens ICOs) kunnen transacties voor uren, zo niet dagen, "pending" blijven. Deze tool heeft als doel om je de mogelijkheid te geven om deze TXs op te sporen en ze te "annuleren" / vervangen. ** Dit is niet typisch iets wat je kunt doen. Je zou er niet op moeten vertrouwen dat dit werkt & het kan alleen werken als de TX Pools vol zitten. [Lees hier meer over deze tool.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : 'Ten tijden van hoog transactie volume (zoals tijdens ICOs) kunnen transacties voor uren, zo niet dagen, "pending" blijven. Deze tool heeft als doel om je de mogelijkheid te geven om deze TXs op te sporen en ze te "annuleren" / vervangen. ** Dit is niet typisch iets wat je kunt doen. Je zou er niet op moeten vertrouwen dat dit werkt & het kan alleen werken als de TX Pools vol zitten. [Lees hier meer over deze tool.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Transactie Niet Gevonden',
 tx_notFound_1               : 'Deze TX werd niet gevonden in de TX Pool van de node waarmee je bent verbonden.',
 tx_notFound_2               : 'Als je deze transactie zojuist hebt verzonden, wacht dan eerst 15 seconden en druk nogmaals op de "Check TX Status" knop. ',
@@ -31,7 +31,7 @@ tx_foundInPending_3         : 'Er is een kans dat je je transactie kunt "anneler
 tx_FoundOnChain             : 'Transactie Gevonden',
 tx_FoundOnChain_1           : 'Je transactie was succesvol ge-mined en is in de blockchain opgenomen.',
 tx_FoundOnChain_2           : '**Als je een rood `( ! )`, een `BAD INSTRUCTION` of een `OUT OF GAS` foutmelding**, betekend dat dat de transactie niet succesvol is *verzonden*. Je kunt deze transactie niet annuleren of vervangen. Verzend in plaats daarvan een nieuwe transactie. Als je een "Out of Gas" foutmelding krijgt, zou je de oorspronkelijke gas limit moeten verdubbelen.',
-tx_FoundOnChain_3           : '**Als je geen enkele foutmelding ziet is je transactie met succes verzonden.** Je ETH of Tokens zijn waar je ze naar verzonden hebt. Als je je verzonden ETH of Tokens niet gecrediteerd ziet in je andere wallet / exchange account, en het is inmiddels al 24+ uur geleden sinds je de transactie verzonden hebt, neem dan [contact op met die service](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Geef ze de *link* naar je transactie en vraag ze op je allerliefste manier om naar je situatie te kijken.',
+tx_FoundOnChain_3           : '**Als je geen enkele foutmelding ziet is je transactie met succes verzonden.** Je ETH of Tokens zijn waar je ze naar verzonden hebt. Als je je verzonden ETH of Tokens niet gecrediteerd ziet in je andere wallet / exchange account, en het is inmiddels al 24+ uur geleden sinds je de transactie verzonden hebt, neem dan [contact op met die service](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Geef ze de *link* naar je transactie en vraag ze op je allerliefste manier om naar je situatie te kijken.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'gebruik jouw',
@@ -377,7 +377,7 @@ ERROR_31                    : 'Ongeldige geheime zin ',
 ERROR_32                    : 'Kon niet met de node verbinden. Ververs de pagina, probeer een andere node (rechterbovenhoek) en/of check je firewall instellingen. Check bij een custom node je configuratie.', // 32
 ERROR_33                    : 'De wallet die je hebt geopend matched niet bij het adres van de eigenaar owner\'s. ', // 33
 ERROR_34                    : 'De naam die je probeert de onthullen ("reveal") matched niet met de naam die je hebt ingevoerd. ', // 34
-ERROR_35                    : 'Input adres is niet ge-checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Meer info</a>', // 35
+ERROR_35                    : 'Input adres is niet ge-checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> Meer info</a>', // 35
 ERROR_36                    : 'Voer een geldige TX hash in', // 36
 ERROR_37                    : 'Voer een geldige hex string in (0-9, a-f)', // 37
 

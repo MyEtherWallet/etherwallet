@@ -18,7 +18,7 @@ x_TxHash                    : 'Empreinte (_hash_) de TX',
 NAV_CheckTxStatus           : 'Vérifier statut TX',
 NAV_TxStatus                : 'Statut de la TX',
 tx_Details                  : 'Détails de transaction',
-tx_Summary                  : 'Pendant des périodes de volume important (comme pendant les ICOs) les transactions peuvent rester en attente des heures, voir des jours. Cet outil cherche à vous donner la possibilité de trouver et "annuler" / remplacer ces transactions. ** Ce n\'est pas quelque chose de possible normalement. Vous ne devriez pas vous y fier et cela ne marchera que lorsque les pools de transactions sont remplis. [Nous vous recommandons d\'en lire plus sur cet outil ici.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : 'Pendant des périodes de volume important (comme pendant les ICOs) les transactions peuvent rester en attente des heures, voir des jours. Cet outil cherche à vous donner la possibilité de trouver et "annuler" / remplacer ces transactions. ** Ce n\'est pas quelque chose de possible normalement. Vous ne devriez pas vous y fier et cela ne marchera que lorsque les pools de transactions sont remplis. [Nous vous recommandons d\'en lire plus sur cet outil ici.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Pas de transaction trouvée', //transaction not found
 tx_notFound_1               : 'Cette TX est introuvable dans le pool de TX du nœud auquel vous êtes connecté.',
 tx_notFound_2               : 'Si vous venez d\'envoyer la transaction, veuillez attendre 15 secondes et cliquez une nouvelle fois sur  le bouton "Vérifier statut TX". ',
@@ -31,7 +31,7 @@ tx_foundInPending_3         : 'Il existe une chance que vous puissiez "annuler" 
 tx_FoundOnChain             : 'Transaction trouvée',
 tx_FoundOnChain_1           : 'Votre transaction a été minée avec succès et se trouve sur la blockchain.',
 tx_FoundOnChain_2           : '**Si vous voyez un `( ! )` rouge, un message d\'erreur `BAD INSTRUCTION` ou `OUT OF GAS`**, cela signifie que votre transaction n\'a pas été *envoyée*. Vous ne pouvez pas annuler ou remplacer cette transaction. A la place, envoyez une nouvelle transaction. Si vous avez reçu une erreur de type "Out of Gas", vous devriez doubler la limite de gaz que vous aviez spécifiée.',
-tx_FoundOnChain_3           : '**Si vous ne voyez pas d\'erreur, votre transaction a été envoyée avec succès.** Vos ETH ou Tokens sont à l\'endroit où vous les avez envoyés. Si vous ne voyez pas ces ETH ou Tokens dans votre autre portefeuille ou compte de place d\'échange, et si cela fait plus de 24 heures, veuillez [contacter ce service](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Envoyez-leur le *lien* vers votre transaction et demandez, poliment, d\'examiner votre situation.',
+tx_FoundOnChain_3           : '**Si vous ne voyez pas d\'erreur, votre transaction a été envoyée avec succès.** Vos ETH ou Tokens sont à l\'endroit où vous les avez envoyés. Si vous ne voyez pas ces ETH ou Tokens dans votre autre portefeuille ou compte de place d\'échange, et si cela fait plus de 24 heures, veuillez [contacter ce service](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Envoyez-leur le *lien* vers votre transaction et demandez, poliment, d\'examiner votre situation.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Utiliser votre',
@@ -392,14 +392,14 @@ ERROR_31                    : 'Phrase secrète invalide ',
 ERROR_32                    : 'Connexion au nœud impossible. Rafraîchissez la page ou essayez un nœud différent (dans le coin en haut à droite), vérifiez les réglages de votre firewall. S\'il s\'agit d\'un nœud personnalisé, vérifiez votre configuration.', // 32
 ERROR_33                    : 'Le portefeuille que vous avez déverrouillé ne correspond pas à l\'adresse du propriétaire. ', // 33
 ERROR_34                    : 'Le nom que vous tentez de révéler ne correspond pas au nom que vous avez entré. ', // 34
-ERROR_35                    : 'L\'adresse d\'entrée n\'a pas de somme de contrôle. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Plus d\'info</a>', // 35
+ERROR_35                    : 'L\'adresse d\'entrée n\'a pas de somme de contrôle. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> Plus d\'info</a>', // 35
 ERROR_36                    : 'Entrez une empreinte (_hash_) de TX valide', // 36
 ERROR_37                    : 'Entrez une chaîne hex valide (0-9, a-f)', // 37
 
 
 SUCCESS_1                   : 'Adresse valide ',
 SUCCESS_2                   : 'Portefeuille déchiffré avec succès ',
-SUCCESS_3                   : 'Votre TX a été diffusée sur le réseau. Elle attend d\'être minée et confirmée. Pendant les ICO, la confirmation peut prendre plus de 3 heures. Utilisez les boutons de vérification ci-dessous pour la suivre. Hash de la TX :   ', 
+SUCCESS_3                   : 'Votre TX a été diffusée sur le réseau. Elle attend d\'être minée et confirmée. Pendant les ICO, la confirmation peut prendre plus de 3 heures. Utilisez les boutons de vérification ci-dessous pour la suivre. Hash de la TX :   ',
 SUCCESS_4                   : 'Votre portefeuille a été ajouté avec succès ',
 SUCCESS_5                   : 'Fichier sélectionné ',
 SUCCESS_6                   : 'Vous êtes bien connecté ',

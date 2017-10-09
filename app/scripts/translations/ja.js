@@ -20,7 +20,7 @@ x_TxHash                    : '処理ハッシュ',
 NAV_CheckTxStatus           : '処理状況を確認',
 NAV_TxStatus                : '処理状況',
 tx_Details                  : '処理内容詳細',
-tx_Summary                  : '数日後に処理状況を確認した場合をのぞいて、大量の処理発生時(ICO期間など)には、数時間処理が遅れる場合があります。本ツールは、そのような状況において処理待ちの処理を探し出し取り消す、あるいは更新する機能を提供します。＊＊これは特殊な操作で、処理プールが満杯の場合にのみ有効です。  [このツールに関しては、こちらを参考にしてください。](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : '数日後に処理状況を確認した場合をのぞいて、大量の処理発生時(ICO期間など)には、数時間処理が遅れる場合があります。本ツールは、そのような状況において処理待ちの処理を探し出し取り消す、あるいは更新する機能を提供します。＊＊これは特殊な操作で、処理プールが満杯の場合にのみ有効です。  [このツールに関しては、こちらを参考にしてください。](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : '対象の処理が見つかりません',
 tx_notFound_1               : 'この処理は、現在接続中の処理プールの中にありませんでした。',
 tx_notFound_2               : 'もし今、処理を送出した直後であれば、１５秒待ってから「処理状況を確認」ボタンを再度押してください。',
@@ -33,7 +33,7 @@ tx_foundInPending_3         : 'この処理を取り消す、あるいは置き�
 tx_FoundOnChain             : '処理が見つかりました',
 tx_FoundOnChain_1           : 'あなたの待機中の処理は発掘され、ブロックチェーンに配置されました。',
 tx_FoundOnChain_2           : '**もし赤い `( ! )`, `BAD INSTRUCTION` あるいは `OUT OF GAS` のエラーメッセージを見つけたら**, これは、処理送出に失敗したということです。処理の取り消しや置き換えはできません。代わりに、新しい処理を送出してください。 "Out of Gas" エラーの場合には, ガスリミットをはじめに指定した値の倍にしてください。',
-tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
+tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'この', /* Use your */
@@ -191,7 +191,7 @@ ADD_Ledger_4                : '設定にブラウザサポートが見つから�
 ADD_Ledger_0a               : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
 ADD_Ledger_0b               : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
 ADD_Ledger_scan             : 'Ledger Wallet　に接続 ',
-  
+
 ADD_MetaMask                : 'Connect to MetaMask ',
 
 ADD_Trezor_scan             : 'TREZORに接続する ',
@@ -336,7 +336,7 @@ SWAP_rec_add                : "受け取りアドレス ",
 SWAP_start_CTA              : "交換開始 ",
 SWAP_ref_num                : "参照番号 ",
 SWAP_time                   : "送出するまでにあと、 ",
-SWAP_elapsed				        : "Time elapsed since sent ", 
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "注文を開始しました ",
 SWAP_progress_2             : "到着待機中 ", // Waiting for your BTC...
 SWAP_progress_3             : "ETH受け取り完了 ", // ETH Received!
@@ -397,7 +397,7 @@ ERROR_31                    : '無効な秘密フレーズです ',
 ERROR_32                    : 'ノードに接続できませんでした。ページを再表示したり、別のノード（画面の右上にあります）を試したり,ファイアーウォールの設定を確認してください。 カスタムノードの使用時には、構成設定を確認してください。', // 32
 ERROR_33                    : 'アンロックしたお財布のアドレスがオーナーのアドレスと一致しません。', // 33
 ERROR_34                    : '以前に入力したものと異なる名前です。 ', // 34
-ERROR_35                    : 'チェックサムが付いていません。 <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> 詳細</a>', // 35
+ERROR_35                    : 'チェックサムが付いていません。 <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> 詳細</a>', // 35
 ERROR_36                    : '正しいトランザクションハッシュを入力してください', // 36
 ERROR_37                    : '１６進数を正しく入力してください (0-9, a-f)', // 37
 

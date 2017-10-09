@@ -18,7 +18,7 @@ x_TxHash                    : 'TX Hash',
 NAV_CheckTxStatus           : 'Check TX Status',
 NAV_TxStatus                : 'TX Status',
 tx_Details                  : 'Transaktionsdetails',
-tx_Summary                  : 'Zu manchen Zeiten (z.B. während der Laufzeit mancher ICOs) können einzelne Transaktionen für Stunden, villeicht sogar Tage ausstehen. Dieses Tool gibt Ihnen die Fähigkeit ihre Transaktion zu finden und zu widerrufen / ersetzen. ** Dies können Sie normalerweise nicht machen. Man sollte sich darauf nicht verlassen und es funktioniert nur, wenn die TX Pools voll sind. [Lesen Sie mehr über das Tool hier](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : 'Zu manchen Zeiten (z.B. während der Laufzeit mancher ICOs) können einzelne Transaktionen für Stunden, villeicht sogar Tage ausstehen. Dieses Tool gibt Ihnen die Fähigkeit ihre Transaktion zu finden und zu widerrufen / ersetzen. ** Dies können Sie normalerweise nicht machen. Man sollte sich darauf nicht verlassen und es funktioniert nur, wenn die TX Pools voll sind. [Lesen Sie mehr über das Tool hier](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Transaktion nicht gefunden',
 tx_notFound_1               : 'Die Transaktion kann nicht in dem Transaktions-Pool des Nodes, mit dem Sie verbunden sind, gefunden werden.',
 tx_notFound_2               : 'Wenn Sie die Transaktion erst gesendet haben, warten Sie bitte 15 Sekunden und drücken dann den "Check TX Status" Button erneut. ',
@@ -31,7 +31,7 @@ tx_foundInPending_3         : 'Es ist möglich Sie zu widerrufen oder diese Tran
 tx_FoundOnChain             : 'Transaktion gefunden',
 tx_FoundOnChain_1           : 'Ihre Transaktion wurde gemined und ist nun in der Blockchain.',
 tx_FoundOnChain_2           : '**Wenn Sie ein rotes`( ! )`, ein `BAD INSTRUCTION` oder `OUT OF GAS` Fehlernachricht bekommen**, heißt dass, dass die Transaktion nicht erfolgreich *gesendet* worden ist. Sie können die Transaktion nicht zurücknehmen oder ersetzen. Stattdessen, sende eine neue Transaktion. Wenn Sie einen "Out of Gas" Fehler bekommen, sollten Sie das GasLimit verdoppeln, dass Sie ursprünglich benutzt haben.',
-tx_FoundOnChain_3           : '**Wenn sie keine Fehlernachrichten bekommen, wurde ihre Transaktion erfolgreich versendet.** Ihre ETH oder Tokens sind dort, wohin sie versendet wurden. Wenn Sie die ETH or Tokens nicht im anderen Wallet / Exchange account sehen können, und es schon mehr als 24 Stunden her ist, seitdem Sie gesendet haben, bitte [Kontaktieren Sie den Service](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Senden Sie den *link* zu ihrer Transaktion und fragen Sie höflich, die Situation anzuschauen.',
+tx_FoundOnChain_3           : '**Wenn sie keine Fehlernachrichten bekommen, wurde ihre Transaktion erfolgreich versendet.** Ihre ETH oder Tokens sind dort, wohin sie versendet wurden. Wenn Sie die ETH or Tokens nicht im anderen Wallet / Exchange account sehen können, und es schon mehr als 24 Stunden her ist, seitdem Sie gesendet haben, bitte [Kontaktieren Sie den Service](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Senden Sie den *link* zu ihrer Transaktion und fragen Sie höflich, die Situation anzuschauen.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Nutzen Sie Ihre',
@@ -397,7 +397,7 @@ ERROR_31                    : 'Bitte gebe einen gültigen Geheime Phasre ein ',
 ERROR_32                    : 'Verbindung zum Knoten nicht möglich. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
