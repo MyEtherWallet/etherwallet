@@ -679,6 +679,11 @@
 "decimal":0,
 "type":"default"
 },{
+"address":"0xE477292f1B3268687A29376116B0ED27A9c76170",
+"symbol":"PLAY",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x0AfFa06e7Fbe5bC9a764C979aA66E8256A631f02",
 "symbol":"PLBT",
 "decimal":6,
