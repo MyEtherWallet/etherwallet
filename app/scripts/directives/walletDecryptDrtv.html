@@ -398,6 +398,18 @@
               </label>
             </div>
 
+            <div class="col-sm-4">
+              <label class="radio small">
+                <input aria-describedby="Path: SingularDTV {{HDWallet.singularDTVPath}}"
+                       ng-change="onHDDPathChange()"
+                       ng-model="HDWallet.dPath"
+                       type="radio"
+                      value="{{HDWallet.singularDTVPath}}"/>
+                <span ng-bind="HDWallet.singularDTVPath"></span>
+                <p class="small">SingularDTV</p>
+              </label>
+            </div>
+
           </section>
 
           <section class="row">
