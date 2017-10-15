@@ -494,6 +494,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x9541FD8B9b5FA97381783783CeBF2F5fA793C262",
+"symbol":"KZN",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xff18dbc487b4c2e3222d115952babfda8ba52f5f",
 "symbol":"LIFE",
 "decimal":18,
