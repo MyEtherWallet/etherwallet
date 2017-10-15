@@ -784,6 +784,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x4156D3342D5c385a87D264F90653733592000581",
+"symbol":"SALT",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x7C5A0CE9267ED19B22F8cae653F198e3E8daf098",
 "symbol":"SAN",
 "decimal":18,
