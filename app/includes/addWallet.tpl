@@ -258,6 +258,20 @@
             <tr>
               <td>
                 <label class="radio">
+                  <input aria-describedby="Path: SingularDTV {{HDWallet.singularDTVPath}}"
+                         ng-change="onHDDPathChange()"
+                         ng-model="HDWallet.dPath"
+                         type="radio"
+                         value="{{HDWallet.singularDTVPath}}"/>
+                  <span ng-bind="HDWallet.singularDTVPath"></span>
+                </label>
+              </td>
+              <td> SingularDTV </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label class="radio">
                   <input aria-describedby="Path: TREZOR - TESTNET - {{HDWallet.trezorTestnetPath}}"
                          ng-change="onHDDPathChange()"
                          ng-model="HDWallet.dPath"
