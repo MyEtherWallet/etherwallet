@@ -51,7 +51,7 @@
     
     <div class="tagline">
 
-    <span>3.10.4.3</span>
+    <span>3.10.4.4</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -720,6 +720,20 @@
                 </label>
               </td>
               <td> TREZOR (ETC) </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label class="radio">
+                  <input aria-describedby="Path: SingularDTV {{HDWallet.singularDTVPath}}"
+                         ng-change="onHDDPathChange()"
+                         ng-model="HDWallet.dPath"
+                         type="radio"
+                         value="{{HDWallet.singularDTVPath}}"/>
+                  <span ng-bind="HDWallet.singularDTVPath"></span>
+                </label>
+              </td>
+              <td> SingularDTV </td>
             </tr>
 
             <tr>
