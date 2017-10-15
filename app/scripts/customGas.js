@@ -213,6 +213,12 @@ to:         '0xe386B139Ed3715Ca4B18Fd52671bDcea1cdFE4b1',
 gasLimit:   200000,
 data:       '',
 msg:        'Zeus Exchange - The First Hybrid Trading Platform for Traditional Stock Investors and Crypto Traders. Official site https://zeus.exchange'
+},
+{
+// Game Token Sale
+to:         '0xB70835D7822eBB9426B56543E391846C107bd32C',
+gasLimit:   200000,
+data:       '',
+msg:        'Game Token Sale'
 }
 ]
-
