@@ -1053,4 +1053,9 @@
 "symbol":"ZST",
 "decimal":8,
 "type":"default"
+},{
+"address":"0x8f8221aFbB33998d8584A2B05749bA73c37a938a",
+"symbol":"REQ",
+"decimal":18,
+"type":"default"
 }]
