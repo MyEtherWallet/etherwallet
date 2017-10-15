@@ -664,6 +664,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xb23be73573bc7e03db6e5dfc62405368716d28a8",
+"symbol":"ONEK",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x4355fC160f74328f9b383dF2EC589bB3dFd82Ba0",
 "symbol":"OPT",
 "decimal":18,
