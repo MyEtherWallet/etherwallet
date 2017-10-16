@@ -64,6 +64,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x27054b13b1B798B345b591a4d22e6562d47eA75a",
+"symbol":"AST",
+"decimal":4,
+"type":"default"
+},{
 "address":"0x17052d51E954592C1046320c2371AbaB6C73Ef10",
 "symbol":"ATH",
 "decimal":18,
