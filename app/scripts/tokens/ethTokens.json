@@ -329,6 +329,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0x9b73D1779C41DcA36314fB7c4D3309838e20C4E7",
+"symbol":"ENJ",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x86Fa049857E0209aa7D9e616F7eb3b3B78ECfdb0",
 "symbol":"EOS",
 "decimal":18,
@@ -819,6 +824,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x8f8221aFbB33998d8584A2B05749bA73c37a938a",
+"symbol":"REQ",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x4156D3342D5c385a87D264F90653733592000581",
 "symbol":"SALT",
 "decimal":8,
@@ -1092,10 +1102,5 @@
 "address":"0xe386b139ed3715ca4b18fd52671bdcea1cdfe4b1",
 "symbol":"ZST",
 "decimal":8,
-"type":"default"
-},{
-"address":"0x8f8221aFbB33998d8584A2B05749bA73c37a938a",
-"symbol":"REQ",
-"decimal":18,
 "type":"default"
 }]
