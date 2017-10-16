@@ -413,6 +413,12 @@
 "symbol":"H2O",
 "decimal":18,
 "type":"default"
+},
+{
+"address":"0xffe8196bc259e8dedc544d935786aa4709ec3e64",
+"symbol":"HDG",
+"decimal":18,
+"type":"default"
 },{
 "address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
 "symbol":"HGT",
