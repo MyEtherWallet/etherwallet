@@ -1069,6 +1069,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xF6B55acBBC49f4524Aa48D19281A9A77c54DE10f",
+"symbol":"WLK",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x728781E75735dc0962Df3a51d7Ef47E798A7107E",
 "symbol":"WOLK",
 "decimal":18,
