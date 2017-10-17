@@ -554,6 +554,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x5e3346444010135322268a4630d2ed5f8d09446c",
+"symbol":"LOC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
 "symbol":"MANA",
 "decimal":18,
