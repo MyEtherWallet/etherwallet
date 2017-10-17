@@ -194,6 +194,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x7fce2856899a6806eeef70807985fc7554c66340",
+"symbol":"CLP",
+"decimal":9,
+"type":"default"
+},{
 "address":"0x7e667525521cF61352e2E01b50FaaaE7Df39749a",
 "symbol":"CMC",
 "decimal":18,
