@@ -734,6 +734,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x779B7b713C86e3E6774f5040D9cCC2D43ad375F8",
+"symbol":"POOL",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xee609fe292128cad03b786dbb9bc2634ccdbe7fc",
 "symbol":"POS",
 "decimal":18,
