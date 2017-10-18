@@ -744,6 +744,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xc42209accc14029c1012fb5680d95fbd6036e2a0",
+"symbol":"PPP",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xd4fa1460F537bb9085d22C7bcCB5DD450Ef28e3a",
 "symbol":"PPT",
 "decimal":8,
