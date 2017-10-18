@@ -279,6 +279,11 @@
 "decimal":16,
 "type":"default"
 },{
+"address":"0x07e3c70653548b04f0a75970c1f81b4cbbfb606f",
+"symbol":"DLT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x0AbdAce70D3790235af448C88547603b945604ea",
 "symbol":"DNT",
 "decimal":18,
