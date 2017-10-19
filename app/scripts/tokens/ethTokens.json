@@ -1079,6 +1079,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xcA46C2716C85624ecDfF0C18071C95B6543B4862",
+"symbol":"WRC",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
 "symbol":"XAUR",
 "decimal":8,
