@@ -414,6 +414,11 @@
 "decimal":3,
 "type":"default"
 },{
+"address":"0x103c3A209da59d3E7C4A89307e66521e081CFDF0",
+"symbol":"GVT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
 "symbol":"H2O",
 "decimal":18,
