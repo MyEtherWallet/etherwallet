@@ -16,7 +16,7 @@ var HDKey = require('hdkey');
 var DigitalBitboxEth = function(comm, sec) {
 	this.comm = comm;
     DigitalBitboxEth.sec = sec || DigitalBitboxEth.sec;
-    this.key = Crypto.createHash('sha256').update(new Buffer(DigitalBitboxEth.sec, 'ascii')).digest();
+    this.key = Crypto.createHash('sha256').update(new Buffer(DigitalBitboxEth.sec, 'utf8')).digest();
     this.key = Crypto.createHash('sha256').update(this.key).digest();
     clearTimeout(DigitalBitboxEth.to);
     DigitalBitboxEth.to = setTimeout(function(){ DigitalBitboxEth.sec = ''; }, 60000);
