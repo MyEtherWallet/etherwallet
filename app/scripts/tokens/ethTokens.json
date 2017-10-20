@@ -650,6 +650,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x957c30aB0426e0C93CD8241E2c60392d08c6aC8e",
+"symbol":"MOD",
+"decimal":0,
+"type":"default"
+},{
 "address":"0xAB6CF87a50F17d7F5E1FEaf81B6fE9FfBe8EBF84",
 "symbol":"MRV",
 "decimal":18,
