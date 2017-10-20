@@ -218,7 +218,7 @@
 "symbol":"COSS",
 "decimal":18,
 "type":"default"
-},{  
+},{
 "address":"0xAef38fBFBF932D1AeF3B808Bc8fBd8Cd8E1f8BC5",
 "symbol":"CRB",
 "decimal":8,
@@ -357,6 +357,11 @@
 "address":"0x1b9743f556d65e757c4c650b4555baf354cb8bd3",
 "symbol":"ETBS",
 "decimal":12,
+"type":"default"
+},{
+"address":"0x3a26746Ddb79B1B8e4450e3F4FFE3285A307387E",
+"symbol":"ETHB",
+"decimal":8,
 "type":"default"
 },{
 "address":"0x190e569bE071F40c704e15825F285481CB74B6cC",

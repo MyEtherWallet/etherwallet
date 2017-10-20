@@ -36,9 +36,7 @@
 @@if (site === 'mew' ) {
   <div class="small announcement annoucement-danger">
     <div class="container">
-      Hey! Listen! 🎣 Phishers are stealing coins from folks like YOU! Protect yourself!
-      <br />
-    Install <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a> or use <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>. These will help protect you.</div>
+      WARNING: IF YOU CLICK A LINK to MEW from EMAIL, SLACK DM, or a FORUM, YOU WILL HAVE YOUR COINS STOLEN. Do not click. Install <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a> or use <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>. These will help protect you.</div>
   </div>
 }
 
@@ -62,7 +60,7 @@
     }
     <div class="tagline">
 
-    <span>3.10.4.7</span>
+    <span>3.10.4.8</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
