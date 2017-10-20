@@ -884,6 +884,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x4c382F8E09615AC86E08CE58266CC227e7d4D913",
+"symbol":"SKR",
+"decimal":6,
+"type":"default"
+},{
 "address":"0x6F6DEb5db0C4994A8283A01D6CFeEB27Fc3bBe9C",
 "symbol":"Smart",
 "decimal":0,
