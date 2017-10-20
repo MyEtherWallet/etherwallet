@@ -164,6 +164,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x26E75307Fc0C021472fEb8F727839531F112f317",
+"symbol":"C20",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x7d4b8Cce0591C9044a22ee543533b72E976E36C3",
 "symbol":"CAG",
 "decimal":18,
