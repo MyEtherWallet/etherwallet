@@ -539,6 +539,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x24A77c1F17C547105E14813e517be06b0040aa76",
+"symbol":"LIVE",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x21aE23B882A340A22282162086bC98D3E2B73018",
 "symbol":"LOK",
 "decimal":18,
