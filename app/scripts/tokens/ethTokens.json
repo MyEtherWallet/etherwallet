@@ -204,11 +204,11 @@
 "decimal":18,
 "type":"default"
 },{
-+"address":"0x65292eeadf1426cd2df1c4793a3d7519f253913b",
-+"symbol":"COSS",
-+"decimal":18,
-+"type":"default"
-+},{  
+"address":"0x65292eeadf1426cd2df1c4793a3d7519f253913b",
+"symbol":"COSS",
+"decimal":18,
+"type":"default"
+},{  
 "address":"0xAef38fBFBF932D1AeF3B808Bc8fBd8Cd8E1f8BC5",
 "symbol":"CRB",
 "decimal":8,
