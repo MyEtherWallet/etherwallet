@@ -80,7 +80,7 @@
 
 ### Users (non-developers)
 
-- [It is recommended you start here.](https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443)
+- [It is recommended you start here.](https://myetherwallet.github.io/knowledge-base/getting-started/getting-started-new.html)
 - You can run MyEtherWallet.com on your computer. You can create a wallet completely offline & send transactions from the "Offline Transaction" page.
 
 1. Go to https://github.com/kvhnuke/etherwallet/releases/latest.
