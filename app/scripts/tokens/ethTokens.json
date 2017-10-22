@@ -1165,6 +1165,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x6781a0f84c7e9e846dcb84a9a5bd49333067b104",
+"symbol":"ZAP",
+"decimal": 18,
+"type":"default"
+},{
 "address":"0xE41d2489571d322189246DaFA5ebDe1F4699F498",
 "symbol":"ZRX",
 "decimal":18,
