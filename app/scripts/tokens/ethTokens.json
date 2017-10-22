@@ -9,6 +9,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x13f1b7fdfbe1fc66676d56483e21b1ecb40b58e2",
+"symbol":"ACC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x422866a8F0b032c5cf1DfBDEf31A20F4509562b0",
 "symbol":"ADST",
 "decimal":0,
