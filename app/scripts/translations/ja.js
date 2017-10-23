@@ -190,11 +190,11 @@ ADD_Ledger_3                : '設定中で、ブラウザサポートが有効�
 ADD_Ledger_4                : '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
 ADD_Ledger_0b               : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
-ADD_Ledger_scan             : 'Ledger Wallet　に接続 ',
+ADD_Ledger_scan             : 'Ledger Wallet に接続 ',
 
-ADD_MetaMask                : 'Connect to MetaMask ',
+ADD_MetaMask                : 'MetaMask に接続 ',
 
-ADD_Trezor_scan             : 'TREZORに接続する ',
+ADD_Trezor_scan             : 'TREZORに接続 ',
 ADD_Trezor_select           : 'これはTREZORのシードです ',
 x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
