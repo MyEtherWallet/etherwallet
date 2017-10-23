@@ -1184,4 +1184,9 @@
 "symbol":"ZST",
 "decimal":8,
 "type":"default"
+},{
+"address":"0xa89b5934863447f6e4fc53b315a93e873bda69a3",
+"symbol":"LUM",
+"decimal":18,
+"type":"default"
 }]
