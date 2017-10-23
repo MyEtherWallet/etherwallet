@@ -845,6 +845,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x2C3C1F05187dBa7A5f2Dd47Dca57281C4d4F183F",
+"symbol":"QTQ",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x9a642d6b3368ddc662CA244bAdf32cDA716005BC",
 "symbol":"QTUM",
 "decimal":18,
