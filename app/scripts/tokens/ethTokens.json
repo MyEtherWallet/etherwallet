@@ -990,6 +990,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x599346779e90fc3F5F997b5ea715349820F91571",
+"symbol":"STN",
+"decimal":4,
+"type":"default"
+},{
 "address":"0x46492473755e8dF960F8034877F61732D718CE96",
 "symbol":"STRC",
 "decimal":8,
