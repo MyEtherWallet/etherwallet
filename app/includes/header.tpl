@@ -36,7 +36,10 @@
 @@if (site === 'mew' ) {
   <div class="small announcement annoucement-danger">
     <div class="container">
-      WARNING: IF YOU CLICK A LINK to MEW from EMAIL, SLACK DM, or a FORUM, YOU WILL HAVE YOUR COINS STOLEN. Do not click. Install <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a> or use <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>. These will help protect you.</div>
+      WARNING: IF YOU CLICK A LINK to MEW from EMAIL, SLACK DM, or a FORUM, YOU WILL HAVE YOUR COINS STOLEN. Do not click. Install
+      <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a>
+      or use
+      <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>.></div>
   </div>
 }
 
