@@ -1055,11 +1055,6 @@
 "decimal":8,
 "type":"default"
 },{
-"address":"0xEe22430595aE400a30FFBA37883363Fbf293e24e",
-"symbol":"TME",
-"decimal":18,
-"type":"default"
-},{
 "address":"0x08f5a9235b08173b7569f83645d2c7fb55e8ccd8",
 "symbol":"TNT",
 "decimal":8,
