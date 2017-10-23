@@ -424,6 +424,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xb3Bd49E28f8F832b8d1E246106991e546c323502",
+"symbol":"GMT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x6810e776880C02933D47DB1b9fc05908e5386b96",
 "symbol":"GNO",
 "decimal":18,
