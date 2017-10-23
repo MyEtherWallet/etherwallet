@@ -6,22 +6,37 @@
 
     <label class="radio">
       <input aria-flowto="aria3" type="radio" aria-label="MetaMask / Mist" ng-model="walletType" value="metamask" />
-      <span translate="x_MetaMask">MetaMask / Mist</span>
+      <a translate="x_MetaMask" href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask / Mist</a>
     </label>
 
     <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'">
       <input aria-flowto="aria2" type="radio" aria-label="Ledger Wallet hardware wallet" ng-model="walletType" value="ledger"/>
-      <span>Ledger Wallet</span>
+      <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener noreferrer">Ledger Wallet</a>
     </label>
 
     <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'">
-      <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor"/>
-      TREZOR
+      <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
+      <a href="https://doc.satoshilabs.com/trezor-apps/mew.html" target="_blank" rel="noopener noreferrer">TREZOR</a>
     </label>
 
     <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'">
       <input aria-flowto="aria7" type="radio" aria-label="Digital Bitbox hardware wallet" ng-model="walletType" value="digitalBitbox"/>
-      Digital Bitbox
+      <a href="https://digitalbitbox.com/ethereum" target="_blank" rel="noopener noreferrer"> Digital Bitbox </a>
+    </label>
+
+    <label class="radio">
+      <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer" translate="x_Keystore2">Keystore / JSON File</a>
+    </label>
+
+    <label class="radio">
+      <input aria-flowto="aria4" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" />
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer" translate="x_Mnemonic">Mnemonic Phrase</a>
+    </label>
+
+    <label class="radio">
+      <input aria-flowto="aria5" aria-label="private key" type="radio" ng-model="walletType" value="pasteprivkey" />
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer" translate="x_PrivKey2">Private Key</a>
     </label>
 
     <label class="radio" style="display: none;" id="showMeTheMoney">
@@ -29,28 +44,13 @@
       <span translate="x_ParityPhrase">Parity Phrase</span>
     </label>
 
-    <label class="radio">
-      <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
-      <span translate="x_Keystore2">Keystore / JSON File</span>
-    </label>
-
-    <label class="radio">
-      <input aria-flowto="aria4" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" />
-      <span translate="x_Mnemonic">Mnemonic Phrase</span>
-    </label>
-
-    <label class="radio">
-      <input aria-flowto="aria5" aria-label="private key" type="radio" ng-model="walletType" value="pasteprivkey" />
-      <span translate="x_PrivKey2">Private Key</span>
-    </label>
-
-    <label aria-flowto="aria7" class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id">
-      <input aria-flowto="aria8" aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
-      View with Address Only
-    </label>
-
     <label aria-flowto="aria9" class="radio">
       &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/parity-phrases-are-no-longer-supported.html" target="_blank" rel="noopener">No longer supported</a>
+    </label>
+
+    <label aria-flowto="aria7" class="radio">
+      <input aria-flowto="aria8" aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
+      Check Balance Only w/ Address (Must use one of above options to send)
     </label>
 
   </section>
@@ -268,6 +268,7 @@
     <!-- if selected addressOnly-->
     <div id="selectedTypeKey" ng-if="walletType=='addressOnly'">
       <h4 translate="x_Address"> Your Address </h4>
+      <p class="text-danger"> You <strong> cannot </strong> send with only your address. You must use one of the other options to unlock your wallet in order to send. </p>
       <div class="form-group">
         <textarea rows="4"
                   id="aria8"

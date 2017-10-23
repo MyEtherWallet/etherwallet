@@ -1,6 +1,6 @@
 <!-- Content -->
 <section class="col-sm-8">
-  <div class="block">
+  <div class="block" ng-hide="addressOnly">
 
     <!-- To Address -->
     <div class="row form-group">
