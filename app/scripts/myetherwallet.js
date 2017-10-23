@@ -65,7 +65,7 @@ Wallet.prototype.setTokens = function () {
 };
 
 function saveToLocalStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value))
+  globalFuncs.localStorage.setItem(key, JSON.stringify(value))
 }
 
 function removeConflictingTokensFromLocalStorage(conflictLocalTokens, localTokens) {

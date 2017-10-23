@@ -329,7 +329,7 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
             network: globalFuncs.getDefaultTokensAndNetworkType().networkType
         });
 
-        localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+        globalFuncs.localStorage.setItem("localTokens", JSON.stringify(storedTokens));
 
         callback({
           error: false
