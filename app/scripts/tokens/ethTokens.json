@@ -960,6 +960,11 @@
 "decimal":6,
 "type":"default"
 },{
+"address":"0x7A5fF295Dc8239d5C2374E4D894202aAF029Cab6",
+"symbol":"SLT",
+"decimal":3,
+"type":"default"
+},{
 "address":"0x6F6DEb5db0C4994A8283A01D6CFeEB27Fc3bBe9C",
 "symbol":"Smart",
 "decimal":0,
