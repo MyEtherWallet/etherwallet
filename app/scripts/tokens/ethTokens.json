@@ -880,6 +880,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xb4efd85c19999d84251304bda99e90b92300bd93",
+"symbol":"RPL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x4993CB95c7443bdC06155c5f5688Be9D8f6999a5",
 "symbol":"ROUND",
 "decimal":18,
