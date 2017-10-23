@@ -48,9 +48,9 @@
       &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/parity-phrases-are-no-longer-supported.html" target="_blank" rel="noopener">No longer supported</a>
     </label>
 
-    <label aria-flowto="aria7" class="radio">
+    <label aria-flowto="aria7" class="radio" ng-hide="globalService.currentTab!==globalService.tabs.sendTransaction.id || globalService.currentTab!==globalService.tabs.viewWalletInfo.id">
       <input aria-flowto="aria8" aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
-      Check Balance Only w/ Address (Must use one of above options to send)
+      View Balance Only (Must use one of above options to send)
     </label>
 
   </section>
@@ -323,8 +323,7 @@
          ng-show="showAOnly"
          role="button"
          tabindex="0"
-         translate="ADD_Label_6_short"
-      > UNLOCK </a>
+      > VIEW BALANCE </a> <!--translate="ADD_Label_6_short"-->
     </div>
     <div class="form-group">
       <a class="btn btn-primary btn-block"
