@@ -104,6 +104,11 @@
 "decimal":15,
 "type":"default"
 },{
+"address":"0x1c4481750daa5Ff521A2a7490d9981eD46465Dbd",
+"symbol":"BCPT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
 "symbol":"BeerCoin 🍺 ",
 "decimal":0,
