@@ -205,7 +205,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         walletService.wallet = $scope.wallet = $scope.HDWallet.wallets[$scope.HDWallet.id];
         $scope.mnemonicModel.close();
         $scope.notifier.info(globalFuncs.successMsgs[1]);
-        $scope.wallet.type = "notAddressOnly";
+        $scope.wallet.type = "default";
     }
     $scope.decryptWallet = function() {
         $scope.wallet = null;
@@ -235,7 +235,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
         }
         if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
-        $scope.wallet.type = "notAddressOnly";
+        $scope.wallet.type = "default";
     };
     $scope.decryptAddressOnly = function() {
         if ($scope.Validator.isValidAddress($scope.addressOnly)) {
@@ -328,7 +328,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
           $scope.wallet = wallet
           walletService.wallet = wallet
           $scope.notifier.info(globalFuncs.successMsgs[6])
-          $scope.wallet.type = "notAddressOnly";
+          $scope.wallet.type = "default";
         });
     };
 
