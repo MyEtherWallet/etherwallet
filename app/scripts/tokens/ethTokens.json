@@ -109,6 +109,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x3A0181e8f2DD081ace83EaC027EEC2E0c2255Ed5",
+"symbol":"BCV",
+"decimal":2,
+"type":"default"
+},{ 
 "address":"0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
 "symbol":"BeerCoin 🍺 ",
 "decimal":0,
@@ -389,6 +394,11 @@
 "decimal":12,
 "type":"default"
 },{
+"address":"0xf04a8ac553FceDB5BA99A64799155826C136b0Be",
+"symbol":"FLIXX",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x0ABeFb7611Cb3A01EA3FaD85f33C3C934F8e2cF4",
 "symbol":"FRD",
 "decimal":18,
@@ -427,6 +437,11 @@
 "address":"0xae4f56f072c34c0a65b3ae3e4db797d831439d93",
 "symbol":"GIM",
 "decimal":8,
+"type":"default"
+},{
+"address":"0xb3Bd49E28f8F832b8d1E246106991e546c323502",
+"symbol":"GMT",
+"decimal":18,
 "type":"default"
 },{
 "address":"0x6810e776880C02933D47DB1b9fc05908e5386b96",
@@ -1183,6 +1198,11 @@
 "address":"0x728781E75735dc0962Df3a51d7Ef47E798A7107E",
 "symbol":"WOLK",
 "decimal":18,
+"type":"default"
+},{
+"address":"0xcA46C2716C85624ecDfF0C18071C95B6543B4862",
+"symbol":"WRC",
+"decimal":8,
 "type":"default"
 },{
 "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
