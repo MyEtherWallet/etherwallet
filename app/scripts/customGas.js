@@ -13,6 +13,13 @@
 
 module.exports = [
 {
+// Global Messaging Token (GMT)
+to:         '0xb3Bd49E28f8F832b8d1E246106991e546c323502',
+gasLimit:   200000,
+data:       '',
+msg:        'Starting Block: 4,427,945, End of 7ETH Cap: 4,430,049, End of 28ETH Cap: 4,431,102'
+},
+{
 // Vibehub (VIBEX) ICO Sale
 to:         '0x5454af9d2ba75a60fa5b0419c251810544cea21d',
 gasLimit:   200000,
