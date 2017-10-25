@@ -244,7 +244,7 @@ SENDModal_No                : '아니요, 전송을 취소합니다. ',
 SENDModal_Yes               : '네, 맞습니다! 전송합니다. ',
 
 /* Tokens */
-TOKEN_Addr                  : '주소 ',
+TOKEN_Addr                  : 'Token Contract 주소 ',
 TOKEN_Symbol                : '토큰 기호 ',
 TOKEN_Dec                   : '소수 자릿수 ',
 TOKEN_show                  : '모든 토큰 보기 ',
@@ -380,7 +380,7 @@ ERROR_31                    : '잘못된 비밀 문구입니다. ',
 ERROR_32                    : '노드에 연결할 수 없습니다. 새로고침 하거나 도움말을 확인해주세요. ',
 ERROR_33                    : '입찰자의 주소와 잠금 해제된 지갑이 일치하지 않습니다. ',
 ERROR_34                    : '해당 이름이 문자열의 이름과 일치하지 않습니다. ',
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

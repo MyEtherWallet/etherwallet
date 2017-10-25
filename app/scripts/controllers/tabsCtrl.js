@@ -182,11 +182,6 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.setTab = function(hval) {
         if (hval != '') {
             hval = hval.replace('#', '');
-            //          //Check if URL contains Parameters
-            //          if(hval.indexOf('=') != -1) {
-            //              //Remove URL parameter from hval
-            //              hval = hval.substring(0,hval.indexOf('='));
-            //          }
             for (var key in $scope.tabNames) {
                 if ($scope.tabNames[key].url == hval) {
                     $scope.activeTab = globalService.currentTab = $scope.tabNames[key].id;
@@ -201,6 +196,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.setTab(hval);
 
     $scope.tabClick = function(id) {
+        globalService.tokensLoaded = false
         $scope.activeTab = globalService.currentTab = id;
         for (var key in $scope.tabNames) {
             if ($scope.tabNames[key].id == id) location.hash = $scope.tabNames[key].url;

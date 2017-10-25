@@ -1,5 +1,10 @@
 <aside ng-controller="walletBalanceCtrl">
 
+
+
+
+
+  <!-- Account Address -->
   <div class="block">
     <h5 translate="sidebar_AccountAddr">Account Address</h5>
     <ul class="account-info">
@@ -31,22 +36,29 @@
     <h5 translate="sidebar_TransHistory"> Transaction History</h5>
     <ul class="account-info">
       <li ng-show="ajaxReq.type != 'CUS'">
-        <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">
+        <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener noreferrer">
           {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})
         </a>
       </li>
-      <li>
-        <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener">
+      <li ng-show="ajaxReq.type == 'ETH'">
+        <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener noreferrer">
           Tokens (Ethplorer.io)
         </a>
       </li>
     </ul>
   </div>
 
+
+
+
+
+
+  <!-- Slider Thingy -->
+  <!-- Hardware Wallets -->
   <a href="https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html"
      ng-show="slide==1 || ajaxReq.type!=='ETH'"
      class="block swap--hw"
-     target="_blank" rel="noopener">
+     target="_blank" rel="noopener noreferrer">
     <div class="col-sm-7">
 
       <h5 class="swap__cta" ng-show="wallet.balance<=1">Learn more about protecting your funds.</h5>
@@ -64,10 +76,11 @@
     </div>
   </a>
 
+  <!-- Coinbase -->
   <a href="https://buy.coinbase.com?code=a6e1bd98-6464-5552-84dd-b27f0388ac7d&address={{wallet.getChecksumAddressString()}}&crypto_currency=ETH&currency=USD"
      ng-show="ajaxReq.type=='ETH' && slide==2"
      class="block swap--usd"
-     target="_blank" rel="noopener">
+     target="_blank" rel="noopener noreferrer">
     <div class="col-sm-7">
       <p class="swap__subhead" ng-show="wallet.balance<=0">Aw...you don't have any ETH</p>
       <p class="swap__subhead" ng-show="wallet.balance>0">It's now easier to get more ETH</p>
@@ -79,10 +92,15 @@
     </div>
   </a>
 
+
+
+
+
+  <!-- Bity -->
   <a ng-click="globalService.currentTab=globalService.tabs.swap.id"
      ng-show="ajaxReq.type=='ETH' && slide==3"
      class="block swap--btc"
-     target="_blank" rel="noopener">
+     target="_blank" rel="noopener noreferrer">
     <div class="col-sm-7">
       <p class="swap__subhead" ng-show="wallet.balance<=0">Aw...you don't have any ETH.</p>
       <p class="swap__subhead" ng-show="wallet.balance>0&&wallet.balance<50">It's now easier to get more ETH</p>
@@ -101,35 +119,89 @@
     <a ng-click="slide=3"> &bull; </a>
   </div>
 
+
+
+
+  <!-- Token Balances -->
   <div class="block token-balances">
     <h5 translate="sidebar_TokenBal">Token Balances</h5>
-    <p class="text-danger" ng-hide="tokensLoaded"><small> Ahh! There are too many tokens for our poor nodes! Click "Load Token Balances" to see them all. You are limited to loading these once per minute. Try checking your balance on <span ng-show="ajaxReq.type != 'CUS'"><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">{{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}}</a></span> or <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener">Ethplorer.io</a> instead. </small></p>
+
+    <!-- Load Token Balances -->
+    <a class="btn btn-warning btn-xs"
+       ng-click="wallet.setTokens(); globalService.tokensLoaded=true"
+       ng-hide="globalService.tokensLoaded">
+      <img src="images/icon-load-tokens.svg" style="height: 1em; width: auto; margin-right: 5px;" />
+      Load Tokens
+    </a>
+    <br ng-hide="globalService.tokensLoaded" /><br ng-hide="globalService.tokensLoaded" />
+
+    <!-- you can your Balance on Blockchain Explorer -->
+    <p class="u__protip">
+      Remember, you can always view your Balances On
+      <a ng-show="ajaxReq.type != 'CUS'"
+         href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}"
+         target="_blank"
+         rel="noopener noreferrer">
+          {{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}}
+      </a>
+      <span ng-show="ajaxReq.type == 'ETH'"> or
+        <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}"
+           target="_blank"
+           rel="noopener noreferrer">
+             Ethplorer.io
+        </a>
+      </span>
+    </p>
+
+    <p class="u__protip">
+      Not seeing your token?
+      <a href="https://myetherwallet.github.io/knowledge-base/send/adding-new-token-and-sending-custom-tokens.html"
+         rel="noopener noreferrer"
+         target="_blank">
+         Learn how to Add a Custom Token
+      </a>
+    </p>
+
+    <!-- Balances -->
     <table class="account-info">
       <tr ng-repeat="token in wallet.tokenObjs track by $index"
-          ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+          ng-show="token.balance!=0 || token.type!=='default' || tokenVisibility=='shown'">
         <td class="mono wrap point">
           <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
-          {{token.getBalance() }}
+          {{ token.getBalance() }}
         </td>
-        <td>{{token.getSymbol()}}</td>
+        <td>
+          {{ token.getSymbol() }}
+        </td>
       </tr>
     </table>
-    <a class="btn btn-default btn-xs" ng-click="wallet.setTokens(); tokensLoaded=true" ng-hide="tokensLoaded">
-      Load Token Balances
-    </a>
-    <a class="btn btn-default btn-xs" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'">
+
+
+    <!-- Buttons -->
+    <a class="btn btn-default btn-xs" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden' && globalService.tokensLoaded">
       Show Tokens
     </a>
-    <a class="btn btn-default btn-xs" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">
+    <a class="btn btn-default btn-xs" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown' && globalService.tokensLoaded">
       Hide Tokens
     </a>
     <a class="btn btn-default btn-xs" ng-click="customTokenField=!customTokenField">
       <span translate="SEND_custom">Add Custom Token</span>
     </a>
+
+    <!-- Add Custom Token -->
     <div class="custom-token-fields" ng-show="customTokenField">
+
+      <h6 class="u__protip">
+        <a href="https://myetherwallet.github.io/knowledge-base/send/adding-new-token-and-sending-custom-tokens.html"
+           rel="noopener noreferrer"
+           target="_blank">
+           Learn how to Add a Custom Token
+        </a>
+      </h6>
+
       <div class="row">
         <address-field
-          placeholder="mewsupport.eth"
+          placeholder="{{ ajaxReq.type=='ETH' ? 'mewsupport.eth' : '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8' }}"
           var-name="localToken.contractAdd"
           labelTranslated="TOKEN_Addr">
         </address-field>
@@ -140,17 +212,21 @@
              type="text"
              ng-model="localToken.symbol"
              ng-class="localToken.symbol!='' ? 'is-valid' : 'is-invalid'" />
+
       <label translate="TOKEN_Dec"> Decimals: </label>
       <input class="form-control input-sm"
              type="text"
              ng-model="localToken.decimals"
              ng-class="Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'" />
+
       <button class="btn btn-primary btn-xs" ng-click="saveTokenToLocal()" translate="x_Save">Save</button>
-      <div ng-bind-html="validateLocalToken"></div>
+
     </div>
   </div>
 
 
+
+  <!-- Equivalent Balances -->
   <div class="block" ng-show="ajaxReq.type=='ETH'">
     <h5 translate="sidebar_Equiv">Equivalent Values:</h5>
     <div class="row">
@@ -165,6 +241,7 @@
         <li>GBP: <span class="mono wrap">{{wallet.gbpBalance | currency:"£"}}</span></li>
       </ul>
     </div>
+    <p><small> These are only the equivalent values for ETH, not tokens. Sorry! </small></p>
   </div>
 
 </aside>

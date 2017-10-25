@@ -202,7 +202,7 @@ SENDModal_No                : 'Non, je veux sortir d\'ici ! ',
 SENDModal_Yes               : 'Oui, j\'en suis sûr ! Effectuer la transaction. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adresse ',
+TOKEN_Addr                  : 'Adresse du token contrat ',
 TOKEN_Symbol                : 'Symbole du token ',
 TOKEN_Dec                   : 'Décimales ',
 TOKEN_show                  : 'Montrer tous les tokens ',
@@ -392,7 +392,7 @@ ERROR_31                    : 'Phrase secrète invalide ',
 ERROR_32                    : 'Connexion au nœud impossible. Rafraîchissez la page ou essayez un nœud différent (dans le coin en haut à droite), vérifiez les réglages de votre firewall. S\'il s\'agit d\'un nœud personnalisé, vérifiez votre configuration.', // 32
 ERROR_33                    : 'Le portefeuille que vous avez déverrouillé ne correspond pas à l\'adresse du propriétaire. ', // 33
 ERROR_34                    : 'Le nom que vous tentez de révéler ne correspond pas au nom que vous avez entré. ', // 34
-ERROR_35                    : 'L\'adresse d\'entrée n\'a pas de somme de contrôle. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> Plus d\'info</a>', // 35
+ERROR_35                    : 'L\'adresse d\'entrée n\'a pas de somme de contrôle. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Plus d\'info</a>', // 35
 ERROR_36                    : 'Entrez une empreinte (_hash_) de TX valide', // 36
 ERROR_37                    : 'Entrez une chaîne hex valide (0-9, a-f)', // 37
 

@@ -1,11 +1,13 @@
-'use strict';
+'use strict'
 var globalService = function($http, $httpParamSerializerJQLike) {
-  globalFuncs.checkAndRedirectHTTPS();
-  ajaxReq.http = $http;
-  ajaxReq.postSerializer = $httpParamSerializerJQLike;
-  ajaxReq.getETHvalue = nodes.ethPrice.getETHvalue;
-  ajaxReq.getRates = nodes.ethPrice.getRates;
-var tabs = {
+
+  globalFuncs.checkAndRedirectHTTPS()
+  ajaxReq.http = $http
+  ajaxReq.postSerializer = $httpParamSerializerJQLike
+  ajaxReq.getETHvalue = nodes.ethPrice.getETHvalue
+  ajaxReq.getRates = nodes.ethPrice.getRates
+
+  var tabs = {
   generateWallet: {
     id: 0,
     name: "NAV_GenerateWallet_alt",
@@ -97,15 +99,20 @@ var tabs = {
     mew: true,
     cx: true
   }
-};
-var currentTab = 0;
-if(typeof chrome != 'undefined')
-  currentTab = chrome.windows === undefined ? 0 : 3;
-return {
-  tabs: tabs,
-  currentTab: currentTab
-};
-};
-module.exports = globalService;
+  }
+
+  var currentTab = 0
+  if(typeof chrome != 'undefined')
+    currentTab = chrome.windows === undefined ? 0 : 3
+  return {
+    tabs: tabs,
+    currentTab: currentTab
+  }
+
+  var tokensLoaded = false
+
+}
+
+module.exports = globalService
 
 

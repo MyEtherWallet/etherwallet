@@ -6,37 +6,58 @@
 
     <label class="radio">
       <input aria-flowto="aria3" type="radio" aria-label="MetaMask / Mist" ng-model="walletType" value="metamask" />
-      <a translate="x_MetaMask" href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask / Mist</a>
+      <span translate="x_MetaMask"> MetaMask / Mist </span>
+      <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      </a>
     </label>
 
     <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'">
       <input aria-flowto="aria2" type="radio" aria-label="Ledger Wallet hardware wallet" ng-model="walletType" value="ledger"/>
-      <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener noreferrer">Ledger Wallet</a>
+      Ledger Wallet
+      <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      </a>
     </label>
 
     <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'">
       <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
-      <a href="https://doc.satoshilabs.com/trezor-apps/mew.html" target="_blank" rel="noopener noreferrer">TREZOR</a>
+      TREZOR
+      <a href="https://doc.satoshilabs.com/trezor-apps/mew.html" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      </a>
     </label>
 
     <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'">
       <input aria-flowto="aria7" type="radio" aria-label="Digital Bitbox hardware wallet" ng-model="walletType" value="digitalBitbox"/>
-      <a href="https://digitalbitbox.com/ethereum" target="_blank" rel="noopener noreferrer"> Digital Bitbox </a>
+      Digital Bitbox
+      <a href="https://digitalbitbox.com/ethereum" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      </a>
     </label>
 
     <label class="radio">
       <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
-      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer" translate="x_Keystore2">Keystore / JSON File</a>
+      Keystore / JSON File
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      </a>
     </label>
 
     <label class="radio">
       <input aria-flowto="aria4" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" />
-      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer" translate="x_Mnemonic">Mnemonic Phrase</a>
+      <span translate="x_Mnemonic"> Mnemonic Phrase </span>
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      </a>
     </label>
 
     <label class="radio">
       <input aria-flowto="aria5" aria-label="private key" type="radio" ng-model="walletType" value="pasteprivkey" />
-      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer" translate="x_PrivKey2">Private Key</a>
+      <span translate="x_PrivKey2"> Private Key </span>
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      </a>
     </label>
 
     <label class="radio" style="display: none;" id="showMeTheMoney">
@@ -45,10 +66,13 @@
     </label>
 
     <label aria-flowto="aria9" class="radio">
-      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/parity-phrases-are-no-longer-supported.html" target="_blank" rel="noopener">No longer supported</a>
+      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/parity-phrases-are-no-longer-supported.html" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      </a>
     </label>
 
-    <label aria-flowto="aria7" class="radio" ng-hide="globalService.currentTab!==globalService.tabs.sendTransaction.id || globalService.currentTab!==globalService.tabs.viewWalletInfo.id">
+    <label aria-flowto="aria7" class="radio" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id || globalService.currentTab==globalService.tabs.viewWalletInfo.id">
       <input aria-flowto="aria8" aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
       View Balance Only (Must use one of above options to send)
     </label>
@@ -106,13 +130,13 @@
       </strong></p>
       <div class="text-center">
         <p>Guides:<br />
-          <a href="http://support.ledgerwallet.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener">
+          <a href="http://support.ledgerwallet.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener noreferrer">
             How to use MyEtherWallet with your Nano S
           </a><br />
-          <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-secure-your-eth-tokens-augur-rep-dot-dot-dot-with-your-nano-s" target="_blank" rel="noopener">
+          <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-secure-your-eth-tokens-augur-rep-dot-dot-dot-with-your-nano-s" target="_blank" rel="noopener noreferrer">
             How to secure your tokens with your Nano S
           </a><br /><br />
-          <a tabindex="0" role="button" class="btn btn-default btn-xs" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">
+          <a tabindex="0" role="button" class="btn btn-default btn-xs" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener noreferrer">
             Don't have a Ledger? Buy one today.
           </a>
         </p>
@@ -142,7 +166,7 @@
            class="btn btn-default btn-xs"
            href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
            target="_blank"
-           rel="noopener">
+           rel="noopener noreferrer">
               Download MetaMask
         </a>
       </div>
@@ -226,10 +250,10 @@
       <br /><br />
       <div class="text-center">
         <p>Guide:<br />
-          <a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg" target="_blank" rel="noopener">
+          <a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg" target="_blank" rel="noopener noreferrer">
             How to use TREZOR with MyEtherWallet
           </a><br />
-          <a tabindex="0" role="button" class="btn btn-xs btn-default" href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">
+          <a tabindex="0" role="button" class="btn btn-xs btn-default" href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener noreferrer">
             Don't have a TREZOR? Order one now.
           </a>
         </p>
@@ -350,7 +374,7 @@
             Select HD derivation path:
           </h4>
 
-          <p class="alert alert-danger" ng-hide="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'"> We do not know the correct path for this network. <a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank" rel="noopener">Please open a github issue</a> so we can discuss / be enlightened.</p>
+          <p class="alert alert-danger" ng-hide="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'"> We do not know the correct path for this network. <a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank" rel="noopener noreferrer">Please open a github issue</a> so we can discuss / be enlightened.</p>
           <section class="row">
 
             <div class="col-sm-4">
@@ -479,12 +503,12 @@
                 </label>
               </td>
               <td>
-                <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">
+                <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener noreferrer">
                   {{wallet.getBalance()}} {{ajaxReq.type}}
                 </a>
               </td>
               <td class="text-center">
-                <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener" title="https://ethplorer.io/address/{{wallet.getAddressString()}}">
+                <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener noreferrer" title="https://ethplorer.io/address/{{wallet.getAddressString()}}">
                   <img src="images/icon-external-link.svg" title="https://ethplorer.io/address/{{wallet.getAddressString()}}" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
                 </a>
               </td>

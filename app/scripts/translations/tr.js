@@ -207,7 +207,7 @@ SENDModal_No                : 'Hayir, cikar beni burdan! ',
 SENDModal_Yes               : 'Evet, eminim! Islemi tamamla. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adres ',
+TOKEN_Addr                  : 'Token Adres ',
 TOKEN_Symbol                : 'Token symbolu ',
 TOKEN_Dec                   : 'Ondalık ',
 TOKEN_show                  : 'Tüm tokenleri göster ',
@@ -397,7 +397,7 @@ ERROR_31                    : 'Geçersiz gizli cümle (phrase) ',
 ERROR_32                    : 'Düğüme bağlanılamadı. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank"  rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank"  rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

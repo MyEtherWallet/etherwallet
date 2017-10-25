@@ -203,7 +203,7 @@ SENDModal_No                : 'No, sácame de aquí. ',
 SENDModal_Yes               : 'Sí, estoy seguro. Hacer la transacción. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Dirección ',
+TOKEN_Addr                  : 'Token Contact Dirección ',
 TOKEN_Symbol                : 'Símbolo del token ',
 TOKEN_Dec                   : 'Decimales ',
 TOKEN_hide                  : 'Ocultar tokens ',
@@ -395,7 +395,7 @@ ERROR_31                    : 'Introduce un secret phrase válido. ', // 31
 ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

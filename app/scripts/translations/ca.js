@@ -243,7 +243,7 @@ SENDModal_No                : 'No, treu-me d\'aquí! ',
 SENDModal_Yes               : 'Sí, n\'estic segur! Realitza la transacció. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adreça ',
+TOKEN_Addr                  : 'Adreça del Token ',
 TOKEN_Symbol                : 'Símbol del Token ',
 TOKEN_Dec                   : 'Decimals ',
 TOKEN_show                  : 'Mostra tots els tokens ',
@@ -378,7 +378,7 @@ ERROR_31                    : 'Introdueix una frase secreta vàlida. ', // 31
 ERROR_32                    : 'No s\'ha pogut connectar al node. Refresca la teva pàgina, prova-ho amb un altre node (cantonada superior-dreta), comprova el teu firewall. En mode personalitzar, comprova les teves preferències.', // 32
 ERROR_33                    : 'La cartera que has desbloquejat no correspon amb l\'adreça del propietari. ', // 33
 ERROR_34                    : 'El nom que estàs intentant mostrar no coincideix amb el nom que has introduït. ', // 34
-ERROR_35                    : 'L\'adreça introduïda no s\'ha comprovat mitjantçant checksum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> Més informació</a>', // 35
+ERROR_35                    : 'L\'adreça introduïda no s\'ha comprovat mitjantçant checksum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Més informació</a>', // 35
 ERROR_36                    : 'Introdueix un hash de TX vàlid', // 36
 ERROR_37                    : 'Introdueix una cadena hex (0-9, a-f) vàlida', // 37
 

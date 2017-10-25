@@ -237,7 +237,7 @@ SENDModal_No                : 'いいえ、中断します。 ',
 SENDModal_Yes               : 'はい、確かです。処理を実行します。 ',
 
 /* Tokens */
-TOKEN_Addr                  : 'アドレス： ',
+TOKEN_Addr                  : 'Token Contract アドレス： ',
 TOKEN_Symbol                : 'トークンシンボル： ',
 TOKEN_Dec                   : 'ケタ数： ',
 TOKEN_show                  : '全てのトークンを表示 ',
@@ -397,7 +397,7 @@ ERROR_31                    : '無効な秘密フレーズです ',
 ERROR_32                    : 'ノードに接続できませんでした。ページを再表示したり、別のノード（画面の右上にあります）を試したり,ファイアーウォールの設定を確認してください。 カスタムノードの使用時には、構成設定を確認してください。', // 32
 ERROR_33                    : 'アンロックしたお財布のアドレスがオーナーのアドレスと一致しません。', // 33
 ERROR_34                    : '以前に入力したものと異なる名前です。 ', // 34
-ERROR_35                    : 'チェックサムが付いていません。 <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> 詳細</a>', // 35
+ERROR_35                    : 'チェックサムが付いていません。 <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> 詳細</a>', // 35
 ERROR_36                    : '正しいトランザクションハッシュを入力してください', // 36
 ERROR_37                    : '１６進数を正しく入力してください (0-9, a-f)', // 37
 

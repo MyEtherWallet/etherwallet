@@ -231,7 +231,7 @@ SENDModal_No                : 'Batalkan! ',
 SENDModal_Yes               : 'Ya! Laksanakan Transaksi-nya. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Alamat ',
+TOKEN_Addr                  : 'Alamat Token Contract',
 TOKEN_Symbol                : 'Simbol Token ',
 TOKEN_Dec                   : 'Desimal ',
 TOKEN_show                  : 'Tampilkan Semua Token ',
@@ -395,7 +395,7 @@ ERROR_31                    : 'Masukkan frase rahasia yang valid. ', // 31
 ERROR_32                    : 'Tidak dapat tersambung ke node. Coba lakukan "Refresh" dan ganti node (pojok kanan atas), dan check setting firewall. Jika node-nya custom, periksa configs-nya.', // 32
 ERROR_33                    : 'Dompet yang Anda buka tidak sesuai dengan address pemiliknya. ', // 33
 ERROR_34                    : 'Nama yang Anda coba buka tidak sama dengan nama yang dimasukkan. ', // 34
-ERROR_35                    : 'Address yang dimasukkan tidak di checksum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> Informasi lebih lanjut</a>', // 35
+ERROR_35                    : 'Address yang dimasukkan tidak di checksum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Informasi lebih lanjut</a>', // 35
 ERROR_36                    : 'Masukkan TX hash yang valid', // 36
 ERROR_37                    : 'Masukkan hex string yang valid (0-9, a-f)', // 37
 

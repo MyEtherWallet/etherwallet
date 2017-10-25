@@ -67,7 +67,7 @@ globalFuncs.errorMsgs = [
     'Could not connect to the node. Try refreshing, using different node in upper right corner, and checking firewall settings. If custom node, check your configs.', // 32
     'The wallet you have unlocked does not match the owner\'s address. ', // 33
     'The name you are attempting to reveal does not match the name you have entered. ', // 34
-    'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> More info</a>', // 35
+    'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
     'Enter valid TX hash', // 36
     'Enter valid hex string (0-9, a-f)', // 37
     'Offer must have either price or reserve set to more than 0', // 38
@@ -305,14 +305,14 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
         // catch if TOKEN SYMBOL is already in storedTokens
         for (var i = 0; i < storedTokens.length; i++){
             if (storedTokens[i].symbol.toLowerCase().replace(/ /g, '') === localToken.symbol.toLowerCase().replace(/ /g, '')) {
-              throw Error('ERROR: Unable to add a custom token with the same symbol as an existing custom token')
+              throw Error('Unable to add a custom token with the same symbol as an existing custom token. Try clicking the "Load Tokens" button, or choosing a different token symbol')
             }
         }
 
         // catch if CONTRACT ADDRESS is already in storedTokens
         for (var i = 0; i < storedTokens.length; i++){
             if (storedTokens[i].contractAddress.toLowerCase().replace(/ /g, '') === localToken.contractAdd.toLowerCase().replace(/ /g, '')) {
-              throw Error('ERROR: Unable to add custom token. It has the same address as custom token ' + storedTokens[i].symbol + '.')
+              throw Error('Unable to add custom token. It has the same address as custom token ' + storedTokens[i].symbol + '. Try clicking the "Load Tokens" button to see it. :)')
             }
         }
 
@@ -320,7 +320,7 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
 
         // catch if TOKEN SYMBOL is already in defaultTokens
         if (globalFuncs.doesTokenExistInDefaultTokens(localToken, defaultTokensAndNetworkType)) {
-          throw Error('ERROR: Unable to add a duplicate custom token.')
+          throw Error('This token is already added as a default token. Try clicking the "Load Tokens" button to see it. :)')
         }
 
         storedTokens.push({
@@ -387,45 +387,4 @@ globalFuncs.localStorage = {
         }
     }
 
-
-/* Check for 'localStorage' or 'sessionStorage' */
-/*
-globalFuncs.storageAvailable = function(type) {
-    try {
-        var storage = window[type],
-            x = '__storage_test__';
-        storage.setItem(x, x);
-        storage.removeItem(x);
-        return true;
-    }
-    catch(e) {
-        return e instanceof DOMException && (
-            // everything except Firefox
-            e.code === 22 ||
-            // Firefox
-            e.code === 1014 ||
-            // test name field too, because code might not be present
-            // everything except Firefox
-            e.name === 'QuotaExceededError' ||
-            // Firefox
-            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-            // acknowledge QuotaExceededError only if there's something already stored
-            storage.length !== 0;
-    }
-
-}
-*/
-
-    // globalFuncs.getUrlParameter = function getUrlParameter(url) {
-    //   // get query string from url (optional) or window
-    //   var queryString = url ? url.split('=')[1] : window.location.search.slice(1);
-    //   return queryString;
-    // }
-    // globalFuncs.setUrlParameter = function setUrlParameter(value) {
-    //   //In case url contains already a parameter remove parameter
-    //   if(window.location.href.indexOf('=') != -1) {
-    //       location.href = location.href.substr(0,window.location.href.indexOf('='));
-    //   }
-    //   location.href = location.href + "=" + value
-    // }
 module.exports = globalFuncs;

@@ -246,7 +246,7 @@ SENDModal_No                : 'NON, MWEN VLE SÒTI LA ',
 SENDModal_Yes               : 'WI, MWEN KONFYAN ! FÈ TRANSFÈ A ',
 
 /* Tokens */
-TOKEN_Addr                  : 'ADRÈS ',
+TOKEN_Addr                  : 'ADRÈS TOKEN CONTRACT',
 TOKEN_Symbol                : 'SENBÒL TOKEN NAN ',
 TOKEN_Dec                   : 'KONTE AN DIS (10) ',
 TOKEN_show                  : 'MONTRE TOKENS YO ',
@@ -382,7 +382,7 @@ ERROR_31                    : 'FRAZ SEKRÈ A PA VALAB ',
 ERROR_32                    : 'LI ENPOSIB POU W’ KONEKTE AK NE A. RAFRECHI PAJ LA, OSWA ESEYE YON LÒT NE (upper right corner), GADE NAN PARAMÈT FIREWALL OU YO. SI W’ AN MÒD NE, GADE NAN PARAMÈT YO // 32 ',
 ERROR_33                    : 'BOUS W’AP ESEYE OUVRI A LI PA GEN MENNM ADRÈS AK MET LI;33 ',
 ERROR_34                    : 'NON W’AP TANTE POU W’ KA WÈ A PA GEN MENM ADRÈS AK NON OU TE ANTRE A // 34 ',
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank"  rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank"  rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'Entrez une empreinte (_hash_) de TX valide', // 36
 ERROR_37                    : 'Entrez une chaîne hex valide (0-9, a-f)', // 37
 

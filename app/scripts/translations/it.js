@@ -203,7 +203,7 @@ SENDModal_No                : 'No, tiratemi fuori da qui! ',
 SENDModal_Yes               : 'Sì, sono sicuro! Esegui la transazione. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Indirizzo ',
+TOKEN_Addr                  : 'Indirizzo del token contratto',
 TOKEN_Symbol                : 'Simbolo del token ',
 TOKEN_Dec                   : 'Decimali ',
 TOKEN_show                  : 'Mostra tutti i token ',
@@ -380,7 +380,7 @@ ERROR_31                    : 'Inserisci una frase segreta valida ',
 ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, prova con un altro nodo (angolo in alto a destra), controlla le impostazioni del firewall. Se si tratta di un nodo personalizzato, controlla la configurazione.', // 32
 ERROR_33                    : 'L\'indirizzo del portafoglio non corrisponde a quello del proprietario. ',
 ERROR_34                    : 'Il nome che stai provando a rivelare non combacia con quello che hai inserito. ',
-ERROR_35                    : 'L\'indirizzo inserito non ha un checksum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> Ulteriori informazioni</a>', // 35
+ERROR_35                    : 'L\'indirizzo inserito non ha un checksum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Ulteriori informazioni</a>', // 35
 ERROR_36                    : 'Inserisci un hash transazione valido', // 36
 ERROR_37                    : 'Inserisci una stringa esadecimale valida (0-9, a-f)', // 37
 

@@ -223,7 +223,7 @@ SENDModal_No                : 'Nei, få meg ut herfra! ',
 SENDModal_Yes               : 'Ja, jeg er sikker! Gjennomfør transaksjonen. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adresse ',
+TOKEN_Addr                  : 'Token Kontraktadresse-Adresse ',
 TOKEN_Symbol                : 'Token-symbol ',
 TOKEN_Dec                   : 'Desimaler ',
 TOKEN_show                  : 'Vis Alle Tokens ',
@@ -393,7 +393,7 @@ ERROR_31                    : 'Ugyldig hemmelig frase ',
 ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte.  Last inn siden på nytt, prøv en annen node (øverste høyre hjørnet), sjekk brannmur-innstillingene. Hvis du bruker din egen node, sjekk konfigurasjonen.', // 32
 ERROR_33                    : 'Lommeboken du har låst opp stemmer ikke overens med eierens adresse. ', // 33
 ERROR_34                    : 'Navnet du prøver å avsløre er ikke likt navnet du har tastet inn. ', // 34
-ERROR_35                    : 'Input-adressen har ingen sjekk-sum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input-adressen har ingen sjekk-sum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

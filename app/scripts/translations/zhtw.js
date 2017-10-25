@@ -247,7 +247,7 @@ SENDModal_No                : '不，帶我離開這裡！ ',
 SENDModal_Yes               : '好，我確定！進行交易。 ',
 
 /* Tokens */
-TOKEN_Addr                  : '地址 ',
+TOKEN_Addr                  : '地址 Token ',
 TOKEN_Symbol                : '代幣縮寫 ',
 TOKEN_Dec                   : '小數點 ',
 TOKEN_show                  : '顯示所有代幣 ',
@@ -383,7 +383,7 @@ ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
 ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

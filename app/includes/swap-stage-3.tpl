@@ -5,7 +5,7 @@
   <section class="row text-center">
     <div class="col-xs-3 text-left"><a class="btn btn-danger btn-xs" ng-click="newSwap()"> Start New Swap </a></div>
     <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
-    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener">
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer">
       <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
     </a></div>
   </section>
@@ -107,7 +107,7 @@
     <p class="text-danger">
        Orders that take too long will have to be processed manually &amp; and may delay the amount of time it takes to receive your coins.
         <br />
-       <a href="https://shapeshift.io/#/btcfee" target="_blank" rel="noopener">Please use the recommended TX fees seen here.</a>
+       <a href="https://shapeshift.io/#/btcfee" target="_blank" rel="noopener noreferrer">Please use the recommended TX fees seen here.</a>
     </p>
 
   </section>

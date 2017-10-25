@@ -202,7 +202,7 @@ SENDModal_No                : 'Nie, zabierz mnie stąd! ',
 SENDModal_Yes               : 'Tak, jestem pewien! Zatwierdź transakcję. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adres ',
+TOKEN_Addr                  : 'Adres Tokenu Kontraktu',
 TOKEN_Symbol                : 'Symbol Tokenu ',
 TOKEN_Dec                   : 'Miejsc po przecinku ',
 TOKEN_show                  : 'Pokaż Wszystkie Tokeny ',
@@ -394,7 +394,7 @@ ERROR_31                    : 'Błędna tajna fraza (secret phrase) ',
 ERROR_32                    : 'Nie można połączyć z węzłem. Odśwież stronę, spróbuj inny węzeł (w prawym górnym rogu), sprawdź swoje ustawienia firewall. Jeśli łączysz się z węzłem niestandardowym, sprawdź konfigurację.', // 32
 ERROR_33                    : 'Odblokowany portfel nie zgadza się z adresem właściciela. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Wprowadzony adres nie jest sprawdzony (checksummed). <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener"> Więcej informacji</a>', // 35
+ERROR_35                    : 'Wprowadzony adres nie jest sprawdzony (checksummed). <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Więcej informacji</a>', // 35
 ERROR_36                    : 'Wprowadź poprawny TX hash', // 36
 ERROR_37                    : 'Wprowadź poprawny ciąg znaków (0-9, a-f)', // 37
 

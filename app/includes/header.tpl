@@ -64,7 +64,7 @@
     }
     <div class="tagline">
 
-    <span>3.10.5</span>
+    <span>3.10.6.0</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -111,7 +111,7 @@
           <p class="small col-xs-4 text-center">Fast</p>
           <p class="small col-xs-4 text-right">Fast AF</p>
           <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
-          <a class="small" translate="x_ReadMore" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener"></a>
+          <a class="small" translate="x_ReadMore" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener noreferrer"></a>
         </div>
       </ul>
     </span>
@@ -146,7 +146,7 @@
       @@if (site === 'cx' ) {
       <li ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="tab.cx" ng-click="tabClick($index)"> <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a></li>
       }
-      <li class="nav-item help"><a href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener">Help</a></li>
+      <li class="nav-item help"><a href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer">Help</a></li>
     </ul>
   </div>
   <a aria-hidden="true" ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>

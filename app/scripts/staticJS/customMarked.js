@@ -15,7 +15,7 @@ myRenderer.link = function(href, title, text) {
 			return '';
 		}
 	}
-	var out = '<a target="_blank" rel="noopener" href="' + href + '"';
+	var out = '<a target="_blank" rel="noopener noreferrer" href="' + href + '"';
 	if (title) {
 		out += ' title="' + title + '"';
 	}
