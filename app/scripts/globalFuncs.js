@@ -303,14 +303,14 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
         // catch if TOKEN SYMBOL is already in storedTokens
         for (var i = 0; i < storedTokens.length; i++){
             if (storedTokens[i].symbol.toLowerCase().replace(/ /g, '') === localToken.symbol.toLowerCase().replace(/ /g, '')) {
-              throw Error('ERROR: Unable to add a custom token with the same symbol as an existing custom token')
+              throw Error('Unable to add a custom token with the same symbol as an existing custom token. Try clicking the "Load Tokens" button, or choosing a different token symbol')
             }
         }
 
         // catch if CONTRACT ADDRESS is already in storedTokens
         for (var i = 0; i < storedTokens.length; i++){
             if (storedTokens[i].contractAddress.toLowerCase().replace(/ /g, '') === localToken.contractAdd.toLowerCase().replace(/ /g, '')) {
-              throw Error('ERROR: Unable to add custom token. It has the same address as custom token ' + storedTokens[i].symbol + '.')
+              throw Error('Unable to add custom token. It has the same address as custom token ' + storedTokens[i].symbol + '. Try clicking the "Load Tokens" button to see it. :)')
             }
         }
 
@@ -318,7 +318,7 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
 
         // catch if TOKEN SYMBOL is already in defaultTokens
         if (globalFuncs.doesTokenExistInDefaultTokens(localToken, defaultTokensAndNetworkType)) {
-          throw Error('ERROR: Unable to add a duplicate custom token.')
+          throw Error('This token is already added as a default token. Try clicking the "Load Tokens" button to see it. :)')
         }
 
         storedTokens.push({
