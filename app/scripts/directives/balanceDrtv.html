@@ -127,7 +127,9 @@
     <h5 translate="sidebar_TokenBal">Token Balances</h5>
 
     <!-- Load Token Balances -->
-    <a class="btn btn-warning btn-xs" ng-click="wallet.setTokens(); globalService.tokensLoaded=true" ng-hide="globalService.tokensLoaded">
+    <a class="btn btn-warning btn-xs"
+       ng-click="wallet.setTokens(); globalService.tokensLoaded=true"
+       ng-hide="globalService.tokensLoaded">
       <img src="images/icon-load-tokens.svg" style="height: 1em; width: auto; margin-right: 5px;" />
       Load Tokens
     </a>
