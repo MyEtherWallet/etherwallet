@@ -104,6 +104,11 @@
 "decimal":15,
 "type":"default"
 },{
+"address":"0x1c4481750daa5Ff521A2a7490d9981eD46465Dbd",
+"symbol":"BCPT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x3A0181e8f2DD081ace83EaC027EEC2E0c2255Ed5",
 "symbol":"BCV",
 "decimal":2,
