@@ -29,7 +29,7 @@
         <span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span>
       </p>
     </div>
-    <a class="link bity-logo" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
+    <a class="link bity-logo" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
   </section>
   <!-- / Colored Columns -->
 

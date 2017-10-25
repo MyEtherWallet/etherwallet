@@ -1,18 +1,25 @@
 <!-- Content -->
 <section class="col-sm-8">
+
+
+  <!-- If unlocked with address only -->
   <div class="block" ng-show="wallet.type=='addressOnly'">
     <div class="row form-group">
       <h4>You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.</h4>
       <h5> Helpful Resources / FAQs </h5>
       <ul>
-        <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/accessing-your-new-eth-wallet.html" target="_blank" rel="noopener noreferrer">How to Access your Wallet</a></li>
-        <li><a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/lost-eth-private-key.html" target="_blank" rel="noopener noreferrer">I lost my private key</a></li>
-        <li><a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/accessing-different-address-same-private-key-ether.html" target="_blank" rel="noopener noreferrer">My private key opens a different address</a></li>
-        <li><a href="https://myetherwallet.github.io/knowledge-base/migration/" target="_blank" rel="noopener noreferrer">Migrating to/from MyEtherWallet</a></li>
+        <li class="u__protip"><a href="https://myetherwallet.github.io/knowledge-base/getting-started/accessing-your-new-eth-wallet.html" target="_blank" rel="noopener noreferrer">How to Access your Wallet</a></li>
+        <li class="u__protip"><a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/lost-eth-private-key.html" target="_blank" rel="noopener noreferrer">I lost my private key</a></li>
+        <li class="u__protip"><a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/accessing-different-address-same-private-key-ether.html" target="_blank" rel="noopener noreferrer">My private key opens a different address</a></li>
+        <li class="u__protip"><a href="https://myetherwallet.github.io/knowledge-base/migration/" target="_blank" rel="noopener noreferrer">Migrating to/from MyEtherWallet</a></li>
       </ul>
     </div>
   </div>
 
+
+
+
+  <!-- If unlocked with PK -->
   <div class="block" ng-hide="wallet.type=='addressOnly'">
 
     <!-- To Address -->
@@ -92,7 +99,7 @@
       <!-- Nonce -->
       <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
-          <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html" target="_blank" rel="noopener">
+          <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html" target="_blank" rel="noopener noreferrer">
             <img src="images/icon-help.svg" class="help-icon" />
             <p class="account-help-text" translate="NONCE_Desc"></p>
           </a>
@@ -111,7 +118,7 @@
       <!-- Gas Price -->
       <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
-          <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener">
+          <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener noreferrer">
             <img src="images/icon-help.svg" class="help-icon" />
             <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
           </a>

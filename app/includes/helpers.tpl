@@ -187,7 +187,7 @@
 
   <br /><br /><br />
 
-  <h1> "SHA3" (Keccak-256) It! <small><a href="https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use" target="_blank" rel="noopener">yooo... sha3 !== Keccak-256?!</a></small></h1>
+  <h1> "SHA3" (Keccak-256) It! <small><a href="https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use" target="_blank" rel="noopener noreferrer">yooo... sha3 !== Keccak-256?!</a></small></h1>
 
   <div class="form-group">
     <label> Input </label>
@@ -307,8 +307,8 @@
       <li class="text-danger">Consider yourself very, very lucky.</li>
       <li> Now you need to create a new secure wallet and move all funds to it.</li>
       <li>In order to prevent the same thing from happening, <strong> please make sure your address you are sending to matches the address on your paper wallet</strong></li>
-      <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherewallet.html" target="_blank" rel="noopener">Read this guide for more information.</a></li>
-      <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener">Learn how to protect yourself and your funds.</a></li>
+      <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherewallet.html" target="_blank" rel="noopener noreferrer">Read this guide for more information.</a></li>
+      <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener noreferrer">Learn how to protect yourself and your funds.</a></li>
     </ul>
   </div>
 
