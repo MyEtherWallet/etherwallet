@@ -203,7 +203,7 @@ SENDModal_No                : 'Nem, vigyél ki innen! ',
 SENDModal_Yes               : 'Igen, biztos vagyok benne! Tranzakció indítása. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Cím ',
+TOKEN_Addr                  : 'Token Contract Cím ',
 TOKEN_Symbol                : 'Token Szimbólum ',
 TOKEN_Dec                   : 'Tizedesjegyek ',
 TOKEN_show                  : 'Minden Token megjelenítése ',

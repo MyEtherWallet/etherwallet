@@ -237,7 +237,7 @@ SENDModal_No                : 'いいえ、中断します。 ',
 SENDModal_Yes               : 'はい、確かです。処理を実行します。 ',
 
 /* Tokens */
-TOKEN_Addr                  : 'アドレス： ',
+TOKEN_Addr                  : 'Token Contract アドレス： ',
 TOKEN_Symbol                : 'トークンシンボル： ',
 TOKEN_Dec                   : 'ケタ数： ',
 TOKEN_show                  : '全てのトークンを表示 ',

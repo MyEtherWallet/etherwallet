@@ -207,7 +207,7 @@ SENDModal_Yes               : 'Ναι, είμαι σίγουρος/η! Εκτε�
 SEND_TransferTotal          : 'Μεταφορά όλου του υπάρχοντος υπολοίπου ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Διεύθυνση ',
+TOKEN_Addr                  : 'Token Contract Διεύθυνση ',
 TOKEN_Symbol                : 'Σύμβολο μάρκας ',
 TOKEN_Dec                   : 'Δεκαδικά ',
 TOKEN_hide                  : 'Απόκρυψη μαρκών ',

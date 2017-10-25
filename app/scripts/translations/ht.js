@@ -246,7 +246,7 @@ SENDModal_No                : 'NON, MWEN VLE SÒTI LA ',
 SENDModal_Yes               : 'WI, MWEN KONFYAN ! FÈ TRANSFÈ A ',
 
 /* Tokens */
-TOKEN_Addr                  : 'ADRÈS ',
+TOKEN_Addr                  : 'ADRÈS TOKEN CONTRACT',
 TOKEN_Symbol                : 'SENBÒL TOKEN NAN ',
 TOKEN_Dec                   : 'KONTE AN DIS (10) ',
 TOKEN_show                  : 'MONTRE TOKENS YO ',

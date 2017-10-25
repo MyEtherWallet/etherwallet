@@ -242,7 +242,7 @@ SENDModal_No                : 'Nee, haal me hier weg! ',
 SENDModal_Yes               : 'Ja, ik weet het zeker! Maak de transactie. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adres ',
+TOKEN_Addr                  : 'Token Contract Adres ',
 TOKEN_Symbol                : 'Token Symbool ',
 TOKEN_Dec                   : 'Decimalen ',
 TOKEN_show                  : 'Toon alle Tokens ',

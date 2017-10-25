@@ -243,7 +243,7 @@ SENDModal_No                : 'No, get me out of here! ',
 SENDModal_Yes               : 'Yes, I am sure! Make transaction. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Address ',
+TOKEN_Addr                  : 'Token Contract Address ',
 TOKEN_Symbol                : 'Token Symbol ',
 TOKEN_Dec                   : 'Decimals ',
 TOKEN_show                  : 'Show All Tokens ',

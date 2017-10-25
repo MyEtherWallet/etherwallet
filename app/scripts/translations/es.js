@@ -203,7 +203,7 @@ SENDModal_No                : 'No, sácame de aquí. ',
 SENDModal_Yes               : 'Sí, estoy seguro. Hacer la transacción. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Dirección ',
+TOKEN_Addr                  : 'Token Contact Dirección ',
 TOKEN_Symbol                : 'Símbolo del token ',
 TOKEN_Dec                   : 'Decimales ',
 TOKEN_hide                  : 'Ocultar tokens ',

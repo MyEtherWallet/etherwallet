@@ -247,7 +247,7 @@ SENDModal_No                : '不，帶我離開這裡！ ',
 SENDModal_Yes               : '好，我確定！進行交易。 ',
 
 /* Tokens */
-TOKEN_Addr                  : '地址 ',
+TOKEN_Addr                  : '地址 Token ',
 TOKEN_Symbol                : '代幣縮寫 ',
 TOKEN_Dec                   : '小數點 ',
 TOKEN_show                  : '顯示所有代幣 ',

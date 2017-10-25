@@ -207,7 +207,7 @@ SENDModal_No                : 'Hayir, cikar beni burdan! ',
 SENDModal_Yes               : 'Evet, eminim! Islemi tamamla. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adres ',
+TOKEN_Addr                  : 'Token Adres ',
 TOKEN_Symbol                : 'Token symbolu ',
 TOKEN_Dec                   : 'Ondalık ',
 TOKEN_show                  : 'Tüm tokenleri göster ',

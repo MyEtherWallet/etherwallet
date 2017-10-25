@@ -202,7 +202,7 @@ SENDModal_No                : 'Không, Đưa tôi ra khỏi đây! ',
 SENDModal_Yes               : 'Có, Tôi chắc chắn! Hãy thực hiện giao dịch. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Địa Chỉ ',
+TOKEN_Addr                  : 'Địa Chỉ Token Contract',
 TOKEN_Symbol                : 'Ký Hiệu Token ',
 TOKEN_Dec                   : 'Phân Số Thập Phân ',
 TOKEN_show                  : 'Hiển thị tất cả các loại Tokens ',

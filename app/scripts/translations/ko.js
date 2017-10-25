@@ -244,7 +244,7 @@ SENDModal_No                : '아니요, 전송을 취소합니다. ',
 SENDModal_Yes               : '네, 맞습니다! 전송합니다. ',
 
 /* Tokens */
-TOKEN_Addr                  : '주소 ',
+TOKEN_Addr                  : 'Token Contract 주소 ',
 TOKEN_Symbol                : '토큰 기호 ',
 TOKEN_Dec                   : '소수 자릿수 ',
 TOKEN_show                  : '모든 토큰 보기 ',

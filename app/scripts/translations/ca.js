@@ -243,7 +243,7 @@ SENDModal_No                : 'No, treu-me d\'aquí! ',
 SENDModal_Yes               : 'Sí, n\'estic segur! Realitza la transacció. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adreça ',
+TOKEN_Addr                  : 'Adreça del Token ',
 TOKEN_Symbol                : 'Símbol del Token ',
 TOKEN_Dec                   : 'Decimals ',
 TOKEN_show                  : 'Mostra tots els tokens ',

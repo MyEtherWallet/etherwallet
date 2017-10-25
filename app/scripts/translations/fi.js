@@ -207,7 +207,7 @@ SENDModal_No                : 'En, vie minut pois täältä! ',
 SENDModal_Yes               : 'Kyllä, olen varma! Toteuta siirto. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Osoite ',
+TOKEN_Addr                  : 'Token Contract Osoite ',
 TOKEN_Symbol                : 'Token Tunnus ',
 TOKEN_Dec                   : 'Desimaalit ',
 TOKEN_hide                  : 'Hide Tokens ',

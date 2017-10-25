@@ -206,9 +206,9 @@ SENDModal_No                : '不，离开这里。 ',
 SENDModal_Yes               : '是的，我确定！发送交易。 ',
 
 /* Tokens */
-TOKEN_Addr                  : '地址： ',
-TOKEN_Symbol                : '代币符号： ',
-TOKEN_Dec                   : '小数点位数： ',
+TOKEN_Addr                  : '地址 Token Contract ',
+TOKEN_Symbol                : '代币符号 ',
+TOKEN_Dec                   : '小数点位数 ',
 TOKEN_hide                  : 'Hide Tokens ',
 TOKEN_show                  : 'Show All Tokens ',
 

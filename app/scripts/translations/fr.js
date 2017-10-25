@@ -202,7 +202,7 @@ SENDModal_No                : 'Non, je veux sortir d\'ici ! ',
 SENDModal_Yes               : 'Oui, j\'en suis sûr ! Effectuer la transaction. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adresse ',
+TOKEN_Addr                  : 'Adresse du token contrat ',
 TOKEN_Symbol                : 'Symbole du token ',
 TOKEN_Dec                   : 'Décimales ',
 TOKEN_show                  : 'Montrer tous les tokens ',

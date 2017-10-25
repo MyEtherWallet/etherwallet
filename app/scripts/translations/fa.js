@@ -183,9 +183,9 @@ SENDModal_Yes: 'بله مطمئن هستم. تراکنش را انجام بده 
 
 /* Tokens */
 
-TOKEN_Addr: 'آدرس ',
+TOKEN_Addr: 'Token Contract Address',
 TOKEN_Symbol: 'علامت توکن ',
-TOKEN_Dec: 'TOKEN_Dec',
+TOKEN_Dec: 'Decimals',
 TOKEN_show: 'نمایش تمام توکن ها ',
 TOKEN_hide: 'پنهان سازی توکن ها ',
 

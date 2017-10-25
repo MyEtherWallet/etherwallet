@@ -203,7 +203,7 @@ SENDModal_No                : 'No, tiratemi fuori da qui! ',
 SENDModal_Yes               : 'Sì, sono sicuro! Esegui la transazione. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Indirizzo ',
+TOKEN_Addr                  : 'Indirizzo del token contratto',
 TOKEN_Symbol                : 'Simbolo del token ',
 TOKEN_Dec                   : 'Decimali ',
 TOKEN_show                  : 'Mostra tutti i token ',

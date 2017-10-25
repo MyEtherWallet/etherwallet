@@ -231,7 +231,7 @@ SENDModal_No                : 'Batalkan! ',
 SENDModal_Yes               : 'Ya! Laksanakan Transaksi-nya. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Alamat ',
+TOKEN_Addr                  : 'Alamat Token Contract',
 TOKEN_Symbol                : 'Simbol Token ',
 TOKEN_Dec                   : 'Desimal ',
 TOKEN_show                  : 'Tampilkan Semua Token ',

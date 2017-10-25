@@ -223,7 +223,7 @@ SENDModal_No                : 'Nei, få meg ut herfra! ',
 SENDModal_Yes               : 'Ja, jeg er sikker! Gjennomfør transaksjonen. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adresse ',
+TOKEN_Addr                  : 'Token Kontraktadresse-Adresse ',
 TOKEN_Symbol                : 'Token-symbol ',
 TOKEN_Dec                   : 'Desimaler ',
 TOKEN_show                  : 'Vis Alle Tokens ',

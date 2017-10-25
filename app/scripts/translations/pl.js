@@ -202,7 +202,7 @@ SENDModal_No                : 'Nie, zabierz mnie stąd! ',
 SENDModal_Yes               : 'Tak, jestem pewien! Zatwierdź transakcję. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adres ',
+TOKEN_Addr                  : 'Adres Tokenu Kontraktu',
 TOKEN_Symbol                : 'Symbol Tokenu ',
 TOKEN_Dec                   : 'Miejsc po przecinku ',
 TOKEN_show                  : 'Pokaż Wszystkie Tokeny ',

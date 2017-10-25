@@ -202,8 +202,8 @@ SENDModal_Content_4         : 'HINWEIS: Wenn Sie eine Fehlermeldung erhalten, m�
 SENDModal_No                : 'Nein, ich möchte diesen Vorgang abbrechen! ',
 SENDModal_Yes               : 'Ja, ich bin mir sicher! Führe die Transaktion durch. ',
 
-/* Tokens
-TOKEN_Addr                  : 'Adresse ',
+/* Tokens */
+TOKEN_Addr                  : 'Token Contract Adresse ',
 TOKEN_Symbol                : 'Token-Symbol ',
 TOKEN_Dec                   : 'Dezimalstellen ',
 TOKEN_hide                  : 'Verstecke Token ',

@@ -205,7 +205,7 @@ SENDModal_No                : 'Não, me tire daqui! ',
 SENDModal_Yes               : 'Sim, eu tenho certeza! Faça a transação. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Endereço ',
+TOKEN_Addr                  : 'Endereço do Token Contract ',
 TOKEN_Symbol                : 'Símbolo do Token ',
 TOKEN_Dec                   : 'Decimais ',
 TOKEN_show                  : 'Mostre todos os Tokens ',
