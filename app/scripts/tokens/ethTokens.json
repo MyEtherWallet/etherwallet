@@ -104,6 +104,11 @@
 "decimal":15,
 "type":"default"
 },{
+"address":"0x3A0181e8f2DD081ace83EaC027EEC2E0c2255Ed5",
+"symbol":"BCV",
+"decimal":2,
+"type":"default"
+},{ 
 "address":"0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
 "symbol":"BeerCoin 🍺 ",
 "decimal":0,
