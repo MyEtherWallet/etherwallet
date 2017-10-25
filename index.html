@@ -2560,7 +2560,10 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <br /><br />
 
-  <h1><strong>{{objENS.name}}.eth</strong> is already owned:</h1>
+  <h1><strong>{{objENS.name}}.eth</strong>
+    <span ng-show="objDomainSale.sale.reserve==0 && objDomainSale.sale.price==0">is already owned:</span>
+    <span ng-show="objDomainSale.sale.reserve!=0 || objDomainSale.sale.price!=0">can be purchased through DomainSale</span>
+  </h1>
 
   <div class="form-group col-sm-10 col-sm-offset-1" ng-hide="wd">
        <table class="table table-striped"
@@ -3140,6 +3143,753 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   
 
 
+</main>
+
+
+    <main class="tab-pane domainsale-tab active" ng-if="globalService.currentTab==globalService.tabs.domainsale.id" ng-controller='domainsaleCtrl' ng-cloak>
+
+  <div class="block">
+
+      <!-- Title -->
+      <article class="cont-md">
+        <h1 class="text-center" translate="NAV_DomainSale"> DomainSale </h1>
+        <p>
+          <a href="https://medium.com/@jgm.orinoco/domainsale-an-on-chain-secondary-ens-market-b3330f6e5dda" target="_blank" rel="noopener">DomainSale</a> is a secondary market for the <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener">Ethereum Name Service</a> that allows you to buy and sell domains that are already owned.
+        </p>
+      </article>
+      <!-- / Title -->
+
+      <br />
+
+      <!-- IF DOMAINSALE CHAIN: Check Status of Name -->
+      <article class="row" ng-show="showDomainSale()">
+        <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+          <div class="input-group">
+            <input class="form-control"
+                   type="text"
+                   placeholder="myetherwallet"
+                   ng-model="objDomainSale.name"
+                   ng-keyup="$event.keyCode==13 && checkName()"
+                   ng-change="nameOnChange()"
+                   ng-disabled="objDomainSale.nameReadOnly"
+                   ng-class="Validator.isValidENSName(objDomainSale.name) && objDomainSale.name.indexOf('.') == -1 ? 'is-valid' : 'is-invalid'"/>
+            <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
+          </div>
+          <button class="btn btn-primary" ng-click="checkName()"> Check on DomainSale </button>
+        </section>
+      </article>
+      <!-- / IF DOMAINSALE CHAIN: Check Status of Name -->
+  </div>
+  <div class="block" ng-show="objDomainSale.status==-1 && wallet==null">
+      <article class="row" ng-show="showDomainSale()">
+        <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+          <p>
+            If you have used DomainSale to buy or sell domains and believe you have funds available for withdrawal you can enter your account address here and it will provide you with a balance
+          </p>
+          <div class="input-group">
+            <input class="form-control"
+                   type="text"
+                   size="60"
+                   placeholder="0x1234567890123456789012345678901234567890"
+                   ng-model="objDomainSale.address"
+                   ng-keyup="$event.keyCode==13 && checkBalance()"
+                   ng-change="addressOnChange()"
+                   ng-disabled="objDomainSale.addressReadOnly"
+                   ng-class="Validator.isValidAddress(objDomainSale.address) ? 'is-valid' : 'is-invalid'"/>
+          </div>
+          <button ng-show="objDomainSale.balance == -1" class="btn btn-primary" ng-click="checkBalance()"> Check DomainSale balance </button>
+        </section>
+      </article>
+  </div>
+
+
+  <!-- IF NOT DOMAINSALE CHAIN -->
+  <div ng-hide="showDomainSale()" class="alert alert-danger text-center">
+    <p> DomainSale is only available on the ETH and Ropsten (Testnet) chains. You are currently on the {{ajaxReq.type}} chain. <br /> Please use the node switcher in the upper right corner to select "ETH" or "Ropsten". </p>
+  </div>
+  <!-- / IF NOT DOMAINSALE CHAIN -->
+
+  <!-- General Information Panel -->
+   <article class="block" ng-hide="hideDomainSaleInfoPanel">
+
+  <div class="cont-md">
+
+    <h4> How can I sell a domain? </h4>
+      <h6 ng-click="domainsaleSellTransfer = !domainsaleSellTransfer">
+        <span ng-show="!domainsaleSellTransfer">+</span><span ng-show="domainsaleSellTransfer">-</span>
+        1. Transfer the domain to DomainSale
+      </h6>
+      <ul ng-show="domainsaleSellTransfer">
+        <li> Before you sell a domain it must be transferred to DomainSale.  This ensures that you own the domain and are eligible to sell it. </li>
+      </ul>
+
+      <h6 ng-click="domainsaleSellOffer = !domainsaleSellOffer">
+        <span ng-show="!domainsaleSellOffer">+</span><span ng-show="domainsaleSellOffer">-</span>
+        2. Set immediate and/or auction prices
+      </h6>
+      <ul ng-show="domainsaleSellOffer">
+        <li> Decide if you want to make your domain available for immediate purchase, auction, or both. </li>
+          <ul>
+            <li> If you want to make your domain available for immediate purchase you need to pick the price for which you will sell it. </li>
+            <li> If you want to make your domain available for auction you need to pick the price for which the initial bid will be made. </li>
+          </ul>
+        <li> Please remember that 10% of the final sale fee will be given to referrers, and price accordingly. </li>
+      </ul>
+
+      <h6 ng-click="domainsaleSellFinish = !domainsaleSellFinish">
+        <span ng-show="!domainsaleSellFinish">+</span><span ng-show="domainsaleSellFinish">-</span>
+        3. Finish the auction (if applicable)
+      </h6>
+      <ul ng-show="domainsaleSellFinish">
+        <li> If your domain was sold at auction then once the auction has closed you (or the buyer) need to finish the auction.  This transfers the funds to you and the domain to the buyer.
+      </ul>
+
+    <h4> How can I buy a domain? </h4>
+      <h6 ng-click="domainsaleBuySearch = !domainsaleBuySearch">
+        <span ng-show="!domainsaleBuySearch">+</span><span ng-show="domainsaleBuySearch">-</span>
+        1. Obtain details of the sale
+      </h6>
+      <ul ng-show="domainsaleBuySearch">
+        <li> Search for the domain that you want to purchase using the check above and obtain the details of the sale. </li>
+        <ul>
+          <li> Note that if the domain is not currently available for sale it might go on sale soon, so make sure to check frequently.</li>
+        </ul>
+      </ul>
+
+      <h6 ng-click="domainsaleBuyPrice = !domainsaleBuyPrice">
+        <span ng-show="!domainsaleBuyPrice">+</span><span ng-show="domainsaleBuyPrice">-</span>
+        2. Buy the domain outright by providing the purchase price
+      </h6>
+      <ul ng-show="domainsaleBuyPrice">
+        <li> This step is only possible if the domain has a purchase price, otherwise proceed to step 3. </li>
+      </ul>
+
+      <h6 ng-click="domainsaleBuyBid = !domainsaleBuyBid">
+        <span ng-show="!domainsaleBuyBid">+</span><span ng-show="domainsaleBuyBid">-</span>
+        3a. Bid on the domain
+      </h6>
+      <ul ng-show="domainsaleBuyBid">
+        <li> This step is only possible if the domain has been put up for auction. </li>
+      </ul>
+
+      <h6 ng-click="domainsaleBuyWait = !domainsaleBuyWait">
+        <span ng-show="!domainsaleBuyWait">+</span><span ng-show="domainsaleBuyWait">-</span>
+        3b. Wait for the auction to finish
+      </h6>
+      <ul ng-show="domainsaleBuyWait">
+        <li> The auction will close 24 hours after the final bid.  Note that if someone else places a bid on the name then you can place an additional bid.</li>
+      </ul>
+
+      <h6 ng-click="domainsaleBuyFinish = !domainsaleBuyFinish">
+        <span ng-show="!domainsaleBuyFinish">+</span><span ng-show="domainsaleBuyFinish">-</span>
+        3c. Finish the auction
+      </h6>
+      <ul ng-show="domainsaleBuyFinish">
+        <li> Once the auction has closed finish the auction to obtain control of the name.</li>
+      </ul>
+
+    <h4> General </h4>
+      <h6 ng-click="domainsaleMore = !domainsaleMore">
+        <span ng-show="!domainsaleMore">+</span><span ng-show="domainsaleMore">-</span>
+        More Information
+      </h6>
+      <ul ng-show="domainsaleMore">
+         <li> Details on the DomainSale process for both buyers and sellers are available in <a href="https://medium.com/@jgm.orinoco/domainsale-an-on-chain-secondary-ens-market-b3330f6e5dda" target="_blank" rel="noopener">the introductory post</a>.</li>
+         <li> The <a href="https://github.com/wealdtech/domainsale/" target="_blank" rel="noopener">DomainSale contract</a> is open source and freely available.</li>
+
+  </div>
+
+</article>
+ 
+  
+
+  <!-- If not owned then say so -->
+   <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.ineligible">
+
+  <br /><br />
+
+  <h1><strong>{{objDomainSale.name}}.eth</strong> is not eligible for auction.</h1>
+
+  This domain has not yet been registered in ENS.  You should check it out on the ENS tab to see its status, and bid for it if you want it.
+
+</article>
+ 
+  
+
+  <!-- If not owned by DomainSale then provide transfer information -->
+   <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.nottransferred">
+
+  <br /><br />
+
+  <h1><strong>{{objDomainSale.name}}.eth</strong> is not currently for sale.</h1>
+
+</article>
+ 
+  
+
+  <!-- If not offered then provide offer information -->
+   <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.notoffered">
+
+  <br /><br />
+
+  <h1><strong>{{objDomainSale.name}}.eth</strong> is ready to be put up for sale.</h1>
+
+</article>
+ 
+  
+
+  <!-- If available provide purchase and/or auction information -->
+   <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.available">
+
+  <br /><br />
+
+<div ng-show="objDomainSale.price==0 && objDomainSale.reserve>0">
+  <h1><strong>{{objDomainSale.name}}.eth</strong> is available for auction.</h1>
+
+  <span ng-show="wallet==null||wallet.getAddressString()!=objDomainSale.seller">You can open an auction on this domain by bidding at least <strong>{{objDomainSale.reserveEth}} {{ajaxReq.type}}</strong>.  The auction will remain open until 24 hours have passed without receiving any bids, at which point it will close and the winner can claim the name.</span>
+</div>
+
+<div ng-show="objDomainSale.price>0 && objDomainSale.reserve==0">
+  <h1><strong>{{objDomainSale.name}}.eth</strong> is available for purchase.</h1>
+
+  <span ng-show="wallet==null||wallet.getAddressString()!=objDomainSale.seller">You can buy this domain by paying <strong>{{objDomainSale.priceEth}} {{ajaxReq.type}}</strong>.  You will own the domain immediately.</span>
+</div>
+
+<div ng-show="objDomainSale.price>0 && objDomainSale.reserve>0">
+  <h1><strong>{{objDomainSale.name}}.eth</strong> is available for purchase or auction.</h1>
+
+  <span ng-show="wallet==null||wallet.getAddressString()!=objDomainSale.seller">You can buy this domain by paying <strong>{{objDomainSale.priceEth}} {{ajaxReq.type}}</strong>.  You will own the domain immediately.  Alternatively you can open an auction on this domain by bidding at least <strong>{{objDomainSale.reserveEth}} {{ajaxReq.type}}</strong>.  The auction will remain open until 24 hours have passed without receiving any bids, at which point it will close and the winner can claim the name.</span>
+</div>
+
+</article>
+ 
+  
+
+  <!-- If auction active then provide bid information -->
+   <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.auctioning">
+
+  <br /><br />
+
+<div>
+  <h1><strong>{{objDomainSale.name}}.eth</strong> is being auctioned.</h1>
+
+  The current bid for this domain is <strong>{{objDomainSale.lastBidEth}} {{ajaxReq.type}}</strong>.  It was placed by <strong>{{objDomainSale.lastBidder}}</strong>.
+
+  <section class="order-info-wrap row">
+    <div class="col-sm-12 col-xs-12 order-info">
+      <p>  Auction finishes if no further bids received by </p>
+      <h4> {{objDomainSale.auctionEnds.toString()}} </h4>
+      <p>  {{objDomainSale.timeRemaining}}  </p>
+    </div>
+
+</article>
+ 
+  
+
+  <!-- If auction closed then provide finish information -->
+   <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.closed">
+
+  <br /><br />
+
+  <h1><strong>{{objDomainSale.name}}.eth</strong> auction finished</h1>
+
+  The auction for this domain was won by <strong>{{objDomainSale.lastBidder}}</strong> with a bid of <strong>{{objDomainSale.lastBidEth}} {{ajaxReq.type}}</strong>.
+
+</article>
+ 
+  
+
+  <!-- If balance available provide balance information -->
+   <article class="row text-center" ng-show="objDomainSale.status==-1 && objDomainSale.balance>=0">
+
+  <br /><br />
+
+  <div ng-show="objDomainSale.balance==0">
+    <h1>{{objDomainSale.address}} has no balance</h1>
+  </div>
+
+  <div ng-show="objDomainSale.balance>0">
+    <h1>{{objDomainSale.address}} has balance of <strong>{{objDomainSale.balanceEth}} {{ajaxReq.type}}</strong></h1>
+  </div>
+
+</article>
+ 
+  
+
+  <!-- Unlock Directive: Everything but ineligible -->
+  <article class="row" ng-show="(objDomainSale.balance > 0 || objDomainSale.status==domainsaleModes.nottransferred || objDomainSale.status==domainsaleModes.notoffered || objDomainSale.status==domainsaleModes.available || objDomainSale.status==domainsaleModes.auctioning || objDomainSale.status==domainsaleModes.closed)">
+    <section class="clearfix collapse-container">
+      <div class="text-center" ng-click="wd = !wd">
+        <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+        <h4>
+          <span ng-show="wallet!=null">Want a different wallet?  Change it here.</span>
+          <span ng-show="objDomainSale.status==domainsaleModes.nottransferred && wallet==null">    Do you own and want to sell {{objDomainSale.name}}.eth? Unlock your Wallet to transfer the domain to DomainSale </span>
+          <span ng-show="objDomainSale.status==domainsaleModes.notoffered && wallet==null">    Do you own and want to set prices for {{objDomainSale.name}}.eth? Unlock your Wallet to set buy and bid price </span>
+          <span ng-show="objDomainSale.status==domainsaleModes.available && objDomainSale.price!=0 && objDomainSale.reserve==0 && wallet==null">    Do you want to buy {{objDomainSale.name}}.eth? Unlock your Wallet to buy it immediately </span>
+          <span ng-show="objDomainSale.status==domainsaleModes.available && objDomainSale.price==0 && objDomainSale.reserve!=0 && wallet==null">    Do you want to bid for {{objDomainSale.name}}.eth? Unlock your Wallet to place a bid </span>
+          <span ng-show="objDomainSale.status==domainsaleModes.available && objDomainSale.price!=0 && objDomainSale.reserve!=0 && wallet==null">    Do you want to buy or bid for {{objDomainSale.name}}.eth? Unlock your Wallet to continue </span>
+          <span ng-show="objDomainSale.status==domainsaleModes.auctioning && wallet==null">    Do you want to bid for {{objDomainSale.name}}.eth? Unlock your Wallet to place a bid </span>
+          <span ng-show="objDomainSale.status==domainsaleModes.closed && wallet==null">    Did you buy or sell {{objDomainSale.name}}.eth? Unlock your Wallet to finish the auction </span>
+          <span ng-show="objDomainSale.status==-1 && objDomainSale.balance>0 && wallet==null">    Want to withdraw your funds? Unlock your Wallet to withdraw </span>
+
+        </h4>
+      </div>
+      <div ng-show="!wd">
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+          
+      </div>
+    </section>
+  </article>
+  <!-- / Unlock Directive: Everything but ineligible -->
+
+
+  <!-- Action: transfer -->
+   <div ng-show="objDomainSale.status==domainsaleModes.nottransferred && wallet!=null">
+
+  <article class="row">
+
+    <!-- Content -->
+    <section class="col-sm-8">
+      <div class="block">
+        <div ng-show="wallet.getAddressString()!=objDomainSale.deedOwner">
+          <!-- Title: not owner -->
+          <h2>Not the Owner of that Domain</h2>
+          The account you unlocked does not own that domain.  Please change your wallet to account <strong>{{objDomainSale.deedOwner}}</strong> to transfer the name to DomainSale and start the sale process.
+          <!-- / Title: not owner -->
+        </div>
+
+        <div ng-show="wallet.getAddressString()==objDomainSale.deedOwner">
+          <!-- Title owner -->
+          <h2>Transfer {{objDomainSale.name}}.eth to DomainSale</h2>
+          <!-- / Title owner -->
+  
+          <!-- Button CTA -->
+          <div class="form-group">
+            <a class="btn btn-primary btn-block" ng-click="generateTransferTx()" ng-hide="objDomainSale.txSent">
+              <span> Transfer domain </span>
+            </a>
+          </div>
+          <!-- / Button CTA -->
+        </div>
+
+      <!-- After Sent -->
+      <div class="form-group" ng-show="objDomainSale.txSent">
+        <h4 class="text-warning">Click your TX hash to see if you successfully transferred {{objDomainSale.name}}.eth to DomainSale.</h4>
+      </div>
+      <!-- / After Sent -->
+
+    </div>
+    </section>
+    <!-- / Content -->
+
+    <!-- Sidebar -->
+    <section class="col-sm-4">
+      <wallet-balance-drtv></wallet-balance-drtv>
+    </section>
+    <!-- / Sidebar -->
+
+
+  </article>
+
+</div>
+ 
+  
+
+  <!-- Action: offer or cancel -->
+   <div ng-show="objDomainSale.status==domainsaleModes.notoffered && wallet!=null && wallet.getAddressString()!=objDomainSale.seller">
+  <article class="row">
+
+    <!-- Content -->
+    <section class="col-sm-8">
+      <div class="block">
+        <h2>Incorrect Wallet</h2>
+        The wallet you unlocked does not own this name.  Please use the wallet with address <strong>{{objDomainSale.seller}}</strong> to offer this name for sale.
+      </div>
+    </section>
+    <!-- /Content -->
+
+    <!-- Sidebar -->
+    <section class="col-sm-4">
+      <wallet-balance-drtv></wallet-balance-drtv>
+    </section>
+    <!-- / Sidebar -->
+
+  </article>
+</div>
+
+<div ng-show="(objDomainSale.status==domainsaleModes.notoffered || objDomainSale.status==domainsaleModes.available) && wallet!=null && wallet.getAddressString()==objDomainSale.seller">
+
+  <article class="row">
+
+    <!-- Content -->
+    <section class="col-sm-8">
+      <div class="block">
+        <!-- Title (not offered) -->
+        <div ng-show="objDomainSale.status==domainsaleModes.notoffered">
+          <h2>Offer {{objDomainSale.name}}.eth for sale</h2>
+          <p><em><small>Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain's deed will go to the buyer and 10% of the funds when sold goes to referrers.</small></em></p>
+        </div>
+        <!-- / Title (not offered) -->
+
+        <!-- Title (already offered) -->
+        <div ng-show="objDomainSale.status==domainsaleModes.available">
+          <h2>Alter {{objDomainSale.name}}.eth offer</h2>
+          <p><em><small>Change either of both of the prices below to alter your domain sale offer.  Remember that any funds you have locked in the domain's deed will go to the buyer and 10% of the funds when sold goes to referrers.</small></em></p>
+        </div>
+        <!-- / Title  (already offered) -->
+
+        <!-- Buy price -->
+        <h5>Buy price</h5>
+          <p><em><small>This is the price at which someone can buy the domain immediately.  0 means that the domain cannot be purchased immediately.</small></em></p>
+        <div class="input-group">
+          <input class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objDomainSale.priceEth" ng-class="Validator.isPositiveNumber(objDomainSale.priceEth) ? 'is-valid' : 'is-invalid'" ng-change="syncPrice()"/>
+          <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
+        </div>
+        <!-- / Buy price -->
+
+        <!-- Reserve price -->
+        <h5>Reserve price</h5>
+          <p><em><small>This is the price at which someone can start an auction for the domain.  0 means that the domain will not be available for auction.</small></em></p>
+        <div class="input-group">
+          <input class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objDomainSale.reserveEth" ng-class="Validator.isPositiveNumber(objDomainSale.reserveEth) ? 'is-valid' : 'is-invalid'" ng-change="syncReserve()"/>
+          <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
+        </div>
+        <!-- / Buy price -->
+
+        <!-- Button CTA -->
+        <div class="form-group">
+          <a class="btn btn-primary btn-block" ng-click="generateOfferTx()" ng-hide="objDomainSale.txSent">
+            <span ng-show="objDomainSale.status==domainsaleModes.notoffered">Offer your domain</span>
+            <span ng-show="objDomainSale.status==domainsaleModes.available">Alter your sale</span>
+          </a>
+        </div>
+        <!-- / Button CTA -->
+      </div>
+
+      <div class="block">
+        <h2>Cancel your sale</h2>
+        <p><em><small>You can cancel your domain sale, which will return the domain to you with no charge.  This is only available before any bids have been received for the domain.</small></em></p>
+
+        <!-- Button CTA -->
+        <div class="form-group">
+          <a class="btn btn-primary btn-block" ng-click="generateCancelTx()" ng-hide="objDomainSale.txSent">
+            <span>Cancel your sale</span>
+          </a>
+        </div>
+        <!-- / Button CTA -->
+      </div>
+
+      <!-- After Sent -->
+      <div class="form-group well" ng-show="objDomainSale.txSent">
+         <table class="table table-striped table-domainsale-modal">
+  <tbody>
+    <tr ng-show="objDomainSale.tx!=domainsaleTransactions.withdraw">
+      <td>Name</td><td>{{objDomainSale.name}}.eth</td>
+    </tr>
+    <tr ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.priceEth!=0">
+      <td>Purchase price</td><td>{{objDomainSale.priceEth}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.reserveEth!=0">
+      <td>Minimum bid</td><td>{{objDomainSale.reserveEth}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr ng-show="objDomainSale.tx==domainsaleTransactions.buy">
+      <td>Buy amount</td><td>{{objDomainSale.buyEth}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr ng-show="objDomainSale.tx==domainsaleTransactions.bid">
+      <td>Bid amount</td><td>{{objDomainSale.bidEth}} {{ajaxReq.type}}</td>
+    </tr>
+  </tbody>
+</table>
+ 
+        
+      </div>
+      <!-- / After Sent -->
+
+    </section>
+    <!-- / Content -->
+
+    <!-- Sidebar -->
+    <section class="col-sm-4">
+      <wallet-balance-drtv></wallet-balance-drtv>
+    </section>
+    <!-- / Sidebar -->
+
+  </article>
+
+</div>
+ 
+  
+
+  <!-- Action: bid or buy -->
+   <div ng-show="(objDomainSale.status==domainsaleModes.available || objDomainSale.status==domainsaleModes.auctioning) && wallet!=null && wallet.getAddressString()!=objDomainSale.seller">
+
+  <article class="row">
+
+    <!-- Content -->
+    <section class="col-sm-8">
+
+      <!-- Buy -->
+      <div ng-show="objDomainSale.status==domainsaleModes.available && objDomainSale.price!=0" class="block">
+        <div>
+          <!-- Title -->
+          <h2>Buy the domain</h2>
+          Spend <strong>{{objDomainSale.priceEth}} {{ajaxReq.type}}</strong> to own the domain immediately.
+          <!-- / Title -->
+
+          <!-- Button CTA -->
+          <div class="form-group">
+            <a class="btn btn-primary btn-block" ng-click="generateBuyTx()" ng-hide="objDomainSale.txSent">
+              <span>Buy the domain</span>
+            </a>
+          </div>
+          <!-- / Button CTA -->
+        </div>
+      </div>
+      <!-- / Buy -->
+
+
+      <!-- Bid -->
+      <div ng-show="objDomainSale.reserve!=0" class="block">
+        <div>
+          <!-- Title -->
+          <h2>Bid for the domain</h2>
+          <div ng-show="objDomainSale.lastBidder==wallet.getAddressString()">
+            <hr/>
+            <strong>You are currently winning this auction with the highest bid.  You can bid higher fi you want, but it will delay the close of the auction for 24 hours.</strong>
+            <hr/>
+          </div>
+
+          Bid at least <strong>{{objDomainSale.minimumBidEth}} {{ajaxReq.type}}</strong> for the domain.  You will win the domain if no higher bids are placed within the next 24 hours.
+          <!-- / Title -->
+
+          <!-- Bid price -->
+          <div class="input-group">
+            <input class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objDomainSale.bidEth" ng-class="Validator.isPositiveNumber(objDomainSale.bidEth) ? 'is-valid' : 'is-invalid'" ng-change="syncBid()"/>
+            <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
+          </div>
+          <!-- / Bid price -->
+
+          <!-- Button CTA -->
+          <div class="form-group">
+            <a class="btn btn-primary btn-block" ng-click="generateBidTx()" ng-hide="objDomainSale.txSent">
+              <span>Bid for the domain</span>
+            </a>
+          </div>
+          <!-- / Button CTA -->
+        </div>
+      </div>
+      <!-- / Bid -->
+
+      <!-- After Sent -->
+      <div class="form-group well">
+        Note that the domain has a locked value of {{objDomainSale.valueEth}} {{ajaxReq.type}}.  As part of the sale you will receive the deed with this value but cannot claim it unless you release the name.
+      </div>
+      <!-- / After Sent -->
+
+    </section>
+    <!-- / Content -->
+
+    <!-- Sidebar -->
+    <section class="col-sm-4">
+      <wallet-balance-drtv></wallet-balance-drtv>
+    </section>
+    <!-- / Sidebar -->
+
+
+  </article>
+
+</div>
+ 
+  
+
+  <!-- Action: finish -->
+   <div ng-show="objDomainSale.status==domainsaleModes.closed && wallet!=null">
+
+  <article class="row">
+
+    <!-- Content -->
+    <section class="col-sm-8">
+      <div class="block">
+        <div ng-show="wallet.getAddressString()!=objDomainSale.seller && wallet.getAddressString()!=objDomainSale.lastBidder">
+          <!-- Title -->
+          <h2>Not related to that auction</h2>
+          This address is neither the winner nor the seller of the auction.
+          <!-- / Title -->
+        </div>
+
+        <div ng-show="wallet.getAddressString()==objDomainSale.seller || wallet.getAddressString()==objDomainSale.lastBidder">
+          <div>
+            <!-- Title -->
+            <h2>Finish the auction</h2>
+            Finish the auction to allocate the domain to the winner and the funds to the seller.
+            <!-- / Title -->
+          </div>
+
+          <!-- Button CTA -->
+          <div class="form-group">
+          <a class="btn btn-primary btn-block" ng-click="generateFinishTx()" ng-hide="objDomainSale.txSent">
+              <span> Finish the auction </span>
+            </a>
+          </div>
+          <!-- / Button CTA -->
+
+          <!-- After Sent -->
+          <div class="form-group" ng-show="objDomainSale.txSent">
+            <h4 class="text-warning">Click your TX hash to see if you successfully transferred {{objDomainSale.name}}.eth to DomainSale.</h4>
+          </div>
+          <!-- / After Sent -->
+        </div>
+
+      </div>
+    </section>
+    <!-- / Content -->
+
+    <!-- Sidebar -->
+    <section class="col-sm-4">
+      <wallet-balance-drtv></wallet-balance-drtv>
+    </section>
+    <!-- / Sidebar -->
+
+
+  </article>
+
+</div>
+ 
+  
+
+  <!-- Action: withdraw -->
+   <div ng-show="objDomainSale.balance>0 && wallet!=null">
+
+  <article class="row">
+
+    <!-- Content -->
+    <section class="col-sm-8">
+      <div class="block">
+        <div ng-show="wallet.getAddressString().toLower()==objDomainSale.address.toLower()">
+          <div>
+            <!-- Title -->
+            <h2>Withdraw funds</h2>
+            Withdraw <strong>{{objDomainSale.balanceEth}} {{ajaxReq.type}}</strong> funds for <strong>{{wallet.getAddressString()}}</strong>
+            <!-- / Title -->
+          </div>
+
+          <!-- Button CTA -->
+          <div class="form-group">
+          <a class="btn btn-primary btn-block" ng-click="generateWithdrawTx()" ng-hide="objDomainSale.txSent">
+              <span> Withdraw funds </span>
+            </a>
+          </div>
+          <!-- / Button CTA -->
+
+          <!-- After Sent -->
+          <div class="form-group" ng-show="objDomainSale.txSent">
+            <h4 class="text-warning">Click your TX hash to see if you successfully withdrew funds from DomainSale.</h4>
+          </div>
+          <!-- / After Sent -->
+        </div>
+
+        <div ng-show="wallet.getAddressString().toLower()!=objDomainSale.address.toLower()">
+          <div>
+            <!-- Title -->
+            <h2>Wallet mismatch</h2>
+            The wallet you unlocked is for address <strong>{{wallet.getAddressString()}}</strong>. Please unlock the correct wallet to proceed.
+            <!-- / Title -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- / Content -->
+
+    <!-- Sidebar -->
+    <section class="col-sm-4">
+      <wallet-balance-drtv></wallet-balance-drtv>
+    </section>
+    <!-- / Sidebar -->
+
+
+  </article>
+
+</div>
+ 
+  
+
+  <!-- Modal: confirm -->
+   <!-- ALL: DOMAINSALE MODAL -->
+<article class="modal fade" id="domainsaleConfirmModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h2 class="modal-title">
+          You are about to
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.transfer"> transfer a domain to DomainSale</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.priceEth!=0 && objDomainSale.reserveEth==0"> set the price for a domain</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.priceEth==0 && objDomainSale.reserveEth!=0"> set the reserve auction price for a domain</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.priceEth!=0 && objDomainSale.reserveEth!=0"> set the price and reserve auction price for a domain</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.buy"> buy a domain</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.bid"> bid on a domain</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.cancel"> cancel a domain sale</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.finish"> finish a domain sale</span>
+          <span ng-show="objDomainSale.tx==domainsaleTransactions.withdraw"> withdraw funds from DomainSale to your account</span>
+        </h2>
+
+        <table ng-show="objDomainSale.tx==domainsaleTransactions.buy || objDomainSale.tx==domainsaleTransactions.bid" class="table">
+          <tbody>
+            <tr class="text-center">
+              <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
+              <td class="mono">-&gt;<br />{{tx.value}} {{unitReadable}}</td>
+              <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div></td>
+            </tr>
+          </tbody>
+        </table>
+
+         <table class="table table-striped table-domainsale-modal">
+  <tbody>
+    <tr ng-show="objDomainSale.tx!=domainsaleTransactions.withdraw">
+      <td>Name</td><td>{{objDomainSale.name}}.eth</td>
+    </tr>
+    <tr ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.priceEth!=0">
+      <td>Purchase price</td><td>{{objDomainSale.priceEth}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr ng-show="objDomainSale.tx==domainsaleTransactions.offer && objDomainSale.reserveEth!=0">
+      <td>Minimum bid</td><td>{{objDomainSale.reserveEth}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr ng-show="objDomainSale.tx==domainsaleTransactions.buy">
+      <td>Buy amount</td><td>{{objDomainSale.buyEth}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr ng-show="objDomainSale.tx==domainsaleTransactions.bid">
+      <td>Bid amount</td><td>{{objDomainSale.bidEth}} {{ajaxReq.type}}</td>
+    </tr>
+  </tbody>
+</table>
+ 
+        
+
+        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+
+        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+          No, get me out of here!
+        </button>
+        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+          Yes, I am sure! Make transaction.
+        </button>
+      </div>
+
+    </section>
+  </section>
+</article>
+<!-- ALL: DOMAINSALE MODAL -->
+
+ 
+  
 </main>
 
 
