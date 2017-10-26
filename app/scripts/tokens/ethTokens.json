@@ -229,6 +229,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xEEEE4c4eb88d03013E9C1E188B79A054Db6147CB",
+"symbol":"CMT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xb2f7eb1f2c37645be61d73953035360e768d81e6",
 "symbol":"COB",
 "decimal":18,
