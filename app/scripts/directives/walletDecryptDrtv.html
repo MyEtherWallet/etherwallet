@@ -2,90 +2,172 @@
 
   <!-- Column 1 - Select Type of Key -->
   <section class="col-md-4 col-sm-6">
-    <h4 translate="decrypt_Access" style="margin-top:0;"> Select the format of your private key: </h4>
 
+    <h4 translate="decrypt_Access" style="margin-top:0;">
+      Select the format of your private key:
+    </h4>
+
+    <!-- MetaMask -->
     <label class="radio">
-      <input aria-flowto="aria3" type="radio" aria-label="MetaMask / Mist" ng-model="walletType" value="metamask" />
-      <span translate="x_MetaMask"> MetaMask / Mist </span>
-      <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">
-        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      <input aria-flowto="aria3"
+             type="radio"
+             aria-label="MetaMask / Mist"
+             ng-model="walletType"
+             value="metamask" />
+      <span translate="x_MetaMask">
+      MetaMask / Mist
+      </span>
+      <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html"
+         target="_blank"
+         rel="noopener noreferrer">
+            <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
     </label>
 
-    <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'">
-      <input aria-flowto="aria2" type="radio" aria-label="Ledger Wallet hardware wallet" ng-model="walletType" value="ledger"/>
+    <!-- Ledger -->
+    <label class="radio"
+           ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'">
+      <input aria-flowto="aria2"
+             type="radio"
+             aria-label="Ledger Wallet hardware wallet"
+             ng-model="walletType"
+             value="ledger"/>
       Ledger Wallet
-      <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener noreferrer">
+      <a href="https://ledger.zendesk.com/hc/en-us/articles/115005200009-How-to-use-MyEtherWallet-with-Ledger"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
     </label>
 
-    <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'">
-      <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
+    <!-- TREZOR -->
+    <label class="radio"
+           ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'">
+      <input aria-flowto="aria6"
+             type="radio"
+             aria-label="Trezor hardware wallet"
+             ng-model="walletType"
+             value="trezor" />
       TREZOR
-      <a href="https://doc.satoshilabs.com/trezor-apps/mew.html" target="_blank" rel="noopener noreferrer">
+      <a href="https://doc.satoshilabs.com/trezor-apps/mew.html"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
     </label>
 
+    <!-- Digital Bitbox -->
     <label class="radio" ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'">
-      <input aria-flowto="aria7" type="radio" aria-label="Digital Bitbox hardware wallet" ng-model="walletType" value="digitalBitbox"/>
+      <input aria-flowto="aria7"
+             type="radio"
+             aria-label="Digital Bitbox hardware wallet"
+             ng-model="walletType"
+             value="digitalBitbox"/>
       Digital Bitbox
-      <a href="https://digitalbitbox.com/ethereum" target="_blank" rel="noopener noreferrer">
+      <a href="https://digitalbitbox.com/ethereum"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
     </label>
 
+
+    <!-- Keystore / JSON File -->
     <label class="radio">
-      <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
+      <input aria-flowto="aria1"
+             aria-label="Keystore JSON file"
+             type="radio"
+             ng-model="walletType"
+             value="fileupload" />
       Keystore / JSON File
-      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
     </label>
 
+    <!-- Mnemonic Phrase -->
     <label class="radio">
-      <input aria-flowto="aria4" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" />
-      <span translate="x_Mnemonic"> Mnemonic Phrase </span>
-      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
+      <input aria-flowto="aria4"
+             aria-label="mnemonic phrase"
+             type="radio"
+             ng-model="walletType"
+             value="pastemnemonic" />
+      <span translate="x_Mnemonic">
+        Mnemonic Phrase
+      </span>
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
     </label>
 
+    <!-- Private -->
     <label class="radio">
-      <input aria-flowto="aria5" aria-label="private key" type="radio" ng-model="walletType" value="pasteprivkey" />
-      <span translate="x_PrivKey2"> Private Key </span>
-      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
+      <input aria-flowto="aria5"
+             aria-label="private key"
+             type="radio"
+             ng-model="walletType"
+             value="pasteprivkey" />
+      <span translate="x_PrivKey2">
+        Private Key
+      </span>
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
     </label>
 
+    <!-- Parity -->
     <label class="radio" style="display: none;" id="showMeTheMoney">
-      <input aria-flowto="aria8" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" />
-      <span translate="x_ParityPhrase">Parity Phrase</span>
+      <input aria-flowto="aria8"
+             aria-label="parity phrase"
+             type="radio"
+             ng-model="walletType"
+             value="parityBWallet" />
+      <span translate="x_ParityPhrase">
+        Parity Phrase
+      </span>
     </label>
 
     <label aria-flowto="aria9" class="radio">
-      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>
-      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/parity-phrases-are-no-longer-supported.html" target="_blank" rel="noopener noreferrer">
-        <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
+      &nbsp;
+      <span translate="x_ParityPhrase">
+        Parity Phrase
+      </span>
+      <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/parity-phrases-are-no-longer-supported.html"
+         target="_blank"
+         rel="noopener noreferrer">
+           <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
     </label>
 
-    <label aria-flowto="aria7" class="radio" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id || globalService.currentTab==globalService.tabs.viewWalletInfo.id">
-      <input aria-flowto="aria8" aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
-      View Balance Only (Must use one of above options to send)
+    <label aria-flowto="aria7"
+           class="radio"
+           ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id || globalService.currentTab==globalService.tabs.viewWalletInfo.id">
+      <input aria-flowto="aria8"
+             aria-label="address"
+             type="radio"
+             ng-model="walletType"
+             value="addressOnly" />
+        View Balance Only (Must use one of above options to send)
     </label>
 
   </section>
   <!-- Column 1 - Select Type of Key -->
+
 
   <!-- Column 2 - Unlock That Key -->
   <section class="col-md-4 col-sm-6">
 
     <!-- if selected keystore -->
     <div id="selectedUploadKey" ng-if="walletType=='fileupload'">
+
       <h4 translate="ADD_Radio_2_alt">Select your wallet file:</h4>
+
       <div class="form-group">
         <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector" />
         <a class="btn-file marg-v-sm"
@@ -95,8 +177,11 @@
            tabindex="0"
            role="button">SELECT WALLET FILE... </a>
       </div>
+
       <div class="form-group" ng-if="requireFPass">
-        <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
+        <p translate="ADD_Label_3">
+          Your file is encrypted. Please enter the password:
+        </p>
         <input class="form-control"
                ng-change="onFilePassChange()"
                ng-class="Validator.isPasswordLenValid($parent.$parent.filePassword,0) ? 'is-valid' : 'is-invalid'"
@@ -104,40 +189,75 @@
                placeholder="{{ 'x_Password' | translate }}"
                type="password" />
       </div>
+
     </div>
     <!-- /if selected keystore -->
 
 
     <!-- if selected type ledger-->
     <div id="selectedTypeLedger" ng-if="walletType=='ledger'">
+
       <ol>
+
         <li id="aria2" tabinex="0" translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL">
           You must access MyEtherWallet via a secure(SSL / HTTPS) connection to connect to your Ledger device.
         </li>
+
         <li tabinex="0">
-          <span translate="ADD_Ledger_1">Connect your Ledger Wallet</span> &amp;
-          <span translate="ADD_Ledger_2">Open the Ethereum application (or a contract application)</span>
+          <span translate="ADD_Ledger_1">
+            Connect your Ledger Wallet
+          </span>
+          &amp;
+          <span translate="ADD_Ledger_2">
+            Open the Ethereum application (or a contract application)
+          </span>
         </li>
+
         <li tabinex="0" translate="ADD_Ledger_3">
           Verify that Browser Support is enabled in Settings
         </li>
+
         <li tabinex="0" translate="ADD_Ledger_4">
           If no Browser Support is found in settings, verify that you have Firmware >1.2
         </li>
+
       </ol>
-      <p role="alert" ng-show="ledgerError" class="text-center text-danger"><strong>
-        {{ledgerErrorString}}
-      </strong></p>
+
+      <p role="alert" ng-show="ledgerError" class="text-center text-danger">
+        <strong>
+          {{ledgerErrorString}}
+        </strong>
+      </p>
+
       <div class="text-center">
-        <p>Guides:<br />
-          <a href="http://support.ledgerwallet.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener noreferrer">
-            How to use MyEtherWallet with your Nano S
-          </a><br />
-          <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-secure-your-eth-tokens-augur-rep-dot-dot-dot-with-your-nano-s" target="_blank" rel="noopener noreferrer">
-            How to secure your tokens with your Nano S
-          </a><br /><br />
-          <a tabindex="0" role="button" class="btn btn-default btn-xs" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener noreferrer">
-            Don't have a Ledger? Buy one today.
+        <p>
+          Guides:
+
+          <br />
+
+          <a href="https://ledger.zendesk.com/hc/en-us/articles/115005200009-How-to-use-MyEtherWallet-with-Ledger"
+             target="_blank"
+             rel="noopener noreferrer">
+          How to use MyEtherWallet with your Nano S
+          </a>
+
+          <br />
+
+          <a href="https://ledger.zendesk.com/hc/en-us/articles/115005161945-How-to-secure-your-ETH-tokens-Augur-REP-with-your-Nano-S"
+             target="_blank"
+             rel="noopener noreferrer">
+          How to secure your tokens with your Nano S
+          </a>
+
+          <br /><br />
+
+          <a tabindex="0"
+             role="button"
+             class="btn btn-default btn-xs"
+             href="https://www.ledgerwallet.com/r/fa4b?path=/products/"
+             target="_blank"
+             rel="noopener noreferrer">
+                Don't have a Ledger? Buy one today.
           </a>
         </p>
       </div>
@@ -147,19 +267,27 @@
 
     <!-- if selected type MetaMask-->
     <br />
+
     <div id="selectedTypeMetamask" ng-if="walletType=='metamask'">
-      <p id="aria2" tabinex="0" translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL">
-          You must access MyEtherWallet via a secure(SSL / HTTPS) connection to connect.
+      <p id="aria2"
+         tabinex="0"
+         translate="ADD_Ledger_0a"
+         class="text-danger"
+         ng-hide="isSSL">
+            You must access MyEtherWallet via a secure(SSL / HTTPS) connection to connect.
       </p>
+
       <div class="form-group">
         <a id="aria3"
            class="btn btn-primary btn-block"
            ng-click="scanMetamask()"
            ng-show="walletType=='metamask'"
            tabindex="0" role="button"
-           translate="ADD_MetaMask"
-        > Connect to MetaMask </a>
+           translate="ADD_MetaMask">
+             Connect to MetaMask
+        </a>
       </div>
+
       <div class="text-center" style="margin-top: 1rem;">
         <a tabindex="0"
            role="button"
@@ -170,13 +298,16 @@
               Download MetaMask
         </a>
       </div>
+
     </div>
     <!-- /if selected type MetaMask-->
 
 
     <!-- if selected type mnemonic-->
     <div id="selectedTypeMnemonic" ng-if="walletType=='pastemnemonic'">
+
       <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+
       <div class="form-group">
         <textarea id="aria4"
                   class="form-control"
@@ -185,18 +316,20 @@
                   ng-keyup="$event.keyCode == 13 && decryptWallet()"
                   ng-model="$parent.$parent.manualmnemonic"
                   placeholder="{{ 'x_Mnemonic' | translate}}"
-                  rows="4"
-        ></textarea>
+                  rows="4"></textarea>
       </div>
+
       <div class="form-group">
-        <p translate="ADD_Label_8">Password (optional): </p>
+        <p translate="ADD_Label_8">
+          Password (optional):
+        </p>
         <div>
           <input class="form-control"
                  id="aria5"
                  ng-keyup="$event.keyCode == 13 && decryptWallet()"
                  ng-model="$parent.$parent.mnemonicPassword"
                  placeholder="{{ 'x_Password' | translate }}"
-                 type="password" / >
+                 type="password" />
         </div>
       </div>
     </div>
@@ -205,7 +338,9 @@
 
     <!-- if selected type private key-->
     <div id="selectedTypeKey" ng-if="walletType=='pasteprivkey'">
-      <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>
+      <h4 translate="ADD_Radio_3">
+        Paste / type your private key:
+      </h4>
       <div class="form-group">
         <textarea id="aria6"
                   class="form-control"
@@ -217,71 +352,115 @@
                   rows="4"
         ></textarea>
       </div>
+
       <div class="form-group" ng-if="requirePPass">
-        <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
+        <p translate="ADD_Label_3">
+          Your file is encrypted. Please enter the password:
+        </p>
         <input class="form-control"
                ng-change="onPrivKeyPassChange()"
                ng-class="Validator.isPasswordLenValid($parent.$parent.privPassword,0) ? 'is-valid' : 'is-invalid'"
                ng-keyup="$event.keyCode == 13 && decryptWallet()"
                ng-model="$parent.$parent.privPassword"
                placeholder="{{ 'x_Password' | translate }}"
-               type="password"
-        />
+               type="password" />
       </div>
     </div>
     <!-- /if selected type private key-->
 
+    <br />
 
     <!-- if selected type trezor-->
-    <br />
     <div id="selectedTypeTrezor" ng-if="walletType=='trezor'">
+
       <div class="form-group">
         <a id="aria7"
            class="btn btn-primary btn-block"
            ng-click="scanTrezor()"
            ng-show="walletType=='trezor'"
            tabindex="0" role="button"
-           translate="ADD_Trezor_scan"
-        > SCAN </a>
+           translate="ADD_Trezor_scan">
+            SCAN
+        </a>
       </div>
-      <p role="alert" ng-show="trezorError" class="text-center text-danger"><strong>
-        {{trezorErrorString}}
-      </strong></p>
+
+      <p role="alert" ng-show="trezorError" class="text-center text-danger">
+        <strong>
+          {{trezorErrorString}}
+        </strong>
+      </p>
+
       <br /><br />
+
       <div class="text-center">
-        <p>Guide:<br />
-          <a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg" target="_blank" rel="noopener noreferrer">
-            How to use TREZOR with MyEtherWallet
-          </a><br />
-          <a tabindex="0" role="button" class="btn btn-xs btn-default" href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener noreferrer">
-            Don't have a TREZOR? Order one now.
+        <p>
+          Guide:
+          <br />
+          <a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg"
+             target="_blank"
+             rel="noopener noreferrer">
+               How to use TREZOR with MyEtherWallet
+          </a>
+
+          <br />
+
+          <a tabindex="0"
+             role="button"
+             class="btn btn-xs btn-default"
+             href="https://trezor.io/?a=myetherwallet.com"
+             target="_blank"
+             rel="noopener noreferrer">
+                Don't have a TREZOR? Order one now.
           </a>
         </p>
       </div>
+
     </div>
     <!-- /if selected type trezor-->
 
+
+
     <!-- if selected type digitalBitbox-->
     <div id="selectedTypeDigitalBitbox" ng-if="walletType=='digitalBitbox'">
+
       <div class="form-group">
         <a tabindex="0" role="button" class="btn btn-primary btn-block" ng-click="scanDigitalBitbox()" translate="ADD_DigitalBitbox_scan">
           SCAN
         </a>
       </div>
-      <input class="form-control" aria-label="Enter the Digital Bitbox password" aria-describedby="selectedTypeDigitalBitbox" type="password" placeholder="Digital Bitbox password" spellcheck="false" value="" ng-model="HDWallet.digitalBitboxSecret" />
+
+      <input class="form-control"
+             aria-label="Enter the Digital Bitbox password"
+             aria-describedby="selectedTypeDigitalBitbox"
+             type="password"
+             placeholder="Digital Bitbox password"
+             spellcheck="false"
+             value=""
+             ng-model="HDWallet.digitalBitboxSecret" />
+
       <ol>
         <li id="aria7" tabinex="0" translate="ADD_DigitalBitbox_0a" class="text-danger" ng-hide="isSSL">
           Re-open MyEtherWallet on a secure (SSL) connection
         </li>
       </ol>
+
       <div class="text-center">
-        <br /><br />
-        <p>Guides:<br />
-          <a href="https://digitalbitbox.com/ethereum" target="_blank">
-            How to use MyEtherWallet with your Digital Bitbox
-          </a><br />
-          <a tabindex="0" role="button" class="btn btn-xs btn-default btn-sm" href="https://digitalbitbox.com/?ref=mew" target="_blank">
-            Don't have a Digital Bitbox? Buy one today.
+        <br />
+        <br />
+        <p>
+          Guides:
+          <br />
+          <a href="https://digitalbitbox.com/ethereum"
+             target="_blank">
+               How to use MyEtherWallet with your Digital Bitbox
+          </a>
+          <br />
+          <a tabindex="0"
+             role="button"
+             class="btn btn-xs btn-default btn-sm"
+             href="https://digitalbitbox.com/?ref=mew"
+             target="_blank">
+               Don't have a Digital Bitbox? Buy one today.
           </a>
         </p>
       </div>
@@ -328,45 +507,53 @@
   <!-- / Column 2 - Unlock That Key -->
 
   <!-- Column 3 - The Unlock Button -->
-  <section class="col-md-4 col-sm-6" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType=='ledger'||walletType=='trezor'||walletType=='digitalBitbox'||showAOnly||showParityDecrypt">
-    <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt||showPDecrypt||showMDecrypt" translate="ADD_Label_6">
-      Access Your Wallet:
-    </h4>
+  <section class="col-md-4 col-sm-6"
+           ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType=='ledger'||walletType=='trezor'||walletType=='digitalBitbox'||showAOnly||showParityDecrypt">
+    <h4 id="uploadbtntxt-wallet"
+        ng-show="showFDecrypt||showPDecrypt||showMDecrypt"
+        translate="ADD_Label_6">        Access Your Wallet   </h4>
+
     <div class="form-group">
-      <a
-      tabindex="0"
-      role="button"
-      class="btn btn-primary btn-block"
-      ng-show="showFDecrypt||showPDecrypt||showMDecrypt||showParityDecrypt"
-      ng-click="decryptWallet()"
-      translate="ADD_Label_6_short">UNLOCK</a>
+      <a tabindex="0"
+         role="button"
+         class="btn btn-primary btn-block"
+         ng-show="showFDecrypt||showPDecrypt||showMDecrypt||showParityDecrypt"
+         ng-click="decryptWallet()"
+         translate="ADD_Label_6_short"> UNLOCK               </a>
     </div>
+
     <div class="form-group">
       <a class="btn btn-primary btn-block"
          ng-click="decryptAddressOnly()"
          ng-show="showAOnly"
          role="button"
-         tabindex="0"
-      > VIEW BALANCE </a> <!--translate="ADD_Label_6_short"-->
+         tabindex="0">                  VIEW BALANCE         </a>
     </div>
+
     <div class="form-group">
       <a class="btn btn-primary btn-block"
          ng-click="scanLedger()"
          ng-show="walletType=='ledger'"
          role="button"
          tabindex="0"
-         translate="ADD_Ledger_scan"
-      > SCAN </a>
+         translate="ADD_Ledger_scan">   SCAN                 </a>
     </div>
+
   </section>
 
   <!-- / Column 3 -The Unlock Button -->
 
+
+
   <!-- MODAL -->
   <article class="modal fade" id="mnemonicModel" tabindex="-1" role="dialog" aria-labelledby="Mnemonic Phrase Modal">
+
     <section class="modal-dialog">
+
       <section class="modal-content">
+
         <div class="modal-body" role="document">
+
           <button aria-label="Close" type="button" class="close" data-dismiss="modal">&times;</button>
 
           <!-- Select HD Path -->
@@ -374,7 +561,17 @@
             Select HD derivation path:
           </h4>
 
-          <p class="alert alert-danger" ng-hide="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'"> We do not know the correct path for this network. <a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank" rel="noopener noreferrer">Please open a github issue</a> so we can discuss / be enlightened.</p>
+          <p class="alert alert-danger"
+             ng-hide="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'">
+                We do not know the correct path for this network.
+                <a href="https://github.com/kvhnuke/etherwallet/issues"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                      Please open a github issue
+                </a>
+                so we can discuss / be enlightened.
+          </p>
+
           <section class="row">
 
             <div class="col-sm-4">
@@ -385,7 +582,9 @@
                        type="radio"
                       value="{{HDWallet.defaultDPath}}"/>
                 <span ng-bind="HDWallet.defaultDPath"></span>
-                <p class="small">Jaxx, Metamask, Exodus, imToken, TREZOR (ETH) &amp; Digital Bitbox</p>
+                <p class="small">
+                  Jaxx, Metamask, Exodus, imToken, TREZOR (ETH) &amp; Digital Bitbox
+                </p>
               </label>
             </div>
 
@@ -397,7 +596,9 @@
                        type="radio"
                       value="{{HDWallet.ledgerPath}}"/>
                 <span ng-bind="HDWallet.ledgerPath"></span>
-                <p class="small">Ledger (ETH)</p>
+                <p class="small">
+                  Ledger (ETH)
+                </p>
               </label>
 
               <label class="radio small">
@@ -407,9 +608,12 @@
                        type="radio"
                       value="{{HDWallet.ledgerClassicPath}}"/>
                 <span ng-bind="HDWallet.ledgerClassicPath"></span>
-                <p class="small">Ledger (ETC)</p>
+                <p class="small">
+                  Ledger (ETC)
+                </p>
               </label>
             </div>
+
             <div class="col-sm-4">
               <label class="radio small">
                 <input aria-describedby="Path: TREZOR (ETC) {{HDWallet.trezorClassicPath}}"
@@ -418,7 +622,9 @@
                        type="radio"
                       value="{{HDWallet.trezorClassicPath}}"/>
                 <span ng-bind="HDWallet.trezorClassicPath"></span>
-                <p class="small">TREZOR (ETC)</p>
+                <p class="small">
+                  TREZOR (ETC)
+                </p>
               </label>
             </div>
 
@@ -430,16 +636,21 @@
                        type="radio"
                       value="{{HDWallet.singularDTVPath}}"/>
                 <span ng-bind="HDWallet.singularDTVPath"></span>
-                <p class="small">SingularDTV</p>
+                <p class="small">
+                  SingularDTV
+                </p>
               </label>
             </div>
 
           </section>
 
           <section class="row">
+
             <div class="col-sm-4">
               <label class="radio small">
-              <p class="small"><strong>Your Custom Path</strong></p>
+                <p class="small"><strong>
+                  Your Custom Path
+                </strong></p>
                 <input aria-describedby="Path: Enter your own - {{HDWallet.customDPath}}"
                        ng-change="onHDDPathChange()"
                        ng-model="HDWallet.dPath"
@@ -461,7 +672,9 @@
                        type="radio"
                       value="{{HDWallet.trezorTestnetPath}}"/>
                 <span ng-bind="HDWallet.trezorTestnetPath"></span>
-                <p class="small">Network: Testnets</p>
+                <p class="small">
+                  Network: Testnets
+                </p>
               </label>
             </div>
 
@@ -473,65 +686,90 @@
                        type="radio"
                       value="{{HDWallet.hwExpansePath}}"/>
                 <span ng-bind="HDWallet.hwExpansePath"></span>
-                <p class="small">Network: Expanse</p>
+                <p class="small">
+                  Network: Expanse
+                </p>
               </label>
             </div>
+
           </section>
 
 
           <h4 id="modalTitle2" class="modal-title" translate="MNEM_1" style="margin: .5rem 0">
             Please select the address you would like to interact with.
           </h4>
+
           <table class="small table table-striped table-mnemonic">
             <tr>
-              <th translate="x_Address">Address</th>
-              <th translate="MYWAL_Bal">Balance</th>
-              <th translate="sidebar_TokenBal" class="text-center" >Token<br>Balances</th>
+              <th translate="x_Address">
+                Address
+              </th>
+              <th translate="MYWAL_Bal">
+                Balance
+              </th>
+              <th translate="sidebar_TokenBal" class="text-center">
+                Token<br>Balances
+              </th>
             </tr>
             <tr ng-repeat="wallet in HDWallet.wallets track by $index">
               <td>
                 <label>
                   <input aria-describedby="modalTitle2"
-                       aria-label="Unlock wallet with {{wallet.getBalance()}} {{ajaxReq.type}}. Address: {{wallet.getChecksumAddressString()}}"
-                       name="addressSelect"
-                       ng-model="HDWallet.id"
-                       type="radio"
-                       value="{{$index}}"
-                  /><span class="small">
-                    {{wallet.getChecksumAddressString()}}
-                  </span>
+                         aria-label="Unlock wallet with {{wallet.getBalance()}} {{ajaxReq.type}}. Address: {{wallet.getChecksumAddressString()}}"
+                         name="addressSelect"
+                         ng-model="HDWallet.id"
+                         type="radio"
+                         value="{{$index}}" />
+                    <span class="small">
+                      {{wallet.getChecksumAddressString()}}
+                    </span>
                 </label>
               </td>
+
               <td>
-                <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener noreferrer">
+                <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}"
+                   target="_blank"
+                   rel="noopener noreferrer">
                   {{wallet.getBalance()}} {{ajaxReq.type}}
                 </a>
               </td>
+
               <td class="text-center">
-                <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener noreferrer" title="https://ethplorer.io/address/{{wallet.getAddressString()}}">
+                <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}"
+                   target="_blank"
+                   rel="noopener noreferrer" title="https://ethplorer.io/address/{{wallet.getAddressString()}}">
                   <img src="images/icon-external-link.svg" title="https://ethplorer.io/address/{{wallet.getAddressString()}}" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
                 </a>
               </td>
+
             </tr>
+
             <tr class="m-addresses">
+
               <td>
                 <a ng-click="AddRemoveHDAddresses(false)"
                    ng-show="HDWallet.numWallets > 5"
                    role="link"
                    tabindex="0"
-                   translate="MNEM_prev"
-                > Previous Addresses </a>
+                   translate="MNEM_prev">
+                Previous Addresses
+                </a>
               </td>
+
               <td></td>
+
               <td>
                 <a ng-click="AddRemoveHDAddresses(true)"
                    role="link"
                    tabindex="0"
-                   translate="MNEM_more"
-                > More Addresses </a>
+                   translate="MNEM_more">
+                More Addresses
+                </a>
               </td>
+
             </tr>
           </table>
+
           <div class="clearfix button-group">
             <button aria-label="Unlock this Wallet"
                     class="btn btn-primary pull-right"
@@ -539,21 +777,27 @@
                     ng-click="setHDWallet()"
                     role="button"
                     tabindex="0"
-                    translate="ADD_Label_6"
-            > Access Wallet </button>
+                    translate="ADD_Label_6">
+              Access Wallet
+            </button>
+
             <button aria-label="Cancel - Will close dialog"
                     class="btn btn-default pull-right"
                     style="margin: 0 .1rem"
                     data-dismiss="modal"
                     role="button"
                     tabindex="0"
-                    translate="x_Cancel"
-            > Cancel </button>
+                    translate="x_Cancel">
+              Cancel
+            </button>
           </div>
+
         </div>
+
       </section>
+
     </section>
+
   </article>
 
-  <!-- / MODAL -->
 </article>
