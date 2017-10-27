@@ -1120,6 +1120,11 @@
 "decimal":6,
 "type":"default"
 },{
+"address":"0xf230b790e05390fc8295f4d3f60332c93bed42e2",
+"symbol":"TRX",
+"decimal":6,
+"type":"default"
+},{
 "address":"0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
 "symbol":"Unicorn 🦄",
 "decimal":0,
