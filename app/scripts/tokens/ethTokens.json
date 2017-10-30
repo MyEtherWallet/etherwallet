@@ -39,6 +39,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x638ac149ea8ef9a1286c41b977017aa7359e6cfa",
+"symbol":"ALTS",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x949bEd886c739f1A3273629b3320db0C5024c719",
 "symbol":"AMIS",
 "decimal":9,
