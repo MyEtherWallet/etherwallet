@@ -8,7 +8,6 @@
 <meta property="og:site_name" content="MyEtherWallet.com: Your Key to Ethereum">
 <meta name="twitter:title" content="MyEtherWallet.com: Your Key to Ethereum">
 <meta name="apple-mobile-web-app-title" content="MyEtherWallet.com: Your Key to Ethereum">
-<base href="https://www.myetherwallet.com">
 <link href="https://www.myetherwallet.com" rel="canonical">
 <meta content="https://www.myetherwallet.com" property="og:url">
 <meta content="https://www.myetherwallet.com" name="twitter:url">
@@ -43,8 +42,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@MyEtherWallet">
 <meta name="twitter:creator" content="@MyEtherWallet">
-</head>
-<body>
 <script type="application/ld+json">
 {
 "@context": "http://schema.org",
@@ -73,6 +70,9 @@
 ]
 }
 </script>
+</head>
+<body>
+
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
 @@if (site === 'mew' ) {
