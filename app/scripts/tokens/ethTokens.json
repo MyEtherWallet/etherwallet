@@ -394,6 +394,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xf3db5fa2c66b7af3eb0c0b782510816cbe4813b8",
+"symbol":"EVX",
+"decimal":4,
+"type":"default"
+},{
 "address":"0x190e569bE071F40c704e15825F285481CB74B6cC",
 "symbol":"FAM",
 "decimal":12,
