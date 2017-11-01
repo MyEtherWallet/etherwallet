@@ -855,6 +855,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x595832f8fc6bf59c85c527fec3740a1b7a361269",
+"symbol":"POWR",
+"decimal":6,
+"type":"default"
+},{
 "address":"0xc42209accc14029c1012fb5680d95fbd6036e2a0",
 "symbol":"PPP",
 "decimal":18,
