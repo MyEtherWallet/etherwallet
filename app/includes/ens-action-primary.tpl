@@ -29,7 +29,7 @@
       <!-- Name -->
       <label>Name</label>
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="myetherwallet" readonly ng-model="objENS.name"/>
+        <input class="form-control" type="text" placeholder="mewtopia" readonly ng-model="objENS.name"/>
         <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
       </div>
       <!-- / Name -->

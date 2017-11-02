@@ -4,7 +4,19 @@
   <article class="clearfix">
     <h2 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
 
-    <address-field var-name="tx.to"></address-field>
+    <section class="col-xs-11">
+      <label translate="OFFLINE_Step2_Label_1">To Address:</label>
+      <input class="form-control"
+             type="text"
+             placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
+             ng-model="tx.to"
+             ng-change="validateAddress(tx.to,'')"/>
+    </section>
+
+    <section class="col-xs-1 address-identicon-container">
+      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+    </section>
+
 
     <section class="col-xs-12">
       <p>{{customGasMsg}}</p>

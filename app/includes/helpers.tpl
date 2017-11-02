@@ -307,7 +307,7 @@
       <li class="text-danger">Consider yourself very, very lucky.</li>
       <li> Now you need to create a new secure wallet and move all funds to it.</li>
       <li>In order to prevent the same thing from happening, <strong> please make sure your address you are sending to matches the address on your paper wallet</strong></li>
-      <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherewallet.html" target="_blank" rel="noopener noreferrer">Read this guide for more information.</a></li>
+      <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherwallet.html" target="_blank" rel="noopener noreferrer">Read this guide for more information.</a></li>
       <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener noreferrer">Learn how to protect yourself and your funds.</a></li>
     </ul>
   </div>
