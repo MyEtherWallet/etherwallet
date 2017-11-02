@@ -39,6 +39,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x4dc3643dbc642b72c158e7f3d2ff232df61cb6ce",
+"symbol":"AMB",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x638ac149ea8ef9a1286c41b977017aa7359e6cfa",
 "symbol":"ALTS",
 "decimal":18,
