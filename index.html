@@ -3,35 +3,77 @@
 <html lang="en" ng-app="mewApp">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>MyEtherWallet.com</title>
-<meta name="description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; interacting with the blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.">
-<link rel="canonical" href="https://www.myetherwallet.com" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="MyEtherWallet.com: Your Key to Ethereum">
+<meta property="og:site_name" content="MyEtherWallet.com: Your Key to Ethereum">
+<meta name="twitter:title" content="MyEtherWallet.com: Your Key to Ethereum">
+<meta name="apple-mobile-web-app-title" content="MyEtherWallet.com: Your Key to Ethereum">
+<link href="https://www.myetherwallet.com" rel="canonical">
+<meta content="https://www.myetherwallet.com" property="og:url">
+<meta content="https://www.myetherwallet.com" name="twitter:url">
 <link rel="stylesheet" href="css/etherwallet-master.min.css">
 <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
 <script type="text/javascript" src="js/etherwallet-master.js"></script>
-<link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="images/fav/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/fav/favicon-16x16.png">
-<link rel="manifest" href="images/fav/manifest.json">
-<link rel="mask-icon" href="images/fav/safari-pinned-tab.svg" color="#2f99b0">
-<link rel="shortcut icon" href="images/fav/favicon.ico">
+<meta name="description" content="MyEtherWallet (MEW) is a free, open-source, client-side interface for generating Ethereum wallets & more. Interact with the Ethereum blockchain easily & securely.">
+<meta property="og:description"  content="Free, open-source, client-side Ethereum wallet. Enabling you to interact with the blockchain easily & securely.">
+<meta name="twitter:description" content="Free, open-source, client-side Ethereum wallet. Enabling you to interact with the blockchain easily & securely.">
+<meta name="robots" content="index,follow">
+<meta name="googlebot" content="index,follow">
+<meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
+<link href="images/fav/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="images/fav/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+<link href="images/fav/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
+<link href="images/fav/manifest.json" rel="manifest">
+<link href="images/fav/safari-pinned-tab.svg" rel="mask-icon" color="#2f99b0">
+<link href="images/fav/favicon.ico" rel="shortcut icon">
 <meta name="apple-mobile-web-app-title" content="MyEtherWallet &middot; Your Key to Ethereum">
 <meta name="application-name" content="MyEtherWallet">
 <meta name="msapplication-config" content="images/fav/browserconfig.xml">
 <meta name="theme-color" content="#1d6986">
-<meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
+<meta name="apple-mobile-web-app-status-bar-style" content="#1d6986">
 <meta property="og:url" content="https://www.myetherwallet.com" />
 <meta property="og:title" content="MyEtherWallet.com  &middot; Your Key to Ethereum" />
+<meta property="og:type" content="website">
 <meta property="og:image" content="/images/myetherwallet-logo-banner.png" />
 <meta property="og:image" content="/images/myetherwallet-logo.png" />
 <meta property="og:image" content="/images/myetherwallet-logo-square.png" />
 <meta property="og:image" content="/images/myetherwallet-banner-fun.jpg" />
-<meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; interacting with the blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet." />
-<script type='application/ld+json'>{"@context":"http://schema.org","@type":"Organization","@id":"#organization","url":"https://www.myetherwallet.com/","name":"MyEtherWallet",
-"logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png","description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.","sameAs":["https://www.myetherwallet.com/","https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm","https://www.facebook.com/MyEtherWallet/","https://twitter.com/myetherwallet","https://medium.com/@myetherwallet","https://myetherwallet.github.io/knowledge-base/","https://github.com/kvhnuke/etherwallet","https://github.com/MyEtherWallet","https://kvhnuke.github.io/etherwallet/","https://myetherwallet.slack.com/","https://myetherwallet.herokuapp.com/"]}</script>
+<meta name="twitter:image" content="/images/myetherwallet-logo-twitter.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@MyEtherWallet">
+<meta name="twitter:creator" content="@MyEtherWallet">
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type" : "Organization",
+"name" : "MyEtherWallet",
+"legalName" : "MyEtherWallet LLC",
+"url" : "https://www.myetherwallet.com/",
+"contactPoint" : [{
+  "@type" : "ContactPoint",
+  "email" : "support@myetherwallet.com",
+  "url"   : "https://myetherwallet.com",
+  "contactType" : "customer service"
+}],
+"logo" : "{{base_url}}images/myetherwallet-logo.png",
+"description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely.",
+"sameAs" : [
+  "https://www.myetherwallet.com/",
+  "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
+  "https://www.facebook.com/MyEtherWallet/",
+  "https://twitter.com/myetherwallet",
+  "https://medium.com/@myetherwallet",
+  "https://myetherwallet.github.io/knowledge-base/",
+  "https://github.com/kvhnuke/etherwallet",
+  "https://github.com/MyEtherWallet",
+  "https://kvhnuke.github.io/etherwallet/","https://myetherwallet.slack.com/"
+]
+}
+</script>
 </head>
 <body>
+
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
 
@@ -56,7 +98,7 @@
     
     <div class="tagline">
 
-    <span>3.10.6.0</span>
+    <span>3.10.7.0</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -1718,7 +1760,19 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <article class="clearfix">
     <h2 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
 
-    <address-field var-name="tx.to"></address-field>
+    <section class="col-xs-11">
+      <label translate="OFFLINE_Step2_Label_1">To Address:</label>
+      <input class="form-control"
+             type="text"
+             placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
+             ng-model="tx.to"
+             ng-change="validateAddress(tx.to,'')"/>
+    </section>
+
+    <section class="col-xs-1 address-identicon-container">
+      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+    </section>
+
 
     <section class="col-xs-12">
       <p>{{customGasMsg}}</p>
@@ -2311,7 +2365,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
           <div class="input-group">
             <input class="form-control"
                    type="text"
-                   placeholder="myetherwallet"
+                   placeholder="mewtopia"
                    ng-model="objENS.name"
                    ng-keyup="$event.keyCode==13 && checkName()"
                    ng-change="nameOnChange()"
@@ -2670,7 +2724,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <!-- Name -->
       <label>Name</label>
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="myetherwallet" readonly ng-model="objENS.name"/>
+        <input class="form-control" type="text" placeholder="mewtopia" readonly ng-model="objENS.name"/>
         <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
       </div>
       <!-- / Name -->
@@ -3154,7 +3208,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <article class="cont-md">
         <h1 class="text-center" translate="NAV_DomainSale"> DomainSale </h1>
         <p>
-          <a href="https://medium.com/@jgm.orinoco/domainsale-an-on-chain-secondary-ens-market-b3330f6e5dda" target="_blank" rel="noopener">DomainSale</a> is a secondary market for the <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener">Ethereum Name Service</a> that allows you to buy and sell domains that are already owned.
+          <a href="https://medium.com/@jgm.orinoco/domainsale-an-on-chain-secondary-ens-market-b3330f6e5dda" target="_blank" rel="noopener noreferrer">DomainSale</a> is a secondary market for the <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener noreferrer">Ethereum Name Service</a> that allows you to buy and sell domains that are already owned.
         </p>
       </article>
       <!-- / Title -->
@@ -3167,7 +3221,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
           <div class="input-group">
             <input class="form-control"
                    type="text"
-                   placeholder="myetherwallet"
+                   placeholder="mewtopia"
                    ng-model="objDomainSale.name"
                    ng-keyup="$event.keyCode==13 && checkName()"
                    ng-change="nameOnChange()"
@@ -3294,8 +3348,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
         More Information
       </h6>
       <ul ng-show="domainsaleMore">
-         <li> Details on the DomainSale process for both buyers and sellers are available in <a href="https://medium.com/@jgm.orinoco/domainsale-an-on-chain-secondary-ens-market-b3330f6e5dda" target="_blank" rel="noopener">the introductory post</a>.</li>
-         <li> The <a href="https://github.com/wealdtech/domainsale/" target="_blank" rel="noopener">DomainSale contract</a> is open source and freely available.</li>
+         <li> Details on the DomainSale process for both buyers and sellers are available in <a href="https://medium.com/@jgm.orinoco/domainsale-an-on-chain-secondary-ens-market-b3330f6e5dda" target="_blank" rel="noopener noreferrer">the introductory post</a>.</li>
+         <li> The <a href="https://github.com/wealdtech/domainsale/" target="_blank" rel="noopener noreferrer">DomainSale contract</a> is open source and freely available.</li>
 
   </div>
 
