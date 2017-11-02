@@ -19,7 +19,7 @@
           <div class="input-group">
             <input class="form-control"
                    type="text"
-                   placeholder="myetherwallet"
+                   placeholder="mewtopia"
                    ng-model="objDomainSale.name"
                    ng-keyup="$event.keyCode==13 && checkName()"
                    ng-change="nameOnChange()"
