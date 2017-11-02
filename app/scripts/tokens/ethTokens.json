@@ -214,6 +214,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x5301c5e92e03474a751d015aeed0873a4db01357",
+"symbol":"CDL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x177d39AC676ED1C67A2b268AD7F1E58826E5B0af",
 "symbol":"CDT",
 "decimal":18,
