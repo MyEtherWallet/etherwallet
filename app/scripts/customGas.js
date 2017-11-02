@@ -13,6 +13,13 @@
 
 module.exports = [
 {
+// Confideal (CDL)
+to:         '0x22A97c80D7e0a9Ae616737E3B8b531248f4ef91d',
+gasLimit:   170000,
+data:       '',
+msg:        'Confideal token sale. Confideal is a platform for making deals. https://confideal.io, NOV 2-22, 2017'
+},
+{
 // Flixxo (FLIXX)
 to:         '0x876359dCb1745073909CC810311EC3f119e8D5E8',
 gasLimit:   200000,
