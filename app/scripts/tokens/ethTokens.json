@@ -575,6 +575,11 @@
 "decimal":0,
 "type":"default"
 },{
+"address":"0xe3831c5A982B279A198456D577cfb90424cb6340",
+"symbol":"IMC",
+"decimal":6,
+"type":"default"
+},{
 "address":"0xf8e386EDa857484f5a12e4B5DAa9984E06E73705",
 "symbol":"IND",
 "decimal":18,
