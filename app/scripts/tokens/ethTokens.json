@@ -284,6 +284,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0x662aBcAd0b7f345AB7FfB1b1fbb9Df7894f18e66",
+"symbol":"CTX",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x41e5560054824eA6B0732E656E3Ad64E20e94E45",
 "symbol":"CVC",
 "decimal":8,
