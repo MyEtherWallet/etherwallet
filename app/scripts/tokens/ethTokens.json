@@ -995,6 +995,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xe06eda7435ba749b047380ced49121dde93334ae",
+"symbol":"SET",
+"decimal":0,
+"type":"default"
+},{
 "address":"0xa1ccc166faf0E998b3E33225A1A0301B1C86119D",
 "symbol":"SGEL",
 "decimal":18,
