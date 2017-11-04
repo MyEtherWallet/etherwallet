@@ -1135,6 +1135,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x80bc5512561c7f85a3a9508c7df7901b370fa1df",
+"symbol":"TIO",
+"decimal":18,
+"type":"default"  
+},{
 "address":"0xEa1f346faF023F974Eb5adaf088BbCdf02d761F4",
 "symbol":"TIX",
 "decimal":18,
