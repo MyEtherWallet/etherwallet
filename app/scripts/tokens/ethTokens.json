@@ -459,6 +459,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x4F4f0Db4de903B88f2B1a2847971E231D54F8fd3",
+"symbol":"GEE",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x24083Bb30072643C3bB90B44B7285860a755e687",
 "symbol":"GELD",
 "decimal":18,
