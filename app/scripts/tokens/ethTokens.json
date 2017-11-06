@@ -1075,6 +1075,11 @@
 "decimal":4,
 "type":"default"
 },{
+"address":"0xc301b935d0fd1f5d0b6d68491deca39d44e2da6e",
+"symbol":"STAR",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xB64ef51C888972c908CFacf59B47C1AfBC0Ab8aC",
 "symbol":"STORJ",
 "decimal":8,
