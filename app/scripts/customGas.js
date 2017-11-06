@@ -13,6 +13,13 @@
 
 module.exports = [
 {
+// STORM tokens
+to:         '0xc88c7e1AEbd89187d13bD42e1ff814d32f492BF6',
+gasLimit:   250000,
+data:       '',
+msg:        'STORM token sale: gamified micro-tasks - Earn anywhere, anytime, from any device. https://www.stormtoken.com, NOV 7, 2017'
+},
+{
 // Confideal (CDL)
 to:         '0x22A97c80D7e0a9Ae616737E3B8b531248f4ef91d',
 gasLimit:   170000,
