@@ -13,6 +13,13 @@
 
 module.exports = [
 {
+// GEE Token Sale
+to:         '0xF5DFFdEAEA54bB56156B47de1C7b4346c7dBa69C',
+gasLimit:   180000,
+data:       '',
+msg:        ''
+},
+{
 // Confideal (CDL)
 to:         '0x22A97c80D7e0a9Ae616737E3B8b531248f4ef91d',
 gasLimit:   170000,
