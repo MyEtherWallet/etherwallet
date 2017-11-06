@@ -1299,4 +1299,9 @@
 "symbol":"PIPL",
 "decimal":8,
 "type":"default"
+},{
+"address":"0xEbeD4fF9fe34413db8fC8294556BBD1528a4DAca",
+"symbol":"VENUS",
+"decimal":3,
+"type":"default"
 }]
