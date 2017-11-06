@@ -994,6 +994,11 @@
 "symbol":"sense",
 "decimal":18,
 "type":"default"
+},{  
+"address":"0x3eb91d237e491e0dee8582c402d85cb440fb6b54",
+"symbol":"S-ETH",
+"decimal":18,
+"type":"default"
 },{
 "address":"0xa1ccc166faf0E998b3E33225A1A0301B1C86119D",
 "symbol":"SGEL",
