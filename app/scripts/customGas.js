@@ -61,6 +61,13 @@ data:       '',
 msg:        'Vibehub ICO Sale. Thank you for your support!'
 },
 {
+// Trade.io (TIO) ICO Sale
+to:         '0xdea6d29da64bba5ab86a7424ca894756e7ae8ed3',
+gasLimit:   200000,
+data:       '',
+msg:        'Trade.io ICO Sale. Thank you for your support!'
+},
+{
 // Substratum (SUB) Network ICO Sale
 to:         '0xaf518d65f84e4695a4da0450ec02c1248f56b668',
 gasLimit:   200000,
