@@ -1299,4 +1299,9 @@
 "symbol":"PIPL",
 "decimal":8,
 "type":"default"
+},{
+"address":"0x255aa6df07540cb5d3d297f0d0d4d84cb52bc8e6",
+"symbol":"RDN",
+"decimal":18,
+"type":"default"
 }]
