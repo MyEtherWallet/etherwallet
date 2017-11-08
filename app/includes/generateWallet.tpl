@@ -16,14 +16,14 @@
              aria-label="{{'GEN_Label_1' |translate}}"/>
         <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
-      <a tabindex="0" role="button" class="btn btn-primary" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
+      <a tabindex="0" role="button" class="btn btn-primary" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
       <p translate="x_PasswordDesc"> </p>
       <div class="text-center">
         <strong>
-          <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet" target="_blank" rel="noopener" translate="GEN_Help_5">
+          <a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherewallet.html" target="_blank" rel="noopener noreferrer" translate="GEN_Help_5">
           How to Create a Wallet</a>
           &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-          <a href="https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443" target="_blank" rel="noopener" translate="GEN_Help_6">
+          <a href="https://myetherwallet.github.io/knowledge-base/getting-started/getting-started-new.html" target="_blank" rel="noopener noreferrer" translate="GEN_Help_6">
           Getting Started</a>
         </strong>
       </div>
@@ -87,7 +87,7 @@
          aria-label="{{'x_Download'|translate}} {{'x_Keystore'|translate}}"
          aria-describedby="x_KeystoreDesc"
          ng-click="downloaded()"
-         target="_blank" rel="noopener">
+         target="_blank" rel="noopener noreferrer">
         <span translate="x_Download"> DOWNLOAD </span> <span translate="x_Keystore2"> Keystore File (UTC / JSON) </span>
       </a>
 
@@ -118,8 +118,8 @@
 
       <h2 translate="GEN_Help_4">Guides &amp; FAQ</h2>
       <ul>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank" rel="noopener"><strong translate="GEN_Help_13">How to Back Up Your Keystore File</strong></a></li>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank" rel="noopener"><strong translate="GEN_Help_14">What are these Different Formats?</a></strong></li>
+        <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/backing-up-your-new-wallet.html" target="_blank" rel="noopener noreferrer"><strong translate="GEN_Help_13">How to Back Up Your Keystore File</strong></a></li>
+        <li><a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer"><strong translate="GEN_Help_14">What are these Different Formats?</a></strong></li>
       </ul>
 
     </section>
@@ -162,13 +162,13 @@
     <section class="block__help">
       <h2 translate="GEN_Help_4">Guides &amp; FAQ</h2>
       <ul>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank" rel="noopener">
+        <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/backing-up-your-new-wallet.html" target="_blank" rel="noopener noreferrer">
           <strong translate="HELP_2a_Title">How to Save & Backup Your Wallet.</strong>
         </a></li>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">
+        <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener noreferrer">
           <strong translate="GEN_Help_15">Preventing loss &amp; theft of your funds.</strong>
         </a></li>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank" rel="noopener">
+        <li><a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
           <strong translate="GEN_Help_16">What are these Different Formats?</strong>
         </a></li>
       </ul>
@@ -178,7 +178,7 @@
         <li translate="GEN_Help_18"> To have a secondary backup. </li>
         <li translate="GEN_Help_19"> In case you ever forget your password. </li>
         <li>
-          <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-safely-slash-offline-slash-cold-storage-with-myetherwallet" target="_blank" rel="noopener" translate="GEN_Help_20">Cold Storage</a>
+          <a href="https://myetherwallet.github.io/knowledge-base/offline/ethereum-cold-storage-with-myetherwallet.html" target="_blank" rel="noopener noreferrer" translate="GEN_Help_20">Cold Storage</a>
         </li>
       </ul>
 

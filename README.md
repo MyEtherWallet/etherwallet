@@ -80,7 +80,7 @@
 
 ### Users (non-developers)
 
-- [It is recommended you start here.](https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443)
+- [It is recommended you start here.](https://myetherwallet.github.io/knowledge-base/getting-started/getting-started-new.html)
 - You can run MyEtherWallet.com on your computer. You can create a wallet completely offline & send transactions from the "Offline Transaction" page.
 
 1. Go to https://github.com/kvhnuke/etherwallet/releases/latest.
@@ -139,7 +139,7 @@ If you want to help contribute, here's what you need to know to get it up and ru
 
 - [Setting up on AWS super easily.](https://github.com/MyEtherWallet/docker-geth-lb)
 
-- [Running MyEtherWallet w/ Your Own Personal Node](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node)
+- [Running MyEtherWallet w/ Your Own Personal Node](https://myetherwallet.github.io/knowledge-base/networks/run-your-own-node-with-myetherwallet.html)
 
 - [Guide by benjaminion for MEW + Ledger Nano S + Local Parity Node](https://github.com/benjaminion/eth-parity-qnap/wiki/Connecting-to-MyEtherWallet)
 
@@ -230,6 +230,7 @@ If you can think of any other features or run into bugs, let us know. You can fo
 - 4/9/17: [Ethereum vanity address generator](https://www.reddit.com/r/ethereum/comments/5yeb4n/ethereum_vanity_address_generator/?utm_content=comments&utm_medium=user&utm_source=reddit&utm_name=frontpage)
 - 4/30/17: [MEW v3.6.6: Enables you to access any path for your Mnemonic, Ledger & TREZOR. (ATTN: folks who have ETH / ETC / Tokens stuck in a different path)](https://www.reddit.com/r/ethereum/comments/68f70l/mew_v366_enables_you_to_access_any_path_for_your/)
 - 5/7/17: [ENS disguise bid issue on MyEtherWallet](https://www.reddit.com/r/ethereum/comments/69vz57/ens_disguise_bid_issue_on_myetherwallet/)
-
+- - 8/15/17: [MyEtherWallet needs motivated devs!](https://www.reddit.com/r/ethereum/comments/6tqrs1/myetherwallet_needs_motivated_devs/?utm_content=comments&utm_medium=user&utm_source=reddit&utm_name=frontpage)
+- 10/28/17: [MyEtherWallet - New Contract Interaction Tools](https://www.reddit.com/r/ethereum/comments/7961ml/myetherwallet_new_contract_interaction_tools/)
 
 #### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).

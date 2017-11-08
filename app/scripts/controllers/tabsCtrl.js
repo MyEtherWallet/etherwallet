@@ -41,7 +41,8 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             curVal: 21,
             value: globalFuncs.localStorage.getItem(gasPriceKey, null) ? parseInt(globalFuncs.localStorage.getItem(gasPriceKey)) : 21,
             max: 60,
-            min: 1
+            min: 0.1,
+            step: 0.1
         }
         ethFuncs.gasAdjustment = $scope.gas.value;
     }
@@ -84,6 +85,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             key: key
         }));
         if (nodes.ensNodeTypes.indexOf($scope.curNode.type) == -1) $scope.tabNames.ens.cx = $scope.tabNames.ens.mew = false;
+        if (nodes.domainsaleNodeTypes.indexOf($scope.curNode.type) == -1) $scope.tabNames.domainsale.cx = $scope.tabNames.domainsale.mew = false;
         else $scope.tabNames.ens.cx = $scope.tabNames.ens.mew = true;
         ajaxReq.getCurrentBlock(function(data) {
             if (data.error) {
@@ -181,11 +183,6 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.setTab = function(hval) {
         if (hval != '') {
             hval = hval.replace('#', '');
-            //          //Check if URL contains Parameters
-            //          if(hval.indexOf('=') != -1) {
-            //              //Remove URL parameter from hval
-            //              hval = hval.substring(0,hval.indexOf('='));
-            //          }
             for (var key in $scope.tabNames) {
                 if ($scope.tabNames[key].url == hval) {
                     $scope.activeTab = globalService.currentTab = $scope.tabNames[key].id;
@@ -200,6 +197,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.setTab(hval);
 
     $scope.tabClick = function(id) {
+        globalService.tokensLoaded = false
         $scope.activeTab = globalService.currentTab = id;
         for (var key in $scope.tabNames) {
             if ($scope.tabNames[key].id == id) location.hash = $scope.tabNames[key].url;

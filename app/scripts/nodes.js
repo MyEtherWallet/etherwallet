@@ -15,7 +15,8 @@ nodes.nodeTypes = {
     UBQ: "UBQ",
     Custom: "CUSTOM ETH"
 };
-nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
+nodes.domainsaleNodeTypes = [nodes.nodeTypes.Ropsten]
+nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten]
 nodes.customNodeObj = {
     'name': 'CUS',
     'blockExplorerTX': '',
@@ -64,6 +65,18 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/ethAbi.json'),
         'service': 'infura.io',
         'lib': new nodes.infuraNode('https://mainnet.infura.io/mew')
+    },
+    'eth_giveth': {
+        'name': 'ETH',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
+        'eip155': true,
+        'chainId': 1,
+        'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
+        'service': 'Giveth.io',
+        'lib': new nodes.customNode('https://mew.giveth.io', '')
     },
     'etc_epool': {
         'name': 'ETC',

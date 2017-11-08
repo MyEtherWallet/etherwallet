@@ -4,7 +4,19 @@
   <article class="clearfix">
     <h2 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
 
-    <address-field var-name="tx.to"></address-field>
+    <section class="col-xs-11">
+      <label translate="OFFLINE_Step2_Label_1">To Address:</label>
+      <input class="form-control"
+             type="text"
+             placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
+             ng-model="tx.to"
+             ng-change="validateAddress(tx.to,'')"/>
+    </section>
+
+    <section class="col-xs-1 address-identicon-container">
+      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+    </section>
+
 
     <section class="col-xs-12">
       <p>{{customGasMsg}}</p>
@@ -40,7 +52,7 @@
   <!-- Gas Limit -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+      <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener noreferrer">
         <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">21000 is the default gas limit.</p>
       </a>
@@ -52,7 +64,7 @@
   <!-- Gas Price -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+      <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener noreferrer">
         <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
       </a>
@@ -75,7 +87,7 @@
   <!-- Nonce -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+      <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html" target="_blank" rel="noopener noreferrer">
         <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_5b">This was displayed in Step 1.</p>
       </a>

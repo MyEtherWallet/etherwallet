@@ -93,6 +93,9 @@ ens.prototype.getOwnerResolverAddress = function(funcABI, to, name, callback) {
 ens.prototype.getDeedOwner = function(to, callback) {
     this.getOwnerResolverAddress(this.deedABI.owner, to, '', callback);
 };
+ens.prototype.getDeedPreviousOwner = function(to, callback) {
+    this.getOwnerResolverAddress(this.deedABI.previousOwner, to, '', callback);
+};
 ens.prototype.getOwner = function(name, callback) {
     this.getOwnerResolverAddress(this.registryABI.owner, this.getRegistryAddress(), name, callback);
 };
@@ -233,6 +236,19 @@ ens.prototype.getAllowedTime = function(name, callback) {
             callback(data);
         }
     });
+};
+ens.prototype.getTransferData = function(name, owner) {
+    var _this = this;
+//    name = namehash(ens.normalise(name));
+    name = _this.getSHA3(ens.normalise(name));
+    var funcABI = _this.auctionABI.transfer;
+    return _this.getDataString(funcABI, [name, owner]);
+};
+ens.prototype.getSetOwnerData = function(name, owner) {
+    var _this = this;
+    name = namehash(ens.normalise(name));
+    var funcABI = _this.registryABI.setOwner;
+    return _this.getDataString(funcABI, [name, owner]);
 };
 ens.prototype.getDataString = function(func, inputs) {
     var fullFuncName = ethUtil.solidityUtils.transformToFullName(func);

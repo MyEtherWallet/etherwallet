@@ -4,6 +4,7 @@
   var el = require('./el');
   var en = require('./en');
   var es = require('./es');
+  var fa = require('./fa');
   var fi = require('./fi');
   var fr = require('./fr');
   var ht = require('./ht');
@@ -17,6 +18,7 @@
   var pl = require('./pl');
   var pt = require('./pt');
   var ru = require('./ru');
+  var th = require('./th');
   var tr = require('./tr');
   var vi = require('./vi');
   var zhcn = require('./zhcn');
@@ -28,6 +30,7 @@
   $translateProvider.translations(el.code, translate.marked(el.data));
   $translateProvider.translations(en.code, translate.marked(en.data));
   $translateProvider.translations(es.code, translate.marked(es.data));
+  $translateProvider.translations(fa.code, translate.marked(fa.data));
   $translateProvider.translations(fi.code, translate.marked(fi.data));
   $translateProvider.translations(fr.code, translate.marked(fr.data));
   $translateProvider.translations(ht.code, translate.marked(ht.data));
@@ -41,6 +44,7 @@
   $translateProvider.translations(pl.code, translate.marked(pl.data));
   $translateProvider.translations(pt.code, translate.marked(pt.data));
   $translateProvider.translations(ru.code, translate.marked(ru.data));
+  $translateProvider.translations(th.code, translate.marked(th.data));
   $translateProvider.translations(tr.code, translate.marked(tr.data));
   $translateProvider.translations(vi.code, translate.marked(vi.data));
   $translateProvider.translations(zhcn.code, translate.marked(zhcn.data));

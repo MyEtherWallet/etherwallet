@@ -18,7 +18,7 @@ x_TxHash                    : 'TX Hash',
 NAV_CheckTxStatus           : 'Comprova l\'estat d\'una TX',
 NAV_TxStatus                : 'Estat de la TX',
 tx_Details                  : 'Detalls de transacció',
-tx_Summary                  : 'Durant períodes de molt volum (quan hi ha ICOs per exemple) les transaccions poder restar pendents durant hores, o dies. Aquesta eina té com a objectiu permetre\'t trobar i "cancel·lar" / reemplaçar aquestes TXs. ** Això no sol ser una cosa que puguis fer. No s\'hi hauria de confirmar i només funcionarà quan les TX Pools siguin plenes. [Si us plau, llegiu sobre aquesta eina aquí.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : 'Durant períodes de molt volum (quan hi ha ICOs per exemple) les transaccions poder restar pendents durant hores, o dies. Aquesta eina té com a objectiu permetre\'t trobar i "cancel·lar" / reemplaçar aquestes TXs. ** Això no sol ser una cosa que puguis fer. No s\'hi hauria de confirmar i només funcionarà quan les TX Pools siguin plenes. [Si us plau, llegiu sobre aquesta eina aquí.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Transacció no trobada',
 tx_notFound_1               : 'Aquesta TX no es pot trobar al TX Pool del node amb el qual estàs connectat.',
 tx_notFound_2               : 'Si acabes d\'enviar la transacció, espera 15 segons i prem el botó "Comprova l\'estat d\'una TX" de nou. ',
@@ -31,7 +31,7 @@ tx_foundInPending_3         : 'Hi ha una oportunitat de "cancel·lar" or reempla
 tx_FoundOnChain             : 'Transacció trobada',
 tx_FoundOnChain_1           : 'La teva transacció s\'ha minat correctament i és a la blockchain.',
 tx_FoundOnChain_2           : '**Si veus un `( ! )` vermell, un missatge d\'error `BAD INSTRUCTION` o `OUT OF GAS` **, vol dir que la transacció no s\'ha *enviat* correctament. No es pot cancel·lar o reemplaçar aquesta transacció. En lloc d\'això, envia una transacció nova. Si reps un error "Out of Gas", hauries de duplicar el límit de gas especificat originalment.',
-tx_FoundOnChain_3           : '**Si no veus cap error, la teva transacció s\'ha enviat amb èxit.** El teu ETH o Tokens són on els has enviat. Si no pots veure aquest ETH o Tokens a la teva cartera / compte de bescanvi, i han passat més de 24 hores des de l\'enviament, si us plau [contacta amb aquest servei](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Envia *l\'enllaç* de la teva transacció si demana amablement que investiguin.',
+tx_FoundOnChain_3           : '**Si no veus cap error, la teva transacció s\'ha enviat amb èxit.** El teu ETH o Tokens són on els has enviat. Si no pots veure aquest ETH o Tokens a la teva cartera / compte de bescanvi, i han passat més de 24 hores des de l\'enviament, si us plau [contacta amb aquest servei](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Envia *l\'enllaç* de la teva transacció si demana amablement que investiguin.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Utilitza la teva',
@@ -243,7 +243,7 @@ SENDModal_No                : 'No, treu-me d\'aquí! ',
 SENDModal_Yes               : 'Sí, n\'estic segur! Realitza la transacció. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Adreça ',
+TOKEN_Addr                  : 'Adreça del Token ',
 TOKEN_Symbol                : 'Símbol del Token ',
 TOKEN_Dec                   : 'Decimals ',
 TOKEN_show                  : 'Mostra tots els tokens ',
@@ -378,7 +378,7 @@ ERROR_31                    : 'Introdueix una frase secreta vàlida. ', // 31
 ERROR_32                    : 'No s\'ha pogut connectar al node. Refresca la teva pàgina, prova-ho amb un altre node (cantonada superior-dreta), comprova el teu firewall. En mode personalitzar, comprova les teves preferències.', // 32
 ERROR_33                    : 'La cartera que has desbloquejat no correspon amb l\'adreça del propietari. ', // 33
 ERROR_34                    : 'El nom que estàs intentant mostrar no coincideix amb el nom que has introduït. ', // 34
-ERROR_35                    : 'L\'adreça introduïda no s\'ha comprovat mitjantçant checksum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Més informació</a>', // 35
+ERROR_35                    : 'L\'adreça introduïda no s\'ha comprovat mitjantçant checksum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Més informació</a>', // 35
 ERROR_36                    : 'Introdueix un hash de TX vàlid', // 36
 ERROR_37                    : 'Introdueix una cadena hex (0-9, a-f) vàlida', // 37
 

@@ -9,7 +9,7 @@ var walletBalanceCtrl = function($scope, $sce, $rootScope) {
         type: "custom",
     };
 
-    $scope.slide = 3;
+    $scope.slide = 2;
 
     $scope.customTokenField = false;
     $scope.saveTokenToLocal = function() {

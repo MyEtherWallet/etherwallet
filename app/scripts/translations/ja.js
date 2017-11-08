@@ -9,7 +9,7 @@ HELP_2a_Title               : 'お財布の保管やバックアップの方法�
 /* New Generics */
 x_CancelReplaceTx           : '処理を中断、あるいは置換',
 x_CancelTx                  : '処理を中断',
-x_PasswordDesc              : 'このパスワードで秘密鍵を＊暗号化＊します。新しい鍵を作るための元種(seed)ではありません。＊＊このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します＊＊',
+x_PasswordDesc              : 'このパスワードで秘密鍵を『暗号化』します。新しい鍵を作るための元種(seed)ではありません。［このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します］',
 x_ReadMore                  : 'もっと読む',
 x_ReplaceTx                 : '処理を置き換える',
 x_TransHash                 : '処理ハッシュ',
@@ -20,7 +20,7 @@ x_TxHash                    : '処理ハッシュ',
 NAV_CheckTxStatus           : '処理状況を確認',
 NAV_TxStatus                : '処理状況',
 tx_Details                  : '処理内容詳細',
-tx_Summary                  : 'もし数日経ってから処理状況を確認した場合でなければ、大量の処理発生時(ICO期間など)には、数時間待たされることがあります。本ツールは、そのような状況において処理待ちのものを探し出し取り消す、あるいは新しくする機能を提供します。＊＊これは一般的な操作ではありませんが、処理プールが満杯の場合にのみ有効です。  [このツールに関しては、こちらを参考にしてください。](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : '数日後に処理状況を確認した場合をのぞいて、大量の処理発生時(ICO期間など)には、数時間処理が遅れる場合があります。本ツールは、そのような状況において処理待ちの処理を探し出し取り消す、あるいは更新する機能を提供します。＊＊これは特殊な操作で、処理プールが満杯の場合にのみ有効です。  [このツールに関しては、こちらを参考にしてください。](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : '対象の処理が見つかりません',
 tx_notFound_1               : 'この処理は、現在接続中の処理プールの中にありませんでした。',
 tx_notFound_2               : 'もし今、処理を送出した直後であれば、１５秒待ってから「処理状況を確認」ボタンを再度押してください。',
@@ -31,13 +31,13 @@ tx_foundInPending_1         : 'あなたの処理が、現在接続中のノー�
 tx_foundInPending_2         : '現在待機中です（発掘待ち）。',
 tx_foundInPending_3         : 'この処理を取り消す、あるいは置き換えることができます。下記のお財布をアンロックしてください。 ',
 tx_FoundOnChain             : '処理が見つかりました',
-tx_FoundOnChain_1           : 'あなたの待機中の処理は発掘されてブロックチェーンに載りました。',
+tx_FoundOnChain_1           : 'あなたの待機中の処理は発掘され、ブロックチェーンに配置されました。',
 tx_FoundOnChain_2           : '**もし赤い `( ! )`, `BAD INSTRUCTION` あるいは `OUT OF GAS` のエラーメッセージを見つけたら**, これは、処理送出に失敗したということです。処理の取り消しや置き換えはできません。代わりに、新しい処理を送出してください。 "Out of Gas" エラーの場合には, ガスリミットをはじめに指定した値の倍にしてください。',
-tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
+tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'この', /* Use your */
-GEN_Help_2                  : 'で自分の口座にアクセスしてください。', /* to access your account. */
+GEN_Help_2                  : 'で自分の口座アドレスにアクセスしてください。', /* to access your account. */
 GEN_Help_3                  : '自分のデバイスそのものが、自分のお財布です。',　/* Your device * is * your wallet. */
 GEN_Help_4                  : 'ガイドとＦＡＱ',　/* Guides & FAQ */
 GEN_Help_5                  : 'お財布の作り方', /* How to Create a Wallet */
@@ -60,10 +60,10 @@ GEN_Help_20                 : '隔離された保管場所', /*Cold Storage*/
 GET_ConfButton              : '理解できました。続けます。', /*I understand. Continue.*/
 GEN_Label_5                 : '自分の秘密鍵を保存する。', /*Save Your `Private Key`. */
 GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する', /*Unlock your wallet to see your address*/
-GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかる料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」かつ、自分の処理をブロックに配置するためにマイナーに支払われます。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「21 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.*/
-GAS_LIMIT_Desc              : 'ガスリミットは、自分の処理にかかる料金の額です。「使用料金」 = ガス価格 ＊ ガスリミット」で、自分の処理をブロックに配置するための料金に支払われます。 この数字を増やしても、自分の処理が早く発掘されることはありません。ETHの送出 = 「２１０００」。トークンの送出 = ~「２０００００」。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
-NONCE_Desc                  : 'そのnonceは、指定のアドレスから送出される処理の数です。処理が正しい順番で重複しないように確実にするためのものです。',
-TXFEE_Desc                  : 'その処理料金は自分の処理をブロックに配置するためにマイナーに支払われます。「ガスリミット」＊「ガス価格」です。 [GWEI -> ETHの変換はここです。](https://www.myetherwallet.com/helpers.html)',　/*The TX Fee is paid to miners for including your TX in a block. It is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)*/
+GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかるの料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するためにマイナーに支払う手数料です。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「21 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.*/
+GAS_LIMIT_Desc              : 'ガスリミットは、その処理のために送出するガスの総量です。「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するための料金として支払われます。 この数字を増やしても、自分の処理が早くなることはありません。ETHの送出 = 「２１０００」、トークンの送出 = ~「２０００００」が目安になります。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
+NONCE_Desc                  : 'このnonceは、指定のアドレスから送出される処理の数です。正しい順番で重複しないように処理を確実にするためのものです。',
+TXFEE_Desc                  : 'この処理料金は自分の処理をブロックに配置するためにマイナーに支払われます。「ガスリミット」＊「ガス価格」で算出されます。 [GWEI -> ETHの単位変換はこちらです。](https://www.myetherwallet.com/helpers.html)',　/*The TX Fee is paid to miners for including your TX in a block. It is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)*/
 
 
 
@@ -91,7 +91,7 @@ NAV_YourWallets             : '自分のお財布 ',
 
 /* General */
 x_Access                    : 'アクセス ',
-x_AddessDesc                : '自分のアドレスは、アカウント番号やパブリックキーでも知ることができます。誰かとETHやトークンの受け渡しをするために、これらを用います。きれいな色のついたアドレスアイコンを見つけてください。自分のペーパーウォレットや、アドレスを入力する際に、同じアイコンであることをしっかりと確認してください。 これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
+x_AddessDesc                : '自分のアドレスは、アカウント番号や公開キーでも知ることができます。誰かとETHやトークンの受け渡しをするために、これらを用います。きれいな色のついたアドレスアイコンを見つけてください。自分のペーパーウォレットや、アドレスを入力する際に、同じアイコンであることをしっかりと確認してください。 これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
 x_Address                   : '自分のアドレス ',
 x_Cancel                    : '取り消す ',
 x_CSV                       : 'CSV ファイル (未暗号化) ',
@@ -190,11 +190,11 @@ ADD_Ledger_3                : '設定中で、ブラウザサポートが有効�
 ADD_Ledger_4                : '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
 ADD_Ledger_0b               : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
-ADD_Ledger_scan             : 'Ledger Wallet　に接続 ',
-  
-ADD_MetaMask                : 'Connect to MetaMask ',
+ADD_Ledger_scan             : 'Ledger Wallet に接続 ',
 
-ADD_Trezor_scan             : 'TREZORに接続する ',
+ADD_MetaMask                : 'MetaMask に接続 ',
+
+ADD_Trezor_scan             : 'TREZORに接続 ',
 ADD_Trezor_select           : 'これはTREZORのシードです ',
 x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
@@ -237,7 +237,7 @@ SENDModal_No                : 'いいえ、中断します。 ',
 SENDModal_Yes               : 'はい、確かです。処理を実行します。 ',
 
 /* Tokens */
-TOKEN_Addr                  : 'アドレス： ',
+TOKEN_Addr                  : 'Token Contract アドレス： ',
 TOKEN_Symbol                : 'トークンシンボル： ',
 TOKEN_Dec                   : 'ケタ数： ',
 TOKEN_show                  : '全てのトークンを表示 ',
@@ -336,7 +336,7 @@ SWAP_rec_add                : "受け取りアドレス ",
 SWAP_start_CTA              : "交換開始 ",
 SWAP_ref_num                : "参照番号 ",
 SWAP_time                   : "送出するまでにあと、 ",
-SWAP_elapsed				        : "Time elapsed since sent ", 
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "注文を開始しました ",
 SWAP_progress_2             : "到着待機中 ", // Waiting for your BTC...
 SWAP_progress_3             : "ETH受け取り完了 ", // ETH Received!
@@ -397,7 +397,7 @@ ERROR_31                    : '無効な秘密フレーズです ',
 ERROR_32                    : 'ノードに接続できませんでした。ページを再表示したり、別のノード（画面の右上にあります）を試したり,ファイアーウォールの設定を確認してください。 カスタムノードの使用時には、構成設定を確認してください。', // 32
 ERROR_33                    : 'アンロックしたお財布のアドレスがオーナーのアドレスと一致しません。', // 33
 ERROR_34                    : '以前に入力したものと異なる名前です。 ', // 34
-ERROR_35                    : 'チェックサムが付いていません。 <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> 詳細</a>', // 35
+ERROR_35                    : 'チェックサムが付いていません。 <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> 詳細</a>', // 35
 ERROR_36                    : '正しいトランザクションハッシュを入力してください', // 36
 ERROR_37                    : '１６進数を正しく入力してください (0-9, a-f)', // 37
 

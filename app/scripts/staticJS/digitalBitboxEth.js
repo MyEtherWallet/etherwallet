@@ -1,8 +1,8 @@
 /**
- *  (c) 2017 Douglas Bakkum, Shift Devices AG 
+ *  (c) 2017 Douglas Bakkum, Shift Devices AG
  *  MIT license
 **/
-    
+
 // Hijacks the U2F auth command to pass HWW API commands
 
 // TODO - Integrate the smart verification mobile app (send result['echo'] from sign response).
@@ -16,7 +16,7 @@ var HDKey = require('hdkey');
 var DigitalBitboxEth = function(comm, sec) {
 	this.comm = comm;
     DigitalBitboxEth.sec = sec || DigitalBitboxEth.sec;
-    this.key = Crypto.createHash('sha256').update(new Buffer(DigitalBitboxEth.sec, 'ascii')).digest();
+    this.key = Crypto.createHash('sha256').update(new Buffer(DigitalBitboxEth.sec, 'utf8')).digest();
     this.key = Crypto.createHash('sha256').update(this.key).digest();
     clearTimeout(DigitalBitboxEth.to);
     DigitalBitboxEth.to = setTimeout(function(){ DigitalBitboxEth.sec = ''; }, 60000);
@@ -55,9 +55,9 @@ DigitalBitboxEth.aes_cbc_b64_encrypt = function(plaintext, key) {
 
 DigitalBitboxEth.parseError = function(errObject) {
     var errMsg = {
-        err101: 'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener">Digital Bitbox desktop app</a> to set up a wallet.',// No password set
-        err250: 'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener">Digital Bitbox desktop app</a> to set up a wallet.',// Wallet not seeded
-        err251: 'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener">Digital Bitbox desktop app</a> to set up a wallet.',// Wallet not seeded
+        err101: 'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener noreferrer">Digital Bitbox desktop app</a> to set up a wallet.',// No password set
+        err250: 'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener noreferrer">Digital Bitbox desktop app</a> to set up a wallet.',// Wallet not seeded
+        err251: 'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener noreferrer">Digital Bitbox desktop app</a> to set up a wallet.',// Wallet not seeded
         err109: 'The Digital Bitbox received unexpected data. Was the correct password used? ' + errObject.message,
     };
     var code = 'err' + errObject.code.toString();
