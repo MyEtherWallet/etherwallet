@@ -580,6 +580,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x52903256dd18D85c2Dc4a6C999907c9793eA61E3",
+"symbol":"INSP",
+"decimal":0,
+"type":"default"
+},{ 
 "address":"0xa8006c4ca56f24d6836727d106349320db7fef82",
 "symbol":"INXT",
 "decimal":8,
