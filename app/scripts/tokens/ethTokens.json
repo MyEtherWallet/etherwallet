@@ -1315,6 +1315,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xEbeD4fF9fe34413db8fC8294556BBD1528a4DAca",
+"symbol":"VENUS",
+"decimal":3,
+"type":"default"
+},{
 "address":"0x255aa6df07540cb5d3d297f0d0d4d84cb52bc8e6",
 "symbol":"RDN",
 "decimal":18,
