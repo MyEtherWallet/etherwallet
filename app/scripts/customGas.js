@@ -13,6 +13,13 @@
 
 module.exports = [
 {
+// STORM tokens
+to:         '0xc88c7e1AEbd89187d13bD42e1ff814d32f492BF6',
+gasLimit:   250000,
+data:       '',
+msg:        'STORM token sale: gamified micro-tasks - Earn anywhere, anytime, from any device. https://www.stormtoken.com, NOV 7, 2017'
+},
+{
 // Confideal (CDL)
 to:         '0x22A97c80D7e0a9Ae616737E3B8b531248f4ef91d',
 gasLimit:   170000,
@@ -59,6 +66,13 @@ to:         '0x882448f83d90b2bf477af2ea79327fdea1335d93',
 gasLimit:   200000,
 data:       '',
 msg:        'Vibehub ICO Sale. Thank you for your support!'
+},
+{
+// Trade.io (TIO) ICO Sale
+to:         '0xdea6d29da64bba5ab86a7424ca894756e7ae8ed3',
+gasLimit:   200000,
+data:       '',
+msg:        'Trade.io ICO Sale. Thank you for your support!'
 },
 {
 // Substratum (SUB) Network ICO Sale
