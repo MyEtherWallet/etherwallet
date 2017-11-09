@@ -710,6 +710,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x3f4b726668da46f5e0e75aa5d478acec9f38210f",
+"symbol":"M-ETH",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x40395044Ac3c0C57051906dA938B54BD6557F212",
 "symbol":"MGO",
 "decimal":8,
