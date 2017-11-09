@@ -13,6 +13,13 @@
 
 module.exports = [
 {
+// GEE Token Sale
+to:         '0xF5DFFdEAEA54bB56156B47de1C7b4346c7dBa69C',
+gasLimit:   180000,
+data:       '',
+msg:        'GEE Token Sale'
+},
+{
 // STORM tokens
 to:         '0xc88c7e1AEbd89187d13bD42e1ff814d32f492BF6',
 gasLimit:   250000,
