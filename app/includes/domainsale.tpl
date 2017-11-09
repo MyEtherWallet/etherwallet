@@ -6,7 +6,7 @@
       <article class="cont-md">
         <h1 class="text-center" translate="NAV_DomainSale"> DomainSale </h1>
         <p>
-          <a href="https://medium.com/@jgm.orinoco/domainsale-an-on-chain-secondary-ens-market-b3330f6e5dda" target="_blank" rel="noopener">DomainSale</a> is a secondary market for the <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener">Ethereum Name Service</a> that allows you to buy and sell domains that are already owned.
+          <a href="https://medium.com/@jgm.orinoco/domainsale-an-on-chain-secondary-ens-market-b3330f6e5dda" target="_blank" rel="noopener noreferrer">DomainSale</a> is a secondary market for the <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener noreferrer">Ethereum Name Service</a> that allows you to buy and sell domains that are already owned.
         </p>
       </article>
       <!-- / Title -->
@@ -19,7 +19,7 @@
           <div class="input-group">
             <input class="form-control"
                    type="text"
-                   placeholder="myetherwallet"
+                   placeholder="mewtopia"
                    ng-model="objDomainSale.name"
                    ng-keyup="$event.keyCode==13 && checkName()"
                    ng-change="nameOnChange()"

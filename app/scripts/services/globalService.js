@@ -64,40 +64,40 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     mew: true,
     cx: true
   },
-  txStatus: {
+  domainsale: {
     id: 8,
+    name: "NAV_DomainSale",
+    url: "domainsale",
+    mew: true,
+    cx: true
+  },
+  txStatus: {
+    id: 9,
     name: "NAV_CheckTxStatus",
     url: "check-tx-status",
     mew: true,
     cx: true
   },
   viewWalletInfo: {
-    id: 9,
+    id: 10,
     name: "NAV_ViewWallet",
     url: "view-wallet-info",
     mew: true,
     cx: false
   },
   signMsg: {
-    id: 10,
+    id: 11,
     name: "NAV_SignMsg",
     url: "sign-message",
     mew: false,
     cx: false
   },
   bulkGenerate: {
-    id: 11,
+    id: 12,
     name: "NAV_BulkGenerate",
     url: "bulk-generate",
     mew: false,
     cx: false
-  },
-  domainsale: {
-    id: 12,
-    name: "NAV_DomainSale",
-    url: "domainsale",
-    mew: true,
-    cx: true
   }
   }
 
