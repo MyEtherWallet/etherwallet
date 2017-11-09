@@ -17,7 +17,7 @@ module.exports = [
 to:         '0xF5DFFdEAEA54bB56156B47de1C7b4346c7dBa69C',
 gasLimit:   180000,
 data:       '',
-msg:        ''
+msg:        'GEE Token Sale'
 },
 {
 // Confideal (CDL)
