@@ -69,6 +69,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x1245ef80f4d9e02ed9425375e8f649b9221b31d8",
+"symbol":"ARCT",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xBA5F11b16B155792Cf3B2E6880E8706859A8AEB6",
 "symbol":"ARN",
 "decimal":18,
