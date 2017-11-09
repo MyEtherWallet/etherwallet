@@ -533,8 +533,7 @@
 "symbol":"H2O",
 "decimal":18,
 "type":"default"
-},
-{
+},{
 "address":"0xffe8196bc259e8dedc544d935786aa4709ec3e64",
 "symbol":"HDG",
 "decimal":18,
@@ -609,7 +608,7 @@
 "symbol":"INSP",
 "decimal":0,
 "type":"default"
-},{ 
+},{
 "address":"0xa8006c4ca56f24d6836727d106349320db7fef82",
 "symbol":"INXT",
 "decimal":8,
@@ -704,7 +703,7 @@
 "symbol":"LUM",
 "decimal":18,
 "type":"default"
-}{
+},{
 "address":"0xfa05A73FfE78ef8f1a739473e462c54bae6567D9",
 "symbol":"LUN",
 "decimal":18,
@@ -874,7 +873,7 @@
 "symbol":"PIPL",
 "decimal":8,
 "type":"default"
-}{
+},{
 "address":"0x8eFFd494eB698cc399AF6231fCcd39E08fd20B15",
 "symbol":"PIX",
 "decimal":0,
@@ -979,7 +978,7 @@
 "symbol":"RDN",
 "decimal":18,
 "type":"default"
-}{
+},{
 "address":"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6",
 "symbol":"REP",
 "decimal":18,
@@ -1264,7 +1263,7 @@
 "symbol":"VENUS",
 "decimal":3,
 "type":"default"
-}{
+},{
 "address":"0x8f3470A7388c05eE4e7AF3d01D8C722b0FF52374",
 "symbol":"VERI",
 "decimal":18,
