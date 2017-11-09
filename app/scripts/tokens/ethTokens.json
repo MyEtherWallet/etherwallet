@@ -1085,6 +1085,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xD0a4b8946Cb52f0661273bfbC6fD0E0C75Fc6433",
+"symbol":"STORM",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x599346779e90fc3F5F997b5ea715349820F91571",
 "symbol":"STN",
 "decimal":4,
