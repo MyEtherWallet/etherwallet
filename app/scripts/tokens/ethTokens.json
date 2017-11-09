@@ -329,6 +329,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x399A0e6FbEb3d74c85357439f4c8AeD9678a5cbF",
+"symbol":"DCL",
+"decimal":3,
+"type":"default"
+},{
 "address":"0xcC4eF9EEAF656aC1a2Ab886743E98e97E090ed38",
 "symbol":"DDF",
 "decimal":18,
