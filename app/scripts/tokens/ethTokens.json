@@ -984,6 +984,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x5f53f7a8075614b699baad0bc2c899f4bad8fbbf",
+"symbol":"REBL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6",
 "symbol":"REP",
 "decimal":18,
