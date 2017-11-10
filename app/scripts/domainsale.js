@@ -7,7 +7,7 @@ var domainsale = function() {
     for (var i in domainsaleInterface) this.domainsaleABI[domainsaleInterface[i].name] = domainsaleInterface[i];
     switch (ajaxReq.type) {
         case nodes.nodeTypes.ETH:
-            _this.setContractAddress('0x00');
+            _this.setContractAddress('0xc67247454E720328714C4e17bEC7640572657bEE');
             break;
         case nodes.nodeTypes.Rinkeby:
             _this.setContractAddress('0x00');
