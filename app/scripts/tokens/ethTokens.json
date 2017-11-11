@@ -1154,6 +1154,11 @@
 "decimal":4,
 "type":"default"
 },{
+"address":"0x2C4e8f2D746113d0696cE89B35F0d8bF88E0AEcA",
+"symbol":"ST",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xc301b935d0fd1f5d0b6d68491deca39d44e2da6e",
 "symbol":"STAR",
 "decimal":18,
