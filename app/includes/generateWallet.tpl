@@ -20,7 +20,7 @@
       <p translate="x_PasswordDesc"> </p>
       <div class="text-center">
         <strong>
-          <a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherewallet.html" target="_blank" rel="noopener noreferrer" translate="GEN_Help_5">
+          <a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherwallet.html" target="_blank" rel="noopener noreferrer" translate="GEN_Help_5">
           How to Create a Wallet</a>
           &nbsp;&nbsp;&middot;&nbsp;&nbsp;
           <a href="https://myetherwallet.github.io/knowledge-base/getting-started/getting-started-new.html" target="_blank" rel="noopener noreferrer" translate="GEN_Help_6">
