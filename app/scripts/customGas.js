@@ -240,4 +240,10 @@ to:         '0x4c382F8E09615AC86E08CE58266CC227e7d4D913',
 gasLimit:   200000,
 data:       '',
 msg:        'Get SKR! Thanks for your support and remember only get the contract address from tokensale.skrilla.com'
+},{
+// Rebellious Token
+to:         '0x5f53f7a8075614b699baad0bc2c899f4bad8fbbf',
+gasLimit:   200000,
+data:       '',
+msg:        ''
 }]
