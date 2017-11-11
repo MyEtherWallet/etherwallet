@@ -109,11 +109,11 @@ gasLimit:   85000,
 data:       '',
 msg:        'BattleDrome ICO/Crowdsale. Thanks for your support!'
 },{
-// OpenANX
-to:         '0xd6Cd31F283d24cfb442cBA1Bcf42290c07C15792',
-gasLimit:   150000,
+// Simple Token (ST)
+to:         '0x58b7056DeB51eD292614F0DA1E94E7e9c589828d',
+gasLimit:   85000,
 data:       '',
-msg:        'Kyber Network. Starts September 15, 2017.'
+msg:        'Simple Token — the cryptocurrency that powers digital communities.'
 },{
 // iDice
 to:         '0x5a84969bb663fb64F6d015DcF9F622Aedc796750',
