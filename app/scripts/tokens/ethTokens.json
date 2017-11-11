@@ -369,6 +369,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xEEF6E90034eEa89E31Eb4B8eaCd323F28A92eaE4",
+"symbol":"DOW",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x01b3Ec4aAe1B8729529BEB4965F27d008788B0EB",
 "symbol":"DPP",
 "decimal":18,
