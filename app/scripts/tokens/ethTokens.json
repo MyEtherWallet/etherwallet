@@ -444,6 +444,11 @@
 "decimal":4,
 "type":"default"
 },{
+"address":"0xc98e0639c6d2ec037a615341c369666b110e80e5",
+"symbol":"EXMR",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x190e569bE071F40c704e15825F285481CB74B6cC",
 "symbol":"FAM",
 "decimal":12,
