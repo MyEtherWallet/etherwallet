@@ -111,7 +111,7 @@ msg:        'BattleDrome ICO/Crowdsale. Thanks for your support!'
 },{
 // Simple Token (ST)
 to:         '0x58b7056DeB51eD292614F0DA1E94E7e9c589828d',
-gasLimit:   85000,
+gasLimit:   150000,
 data:       '',
 msg:        'Simple Token — the cryptocurrency that powers digital communities.'
 },{
