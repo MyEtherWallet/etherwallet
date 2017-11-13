@@ -754,6 +754,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x3C532Ac204D515D3Cc032138358cC9137380677C",
+"symbol":"MEC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x40395044Ac3c0C57051906dA938B54BD6557F212",
 "symbol":"MGO",
 "decimal":8,
