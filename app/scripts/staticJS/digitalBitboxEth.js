@@ -103,9 +103,7 @@ DigitalBitboxEth.prototype.getAddress = function(path, callback) {
     self.comm.exchange(cmd, localCallback);
 }
 
-DigitalBitboxEth.prototype.signTransaction = function(path, eTx, callback) {
-    var self = this;
-    var hashToSign = eTx.hash(false).toString('hex');
+DigitalBitboxEth.signGeneric = function(self, path, chainId, hashToSign, callback) {
     var cmd = '{"sign":{"data":[{"hash":"' + hashToSign + '","keypath":"' + path + '"}]}}';
         cmd = DigitalBitboxEth.aes_cbc_b64_encrypt(cmd, self.key);
 
@@ -135,7 +133,7 @@ DigitalBitboxEth.prototype.signTransaction = function(path, eTx, callback) {
                         return;
                     }
                     if ('sign' in response) {
-                        var vOffset = eTx._chainId ? eTx._chainId * 2 + 8 : 0;
+                        var vOffset = chainId ? chainId * 2 + 8 : 0;
                         var v = new Buffer([parseInt(response.sign[0].recid, 16) + 27 + vOffset]);
                         var result = {
                             v: v.toString('hex'),
@@ -153,6 +151,18 @@ DigitalBitboxEth.prototype.signTransaction = function(path, eTx, callback) {
 		}
 	};
     self.comm.exchange(cmd, localCallback);
+}
+
+DigitalBitboxEth.prototype.signTransaction = function(path, eTx, callback) {
+    var self = this;
+    var hashToSign = eTx.hash(false).toString('hex');
+    DigitalBitboxEth.signGeneric(self, path, eTx._chainId, hashToSign, callback);
+}
+
+DigitalBitboxEth.prototype.signMessage = function(path, messageHex, callback) {
+    var self = this;
+    var hashToSign = messageHex.toString('hex');
+    DigitalBitboxEth.signGeneric(self, path, 0, hashToSign, callback);
 }
 
 module.exports = DigitalBitboxEth;
