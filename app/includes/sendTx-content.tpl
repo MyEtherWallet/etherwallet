@@ -273,18 +273,14 @@
         <label translate="SEND_raw">
           Raw Transaction
         </label>
-        <textarea class="form-control" rows="4" readonly>
-          {{rawTx}}
-        </textarea>
+        <textarea class="form-control" rows="4" readonly>{{rawTx}}</textarea>
       </div>
 
       <div class="col-sm-6">
         <label translate="SEND_signed">
           Signed Transaction
         </label>
-        <textarea class="form-control" rows="4" readonly>
-          {{signedTx}}
-        </textarea>
+        <textarea class="form-control" rows="4" readonly>{{signedTx}}</textarea>
       </div>
 
     </div>
