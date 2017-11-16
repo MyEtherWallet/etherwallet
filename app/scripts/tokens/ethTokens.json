@@ -369,6 +369,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xEEF6E90034eEa89E31Eb4B8eaCd323F28A92eaE4",
+"symbol":"DOW",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x01b3Ec4aAe1B8729529BEB4965F27d008788B0EB",
 "symbol":"DPP",
 "decimal":18,
@@ -437,6 +442,11 @@
 "address":"0xf3db5fa2c66b7af3eb0c0b782510816cbe4813b8",
 "symbol":"EVX",
 "decimal":4,
+"type":"default"
+},{
+"address":"0xc98e0639c6d2ec037a615341c369666b110e80e5",
+"symbol":"EXMR",
+"decimal":8,
 "type":"default"
 },{
 "address":"0x190e569bE071F40c704e15825F285481CB74B6cC",
@@ -744,6 +754,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x3C532Ac204D515D3Cc032138358cC9137380677C",
+"symbol":"MEC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x40395044Ac3c0C57051906dA938B54BD6557F212",
 "symbol":"MGO",
 "decimal":8,
@@ -878,6 +893,11 @@
 "symbol":"PIX",
 "decimal":0,
 "type":"default"
+ },{
+"address":"0x59416A25628A76b4730eC51486114c32E0B582A1",
+"symbol":"PLASMA",
+"decimal":6,
+"type":"default"
 },{
 "address":"0xE477292f1B3268687A29376116B0ED27A9c76170",
 "symbol":"PLAY",
@@ -976,6 +996,11 @@
 },{
 "address":"0x255aa6df07540cb5d3d297f0d0d4d84cb52bc8e6",
 "symbol":"RDN",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x5f53f7a8075614b699baad0bc2c899f4bad8fbbf",
+"symbol":"REBL",
 "decimal":18,
 "type":"default"
 },{
@@ -1114,6 +1139,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x44F588aEeB8C44471439D1270B3603c66a9262F1",
+"symbol":"SNIP",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xaeC2E87E0A235266D9C5ADc9DEb4b2E29b54D009",
 "symbol":"SNGLS",
 "decimal":0,
@@ -1144,7 +1174,12 @@
 "decimal":4,
 "type":"default"
 },{
-"address":"0xc301b935d0fd1f5d0b6d68491deca39d44e2da6e",
+"address":"0x2C4e8f2D746113d0696cE89B35F0d8bF88E0AEcA",
+"symbol":"ST",
+"decimal":18,
+"type":"default"
+},{
+"address":"0xF70a642bD387F94380fFb90451C2c81d4Eb82CBc",
 "symbol":"STAR",
 "decimal":18,
 "type":"default"
@@ -1186,6 +1221,11 @@
 },{
 "address":"0x10b123fddde003243199aad03522065dc05827a0",
 "symbol":"SYN",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x6ceE948C9d593c58Cba5Dfa70482444899D1341c",
+"symbol":"SXS",
 "decimal":18,
 "type":"default"
 },{

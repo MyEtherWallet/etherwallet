@@ -126,6 +126,18 @@ nodes.nodeList = {
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscanKov')
     },
+    'kov_infura': {
+        'name': 'Kovan',
+        'type': nodes.nodeTypes.Kovan,
+        'blockExplorerTX': 'https://kovan.etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://kovan.etherscan.io/address/[[address]]',
+        'eip155': true,
+        'chainId': 42,
+        'tokenList': require('./tokens/kovanTokens.json'),
+        'abiList': require('./abiDefinitions/kovanAbi.json'),
+        'service': 'infura.io',
+        'lib': new nodes.infuraNode('https://kovan.infura.io/mew')
+    },
     'rin_ethscan': {
         'name': 'Rinkeby',
         'type': nodes.nodeTypes.Rinkeby,
