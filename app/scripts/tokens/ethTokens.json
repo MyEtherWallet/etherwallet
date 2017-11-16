@@ -1,4 +1,9 @@
 [{
+"address":"0x59416A25628A76b4730eC51486114c32E0B582A1",
+"symbol":"☼PLASMA",
+"decimal":6,
+"type":"default"
+},{
 "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
 "symbol":"1ST",
 "decimal":18,
@@ -889,11 +894,6 @@
 "decimal":0,
 "type":"default"
  },{
-"address":"0x59416A25628A76b4730eC51486114c32E0B582A1",
-"symbol":"PLASMA",
-"decimal":6,
-"type":"default"
-},{
 "address":"0xE477292f1B3268687A29376116B0ED27A9c76170",
 "symbol":"PLAY",
 "decimal":18,
