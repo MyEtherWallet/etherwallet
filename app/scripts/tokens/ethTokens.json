@@ -559,6 +559,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xa9240fBCAC1F0b9A6aDfB04a53c8E3B0cC1D1444",
+"symbol":"HIG",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x14F37B574242D366558dB61f3335289a5035c506",
 "symbol":"HKG",
 "decimal":3,
