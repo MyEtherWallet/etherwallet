@@ -974,6 +974,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x99ea4dB9EE77ACD40B119BD1dC4E33e1C070b80d",
+"symbol":"QSP",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x2C3C1F05187dBa7A5f2Dd47Dca57281C4d4F183F",
 "symbol":"QTQ",
 "decimal":18,
