@@ -1,14 +1,16 @@
-[
-  {
+[{
+    "address":"0xbd287b4398b248032183994229f5f6a9fdac98b1",
+    "symbol":"💥 PLASMA",
+    "decimal":6,
+    "type":"default"
+ },{
     "address":"0x3C67f7D4decF7795225f51b54134F81137385f83",
     "symbol":"GUP",
     "decimal":3,
     "type":"default"
-  },
-  {
+ },{
     "address":"0x8667559254241ddeD4d11392f868d72092765367",
     "symbol":"Aeternity",
     "decimal":18,
     "type":"default"
-  }
-]
+}]
