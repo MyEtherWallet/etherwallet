@@ -19,6 +19,12 @@ gasLimit:   250000,
 data:       '',
 msg:        'STORM token sale: gamified micro-tasks - Earn anywhere, anytime, from any device. https://www.stormtoken.com, NOV 7, 2017'
 },{
+// Aigang (AIX) ICO Sale
+to:         ' 0xeA0c348A297084BFFbddad7f89216F24a2106E58',
+gasLimit:   300000,
+data:       '',
+msg:        'Aigang token sale contract. Autonomous insurance network - fully automated insurance for IoT devices and a platform for insurance innovation built around data: https://aigang.network . Ends 12/15/2017'
+},{
 // Confideal (CDL)
 to:         '0x22A97c80D7e0a9Ae616737E3B8b531248f4ef91d',
 gasLimit:   170000,
