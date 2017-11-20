@@ -39,8 +39,8 @@ var POPUP_ORIGIN = window.TREZOR_POPUP_ORIGIN || 'https://connect.trezor.io';
 var POPUP_PATH = window.TREZOR_POPUP_PATH || POPUP_ORIGIN + '/' + VERSION;
 if (window.location.hostname === 'localhost' && !window.TREZOR_POPUP_ORIGIN) {
     // development settings
-    POPUP_ORIGIN = window.location.origin;
-    POPUP_PATH = POPUP_ORIGIN;
+    //POPUP_ORIGIN = window.location.origin;
+    //POPUP_PATH = POPUP_ORIGIN;
 }
 var POPUP_URL = window.TREZOR_POPUP_URL || POPUP_PATH + '/popup/popup.html';
 
