@@ -26,6 +26,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         hwUbqPath:         "m/44'/108'/0'/0",      // first address: m/44'/40'/0'/0/0
         hwExpansePath:     "m/44'/40'/0'/0",       // first address: m/44'/40'/0'/0/0
         singularDTVPath:   "m/0'/0'/0'"            // first address: m/0'/0'/0'/0
+        hwRskPath:         "m/44'/137'/0'/0",      // first address : m/44'/137'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
@@ -75,7 +76,10 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
                     break;
                 case nodes.nodeTypes.UBQ:
-                    $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwUbiqPath;
+                    break;
+                case nodes.nodeTypes.RSK:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwRskPath;
                     break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
@@ -309,6 +313,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.scanTrezor = function() {
         // trezor is using the path without change level id
         var path = $scope.getTrezorPath();
+
+        console.warn("SCANTR", path, $scope.HDWallet)
         TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.5.2');
     };
     $scope.getLedgerPath = function() {
