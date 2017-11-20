@@ -209,6 +209,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x2accaB9cb7a48c3E82286F0b2f8798D201F4eC3f",
+"symbol":"BTL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xfad572db566e5234ac9fc3d570c4edc0050eaa92",
 "symbol":"BTH",
 "decimal":18,
