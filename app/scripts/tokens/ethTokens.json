@@ -1084,6 +1084,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x1ec8fe51a9b6a3a6c427d17d9ecc3060fbc4a45c",
+"symbol":"S-A-PAT",
+"decimal":18,
+"type":"default"
+},{ 
 "address":"0xd7631787B4dCc87b1254cfd1e5cE48e96823dEe8",
 "symbol":"SCL",
 "decimal":8,
