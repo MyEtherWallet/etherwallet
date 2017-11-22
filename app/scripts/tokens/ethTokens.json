@@ -399,6 +399,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0xafc39788c51f0c1ff7b55317f3e70299e521fff6",
+"symbol":"eBCH",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xa578aCc0cB7875781b7880903F4594D13cFa8B98",
 "symbol":"ECN",
 "decimal":2,
