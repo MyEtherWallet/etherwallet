@@ -649,6 +649,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x0Aaf561eFF5BD9c8F911616933F84166A17cfE0C",
+"symbol":"JBX",
+"decimal":0,
+"type":"default"
+},{
 "address":"0x8727c112C712c4a03371AC87a74dD6aB104Af768",
 "symbol":"JET (new)",
 "decimal":18,
