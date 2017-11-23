@@ -12,7 +12,7 @@
   "options_page": "cx-wallet.html",
   "browser_action": {
     "default_icon": "images/icons/icon32.png",
-    "default_title": "MyEtherWallet CX test",
+    "default_title": "MyEtherWallet CX",
     "default_popup": "browser_action/browser_action.html"
   },
   "permissions": [
