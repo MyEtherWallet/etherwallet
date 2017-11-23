@@ -18,7 +18,7 @@ x_TxHash                    : 'TX Hash',
 NAV_CheckTxStatus           : 'Comprobar estado de transacción',
 NAV_TxStatus                : 'Estado de transacción',
 tx_Details                  : 'Detalles de la transacción',
-tx_Summary                  : 'En momentos de alto volumen (como por ejemplo durante las ICOs) las transacciones pueden quedarse pendientes durante horas o incluso días. Esta herramienta te proporciona la posibilidad de encontrar y "cancelar" / reemplazar estas transacciones. ** Esto es algo que normalmente no puedes hacer. No se debe confiar en esta herramienta. Solamente funcionará cuando los pools de transacciones estén llenos. [Por favor, lee más sobre esta herramienta aquí.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : 'En momentos de alto volumen (como por ejemplo durante las ICOs) las transacciones pueden quedarse pendientes durante horas o incluso días. Esta herramienta te proporciona la posibilidad de encontrar y "cancelar" / reemplazar estas transacciones. ** Esto es algo que normalmente no puedes hacer. No se debe confiar en esta herramienta. Solamente funcionará cuando los pools de transacciones estén llenos. [Por favor, lee más sobre esta herramienta aquí.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Transacción no encontrada',
 tx_notFound_1               : 'Esta transacción no se puede encontrar en el pool de transacciones del nodo al que estás conectado.',
 tx_notFound_2               : 'Si acabas de enviar la transacción, por favor espera 15 segundos y pulsa de nuevo el botón "Comprobar estado de transacción". ',
@@ -31,7 +31,7 @@ tx_foundInPending_3         : 'Existe la posibilidad de que puedas "cancelar" o 
 tx_FoundOnChain             : 'Transacción encontrada',
 tx_FoundOnChain_1           : 'Tu transacción ha sido minada con éxito y se encuentra en la cadena de bloques.',
 tx_FoundOnChain_2           : '**If you see a red `( ! )`, a `BAD INSTRUCTION` or `OUT OF GAS` error message**, it means that the transaction was not successfully *sent*. You cannot cancel or replace this transaction. Instead, send a new transaction. If you received an "Out of Gas" error, you should double the gas limit you specified originally.',
-tx_FoundOnChain_3           : '**If you do not see any errors, your transaction was successfully sent.** Your ETH or Tokens are where you sent them. If you cannot see this ETH or Tokens credited in your other wallet / exchange account, and it has been 24+ hours since you sent, please [contact that service](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Send them the *link* to your transaction and ask them, nicely, to look into your situation.',
+tx_FoundOnChain_3           : '**If you do not see any errors, your transaction was successfully sent.** Your ETH or Tokens are where you sent them. If you cannot see this ETH or Tokens credited in your other wallet / exchange account, and it has been 24+ hours since you sent, please [contact that service](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Send them the *link* to your transaction and ask them, nicely, to look into your situation.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Usa tu',
@@ -57,7 +57,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Desbloquea tu cartera para ver tu dirección',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
@@ -203,7 +203,7 @@ SENDModal_No                : 'No, sácame de aquí. ',
 SENDModal_Yes               : 'Sí, estoy seguro. Hacer la transacción. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Dirección ',
+TOKEN_Addr                  : 'Token Contact Dirección ',
 TOKEN_Symbol                : 'Símbolo del token ',
 TOKEN_Dec                   : 'Decimales ',
 TOKEN_hide                  : 'Ocultar tokens ',
@@ -395,7 +395,7 @@ ERROR_31                    : 'Introduce un secret phrase válido. ', // 31
 ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

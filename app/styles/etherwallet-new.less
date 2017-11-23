@@ -276,10 +276,15 @@ a.footer__pill {
 }
 
 
-.custom-token-fields input {
-  .input-sm();
-  .mono {
-    font-size: @font-size-xs;
+.custom-token-fields {
+  input {
+    .input-sm();
+    .mono {
+      font-size: @font-size-xs;
+    }
+  }
+  .address-identicon-container {
+    margin-top: 2rem;
   }
 }
 
@@ -363,4 +368,44 @@ a.footer__pill {
 
 .send-modal__addr {
   font-size: 12px;
+}
+
+
+
+.u__protip {
+  display: table;
+  &:before {
+    content: "";
+    display: table-cell;
+    width: 2em;
+    height: 1em;
+    background-image: url(../images/icon-protip.svg);
+    background-size: contain;
+    vertical-align: middle;
+    text-align: center;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border-right: .5em solid transparent;
+  }
+}
+
+.send__load-tokens {
+  padding: 5px 2px;
+  margin: 0;
+  background-color: @brand-warning;
+  text-align: center;
+  color: white;
+  font-size: 9px;
+  img {
+    width: 14px;
+    height: 14px;
+  }
+  p {
+    margin: 4px 0 0;
+    font-weight: 500;
+  }
+  &:hover {
+    color: white;
+    opacity: .8;
+  }
 }

@@ -24,7 +24,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         trezorClassicPath: "m/44'/61'/0'/0",       // first address: m/44'/61'/0'/0/0
         trezorPath:        "m/44'/60'/0'/0",       // first address: m/44'/60'/0'/0/0
         hwUbqPath:         "m/44'/108'/0'/0",      // first address: m/44'/40'/0'/0/0
-        hwExpansePath:     "m/44'/40'/0'/0"        // first address: m/44'/40'/0'/0/0
+        hwExpansePath:     "m/44'/40'/0'/0",       // first address: m/44'/40'/0'/0/0
+        singularDTVPath:   "m/0'/0'/0'"            // first address: m/0'/0'/0'/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
@@ -135,21 +136,26 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         }
     };
     $scope.openFileDialog = function($fileContent) {
+        $scope.showAOnly = false;
         document.getElementById('fselector').click();
     };
     $scope.onFilePassChange = function() {
+        $scope.showAOnly = false;
         $scope.showFDecrypt = $scope.filePassword.length >= 0;
     };
     $scope.onPrivKeyChange = function() {
+        $scope.showAOnly = false;
         const manualprivkey = fixPkey($scope.manualprivkey);
 
         $scope.requirePPass = manualprivkey.length == 128 || manualprivkey.length == 132;
         $scope.showPDecrypt = manualprivkey.length == 64;
     };
     $scope.onPrivKeyPassChange = function() {
+        $scope.showAOnly = false;
         $scope.showPDecrypt = $scope.privPassword.length > 0;
     };
     $scope.onMnemonicChange = function() {
+        $scope.showAOnly = false;
         $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic);
     };
     $scope.onParityPhraseChange = function() {
@@ -157,6 +163,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         else $scope.showParityDecrypt = false;
     };
     $scope.onAddressChange = function() {
+        $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showParityDecrypt = false;
         $scope.showAOnly = $scope.Validator.isValidAddress($scope.addressOnly);
     };
     $scope.setHDAddresses = function(start, limit) {
@@ -198,6 +205,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         walletService.wallet = $scope.wallet = $scope.HDWallet.wallets[$scope.HDWallet.id];
         $scope.mnemonicModel.close();
         $scope.notifier.info(globalFuncs.successMsgs[1]);
+        $scope.wallet.type = "default";
     }
     $scope.decryptWallet = function() {
         $scope.wallet = null;
@@ -227,6 +235,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
         }
         if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
+        $scope.wallet.type = "default";
     };
     $scope.decryptAddressOnly = function() {
         if ($scope.Validator.isValidAddress($scope.addressOnly)) {
@@ -319,6 +328,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
           $scope.wallet = wallet
           walletService.wallet = wallet
           $scope.notifier.info(globalFuncs.successMsgs[6])
+          $scope.wallet.type = "default";
         });
     };
 

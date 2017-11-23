@@ -6,8 +6,32 @@
     "type":"default"
   },
   {
+    "address":"0xff3bf057adf3b0e015b6465331a6236e55688274",
+    "symbol":"BEER",
+    "decimal":0,
+    "type":"default"
+  },
+  {
+    "address":"0x08533d6a06ce365298b12ef92eb407cba8aa8273",
+    "symbol":"CEFS",
+    "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0x94ad7e41c1d44022c4f47cb1ba019fd1a022c536",
+    "symbol":"DOT",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0x4b4899a10f3e507db207b0ee2426029efa168a67",
     "symbol":"QWARK",
+    "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0x5e1715bb79805bd672729760b3f7f34d6f485098",
+    "symbol":"RICKS",
     "decimal":8,
     "type":"default"
   }

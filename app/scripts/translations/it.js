@@ -19,7 +19,7 @@ x_TxHash                    : 'Hash transazione',
 NAV_CheckTxStatus           : 'Controlla lo stato della transazione',
 NAV_TxStatus                : 'Stato transazione',
 tx_Details                  : 'Dettagli della transazione',
-tx_Summary                  : 'Nei periodi di traffico intenso (come durante le ICO) le transazioni possono rimanere in attesa per ore, o anche giorni. Questo strumento cerca di darti la possibilità di trovare e "annullare" / sostituire queste transazioni. ** Non è normalmente possibile farlo. Non dovresti farci affidamento, e funziona solo quando i *pool* delle transazioni sono pieni. [Altre informazioni su questo strumento qui.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_Summary                  : 'Nei periodi di traffico intenso (come durante le ICO) le transazioni possono rimanere in attesa per ore, o anche giorni. Questo strumento cerca di darti la possibilità di trovare e "annullare" / sostituire queste transazioni. ** Non è normalmente possibile farlo. Non dovresti farci affidamento, e funziona solo quando i *pool* delle transazioni sono pieni. [Altre informazioni su questo strumento qui.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Transazione non trovata',
 tx_notFound_1               : 'Impossibile trovare questa transazione nel *pool* delle transazioni del nodo a cui sei connesso.',
 tx_notFound_2               : 'Se l\'hai appena inviata, attendi 15 secondi e premi di nuovo il pulsante "Controlla lo stato della transazione". ',
@@ -32,7 +32,7 @@ tx_foundInPending_3         : 'Forse è possibile "annullare" o sostituire quest
 tx_FoundOnChain             : 'Transazione trovata',
 tx_FoundOnChain_1           : 'La transazione è stata correttamente inclusa in un blocco e ora si trova sulla *blockchain*.',
 tx_FoundOnChain_2           : '**Se vedi un `( ! )` rosso, un messaggio di errore `BAD INSTRUCTION` o `OUT OF GAS`**, significa che la transazione non è stata correttamente *inviata*. Non puoi annullare o sostituire questa transazione. Puoi però inviarne una nuova. Se hai ricevuto un messaggio di errore "Out of Gas", dovresti raddoppiare il limite gas che avevi indicato in origine.',
-tx_FoundOnChain_3           : '**Se non vedi errori, la transazione è stata inviata correttamente.** I tuoi ETH o i tuoi token sono dove li hai inviati. Se non vedi questi ETH o token nell\'altro portafoglio / nel conto della piattaforma di scambio, e se sono passate più di 24 ore dall\'invio, [contatta quel servizio esterno](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Invia loro il *link* alla transazione e chiedi, cortesemente, di controllare la tua situazione.',
+tx_FoundOnChain_3           : '**Se non vedi errori, la transazione è stata inviata correttamente.** I tuoi ETH o i tuoi token sono dove li hai inviati. Se non vedi questi ETH o token nell\'altro portafoglio / nel conto della piattaforma di scambio, e se sono passate più di 24 ore dall\'invio, [contatta quel servizio esterno](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Invia loro il *link* alla transazione e chiedi, cortesemente, di controllare la tua situazione.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Usa il tuo',
@@ -58,7 +58,7 @@ GEN_Help_20                 : 'Portafoglio offline',
 GET_ConfButton              : 'Ho capito. Continua.',
 GEN_Label_5                 : 'Salva la tua `chiave privata`. ',
 GEN_Unlock                  : 'Sblocca il portafoglio per vedere l\'indirizzo',
-GAS_PRICE_Desc              : 'Il prezzo gas è la somma che paghi per unità di gas. `Commissione transazione = prezzo gas * limite gas` e si paga ai *miner* perché includano la tua transazione in un blocco. Più alto il prezzo gas = più veloce la transazione, ma più costosa. Di default è `21 GWEI`.',
+GAS_PRICE_Desc              : 'Il prezzo gas è la somma che paghi per unità di gas. `Commissione transazione = prezzo gas * limite gas` e si paga ai *miner* perché includano la tua transazione in un blocco. Più alto il prezzo gas = più veloce la transazione, ma più costosa. Di default è `10 GWEI`.',
 GAS_LIMIT_Desc              : 'Il limite gas è la quantità di gas da inviare con la transazione. `Commissione transazione` = prezzo gas * limite gas e si paga ai *miner* perché includano la tua transazione in un blocco. Aumentare questo numero non farà in modo che la tua transazione sia inclusa prima. Invio di ETH = `21000`. Invio di token = ~`200000`.',
 NONCE_Desc                  : 'Il *nonce* è il numero di transazioni inviate da un certo indirizzo. Fa in modo che le transazioni siano inviate nel giusto ordine e non più di una volta.',
 TXFEE_Desc                  : 'La commissione transazione si paga ai *miner* perché includano la transazione in un blocco. Si calcola come `limite gas` * `prezzo gas`. [Puoi calcolare la conversione GWEI -> ETH qui](https://www.myetherwallet.com/helpers.html)',
@@ -203,7 +203,7 @@ SENDModal_No                : 'No, tiratemi fuori da qui! ',
 SENDModal_Yes               : 'Sì, sono sicuro! Esegui la transazione. ',
 
 /* Tokens */
-TOKEN_Addr                  : 'Indirizzo ',
+TOKEN_Addr                  : 'Indirizzo del token contratto',
 TOKEN_Symbol                : 'Simbolo del token ',
 TOKEN_Dec                   : 'Decimali ',
 TOKEN_show                  : 'Mostra tutti i token ',
@@ -380,7 +380,7 @@ ERROR_31                    : 'Inserisci una frase segreta valida ',
 ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, prova con un altro nodo (angolo in alto a destra), controlla le impostazioni del firewall. Se si tratta di un nodo personalizzato, controlla la configurazione.', // 32
 ERROR_33                    : 'L\'indirizzo del portafoglio non corrisponde a quello del proprietario. ',
 ERROR_34                    : 'Il nome che stai provando a rivelare non combacia con quello che hai inserito. ',
-ERROR_35                    : 'L\'indirizzo inserito non ha un checksum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Ulteriori informazioni</a>', // 35
+ERROR_35                    : 'L\'indirizzo inserito non ha un checksum. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Ulteriori informazioni</a>', // 35
 ERROR_36                    : 'Inserisci un hash transazione valido', // 36
 ERROR_37                    : 'Inserisci una stringa esadecimale valida (0-9, a-f)', // 37
 

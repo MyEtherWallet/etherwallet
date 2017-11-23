@@ -25,15 +25,7 @@ validator.isValidTxHash = function(txHash) {
 }
 validator.isValidENSAddress = function(address) {
     address = ens.normalise(address);
-    var tld = address.substr(address.lastIndexOf('.') + 1);
-    var _ens = new ens();
-    var validTLDs = {
-        eth: true,
-        test: true,
-        reverse: true
-    }
-    if (validTLDs[tld]) return true;
-    return false;
+    return address.lastIndexOf(".") != -1;
 }
 validator.isValidBTCAddress = function(address) {
     return ethUtil.WAValidator.validate(address, 'BTC');
