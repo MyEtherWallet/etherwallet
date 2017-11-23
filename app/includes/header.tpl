@@ -75,23 +75,6 @@
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
-@@if (site === 'mew' ) {
-  <div class="small announcement annoucement-danger">
-    <div class="container">
-      WARNING: IF YOU CLICK A LINK to MEW from EMAIL, SLACK DM, or a FORUM, YOU WILL HAVE YOUR COINS STOLEN. Do not click. <br />
-      Instead, install
-      <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a>
-      or use
-      <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>.</div>
-  </div>
-}
-
-  @@if (site === 'cx' ) {
-  <div class="small announcement annoucement-danger">
-      <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.
-      </div>
-  </div>
-  }
 <section class="bg-gradient header-branding">
   <section class="container">
     @@if (site === 'mew' ) {
