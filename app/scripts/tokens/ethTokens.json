@@ -929,6 +929,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x55648de19836338549130b1af587f16bea46f66b",
+"symbol":"PBL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xE64509F0bf07ce2d29A7eF19A8A9bc065477C1B4",
 "symbol":"PIPL",
 "decimal":8,
