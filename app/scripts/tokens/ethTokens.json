@@ -239,13 +239,13 @@
 "decimal":6,
 "type":"default"
 },{
-"address":"0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8",
-"symbol":"CAT",
+"address":"0x111111f7e9B1Fe072ade438F77E1Ce861C7eE4E3",
+"symbol":"CAT (BitClave)",
 "decimal":18,
 "type":"default"
 },{
-"address":"0x111111f7e9B1Fe072ade438F77E1Ce861C7eE4E3",
-"symbol":"CAT (BitClave)",
+"address":"0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8",
+"symbol":"CAT (Blockcat)",
 "decimal":18,
 "type":"default"
 },{
@@ -1118,7 +1118,7 @@
 "symbol":"S-A-PAT",
 "decimal":18,
 "type":"default"
-},{ 
+},{
 "address":"0xd7631787B4dCc87b1254cfd1e5cE48e96823dEe8",
 "symbol":"SCL",
 "decimal":8,
