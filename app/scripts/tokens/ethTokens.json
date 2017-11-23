@@ -244,6 +244,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x111111f7e9B1Fe072ade438F77E1Ce861C7eE4E3",
+"symbol":"CAT (BitClave)",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x28577A6d31559bd265Ce3ADB62d0458550F7b8a7",
 "symbol":"CCC",
 "decimal":18,
