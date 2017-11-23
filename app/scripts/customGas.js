@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// NOX Token Sale
+to:         '0x4b0712de9b75bc68a566215acca876ea5e55c172',
+gasLimit:   114293,
+data:       '',
+msg:        'NOX Token Sale'
+},{
 // GEE Token Sale
 to:         '0xF5DFFdEAEA54bB56156B47de1C7b4346c7dBa69C',
 gasLimit:   180000,
