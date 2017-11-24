@@ -59,7 +59,7 @@ GET_ConfButton              : 'Ho capito. Continua.',
 GEN_Label_5                 : 'Salva la tua `chiave privata`. ',
 GEN_Unlock                  : 'Sblocca il portafoglio per vedere l\'indirizzo',
 GAS_PRICE_Desc              : 'Il prezzo gas è la somma che paghi per unità di gas. `Commissione transazione = prezzo gas * limite gas` e si paga ai *miner* perché includano la tua transazione in un blocco. Più alto il prezzo gas = più veloce la transazione, ma più costosa. Di default è `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Il limite gas è la quantità di gas da inviare con la transazione. `Commissione transazione` = prezzo gas * limite gas e si paga ai *miner* perché includano la tua transazione in un blocco. Aumentare questo numero non farà in modo che la tua transazione sia inclusa prima. Invio di ETH = `21000`. Invio di token = ~`200000`.',
+GAS_LIMIT_Desc              : 'Il limite gas è la quantità di gas da inviare con la transazione. `Commissione transazione` = prezzo gas * limite gas e si paga ai *miner* perché includano la tua transazione in un blocco. Aumentare questo numero non farà in modo che la tua transazione sia inclusa prima. Invio di ETH = `10000`. Invio di token = ~`200000`.',
 NONCE_Desc                  : 'Il *nonce* è il numero di transazioni inviate da un certo indirizzo. Fa in modo che le transazioni siano inviate nel giusto ordine e non più di una volta.',
 TXFEE_Desc                  : 'La commissione transazione si paga ai *miner* perché includano la transazione in un blocco. Si calcola come `limite gas` * `prezzo gas`. [Puoi calcolare la conversione GWEI -> ETH qui](https://www.myetherwallet.com/helpers.html)',
 
@@ -214,7 +214,7 @@ TRANS_desc                  : 'Se invece volevi inviare dei token, utilizza la p
 TRANS_advanced              : '+Avanzate: aggiungi dati ',
 TRANS_data                  : 'Dati ',
 TRANS_gas                   : 'Limite gas ',
-TRANS_sendInfo              : 'Una transazione standard che utilizza 21000 gas costerà 0,000441 ETH. Utilizziamo un prezzo del gas leggermente al di sopra del minimo pari a 0,000000021 ETH per assicurarci che venga elaborata velocemente. Noi non prendiamo commissioni. ',
+TRANS_sendInfo              : 'Una transazione standard che utilizza 10000 gas costerà 0,000441 ETH. Utilizziamo un prezzo del gas leggermente al di sopra del minimo pari a 0,000000021 ETH per assicurarci che venga elaborata velocemente. Noi non prendiamo commissioni. ',
 
 /* Offline Transaction */
 OFFLINE_Title               : 'Genera & invia una transazione offline ',
@@ -229,7 +229,7 @@ OFFLINE_Step2_Label_2       : 'Valore / importo da inviare ',
 OFFLINE_Step2_Label_3       : 'Prezzo gas ',
 OFFLINE_Step2_Label_3b      : 'Questo valore è stato mostrato nel passo 1 sul computer online. ',
 OFFLINE_Step2_Label_4       : 'Limite gas ',
-OFFLINE_Step2_Label_4b      : '21000 è il limite gas predefinito. Quando invii a contratti o aggiungi dati potresti aver bisogno di un valore maggiore. Eventuale gas non utilizzato ti sarà restituito. ',
+OFFLINE_Step2_Label_4b      : '10000 è il limite gas predefinito. Quando invii a contratti o aggiungi dati potresti aver bisogno di un valore maggiore. Eventuale gas non utilizzato ti sarà restituito. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Questo valore è stato mostrato nel passo 1 sul computer online. ',
 OFFLINE_Step2_Label_6       : 'Dati ',
@@ -353,7 +353,7 @@ ERROR_4                     : 'Questa unità non esiste, ti preghiamo di usare u
 ERROR_5                     : 'Inserisci un indirizzo valido. ',
 ERROR_6                     : 'Inserisci una password valida. ',
 ERROR_7                     : 'Inserisci dei decimali validi. (Deve essere un intero. Prova 0-18.) ', // 7
-ERROR_8                     : 'Inserisci un limite gas valido. (Deve essere un intero. Prova 21000-4000000.) ', // 8
+ERROR_8                     : 'Inserisci un limite gas valido. (Deve essere un intero. Prova 10000-4000000.) ', // 8
 ERROR_9                     : 'Inserisci un valore valido per i dati. (Deve essere una stringa esadecimale.) ', // 9
 ERROR_10                    : 'Inserisci prezzo valido per il gas. (Deve essere un intero. Prova 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Inserisci un nonce valido. (Deve essere un intero.) ', // 11
@@ -417,7 +417,7 @@ PARITY_InvalidGasLimit      : "Il gas fornito supera il limite.",
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : 'Grazie ai nostri traduttori ',
-TranslatorName_1            : '[ugilio](https://www.myetherwallet.com/?gaslimit=21000&to=0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa&value=1.0#send-transaction) ',
+TranslatorName_1            : '[ugilio](https://www.myetherwallet.com/?gaslimit=10000&to=0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : '',
@@ -564,8 +564,8 @@ HELP_10_Desc_2              : 'Inserisci l\'"Indirizzo mittente". Ti preghiamo d
 HELP_10_Desc_3              : 'Spostati sul tuo computer offline. Inserisci l\'"INDIRIZZO DESTINATARIO" e l\'"IMPORTO" che desideri inviare. ',
 HELP_10_Desc_4              : 'Inserisci il "PREZZO GAS" così come visualizzato sul tuo computer online nel passo n. 1. ',
 HELP_10_Desc_5              : 'Inserisci il "NONCE" così come visualizzato sul tuo computer online nel passo n. 1. ',
-HELP_10_Desc_6              : 'Il "LIMITE GAS" ha un valore predefinito di 21000. Questo valore è sufficiente per una transazione standard. Se desideri inviare ad un contratto o se includi nella transazione dati aggiuntivi avrai bisogno di aumentare il limite gas. Eventuale gas in eccesso ti sarà restituito. ',
-HELP_10_Desc_7              : 'Se lo desideri, inserisci dei dati. Se lo fai, dovrai aumentare il limite gas a un valore superiore al limite predefinito di 21000. Tutti i dati sono in formato HEX. ',
+HELP_10_Desc_6              : 'Il "LIMITE GAS" ha un valore predefinito di 10000. Questo valore è sufficiente per una transazione standard. Se desideri inviare ad un contratto o se includi nella transazione dati aggiuntivi avrai bisogno di aumentare il limite gas. Eventuale gas in eccesso ti sarà restituito. ',
+HELP_10_Desc_7              : 'Se lo desideri, inserisci dei dati. Se lo fai, dovrai aumentare il limite gas a un valore superiore al limite predefinito di 10000. Tutti i dati sono in formato HEX. ',
 HELP_10_Desc_8              : 'Seleziona il file del tuo portafoglio -oppure- la tua chiave privata e sblocca il portafoglio. ',
 HELP_10_Desc_9              : 'Premi il pulsante "GENERA TRANSAZIONE". ',
 HELP_10_Desc_10             : 'I campi sotto il pulsante saranno riempiti con la transazione firmata. Copiala e ritorna al tuo computer online. ',

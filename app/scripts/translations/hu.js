@@ -58,7 +58,7 @@ GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `10000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
 
@@ -215,12 +215,12 @@ TRANS_warning               : 'Ha a "Csak ETH" vagy a "Csak ETC" Funkciókat has
 TRANS_advanced              : '+Haladó: Több Adat ',
 TRANS_data                  : 'Adat ',
 TRANS_gas                   : 'Gas Limit ',
-TRANS_sendInfo              : 'Egy standard tranzakció 21000 gas-t használ, ami 0.000441 ETH-be fog kerülni. Mi 0.000000021 ETH-nél (a minimálisnál) enyhén magasabb gas árat használunk, annak biztosítása érdekében, hogy gyorsan ki legyen bányászva. Tranazkciós költséget nem számolunk fel. ',
+TRANS_sendInfo              : 'Egy standard tranzakció 10000 gas-t használ, ami 0.000441 ETH-be fog kerülni. Mi 0.000000021 ETH-nél (a minimálisnál) enyhén magasabb gas árat használunk, annak biztosítása érdekében, hogy gyorsan ki legyen bányászva. Tranazkciós költséget nem számolunk fel. ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : '"Csak ETH" és "Csak ETC" Tranzakciók ',
 TRANSModal_Content_0        : 'Egy jegyzet a különféle tranzakciókról és szolgáltatásokról ',
-TRANSModal_Content_1        : '**ETH (Standard Tranzakció): ** Egy alapértelmezett tranzakciót generál közvetlenül az egyik címről a másikra. A gas alapértéke 21000. Valószínűsíthető, hogy minden ETH, ami ezzel a módszerrel lesz elküldve, végbemegy az ETC láncon is. ',
+TRANSModal_Content_1        : '**ETH (Standard Tranzakció): ** Egy alapértelmezett tranzakciót generál közvetlenül az egyik címről a másikra. A gas alapértéke 10000. Valószínűsíthető, hogy minden ETH, ami ezzel a módszerrel lesz elküldve, végbemegy az ETC láncon is. ',
 TRANSModal_Content_2        : '**Csak ETH: **  Ez a tranzakciótípus [Timon Rapp replay protection/visszajátszás elleni védelem kontraktusán keresztül küld (ahogy azt Vitalik Buterin adjánlotta)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) tehát a küldés csak az **ETH** láncon megy végbe. ',
 TRANSModal_Content_3        : '**Csak ETC: ** Ez a tranzakciótípus [Timon Rapp replay protection/visszajátszás elleni védelem kontraktusán keresztül küld (ahogy azt Vitalik Buterin adjánlotta)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) tehát a küldés csak az **ETC** láncon megy végbe. ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** Csak Standard Tranzakció szerint küld. Ha a "Csak" kontraktusok valamelyikével küldesz, fel kell venned a kapcsolatot az ügyfélszolgálattal, hogy manuálisan hozzáadhassák az egyenleged vagy visszatérítést küldjenek. [Megpróbálhatod a Shapeshift "split" eszközét is.](https://split.shapeshift.io/) ',
@@ -241,7 +241,7 @@ OFFLINE_Step2_Label_2       : 'Érték / Összeg küldésre ',
 OFFLINE_Step2_Label_3       : 'Gas Ár ',
 OFFLINE_Step2_Label_3b      : 'Ez volt látható az online számítógépen az első lépésben. ',
 OFFLINE_Step2_Label_4       : 'Gas Limit ',
-OFFLINE_Step2_Label_4b      : '21000 az alapértelmezett gas limit. Amikor kontraktust küldesz vagy adatot adsz hozzá ezeknek különbözőeknek kell lennie. A nem használt gas visszatérül hozzád. ',
+OFFLINE_Step2_Label_4b      : '10000 az alapértelmezett gas limit. Amikor kontraktust küldesz vagy adatot adsz hozzá ezeknek különbözőeknek kell lennie. A nem használt gas visszatérül hozzád. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Ez volt látható az online számítógépen az első lépésben. ',
 OFFLINE_Step2_Label_6       : 'Adat ',
@@ -365,7 +365,7 @@ ERROR_4                     : 'Ez a egység nem létezik, kérlek használj egye
 ERROR_5                     : 'Érvénytelen cím. ',
 ERROR_6                     : 'Érvénytelen jelszó. ',
 ERROR_7                     : 'Érvénytelen összeg. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Érvénytelen gas limit. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'Érvénytelen gas limit. (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'Érvénytelen adatérték. (Must be hex.) ', // 9
 ERROR_10                    : 'Érvénytelen gas összeg. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Érvénytelen nonce. (Must be integer.) ', // 11
@@ -427,10 +427,10 @@ PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 /* Tranlsation Info */
 translate_version           : '0.4.3 ',
 Translator_Desc             : 'Köszönet a fordításért ',
-TranslatorName_1            : '[belpheg](https://www.myetherwallet.com/?gaslimit=21000&to=0xBF8C35176eAD29257834D5A1592ed50Adb0b6e4f&value=1.0#send-transaction) · ',
+TranslatorName_1            : '[belpheg](https://www.myetherwallet.com/?gaslimit=10000&to=0xBF8C35176eAD29257834D5A1592ed50Adb0b6e4f&value=1.0#send-transaction) · ',
 TranslatorAddr_1            : '0xBF8C35176eAD29257834D5A1592ed50Adb0b6e4f ',
 /* Translator 1             : email: zoltan.tapi@donamin.com */
-TranslatorName_2            : '[bluqesh](https://www.myetherwallet.com/?gaslimit=21000&to=0x4270A331d14CcdB6FB941f3f5De9Cf01607Bff9F&value=1.0#send-transaction) ',
+TranslatorName_2            : '[bluqesh](https://www.myetherwallet.com/?gaslimit=10000&to=0x4270A331d14CcdB6FB941f3f5De9Cf01607Bff9F&value=1.0#send-transaction) ',
 TranslatorAddr_2            : '0x4270A331d14CcdB6FB941f3f5De9Cf01607Bff9F ',
 /* Translator 2             : Insert Comments Here */
 TranslatorName_3            : '',
@@ -574,8 +574,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas limit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',

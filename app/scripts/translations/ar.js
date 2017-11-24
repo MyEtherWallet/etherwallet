@@ -58,7 +58,7 @@ GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `10000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
 
@@ -247,7 +247,7 @@ TRANS_desc                  : 'If you want to send Tokens, please use the "Send 
 TRANS_advanced              : '+Advanced: Add Data ',
 TRANS_data                  : 'Data ',
 TRANS_gas                   : 'Gas Limit ',
-TRANS_sendInfo              : 'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee. ',
+TRANS_sendInfo              : 'A standard transaction using 10000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee. ',
 
 /* Offline Transaction */
 OFFLINE_Title               : 'Generate & Send Offline Transaction ',
@@ -262,7 +262,7 @@ OFFLINE_Step2_Label_2       : 'Value / Amount to Send ',
 OFFLINE_Step2_Label_3       : 'Gas Price ',
 OFFLINE_Step2_Label_3b      : 'This was displayed in Step 1 on your online computer. ',
 OFFLINE_Step2_Label_4       : 'Gas Limit ',
-OFFLINE_Step2_Label_4b      : '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you. ',
+OFFLINE_Step2_Label_4b      : '10000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'This was displayed in Step 1 on your online computer. ',
 OFFLINE_Step2_Label_6       : 'Data ',
@@ -370,7 +370,7 @@ ERROR_4                     : 'This unit doesn\'t exists, please use the one of 
 ERROR_5                     : 'Please enter a valid address. ', // 5
 ERROR_6                     : 'Please enter a valid password. ', // 6
 ERROR_7                     : 'Please enter valid decimals     (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Please enter a valid gas limit  (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'Please enter a valid gas limit  (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'Please enter a valid data value (Must be hex.) ', // 9
 ERROR_10                    : 'Please enter a valid gas price. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Please enter a valid nonce      (Must be integer.) ', // 11
@@ -434,7 +434,7 @@ PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 /* Tranlsation Info */
 translate_version           : '0.5 ',
 Translator_Desc             : 'نشكر من قام بالترجمة ',
-TranslatorName_1            : '[bstashio](https://www.myetherwallet.com/?gaslimit=21000&to=0xD8FE791535Ad85D2b0E76e603443C1b39107729F&value=1.0#send-transaction) · ',
+TranslatorName_1            : '[bstashio](https://www.myetherwallet.com/?gaslimit=10000&to=0xD8FE791535Ad85D2b0E76e603443C1b39107729F&value=1.0#send-transaction) · ',
 TranslatorAddr_1            : '0xD8FE791535Ad85D2b0E76e603443C1b39107729F ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : ' ',
@@ -581,8 +581,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas limit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',

@@ -58,7 +58,7 @@ GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Desbloquea tu cartera para ver tu dirección',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `10000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
 
@@ -215,12 +215,12 @@ TRANS_warning               : 'Si utilizas las funciones "Sólo ETH" o "Sólo ET
 TRANS_advanced              : '+Avanzado: Añadir datos ',
 TRANS_data                  : 'Datos ',
 TRANS_gas                   : 'Límite de gas ',
-TRANS_sendInfo              : 'Una transacción estándar que utiliza 21000 gas cuesta 0.000441 ETH. Utilizamos un precio de gas de 0.000000021 ETH, ligeramente por encima del mínimo, para asegurarnos de que se mina con rapidez. Nosotros no recibimos ninguna comisión por la transacción. ',
+TRANS_sendInfo              : 'Una transacción estándar que utiliza 10000 gas cuesta 0.000441 ETH. Utilizamos un precio de gas de 0.000000021 ETH, ligeramente por encima del mínimo, para asegurarnos de que se mina con rapidez. Nosotros no recibimos ninguna comisión por la transacción. ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : 'Transacciones "Sólo ETH" y "Sólo ETC" ',
 TRANSModal_Content_0        : 'Una nota sobre las distintas transacciones y servicios: ',
-TRANSModal_Content_1        : '**ETH (transacción estándar): ** Esto genera una transacción predeterminada directamente de una dirección a otra. Utiliza gas predeterminado de 21000. Es probable que cualquier transacción de ETH enviada mediante este método se reproduzca (replay) en la cadena ETC. ',
+TRANSModal_Content_1        : '**ETH (transacción estándar): ** Esto genera una transacción predeterminada directamente de una dirección a otra. Utiliza gas predeterminado de 10000. Es probable que cualquier transacción de ETH enviada mediante este método se reproduzca (replay) en la cadena ETC. ',
 TRANSModal_Content_2        : '**Sólo ETH: ** Esto envía a través del [contrato de protección contra replay de Timon Rapp (según recomienda VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) de modo que envías solamente en la cadena **ETH**. ',
 TRANSModal_Content_3        : '**Sólo ETC: ** Esto envía a través del [contrato de protección contra replay de Timon Rapp (según recomienda VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) de modo que envías solamente en la cadena **ETC**. ',
 TRANSModal_Content_4        : '**Coinbase y ShapeShift: ** Envía solamente utilizando transacción estándar. Si envías utilizando los contratos "Sólo ETH" o "Sólo ETC", será necesario que contactes con su equipo de soporte para que añadan manualmente el saldo o te lo devuelvan. [También puedes probar la herramienta de "split" de Shapeshift.](https://split.shapeshift.io/) ',
@@ -241,7 +241,7 @@ OFFLINE_Step2_Label_2       : 'Valor / Cantidad a enviar ',
 OFFLINE_Step2_Label_3       : 'Precio del gas ',
 OFFLINE_Step2_Label_3b      : 'Esto se ha mostrado en el Paso 1 en tu equipo con conexión. ',
 OFFLINE_Step2_Label_4       : 'Límite de gas ',
-OFFLINE_Step2_Label_4b      : '21000 es el límite de gas predeterminado. Cuando envías contratos o datos adicionales, puede que esto necesite ser diferente. El gas no utilizado se te devolverá. ',
+OFFLINE_Step2_Label_4b      : '10000 es el límite de gas predeterminado. Cuando envías contratos o datos adicionales, puede que esto necesite ser diferente. El gas no utilizado se te devolverá. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Esto se indicó en el Paso 1 en tu equipo con conexión. ',
 OFFLINE_Step2_Label_6       : 'Datos ',
@@ -368,7 +368,7 @@ ERROR_4                     : 'Esta unidad no existe. Por favor utiliza una de l
 ERROR_5                     : 'Introduce una Dirección válida. ',
 ERROR_6                     : 'Introduce una Contraseña válida. ',
 ERROR_7                     : 'Introduce una Cantidad válida. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Introduce un Límite de gas válido. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'Introduce un Límite de gas válido. (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'Introduce un Valor de datos válido. (Must be hex.) ', // 9
 ERROR_10                    : 'Introduce una Cantidad de gas válida. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Introduce un Nonce válido. (Must be integer.) ', // 11
@@ -579,8 +579,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas limit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',

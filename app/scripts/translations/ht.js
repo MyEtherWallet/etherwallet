@@ -60,7 +60,7 @@ GET_ConfButton              : 'Je comprends. Continuer.',
 GEN_Label_5                 : 'Sauvegardez votre `clé privée`. ',
 GEN_Unlock                  : 'Déverouillez votre portefeuille pour voir votre adresse.',
 GAS_PRICE_Desc              : 'Le prix du gaz est le montant que vous payez par unité de gaz. `frais de TX  = prix du gaz * limite en gaz` & est payé aux mineurs pour inclure votre transaction à un bloc. Prix de gaz plus haut = transaction plus rapide, mais plus coûteuse. Le prix par défaut est de `10 GWEI`.',
-GAS_LIMIT_Desc              : 'La limite en gaz est le montant de gaz à envoyer avec votre transaction. `frais de TX  = prix du gaz * limite en gaz` et est payé aux mineurs pour inclure votre transaction à un bloc. Augmenter ce nombre n\'exécutera pas votre transaction plus rapidement. Envoyer ETH = `21000`. Envoyer des Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'La limite en gaz est le montant de gaz à envoyer avec votre transaction. `frais de TX  = prix du gaz * limite en gaz` et est payé aux mineurs pour inclure votre transaction à un bloc. Augmenter ce nombre n\'exécutera pas votre transaction plus rapidement. Envoyer ETH = `10000`. Envoyer des Tokens = ~`200000`.',
 NONCE_Desc                  : 'Le nonce est le nombre de transactions envoyées depuis une adresse. Il fait en sorte que les transactions sont envoyées en ordre et pas plus d\'une fois.',
 TXFEE_Desc                  : 'Les frais de transaction sont payés aux mineurs pour inclure votre transaction dans un bloc. Cela représente le `gas limit` * le `gas price`. [Vous pouvez convertir GWEI -> ETH ici](https://www.myetherwallet.com/helpers.html)',
 
@@ -258,7 +258,7 @@ TRANS_warning               : 'METE FONKSYON ‘’ETH’’ YO SÈLMAN  AK ‘�
 TRANS_advanced              : '+AVANSE : METE GAZ ',
 TRANS_data                  : 'DONE ',
 TRANS_gas                   : 'LIMIT AN GAZ ;// CHANJE AN ENG POU LIMIT GAZ LA ',
-TRANS_sendInfo              : 'YON TRANSFÈ NÒMAL SÈVI  AK 21000 GAZ KI KOUTE 0.000441  ETH. PRI GAZ LA 0.000000021 ETH  KE NOU TE CHWAZI A ON TI JAN PI WO KE  PI PITI A ASIRE W’ POU W’ YON KONFIMASYON RAPID. NOU PA PRAN FRÈ POU TRANSFÈ A.  ',
+TRANS_sendInfo              : 'YON TRANSFÈ NÒMAL SÈVI  AK 10000 GAZ KI KOUTE 0.000441  ETH. PRI GAZ LA 0.000000021 ETH  KE NOU TE CHWAZI A ON TI JAN PI WO KE  PI PITI A ASIRE W’ POU W’ YON KONFIMASYON RAPID. NOU PA PRAN FRÈ POU TRANSFÈ A.  ',
 
 /* Offline Transaction */
 OFFLINE_Title               : 'KREYE EPI VOYE YON TRANFÈ SAN SIYAL ',
@@ -273,7 +273,7 @@ OFFLINE_Step2_Label_2       : 'VALÈ/KANTITE W’AP VOYE ',
 OFFLINE_Step2_Label_3       : 'PRI GAZ LA ',
 OFFLINE_Step2_Label_3b      : 'KANTITE SA TE PARÈT NAN ETAP 1 AN LÈ KOMPITÈ W’ LA KI TE GEN SIYAL ',
 OFFLINE_Step2_Label_4       : 'LIMIT GAZ ',
-OFFLINE_Step2_Label_4b      : '21000 SE LIMIT NÒMAL LA. NA KA W’AP VOYE POU  KONTRA YO OSWA AVÈK DONE ANPLIS YO, VALÈ SA KAPAB DIFERAN. TOUT GAZ KI PA SÈVI YO  Y’AP VOYE YO BA W’ ',
+OFFLINE_Step2_Label_4b      : '10000 SE LIMIT NÒMAL LA. NA KA W’AP VOYE POU  KONTRA YO OSWA AVÈK DONE ANPLIS YO, VALÈ SA KAPAB DIFERAN. TOUT GAZ KI PA SÈVI YO  Y’AP VOYE YO BA W’ ',
 OFFLINE_Step2_Label_5       : 'NONCE ',
 OFFLINE_Step2_Label_5b      : 'SA TE PARÈT NAN PREMYE ETAP NAN KOMPITÈ W’ LA  KI GEN SIYAL.',
 OFFLINE_Step2_Label_6       : 'DONE YO	',
@@ -355,7 +355,7 @@ ERROR_4                     : 'VALÈ SA PA LA, TANPRI SÈVI AK YOUN NANN LÒT VA
 ERROR_5                     : 'ANTRE YON BON ADRÈS ',
 ERROR_6                     : 'ANTRE YON BON KÒD SEKRÈ ',
 ERROR_7                     : 'TANPRI ANTRE YON VALÈ KI BON  (Must be integer. Try 0-18.) ', // 7 (LI DWE ANTYE. Try 0-18.) ', // 7
-ERROR_8                     : 'TANPRI ANTRE YON BON LIMIT GAZ . (Must be integer. Try 21000-4000000.) ', // 8  (LI DWE ANTYE. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'TANPRI ANTRE YON BON LIMIT GAZ . (Must be integer. Try 10000-4000000.) ', // 8  (LI DWE ANTYE. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'TANPRI ANTRE YON VALÈ DONE YO KI VALAB. (Must be hex.) ', //9 (LI DWE hex.) ', //9
 ERROR_10                    : 'TANPRI ANTRE YON VALÈ GAZ KI VALAB(Must be integer. Try 20 GWEI / 20000000000 WEI.) (LI DWE ANTYE. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : '(Must be integer.) ', // 11 TANPRI ANTRE YON NONCE VALAB. . (Must be integer.) ', // 11  	. (LI DWE ANTYE.) ', // 11 ',
@@ -419,7 +419,7 @@ PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 /* Tranlsation Info */
 translate_version           : '0.5 ',
 Translator_Desc             : ' YON MÈSI POU TRADIKTÈ N’YO ',
-TranslatorName_1            : '[Nogo10](https://www.myetherwallet.com/?gaslimit=21000&to= 0x152e77CC3Dd8d86471ebEa8e93B9924A41e7055a&value=1.0#VOYE-TRANSFÈ A) · ',
+TranslatorName_1            : '[Nogo10](https://www.myetherwallet.com/?gaslimit=10000&to= 0x152e77CC3Dd8d86471ebEa8e93B9924A41e7055a&value=1.0#VOYE-TRANSFÈ A) · ',
 TranslatorAddr_1            : ' 0x152e77CC3Dd8d86471ebEa8e93B9924A41e7055a ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : 'NON TRADIKTÈ_2  JJCROISIERE · ',
@@ -565,8 +565,8 @@ HELP_10_Desc_2              : 'ANTRE "ADRÈS KOTE L’ SÒTI A". ATANSYON, SE AD
 HELP_10_Desc_3              : 'ALE SOU KOMPITÈ W’ LA KI PA GEN SIYAL. ANTRE "ADRÈS KOTE L’ PRALE A" EPI "KANTITE A" OU VLE VOYE A. ',
 HELP_10_Desc_4              : 'ANTRE "PRI GAZ LA" JAN W’ TE WÈ L PARÈT SOU KOMPITÈ A KI GEN SIYAL NAN PREMYE ETAP LA. ',
 HELP_10_Desc_5              : 'ANTRE "NONCE LA"  JAN W’ TE WÈL PARÈT SOU KOMPITÈ A KI GEN SIYAL NAN PREMYE ETAP LA. ',
-HELP_10_Desc_6              : ' " LIMIT GAZ LA"  GEN YON VALÈ 21000 NÒMAL. SA KOUVRI FRÈ YON TRANSFÈ NÒMAL. SI WA’ VOYE POU YON KONTRA OSWA SI W’AP PRAN DONE ANPLIS YO AVÈK TRANSFÈ W’ LA OU DWE METE SOU LIMIT GAZ LA. GAZ KI PA SÈVI A AP RETOUNEN VIN JWENN OU. ',
-HELP_10_Desc_7              : 'SI W’ VLE L’, ANTRE DONE YO, NAN KA SA, OU DWE METE PLIS KE LIMIT 21000 NÒMAL LA ? TOUT DONE YO SOU FÒM  16 NIMEWO.  ',
+HELP_10_Desc_6              : ' " LIMIT GAZ LA"  GEN YON VALÈ 10000 NÒMAL. SA KOUVRI FRÈ YON TRANSFÈ NÒMAL. SI WA’ VOYE POU YON KONTRA OSWA SI W’AP PRAN DONE ANPLIS YO AVÈK TRANSFÈ W’ LA OU DWE METE SOU LIMIT GAZ LA. GAZ KI PA SÈVI A AP RETOUNEN VIN JWENN OU. ',
+HELP_10_Desc_7              : 'SI W’ VLE L’, ANTRE DONE YO, NAN KA SA, OU DWE METE PLIS KE LIMIT 10000 NÒMAL LA ? TOUT DONE YO SOU FÒM  16 NIMEWO.  ',
 HELP_10_Desc_8              : 'CHWA PAJ BOUS OU A OSWA KLE SEKRÈ W’ LA AK OUVRI BOUS OU A. ',
 HELP_10_Desc_9              : 'PEZE BOUTON "KREYE TRANSFÈ SIYEN AN". ',
 HELP_10_Desc_10             : 'ESPAS DONE YO  ANBA BOUTON SA PLEN AVÈK TRANSFÈ SIYEN W’ LA. KOPYE L’ EPI TOUNEN ANKÒ AVÈK LI  SOU KOMPITÈ W’ LA KI GEN SIYAL. ',

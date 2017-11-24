@@ -58,7 +58,7 @@ GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `10000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
 
@@ -256,7 +256,7 @@ TRANS_warning               : '"이더리움만 전송하기" 또는 "이더리�
 TRANS_advanced              : '+고급: 데이터 추가 ',
 TRANS_data                  : '데이터 ',
 TRANS_gas                   : '가스 한도 ',
-TRANS_sendInfo              : '21000 가스를 사용하는 표준 트랜잭션은 0.000441 ETH 를 사용합니다. 우리는 최소 가스 가격인 0.000000021 보다 약간 높게 책정하여 전송을 빠르게 합니다. MyEtherWallet은 트랜잭션 수수료를 얻지 않습니다. ',
+TRANS_sendInfo              : '10000 가스를 사용하는 표준 트랜잭션은 0.000441 ETH 를 사용합니다. 우리는 최소 가스 가격인 0.000000021 보다 약간 높게 책정하여 전송을 빠르게 합니다. MyEtherWallet은 트랜잭션 수수료를 얻지 않습니다. ',
 
 /* Offline Transaction */
 OFFLINE_Title               : '오프라인 트랜잭션 생성 & 전송하기 ',
@@ -271,7 +271,7 @@ OFFLINE_Step2_Label_2       : '보낼 금액/총량 ',
 OFFLINE_Step2_Label_3       : '가스 가격 ',
 OFFLINE_Step2_Label_3b      : '이것은 1단계에서 온라인 컴퓨터에 표시됩니다. ',
 OFFLINE_Step2_Label_4       : '가스 한도 ',
-OFFLINE_Step2_Label_4b      : '21000 가스는 기본 설정값입니다. 컨트랙트를 전송하거나 데이터를 더할 때, 사용 가스는 다를 수 있습니다. 사용되지 않은 가스는 환급됩니다. ',
+OFFLINE_Step2_Label_4b      : '10000 가스는 기본 설정값입니다. 컨트랙트를 전송하거나 데이터를 더할 때, 사용 가스는 다를 수 있습니다. 사용되지 않은 가스는 환급됩니다. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : '이것은 1단계에서 온라인 컴퓨터에 표시됩니다. ',
 OFFLINE_Step2_Label_6       : '데이터 ',
@@ -353,7 +353,7 @@ ERROR_4                     : '존재하지 않는 단위입니다. 다음과 �
 ERROR_5                     : '잘못된 주소입니다. ',
 ERROR_6                     : '잘못된 비밀번호입니다. ',
 ERROR_7                     : '잘못된 수량입니다. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : '잘못된 가스 한도입니다. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : '잘못된 가스 한도입니다. (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : '잘못된 데이터입니다. (Must be hex.) ', // 9
 ERROR_10                    : '잘못된 가스 수량입니다. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : '잘못된 nonce 입니다. (Must be integer.) ', // 11
@@ -417,19 +417,19 @@ PARITY_InvalidGasLimit      : "공급 된 가스가 한도를 초과했습니다
 /* Tranlsation Info */
 translate_version           : '0.5 ',
 Translator_Desc             : '번역에 기여해주신 분들 ',
-TranslatorName_1            : '[CoinKorea](https://www.myetherwallet.com/?gaslimit=21000&to=0x0080782b9A9A14f7871Bb765eF7041e784D03F00&value=1.0#send-transaction) · [kanghamin](https://www.myetherwallet.com/?gaslimit=21000&to=0x7B12655A5aada0b3c053C7ff5aa444Bd666A0163&value=1.0#send-transaction) · [maa](https://www.myetherwallet.com/?gaslimit=21000&to=0x14036e41ddb2bd408eaf91597e6dc5220f776ae0&value=1.0#send-transaction) ',
+TranslatorName_1            : '[CoinKorea](https://www.myetherwallet.com/?gaslimit=10000&to=0x0080782b9A9A14f7871Bb765eF7041e784D03F00&value=1.0#send-transaction) · [kanghamin](https://www.myetherwallet.com/?gaslimit=10000&to=0x7B12655A5aada0b3c053C7ff5aa444Bd666A0163&value=1.0#send-transaction) · [maa](https://www.myetherwallet.com/?gaslimit=10000&to=0x14036e41ddb2bd408eaf91597e6dc5220f776ae0&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0x0080782b9A9A14f7871Bb765eF7041e784D03F00 ',
 /* Translator 1             : Insert Comments Here */
-TranslatorName_2            : '· [Issac](https://www.myetherwallet.com/?gaslimit=21000&to=0x594a7773f4e062ccf644e8f122d5612b5f0db3b2&value=1.0#send-transaction) ',
+TranslatorName_2            : '· [Issac](https://www.myetherwallet.com/?gaslimit=10000&to=0x594a7773f4e062ccf644e8f122d5612b5f0db3b2&value=1.0#send-transaction) ',
 TranslatorAddr_2            : '0x594a7773f4e062ccf644e8f122d5612b5f0db3b2 ',
 /* Translator 2             : Insert Comments Here */
-TranslatorName_3            : '· [coinmaker](https://www.myetherwallet.com/?gaslimit=21000&to=0x80B65285607BAbC4b60a7179A0fa8EB42232b9ad&value=1.0#send-transaction) ',
+TranslatorName_3            : '· [coinmaker](https://www.myetherwallet.com/?gaslimit=10000&to=0x80B65285607BAbC4b60a7179A0fa8EB42232b9ad&value=1.0#send-transaction) ',
 TranslatorAddr_3            : '0x80B65285607BAbC4b60a7179A0fa8EB42232b9ad ',
 /* Translator 3             : Insert Comments Here */
-TranslatorName_4            : '· [csjune](https://www.myetherwallet.com/?gaslimit=21000&to=0xfc465E0545c1024d04ceA2d6D154F20E7C67C66f&value=1.0#send-transaction) ',
+TranslatorName_4            : '· [csjune](https://www.myetherwallet.com/?gaslimit=10000&to=0xfc465E0545c1024d04ceA2d6D154F20E7C67C66f&value=1.0#send-transaction) ',
 TranslatorAddr_4            : '0xfc465E0545c1024d04ceA2d6D154F20E7C67C66f ',
 /* Translator 4             : Insert Comments Here */
-TranslatorName_5            : '· [sadfrog](https://www.myetherwallet.com/?gaslimit=21000&to=0x608c96865c3d1364ffc5137e5ac78b57e58714d4&value=1.0#send-transaction) ',
+TranslatorName_5            : '· [sadfrog](https://www.myetherwallet.com/?gaslimit=10000&to=0x608c96865c3d1364ffc5137e5ac78b57e58714d4&value=1.0#send-transaction) ',
 TranslatorAddr_5            : '0x608c96865c3d1364ffc5137e5ac78b57e58714d4 ',
 /* Translator 5             : Insert Comments Here */
 
@@ -562,8 +562,8 @@ HELP_10_Desc_2              : '"보낸 사람 주소"를 입력하십시오. 이
 HELP_10_Desc_3              : '오프라인 컴퓨터에서, "받는 곳"과 전송하고자 하는 "금액" 을 입력합니다. ',
 HELP_10_Desc_4              : '온라인 컴퓨터 1단계에서 표시된 "가스 가격"을 입력합니다. ',
 HELP_10_Desc_5              : '온라인 컴퓨터 1단계에서 표시된 "NONCE"를 입력합니다. ',
-HELP_10_Desc_6              : '21000 가스는 기본 설정값입니다. 트랜잭션을 전송하거나 데이터를 더할 때, 사용 가스는 다를 수 있습니다. 사용되지 않은 가스는 환급됩니다. ',
-HELP_10_Desc_7              : '가스를 늘리고 싶다면 희망 가스양을 입력해주세요. 기본값인 21000 가스보다 높은 양을 입력해야 합니다. 모든 데이터는 HEX 포맷입니다. ',
+HELP_10_Desc_6              : '10000 가스는 기본 설정값입니다. 트랜잭션을 전송하거나 데이터를 더할 때, 사용 가스는 다를 수 있습니다. 사용되지 않은 가스는 환급됩니다. ',
+HELP_10_Desc_7              : '가스를 늘리고 싶다면 희망 가스양을 입력해주세요. 기본값인 10000 가스보다 높은 양을 입력해야 합니다. 모든 데이터는 HEX 포맷입니다. ',
 HELP_10_Desc_8              : '지갑을 열기 위해 지갑 파일 또는 개인 키를 선택합니다. ',
 HELP_10_Desc_9              : '"서명된 트랜잭션 생성" 버튼을 클릭해주세요. ',
 HELP_10_Desc_10             : '이 버튼 아래의 데이터 영역은 서명된 트랜잭션으로 채워집니다. 이것을 복사하여 온라인 컴퓨터로 옮깁니다. ',

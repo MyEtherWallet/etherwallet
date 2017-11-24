@@ -58,7 +58,7 @@ GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `10000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
 
@@ -213,13 +213,13 @@ TRANS_desc                  : 'Jeśli chcesz wysłać Tokeny, użyj zakładki "W
 TRANS_warning               : 'Jeśli używasz funkcji "Tylko ETH" lub "Tylko ETC" wysyłasz przez kontrakt. Niektóre serwisy mają problemy z rozpoznawaniem tego typu transakcji. Czytaj dalej. ',
 TRANS_advanced              : '+Zaawansowane: Dodaj Dane ',
 TRANS_data                  : 'Dane ',
-TRANS_sendInfo              : 'Standardowa transakcja, zużywająca 21000 paliwa, będzie kosztować 0.000441 ETH. My używamy ceny paliwa nieco-powyżej-minimum, co odpowiada 0.000000021 ETH aby upewnić się, że zostanie szybko zatwierdzona. Nie pobieramy żadnych dodatkowych opłat. ',
+TRANS_sendInfo              : 'Standardowa transakcja, zużywająca 10000 paliwa, będzie kosztować 0.000441 ETH. My używamy ceny paliwa nieco-powyżej-minimum, co odpowiada 0.000000021 ETH aby upewnić się, że zostanie szybko zatwierdzona. Nie pobieramy żadnych dodatkowych opłat. ',
 TRANS_gas                   : 'Limit Paliwa ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : 'Transakcje "Tylko ETH" i "Tylko ETC" ',
 TRANSModal_Content_0        : 'Informacje na temat różnych transakcji i różnych odbiorców: ',
-TRANSModal_Content_1        : '**ETH (Standardowa Transakcja): ** generuje standardową transakcję bezpośrednio z jednego adresu do drugiego. Domyślnie spala 21000 paliwa. Prawdopodobnie transakcja ETH zostanie powielona na łańcuchu ETC jeżeli posiadasz obie waluty na tym samym adresie. ',
+TRANSModal_Content_1        : '**ETH (Standardowa Transakcja): ** generuje standardową transakcję bezpośrednio z jednego adresu do drugiego. Domyślnie spala 10000 paliwa. Prawdopodobnie transakcja ETH zostanie powielona na łańcuchu ETC jeżeli posiadasz obie waluty na tym samym adresie. ',
 TRANSModal_Content_2        : '**Tylko ETH: ** wysyła przez [Kontrakt zapobiegający powielaniu Timon\'a Rapp\'a (zalecany przez VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), który wysyła środki tylko na łańcuchu **ETH**. ',
 TRANSModal_Content_3        : '**Tylko ETC: ** wysyła przez [Kontrakt zapobiegający powielaniu Timon\'a Rapp\'a (zalecany przez VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), który wysyła środki tylko na łańcuchu **ETC**. ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** używaj tylko Transakcji Standardowych. Jeżeli wyślesz z opcją "Tylko...", będziesz musiał skontaktować się z pomocą techniczną usługodawcy w celu manualnego zatwierdzenia środków lub ich zwrotu. Możesz też użyć [narzędzia Shapeshift](https://split.shapeshift.io/)  do rozdzielenia środków. ',
@@ -240,7 +240,7 @@ OFFLINE_Step2_Label_2       : 'Wartość / Kwota do Wysłania ',
 OFFLINE_Step2_Label_3       : 'Cena Paliwa ',
 OFFLINE_Step2_Label_3b      : 'To było wyświetlone w Kroku 1 na Komputerze Online. ',
 OFFLINE_Step2_Label_4       : 'Limit Paliwa ',
-OFFLINE_Step2_Label_4b      : 'Domyślny limit paliwa to 21000. Kiedy wysyłasz kontrakt lub załączasz dane ta wartość może być inna, nie zużyte paliwo zostanie zwrócone na Twoje konto. ',
+OFFLINE_Step2_Label_4b      : 'Domyślny limit paliwa to 10000. Kiedy wysyłasz kontrakt lub załączasz dane ta wartość może być inna, nie zużyte paliwo zostanie zwrócone na Twoje konto. ',
 OFFLINE_Step2_Label_5       : 'Wyróżnik ',
 OFFLINE_Step2_Label_5b      : 'To było wyświetlone w Kroku 1 na Komputerze Online. ',
 OFFLINE_Step2_Label_6       : 'Dane ',
@@ -367,7 +367,7 @@ ERROR_4                     : 'Ta jednostka nie istnieje, użyj jednej z następ
 ERROR_5                     : 'Błędny adres. ',
 ERROR_6                     : 'Błędne hasło. ',
 ERROR_7                     : 'Błędna wartość. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Błędny limit paliwa. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'Błędny limit paliwa. (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'Błędne dane. (Must be hex.) ', // 9
 ERROR_10                    : 'Błędna ilość paliwa. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Błędny wyróżnik. (Must be integer.) ', // 11
@@ -578,8 +578,8 @@ HELP_10_Desc_2              : 'Uzupełnij pole "Od Adresu". Zauważ, że jest to
 HELP_10_Desc_3              : 'Przejdź na komputer bez dostępu do internetu. Uzupełnij pole "Do Adresu" i kwotę do wysłania. ',
 HELP_10_Desc_4              : 'Wpisz cenę paliwa jaka została wyświetlona na komputerze z internetem w kroku pierwszym. ',
 HELP_10_Desc_5              : 'Wpisz wyróżnik jaki został wyświetlony na komputerze z internetem w kroku pierwszym. ',
-HELP_10_Desc_6              : '"Limit Paliwa" ma domyślną wartość 21000. To pokryje koszty standardowej transakcji. Jeżeli będziesz wysyłać transakcję do kontraktu lub będziesz załączać jakieś dane do transakcji, musisz zwiększyć tą wartość. Nadpłata paliwa zostanie zwrócona. ',
-HELP_10_Desc_7              : 'Jeśli chcesz możesz załączyć dane do transakcji. Musisz wtedy jednak zapewnić więcej niż domyślne 21000 limitu paliwa. Dane wpisujemy w formacie HEX. ',
+HELP_10_Desc_6              : '"Limit Paliwa" ma domyślną wartość 10000. To pokryje koszty standardowej transakcji. Jeżeli będziesz wysyłać transakcję do kontraktu lub będziesz załączać jakieś dane do transakcji, musisz zwiększyć tą wartość. Nadpłata paliwa zostanie zwrócona. ',
+HELP_10_Desc_7              : 'Jeśli chcesz możesz załączyć dane do transakcji. Musisz wtedy jednak zapewnić więcej niż domyślne 10000 limitu paliwa. Dane wpisujemy w formacie HEX. ',
 HELP_10_Desc_8              : 'Wybierz Twój plik portfela -lub- klucz prywatny i odblokuj portfel. ',
 HELP_10_Desc_9              : 'Kliknij przycisk "Wygeneruj Transakcję". ',
 HELP_10_Desc_10             : 'W polu poniżej pojawią się dane podpisanej transakcji. Skopiuj jego zawartość na komputer z dostępem do internetu. ',

@@ -60,7 +60,7 @@ GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `10000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
 
@@ -214,12 +214,12 @@ TRANS_desc                  : 'Если Вы хотите перевести т�
 TRANS_warning               : 'Если Вы используете функции "только ETH" или "только ETC", перевод будет выполнен с помощью контракта. У некоторых сервисов могут возникнуть проблемы с приёмом таких переводов. Уточните этот вопрос. ',
 TRANS_advanced              : '+Дополнительно: добавить данные ',
 TRANS_data                  : 'Данные ',
-TRANS_sendInfo              : 'Стандартная транзакция, использующая 21000 газа, будет стоить 0,000441 эфира (ether). Мы указываем цену газа немного выше минимально возможной: 0,000000021 эфира (ether), для того, чтобы ускорить выполнение танзакций. Мы не берём комиссию за выполнение транзакций. ',
+TRANS_sendInfo              : 'Стандартная транзакция, использующая 10000 газа, будет стоить 0,000441 эфира (ether). Мы указываем цену газа немного выше минимально возможной: 0,000000021 эфира (ether), для того, чтобы ускорить выполнение танзакций. Мы не берём комиссию за выполнение транзакций. ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : 'Транзакции вида "только ETH" и "только ETC" ',
 TRANSModal_Content_0        : 'О видах транзакций и сервисах: ',
-TRANSModal_Content_1        : '**Эфир (ether, обычная транзакция): ** Выполняет обычный перевод напрямую с одного адреса на другой. Используется стандартное количесвто газа: 21000. В большинстве случаев, перевод ETH, выполненный этим способом, можно будет продублировать для ETC. ',
+TRANSModal_Content_1        : '**Эфир (ether, обычная транзакция): ** Выполняет обычный перевод напрямую с одного адреса на другой. Используется стандартное количесвто газа: 10000. В большинстве случаев, перевод ETH, выполненный этим способом, можно будет продублировать для ETC. ',
 TRANSModal_Content_2        : '**Только ETH: ** Выполняет перевод через [контракт Тимона Раппа, защищающий от дублирования переводов (рекомендован ВБ)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), поэтому перевод будет выполнен только в **ETH**. ',
 TRANSModal_Content_3        : '**Только ETC: ** Выполняет перевод через [контракт Тимона Раппа, защищающий от дублирования переводов (рекомендован ВБ)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), поэтому перевод будет выполнен только в **ETC**. ',
 TRANSModal_Content_4        : '**Coinbase и ShapeShift: ** Отправляйте им только обычные транзакции. Если Вы отправите им транзакцию вида "только ...", то Вам придётся обращаться к их службе поддержки, чтобы они вручную пополнили Ваш баланс или вернули бы Вам Ваш эфир (ether). [Вы также можете попробовать использовать инструмент "split" от Shapeshift.](https://split.shapeshift.io/) ',
@@ -240,7 +240,7 @@ OFFLINE_Step2_Label_2       : 'Сумма перевода ',
 OFFLINE_Step2_Label_3       : 'Цена газа ',
 OFFLINE_Step2_Label_3b      : 'Это отображалось на шаге №1 на Вашем онлайн компьютере. ',
 OFFLINE_Step2_Label_4       : 'Лимит газа ',
-OFFLINE_Step2_Label_4b      : 'Лимит газа по умолчанию: 21000. При использовании контрактов или передаче дополнительных данных может быть необходимо указать другое значение. Неистраченный газ будет Вам возвращён. ',
+OFFLINE_Step2_Label_4b      : 'Лимит газа по умолчанию: 10000. При использовании контрактов или передаче дополнительных данных может быть необходимо указать другое значение. Неистраченный газ будет Вам возвращён. ',
 OFFLINE_Step2_Label_5       : '№ перевода (nonce) ',
 OFFLINE_Step2_Label_5b      : 'Это отображалось на шаге №1 на Вашем онлайн компьютере. ',
 OFFLINE_Step2_Label_6       : 'Данные ',
@@ -372,7 +372,7 @@ ERROR_4                     : 'Такая единица измерения не
 ERROR_5                     : 'Неправильный адрес. ',
 ERROR_6                     : 'Неверный пароль. ',
 ERROR_7                     : 'Некорректная сумма. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Некорректно указан лимит газа. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'Некорректно указан лимит газа. (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'Недопустимые данные. (Must be hex.) ', // 9
 ERROR_10                    : 'Некорректно указано количество газа. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Неверный номер перевода (nonce). (Must be integer.) ', // 11
@@ -435,7 +435,7 @@ PARITY_InvalidGasLimit      : "Отведённое количество газ�
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : 'Спасибо нашим переводчикам ',
-TranslatorName_1            : '[Михаил Владимиров](https://www.myetherwallet.com/?gaslimit=21000&to=0x6ff323e36bfdb20502b23780695f4e77e36cde95&value=1.0#send-transaction) ',
+TranslatorName_1            : '[Михаил Владимиров](https://www.myetherwallet.com/?gaslimit=10000&to=0x6ff323e36bfdb20502b23780695f4e77e36cde95&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0x6ff323e36bfdb20502b23780695f4e77e36cde95 ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : '',
@@ -581,8 +581,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas limit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',

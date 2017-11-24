@@ -58,7 +58,7 @@ GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `10000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
 
@@ -214,12 +214,12 @@ TRANS_warning               : 'Nếu bạn sử dụng chức năng "Chỉ ETH" 
 TRANS_advanced              : 'Nâng Cao: Thêm Dữ Liệu ',
 TRANS_data                  : 'Dữ Liệu: ',
 TRANS_gas                   : 'Gas Limit: ',
-TRANS_sendInfo              : 'Mỗi Giao dịch Phổ Thông sử dụng hết 21000 gas có giá tương đương 0.000441 ETH. Chúng tôi áp dụng giá Gas dành cho một giao dịch cao hơn so với mức tối thiểu là 0.000000021 ETH nhằm đảm bảo một giao dịch được diễn ra nhanh. Chúng tôi hoàn toàn không nhận được khoản tiền phát sinh nào từ phí giao dịch. ',
+TRANS_sendInfo              : 'Mỗi Giao dịch Phổ Thông sử dụng hết 10000 gas có giá tương đương 0.000441 ETH. Chúng tôi áp dụng giá Gas dành cho một giao dịch cao hơn so với mức tối thiểu là 0.000000021 ETH nhằm đảm bảo một giao dịch được diễn ra nhanh. Chúng tôi hoàn toàn không nhận được khoản tiền phát sinh nào từ phí giao dịch. ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : 'Giao Dịch "Chỉ ETH" Và "Chỉ ETC" ',
 TRANSModal_Content_0        : 'Một số lưu ý về sự khác biệt của từng loại giao dịch và sự khác biệt của từng dịch vụ: ',
-TRANSModal_Content_1        : '**ETH (Giao Dịch Phổ Thông): ** Phương pháp này mặc định rằng nó sẽ tạo giao dịch từ một địa chỉ gửi đến địa chỉ nhận khác và nó sẽ tiêu thụ hết 21000 gas. Theo giả thuyết thì bất kì số ETH gửi đi thông qua phương pháp này sẽ được thực hiện lại tương tự trên chuổi ETC. ',
+TRANSModal_Content_1        : '**ETH (Giao Dịch Phổ Thông): ** Phương pháp này mặc định rằng nó sẽ tạo giao dịch từ một địa chỉ gửi đến địa chỉ nhận khác và nó sẽ tiêu thụ hết 10000 gas. Theo giả thuyết thì bất kì số ETH gửi đi thông qua phương pháp này sẽ được thực hiện lại tương tự trên chuổi ETC. ',
 TRANSModal_Content_2        : '**Chỉ ETH: ** Phương pháp này sẽ thực hiện giao dịch thông qua [Hợp đồng thông minh nhằm "tránh việc phát lại" được phát triển bởi Timon Rapp (theo lời cảnh báo của VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) vì vậy giao dịch này chỉ được thực hiện trên chuổi **ETH**. ',
 TRANSModal_Content_3        : '**Chỉ ETC: ** Phương pháp này sẽ thực hiện giao dịch thông qua [Hợp đồng thông minh nhằm "tránh việc phát lại" được phát triển bởi Timon Rapp (theo lời cảnh báo của VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) vì vậy giao dịch này chỉ được thực hiện trên chuổi **ETC**. ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** Giao Dịch chỉ được thực hiện thông qua giao dịch phổ thông. Nếu bạn thực hiện thông qua hợp đồng "Chỉ", thì bạn cần phải liên hệ trực tiếp với nhân viên hỗ trợ của họ để họ tự thêm vào hoặc hoàn lại tiền cho bạn. [bạn cũng có thể thử với công cụ "chia tách" của Shapeshift.](https://split.shapeshift.io/) ',
@@ -240,7 +240,7 @@ OFFLINE_Step2_Label_2       : 'Đơn vị / Tổng số gửi: ',
 OFFLINE_Step2_Label_3       : 'Giá Gas ',
 OFFLINE_Step2_Label_3b      : 'Điều này đã được hiển thị ở bước 1 trên máy tính trực tuyến của bạn. ',
 OFFLINE_Step2_Label_4       : 'Giới hạn Gas ',
-OFFLINE_Step2_Label_4b      : '21000 măc định sẽ là số gas giới hạn. khi bạn gửi đi một hợp đồng hoặc thêm dữ liệu, việc này sẽ cần phải làm khác đi. Lượng Gas không được sử dụng sẽ hoàn trả cho bạn. ',
+OFFLINE_Step2_Label_4b      : '10000 măc định sẽ là số gas giới hạn. khi bạn gửi đi một hợp đồng hoặc thêm dữ liệu, việc này sẽ cần phải làm khác đi. Lượng Gas không được sử dụng sẽ hoàn trả cho bạn. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Điều này đã được hiển thị ở bước 1 trên máy tính trực tuyến của bạn. ',
 OFFLINE_Step2_Label_6       : 'Dữ Liệu ',
@@ -366,7 +366,7 @@ ERROR_4                     : 'Đơn vị này không tồn tại, xin vui lòng
 ERROR_5                     : 'Địa chỉ không hợp lệ. ',
 ERROR_6                     : 'Mật khẩu không hợp lệ. ',
 ERROR_7                     : 'Tổng số không hợp lệ. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Giới hạn gas không hợp lệ. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'Giới hạn gas không hợp lệ. (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'Dữ liệu không hợp lệ. (Must be hex.) ', // 9
 ERROR_10                    : 'Tổng số gas không hợp lệ. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Nonce không hợp lệ. (Must be integer.) ', // 11
@@ -577,8 +577,8 @@ HELP_10_Desc_2              : 'Điền vào "Địa chỉ gửi". Lưu ý, đây
 HELP_10_Desc_3              : 'Sau đó, chuyển đến máy tính Offline của bạn. Điền vào "Địa chỉ đến" và "Số cần gửi" mà bạn muốn gửi đi. ',
 HELP_10_Desc_4              : 'Điền vào "Giá Gas" được hiển thị trên máy tính online của bạn ở bước #1. ',
 HELP_10_Desc_5              : 'Điền vào "NONCE" được hiển thị trên máy tính online của bạn ở bước #1. ',
-HELP_10_Desc_6              : 'Sau đó "Giới hạn GAS" sẽ được mặc định với số gas là 21000. Điều này sẽ khởi tạo một giao dịch thông thường. Nếu bạn gửi đi một hợp đồng hoặc bổ sung thêm dữ liệu vối với giao dịch của bạn, bạn cần phải tăng lên số Giới hạn gas và bất kì gas dư thừa sẽ được hoàn trả lại cho bạn. ',
-HELP_10_Desc_7              : 'Nếu bạn muốn, Thêm vào một số dữ liệu. Nếu bạn điền dữ liệu vào, bạn sẽ cần số Giới hạn gas nhiều hơn số 21000 được mạc định ban đầu. Tất cả dữ liệu đều ở định dạng HEX . ',
+HELP_10_Desc_6              : 'Sau đó "Giới hạn GAS" sẽ được mặc định với số gas là 10000. Điều này sẽ khởi tạo một giao dịch thông thường. Nếu bạn gửi đi một hợp đồng hoặc bổ sung thêm dữ liệu vối với giao dịch của bạn, bạn cần phải tăng lên số Giới hạn gas và bất kì gas dư thừa sẽ được hoàn trả lại cho bạn. ',
+HELP_10_Desc_7              : 'Nếu bạn muốn, Thêm vào một số dữ liệu. Nếu bạn điền dữ liệu vào, bạn sẽ cần số Giới hạn gas nhiều hơn số 10000 được mạc định ban đầu. Tất cả dữ liệu đều ở định dạng HEX . ',
 HELP_10_Desc_8              : 'Chọn tập tin Ví của bạn -hoặc- Private key của bạn dễ mở khoá Ví. ',
 HELP_10_Desc_9              : 'nhấn vào nút "Khởi tạo Chữ Ký cho giao dịch". ',
 HELP_10_Desc_10             : 'Các trường dữ liệu phía dưới nút này sẽ dùng dễ chứng thực chữ ký cho giao dịch của bạn. Cóp hết đoạn dữ liệu này và chuyển đến máy tính online của bạn. ',

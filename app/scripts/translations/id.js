@@ -61,7 +61,7 @@ GET_ConfButton              : 'Saya paham. Lanjutkan.',
 GEN_Label_5                 : 'SSimpan `Private Key` Anda. ',
 GEN_Unlock                  : 'Buka kunci dompet Anda untuk melihat alamat Anda',
 GAS_PRICE_Desc              : 'Harga Gas Price adalah jumlah yang Anda bayar per unit gas. `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Makin tinggi harga gas = transaksi makin cepat, tapi makin mahal. Default-nya `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Batas Gas (Gas limit) adalah jumlah gas untuk dikirim bersama TX Anda.  `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Menaikkan angka ini tidak mempercepat TX Anda untuk ditambang. Pengiriman ETH = `21000`. Pengiriman Token = ~`200000`.',
+GAS_LIMIT_Desc              : 'Batas Gas (Gas limit) adalah jumlah gas untuk dikirim bersama TX Anda.  `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Menaikkan angka ini tidak mempercepat TX Anda untuk ditambang. Pengiriman ETH = `10000`. Pengiriman Token = ~`200000`.',
 NONCE_Desc                  : 'Nonce adalah nomor transaksi yang dikirimn dari sebuah alamat. Ini untuk menjamin agar pengiriman terlaksana secara runtut dan tidak ada yang dilakukan lebih dari sekali.',
 TXFEE_Desc                  : 'Biaya TX Fee dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Jumlahnya =  `gas limit` * `gas price`. [Anda dapat mengkonversi GWEI -> ETH](https://www.myetherwallet.com/helpers.html)',
 
@@ -243,12 +243,12 @@ TRANS_warning               : 'Penggunaan fitur "Hanya ETH" atau "Hanya ETC" mem
 TRANS_advanced              : '+Advanced: Tambah Data ',
 TRANS_data                  : 'Data ',
 TRANS_gas                   : 'Gas Limit ',
-TRANS_sendInfo              : 'Transaksi standar menggunakan 21000 gas membutuhkan 0.000441 ETH. Kami memakai harga gas sedikit-diatas-harga-gas-minimum senilai 0.000000021 ETH untuk mempercepat. Kami tidak mengambil biaya atas transaksi. ',
+TRANS_sendInfo              : 'Transaksi standar menggunakan 10000 gas membutuhkan 0.000441 ETH. Kami memakai harga gas sedikit-diatas-harga-gas-minimum senilai 0.000000021 ETH untuk mempercepat. Kami tidak mengambil biaya atas transaksi. ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : 'Transaksi "Hanya ETH" dan "Hanya ETC" ',
 TRANSModal_Content_0        : 'Catatan terkait jenis transaksi dan layanan: ',
-TRANSModal_Content_1        : '**ETH (Transaksi Standar): ** Transaksi default ini melakukan pengiriman langsung dari alamat pengirim ke alamat tujuan. Nilai Gas 21000. Besar kemungkinan ETH yang dikirim dengan metode ini akan di "replay" di rantai ETC. ',
+TRANSModal_Content_1        : '**ETH (Transaksi Standar): ** Transaksi default ini melakukan pengiriman langsung dari alamat pengirim ke alamat tujuan. Nilai Gas 10000. Besar kemungkinan ETH yang dikirim dengan metode ini akan di "replay" di rantai ETC. ',
 TRANSModal_Content_2        : '**Hanya ETH: ** Pengiriman melalui [kontrak penangkal "replay" oleh Timon Rapp (direkomendasikan oleh VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) sehingga hanya dilaksanakan di rantai **ETH** saja. ',
 TRANSModal_Content_3        : '**Hanya ETC: ** Pengiriman melalui [kontrak penangkal "replay" oleh Timon Rapp (direkomendasikan oleh VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) sehingga hanya dilaksanakan di rantai **ETC** saja. ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** Hanya melakukan pengiriman melalui Transaksi Standar saja. Jika Anda mengirim menggunakan "Hanya ETH" atau "Hanya ETC", hubungi layanan konsumen mereka untuk menambahkan saldo Anda secara manual atau membatalkan transaksinya. [Bisa juga dicoba fasilitas "split" dari Shapeshift.](https://split.shapeshift.io/) ',
@@ -269,7 +269,7 @@ OFFLINE_Step2_Label_2       : 'Nilai/Jumlah untuk dikirim ',
 OFFLINE_Step2_Label_3       : 'Harga Gas ',
 OFFLINE_Step2_Label_3b      : 'Nilai ini dihasilkan/ditunjukkan dari Langkah 1 yang dilakukan melalui komputer online di atas. ',
 OFFLINE_Step2_Label_4       : 'Limit Gas ',
-OFFLINE_Step2_Label_4b      : 'Limit Gas di set pada 21000. Jika ada data tambahan atau pengiriman melalui kontrak, nilainya bisa berbeda. Gas yang tidak terpakai akan dikembalikan. ',
+OFFLINE_Step2_Label_4b      : 'Limit Gas di set pada 10000. Jika ada data tambahan atau pengiriman melalui kontrak, nilainya bisa berbeda. Gas yang tidak terpakai akan dikembalikan. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Ini ditunjukkan dari Langkah 1 di komputer online di atas. ',
 OFFLINE_Step2_Label_6       : 'Data ',
@@ -368,7 +368,7 @@ ERROR_4                     : 'Unit tidak valid, gunakan salah satu dari unit be
 ERROR_5                     : 'Alamat tidak valid. ',
 ERROR_6                     : 'Password tidak valid. ',
 ERROR_7                     : 'Jumlah tidak valid. (Harus integer. Coba 0-18.) ', // 7
-ERROR_8                     : 'Gas limit tidak valid. (Harus integer. Coba 21000-4000000.) ', // 8
+ERROR_8                     : 'Gas limit tidak valid. (Harus integer. Coba 10000-4000000.) ', // 8
 ERROR_9                     : 'Nilai data tidak valid. (Harus hex.) ', // 9
 ERROR_10                    : 'Jumlah Gas tidak valid. (Harus integer. Coba 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Nonce tidak valid. (Harus integer.) ', // 11
@@ -432,7 +432,7 @@ PARITY_InvalidGasLimit      : "Gas yang disediakan nilainya diatas limit.",
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : 'Thank you to our translators ',
-TranslatorName_1            : '[Yos Ginting](https://www.myetherwallet.com/?gaslimit=21000&to=0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c&value=1.0#send-transaction) ',
+TranslatorName_1            : '[Yos Ginting](https://www.myetherwallet.com/?gaslimit=10000&to=0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c ',
 /* Translator 1             : 05 Sep 2016: Translation completed (except HELP texts); 09 Sep 2016: Revisions on some words and phrases; 3 Sep 2017 added more translations*/
 TranslatorName_2            : '',
@@ -578,8 +578,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas limit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',

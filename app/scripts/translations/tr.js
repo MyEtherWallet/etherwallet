@@ -60,7 +60,7 @@ GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `10000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
 
@@ -219,12 +219,12 @@ TRANS_warning               : '"Yalnızca ETH" ya da "Yalnızca ETC" fonksiyonu 
 TRANS_advanced              : '+Gelişmiş: Veri ekle ',
 TRANS_data                  : 'Veri ',
 TRANS_gas                   : 'Gas Limiti ',
-TRANS_sendInfo              : '21000 gaz kullanan standart bir islem 0.000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 0.000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz. ',
+TRANS_sendInfo              : '10000 gaz kullanan standart bir islem 0.000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 0.000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz. ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : '"Yalnızca ETH" and "Yalnızca ETC" islemler ',
 TRANSModal_Content_0        : 'Farklı işlemler ve farklı hizmetleri hakkında bir not: ',
-TRANSModal_Content_1        : '**ETH (Standart islem): ** Bu standart bir islem baslatir bir hesapten direkt baska bir hesapa. Standart gas 21000\'dir. Bu islemlen gönderileren islem ETC zincirinde\'de yer bulabilir. ',
+TRANSModal_Content_1        : '**ETH (Standart islem): ** Bu standart bir islem baslatir bir hesapten direkt baska bir hesapa. Standart gas 10000\'dir. Bu islemlen gönderileren islem ETC zincirinde\'de yer bulabilir. ',
 TRANSModal_Content_2        : '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain. ',
 TRANSModal_Content_3        : '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/) ',
@@ -245,7 +245,7 @@ OFFLINE_Step2_Label_2       : 'Gönderilen miktar ',
 OFFLINE_Step2_Label_3       : 'Gas fiyati ',
 OFFLINE_Step2_Label_3b      : 'Bu online bilgisayarınızda adım 1\'de gösterilirdi. ',
 OFFLINE_Step2_Label_4       : 'Gas limiti ',
-OFFLINE_Step2_Label_4b      : '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you. ',
+OFFLINE_Step2_Label_4b      : '10000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you. ',
 OFFLINE_Step2_Label_5       : 'Veri ',
 OFFLINE_Step2_Label_5b      : 'Bu online bilgisayarınızda adım 1\'de gösterilir. ',
 OFFLINE_Step2_Label_6       : 'Veri ',
@@ -370,7 +370,7 @@ ERROR_4                     : 'Var olmayan bir birim, bu birimlerden birini kull
 ERROR_5                     : 'Geçersiz adres. ',
 ERROR_6                     : 'Geçersiz parola. ',
 ERROR_7                     : 'Yetersiz bakiye. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Geçersiz gas limit. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'Geçersiz gas limit. (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'Geçersiz data value. (Must be hex.) ', // 9
 ERROR_10                    : 'Yetersiz gas. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Geçersiz veri. (Must be integer.) ', // 11
@@ -434,7 +434,7 @@ PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : 'Thank you to our translators ',
-TranslatorName_1            : '[ffidan61](https://www.myetherwallet.com/?gaslimit=21000&to=0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21&value=1.0#send-transaction) ',
+TranslatorName_1            : '[ffidan61](https://www.myetherwallet.com/?gaslimit=10000&to=0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21 ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : '',
@@ -580,8 +580,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas limit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
