@@ -514,6 +514,11 @@
 "decimal":18,
 "type":"default"
 },{
+ "address":"0x708876f486e448ee89eb332bfbc8e593553058b9",
+"symbol":"GAVEL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x7585F835ae2d522722d2684323a0ba83401f32f5",
 "symbol":"GBT",
 "decimal":18,
