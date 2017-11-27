@@ -208,8 +208,14 @@
             Connect your Ledger Wallet
           </span>
           &amp;
-          <span translate="ADD_Ledger_2">
+          <span translate="ADD_Ledger_2" ng-if="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'">
             Open the Ethereum application (or a contract application)
+          </span>
+          <span translate="ADD_Ledger_2_Exp" ng-if="ajaxReq.type=='EXP'">
+            Open the Expanse application (or a contract application)
+          </span>
+          <span translate="ADD_Ledger_2_Ubq" ng-if="ajaxReq.type=='UBQ'">
+            Open the Ubiq application (or a contract application)
           </span>
         </li>
 

@@ -180,6 +180,8 @@ MNEM_prev                   : 'Tampilkan Alamat sebelumnya ',
 /* Hardware wallets */
 ADD_Ledger_1                : 'Hubungkan ke Ledger Wallet Anda ',
 ADD_Ledger_2                : 'Buka Aplikasi Ethereum (atau aplikasi kontrak) ',
+ADD_Ledger_2_Exp            : 'Buka Aplikasi Expanse (atau aplikasi kontrak) ',
+ADD_Ledger_2_Ubq            : 'Buka Aplikasi Ubiq (atau aplikasi kontrak) ',
 ADD_Ledger_3                : 'Periksa bahwa "Browser Support" sudah di aktifkan di "Settings" ',
 ADD_Ledger_4                : 'Jika "Browser Support" tidak ditemukan di "Settings", pastikan sudah mengupdate ke [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman ',

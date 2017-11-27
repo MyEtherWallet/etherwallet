@@ -291,6 +291,8 @@ MNEM_prev                   : 'Adresses précédentes ',
 /* Hardware wallets */
 ADD_Ledger_1                : 'Connectez votre Ledger Wallet ',
 ADD_Ledger_2                : 'Ouvrez l\'application Ethereum (ou une application de contrat) ',
+ADD_Ledger_2_Exp            : 'Ouvrez l\'application Expanse (ou une application de contrat) ',
+ADD_Ledger_2_Ubq            : 'Ouvrez l\'application Ubiq (ou une application de contrat) ',
 ADD_Ledger_3                : 'Vérifiez que l\'option Browser Support est activée dans Settings ',
 ADD_Ledger_scan             : 'Se connecter au Ledger Wallet ',
 ADD_Ledger_4                : 'Si l\'option Browser Support n\'est pas présente dans Settings, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
