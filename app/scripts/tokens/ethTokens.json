@@ -244,6 +244,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x68e14bb5A45B9681327E16E528084B9d962C1a39",
+"symbol":"CATs (BitClave)",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8",
 "symbol":"CAT (Blockcat)",
 "decimal":18,
