@@ -186,6 +186,8 @@ MNEM_prev                   : '前のアドレス表示 ',
 /* Hardware wallets */
 ADD_Ledger_1                : '自分の Ledger Wallet　を接続する ',
 ADD_Ledger_2                : 'イサリアムアプリケーション（あるいはコントラクトアプリケーション）を開く　。 ',
+ADD_Ledger_2_Exp            : 'Expanseアプリケーション（または契約アプリケーション）を開きます。',
+ADD_Ledger_2_Ubq            : 'Ubiqアプリケーション（または契約アプリケーション）を開きます。',
 ADD_Ledger_3                : '設定中で、ブラウザサポートが有効にされていることを確認してください。 ',
 ADD_Ledger_4                : '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',

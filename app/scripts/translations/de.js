@@ -343,6 +343,8 @@ MNEM_prev                   : 'Letzte Adressen ',
 x_Ledger                    : 'Ledger Wallet ',
 ADD_Ledger_1                : 'Verbinde deinen Ledger Wallet ',
 ADD_Ledger_2                : 'Öffne das Ethereum Programm (oder ein Vertragsprogramm) ', //Statt Programm -> Applikation?
+ADD_Ledger_2_Exp            : 'Öffne das Expanse Programm (oder ein Vertragsprogramm) ',
+ADD_Ledger_2_Ubq            : 'Öffne das Ubiq Programm (oder ein Vertragsprogramm) ',
 ADD_Ledger_3                : 'Gehe sicher, dass Browser Support aktiviert ist. ',
 ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
