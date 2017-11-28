@@ -1,9 +1,4 @@
 [{
-"address":"0xec46f8207d766012454c408de210bcbc2243e71c",
-"symbol":"NOX",
-"decimal":18,
-"type":"default"
-},{
 "address":"0x59416A25628A76b4730eC51486114c32E0B582A1",
 "symbol":"☀️ PLASMA",
 "decimal":6,
@@ -894,6 +889,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xec46f8207d766012454c408de210bcbc2243e71c",
+"symbol":"NOX",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
 "symbol":"NxC",
 "decimal":3,
@@ -1439,6 +1439,11 @@
 "decimal":0,
 "type":"default"
 },{
+"address":"0x0f641b9f7329ba4706580d086d8063c5a3c23dbb",
+"symbol":"WaBi",
+"decimal":18,
+"type":"default"
+}{
 "address":"0x74951B677de32D596EE851A233336926e6A2cd09",
 "symbol":"WBA",
 "decimal":7,
@@ -1507,10 +1512,5 @@
 "address":"0xe386b139ed3715ca4b18fd52671bdcea1cdfe4b1",
 "symbol":"ZST",
 "decimal":8,
-"type":"default"
-},{
-"address":"0x0f641b9f7329ba4706580d086d8063c5a3c23dbb",
-"symbol":"WaBi",
-"decimal":18,
 "type":"default"
 }]
