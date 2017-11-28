@@ -3,7 +3,7 @@
     <section class="modal-content">
 
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
 
         <h2 class="modal-title text-info" translate="FOOTER_4">Disclaimer</h2>
 

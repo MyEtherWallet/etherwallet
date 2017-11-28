@@ -183,9 +183,10 @@
            role="button"
            class="btn btn-danger"
            ng-class="fileDownloaded ? '' : 'disabled' "
-           ng-click="continueToPaper()"
-           translate="GET_ConfButton">
-             I understand. Continue.
+           ng-click="continueToPaper()">
+            <span translate="GET_ConfButton">
+              I understand. Continue.
+            </span>
         </a>
       </p>
 
