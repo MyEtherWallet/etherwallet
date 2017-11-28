@@ -40,7 +40,7 @@ globalFuncs.errorMsgs = [
     'Please enter a valid address. ', // 5
     'Please enter a valid password. ', // 6
     'Please enter valid decimals (Must be integer, 0-18). ', // 7
-    'Please enter a valid gas limit (Must be integer. Try 21000-4000000). ', // 8
+    'Please enter a valid gas limit (Must be integer. Try 10000-4000000). ', // 8
     'Please enter a valid data value (Must be hex). ', // 9
     'Please enter a valid gas price. ', // 10 - NOT USED
     'Please enter a valid nonce (Must be integer).', // 11
@@ -151,7 +151,7 @@ globalFuncs.scrypt = {
 };
 globalFuncs.postDelay = 300;
 globalFuncs.kdf = "scrypt";
-globalFuncs.defaultTxGasLimit = 21000;
+globalFuncs.defaultTxGasLimit = 10000;
 globalFuncs.defaultTokenGasLimit = 200000;
 globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
 globalFuncs.isNumeric = function(n) {

@@ -60,7 +60,7 @@ var txStatusCtrl = function($scope) {
                     tokensymbol: '',
                     readOnly: false,
                     gasPrice: _gasPrice.toString(),
-                    gasLimit: '21000',
+                    gasLimit: '10000',
                     data: '',
                     nonce: $scope.txInfo.nonce
                 }

@@ -58,7 +58,7 @@ GET_ConfButton              : 'Jeg forstår. Fortsett. ',
 GEN_Label_5                 : 'Lagre din `Private Nøkkel`. ',
 GEN_Unlock                  : 'Lås opp lommeboken for å se adressen. ',
 GAS_PRICE_Desc              : 'Gas-pris er beløpet du betaler per gas-enhet. `Transaksjonsavgift = gas-pris * gas-grense` & betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Høyere gas-pris = raskere transaksjon, men dyrere. Standardinnstillingen er `10 GWEI`. ',
-GAS_LIMIT_Desc              : 'Gas-grense er mengden gas som sendes med transaksjonen din. `Tr.avg.` = gas-pris * gas-grense & betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Å øke dette tallet vil ikke få gjennom transaksjonen din raskere. Ulike typer transaksjoner krever ulik mengde gas. F.eks. koster det `21 000` å sende ETH og ~`200 000` å sende tokens. ',
+GAS_LIMIT_Desc              : 'Gas-grense er mengden gas som sendes med transaksjonen din. `Tr.avg.` = gas-pris * gas-grense & betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Å øke dette tallet vil ikke få gjennom transaksjonen din raskere. Ulike typer transaksjoner krever ulik mengde gas. F.eks. koster det `10 000` å sende ETH og ~`200 000` å sende tokens. ',
 NONCE_Desc                  : '"Nonce" er antall transaksjoner som noensinne har blitt sendt fra en gitt adresse. Det sikrer at transaksjoner sendes i riktig rekkefølge, og ikke mer enn én gang. ',
 TXFEE_Desc                  : 'Transaksjonsavgiften betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Det er `gas-grense` * `gas-pris`. [Du kan regne om GWEI -> ETH her](https://www.myetherwallet.com/helpers.html)',
 
@@ -237,12 +237,12 @@ TRANS_warning               : 'Hvis du bruker "Kun ETH"- eller "Kun ETC"-funksjo
 TRANS_advanced              : '+Avansert: Legg til data ',
 TRANS_data                  : 'Data ',
 TRANS_gas                   : 'Gas Limit ',
-TRANS_sendInfo              : 'En standard transaksjon som bruker 21000 gas vil koste 0,000441 ETH. Vi bruker en litt-over-minimum gas-pris på 0,000000021 ETH for å sikre at transaksjonen blir raskt behandlet. Vi tar ikke noe transaksjonsgebyr. ',
+TRANS_sendInfo              : 'En standard transaksjon som bruker 10000 gas vil koste 0,000441 ETH. Vi bruker en litt-over-minimum gas-pris på 0,000000021 ETH for å sikre at transaksjonen blir raskt behandlet. Vi tar ikke noe transaksjonsgebyr. ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : '"Kun ETH"- og "Kun ETC"-transaksjoner ',
 TRANSModal_Content_0        : 'En notis om forskjellige transaksjoner og tjenester: ',
-TRANSModal_Content_1        : '**ETH (Standardtransaksjon): ** Dette Oppretter en standardtransaksjon direkte fra en adresse ti en annen. Den har standard gas på 21000. Det er sannsynlig at ETH som sendes med denne metoden også vil bli sendt som ETC på ETC-kjeden (hvis kontoen inneholder både ETH og ETC). Dette er anbefalt metode hvis kontoen kun inneholder ETH. ',
+TRANSModal_Content_1        : '**ETH (Standardtransaksjon): ** Dette Oppretter en standardtransaksjon direkte fra en adresse ti en annen. Den har standard gas på 10000. Det er sannsynlig at ETH som sendes med denne metoden også vil bli sendt som ETC på ETC-kjeden (hvis kontoen inneholder både ETH og ETC). Dette er anbefalt metode hvis kontoen kun inneholder ETH. ',
 TRANSModal_Content_2        : '**Kun ETH: ** Dette sender via [Timon Rapp\'s replay-beskyttelseskontrakt (som anbefalt av VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) slik at du kun sender på **ETH**-kjeden. ',
 TRANSModal_Content_3        : '**Kun ETC: ** Dette sender via [Timon Rapp\'s replay-beskyttelseskontrakt (som anbefalt av VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) slik at du kun sender på **ETC**-kjeden. ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** Send kun via Standard transaksjon. Hvis du sender via "Kun"-kontraktene, vil du måtte ta kontakt med deres kundestøttepersonell for å manuelt legge til saldoen din eller få en tilbakebetaling. [Du kan også prøve Shapeshift sitt "splitte"-verktøy.](https://split.shapeshift.io/) ',
@@ -263,7 +263,7 @@ OFFLINE_Step2_Label_2       : 'Verdi / Beløp å sende ',
 OFFLINE_Step2_Label_3       : 'Gas-pris ',
 OFFLINE_Step2_Label_3b      : 'Dette kom fram i steg 1 på den internettilknyttede maskinen. ',
 OFFLINE_Step2_Label_4       : 'Gas-grense ',
-OFFLINE_Step2_Label_4b      : '21000 er standard gas-grense. Når du sender kontrakter eller ekstra data, kan det hende at grensen må settes høyere. Eventuelt ubrukt gas blir returnert til deg. ',
+OFFLINE_Step2_Label_4b      : '10000 er standard gas-grense. Når du sender kontrakter eller ekstra data, kan det hende at grensen må settes høyere. Eventuelt ubrukt gas blir returnert til deg. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Dette kom fram i steg 1 på den internettilknyttede maskinen. ',
 OFFLINE_Step2_Label_6       : 'Data ',
@@ -368,7 +368,7 @@ ERROR_4                     : 'Denne enheten eksisterer ikke, vennligst benytt e
 ERROR_5                     : 'Ugyldig adresse. ',
 ERROR_6                     : 'Ugyldig passord. ',
 ERROR_7                     : 'Ugyldig beløp. (Må være heltall. Prøv 0-18.) ', // 7
-ERROR_8                     : 'Ugyldig gas-grense. (Må være heltall. Prøv 21000-4000000.) ', // 8
+ERROR_8                     : 'Ugyldig gas-grense. (Må være heltall. Prøv 10000-4000000.) ', // 8
 ERROR_9                     : 'Ugyldig dataverdi. (Må være hex.) ', // 9
 ERROR_10                    : 'Ugyldig gas-mengde. (Må være heltall. Prøv 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Ugyldig nonce. (Må være heltall.) ', // 11
@@ -432,7 +432,7 @@ PARITY_InvalidGasLimit      : "Tilført mengde gas er over grensen.",
 /* Tranlsation Info */
 translate_version           : '0.4 ',
 Translator_Desc             : 'Takk til oversetterne våre ',
-TranslatorName_1            : '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=mrstormlars.eth&value=1.0#send-transaction) ',
+TranslatorName_1            : '[mrstormlars](https://www.myetherwallet.com/?gaslimit=10000&to=mrstormlars.eth&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : '',
@@ -579,8 +579,8 @@ HELP_10_Desc_2              : 'Oppgi "Fra-adressen". Vennligst merk at dette er 
 HELP_10_Desc_3              : 'Gå til den internettfrakoblede datamaskinen. Oppgi "TIL-ADRESSEN" og "BELØPET" du vil sende. ',
 HELP_10_Desc_4              : 'Oppgi "GAS-PRISEN" slik den ble vist deg på den tilkoblede datamaskinen i steg #1. ',
 HELP_10_Desc_5              : 'Oppgi "NONCE" slik den ble vist deg på den tilkoblede datamaskinen i steg #1. ',
-HELP_10_Desc_6              : '"GAS-GRENSE" har en standardverdi på 21000. Dette vil dekke en standardtransaksjon. Hvis du sender til en kontrakt eller inkluderer ekstra data i transaksjonen din, må du øke gas-grensen. Eventuelt overskytende gas blir returnert til deg (fra-kontoen). ',
-HELP_10_Desc_7              : 'Oppgi noe data hvis du vil. Hvis du oppgir data, må du inkludere mer enn det som er standard gas-grense (21000). Alle data er i HEX-format. ',
+HELP_10_Desc_6              : '"GAS-GRENSE" har en standardverdi på 10000. Dette vil dekke en standardtransaksjon. Hvis du sender til en kontrakt eller inkluderer ekstra data i transaksjonen din, må du øke gas-grensen. Eventuelt overskytende gas blir returnert til deg (fra-kontoen). ',
+HELP_10_Desc_7              : 'Oppgi noe data hvis du vil. Hvis du oppgir data, må du inkludere mer enn det som er standard gas-grense (10000). Alle data er i HEX-format. ',
 HELP_10_Desc_8              : 'Velg lommebokfilen din, eller din private nøkkel, og lås opp lommeboken din. ',
 HELP_10_Desc_9              : 'Trykk på "GENERER SIGNERT TRANSAKSJON"-knappen. ',
 HELP_10_Desc_10             : 'Datafeltet under denne knappen vil fylles med din signerte transaksjon. Kopier denne og flytt den tilbake til din tilkoblede datamaskin. ',

@@ -58,7 +58,7 @@ GET_ConfButton              : 'Je comprends. Continuer.',
 GEN_Label_5                 : 'Sauvegardez votre `clé privée`. ',
 GEN_Unlock                  : 'Déverouillez votre portefeuille pour voir votre adresse.',
 GAS_PRICE_Desc              : 'Le prix du gaz est le montant que vous payez par unité de gaz. `frais de TX  = prix du gaz * limite en gaz` & est payé aux mineurs pour inclure votre transaction à un bloc. Prix de gaz plus haut = transaction plus rapide, mais plus coûteuse. Le prix par défaut est de `10 GWEI`.',
-GAS_LIMIT_Desc              : 'La limite en gaz est le montant de gaz à envoyer avec votre transaction. `frais de TX  = prix du gaz * limite en gaz` et est payé aux mineurs pour inclure votre transaction à un bloc. Augmenter ce nombre n\'exécutera pas votre transaction plus rapidement. Envoyer ETH = `21000`. Envoyer des Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'La limite en gaz est le montant de gaz à envoyer avec votre transaction. `frais de TX  = prix du gaz * limite en gaz` et est payé aux mineurs pour inclure votre transaction à un bloc. Augmenter ce nombre n\'exécutera pas votre transaction plus rapidement. Envoyer ETH = `10000`. Envoyer des Tokens = ~`200000`.',
 NONCE_Desc                  : 'Le nonce est le nombre de transactions envoyées depuis une adresse. Il fait en sorte que les transactions sont envoyées en ordre et pas plus d\'une fois.',
 TXFEE_Desc                  : 'Les frais de transaction sont payés aux mineurs pour inclure votre transaction dans un bloc. Cela représente le `gas limit` * le `gas price`. [Vous pouvez convertir GWEI -> ETH ici](https://www.myetherwallet.com/helpers.html)',
 
@@ -213,13 +213,13 @@ TRANS_desc                  : 'Si vous voulez envoyer des tokens, allez plutôt 
 TRANS_warning               : 'L\'emploi des fonctions "ETH seulement" et "ETC seulement" vous fait passer par un contrat. Certains services ont des problèmes avec ces transactions. En savoir plus. ',
 TRANS_advanced              : '+Avancé : Ajouter du gaz ',
 TRANS_data                  : 'Données ',
-TRANS_sendInfo              : 'Une transaction standard utilisant 21000 gaz coûtera 0.000441 ETH. Le prix du gaz de 0.000000021 ETH que nous avons choisi est légèrement supérieur au minimum ain d\'assurer une confirmation rapide. Nous ne prenons pas de frais de transaction. ',
+TRANS_sendInfo              : 'Une transaction standard utilisant 10000 gaz coûtera 0.000441 ETH. Le prix du gaz de 0.000000021 ETH que nous avons choisi est légèrement supérieur au minimum ain d\'assurer une confirmation rapide. Nous ne prenons pas de frais de transaction. ',
 TRANS_gas                   : 'Limite en gaz ', // changed in ENG to Gas Limit:
 
 /* Send Transaction Modals */
 TRANSModal_Title            : 'Transactions "ETH seulement" et "ETC seulement" ',
 TRANSModal_Content_0        : 'Note sur les transactions et services divers : ',
-TRANSModal_Content_1        : '**ETH (Transaction standard) : ** Génère une transaction par défaut directement depuis une adresse vers une autre. Son gaz par défaut est de 21000. Il est probable que toute transaction d\'ETH envoyé de cette manière sera réexécutée sur la chaîne ETC. ',
+TRANSModal_Content_1        : '**ETH (Transaction standard) : ** Génère une transaction par défaut directement depuis une adresse vers une autre. Son gaz par défaut est de 10000. Il est probable que toute transaction d\'ETH envoyé de cette manière sera réexécutée sur la chaîne ETC. ',
 TRANSModal_Content_2        : '**ETH seulement : ** Envoie à travers le [contrat anti-réexécution de Timon Rapp (recommandé par VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) afin de n\'envoyer que sur la chaîne **ETH**. ',
 TRANSModal_Content_3        : '**ETC seulement : ** Envoie à travers le [contrat anti-réexécution de Timon Rapp (recommandé par VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) afin de n\'envoyer que sur la chaîne **ETC**. ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift : ** N\'envoyer que par transaction standard. Si vous utilisez les contrats d\'envoi sur une seule chaîne, vous devrez joindre leur équipe de support pour ajouter manuellement la somme à votre solde ou pour vous rembourser. [Vous pouvez aussi essayer l\'outil "split" de Shapeshift.](https://split.shapeshift.io/) ',
@@ -240,7 +240,7 @@ OFFLINE_Step2_Label_2       : 'Valeur / montant à envoyer ',
 OFFLINE_Step2_Label_3       : 'Prix du gaz ',
 OFFLINE_Step2_Label_3b      : 'Ce montant était affiché à l\'étape 1 sur votre ordinateur en ligne. ',
 OFFLINE_Step2_Label_4       : 'Limite de gaz ',
-OFFLINE_Step2_Label_4b      : '21000 est la limite par défaut. En cas d\'envoi vers des contrats ou avec des données supplémentaires, cette valeur peut être différente. Tout gaz non consommé vous sera renvoyé. ',
+OFFLINE_Step2_Label_4b      : '10000 est la limite par défaut. En cas d\'envoi vers des contrats ou avec des données supplémentaires, cette valeur peut être différente. Tout gaz non consommé vous sera renvoyé. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Cette valeur a été affichée à l\'étape 1 sur votre ordinateur en ligne. ',
 OFFLINE_Step2_Label_6       : 'Données ',
@@ -367,7 +367,7 @@ ERROR_4                     : 'Cette unité n\'existe pas, merci d\'utiliser une
 ERROR_5                     : 'Veuillez entrer un Adresse valide. ',
 ERROR_6                     : 'Veuillez entrer un Mot de passe valide. ',
 ERROR_7                     : 'Veuillez entrer un Montant valide. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Veuillez entrer un Limite de gaz valide. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'Veuillez entrer un Limite de gaz valide. (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'Veuillez entrer un Valeur des donnnées valide. (Must be hex.) ', // 9
 ERROR_10                    : 'Veuillez entrer un Montant de gaz valide. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Veuillez entrer un Nonce valide. (Must be integer.) ', // 11
@@ -433,7 +433,7 @@ PARITY_InvalidGasLimit      : "Le gaz fourni est en-deçà de la limite.",
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : 'Merci à nos traducteurs ',
-TranslatorName_1            : '[Simon P](https://www.myetherwallet.com/?gaslimit=21000&to=0x89a18eE46b5aabC62e94b1830881887D04C687f3&value=1.0#send-transaction) · ',
+TranslatorName_1            : '[Simon P](https://www.myetherwallet.com/?gaslimit=10000&to=0x89a18eE46b5aabC62e94b1830881887D04C687f3&value=1.0#send-transaction) · ',
 TranslatorAddr_1            : '0x89a18eE46b5aabC62e94b1830881887D04C687f3 ',
 /* Translator 1             : Translation in French. Début de la traduction, il reste encore du travail... Je continue dès que j'ai un peu de temps :) */
 TranslatorName_2            : 'Jean Zundel · ',
@@ -580,8 +580,8 @@ HELP_10_Desc_2              : 'Entrez l\'"Adresse d\'émission". Attention, c\'e
 HELP_10_Desc_3              : 'Allez sur votre ordinateur hors ligne. Entrez l\'"Adresse de destination" et le "Montant" que vous désirez envoyer. ',
 HELP_10_Desc_4              : 'Entrez le "Prix du gaz" tel qu\'il vous a été affiché sur l\'ordinateur en ligne à la première étape. ',
 HELP_10_Desc_5              : 'Entrez le "Nonce" tel qu\'il vous a été affiché sur l\'ordinateur en ligne à la première étape. ',
-HELP_10_Desc_6              : 'La "Limite en gaz" a une valeur de 21000 par défaut. Ceci couvre les frais d\'une transaction standard. Si vous envoyez à un contrat ou si vous embarquez des données supplémentaires avec votre transaction vous devrez augmenter la limite de gaz. Tout gaz non consommé vous sera retourné. ',
-HELP_10_Desc_7              : 'Si vous le désirez, entrez des données. Dans ce cas, vous devrez inclure plus que la limite de 21000 par défaut? Toutes les données sont au format hexadécimal. ',
+HELP_10_Desc_6              : 'La "Limite en gaz" a une valeur de 10000 par défaut. Ceci couvre les frais d\'une transaction standard. Si vous envoyez à un contrat ou si vous embarquez des données supplémentaires avec votre transaction vous devrez augmenter la limite de gaz. Tout gaz non consommé vous sera retourné. ',
+HELP_10_Desc_7              : 'Si vous le désirez, entrez des données. Dans ce cas, vous devrez inclure plus que la limite de 10000 par défaut? Toutes les données sont au format hexadécimal. ',
 HELP_10_Desc_8              : 'Sélectionnez le fichier de votre portefeuille -ou- votre clef privée et déverrouillez votre portefeuille. ',
 HELP_10_Desc_9              : 'Cliquez sur le bouton "Générer la transaction signée". ',
 HELP_10_Desc_10             : 'Le champ de données sous ce bouton se remplit avec votre transaction signée. Copiez-la et revenez avec elle sur votre ordinateur en ligne. ',
