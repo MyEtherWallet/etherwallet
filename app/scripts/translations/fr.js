@@ -291,6 +291,8 @@ MNEM_prev                   : 'Adresses précédentes',
 /* Hardware wallets */
 ADD_Ledger_1                : 'Connectez votre portefeuille Ledger',
 ADD_Ledger_2                : 'Ouvrez l\'application Ethereum (ou une application de contrat)',
+ADD_Ledger_2_Exp            : 'Ouvrez l\'application Expanse (ou une application de contrat) ',
+ADD_Ledger_2_Ubq            : 'Ouvrez l\'application Ubiq (ou une application de contrat) ',
 ADD_Ledger_3                : 'Vérifiez que l\'option Browser Support est activée dans Settings',
 ADD_Ledger_scan             : 'Se connecter au portefeuille Ledger',
 ADD_Ledger_4                : 'Si l\'option Browser Support n\'est pas présente dans Settings, vérifiez que vous avez le [Firmware 1.2 ou plus récent](https://www.ledgerwallet.com/apps/manager).',
@@ -307,6 +309,7 @@ x_DigitalBitbox             : 'Digital Bitbox',
 ADD_DigitalBitbox_0a        : 'Rouvrir MyEtherWallet sur une connexion sécurisée (SSL)',
 ADD_DigitalBitbox_0b        : 'Rouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
 ADD_DigitalBitbox_scan      : 'Se connecter au Digital Bitbox',
+
 
 /* Chrome Extension */
 CX_error_1                  : 'Vous n\'avez pas de portefeuille sauvegardé. Cliquez sur ["Ajout de portefeuilles"](/cx-wallet.html#add-wallet) pour en ajouter un !',

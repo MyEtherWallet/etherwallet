@@ -345,6 +345,8 @@ MNEM_prev                   : 'Προηγούμενες διευθύνσεις '
 x_Ledger                    : 'Ledger Wallet ',
 ADD_Ledger_1                : 'Συνδέστε το Ledger Wallet σας ',
 ADD_Ledger_2                : 'Ανοίξτε την εφαρμογή Ethereum (ή μια εφαρμογή συμβολαίου) ',
+ADD_Ledger_2_Exp            : 'Ανοίξτε την εφαρμογή Expanse (ή μια εφαρμογή συμβολαίου) ',
+ADD_Ledger_2_Ubq            : 'Ανοίξτε την εφαρμογή Ubiq (ή μια εφαρμογή συμβολαίου) ',
 ADD_Ledger_3                : 'Βεβαιωθείτε ότι η υποστήριξη περιηγητή είναι ενεργοποιημένη στις ρυθμίσεις ',
 ADD_Ledger_4                : 'Εάν δεν υπάρχει υποστήριξη περιηγητή στις ρυθμίσεις, βεβαιωθείτε ότι έχετε [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Ξανα-ανοίξτε το MyEtherWallet σε ασφαλή (SSL) σύνδεση ',

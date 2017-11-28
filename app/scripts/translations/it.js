@@ -283,6 +283,8 @@ ADD_Ledger_0a               : 'Devi accedere a MyEtherWallet tramite una conness
 ADD_Ledger_0b               : 'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/) ',
 ADD_Ledger_1                : 'Collega il tuo Ledger Wallet ',
 ADD_Ledger_2                : 'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto) ',
+ADD_Ledger_2_Exp            : 'Apri l\'applicazione Expanse (o l\'applicazione di un contratto) ',
+ADD_Ledger_2_Ubq            : 'Apri l\'applicazione Ubiq (o l\'applicazione di un contratto) ',
 ADD_Ledger_3                : 'Verifica che il supporto browser sia abilitato nelle impostazioni ',
 ADD_Ledger_4                : 'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_scan             : 'Collegati al Ledger Wallet ',

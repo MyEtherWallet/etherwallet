@@ -244,6 +244,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x68e14bb5A45B9681327E16E528084B9d962C1a39",
+"symbol":"CATs (BitClave)",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8",
 "symbol":"CAT (Blockcat)",
 "decimal":18,
@@ -511,6 +516,11 @@
 },{
 "address":"0x88FCFBc22C6d3dBaa25aF478C578978339BDe77a",
 "symbol":"FYN",
+"decimal":18,
+"type":"default"
+},{
+ "address":"0x708876f486e448ee89eb332bfbc8e593553058b9",
+"symbol":"GAVEL",
 "decimal":18,
 "type":"default"
 },{
@@ -889,8 +899,13 @@
 "decimal":3,
 "type":"default"
 },{
-"address":"0x5c6183d10A00CD747a6Dbb5F658aD514383e9419",
+"address":"0x7627de4b93263a6a7570b8dafa64bae812e5c394",
 "symbol":"NXX",
+"decimal":8,
+"type":"default"
+},{
+"address":"0x5c6183d10A00CD747a6Dbb5F658aD514383e9419",
+"symbol":"NXX_OLD",
 "decimal":8,
 "type":"default"
 },{
@@ -1224,6 +1239,11 @@
 "decimal":4,
 "type":"default"
 },{
+"address":"0x85089389C14Bd9c77FC2b8F0c3d1dC3363Bf06Ef",
+"symbol":"SPF",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x2C4e8f2D746113d0696cE89B35F0d8bF88E0AEcA",
 "symbol":"ST",
 "decimal":18,
@@ -1477,5 +1497,10 @@
 "address":"0xe386b139ed3715ca4b18fd52671bdcea1cdfe4b1",
 "symbol":"ZST",
 "decimal":8,
+"type":"default"
+},{
+"address":"0x0f641b9f7329ba4706580d086d8063c5a3c23dbb",
+"symbol":"WaBi",
+"decimal":18,
 "type":"default"
 }]
