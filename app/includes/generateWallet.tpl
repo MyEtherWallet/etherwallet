@@ -21,7 +21,7 @@
              placeholder="{{'GEN_Placeholder_1' | translate }}"
              ng-model="password"
              ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"
-             aria-label="{{'GEN_Label_1' |translate}}"/>
+             aria-label="{{'GEN_Label_1' | translate}}"/>
         <span tabindex="0"
               aria-label="make password visible"
               role="button"
@@ -59,7 +59,7 @@
 
     <section class="block__help">
 
-      <h2>
+      <h2 translate="GEN_Help_0">
         Already have a wallet somewhere?
       </h2>
 
@@ -94,7 +94,7 @@
             <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">
               MetaMask Extension
             </a>.
-            <span>
+            <span translate="GEN_Help_MetaMask">
               So easy! Keys stay in MetaMask, not on a phishing site! Try it today.
             </span>
           </p>
@@ -167,13 +167,13 @@
       </a>
 
       <div class="warn">
-        <p>
+        <p class="GEN_Warning_1">
           **Do not lose it!** It cannot be recovered if you lose it.
         </p>
-        <p>
+        <p class="GEN_Warning_2">
           **Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.
         </p>
-        <p>
+        <p class="GEN_Warning_3">
           **Make a backup!** Secure it like the millions of dollars it may one day be worth.
         </p>
       </div>
@@ -218,12 +218,16 @@
       <ul>
         <li>
           <a href="https://myetherwallet.github.io/knowledge-base/getting-started/backing-up-your-new-wallet.html" target="_blank" rel="noopener noreferrer">
-            <strong translate="GEN_Help_13">How to Back Up Your Keystore File</strong>
+            <strong translate="GEN_Help_13">
+              How to Back Up Your Keystore File
+            </strong>
           </a>
         </li>
         <li>
           <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
-            <strong translate="GEN_Help_14">What are these Different Formats?</strong>
+            <strong translate="GEN_Help_14">
+              What are these Different Formats?
+            </strong>
           </a>
         </li>
       </ul>

@@ -100,6 +100,13 @@ ONBOARD_final_content__7        :  'How to Send via MetaMask',
 ONBOARD_final_content__8        :  'Learn More or Contact Us',
 ONBOARD_final_content__9        :  'OMG, please just let me send FFS.',
 
+GEN_Help_0                      :  'Already have a wallet somewhere?',
+GEN_Help_MetaMask               :  'So easy! Keys stay in MetaMask, not on a phishing site! Try it today.',
+
+GEN_Warning_1                   :  '**Do not lose it!** It cannot be recovered if you lose it.',
+GEN_Warning_2                   :  '**Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.',
+GEN_Warning_3                   :  '**Make a backup!** Secure it like the millions of dollars it may one day be worth.',
+
 GAS_Price_1                     : 'Not So Fast',
 GAS_Price_2                     : 'Fast',
 GAS_Price_3                     : 'Fast AF',
