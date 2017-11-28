@@ -89,7 +89,7 @@
     }
     <div class="tagline">
 
-    <span>3.10.8.0</span>
+    <span>3.10.8.5</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>

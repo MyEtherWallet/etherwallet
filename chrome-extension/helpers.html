@@ -86,7 +86,7 @@
     
     <div class="tagline">
 
-    <span>3.10.8.0</span>
+    <span>3.10.8.5</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -122,35 +122,59 @@
 
     <span class="dropdown dropdown-gas" ng-cloak>
       <a tabindex="0" aria-haspopup="true" aria-label="adjust gas price" class="dropdown-toggle  btn btn-white" ng-click="dropdownGasPrice = !dropdownGasPrice">
-        <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
-        <i class="caret"></i>
+        <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
+          {{gas.value}} Gwei
+          <i class="caret"></i>
       </a>
       <ul class="dropdown-menu" ng-show="dropdownGasPrice">
         <div class="header--gas">
-          <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+          <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
+          {{gas.value}} Gwei
           <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" step="{{gas.step}}" ng-change="gasChanged()"/>
-          <p class="small col-xs-4 text-left">Not So Fast</p>
-          <p class="small col-xs-4 text-center">Fast</p>
-          <p class="small col-xs-4 text-right">Fast AF</p>
+          <p class="small col-xs-4 text-left" translate="GAS_Price_1">
+            Not So Fast
+          </p>
+          <p class="small col-xs-4 text-center" translate="GAS_Price_2">
+            Fast
+          </p>
+          <p class="small col-xs-4 text-right" translate="GAS_Price_3">
+            Fast AF
+          </p>
           <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
-          <a class="small" translate="x_ReadMore" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener noreferrer"></a>
+          <a class="small"
+             translate="x_ReadMore"
+             href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
+             target="_blank"
+             rel="noopener noreferrer"></a>
         </div>
       </ul>
     </span>
 
     <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
     <span class="dropdown dropdown-node" ng-cloak>
-      <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle  btn btn-white" ng-click="dropdownNode = !dropdownNode">
-        Network: {{curNode.name}} <small>({{curNode.service}})</small>
-        <i class="caret"></i>
+      <a tabindex="0"
+         aria-haspopup="true"
+         aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}"
+         class="dropdown-toggle  btn btn-white"
+         ng-click="dropdownNode = !dropdownNode">
+           <span translate="X_Network">Network:</span>
+           {{curNode.name}}
+           <small>({{curNode.service}})</small>
+           <i class="caret"></i>
       </a>
       <ul class="dropdown-menu" ng-show="dropdownNode">
-        <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
-          {{value.name}}
-          <small> ({{value.service}}) </small>
-          <img ng-show="value.service=='Custom'" src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
-        </a></li>
-        <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
+        <li ng-repeat="(key, value) in nodeList">
+          <a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
+            {{value.name}}
+            <small> ({{value.service}}) </small>
+            <img ng-show="value.service=='Custom'" src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+          </a>
+        </li>
+        <li>
+          <a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;" translate="X_Network_Custom">
+            Add Custom Network / Node
+          </a>
+        </li>
       </ul>
     </span>
 
@@ -163,13 +187,30 @@
   <div class="nav-scroll">
     <ul class="nav-inner">
       
-      <li ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="tab.mew" ng-click="tabClick($index)"> <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a></li>
+      <li ng-repeat="tab in tabNames track by $index" \
+          class="nav-item {{tab.name}}" \
+          ng-class="{active: $index==gService.currentTab}"
+          ng-show="tab.mew"
+          ng-click="tabClick($index)">
+            <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a>
+      </li>
       
       
-      <li class="nav-item help"><a href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer">Help</a></li>
+      <li class="nav-item help">
+        <a href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer">
+          <span translate="NAV_Help">
+            Help
+          </span>
+        </a>
+      </li>
     </ul>
   </div>
-  <a aria-hidden="true" ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
+  <a aria-hidden="true"
+     ng-show="showRightArrow"
+     class="nav-arrow-right"
+     ng-click="scrollRight(100);"
+     ng-mouseover="scrollHoverIn(false,2);"
+     ng-mouseleave="scrollHoverOut()">&#187;</a>
 </nav>
 
  <article class="modal fade" id="customNodeModal" tabindex="-1">
@@ -177,7 +218,7 @@
     <section class="modal-content">
 
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
 
         <h2 class="modal-title text-info" translate="NODE_Title"> Set Up Your Custom Node </h2>
 
@@ -263,144 +304,231 @@
   <div class="tab-content" >
 
     <div class="" ng-controller="helpersCtrl">
-  <h1> Convert Ethererum Units (e.g. Ether <-> Wei) </h1>
-  <h2 class="p"> Ether Wei Converter </h2>
+
+  <h1>
+    Convert Ethererum Units (e.g. Ether <-> Wei)
+  </h1>
+
+  <h2 class="p">
+    Ether Wei Converter
+  </h2>
+
   <section class="mono">
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.wei" ng-change="convertUnit('wei')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> wei </a>
+        <a class="btn btn-default" style="min-width: 170px;">
+          wei
+        </a>
       </div>
     </div>
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.kwei" ng-change="convertUnit('kwei')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> kwei </a>
+        <a class="btn btn-default" style="min-width: 170px;">
+          kwei
+        </a>
       </div>
     </div>
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.mwei" ng-change="convertUnit('mwei')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> mwei </a>
+        <a class="btn btn-default" style="min-width: 170px;">
+          mwei
+        </a>
       </div>
     </div>
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.gwei" ng-change="convertUnit('gwei')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> gwei <small>(shannon)</small> </a>
+        <a class="btn btn-default" style="min-width: 170px;">
+          gwei <small>(shannon)
+        </small>
+      </a>
+
       </div>
+
     </div>
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.szabo" ng-change="convertUnit('szabo')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> szabo </a>
+        <a class="btn btn-default" style="min-width: 170px;">
+          szabo
+        </a>
       </div>
     </div>
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.finney" ng-change="convertUnit('finney')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> finney </a>
+        <a class="btn btn-default" style="min-width: 170px;">
+          finney
+        </a>
       </div>
     </div>
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.ether" ng-change="convertUnit('ether')" />
       <div class="input-group-btn">
-        <a class="btn btn-primary" style="min-width: 170px;"> ether </a>
+        <a class="btn btn-primary" style="min-width: 170px;">
+          ether
+        </a>
       </div>
     </div>
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.kether" ng-change="convertUnit('kether')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> kether </a>
+        <a class="btn btn-default" style="min-width: 170px;">
+          kether
+        </a>
       </div>
     </div>
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.mether" ng-change="convertUnit('mether')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> mether </a>
+        <a class="btn btn-default" style="min-width: 170px;">
+          mether
+        </a>
       </div>
     </div>
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.gether" ng-change="convertUnit('gether')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> gether </a>
+        <a class="btn btn-default" style="min-width: 170px;">
+          gether
+        </a>
       </div>
     </div>
+
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.tether" ng-change="convertUnit('tether')" />
       <div class="input-group-btn">
-        <a class="btn btn-default" style="min-width: 170px;"> tether  </a>
+        <a class="btn btn-default" style="min-width: 170px;"> tether
+        </a>
       </div>
     </div>
+
   </section>
+
+
+
+
+
 
   <br /><br /><br />
 
-  <h1> ENS Debugger & Data Grabber </h1>
-  <h2 class="p">Ethereum Name Service Data String Generator</h2>
-  <p class="text-danger"> This is meant to be a helpful tool for debugging and checking and generating manual reveals when necessary. Use at your own risk. There is no validation on these fields. </p>
+
+
+
+
+
+  <h1>
+    ENS Debugger & Data Grabber
+  </h1>
+  <h2 class="p">
+    Ethereum Name Service Data String Generator
+  </h2>
+  <p class="text-danger">
+    This is meant to be a helpful tool for debugging and checking and generating manual reveals when necessary. Use at your own risk. There is no validation on these fields.
+  </p>
 
   <section class="row">
     <div class="form-group col-sm-12">
-      <label> Address you Bid From </label>
+      <label>
+        Address you Bid From
+      </label>
       <input class="form-control" type="text" ng-model="ensAddress" ng-change="allTheThings()" />
     </div>
   </section>
 
   <section class="row">
     <div class="form-group col-sm-6">
-      <label> ENS Name you Bid On (no '.eth' at the end!) </label>
+      <label>
+        ENS Name you Bid On (no '.eth' at the end!)
+      </label>
       <input class="form-control" type="text" ng-model="ensLabel" ng-change="toEnsLabelHash()" />
     </div>
     <div class="form-group col-sm-6">
-      <label> Hashed ENS Name (Label Hash) </label>
+      <label>
+        Hashed ENS Name (Label Hash)
+      </label>
       <input class="form-control" type="text" ng-model="ensLabelHash" />
     </div>
   </section>
 
   <section class="row">
     <div class="form-group col-sm-6">
-      <label> Amount you Bid (ETH) </label>
+      <label>
+        Amount you Bid (ETH)
+      </label>
       <input class="form-control" type="text" ng-model="bidEth" ng-change="toBidWei()" />
     </div>
     <div class="form-group col-sm-6">
-      <label> Amount you Bid (WEI) </label>
+      <label>
+        Amount you Bid (WEI)
+      </label>
       <input class="form-control" type="text" ng-model="bidWei" ng-change="toBidEth()" />
     </div>
   </section>
 
   <section class="row">
     <div class="form-group col-sm-6">
-      <label> Your Secret </label>
+      <label>
+        Your Secret
+      </label>
       <input class="form-control" type="text" ng-model="ensSecret" ng-change="toEnsSecretHash()" />
     </div>
     <div class="form-group col-sm-6">
-      <label> Your Secret (Hashed) </label>
+      <label>
+        Your Secret (Hashed)
+      </label>
       <input class="form-control" type="text" ng-model="ensSecretHash"/>
     </div>
   </section>
 
   <section class="row">
     <div class="form-group col-xs-12">
-      <label> Start Auction Data </label>
+      <label>
+        Start Auction Data
+      </label>
       <input class="form-control" type="text" ng-model="startAuctionData" readonly />
       <p>
-        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code> &nbsp;&middot;&nbsp;
-        Amount: <code>0</code> &nbsp;&middot;&nbsp;
-        Gas Limit: <code>200000</code> &nbsp;&middot;&nbsp;
-        Data: <code>[ABOVE]</code>
+        To:
+        <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code>
+        &nbsp;&middot;&nbsp;
+        Amount:
+        <code>0</code>
+        &nbsp;&middot;&nbsp;
+        Gas Limit:
+        <code>200000</code>
+        &nbsp;&middot;&nbsp;
+        Data:
+        <code>[ABOVE]</code>
       </p>
     </div>
   </section>
 
   <section class="row">
     <div class="form-group col-xs-12">
-      <label> New Bid Data <small> If your reveals aren't working, this is the string that needs to match your bid data on Etherscan)</small> </label>
+      <label>
+        New Bid Data
+        <small>If your reveals aren't working, this is the string that needs to match your bid data on Etherscan)</small>
+    </label>
       <input class="form-control" type="text" ng-model="shaBid" readonly />
       <p>
-        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code> &nbsp;&middot;&nbsp;
-        Amount: <code>[A NUMBER >= BID AMOUNT]</code> &nbsp;&middot;&nbsp;
-        Gas Limit: <code>500000</code> &nbsp;&middot;&nbsp;
+        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code>
+        &nbsp;&middot;&nbsp;
+        Amount: <code>[A NUMBER >= BID AMOUNT]</code>
+        &nbsp;&middot;&nbsp;
+        Gas Limit: <code>500000</code>
+        &nbsp;&middot;&nbsp;
         Data: <code>[ABOVE]</code>
       </p>
     </div>
@@ -408,12 +536,18 @@
 
   <section class="row">
     <div class="form-group col-xs-12">
-      <label> Reveal Data <small> This is for manually revealing if you need to do so. </small></label>
+      <label>
+        Reveal Data <small> This is for manually revealing if you need to do so.
+      </small>
+    </label>
       <input class="form-control" type="text" ng-model="revealBidData" readonly />
       <p>
-        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code> &nbsp;&middot;&nbsp;
-        Amount: <code>0</code> &nbsp;&middot;&nbsp;
-        Gas Limit: <code>200000</code> &nbsp;&middot;&nbsp;
+        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code>
+        &nbsp;&middot;&nbsp;
+        Amount: <code>0</code>
+        &nbsp;&middot;&nbsp;
+        Gas Limit: <code>200000</code>
+        &nbsp;&middot;&nbsp;
         Data: <code>[ABOVE]</code>
       </p>
     </div>
@@ -421,12 +555,17 @@
 
   <section class="row">
     <div class="form-group col-xs-12">
-      <label> Finalize Auction Data </label>
+      <label>
+        Finalize Auction Data
+      </label>
       <input class="form-control" type="text" ng-model="finalizeAuctionData" readonly />
       <p>
-        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code> &nbsp;&middot;&nbsp;
-        Amount: <code>0</code> &nbsp;&middot;&nbsp;
-        Gas Limit: <code>200000</code> &nbsp;&middot;&nbsp;
+        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code>
+        &nbsp;&middot;&nbsp;
+        Amount: <code>0</code>
+        &nbsp;&middot;&nbsp;
+        Gas Limit: <code>200000</code>
+        &nbsp;&middot;&nbsp;
         Data: <code>[ABOVE]</code>
       </p>
     </div>
@@ -435,30 +574,55 @@
 
   <br /><br /><br />
 
-  <h1> Convert Decimal to Hexidecimal and Hex to Decimal </h1>
+
+  <h1>
+    Convert Decimal to Hexidecimal and Hex to Decimal
+  </h1>
   <div class="form-group">
-    <label> Decimal </label>
+    <label>
+      Decimal
+    </label>
     <input class="form-control" type="text" ng-model="decimalNumber" ng-change="decimalToHex()" />
   </div>
+
   <div class="form-group">
-    <label> Hexadecimal </label>
+    <label>
+      Hexadecimal
+    </label>
     <input class="form-control" type="text" ng-model="hexNumber" ng-change="hexToDecimal()" />
   </div>
+
   <div class="form-group">
-    <label> Hexadecimal - Padded Left w/ 64 characters </label>
+    <label>
+      Hexadecimal - Padded Left w/ 64 characters
+    </label>
     <input class="form-control" type="text" ng-model="hexPaddedLeft" />
   </div>
 
   <br /><br /><br />
 
-  <h1> "SHA3" (Keccak-256) It! <small><a href="https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use" target="_blank" rel="noopener noreferrer">yooo... sha3 !== Keccak-256?!</a></small></h1>
+  <h1>
+    "SHA3" (Keccak-256) It!
+    <small>
+      <a href="https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use"
+         target="_blank"
+         rel="noopener noreferrer">
+          yooo... sha3 !== Keccak-256?!
+      </a>
+    </small>
+  </h1>
 
   <div class="form-group">
-    <label> Input </label>
+    <label>
+      Input
+    </label>
     <input class="form-control" type="text" ng-model="inputText" ng-change="toSHA3()" />
   </div>
+
   <div class="form-group">
-    <label> Output </label>
+    <label>
+      Output
+    </label>
     <input class="form-control" type="text" ng-model="outputText" readonly />
   </div>
 
@@ -466,115 +630,290 @@
   <br /><br /><br />
 
 
-  <h1> Ether Unit Reference Guide </h1>
+  <h1> Ether Unit Reference Guide
+  </h1>
   <table class="table table-striped mono">
     <tr>
-      <td><strong>wei</strong></td>
-      <td><small></small></td>
-      <td>1</td>
-      <td>1</td>
-      <td></td>
+      <td>
+        <strong>
+          wei
+        </strong>
+      </td>
+      <td>
+        <small></small>
+      </td>
+      <td>
+        1
+      </td>
+      <td>
+        1
+      </td>
+      <td>
+      </td>
     </tr>
+
     <tr>
-      <td><strong>kwei</strong></td>
-      <td><small>ada, femtoether</small></td>
-      <td>1000</td>
-      <td>1,000</td>
-      <td>10<sup>3</sup></td>
+      <td>
+        <strong>
+          kwei
+        </strong>
+      </td>
+      <td>
+        <small>
+          ada, femtoether
+        </small>
+      </td>
+      <td>
+        1000
+      </td>
+      <td>
+        1,000
+      </td>
+      <td>
+        10<sup>3</sup>
+      </td>
     </tr>
+
     <tr>
-      <td><strong>mwei</strong></td>
-      <td><small>babbage, picoether</small></td>
-      <td>1000000</td>
-      <td>1,000,000</td>
-      <td>10<sup>6</sup></td>
+      <td>
+        <strong>
+          mwei
+        </strong>
+      </td>
+      <td>
+        <small>
+          babbage, picoether
+        </small>
+      </td>
+      <td>
+        1000000
+      </td>
+      <td>
+        1,000,000
+      </td>
+      <td>
+        10<sup>6</sup>
+      </td>
     </tr>
+
+
     <tr>
-      <td><strong>gwei</strong></td>
-      <td><small>shannon, nanoether, nano</small></td>
-      <td>1000000000</td>
-      <td>1,000,000,000</td>
-      <td>10<sup>9</sup></td>
+      <td>
+        <strong>
+          gwei
+        </strong>
+      </td>
+      <td>
+        <small>
+          shannon, nanoether, nano
+        </small>
+      </td>
+      <td>
+        1000000000
+      </td>
+      <td>
+        1,000,000,000
+      </td>
+      <td>
+        10<sup>9</sup>
+      </td>
     </tr>
+
     <tr>
-      <td><strong>szabo</strong></td>
-      <td><small>microether, micro</small></td>
-      <td>1000000000000</td>
-      <td>1,000,000,000,000</td>
-      <td>10<sup>12</sup></td>
+      <td>
+        <strong>szabo</strong>
+      </td>
+      <td>
+        <small>
+          microether, micro
+        </small>
+      </td>
+      <td>
+        1000000000000
+      </td>
+      <td>
+        1,000,000,000,000
+      </td>
+      <td>
+        10<sup>12</sup>
+    </td>
     </tr>
+
     <tr>
-      <td><strong>finney</strong></td>
-      <td><small>milliether, milli</small></td>
-      <td>1000000000000000</td>
-      <td>1,000,000,000,000,000</td>
-      <td>10<sup>15</sup></td>
+      <td>
+        <strong>finney</strong>
+      </td>
+      <td>
+        <small>
+          milliether, milli
+        </small>
+      </td>
+      <td>
+        1000000000000000
+      </td>
+      <td>
+        1,000,000,000,000,000
+      </td>
+      <td>
+        10<sup>15</sup>
+    </td>
     </tr>
+
     <tr>
-      <td><strong>ether</strong></td>
-      <td><small></small></td>
-      <td>1000000000000000000</td>
-      <td>1,000,000,000,000,000,000</td>
-      <td>10<sup>18</sup></td>
+      <td>
+        <strong>ether</strong>
+      </td>
+      <td>
+        <small></small>
+      </td>
+      <td>
+        1000000000000000000
+      </td>
+      <td>
+        1,000,000,000,000,000,000
+      </td>
+      <td>
+        10<sup>18</sup>
+    </td>
     </tr>
+
     <tr>
-      <td><strong>kether</strong></td>
-      <td><small>grand, einstein</small></td>
-      <td>1000000000000000000000</td>
-      <td>1,000,000,000,000,000,000,000</td>
-      <td>10<sup>21</sup></td>
+      <td>
+        <strong>kether</strong>
+      </td>
+      <td>
+        <small>
+          grand, einstein
+        </small>
+      </td>
+      <td>
+        1000000000000000000000
+      </td>
+      <td>
+        1,000,000,000,000,000,000,000
+      </td>
+      <td>
+        10<sup>21</sup>
+      </td>
     </tr>
+
     <tr>
-      <td><strong>mether</strong></td>
-      <td><small></small></td>
-      <td>1000000000000000000000000</td>
-      <td>1,000,000,000,000,000,000,000,000</td>
-      <td>10<sup>24</sup></td>
+      <td>
+        <strong>mether</strong>
+      </td>
+      <td>
+        <small></small>
+      </td>
+      <td>
+        1000000000000000000000000
+      </td>
+      <td>
+        1,000,000,000,000,000,000,000,000
+      </td>
+      <td>
+        10<sup>24</sup>
+    </td>
     </tr>
+
     <tr>
-      <td><strong>gether</strong></td>
-      <td><small></small></td>
-      <td>1000000000000000000000000000</td>
-      <td>1,000,000,000,000,000,000,000,000,000</td>
-      <td>10<sup>27</sup></td>
+      <td>
+        <strong>gether</strong>
+      </td>
+      <td>
+        <small></small>
+      </td>
+      <td>
+        1000000000000000000000000000
+      </td>
+      <td>
+        1,000,000,000,000,000,000,000,000,000
+      </td>
+      <td>
+        10<sup>27</sup>
+    </td>
     </tr>
+
     <tr>
-      <td><strong>tether </strong></td>
-      <td><small></small></td>
-      <td>1000000000000000000000000000000</td>
-      <td>1000,000,000,000,000,000,000,000,000,000</td>
-      <td>10<sup>30</sup></td>
+      <td>
+        <strong>tether</strong>
+      </td>
+      <td>
+        <small></small>
+      </td>
+      <td>
+        1000000000000000000000000000000
+      </td>
+      <td>
+        1000,000,000,000,000,000,000,000,000,000
+      </td>
+      <td>
+        10<sup>30</sup>
+    </td>
+
     </tr>
   </table>
   </p>
-    <br /><br /><br />
 
-  <h1> Mistyped Private Key </h1>
+
+  <br /><br /><br />
+
+
+  <h1>
+    Mistyped Private Key
+  </h1>
 
   <div class="form-group">
-    <label> Private Key that isn't unlocking correct address</label>
+    <label>
+      Private Key that isn't unlocking correct address
+    </label>
     <input class="form-control" type="text" ng-model="mistypedPK"  />
   </div>
+
   <div class="form-group">
-    <label> Address You Sent To </label>
+    <label>
+      Address You Sent To
+    </label>
     <input class="form-control" type="text" ng-model="mistypedAddr" />
   </div>
+
   <div class="form-group">
-    <a class="btn btn-primary" ng-click="findMyPrivateKey()"> Start the Search! </a>
+    <a class="btn btn-primary" ng-click="findMyPrivateKey()"> Start the Search!
+    </a>
   </div>
+
   <div class="form-group">
-    <label> Actual Private Key </label>
+    <label>
+      Actual Private Key
+    </label>
     <input class="form-control" type="text" ng-model="actualPK" readonly />
   </div>
+
   <div class="form-group">
     <ul>
-      <li class="text-danger">Consider yourself very, very lucky.</li>
-      <li> Now you need to create a new secure wallet and move all funds to it.</li>
-      <li>In order to prevent the same thing from happening, <strong> please make sure your address you are sending to matches the address on your paper wallet</strong></li>
-      <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherwallet.html" target="_blank" rel="noopener noreferrer">Read this guide for more information.</a></li>
-      <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener noreferrer">Learn how to protect yourself and your funds.</a></li>
+      <li class="text-danger">
+        Consider yourself very, very lucky.
+      </li>
+      <li>
+        Now you need to create a new secure wallet and move all funds to it.
+      </li>
+      <li>
+        In order to prevent the same thing from happening, <strong> please make sure your address you are sending to matches the address on your paper wallet
+      </strong>
+    </li>
+      <li>
+        <a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherwallet.html" target="_blank" rel="noopener noreferrer">
+          Read this guide for more information.
+        </a>
+      </li>
+      <li>
+        <a href="https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener noreferrer">
+          Learn how to protect yourself and your funds.
+        </a>
+      </li>
     </ul>
+
   </div>
+
 
 </div>
 
@@ -597,7 +936,11 @@
 
 <section class="pre-footer">
   <div class="container">
-    <p>MyEtherWallet.com does not hold your keys for you. We cannot access accounts, recover keys, reset passwords, nor reverse transactions. Protect your keys &amp; always check that you are on correct URL. <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal"> You are responsible for your security.</a>
+    <p>
+      MyEtherWallet.com does not hold your keys for you. We cannot access accounts, recover keys, reset passwords, nor reverse transactions. Protect your keys &amp; always check that you are on correct URL.
+      <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal">
+        You are responsible for your security.
+      </a>
     </p>
   </div>
 </section>
@@ -610,17 +953,31 @@
 
       <a href="/"><img src="images/logo-myetherwallet.svg" height="45px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
-      <p><span translate="FOOTER_1">Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.</span></p>
+      <p>
+        <span translate="FOOTER_1">
+          Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.
+        </span>
+      </p>
 
-      <p><a aria-label="knowledge base" href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-        Knowledge Base
-      </a></p>
+      <p>
+        <a aria-label="knowledge base" href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Knowledge Base
+        </a>
+      </p>
 
-      <p><a data-target="#disclaimerModal" data-toggle="modal" target="_blank" rel="noopener noreferrer" role="link" tabindex="0"  translate="FOOTER_4"> Disclaimer </a></p>
+      <p>
+        <a data-target="#disclaimerModal" data-toggle="modal" target="_blank" rel="noopener noreferrer" role="link" tabindex="0"  translate="FOOTER_4">
+          Disclaimer
+        </a>
+      </p>
 
-      <p ng-show="showBlocks">Latest Block#: {{currentBlockNumber}} </p>
+      <p ng-show="showBlocks">
+        Latest Block#: {{currentBlockNumber}}
+      </p>
 
-      <p> &copy; 2017 MyEtherWallet, LLC </p>
+      <p>
+        &copy; 2017 MyEtherWallet, LLC
+      </p>
 
     </section>
 
@@ -639,12 +996,28 @@
         </div>
 
         <h5><i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
-        <p>ETH: <span class="mono wrap">mewtopia.eth <a title="See this address on the blockchain explorer" href="https://etherscan.io/address/0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" class="ext-etheraddresslookup-link" target="_blank">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</a></span></p>
-        <p>BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span></p>
+        <p>
+          ETH:
+          <span class="mono wrap">
+            mewtopia.eth
+            <a title="See this address on the blockchain explorer" href="https://etherscan.io/address/0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" class="ext-etheraddresslookup-link" target="_blank">
+              0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8
+            </a>
+          </span>
+          </p>
+        <p>
+          BTC:
+          <span class="mono wrap">
+            1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6
+          </span>
+        </p>
         <!--
         <p>MYD: <span class="mono wrap">mewsupport.eth <small>0xf7e983781609012307f2514f63D526D83D24F466</small></span></p>
         -->
-        <h5 ng-hide="curLang=='en'"> <i>🏅</i> <span translate="Translator_Desc"> Thank you to our translators </span></h5>
+        <h5 ng-hide="curLang=='en'">
+          <i>🏅</i>
+          <span translate="Translator_Desc"> Thank you to our translators </span>
+        </h5>
         <p ng-hide="curLang=='en'">
           <span translate="TranslatorName_1"></span>
           <span translate="TranslatorName_2"></span>
@@ -657,37 +1030,53 @@
 
     <section class="footer--righ">
 
-      <p><a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-        MyEtherWallet.com
-      </a></p>
+      <p>
+        <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          MyEtherWallet.com
+        </a>
+      </p>
 
-      <p><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-        Unit Converters &amp; ENS Debugging
-      </a></p>
+      <p>
+        <a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Unit Converters &amp; ENS Debugging
+        </a>
+      </p>
 
-      <p><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-        Sign Message
-      </a></p>
+      <p>
+        <a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Sign Message
+        </a>
+      </p>
 
-      <p><a aria-label="website via github URL" href="https://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-        kvhnuke.github.io/etherwallet
-      </a></p>
+      <p>
+        <a aria-label="website via github URL" href="https://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          kvhnuke.github.io/etherwallet
+        </a>
+      </p>
 
-      <p><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-        Github: Current Site &amp; CX
-      </a></p>
+      <p>
+        <a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Github: Current Site &amp; CX
+        </a>
+      </p>
 
-      <p><a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-        Github: Latest Release
-      </a></p>
+      <p>
+        <a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Github: Latest Release
+        </a>
+      </p>
 
-      <p><a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-        MyEtherWallet Chrome Extension
-      </a></p>
+      <p>
+        <a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          MyEtherWallet Chrome Extension
+        </a>
+      </p>
 
-      <p><a aria-label="Anti-Phishing chrome extension" href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-        EAL "Don't Get Phish'd" Chrome Extension
-      </a></p>
+      <p>
+        <a aria-label="Anti-Phishing chrome extension" href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          EAL "Don't Get Phish'd" Chrome Extension
+        </a>
+      </p>
 
       <p>
         <a aria-label="join our slack" title="slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
@@ -727,7 +1116,7 @@
     <section class="modal-content">
 
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
 
         <h2 class="modal-title text-info" translate="FOOTER_4">Disclaimer</h2>
 
@@ -764,38 +1153,38 @@
       <div class="modal-body">
 
 
-
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==1">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_welcome_title">
             Welcome to MyEtherWallet.com
           </h3>
           <section class="row row--flex">
             <div class="col-sm-7 onboarding__content">
               <ul>
-                <li class="text-danger strong">
-                  Please take some time to read &amp; understand this for your own safety. 🙏
+                <li class="text-danger strong" translate="ONBOARD_welcome_content__1">
+                  Please take some time to understand this for your own safety. 🙏
                 </li>
-                <li class="text-danger strong">
+                <li class="text-danger strong" translate="ONBOARD_welcome_content__2">
                   Your funds will be stolen if you do not head these warnings.
                 </li>
-                <li class="strong">
+                <li translate="ONBOARD_welcome_content__3">
                   We know this click-through shit is annoying. We are sorry.
                 </li>
-                <li>
-                  Even if you have been around for a while, perhaps you will learn something new, or can use this information to help others be safer.
-                </li>
               </ul>
-              <h5> What is MEW? </h5>
+              <h5 translate="ONBOARD_welcome_content__4">
+                What is MEW?
+              </h5>
               <ul>
-                <li>
+                <li translate="ONBOARD_welcome_content__5">
                   MyEtherWallet is a free, open-source, client-side interface.
                 </li>
-                <li>
+                <li translate="ONBOARD_welcome_content__6">
                   We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.
                 </li>
-                <li>
+                <li translate="ONBOARD_welcome_content__7">
                   **You** and **only you** are responsible for your security.
+                </li>
+                <li class="text-danger strong" translate="ONBOARD_welcome_content__8">
+                  We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.
                 </li>
               </ul>
             </div>
@@ -805,15 +1194,16 @@
           </section>
           <div class="onboarding__buttons text-center">
             <a ng-click="currentOnboardSlide=2" class="btn btn-primary">
-              MyEtherWallet is not a Bank
+              <span translate="ONBOARD_bank_title">
+                MyEtherWallet is not a Bank
+              </span>
             </a>
           </div>
         </article>
 
 
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==2">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_bank_title">
             MyEtherWallet is not a Bank
           </h3>
           <section class="row row--flex">
@@ -822,19 +1212,19 @@
             </div>
             <div class="col-sm-8 onboarding__content">
               <ul>
-                <li>
-                  When you open a bank account, a banker creates an account for you in their system.
+                <li translate="ONBOARD_bank_content__1">
+                  When you open an account with a bank or exchange, they create an account for you in their system.
                 </li>
-                <li>
-                  The bank keeps track of your personal information, account passwords, balances, transactions and ultimately your money.
+                <li translate="ONBOARD_bank_content__2">
+                  They keep track of your personal information, account passwords, balances, transactions and ultimately your money.
                 </li>
-                <li>
+                <li translate="ONBOARD_bank_content__3">
                   They charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.
                 </li>
-                <li>
+                <li translate="ONBOARD_bank_content__4">
                   You can write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.
                 </li>
-                <li>
+                <li translate="ONBOARD_bank_content__5">
                   You have an account *with the bank* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.
                 </li>
               </ul>
@@ -842,19 +1232,21 @@
           </section>
           <div class="onboarding__buttons">
             <a ng-click="currentOnboardSlide=1" class="btn btn-default">
-              Introduction
+              <span translate="ONBOARD_welcome_title__alt">
+                Introduction
+              </span>
             </a>
             <a ng-click="currentOnboardSlide=3" class="btn btn-primary">
-              MyEtherWallet is an Interface
+              <span translate="ONBOARD_interface_title">
+                MyEtherWallet is an Interface
+              </span>
             </a>
           </div>
         </article>
 
 
-
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==3">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_interface_title">
             MyEtherWallet is an Interface
           </h3>
           <section class="row row--flex">
@@ -863,68 +1255,73 @@
             </div>
             <div class="col-sm-8 onboarding__content">
               <ul>
-                <li>
+                <li translate="ONBOARD_interface_content__1">
                   When you create an account here, you are generating an cryptographic set of numbers: your private key and your public key (address).
                 </li>
-                <li>
-                  If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍
-                </li>
-                <li>
-                  If you send your *private key* to someone, they now have full control of your account. 👎
-                </li>
-                <li>
+                <li translate="ONBOARD_interface_content__2">
                   The handling of your keys happens entirely on your computer, inside your browser.
                 </li>
-                <li>
+                <li translate="ONBOARD_interface_content__3">
                   We never transmit, receive or store your private key, password, or other account information.
                 </li>
-                <li>
+                <li translate="ONBOARD_interface_content__4">
                   We do not charge a transaction fee.
                 </li>
-                <li>
+                <li translate="ONBOARD_interface_content__5">
                   You are just using our **interface** to interact **directly with the blockchain**.
+                </li>
+                <li translate="ONBOARD_interface_content__6">
+                  If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍
+                </li>
+                <li translate="ONBOARD_interface_content__7">
+                  If you send your *private key* to someone, they now have full control of your account. 👎
                 </li>
               </ul>
             </div>
           </section>
           <div class="onboarding__buttons">
             <a ng-click="currentOnboardSlide=2" class="btn btn-default">
-              MEW isn't a Bank
+              <span translate="ONBOARD_bank_title__alt">
+                MEW isn't a Bank
+              </span>
             </a>
             <a ng-click="currentOnboardSlide=4" class="btn btn-primary">
-              WTF is a Blockchain?
+              <span translate="ONBOARD_blockchain_title__alt">
+                WTF is a Blockchain?
+              </span>
             </a>
           </div>
           <p ng-click="currentOnboardSlide=5" class="text-right small" style="cursor:pointer">
-            I already know what a blockchain is...
+            <span translate="ONBOARD_blockchain_skip">
+              I already know what a blockchain is...
+            </span>
           </p>
         </article>
 
 
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==4">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_blockchain_title">
             Wait, WTF is a Blockchain?
           </h3>
           <section class="row row--flex">
             <div class="col-sm-8 onboarding__content">
               <ul>
-                <li>
+                <li translate="ONBOARD_blockchain_content__1">
                   The blockchain is like a huge, global, decentralized spreadsheet.
                 </li>
-                <li>
+                <li translate="ONBOARD_blockchain_content__2">
                   It keeps track of who sent how many coins to whom, and what the balance of every account is.
                 </li>
-                <li>
+                <li translate="ONBOARD_blockchain_content__3">
                   It is stored and maintained by thousands of people (miners) across the globe who have special computers.
                 </li>
-                <li>
+                <li translate="ONBOARD_blockchain_content__4">
                   It is made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.
                 </li>
-                <li>
+                <li translate="ONBOARD_blockchain_content__5">
                   When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.
                 </li>
-                <li>
+                <li translate="ONBOARD_blockchain_content__6">
                    Again: <strong>we are not a bank</strong>.
                 </li>
               </ul>
@@ -935,18 +1332,21 @@
           </section>
           <div class="onboarding__buttons">
             <a ng-click="currentOnboardSlide=3" class="btn btn-default">
-              MEW is an Interface
+              <span translate="ONBOARD_interface_title__alt">
+                MEW is an Interface
+              </span>
             </a>
             <a ng-click="currentOnboardSlide=5" class="btn btn-primary">
-              But...why does this matter?
+              <span translate="ONBOARD_why_title__alt">
+                But...why does this matter?
+              </span>
             </a>
           </div>
         </article>
 
 
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==5">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_why_title">
             Why are you making me read all this?
           </h3>
           <section class="row row--flex">
@@ -954,27 +1354,37 @@
               <img src="./images/onboarding_icon-05.svg" width="100%" height="auto" />
             </div>
             <div class="col-sm-8 onboarding__content">
-              <h5>
+              <h5 translate="ONBOARD_why_content__1">
                 Because we need you to understand that we **cannot**...
               </h5>
               <ul>
-                <li>Access your account or send your funds for you.</li>
-                <li>Recover or change your private key.</li>
-                <li>Recover or reset your password.</li>
-                <li>Reverse, cancel, or refund transactions.</li>
-                <li>Freeze accounts.</li>
+                <li class="text-danger" translate="ONBOARD_why_content__2">
+                  Access your account or send your funds for you.
+                </li>
+                <li class="text-danger" translate="ONBOARD_why_content__3">
+                  Recover or change your private key.
+                </li>
+                <li class="text-danger" translate="ONBOARD_why_content__4">
+                  Recover or reset your password.
+                </li>
+                <li class="text-danger" translate="ONBOARD_why_content__5">
+                  Reverse, cancel, or refund transactions.
+                </li>
+                <li class="text-danger" translate="ONBOARD_why_content__6">
+                  Freeze accounts.
+                </li>
               </ul>
-              <h5>
+              <h5 translate="ONBOARD_why_content__7">
                 **You** and **only you** are responsible for your security.
               </h5>
               <ul>
-                <li>
+                <li translate="ONBOARD_why_content__8">
                    Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.
                 </li>
-                <li>
+                <li translate="ONBOARD_why_content__9">
                   If lose your private key or password, no one can recover it.
                 </li>
-                <li>
+                <li translate="ONBOARD_why_content__10">
                   If you enter your private key on a phishing website, you will have **all your funds taken**.
                 </li>
               </ul>
@@ -982,18 +1392,21 @@
           </section>
           <div class="onboarding__buttons">
             <a ng-click="currentOnboardSlide=4" class="btn btn-default">
-              WTF is a Blockchain?
+              <span translate="ONBOARD_blockchain_title__alt">
+                WTF is a Blockchain?
+              </span>
             </a>
             <a ng-click="currentOnboardSlide=6" class="btn btn-primary">
-              What's the Point of MEW then?
+              <span translate="ONBOARD_point_title__alt">
+                What's the Point of MEW then?
+              </span>
             </a>
           </div>
         </article>
 
 
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==6">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_whymew_title">
             If MyEtherWallet can't do those things, what's the point?
           </h3>
           <section class="row row--flex">
@@ -1002,22 +1415,22 @@
             </div>
             <div class="col-sm-8 onboarding__content">
               <ul>
-                <li>
+                <li translate="ONBOARD_whymew_content__1">
                   Because that is the point of decentralization and the blockchain.
                 </li>
-                <li>
+                <li translate="ONBOARD_whymew_content__2">
                   You don't have to rely on your bank, government, or anyone else when you want to move your funds.
                 </li>
-                <li>
+                <li translate="ONBOARD_whymew_content__3">
                   You don't have to rely on the security of an exchange or bank to keep your funds safe.
                 </li>
-                <li>
+                <li translate="ONBOARD_whymew_content__4">
                   If you don't find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉
                 </li>
-                <li>
+                <li translate="ONBOARD_whymew_content__5">
                   If you don't like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames &amp; passwords.
                 </li>
-                <li>
+                <li translate="ONBOARD_whymew_content__6">
                   If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.
                 </li>
               </ul>
@@ -1025,42 +1438,45 @@
           </section>
           <div class="onboarding__buttons">
             <a ng-click="currentOnboardSlide=5" class="btn btn-default">
-              But...why?
+              <span translate="ONBOARD_why_title__alt">
+                But...why?
+              </span>
             </a>
             <a ng-click="currentOnboardSlide=7" class="btn btn-primary">
-              How To Protect Yourself &amp; Your Funds
+              <span translate="ONBOARD_secure_title">
+                How To Protect Yourself &amp; Your Funds
+              </span>
             </a>
           </div>
         </article>
 
 
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==7">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_secure_1_title">
             How To Protect Yourself from Phishers
           </h3>
-          <p>
+          <p translate="ONBOARD_secure_1_content__1">
             Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.
           </p>
           <section class="row row--flex">
             <div class="col-sm-8 onboarding__content">
               <ul>
-                <li>
+                <li translate="ONBOARD_secure_1_content__2">
                   Use the [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) Chrome Extension to block malicious websites.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_1_content__3">
                   Always check the URL: `https://www.myetherwallet.com`.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_1_content__4">
                   Always make sure the URL bar has `MYETHERWALLET LLC [US]` in green.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_1_content__5">
                   Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_1_content__6">
                  Always navigate directly to a site before you enter information. Do not enter information after clicking a link from a message or email.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_1_content__7">
                   [Install an AdBlocker](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) and do not click ads on your search engine (e.g. Google).
                 </li>
               </ul>
@@ -1071,37 +1487,40 @@
           </section>
           <div class="onboarding__buttons">
             <a ng-click="currentOnboardSlide=6" class="btn btn-default">
-              What's the point?
+              <span translate="ONBOARD_point_title__alt_2">
+                What's the point?
+              </span>
             </a>
             <a ng-click="currentOnboardSlide=8" class="btn btn-primary">
-              How To Protect Yourself from Scams
+              <span translate="ONBOARD_secure_2_title">
+                How To Protect Yourself from Scams
+              </span>
             </a>
           </div>
         </article>
 
 
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==8">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_secure_2_title">
             How To Protect Yourself from Scams
           </h3>
-          <p class="text-center">
+          <p class="text-center" translate="ONBOARD_secure_2_content__1">
             People will try to get you to give them money in return for nothing.
           </p>
           <br />
           <section class="row row--flex">
             <div class="col-sm-8 onboarding__content">
               <ul>
-                <li>
+                <li translate="ONBOARD_secure_2_content__2">
                   If it is too good to be true, it probably is.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_2_content__3">
                   Research before sending money to someone or some project. Look for information on a variety of websites and forums. Be wary.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_2_content__4">
                   Ask questions when you don't understand something or it doesn't seem right.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_2_content__5">
                   Don't let fear, FUD, or FOMO win over common sense. If something is very urgent, ask yourself 'why?'. It may be to create FOMO or prevent you from doing research.
                 </li>
               </ul>
@@ -1112,36 +1531,39 @@
           </section>
           <div class="onboarding__buttons">
             <a ng-click="currentOnboardSlide=7" class="btn btn-default">
-              Phuck Phishers
+              <span translate="ONBOARD_secure_3_title__alt">
+                Phuck Phishers
+              </span>
             </a>
             <a ng-click="currentOnboardSlide=9" class="btn btn-primary">
-              How To Protect Yourself from Loss
+              <span translate="ONBOARD_secure_3_title">
+                How To Protect Yourself from Loss
+              </span>
             </a>
           </div>
         </article>
 
 
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==9">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_secure_3_title">
             How To Protect Yourself from Loss
           </h3>
-          <p class="text-center">
+          <p class="text-center" translate="ONBOARD_secure_3_content__1">
             If you lose your private key or password, it is gone forever. Don't lose it.
           </p>
           <section class="row row--flex">
             <div class="col-sm-7">
               <ul>
-                <li>
+                <li translate="ONBOARD_secure_3_content__2">
                   Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_3_content__3">
                   Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_3_content__4">
                   Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.
                 </li>
-                <li>
+                <li translate="ONBOARD_secure_3_content__5">
                   If you have more than 1-week's worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It's worth it. I promise.
                 </li>
                 
@@ -1151,29 +1573,32 @@
               <img src="./images/onboarding_icon-09.svg" width="100%" height="auto" />
             </div>
           </section>
-          <h5 class="text-center">
+          <h5 class="text-center" translate="ONBOARD_secure_3_content__6">
             [Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)
           </h5>
           <div class="onboarding__buttons">
             <a ng-click="currentOnboardSlide=8" class="btn btn-default">
-              Screw Scams
+              <span translate="ONBOARD_secure_2_title__alt_2">
+                Screw Scams
+              </span>
             </a>
             <a ng-click="currentOnboardSlide=10" class="btn btn-primary">
-              One more click &amp; you're done! 🤘
+              <span translate="ONBOARD_final_title__alt">
+                One more click &amp; you're done! 🤘
+              </span>
             </a>
           </div>
         </article>
 
 
-
         <article class="onboarding__modal" ng-show="currentOnboardSlide==10">
-          <h3 class="onboarding__title">
+          <h3 class="onboarding__title" translate="ONBOARD_final_title">
             Alright, I'm done lecturing you!
           </h3>
-          <p class="text-center">
+          <p class="text-center" translate="ONBOARD_final_subtitle">
             Sorry for being like this. Onwards!
           </p>
-          <br
+          <br />
           <section class="row row--flex">
             <div class="col-sm-4 col-sm-offset-1">
               <img src="./images/onboarding_icon-10.svg" width="100%" height="auto" />
@@ -1181,64 +1606,59 @@
             <div class="col-sm-7">
               <ul>
                 <li>
-                  <a ng-click="onboardingModal.close();globalService.currentTab=globalService.tabs.generateWallet.id"
-                     class="strong">
-                    Create a wallet
-                  </a>
-                </li>
-                <li>
                   <a href="https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html"
-                     target="_blank" rel="noopener noreferrer" class="strong">
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__2">
                       Get a hardware wallet
                   </a>
                 </li>
                 <li>
                   <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html"
-                     target="_blank" rel="noopener noreferrer" class="strong">
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__3">
                     How to Set up MEW + MetaMask
                   </a>
                 </li>
                 <li>
                   <a href="https://myetherwallet.github.io/knowledge-base/offline/running-myetherwallet-locally.html"
-                     target="_blank" rel="noopener noreferrer" class="strong">
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__4">
                     How to Run MEW Offline / Locally
                   </a>
                 </li>
                 <li>
                   <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-ledger-hardware-wallet.html"
-                     target="_blank" rel="noopener noreferrer" class="strong">
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__5">
                     How to Send via Ledger hardware wallet
                   </a>
                 </li>
                 <li>
                   <a href="https://myetherwallet.github.io/knowledge-base/hardware-wallets/trezor-sending-to-trezor-device.html"
-                     target="_blank" rel="noopener noreferrer" class="strong">
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__6">
                     How to Send via TREZOR hardware wallet
                   </a>
                 </li>
                 <li>
                   <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html"
-                     target="_blank" rel="noopener noreferrer" class="strong">
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__7">
                        How to Send via MetaMask
                   </a>
                 </li>
                 <li>
                   <a href="https://myetherwallet.github.io/knowledge-base/"
-                     target="_blank" rel="noopener noreferrer" class="strong">
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__8">
                        Learn More or Contact Us
                   </a>
                 </li>
                 <li>
                   <a ng-click="onboardingModal.close();globalService.currentTab=globalService.tabs.sendTransaction.id"
                      class="strong">
+                     <span translate="ONBOARD_final_content__9">
                        OMG, please just let me send FFS.
+                     </span>
                   </a>
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
-
+          </section>
+        </article>
 
 
       </div>

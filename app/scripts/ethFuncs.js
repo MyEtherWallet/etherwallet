@@ -76,7 +76,7 @@ ethFuncs.getFunctionSignature = function(name) {
 };
 ethFuncs.estimateGas = function(dataObj, callback) {
     var adjustGas = function(gasLimit) {
-        if (gasLimit == "0x5209") return "10000";
+        if (gasLimit == "0x5209") return "21000";
         if (new BigNumber(gasLimit).gt(3500000)) return "-1";
         return new BigNumber(gasLimit).toString();
     }
