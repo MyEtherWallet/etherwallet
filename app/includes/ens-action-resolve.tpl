@@ -11,8 +11,6 @@
   @@if (site === 'cx'  ) { @@include( './ens-resolve-information.tpl', { "site": "cx"  } ) }
 
 
-
-
   <section class="text-center"
            ng-hide="objENS.owner != wallet.getAddressString()">
 

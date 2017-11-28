@@ -3,11 +3,21 @@
     <section class="modal-content">
 
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Deploy Contract Dialog">&times;</button>
 
-        <h2 class="modal-title text-danger" translate="SENDModal_Title">Warning!</h2>
+        <h2 class="modal-title text-danger" translate="SENDModal_Title">
+          Warning!
+        </h2>
 
-        <p>You are about to <strong>deploy a contract</strong> on the <strong>{{ajaxReq.type}}</strong> chain.</p>
+        <p translate="CONTRACT_Warning_1">
+          You are about to <strong>deploy a contract</strong>.
+        </p>
+        <p>
+          <span translate="CONTRACT_Warning_2">
+            It will be deployed on the following network:
+          </span>
+          <strong>{{ajaxReq.type}}</strong>.
+        </p>
 
         <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
@@ -15,7 +25,7 @@
       </div>
 
       <div class="modal-footer">
-        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+        <button class="btn btn-default" data-dismiss="modal" aria-label="Close Deploy Contract Dialog" translate="SENDModal_No">
           No, get me out of here!
         </button>
         <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
