@@ -109,7 +109,7 @@ EOS_10                          :  'Select `claimAll`.',
 /* Onboarding */
 ONBOARD_welcome_title           :  'Welcome to MyEtherWallet.com',
 ONBOARD_welcome_content__1      :  'Please take some time to understand this for your own safety. 🙏',
-ONBOARD_welcome_content__2      :  'Your funds will be stolen if you do not head these warnings.',
+ONBOARD_welcome_content__2      :  'Your funds will be stolen if you do not heed these warnings.',
 ONBOARD_welcome_content__3      :  'We know this click-through shit is annoying. We are sorry.',
 ONBOARD_welcome_content__4      :  'What is MEW? ',
 ONBOARD_welcome_content__5      :  'MyEtherWallet is a free, open-source, client-side interface.',
