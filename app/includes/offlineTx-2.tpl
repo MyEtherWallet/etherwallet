@@ -54,7 +54,7 @@
     <section class="col-sm-11">
       <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener noreferrer">
         <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">21000 is the default gas limit.</p>
+        <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">10000 is the default gas limit.</p>
       </a>
       <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
       <input class="form-control" type="text" placeholder="" ng-model="tx.gasLimit"/>

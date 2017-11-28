@@ -58,7 +58,7 @@ GET_ConfButton              : 'Ich verstehe. Weiter.',
 GEN_Label_5                 : 'Sichern Sie Ihren `Privaten Schlüssel`. ',
 GEN_Unlock                  : 'Entsperren Sie Ihr Wallet um Ihre Adresse zu sehen.',
 GAS_PRICE_Desc              : 'Der `Gas Preis` ist der Betrag, den Sie für eine Einheit `Gas` bezahlen. `Transaktionsgebühr = Gas Preis  * Gas Limit`. Dieser Betrag wird den Minern gezahlt, die Ihre Transaktion in einem Block einschließen. Je höher der Gas-Preis, desto schneller wird die Transaktion verarbeitet, aber desto teurer wird die Transaktionsgebühr. Der Standardwert ist `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Das Gas-Limit ist der Betrag an Gas, der mit Ihrer Transaktion mitgeschickt wird. `Transaktionsgebühr = Gas Preis  * Gas Limit`. Dieser Betrag wird den Minern gezahlt, die Ihre Transaktion in einem Block einschließen. Wenn Sie diese Zahl erhöhen, wird ihre Transaktion nicht schneller verarbeitet. Eine zu kleine Zahl kann jedoch bedeuten, dass die Transaktion nicht erfolgreich verarbeitet werden kann. Ein Anhaltspunkt: Eine einfache Überweisung benötigt ca. 21000 Gas, ein Token-Transfer etwa 200.000 Gas.',
+GAS_LIMIT_Desc              : 'Das Gas-Limit ist der Betrag an Gas, der mit Ihrer Transaktion mitgeschickt wird. `Transaktionsgebühr = Gas Preis  * Gas Limit`. Dieser Betrag wird den Minern gezahlt, die Ihre Transaktion in einem Block einschließen. Wenn Sie diese Zahl erhöhen, wird ihre Transaktion nicht schneller verarbeitet. Eine zu kleine Zahl kann jedoch bedeuten, dass die Transaktion nicht erfolgreich verarbeitet werden kann. Ein Anhaltspunkt: Eine einfache Überweisung benötigt ca. 10000 Gas, ein Token-Transfer etwa 200.000 Gas.',
 NONCE_Desc                  : 'Der `Nonce` ist die Zahl der Transaktionen, die von einer bestimmten Adresse aus gesendet wurden. Er stellt sicher, dass Transaktionen der Reihe nach und nicht doppelt ausgeführt werden können.',
 TXFEE_Desc                  : 'Die Transaktionsgebühr wird den Miner(n) bezahlt, die Ihre Transaktion in einen Block einschließen. Es wird durch `Gas-Limit` * `Gas-Preis` berechnet. [Du kannst GWEI -> ETH hier umwandeln](https://www.myetherwallet.com/helpers.html)',
 
@@ -215,12 +215,12 @@ TRANS_warning               : 'Wenn Sie die "Nur ETH" oder "Nur ETC" Funktionen 
 TRANS_advanced              : '+Fortgeschritten: Daten hinzufügen ',
 TRANS_data                  : 'Daten ',
 TRANS_gas                   : 'Gas Limit ',
-TRANS_sendInfo              : 'Eine Standard Transaktion mit 21000 Gas kostet 0.000441 ETH. Wir zahlen einen minimal höheren Gaspreis von 0.000000021 ETH um zu garantieren, dass die Transaktion schnell bearbeitet wird. Wir erheben keine Transaktionsgebühren. ',
+TRANS_sendInfo              : 'Eine Standard Transaktion mit 10000 Gas kostet 0.000441 ETH. Wir zahlen einen minimal höheren Gaspreis von 0.000000021 ETH um zu garantieren, dass die Transaktion schnell bearbeitet wird. Wir erheben keine Transaktionsgebühren. ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : '"Nur ETH" und "Nur ETC" Transaktionen ',
 TRANSModal_Content_0        : 'Ein Hinweis zu den verschiedenen Transaktionen und Angeboten ',
-TRANSModal_Content_1        : '**ETH (Standard Transaktion): ** Dies erzeugt eine Standard Transaktion direkt von einer Adresse zu einer anderen. Diese nutzt standardmässig 21000 Gas. Es ist gut möglich, dass alle Transaktionen dieser Art auf der ETC Blockchain wiederholt werden (Replay Attacke). ',
+TRANSModal_Content_1        : '**ETH (Standard Transaktion): ** Dies erzeugt eine Standard Transaktion direkt von einer Adresse zu einer anderen. Diese nutzt standardmässig 10000 Gas. Es ist gut möglich, dass alle Transaktionen dieser Art auf der ETC Blockchain wiederholt werden (Replay Attacke). ',
 TRANSModal_Content_2        : '**Nur ETH: ** Dies sendet die Transaktion so über [Timon Rapp\'s "replay protection contract" (wie von VB empfohlen)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), dass sie nur auf der **ETH** Blockchain ausgeführt wird. ',
 TRANSModal_Content_3        : '**Nur ETC: ** Dies sendet die Transaktion so über [Timon Rapp\'s "replay protection contract" (wie von VB empfohlen)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), dass sie nur auf der **ETC** Blockchain ausgeführt wird. ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** Sende nur Standard Transaktionen. Wenn du die Transaktion über eine der "Nur" Funktionen versendest, musst du den Support kontaktieren um deinen Betrag oder eine Rückerstattung zu erhalten. [Du kannst auch Shapeshifts "split" Werkzeug ausprobieren.](https://split.shapeshift.io/) ',
@@ -241,7 +241,7 @@ OFFLINE_Step2_Label_2       : 'Zu sendender Betrag ',
 OFFLINE_Step2_Label_3       : 'Gaspreis ',
 OFFLINE_Step2_Label_3b      : 'Dies wurde Ihnen in Schritt 1 an Ihrem Online Computer angezeigt. ',
 OFFLINE_Step2_Label_4       : 'Gas Limit ',
-OFFLINE_Step2_Label_4b      : '21000 ist das Standard Gas Limit. Wenn Sie Verträge oder Daten senden, müssen Sie diesen Wert eventuell anpassen. Alles ungenutzte Gas wird Ihnen zurück gesendet. ',
+OFFLINE_Step2_Label_4b      : '10000 ist das Standard Gas Limit. Wenn Sie Verträge oder Daten senden, müssen Sie diesen Wert eventuell anpassen. Alles ungenutzte Gas wird Ihnen zurück gesendet. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Dies wurde Ihnen in Schritt 1 an Ihrem Online Computer angezeigt. ',
 OFFLINE_Step2_Label_6       : 'Daten ',
@@ -372,7 +372,7 @@ ERROR_4                     : 'Diese Einheit existiert nicht, bitte wähle eine 
 ERROR_5                     : 'Bitte gebe eine gültige Addresse ein. ',
 ERROR_6                     : 'Bitte gebe eine gültige Passwort ein. ',
 ERROR_7                     : 'Bitte gebe eine gültige Betrag ein. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Bitte gebe eine gültige Gasverbrauch ein. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : 'Bitte gebe eine gültige Gasverbrauch ein. (Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : 'Bitte gebe eine gültige Datenwert ein. (Must be hex.) ', // 9
 ERROR_10                    : 'Bitte gebe eine gültige Gasbetrag ein. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Bitte gebe eine gültige Nonce ein. (Must be integer.) ', // 11
@@ -440,16 +440,16 @@ Translator_Desc             : 'Vielen Dank an unsere ÜbersetzerInnen ',
 TranslatorName_1            : 'christoph2806 · K · ',
 TranslatorAddr_1            : '',
 /* Translator 1             : Insert Comments Here */
-TranslatorName_2            : '[mawalu](https://www.myetherwallet.com/?gaslimit=21000&to=0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3&value=1.0#send-transaction) · ',
+TranslatorName_2            : '[mawalu](https://www.myetherwallet.com/?gaslimit=10000&to=0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3&value=1.0#send-transaction) · ',
 TranslatorAddr_2            : '0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3 ',
 /* Translator 2             : Insert Comments Here */
-TranslatorName_3            : '[huhn_solo](https://www.myetherwallet.com/?gaslimit=21000&to=0x1DAd1765381460db9A44846cDfA6f74c65A06B77&value=1.0#send-transaction) · ',
+TranslatorName_3            : '[huhn_solo](https://www.myetherwallet.com/?gaslimit=10000&to=0x1DAd1765381460db9A44846cDfA6f74c65A06B77&value=1.0#send-transaction) · ',
 TranslatorAddr_3            : '0x1DAd1765381460db9A44846cDfA6f74c65A06B77 ',
 /* Translator 3             : Insert Comments Here */
-TranslatorName_4            : '[FelixA](https://www.myetherwallet.com/?gaslimit=21000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
+TranslatorName_4            : '[FelixA](https://www.myetherwallet.com/?gaslimit=10000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
 TranslatorAddr_4            : '0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D ',
 /* Translator 4             : Insert Comments Here */
-TranslatorName_5            : 'danielsun174 · ffidan61 · [u/Preisschild](https://www.myetherwallet.com/?gaslimit=21000&to=0x700Eb9142a0CC709fce80709cfbF5Ac25438c584&value=0.1#send-transaction) ',
+TranslatorName_5            : 'danielsun174 · ffidan61 · [u/Preisschild](https://www.myetherwallet.com/?gaslimit=10000&to=0x700Eb9142a0CC709fce80709cfbF5Ac25438c584&value=0.1#send-transaction) ',
 TranslatorAddr_5            : '',
 /* Translator 5             : Insert Comments Here */
 
@@ -584,8 +584,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas limit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',

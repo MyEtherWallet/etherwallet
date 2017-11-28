@@ -58,7 +58,7 @@ GET_ConfButton              : 'Ik begrijp het. Ga door.',
 GEN_Label_5                 : 'Sla je Prive Sleutel op. ',
 GEN_Unlock                  : 'Open je wallet om je adres te bekijken',
 GAS_PRICE_Desc              : 'Gas Prijs is het bedrag dat je betaald per unit gas. `TX vergoeding = gas prijs * gas limiet` & wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. Des te hoger de gas prijs = de sneller je transactie, maar ook duurder. Standaard is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limiet is de hoeveelheid gas waarmee je je TX verstuurd. `TX vergoeding = gas prijs * gas limiet` & wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. Het verhogen van dit nummer zorgt er niet voor dat je TX sneller ge-mined zal worden. Verzenden van ETH = `21000`. Verzenden van Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limiet is de hoeveelheid gas waarmee je je TX verstuurd. `TX vergoeding = gas prijs * gas limiet` & wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. Het verhogen van dit nummer zorgt er niet voor dat je TX sneller ge-mined zal worden. Verzenden van ETH = `10000`. Verzenden van Tokens = ~`200000`.',
 NONCE_Desc                  : 'De nonce is het aantal transacties die reeds verzonden zijn van een gegeven adres. De nonce verzekert dat transacties in de juiste volgorde worden verzonden en dat een transactie slechts 1 keer geldig is.',
 TXFEE_Desc                  : 'De TX vergoeding (`fee`) wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. De vergoeding is de `gas limiet` * `gas prijs`. [Je kunt hier GWEI -> ETH converteren](https://www.myetherwallet.com/helpers.html)',
 
@@ -255,7 +255,7 @@ TRANS_desc                  : 'Als je Tokens wilt versturen, gebruik dan de "Ver
 TRANS_advanced              : '+Geavanceerd: Voeg Data toe ',
 TRANS_data                  : 'Data ',
 TRANS_gas                   : 'Gas Limit ',
-TRANS_sendInfo              : 'Een standaard transactie met 21000 gas zal 0.000441 ETH kosten. Wij gebruiken een iets-boven-minimum gas prijs van 0.000000021 ETH om te garranderen dat de transactie snel uitgevoerd zal worden. Wij zijn niet verantwoordelijk voor je transactie kosten. ',
+TRANS_sendInfo              : 'Een standaard transactie met 10000 gas zal 0.000441 ETH kosten. Wij gebruiken een iets-boven-minimum gas prijs van 0.000000021 ETH om te garranderen dat de transactie snel uitgevoerd zal worden. Wij zijn niet verantwoordelijk voor je transactie kosten. ',
 
 /* Offline Transaction */
 OFFLINE_Title               : 'Genereer & Verzend een Offline Transactie ',
@@ -270,7 +270,7 @@ OFFLINE_Step2_Label_2       : 'Waarde / Te Verzenden Bedrag ',
 OFFLINE_Step2_Label_3       : 'Gas Prijs ',
 OFFLINE_Step2_Label_3b      : 'Dit werd weergegeven in Stap 1 op je online computer. ',
 OFFLINE_Step2_Label_4       : 'Gas Limiet ',
-OFFLINE_Step2_Label_4b      : '21000 is de standaard gas limiet. Als je (naar) een contract verstuurd of data toevoegd, zou je dit anders moeten instellen. Alle onbenutte gas zal aan je worden teruggestuurd. ',
+OFFLINE_Step2_Label_4b      : '10000 is de standaard gas limiet. Als je (naar) een contract verstuurd of data toevoegd, zou je dit anders moeten instellen. Alle onbenutte gas zal aan je worden teruggestuurd. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Dit werd weergegeven in Stap 1 op je online computer. ',
 OFFLINE_Step2_Label_6       : 'Data ',
@@ -352,7 +352,7 @@ ERROR_4                     : 'Deze eenheid bestaat niet, kies alsjeblieft een v
 ERROR_5                     : 'Ongeldig adres. ',
 ERROR_6                     : 'Ongeldig wachtwoord. ',
 ERROR_7                     : 'Ongeldig bedrag. (Moet een getal zijn. Probeer 0-18.) ', // 7
-ERROR_8                     : 'Ongeldige gas limiet. (Moet een getal zijn. Probeer 21000-4000000.) ', // 8
+ERROR_8                     : 'Ongeldige gas limiet. (Moet een getal zijn. Probeer 10000-4000000.) ', // 8
 ERROR_9                     : 'Ongeldige data waarde. (Moet hexadecimaal zijn.) ', // 9
 ERROR_10                    : 'Ongeldige gas bedrag. (Moet een getal zijn. Probeer 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Ongeldige nonce. (Moet een getal zijn.) ', // 11
@@ -416,7 +416,7 @@ PARITY_InvalidGasLimit      : "Hoeveelheid gas is boven de limiet.",
 /* Translation Info */
 translate_version           : '0.5 ',
 Translator_Desc             : 'Bedank onze vertalers ',
-TranslatorName_1            : '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=21000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction) ',
+TranslatorName_1            : '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=10000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0xB5FbCE123F12347206c881cae73A3046BA1A90bA ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : '',
@@ -563,8 +563,8 @@ HELP_10_Desc_2              : 'Voer het "Van Adres" in. Let hierbij op dat dit h
 HELP_10_Desc_3              : 'Ga vervolgens naar je offline computer. Voor het "AAN ADRES" en het te verzenden "BEDRAG" in. ',
 HELP_10_Desc_4              : 'Voer de "GAS PRIJS" in zoals werd weergegeven op je online computer in stap #1. ',
 HELP_10_Desc_5              : 'Voer de "NONCE" in zoals werd weergegeven op je online computer in stap #1. ',
-HELP_10_Desc_6              : 'De "GAS LIMIET" heeft een standaard waarde van 21000. Dit zal een standaard transactie dekken. Indien je naar een contract verstuurd of als je extra data aan je transactie wilt toevoegen, zil je de gas limiet moeten verhogen. Al het teveel aan gas zal aan je geretourneerd worden. ',
-HELP_10_Desc_7              : 'Als je dat wenst, kun je extra data invoeren. Als je extra data toevoegd, zul je meer dan de standaard 21000 gas limiet moeten instellen. Alle data is in HEX formaat. ',
+HELP_10_Desc_6              : 'De "GAS LIMIET" heeft een standaard waarde van 10000. Dit zal een standaard transactie dekken. Indien je naar een contract verstuurd of als je extra data aan je transactie wilt toevoegen, zil je de gas limiet moeten verhogen. Al het teveel aan gas zal aan je geretourneerd worden. ',
+HELP_10_Desc_7              : 'Als je dat wenst, kun je extra data invoeren. Als je extra data toevoegd, zul je meer dan de standaard 10000 gas limiet moeten instellen. Alle data is in HEX formaat. ',
 HELP_10_Desc_8              : 'Selecteer je wallet bestand -of- je prive sleutel en ontsleutel je wallet. ',
 HELP_10_Desc_9              : 'Druk op de "GENEREREER ONDERTEKENDE TRANSACTIE" knop. ',
 HELP_10_Desc_10             : 'Het data veld eronder zal worden ingevuld met je ondertekende transactie. Kopier dit veld en neem het mee terug naar je online computer. ',

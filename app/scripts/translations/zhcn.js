@@ -60,7 +60,7 @@ GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `10000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
 
@@ -218,12 +218,12 @@ TRANS_warning               : '如果你使用“只发送ETH”或则“只发�
 TRANS_advanced              : '高级功能：增加更多Gas或者数据 ',
 TRANS_data                  : '数据： ',
 TRANS_gas                   : 'Gas Limit： ',
-TRANS_sendInfo              : '一笔标准交易需要21000gas，花费0.000441以太币。我们将gas价格设为0.000000021以太币，略高于最低价格，以保证交易被快速打包。我们不收取交易费用。 ',
+TRANS_sendInfo              : '一笔标准交易需要10000gas，花费0.000441以太币。我们将gas价格设为0.000000021以太币，略高于最低价格，以保证交易被快速打包。我们不收取交易费用。 ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : '“只发送ETH”和“只发送ETC”交易 ',
 TRANSModal_Content_0        : '注意不同的交易和不同的服务： ',
-TRANSModal_Content_1        : '**发送ETH（标准交易）：** 这将生成一个默认交易，直接从一个地址发送到另一个地址。它的默认gas是21000。 用这种方式发送ETH可能会在ETC链上重放。 ',
+TRANSModal_Content_1        : '**发送ETH（标准交易）：** 这将生成一个默认交易，直接从一个地址发送到另一个地址。它的默认gas是10000。 用这种方式发送ETH可能会在ETC链上重放。 ',
 TRANSModal_Content_2        : '**只发送：ETH：** 这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。 ',
 TRANSModal_Content_3        : '**只发送：ETC：** 这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。 ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** 通过标准交易只发送ETH或者ETC。如果你通过“只发送ETH或者ETC”合约发送交易，你需要联系他们的客服，让他们手动增加你的余额或者返币给你。 [你也可以尝试Shapeshift的”分割“工具。](https://split.shapeshift.io/) ',
@@ -244,7 +244,7 @@ OFFLINE_Step2_Label_2       : '发送数额 ',
 OFFLINE_Step2_Label_3       : 'Gas价格 ',
 OFFLINE_Step2_Label_3b      : '在你的连网电脑的第1步骤中显示了。 ',
 OFFLINE_Step2_Label_4       : 'Gas限制 ',
-OFFLINE_Step2_Label_4b      : '21000是默认的gas限制。当你发送合约或者添加数据时，gas限制可能会不同。没使用的gas将返回给你。 ',
+OFFLINE_Step2_Label_4b      : '10000是默认的gas限制。当你发送合约或者添加数据时，gas限制可能会不同。没使用的gas将返回给你。 ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : '在你的连网电脑的第1步中显示了。 ',
 OFFLINE_Step2_Label_6       : '数据 ',
@@ -373,7 +373,7 @@ ERROR_4                     : 'This unit doesn\'t exists, please use the one of 
 ERROR_5                     : '无效地址。 ',
 ERROR_6                     : '无效密码。 ',
 ERROR_7                     : '无效数额。(Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : '无效gas上限。(Must be integer. Try 21000-4000000.) ', // 8
+ERROR_8                     : '无效gas上限。(Must be integer. Try 10000-4000000.) ', // 8
 ERROR_9                     : '无效数据值。(Must be hex.) ', // 9
 ERROR_10                    : '无效gas数额。(Must be integer. Try 20 GWEI / 20000000000 WEI.)',
 ERROR_11                    : '无效nonce。(Must be integer.)', // 11
@@ -437,7 +437,7 @@ PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : '感谢中文译者： ',
-TranslatorName_1            : '[ Shaoping@ethfans.org （少平）]((https://www.myetherwallet.com/?gaslimit=21000&to=0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740&value=1.0#send-transaction)) ',
+TranslatorName_1            : '[ Shaoping@ethfans.org （少平）]((https://www.myetherwallet.com/?gaslimit=10000&to=0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740&value=1.0#send-transaction)) ',
 TranslatorAddr_1            : '0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740 ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : '',
@@ -585,8 +585,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas limit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',

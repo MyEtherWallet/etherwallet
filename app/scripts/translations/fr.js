@@ -227,6 +227,7 @@ TRANSModal_Content_5        : '**Kraken & Poloniex :** Pas de problème connu. U
 TRANSModal_Yes              : 'Génial, j\'ai compris !',
 TRANSModal_No               : 'Aïe ! Je comprends de moins en moins. Aidez-moi !',
 
+
 /* Offline Transaction */
 OFFLINE_Title               : 'Générer et envoyer une transaction hors ligne',
 OFFLINE_Desc                : 'La génération d\'une transaction hors ligne s\'effectue en trois étapes. Les étapes 1 et 3 sont réalisées sur un ordinateur en ligne et l\'étape 2 sur un ordinateur déconnecté du réseau. Cela permet d\'isoler totalement vos clefs privées de toute machine connectée à Internet.',
@@ -248,6 +249,7 @@ OFFLINE_Step2_Label_6b      : 'Cette zone est optionnelle. Les données sont sou
 OFFLINE_Step2_Label_7       : 'Entrez ou sélectionnez votre clef privée / fichier JSON.',
 OFFLINE_Step3_Title         : 'Étape 3 : Envoyer / publier la transaction (ordinateur en ligne)',
 OFFLINE_Step3_Label_1       : 'Copier ici la transaction signée à l\'étape 2 et cliquez sur le bouton "ENVOYER LA TRANSACTION".',
+
 
 /* Sign Message */
 MSG_message                 : 'Message',
@@ -574,7 +576,6 @@ HELP_8CX_Desc_3             : 'Si, pour une raison quelconque, MyEtherWallet CX 
 
 HELP_9_Title                : '9) La page "Envoyer des Ether et des Tokens" est-elle hors ligne ? ',
 HELP_9_Desc_1               : 'Non. Elle a besoin de l\'internet pour obtenir le prix actuel du Gas, le nonce de votre compte et pour émettre la transaction (c\'est-à-dire "envoyer des Ethers"). Cependant, elle n\'envoie que la transaction signée. Votre clef privée reste en sécurité chez vous. Nous fournissons aussi une page "Transaction hors ligne" pour vous permettre de conserver en permanence vos clefs privées sur une machine hors ligne.',
-
 HELP_10_Title               : '10) Comment puis-je faire une transaction hors ligne ?',
 HELP_10_Desc_1              : 'Allez à la page "Transaction hors ligne" avec votre ordinateur **en ligne**.',
 HELP_10_Desc_2              : 'Entrez l\'"Adresse d\'émission". Attention, c\'est l\'adresse **à partir de laquelle** vous envoyez et non celle *vers laquelle** vous envoyez. Ceci va générer un nonce et le prix du Gas.',
@@ -587,7 +588,6 @@ HELP_10_Desc_8              : 'Sélectionnez le fichier de votre portefeuille ou
 HELP_10_Desc_9              : 'Cliquez sur le bouton "Générer la transaction signée".',
 HELP_10_Desc_10             : 'Le champ de données sous ce bouton se remplit avec votre transaction signée. Copiez-la et revenez avec elle sur votre ordinateur en ligne.',
 HELP_10_Desc_11             : 'Sur votre ordinateur en ligne, collez la transaction signée dans le champ texte et cliquez sur "Envoyez l\'Ether". Ceci émettra votre transaction. ',
-
 HELP_12_Title               : '12) Comment puis-je importer un portefeuille créé par MyEtherWallet dans geth, Ethereum Wallet ou Mist ?',
 HELP_12_Desc_1              : 'Avec un fichier Geth/Mist JSON de MyEtherWallet v2+.... ',
 HELP_12_Desc_2              : 'Allez à la page "Visualisation d\'un portefeuille".',

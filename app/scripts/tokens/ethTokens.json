@@ -944,6 +944,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x55648de19836338549130b1af587f16bea46f66b",
+"symbol":"PBL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xE64509F0bf07ce2d29A7eF19A8A9bc065477C1B4",
 "symbol":"PIPL",
 "decimal":8,
@@ -1376,7 +1381,7 @@
 },{
 "address":"0x24692791bc444c5cd0b81e3cbcaba4b04acd1f3b",
 "symbol":"UKG",
-"decimal":8,
+"decimal":18,
 "type":"default"
 },{
 "address":"0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
@@ -1466,6 +1471,11 @@
 },{
 "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
 "symbol":"XAUR",
+"decimal":8,
+"type":"default"
+},{
+"address":"0x533ef0984b2FAA227AcC620C67cce12aA39CD8CD",
+"symbol":"XGM",
 "decimal":8,
 "type":"default"
 },{

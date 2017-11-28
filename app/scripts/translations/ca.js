@@ -58,7 +58,7 @@ GET_ConfButton              : 'Ho entenc. Continua.',
 GEN_Label_5                 : 'Desa la teva `Clau Privada`. ',
 GEN_Unlock                  : 'Desbloqueja la teva cartera per veure\'n l\'adreça',
 GAS_PRICE_Desc              : 'El preu del gas és la quantitat que pagues per unitat de gas. `TX fee = preu del gas * límit de gas` i es paga als miners per incloure la teva TX a un block. Preu de gas més elevat = transacció més ràpida, però més cara. Per defecte és `10 GWEI`.',
-GAS_LIMIT_Desc              : 'El límit de gas és la quantitat de gas a enviar amb la teva TX. `TX fee` = preu del gas * límit de gas; i es paga als miners per incloure la teva TX a un block. Incrementat aquest nombre no farà que la teva TX sigui minada més ràpidament. Enviant ETH = `21000`. Enviant Tokens = ~`200000`.',
+GAS_LIMIT_Desc              : 'El límit de gas és la quantitat de gas a enviar amb la teva TX. `TX fee` = preu del gas * límit de gas; i es paga als miners per incloure la teva TX a un block. Incrementat aquest nombre no farà que la teva TX sigui minada més ràpidament. Enviant ETH = `10000`. Enviant Tokens = ~`200000`.',
 NONCE_Desc                  : 'El nonce és el nombre de transaccions enviades des d\'una adreça determinada. Assegura que les transaccions  s\'envien en ordre i no més d\'una vegada.',
 TXFEE_Desc                  : 'La comissió per la TX es paga als miners per incloure la teva TX en un block. És el `límit de gas` * `preu del gas`. [Pots convertir GWEI -> ETH aquí](https://www.myetherwallet.com/helpers.html)',
 
@@ -256,7 +256,7 @@ TRANS_desc                  : 'Si vols enviar tokens, si us plau utilitza la pà
 TRANS_advanced              : '+Avançat: Afegir dades ',
 TRANS_data                  : 'Dades ',
 TRANS_gas                   : 'Limit de gas ',
-TRANS_sendInfo              : 'Una transacció estàndard utilitzant 21000 gas costarà 0.000441 ETH. Utilitzem un preu una mica per sobre del mínim de 0.000000021 ETH per assegurar que es mina ràpidament. No ens quedem cap comissió per la transacció. ',
+TRANS_sendInfo              : 'Una transacció estàndard utilitzant 10000 gas costarà 0.000441 ETH. Utilitzem un preu una mica per sobre del mínim de 0.000000021 ETH per assegurar que es mina ràpidament. No ens quedem cap comissió per la transacció. ',
 
 /* Offline Transaction */
 OFFLINE_Title               : 'Crea i envia una transacció sense connexió ',
@@ -271,7 +271,7 @@ OFFLINE_Step2_Label_2       : 'Valor / Quantitat a enviar ',
 OFFLINE_Step2_Label_3       : 'Preu del gas ',
 OFFLINE_Step2_Label_3b      : 'Això s\'ha mostrat al pas 1 al teu ordinador amb connexió. ',
 OFFLINE_Step2_Label_4       : 'Límit de gas ',
-OFFLINE_Step2_Label_4b      : '21000 és el límit de gas per defecte. Quan envies contractes o dades addicionals, pot ser que el que necessitis sigui diferent. El gas no utilitzat se\'t retornarà. ',
+OFFLINE_Step2_Label_4b      : '10000 és el límit de gas per defecte. Quan envies contractes o dades addicionals, pot ser que el que necessitis sigui diferent. El gas no utilitzat se\'t retornarà. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Això s\'ha mostrat al pas 1 al teu ordinador amb connexió. ',
 OFFLINE_Step2_Label_6       : 'Dades ',
@@ -353,7 +353,7 @@ ERROR_4                     : 'Aquesta unitat no existeix, si us plau utilitza\'
 ERROR_5                     : 'Si us plau introdueix una adreça vàlida. ', // 5
 ERROR_6                     : 'Si us plau introdueix una contrasenya vàlida. ', // 6
 ERROR_7                     : 'Si us plau introdueix decimals vàlids (Ha de ser enter. Prova 0-18.) ', // 7
-ERROR_8                     : 'Si us plau introdueix un gas límit vàlid (Ha de ser  enter. Prova 21000-4000000.) ', // 8
+ERROR_8                     : 'Si us plau introdueix un gas límit vàlid (Ha de ser  enter. Prova 10000-4000000.) ', // 8
 ERROR_9                     : 'Si us plau introdueix un valor per les dades vàlid (Ha de ser hex.) ', // 9
 ERROR_10                    : 'Si us plau introdueix un preu de gas vàlid. (Enter. Prova 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Si us plau introdueix un nonce vàlid (Ha de ser enter.) ', // 11
@@ -564,8 +564,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas límit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas límit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas límit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas límit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',

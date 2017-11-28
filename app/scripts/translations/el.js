@@ -60,7 +60,7 @@ GET_ConfButton              : 'Καταλαβαίνω. Συνέχισε.',
 GEN_Label_5                 : 'Αποθήκευση του `ιδιωτικού κλειδιού` σας. ',
 GEN_Unlock                  : 'Ξεκλειδώστε το πορτοφόλι σας για να δείτε τη διεύθυνσή σας',
 GAS_PRICE_Desc              : 'Η τιμή αερίου είναι το ποσό που πληρώνετε ανά μονάδα αερίου. `τέλος συναλλαγής = τιμή αερίου * όριο αερίου` & πληρώνεται στους μεταλλωρύχους για να συμπεριλάβουν τη συναλλαγή σας σε ένα μπλοκ. Υψηλότερη τιμή αερίου = ταχύτερη συναλλαγή, αλλά πιο ακριβή. Η προεπιλογή είναι `10 GWEI`.',
-GAS_LIMIT_Desc              : 'Το όριο αερίου είναι το ποσό αερίου που θα σταλεί με τη συναλλαγή σας. `τέλος συναλλαγής` = τιμή αερίου * όριο αερίου & πληρώνεται στους μεταλλωρύχους για να συμπεριλάβουν τη συναλλαγή σας σε ένα μπλοκ. Το να αυξήσετε αυτόν τον αριθμό δεν θα κάνει τη συναλλαγή σας να εξορυχθεί ταχύτερα. Αποστολή ETH = `21000`. Αποστολή μαρκών = ~`200000`.',
+GAS_LIMIT_Desc              : 'Το όριο αερίου είναι το ποσό αερίου που θα σταλεί με τη συναλλαγή σας. `τέλος συναλλαγής` = τιμή αερίου * όριο αερίου & πληρώνεται στους μεταλλωρύχους για να συμπεριλάβουν τη συναλλαγή σας σε ένα μπλοκ. Το να αυξήσετε αυτόν τον αριθμό δεν θα κάνει τη συναλλαγή σας να εξορυχθεί ταχύτερα. Αποστολή ETH = `10000`. Αποστολή μαρκών = ~`200000`.',
 NONCE_Desc                  : 'Το nonce είναι ο αριθμός των συναλλαγών που αποστέλλονται από δεδομένη διεύθυνση. Εξασφαλίζει ότι οι συναλλαγές αποστέλλονται με τη σειρά και όχι περισσότερες από μία φορές.',
 TXFEE_Desc                  : 'Το τέλος συναλλαγής πληρώνεται στους μεταλλωρύχους για να συμπεριλάβουν τη συναλλαγή σας σε ένα μπλοκ. Είναι το `όριο αερίου` * `τιμή αερίου`. [Μπορείτε να μετατρέψετε GWEI -> ETH εδώ](https://www.myetherwallet.com/helpers.html)',
 
@@ -219,12 +219,12 @@ TRANS_warning               : 'Άν χρησιμοποιείτε τις λειτ
 TRANS_advanced              : '+Για προχωρημένους: Προσθήκη δεδομένων ',
 TRANS_data                  : 'Δεδομένα ',
 TRANS_gas                   : 'Όριο αερίου ',
-TRANS_sendInfo              : 'Μία τυπική συναλλαγή που χρησιμοποιεί 21000 μονάδες αερίου θα κοστίσει 0,000441 ETH. Χρησιμοποιούμε για τιμή αερίου 0.000000021 ETH που είναι λίγο πάνω απο την ελάχιστη ώστε να διασφαλίσουμε ότι θα επικυρωθεί γρήγορα. Δεν παίρνουμε προμήθεια για τη συναλλαγή. ',
+TRANS_sendInfo              : 'Μία τυπική συναλλαγή που χρησιμοποιεί 10000 μονάδες αερίου θα κοστίσει 0,000441 ETH. Χρησιμοποιούμε για τιμή αερίου 0.000000021 ETH που είναι λίγο πάνω απο την ελάχιστη ώστε να διασφαλίσουμε ότι θα επικυρωθεί γρήγορα. Δεν παίρνουμε προμήθεια για τη συναλλαγή. ',
 
 /* Send Transaction Modals */
 TRANSModal_Title            : 'Συναλλαγές «Μόνο ETH» και «Μόνο ETC» ',
 TRANSModal_Content_0        : 'Μια σημείωση για τις διάφορετικές συναλλαγές και διαφορετικές υπηρεσίες συναλλαγών: ',
-TRANSModal_Content_1        : '**ETH (τυπική συναλλαγή): ** Αυτό παράγει μια προεπιλεγμένη συναλλαγή απευθείας από μια διεύθυνση σε μία άλλη. Έχει προεπιλεγμένο αέριο 21000. Είναι πιθανόν ότι κάθε ETH που αποστέλλεται μέσω αυτής της μεθόδου θα επαναληφθεί στην αλυσίδα ETC. ',
+TRANSModal_Content_1        : '**ETH (τυπική συναλλαγή): ** Αυτό παράγει μια προεπιλεγμένη συναλλαγή απευθείας από μια διεύθυνση σε μία άλλη. Έχει προεπιλεγμένο αέριο 10000. Είναι πιθανόν ότι κάθε ETH που αποστέλλεται μέσω αυτής της μεθόδου θα επαναληφθεί στην αλυσίδα ETC. ',
 TRANSModal_Content_2        : '**Μόνο ETH: ** Αυτό αποστέλλει μέσω του [συμβολαίου προστασίας από επανάληψη του Timon Rapp (όπως συνιστάται από τον Vitalik Buterin)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) ώστε η αποστολή να γίνεται μόνο στην αλυσίδα **ETH**. ',
 TRANSModal_Content_3        : '**Μόνο ETC: ** Αυτό αποστέλλει μέσω του [συμβολαίου προστασίας από επανάληψη του Timon Rapp (όπως συνιστάται από τον Vitalik Buterin)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) ώστε η αποστολή να γίνεται μόνο στην αλυσίδα **ETC**. ',
 TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** Αποστέλλετε μόνο με τυπική συναλλαγή. Αν στείλετε με τα συμβόλαια «Μόνο», θα χρειαστεί να έρθετε σε επαφή με το προσωπικό υποστήριξής τους ώστε να σας βοηθήσουν με χειροκίνητη μεταφορά υπολοίπων ή επιστροφή χρημάτων.[Μπορείτε επίσης να δοκιμάσετε το εργαλείο «διαχωρισμού» του Shapeshift](https://split.shapeshift.io/) ',
@@ -245,7 +245,7 @@ OFFLINE_Step2_Label_2       : 'Αξία / ποσό για αποστολή ',
 OFFLINE_Step2_Label_3       : 'Τιμή αερίου ',
 OFFLINE_Step2_Label_3b      : 'Εμφανίστηκε στο Βήμα 1 στο συνδεδεμένο υπολογιστή σας. ',
 OFFLINE_Step2_Label_4       : 'Όριο αερίου ',
-OFFLINE_Step2_Label_4b      : '21000 είναι το προεπιλεγμένο όριο αερίου. Όταν αποστέλλετε συμβόλαια ή πρόσθετα δεδομένα, αυτό ίσως πρέπει να είναι διαφορετικό. Τυχόν αχρησιμοποιήτο αέριο θα σας επιστραφεί. ',
+OFFLINE_Step2_Label_4b      : '10000 είναι το προεπιλεγμένο όριο αερίου. Όταν αποστέλλετε συμβόλαια ή πρόσθετα δεδομένα, αυτό ίσως πρέπει να είναι διαφορετικό. Τυχόν αχρησιμοποιήτο αέριο θα σας επιστραφεί. ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'Εμφανίστηκε στο Βήμα 1 στον συνδεδεμένο υπολογιστή σας. ',
 OFFLINE_Step2_Label_6       : 'Δεδομένα ',
@@ -374,7 +374,7 @@ ERROR_4                     : 'Αυτή η μονάδα δεν υπάρχει, �
 ERROR_5                     : 'Λάθος διεύθυνση. ',
 ERROR_6                     : 'Λάθος συνθηματικό. ',
 ERROR_7                     : 'Λάθος ποσό. (Πρέπει να είναι ακέραιος. Δοκιμάστε 0-18). ', // 7
-ERROR_8                     : 'Λάθος όριο αερίου. (Πρέπει να είναι ακέραιος. Δοκιμάστε 21000-4000000). ', // 8
+ERROR_8                     : 'Λάθος όριο αερίου. (Πρέπει να είναι ακέραιος. Δοκιμάστε 10000-4000000). ', // 8
 ERROR_9                     : 'Λάθος τιμή δεδομένων. (Πρέπει να είναι δεκαεξαδικός). ', // 9
 ERROR_10                    : 'Λάθος ποσό αερίου. (Πρέπει να είναι ακέραιος. Δοκιμάστε 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Λάθος nonce. (Πρέπει να είναι ακέραιος). ', // 11
@@ -438,13 +438,13 @@ WARN_Send_Link              : 'Έχετε φθάσει εδώ μέσω ενός 
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : 'Ευχαριστούμε τους μεταφραστές μας ',
-TranslatorName_1            : '[VitalikFanBoy#117](https://www.myetherwallet.com/?gaslimit=21000&to=0x245f27796a44d7e3d30654ed62850ff09ee85656&value=1.0#send-transaction) · ',
+TranslatorName_1            : '[VitalikFanBoy#117](https://www.myetherwallet.com/?gaslimit=10000&to=0x245f27796a44d7e3d30654ed62850ff09ee85656&value=1.0#send-transaction) · ',
 TranslatorAddr_1            : '0x245f27796a44d7e3d30654ed62850ff09ee85656 ',
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : 'LefterisJP  · ',
 TranslatorAddr_2            : '',
 /* Translator 2             : Insert Comments Here */
-TranslatorName_3            : '[Nikos Vavoulas](https://www.myetherwallet.com/?gaslimit=21000&to=0x062711C89Bd46E9765CfF0b743Cb83a9dBA2d2d2&value=1.0#send-transaction) · ',
+TranslatorName_3            : '[Nikos Vavoulas](https://www.myetherwallet.com/?gaslimit=10000&to=0x062711C89Bd46E9765CfF0b743Cb83a9dBA2d2d2&value=1.0#send-transaction) · ',
 TranslatorAddr_3            : '0x062711C89Bd46E9765CfF0b743Cb83a9dBA2d2d2 ',
 /* Translator 3             : Insert Comments Here */
 TranslatorName_4            : 'Ιωάννης Πρωτονοτάριος',
@@ -584,8 +584,8 @@ HELP_10_Desc_2              : 'Enter the "From Address". Please note, this is th
 HELP_10_Desc_3              : 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
 HELP_10_Desc_4              : 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
 HELP_10_Desc_5              : 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
-HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
-HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+HELP_10_Desc_6              : 'The "GAS LIMIT" has a default value of 10000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+HELP_10_Desc_7              : 'If you wish, enter some data. If you enter data, you will need to include more than the 10000 default gas limit. All data is in HEX format. ',
 HELP_10_Desc_8              : 'Select your wallet file -or- your private key and unlock your wallet. ',
 HELP_10_Desc_9              : 'Press the "GENERATE SIGNED TRANSACTION" button. ',
 HELP_10_Desc_10             : 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
