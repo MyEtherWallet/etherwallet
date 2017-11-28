@@ -894,8 +894,13 @@
 "decimal":3,
 "type":"default"
 },{
-"address":"0x5c6183d10A00CD747a6Dbb5F658aD514383e9419",
+"address":"0x7627de4b93263a6a7570b8dafa64bae812e5c394",
 "symbol":"NXX",
+"decimal":8,
+"type":"default"
+},{
+"address":"0x5c6183d10A00CD747a6Dbb5F658aD514383e9419",
+"symbol":"NXX_OLD",
 "decimal":8,
 "type":"default"
 },{
