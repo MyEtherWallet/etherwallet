@@ -414,6 +414,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0xd234bf2410a0009df9c3c63b610c09738f18ccd7",
+"symbol":"DTR",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xafc39788c51f0c1ff7b55317f3e70299e521fff6",
 "symbol":"eBCH",
 "decimal":8,
