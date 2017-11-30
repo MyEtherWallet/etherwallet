@@ -50,6 +50,8 @@
         <p>Consider using our affiliate links to...</p>
         <div class="footer__pill-wrap">
           <a class="footer__pill"  aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer">Swap ETH/BTC/EUR/CHF via Bity.com</a>
+          <a class="footer__pill"  aria-label="Swap Tokens via ShapeShift.com" href="https://shapeshift.io/" target="_blank" rel="noopener noreferrer">Swap Tokens via ShapeShift.com</a>
+
         </div>
         <p> Buy a... </p>
         <div class="footer__pill-wrap">

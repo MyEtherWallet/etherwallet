@@ -113,10 +113,21 @@
     </div>
   </a>
 
+  <a ng-click="globalService.currentTab=globalService.tabs.swap.id" ng-show="ajaxReq.type=='ETH' && slide==4" class="block swap--ss"
+  target="_blank" rel="noopener noreferrer">
+    <div class="col-sm-7">
+      <h5 class="swap__cta">Exchange coins & tokens</h5>
+    </div>
+    <div class="col-sm-5">
+      <img src="images/logo-shapeshift.svg" width="80%" height="auto" class="swap__logo">
+    </div>
+  </a>
+
   <div class="swap__nav" ng-show="ajaxReq.type=='ETH'">
     <a ng-click="slide=1"> &bull; </a>
     <a ng-click="slide=2"> &bull; </a>
     <a ng-click="slide=3"> &bull; </a>
+    <a ng-click="slide=4"> &bull; </a>
   </div>
 
 

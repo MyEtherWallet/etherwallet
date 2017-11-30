@@ -1,7 +1,8 @@
-<article class="swap-order" ng-show="showStage3Btc || showStage3Eth">
+<article class="swap-order" ng-show="showStage3Bity && (showStage3Btc || showStage3Eth)">
 
 
-  <!-- Title -->
+
+<!-- Title -->
   <section class="row text-center">
     <div class="col-xs-3 text-left"><a class="btn btn-danger btn-xs" ng-click="newSwap()"> Start New Swap </a></div>
     <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>

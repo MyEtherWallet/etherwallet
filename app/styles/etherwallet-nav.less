@@ -122,6 +122,22 @@
       .nav-item {
         display: inline-block;
         font-size: 0;
+        position: relative;
+        .badge {
+          display: block;
+          position: absolute;
+          top: 0px;
+          right: -8px;
+          font-size: 9px;
+          letter-spacing: 1px;
+          font-weight: 400;
+          color: white;
+          padding: 0px 4px;
+          border-radius: 3px;
+          background-image: linear-gradient(-180deg,#ff1a1a 0%,#e60000 100%);
+          box-shadow: 0 3px 8px 0 rgba(0,0,0,0.1), inset 0 0 3px 0 rgba(0,0,0,0.1);
+          pointer-events: none;
+        }
         &.NAV_Swap a:before {
           content:"";
           display: inline-block;

@@ -199,8 +199,14 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.tabClick = function(id) {
         globalService.tokensLoaded = false
         $scope.activeTab = globalService.currentTab = id;
+        // swap tab
+        if (id === 4) {
+          globalFuncs.localStorage.setItem('seenSwap', true)
+        }
         for (var key in $scope.tabNames) {
-            if ($scope.tabNames[key].id == id) location.hash = $scope.tabNames[key].url;
+            if ($scope.tabNames[key].id == id) {
+              location.hash = $scope.tabNames[key].url;
+            }
         }
     }
 

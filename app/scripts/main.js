@@ -93,6 +93,7 @@ var walletBalanceCtrl        = require('./controllers/walletBalanceCtrl');
 var helpersCtrl              = require('./controllers/helpersCtrl');
 var globalService            = require('./services/globalService');
 var walletService            = require('./services/walletService');
+var shapeShiftService        = require('./services/shapeShiftService');
 var blockiesDrtv             = require('./directives/blockiesDrtv');
 var addressFieldDrtv         = require('./directives/addressFieldDrtv');
 var QRCodeDrtv               = require('./directives/QRCodeDrtv');
@@ -118,8 +119,9 @@ app.config(['$translateProvider', function($translateProvider) {
 app.config(['$animateProvider', function($animateProvider) {
     $animateProvider.classNameFilter(/^no-animate$/);
 }]);
-app.factory('globalService', ['$http', '$httpParamSerializerJQLike', globalService]);
+app.factory('globalService', ['$http', '$httpParamSerializerJQLike', '$rootScope', globalService]);
 app.factory('walletService', walletService);
+app.factory('shapeShiftService', ['$http', shapeShiftService]);
 app.directive('blockieAddress', blockiesDrtv);
 app.directive('addressField', ['$compile', addressFieldDrtv]);
 app.directive('qrCode', QRCodeDrtv);
@@ -136,7 +138,7 @@ app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptW
 app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
 app.controller('txStatusCtrl', ['$scope', txStatusCtrl]);
 app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', '$rootScope', sendTxCtrl]);
-app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
+app.controller('swapCtrl', ['$scope', 'shapeShiftService', swapCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
 app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);

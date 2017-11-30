@@ -1,6 +1,6 @@
 'use strict'
-var globalService = function($http, $httpParamSerializerJQLike) {
-
+var globalService = function($http, $httpParamSerializerJQLike, $rootScope) {
+  $rootScope.seenSwap = !(globalFuncs.localStorage.getItem('seenSwap'));
   globalFuncs.checkAndRedirectHTTPS()
   ajaxReq.http = $http
   ajaxReq.postSerializer = $httpParamSerializerJQLike
@@ -40,6 +40,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     id: 4,
     name: "NAV_Swap",
     url: "swap",
+    badge: $rootScope.seenSwap,
     mew: true,
     cx: true
   },

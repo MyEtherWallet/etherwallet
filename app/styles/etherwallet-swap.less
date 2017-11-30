@@ -13,6 +13,31 @@
     vertical-align: middle;
   }
 
+  .new-feature-banner {
+    display: block;
+    width: fit-content;
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: -28px;
+    padding: 0px 16px;
+    background-color: #3a526d;
+    border-radius: 3px;
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.1), inset 0 0 3px 0 rgba(0,0,0,0.1);
+    p {
+      display: inline-block;
+      color: white;
+      vertical-align: middle;
+      margin-bottom: 0px;
+    }
+    img {
+      display: inline-block;
+      height: 32px;
+      padding: 8px;
+      box-sizing: content-box;
+      margin-left: 16px;
+    }
+  }
+
   .swap-rates {
     text-align: center;
     .order-panel {
@@ -77,7 +102,34 @@
       margin-right: 0;
     }
     .dropdown {
+      vertical-align: middle;
+      margin-top: -2px;
       margin-left: 0;
+    }
+  }
+
+  .swap-panel-input-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .spacer {
+      flex-grow: 1;
+      @media screen and (max-width: 710px) {
+        flex-grow: 0;
+      }
+    }
+    .swap-panel-input-container-text,
+    .swap-panel-input {
+      margin: 0px;
+      padding: 0px 16px;
+      @media screen and (max-width: 710px) {
+        flex-grow: 1;
+        width: 100%
+      }
+    }
+    .swap-panel-input-container-text > h1 {
+      margin: 0px;
+      line-height: unset;
     }
   }
 
