@@ -9,6 +9,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xfdbc1adc26f0f8f8606a5d63b7d3a3cd21c22b23",
+"symbol":"1WO",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xaEc98A708810414878c3BCDF46Aad31dEd4a4557",
 "symbol":"300",
 "decimal":18,
