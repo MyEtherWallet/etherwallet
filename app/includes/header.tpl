@@ -212,7 +212,7 @@
           ng-show="tab.mew"
           ng-click="tabClick($index)">
             <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a>
-            <span ng-if="tab.badge" class="badge">NEW</span>
+            <span ng-if="tab.badge" ng-class="{'badge': tab.badge}">NEW</span>
       </li>
       }
       @@if (site === 'cx' ) {

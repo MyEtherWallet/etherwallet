@@ -22,14 +22,25 @@ let swapCtrl = function($scope, shapeShiftService) {
   $scope.allAvailableDestinationCoins = [];
   $scope.originKindCoins = ['ETH', 'BTC'];
   $scope.shapeShiftWhitelistCoins = [
-    'ETC',
-    'ZRX',
+    'OMG',
+    'REP',
     'SNT',
+    'SNGLS',
+    'ZRX',
+    'SWT',
     'ANT',
     'BAT',
-    'GNT',
     'BNT',
-    'REP',
+    'CVC',
+    'DNT',
+    '1ST',
+    'GNO',
+    'GNT',
+    'EDG',
+    'FUN',
+    'RLC',
+    'TRST',
+    'GUP',
     'ETH',
     'BTC'
   ];
