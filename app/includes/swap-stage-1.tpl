@@ -96,16 +96,23 @@
                    ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'"/>
 
             <div class="dropdown" style="display: inline-block;">
-                <a class="btn btn-default dropdown-toggle" ng-click="flip('dropdownFrom')">{{swapOrder.fromCoin}}<i
-                        class="caret"></i></a>
-                <ul class="dropdown-menu dropdown-menu-right" ng-if="dropdownFrom">
-                    <li ng-repeat="coin in originKindCoins | orderBy:'toString()' track by $index">
-                        <a ng-class="{true:'active'}[coin == swapOrder.fromCoin]" ng-click="setOrderCoin(true, coin)">
-                            {{getNameFromSymbol(coin)}} ({{coin}}) </a>
-                    </li>
-                </ul>
+              <a class="btn btn-default dropdown-toggle" ng-click="flip('dropdownFrom')">
+                {{swapOrder.fromCoin}}
+                <i class="caret"></i>
+              </a>
             </div>
-            <p style="color: red;margin-bottom: 0px;" ng-if="originRateError">{{originRateError}}</p>
+            <ul class="dropdown__grid dropdown__grid--left" ng-if="dropdownFrom">
+                <li ng-repeat="coin in originKindCoins | orderBy:'toString()' track by $index">
+                    <a ng-class="{true:'active'}[coin == swapOrder.fromCoin]" ng-click="setOrderCoin(true, coin)">
+                      <strong>{{coin}}</strong>
+                      <br />
+                      <small>{{getNameFromSymbol(coin)}}</small>
+                    </a>
+                </li>
+            </ul>
+            <p class="text-danger" ng-if="originRateError">
+              {{originRateError}}
+            </p>
         </div>
 
         <div class="swap-panel-input-container-text">
@@ -126,16 +133,21 @@
                    ng-class="Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'"/>
 
             <div class="dropdown" style="display: inline-block;">
-                <a class="btn btn-default dropdown-toggle" ng-click="flip('dropdownTo')">{{swapOrder.toCoin}}<i
-                        class="caret"></i></a>
-                <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownTo">
-                    <li ng-repeat="coin in allAvailableDestinationCoins | orderBy:'toString()' track by $index"
-                        ng-show="coin != swapOrder.fromCoin">
-                        <a ng-class="{true:'active'}[coin == swapOrder.toCoin]" ng-click="setOrderCoin(false, coin)">
-                          {{getNameFromSymbol(coin)}} ({{coin}}) </a>
-                    </li>
-                </ul>
+              <a class="btn btn-default dropdown-toggle" ng-click="flip('dropdownTo')">
+                {{swapOrder.toCoin}}
+                <i class="caret"></i>
+              </a>
             </div>
+            <ul class="dropdown__grid dropdown__grid--right" ng-show="dropdownTo">
+                <li ng-repeat="coin in allAvailableDestinationCoins | orderBy:'toString()' track by $index"
+                    ng-show="coin != swapOrder.fromCoin">
+                    <a ng-class="{true:'active'}[coin == swapOrder.toCoin]" ng-click="setOrderCoin(false, coin)">
+                      <strong>{{coin}}</strong>
+                      <br />
+                      <small>{{getNameFromSymbol(coin)}}</small>
+                    </a>
+                </li>
+            </ul>
         </div>
         <div class="spacer"></div>
     </div>
