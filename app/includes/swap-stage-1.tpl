@@ -145,9 +145,17 @@
 
     </div>
 
+    <!-- Show error message if user is not on ETC network but selects ETC in FROM dropdown -->
+    <div class="text-danger"
+         ng-show=" swapOrder.fromCoin=='ETC' && ajaxReq.type != 'ETC' ">
+      To open this Swap, you must switch to the <code>ETC (Epool.io)</code> network. Click the Network dropdown in the in the top-right.
+    </div>
+
     <div class="col-xs-12 clearfix text-center">
         <a ng-click="setFinalPrices()"
-           ng-disabled="(originRateError || destinationRateError) || !(Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues())"
+           ng-disabled="(originRateError || destinationRateError) ||
+                        (swapOrder.fromCoin=='ETC' && ajaxReq.type != 'ETC') ||
+                       !(Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues())"
            class="btn btn-info btn-primary">
             <span translate="SWAP_init_CTA"> Let's do this! </span>
         </a>
