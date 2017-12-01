@@ -31,15 +31,15 @@ SWAP_Warning_2                  :  '資金を追加するか、別のワレッ�
 X_Advanced                      :  '熟練者限定。', /*Advanced Users Only.*/
 X_HelpfulLinks                  :  '役立つリンクとよくある問答集', /*Helpful Links & FAQs*/
 X_HelpfulLinks_1                :  'ワレットの操作方法', /*How to Access your Wallet*/
-X_HelpfulLinks_2                :  'I lost my private key', /**/
-X_HelpfulLinks_3                :  'My private key opens a different address', /**/
-X_HelpfulLinks_4                :  'Migrating to/from MyEtherWallet', /**/
-X_Network                       :  'Network', // aka "node" or "chain" - used in the dropdown in header  /**/
-X_Network_Custom                :  'Add Custom Network / Node', /**/
+X_HelpfulLinks_2                :  '秘密鍵を紛失しました', /*I lost my private key*/
+X_HelpfulLinks_3                :  '秘密鍵が別のアドレスを解錠しました', /*My private key opens a different address*/
+X_HelpfulLinks_4                :  'MyEtherWallet から/宛へ　移植中', /*Migrating to/from MyEtherWallet*/
+X_Network                       :  'チェーン', // aka "node" or "chain" - used in the dropdown in header  /*Network*/
+X_Network_Custom                :  'カスタムネットワークやノードを追加', /*Add Custom Network / Node*/
 
-DOMAIN_Buy                      :  'Buy the domain', /**/
-DOMAIN_BuyItNow                 :  'Price to buy the domain immediately:', /**/
-DOMAIN_bid                      :  'Bid for the domain', /**/
+DOMAIN_Buy                      :  'ドメインを購入', /*Buy the domain*/
+DOMAIN_BuyItNow                 :  'ドメイン即決価格：', /*Price to buy the domain immediately:*/
+DOMAIN_bid                      :  'ドメインを入札する', /*Bid for the domain*/
 DOMAIN_bid_0                    :  'You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.', /**/
 DOMAIN_bid_1                    :  'Bid at least', /**/
 DOMAIN_bid_2                    :  'on the domain.', /**/
