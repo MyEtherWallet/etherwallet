@@ -27,10 +27,9 @@
       </ul>
     </div>
     <h5 translate="sidebar_AccountBal">Account Balance</h5>
-    <ul class="account-info point" ng-dblclick="showLongBal=!showLongBal" title="{{wallet.balance}} (Double-Click)">
+    <ul class="account-info point">
       <li>
-        <span class="mono wrap" ng-show="!showLongBal">{{wallet.balance | number}}</span>
-        <span class="mono wrap" ng-show="showLongBal">{{wallet.balance}}</span> {{ajaxReq.type}}
+        <span class="mono wrap">{{wallet.balance}}</span> {{ajaxReq.type}}
       </li>
     </ul>
     <h5 translate="sidebar_TransHistory"> Transaction History</h5>
