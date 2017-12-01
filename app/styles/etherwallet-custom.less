@@ -628,22 +628,34 @@ header.UBQ {
   .onboarding__title {
     text-align: center;
     margin-bottom: @space-lg;
+    @media (max-width: @screen-xs-max) {
+      margin: 0 auto @space-sm;
+    }
   }
   img {
     margin-top: @space;
     margin-bottom: @space;
-  }
-  .onboarding__buttons {
-    margin-top: @space;
-    margin-bottom: @space;
-    .clearfix();
-    @media (min-width: @screen-sm-min) {
-      .btn + .btn {
-        float: right;
-      }
+    @media (max-width: @screen-xs-max) {
+      max-height: 200px;
     }
   }
-  @media (max-width: @screen-sm-max) {
+  .onboarding__buttons {
+    .btn {
+      margin-top:    @space-sm;
+      margin-bottom: @space-sm;
+    }
+    @media (min-width: @screen-sm-min) {
+      margin-top:    @space-sm;
+      margin-bottom: @space-sm;
+      .clearfix();
+      .btn + .btn {  float: right;          }
+    }
+    @media (max-width: @screen-xs-max) {
+      .btn        {  display: block;        }
+      .btn + .btn {  margin-top: @space-lg  }
+    }
+  }
+  @media (max-width: @screen-xs-max) {
     flex-direction: column;
     .onboarding__content,
     .onboarding__image {
@@ -659,4 +671,7 @@ header.UBQ {
 .row.row--flex {
   display: flex;
   align-items: center;
+  @media (max-width: @screen-xs-max) {
+    flex-direction: column;
+  }
 }

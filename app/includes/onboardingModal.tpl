@@ -3,13 +3,15 @@
     <div class="modal-content">
       <div class="modal-body">
 
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
+
 
         <article class="onboarding__modal" ng-show="currentOnboardSlide==1">
           <h3 class="onboarding__title" translate="ONBOARD_welcome_title">
             Welcome to MyEtherWallet.com
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-7 onboarding__content">
+            <div class="col-xs-12 col-sm-7 onboarding__content">
               <ul>
                 <li class="text-danger strong" translate="ONBOARD_welcome_content__1">
                   Please take some time to understand this for your own safety. 🙏
@@ -39,7 +41,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-5 onboarding__image">
+            <div class="col-xs-12 col-sm-5 onboarding__image">
               <img src="./images/onboarding_icon-01.svg" width="100%" height="auto" />
             </div>
           </section>
@@ -58,10 +60,10 @@
             MyEtherWallet is not a Bank
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-02.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_bank_content__1">
                   When you open an account with a bank or exchange, they create an account for you in their system.
@@ -101,10 +103,10 @@
             MyEtherWallet is an Interface
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-03.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_interface_content__1">
                   When you create an account here, you are generating an cryptographic set of numbers: your private key and your public key (address).
@@ -155,7 +157,7 @@
             Wait, WTF is a Blockchain?
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_blockchain_content__1">
                   The blockchain is like a huge, global, decentralized spreadsheet.
@@ -177,7 +179,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-04.svg" width="100%" height="auto" />
             </div>
           </section>
@@ -201,10 +203,10 @@
             Why are you making me read all this?
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-05.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <h5 translate="ONBOARD_why_content__1">
                 Because we need you to understand that we **cannot**...
               </h5>
@@ -261,10 +263,10 @@
             If MyEtherWallet can't do those things, what's the point?
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-06.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_whymew_content__1">
                   Because that is the point of decentralization and the blockchain.
@@ -310,7 +312,7 @@
             Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.
           </p>
           <section class="row row--flex">
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_secure_1_content__2">
                   Use the [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) Chrome Extension to block malicious websites.
@@ -332,7 +334,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-07.svg" width="100%" height="auto" />
             </div>
           </section>
@@ -360,7 +362,7 @@
           </p>
           <br />
           <section class="row row--flex">
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_secure_2_content__2">
                   If it is too good to be true, it probably is.
@@ -376,7 +378,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-08.svg" width="100%" height="auto" />
             </div>
           </section>
@@ -403,7 +405,7 @@
             If you lose your private key or password, it is gone forever. Don't lose it.
           </p>
           <section class="row row--flex">
-            <div class="col-sm-7">
+            <div class="col-xs-12 col-sm-7">
               <ul>
                 <li translate="ONBOARD_secure_3_content__2">
                   Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.
@@ -424,7 +426,7 @@
                 }
               </ul>
             </div>
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-09.svg" width="100%" height="auto" />
             </div>
           </section>
@@ -455,10 +457,10 @@
           </p>
           <br />
           <section class="row row--flex">
-            <div class="col-sm-4 col-sm-offset-1">
+            <div class="col-xs-12 col-sm-4 col-xs-12 col-sm-offset-1">
               <img src="./images/onboarding_icon-10.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-7">
+            <div class="col-xs-12 col-sm-7">
               <ul>
                 <li>
                   <a href="https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html"
