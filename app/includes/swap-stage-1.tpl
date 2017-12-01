@@ -145,6 +145,13 @@
 
     </div>
 
+    <!-- Show error message if user is not on ETH network but selects ETH in FROM dropdown -->
+    <div class="text-danger"
+         ng-show=" swapOrder.fromCoin!='ETC' && ajaxReq.type!='ETH' ">
+      To open this Swap, you must switch to an <code>ETH</code> network. Click the Network dropdown in the in the top-right.
+    </div>
+
+
     <!-- Show error message if user is not on ETC network but selects ETC in FROM dropdown -->
     <div class="text-danger"
          ng-show=" swapOrder.fromCoin=='ETC' && ajaxReq.type != 'ETC' ">
@@ -155,6 +162,7 @@
         <a ng-click="setFinalPrices()"
            ng-disabled="(originRateError || destinationRateError) ||
                         (swapOrder.fromCoin=='ETC' && ajaxReq.type != 'ETC') ||
+                        (swapOrder.fromCoin!='ETC' && ajaxReq.type != 'ETH') ||
                        !(Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues())"
            class="btn btn-info btn-primary">
             <span translate="SWAP_init_CTA"> Let's do this! </span>
