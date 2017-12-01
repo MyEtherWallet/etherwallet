@@ -485,7 +485,7 @@ sidebar_TransHistory            :  'Transaction History',
 
 SUCCESS_1                       :  'Valid address',
 SUCCESS_2                       :  'Wallet successfully decrypted',
-SUCCESS_3                       :  'Your 1234XXXXTX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash: ',
+SUCCESS_3                       :  'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash: ',
 SUCCESS_4                       :  'Your wallet was successfully added',
 SUCCESS_5                       :  'File Selected',
 SUCCESS_6                       :  'You are successfully connected',
