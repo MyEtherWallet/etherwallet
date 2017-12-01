@@ -7,22 +7,28 @@
 
 
         <article class="onboarding__modal" ng-show="currentOnboardSlide==1">
-          <h3 class="onboarding__title" translate="ONBOARD_welcome_title">
-            Welcome to MyEtherWallet.com
+          <h3 class="onboarding__title">
+            <span translate="ONBOARD_welcome_title">
+              Welcome to MyEtherWallet.com
+            </span>
+            <br />
+            <small translate="ONBOARD_welcome_content__3">
+              We know this click-through shit is annoying. We are sorry.
+            </small>
           </h3>
           <section class="row row--flex">
             <div class="col-xs-12 col-sm-7 onboarding__content">
-              <ul>
-                <li class="text-danger strong" translate="ONBOARD_welcome_content__1">
+              <p class="alert-danger--outline">
+                <span translate="ONBOARD_welcome_content__1">
                   Please take some time to understand this for your own safety. 🙏
-                </li>
-                <li class="text-danger strong" translate="ONBOARD_welcome_content__2">
+                </span>
+                <span translate="ONBOARD_welcome_content__2">
                   Your funds will be stolen if you do not head these warnings.
-                </li>
-                <li translate="ONBOARD_welcome_content__3">
-                  We know this click-through shit is annoying. We are sorry.
-                </li>
-              </ul>
+                </span>
+              </p>
+              <p class="alert-danger--outline" translate="ONBOARD_welcome_content__8">
+                We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.
+              </p>
               <h5 translate="ONBOARD_welcome_content__4">
                 What is MEW?
               </h5>
@@ -36,9 +42,7 @@
                 <li translate="ONBOARD_welcome_content__7">
                   **You** and **only you** are responsible for your security.
                 </li>
-                <li class="text-danger strong" translate="ONBOARD_welcome_content__8">
-                  We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.
-                </li>
+
               </ul>
             </div>
             <div class="col-xs-12 col-sm-5 onboarding__image">
