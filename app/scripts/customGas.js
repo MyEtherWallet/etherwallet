@@ -25,6 +25,12 @@ gasLimit:   250000,
 data:       '',
 msg:        'STORM token sale: gamified micro-tasks - Earn anywhere, anytime, from any device. https://www.stormtoken.com, NOV 7, 2017'
 },{
+// RVL tokens
+to:         '0xDd64EF0c8a41d8a17F09ce2279D79b3397184A10',
+gasLimit:   200000,
+data:       '',
+msg:        'RVL token sale: PRE-ICO SUPER SALE, SHARING ECONOMY PIATTAFORM,  https://www.R-EVOLUTIONCOIN.COM.com, DIC 15, 2017'
+},{
 // Aigang (AIX) ICO Sale
 to:         ' 0xeA0c348A297084BFFbddad7f89216F24a2106E58',
 gasLimit:   300000,
