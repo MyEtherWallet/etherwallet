@@ -24,6 +24,7 @@ to:         '0xc88c7e1AEbd89187d13bD42e1ff814d32f492BF6',
 gasLimit:   250000,
 data:       '',
 msg:        'STORM token sale: gamified micro-tasks - Earn anywhere, anytime, from any device. https://www.stormtoken.com, NOV 7, 2017'
+},{
 // RVL tokens
 to:         '0xDd64EF0c8a41d8a17F09ce2279D79b3397184A10',
 gasLimit:   200000,
