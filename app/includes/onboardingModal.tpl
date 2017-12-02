@@ -5,8 +5,11 @@
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
 
+        <article class="onboarding__msg" ng-show="onboardingMsg">
+          It looks like you didn't finish reading through these slides last time. ProTip: Finish reading through the slides 😉
+        </article>
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==1">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==1">
           <h3 class="onboarding__title">
             <span translate="ONBOARD_welcome_title">
               Welcome to MyEtherWallet.com
@@ -50,7 +53,7 @@
             </div>
           </section>
           <div class="onboarding__buttons text-center">
-            <a ng-click="currentOnboardSlide=2" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(2)" class="btn btn-primary">
               <span translate="ONBOARD_bank_title">
                 MyEtherWallet is not a Bank
               </span>
@@ -59,7 +62,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==2">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==2">
           <h3 class="onboarding__title" translate="ONBOARD_bank_title">
             MyEtherWallet is not a Bank
           </h3>
@@ -88,12 +91,12 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=1" class="btn btn-default">
+            <a ng-click="setOnboardStatus(1)" class="btn btn-default">
               <span translate="ONBOARD_welcome_title__alt">
                 Introduction
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=3" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(3)" class="btn btn-primary">
               <span translate="ONBOARD_interface_title">
                 MyEtherWallet is an Interface
               </span>
@@ -102,7 +105,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==3">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==3">
           <h3 class="onboarding__title" translate="ONBOARD_interface_title">
             MyEtherWallet is an Interface
           </h3>
@@ -137,18 +140,18 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=2" class="btn btn-default">
+            <a ng-click="setOnboardStatus(2)" class="btn btn-default">
               <span translate="ONBOARD_bank_title__alt">
                 MEW isn't a Bank
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=4" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(4)" class="btn btn-primary">
               <span translate="ONBOARD_blockchain_title__alt">
                 WTF is a Blockchain?
               </span>
             </a>
           </div>
-          <p ng-click="currentOnboardSlide=5" class="text-right small" style="cursor:pointer">
+          <p ng-click="setOnboardStatus(5)" class="text-right small" style="cursor:pointer">
             <span translate="ONBOARD_blockchain_skip">
               I already know what a blockchain is...
             </span>
@@ -156,7 +159,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==4">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==4">
           <h3 class="onboarding__title" translate="ONBOARD_blockchain_title">
             Wait, WTF is a Blockchain?
           </h3>
@@ -188,12 +191,12 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=3" class="btn btn-default">
+            <a ng-click="setOnboardStatus(3)" class="btn btn-default">
               <span translate="ONBOARD_interface_title__alt">
                 MEW is an Interface
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=5" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(5)" class="btn btn-primary">
               <span translate="ONBOARD_why_title__alt">
                 But...why does this matter?
               </span>
@@ -202,7 +205,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==5">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==5">
           <h3 class="onboarding__title" translate="ONBOARD_why_title">
             Why are you making me read all this?
           </h3>
@@ -248,12 +251,12 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=4" class="btn btn-default">
+            <a ng-click="setOnboardStatus(4)" class="btn btn-default">
               <span translate="ONBOARD_blockchain_title__alt">
                 WTF is a Blockchain?
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=6" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(6)" class="btn btn-primary">
               <span translate="ONBOARD_point_title__alt">
                 What's the Point of MEW then?
               </span>
@@ -262,7 +265,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==6">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==6">
           <h3 class="onboarding__title" translate="ONBOARD_whymew_title">
             If MyEtherWallet can't do those things, what's the point?
           </h3>
@@ -294,12 +297,12 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=5" class="btn btn-default">
+            <a ng-click="setOnboardStatus(5)" class="btn btn-default">
               <span translate="ONBOARD_why_title__alt">
                 But...why?
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=7" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(7)" class="btn btn-primary">
               <span translate="ONBOARD_secure_title">
                 How To Protect Yourself &amp; Your Funds
               </span>
@@ -308,7 +311,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==7">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==7">
           <h3 class="onboarding__title" translate="ONBOARD_secure_1_title">
             How To Protect Yourself from Phishers
           </h3>
@@ -343,12 +346,12 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=6" class="btn btn-default">
+            <a ng-click="setOnboardStatus(6)" class="btn btn-default">
               <span translate="ONBOARD_point_title__alt_2">
                 What's the point?
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=8" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(8)" class="btn btn-primary">
               <span translate="ONBOARD_secure_2_title">
                 How To Protect Yourself from Scams
               </span>
@@ -357,7 +360,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==8">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==8">
           <h3 class="onboarding__title" translate="ONBOARD_secure_2_title">
             How To Protect Yourself from Scams
           </h3>
@@ -387,12 +390,12 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=7" class="btn btn-default">
+            <a ng-click="setOnboardStatus(7)" class="btn btn-default">
               <span translate="ONBOARD_secure_3_title__alt">
                 Phuck Phishers
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=9" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(9)" class="btn btn-primary">
               <span translate="ONBOARD_secure_3_title">
                 How To Protect Yourself from Loss
               </span>
@@ -401,7 +404,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==9">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==9">
           <h3 class="onboarding__title" translate="ONBOARD_secure_3_title">
             How To Protect Yourself from Loss
           </h3>
@@ -438,12 +441,12 @@
             [Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)
           </h5>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=8" class="btn btn-default">
+            <a ng-click="setOnboardStatus(8)" class="btn btn-default">
               <span translate="ONBOARD_secure_2_title__alt_2">
                 Screw Scams
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=10" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(10)" class="btn btn-primary">
               <span translate="ONBOARD_final_title__alt">
                 One more click &amp; you're done! 🤘
               </span>
@@ -452,7 +455,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==10">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==10">
           <h3 class="onboarding__title" translate="ONBOARD_final_title">
             Alright, I'm done lecturing you!
           </h3>
@@ -520,7 +523,6 @@
             </div>
           </section>
         </article>
-
 
       </div>
     </div>
