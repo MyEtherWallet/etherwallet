@@ -4,7 +4,7 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
-GEN_Help_0                      :  'ワレットをお持ちですか？', /*Already have a wallet somewhere?*/
+GEN_Help_0                      :  'お財布をお持ちですか？', /*Already have a wallet somewhere?*/
 GEN_Help_MetaMask               :  'とでも簡単です！キーはフィッシングサイトではなく、メタマスク(Metamask)に残っています。すぐ試してください！', /*So easy! Keys stay in MetaMask, not on a phishing site! Try it today.*/
 
 GEN_Warning_1                   :  '＊これは絶対に失くさないでください！＊　なくした場合には二度と戻りません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
@@ -16,91 +16,90 @@ GAS_Price_2                     : '迅速', /*Fast*/
 GAS_Price_3                     : '超迅速', /*Fast AF*/
 
 CONTRACT_Helper_1               :  'マルチシグのアドレスに変えてください', /*Please change the address to your own Multisig Contract Address.*/
-CONTRACT_Warning_1              :  '契約を送出しつつあります。', /*You are about to **deploy a contract**.*/
+CONTRACT_Warning_1              :  'まもなく契約が送出されます。', /*You are about to **deploy a contract**.*/
 CONTRACT_Warning_2              :  '次のネットワークに展開されます：', /*It will be deployed on the following network:*/
-CONTRACT_Warning_3              :  '契約上の機能を実行しつつあります。', /*You are about to **execute a function on contract**.*/
+CONTRACT_Warning_3              :  'まもなく契約上の機能が実行されます。', /*You are about to **execute a function on contract**.*/
 
 SEND_Helper_Contract            :  'ほとんどの場合、0のままではいけません。', /*In most cases you should leave this as 0.*/
-SEND_ViewOnly                   :  '自分のアドレスを指定するだけでは送信できません。ワレットを解錠する必要があります。', /*You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.*/
+SEND_ViewOnly                   :  '自分のアドレスを指定するだけでは送信できません。お財布を解錠する必要があります。', /*You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.*/
 SEND_LoadTokens                 :  'トークンを読み込む', /*Load Tokens*/
 SEND_CustomAddrMsg              :  '対応するメッセージ', /*A message regarding*/
 
 SWAP_Warning_1                  :  '＊警告！交換に必要な資金が足りません。', /*Warning! You do not have enough funds to complete this swap.*/
-SWAP_Warning_2                  :  '資金を追加するか、別のワレットをお使いください。',　/*Please add more funds to your wallet or access a different wallet.*/
+SWAP_Warning_2                  :  '資金を追加するか、別のお財布をお使いください。',　/*Please add more funds to your wallet or access a different wallet.*/
 
 X_Advanced                      :  '熟練者限定。', /*Advanced Users Only.*/
 X_HelpfulLinks                  :  '役立つリンクとよくある問答集', /*Helpful Links & FAQs*/
-X_HelpfulLinks_1                :  'ワレットの操作方法', /*How to Access your Wallet*/
+X_HelpfulLinks_1                :  'お財布の操作方法', /*How to Access your Wallet*/
 X_HelpfulLinks_2                :  '秘密鍵を紛失しました', /*I lost my private key*/
 X_HelpfulLinks_3                :  '秘密鍵が別のアドレスを解錠しました', /*My private key opens a different address*/
-X_HelpfulLinks_4                :  'MyEtherWallet から/宛へ　移植中', /*Migrating to/from MyEtherWallet*/
+X_HelpfulLinks_4                :  'MyEtherWallet から/宛へ　移管中', /*Migrating to/from MyEtherWallet*/
 X_Network                       :  'チェーン', // aka "node" or "chain" - used in the dropdown in header  /*Network*/
 X_Network_Custom                :  'カスタムネットワークやノードを追加', /*Add Custom Network / Node*/
 
 DOMAIN_Buy                      :  'ドメインを購入', /*Buy the domain*/
 DOMAIN_BuyItNow                 :  'ドメイン即決価格：', /*Price to buy the domain immediately:*/
-DOMAIN_bid                      :  'ドメインを入札する', /*Bid for the domain*/
-DOMAIN_bid_0                    :  'あなたの入札が現在最高数値です。増量して再入札できますが、オークションの終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
-DOMAIN_bid_1                    :  '最低入札額は', /*Bid at least*/
+DOMAIN_bid                      :  'ドメインを応札する', /*Bid for the domain*/
+DOMAIN_bid_0                    :  'あなたの応札が現在最高数値です。増量して再応札できますが、オークションの終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
+DOMAIN_bid_1                    :  '最低応札額は', /*Bid at least*/
 DOMAIN_bid_2                    :  'が必要です。', /*on the domain.*/
-DOMAIN_bid_3                    :  '２４時間以内にさらに高額の入札がなければ落札することができます。', /*You will win the domain if no higher bids are placed within the next 24 hours.*/
+DOMAIN_bid_3                    :  '２４時間以内にさらに高額の応札がなければ落札することができます。', /*You will win the domain if no higher bids are placed within the next 24 hours.*/
 DOMAIN_bid_4                    :  'このドメイン名の供託額は', /*Note that the domain has a locked value of*/
 DOMAIN_bid_5                    :  'このドメイン名を開放して受け取ることができる供託額は', /*As part of the sale you will receive the deed with this value but cannot claim it unless you release the name.*/
-DOMAIN_Finish_1                 :  'このオークションと無関係です', /*Not related to that auction*/
-DOMAIN_Finish_2                 :  'このアドレスは、主催者、入札者のいずれでもありません。', /*This address is neither the winner nor the seller of the auction.*/
+DOMAIN_Finish_1                 :  'この競売と無関係です', /*Not related to that auction*/
+DOMAIN_Finish_2                 :  'このアドレスは、主催者、応札者のいずれでもありません。', /*This address is neither the winner nor the seller of the auction.*/
 DOMAIN_Finish_3                 :  '競売を終了する', /*Finish the auction*/
 DOMAIN_Finish_4                 :  '競売を終了して、落札者にドメインを移管し、主催者に落札金を渡す。', /*Finish the auction to allocate the domain to the winner and the funds to the seller.*/
 DOMAIN_Finish_5                 :  'ドメイン名がDomainsaleに移管されているか確認するために、自分のTXハッシュをクリックしてください。', /*Click your TX hash to see if you successfully transferred the domain to DomainSale.*/
 DOMAIN_offer_4                  :  '募集価格：', /*Offer For Sale:*/
-DOMAIN_offer_5                  :  'ドメイン名を販売するために、以下のいずれか、あるいは双方の価格を設定してください。', /*Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
+DOMAIN_offer_5                  :  'ドメイン名を販売するために、以下のいずれか、あるいは双方の価格を設定してください。ドメイン名の供託金は落札者に、また落札額の10％は仲介者に支払われます。', /*Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
 DOMAIN_offer_7                  :  '変更後の募集価格：', /*Alter Your Offer for:*/
-DOMAIN_offer_8                  :  'Change either of both of the prices below to alter your domain sale offer.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.',
-DOMAIN_offer_9                  :  'Buy price', /**/
-DOMAIN_offer_10                 :  'This is the price at which someone can buy the domain immediately. 0 means that the domain cannot be purchased immediately.', /**/
-DOMAIN_offer_11                 :  'This is the price at which someone can start an auction for the domain.  0 means that the domain will not be available for auction.', /**/
-DOMAIN_offer_12                 :  'Offer your domain', /**/
-DOMAIN_offer_13                 :  'Alter your sale', /**/
-DOMAIN_offer_14                 :  'Cancel your sale', /**/
-DOMAIN_offer_15                 :  'You can cancel your domain sale, which will return the domain to you with no charge.  This is only available before any bids have been received for the domain.', /**/
+DOMAIN_offer_8                  :  'ドメイン名販売募集価格を変更するには、以下のいずれか、あるいは双方を変更してください。ドメイン名の供託金は落札者に、また落札額の10％は仲介者に支払われます。', /*Change either of both of the prices below to alter your domain sale offer.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
+DOMAIN_offer_9                  :  '入札価格', /*Buy price*/
+DOMAIN_offer_10                 :  'これはドメイン名を落札するための即決価格です。ゼロの場合には、取引は即座に完了しません。', /*This is the price at which someone can buy the domain immediately. 0 means that the domain cannot be purchased immediately.*/
+DOMAIN_offer_11                 :  'これはドメイン名の競売の開始価格です。ゼロの場合には、オークションは始まっていません。', /*This is the price at which someone can start an auction for the domain.  0 means that the domain will not be available for auction.*/
+DOMAIN_offer_12                 :  '自分のドメイン名を競売に出す', /*Offer your domain*/
+DOMAIN_offer_13                 :  '販売条件の変更', /*Alter your sale*/
+DOMAIN_offer_14                 :  '販売の中止', /*Cancel your sale*/
+DOMAIN_offer_15                 :  'ドメイン名の販売を中止して、そのドメイン名の登録者を自分にもどすことが無料でできます。まだ入札がされていない場合のみ有効です。', /*You can cancel your domain sale, which will return the domain to you with no charge.  This is only available before any bids have been received for the domain.*/
+ENS_WrongAddress_1              :  '解錠したワレットにドメイン名がありません。', /*The wallet you unlocked does not own the name */
+ENS_WrongAddress_2              :  'アドレスを指定してお財布を解錠してください。', /*Please unlock the wallet with address */
 
-ENS_WrongAddress_1              :  'The wallet you unlocked does not own the name ', /**/
-ENS_WrongAddress_2              :  'Please unlock the wallet with address ', /**/
+ENS_Finalize                    :  '最終処理', /*Finalize*/
+ENS_Finalize_content            :  '最終処理を行うと、ドメイン名が落札者に移管されます。落札者には、第二位の入札価格との差額が返却されます。入札が一件だけの場合には、0.01ethとの差額が返却されます。落札者以外の入札も返却されます。', /*Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.*/
+ENS_Finalize_content_2          :  'まもなく、オークションの最終処理と登録を行います。', /*You are about to finalize the auction & claim the name:*/
+ENS_Helper_1                    :  '処理プロセスの概要は？', /*What is the process like?*/
+ENS_Helper_2                    :  '１．準備', /*1. Preparation*/
+ENS_Helper_3                    :  'どのアカウント(お財布)を使用するか決めてから、複数のバックアップがあることを確認、あるいは作成してください。', /*Decide which account you wish to own the name & ensure you have multiple backups of that account.*/
+ENS_Helper_4                    :  'そのドメイン名に対して可能な最大の支払ETHを決めてください(自分の<u>Bid Amount</u>)。その口座に、入札に必要な額と0.01ETHのガス分が残っていることを確かめてください。', /*Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.*/
+ENS_Helper_5                    :  '２．オークションの開始と入札', /*2. Start an Auction / Place a Bid*/
+ENS_Helper_6                    :  '入札期間は３日間（７２時間）です。', /*Bidding period lasts 3 days (72 hours).*/
+ENS_Helper_7                    :  '<u>Secret Phrase</u>で保護された<u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>を入力します。', /*You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.*/
+ENS_Helper_8                    :  '入札はここから行いますが、ここに表示された情報は入札開示を行うまで秘匿されます。', /*This places your bid, but this information is kept secret until you reveal it.*/
+ENS_Helper_9                    :  '３．入札の開示', /*3. Reveal your Bid*/
+ENS_Helper_10                   :  '入札を開示しないと、払い戻しされません。', /***If you do not reveal your bid, you will not be refunded.***/
+ENS_Helper_11                   :  '開示期間は２日間（４８時間）です。', /*Reveal Period lasts 2 days (48 hours).*/
+ENS_Helper_12                   :  'アカウントを解錠してから, <u>Bid Amount</u>, と <u>Secret Phrase</u>を入力してください。', /*You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.*/
+ENS_Helper_13                   :  '同一価格での応札では、先に開示された応札が優先されます。', /*In the event that two parties bid exactly the same amount, the first bid revealed will win.*/
+ENS_Helper_14                   :  '４．オークションを終了する', /*4. Finalize the Auction*/
+ENS_Helper_15                   :  'いったんオークションが（五日間、あるいは１２０時間後に）終了すると、その新しいドメイン名を確定するために、落札者は最終処理を行う必要があります。', /*Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.*/
+ENS_Helper_16                   :  '落札者には、その入札額と二番入札との差額が返金されます。', /*The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH.*/
+ENS_Helper_17                   :  '詳細情報', /*More Information*/
+ENS_Helper_18                   :  '登録のための競売は、封印入札方式で、詳細は', /*The auction for this registrar is a blind auction, and is described in*/
+ENS_Helper_19                   :  '基本的には応札中に何も開示されません。', /*Basically, no one can see *anything* during the auction.*/
+ENS_Helper_20                   :  'ENS：解説書を読む', /*ENS: Read the Docs*/
+ENS_Helper_21                   :  'イサーリアムネームサービスの改訂日の発表！', /*Announcing the Ethereum Name Service Relaunch Date!*/
+ENS_Helper_22                   :  '知識ベース：ＥＮＳ', /*Knowledge Base: ENS*/
+ENS_Helper_23                   :  '開示時の[BAD INSTRUCTION] (Reveal) をデバッグする', /*Debugging a [BAD INSTRUCTION] Reveal*/
+ENS_Helper_24                   :  '開示時(Reveal)の障害について、サポート依頼する前に上記をお試しください。申し訳ございません。:(', /*Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We\'re so sorry. :(*/
 
-ENS_Finalize                    :  'Finalize', /**/
-ENS_Finalize_content            :  'Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.', /**/
-ENS_Finalize_content_2          :  'You are about to finalize the auction & claim the name:', /**/
-ENS_Helper_1                    :  'What is the process like?', /**/
-ENS_Helper_2                    :  '1. Preparation', /**/
-ENS_Helper_3                    :  'Decide which account you wish to own the name & ensure you have multiple backups of that account.', /**/
-ENS_Helper_4                    :  'Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.', /**/
-ENS_Helper_5                    :  '2. Start an Auction / Place a Bid', /**/
-ENS_Helper_6                    :  'Bidding period lasts 3 days (72 hours).', /**/
-ENS_Helper_7                    :  'You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.', /**/
-ENS_Helper_8                    :  'This places your bid, but this information is kept secret until you reveal it.', /**/
-ENS_Helper_9                    :  '3. Reveal your Bid', /**/
-ENS_Helper_10                   :  '**If you do not reveal your bid, you will not be refunded.**', /**/
-ENS_Helper_11                   :  'Reveal Period lasts 2 days (48 hours).', /**/
-ENS_Helper_12                   :  'You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.', /**/
-ENS_Helper_13                   :  'In the event that two parties bid exactly the same amount, the first bid revealed will win.', /**/
-ENS_Helper_14                   :  '4. Finalize the Auction', /**/
-ENS_Helper_15                   :  'Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.', /**/
-ENS_Helper_16                   :  'The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH.', /**/
-ENS_Helper_17                   :  'More Information', /**/
-ENS_Helper_18                   :  'The auction for this registrar is a blind auction, and is described in', /**/
-ENS_Helper_19                   :  'Basically, no one can see *anything* during the auction.', /**/
-ENS_Helper_20                   :  'ENS: Read the Docs', /**/
-ENS_Helper_21                   :  'Announcing the Ethereum Name Service Relaunch Date!', /**/
-ENS_Helper_22                   :  'Knowledge Base: ENS', /**/
-ENS_Helper_23                   :  'Debugging a [BAD INSTRUCTION] Reveal', /**/
-ENS_Helper_24                   :  'Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We\'re so sorry. :(', /**/
-
-EOS_01                          :  '**Generate EOS Key-pair**', /**/
-EOS_02                          :  '**Register / Map your EOS Key**', /**/
-EOS_03                          :  'Select `register`', /**/
-EOS_04                          :  'Enter your **EOS Public Key** <--- CAREFUL! EOS PUBLIC KEY!', /**/
-EOS_05                          :  'Fund EOS Contract on Send Page', /**/
-EOS_06                          :  'Go to Send Ether & Tokens Page',
-EOS_07                          :  'Unlock same wallet you are unlocking here.', /**/
+EOS_01                          :  '＊ＥＯＳの鍵対の生成＊', /* **Generate EOS Key-pair** */
+EOS_02                          :  '＊ＥＯＳの鍵を登録／転写する＊', /* **Register / Map your EOS Key** */
+EOS_03                          :  '`register`を選択する', /*Select `register`*/
+EOS_04                          :  '＊ＥＯＳの公開鍵＊を入力する　<---　ＥＯＳの公開鍵に注意！', /*Enter your **EOS Public Key** <--- CAREFUL! EOS PUBLIC KEY!*/
+EOS_05                          :  '送出ページでＥＯＳの契約に入金', /*Fund EOS Contract on Send Page*/
+EOS_06                          :  'Ether/トークンの送出ページに移動', /*Go to Send Ether & Tokens Page*/
+EOS_07                          :  '', /*Unlock same wallet you are unlocking here.*/
 EOS_08                          :  'Send Amount you want to Contribute to `0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf`', /**/
 EOS_09                          :  'Claim EOS Tokens', /**/
 EOS_10                          :  'Select `claimAll`.', /**/
@@ -633,7 +632,7 @@ GETH_NegativeValue          : '負の値です ',
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : '日本語開発者に投げ銭： ',
-TranslatorName_1            : '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) ',
+TranslatorName_1            : '[sekisanchi.eth](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ',
 /* Translator 1             : Kazunori Seki / 関一典 */
 TranslatorName_2            : '',
