@@ -34,6 +34,8 @@ var txStatusCtrl = function($scope) {
     var txToObject = function(tx) {
         var txStatus = $scope.txStatus;
         if (tx) {
+            console.log('txToObject')
+            console.log(tx)
             $scope.txInfo = {
                 status: tx.blockNumber ? txStatus.mined : txStatus.found,
                 hash: tx.hash,

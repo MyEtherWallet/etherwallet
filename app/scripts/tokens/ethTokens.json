@@ -1174,11 +1174,6 @@
 "decimal":18,
 "type":"default"
  },{
-"address":"0x41f615e24fabd2b097a320e9e6c1f448cb40521c",
-"symbol":"RVL",
-"decimal":18,
-"type":"default"
-},{
 "address":"0x3d1ba9be9f66b8ee101911bc36d3fb562eac2244",
 "symbol":"RVT",
 "decimal":18,
