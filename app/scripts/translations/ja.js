@@ -40,20 +40,20 @@ X_Network_Custom                :  'カスタムネットワークやノード�
 DOMAIN_Buy                      :  'ドメインを購入', /*Buy the domain*/
 DOMAIN_BuyItNow                 :  'ドメイン即決価格：', /*Price to buy the domain immediately:*/
 DOMAIN_bid                      :  'ドメインを入札する', /*Bid for the domain*/
-DOMAIN_bid_0                    :  'You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.', /**/
-DOMAIN_bid_1                    :  'Bid at least', /**/
-DOMAIN_bid_2                    :  'on the domain.', /**/
-DOMAIN_bid_3                    :  'You will win the domain if no higher bids are placed within the next 24 hours.', /**/
-DOMAIN_bid_4                    :  'Note that the domain has a locked value of', /**/
-DOMAIN_bid_5                    :  'As part of the sale you will receive the deed with this value but cannot claim it unless you release the name.', /**/
-DOMAIN_Finish_1                 :  'Not related to that auction', /**/
-DOMAIN_Finish_2                 :  'This address is neither the winner nor the seller of the auction.', /**/
-DOMAIN_Finish_3                 :  'Finish the auction', /**/
-DOMAIN_Finish_4                 :  'Finish the auction to allocate the domain to the winner and the funds to the seller.', /**/
-DOMAIN_Finish_5                 :  'Click your TX hash to see if you successfully transferred the domain to DomainSale.', /**/
-DOMAIN_offer_4                  :  'Offer For Sale:', /**/
-DOMAIN_offer_5                  :  'Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.', /**/
-DOMAIN_offer_7                  :  'Alter Your Offer for:', /**/
+DOMAIN_bid_0                    :  'あなたの入札が現在最高数値です。増量して再入札できますが、オークションの終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
+DOMAIN_bid_1                    :  '最低入札額は', /*Bid at least*/
+DOMAIN_bid_2                    :  'が必要です。', /*on the domain.*/
+DOMAIN_bid_3                    :  '２４時間以内にさらに高額の入札がなければ落札することができます。', /*You will win the domain if no higher bids are placed within the next 24 hours.*/
+DOMAIN_bid_4                    :  'このドメイン名の供託額は', /*Note that the domain has a locked value of*/
+DOMAIN_bid_5                    :  'このドメイン名を開放して受け取ることができる供託額は', /*As part of the sale you will receive the deed with this value but cannot claim it unless you release the name.*/
+DOMAIN_Finish_1                 :  'このオークションと無関係です', /*Not related to that auction*/
+DOMAIN_Finish_2                 :  'このアドレスは、主催者、入札者のいずれでもありません。', /*This address is neither the winner nor the seller of the auction.*/
+DOMAIN_Finish_3                 :  '競売を終了する', /*Finish the auction*/
+DOMAIN_Finish_4                 :  '競売を終了して、落札者にドメインを移管し、主催者に落札金を渡す。', /*Finish the auction to allocate the domain to the winner and the funds to the seller.*/
+DOMAIN_Finish_5                 :  'ドメイン名がDomainsaleに移管されているか確認するために、自分のTXハッシュをクリックしてください。', /*Click your TX hash to see if you successfully transferred the domain to DomainSale.*/
+DOMAIN_offer_4                  :  '募集価格：', /*Offer For Sale:*/
+DOMAIN_offer_5                  :  'ドメイン名を販売するために、以下のいずれか、あるいは双方の価格を設定してください。', /*Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
+DOMAIN_offer_7                  :  '変更後の募集価格：', /*Alter Your Offer for:*/
 DOMAIN_offer_8                  :  'Change either of both of the prices below to alter your domain sale offer.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.',
 DOMAIN_offer_9                  :  'Buy price', /**/
 DOMAIN_offer_10                 :  'This is the price at which someone can buy the domain immediately. 0 means that the domain cannot be purchased immediately.', /**/
