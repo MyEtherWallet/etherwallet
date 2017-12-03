@@ -7,9 +7,9 @@ ja.data = {
 GEN_Help_0                      :  'お財布をお持ちですか？', /*Already have a wallet somewhere?*/
 GEN_Help_MetaMask               :  'とでも簡単です！キーはフィッシングサイトではなく、メタマスク(Metamask)に残っています。すぐ試してください！', /*So easy! Keys stay in MetaMask, not on a phishing site! Try it today.*/
 
-GEN_Warning_1                   :  '＊これは絶対に失くさないでください！＊　なくした場合には二度と戻りません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
-GEN_Warning_2                   :  '＊他人と共有しないでください＊　悪意のあるサイトにこのファイルを盗まれると、あなたの資産が失われます。', /***Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.*/
-GEN_Warning_3                   :  '＊バックアップを作成してください！＊　いつの日か、億万単位の大金になるものと心得て安全を確保してください。', /***Make a backup!** Secure it like the millions of dollars it may one day be worth.*/
+GEN_Warning_1                   :  '**これは絶対に失くさないでください！**　なくした場合には二度と戻りません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
+GEN_Warning_2                   :  '**他人と共有しないでください**　悪意のあるサイトにこのファイルを盗まれると、あなたの資産が失われます。', /***Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.*/
+GEN_Warning_3                   :  '**バックアップを作成してください！**　いつの日か、億万単位の大金になるものと心得て安全を確保してください。', /***Make a backup!** Secure it like the millions of dollars it may one day be worth.*/
 
 GAS_Price_1                     : '普通',　/*Not So Fast*/
 GAS_Price_2                     : '迅速', /*Fast*/
@@ -25,7 +25,7 @@ SEND_ViewOnly                   :  '自分のアドレスを指定するだけ�
 SEND_LoadTokens                 :  'トークンを読み込む', /*Load Tokens*/
 SEND_CustomAddrMsg              :  '対応するメッセージ', /*A message regarding*/
 
-SWAP_Warning_1                  :  '＊警告！交換に必要な資金が足りません。', /*Warning! You do not have enough funds to complete this swap.*/
+SWAP_Warning_1                  :  '警告！交換に必要な資金が足りません。', /*Warning! You do not have enough funds to complete this swap.*/
 SWAP_Warning_2                  :  '資金を追加するか、別のお財布をお使いください。',　/*Please add more funds to your wallet or access a different wallet.*/
 
 X_Advanced                      :  '熟練者限定。', /*Advanced Users Only.*/
@@ -87,62 +87,61 @@ ENS_Helper_16                   :  '落札者には、その入札額と二番�
 ENS_Helper_17                   :  '詳細情報', /*More Information*/
 ENS_Helper_18                   :  '登録のための競売は、封印入札方式で、詳細は', /*The auction for this registrar is a blind auction, and is described in*/
 ENS_Helper_19                   :  '基本的には応札中に何も開示されません。', /*Basically, no one can see *anything* during the auction.*/
-ENS_Helper_20                   :  'ENS：解説書を読む', /*ENS: Read the Docs*/
+ENS_Helper_20                   :  'ＥＮＳ：解説書を読む', /*ENS: Read the Docs*/
 ENS_Helper_21                   :  'イサーリアムネームサービスの改訂日の発表！', /*Announcing the Ethereum Name Service Relaunch Date!*/
 ENS_Helper_22                   :  '知識ベース：ＥＮＳ', /*Knowledge Base: ENS*/
 ENS_Helper_23                   :  '開示時の[BAD INSTRUCTION] (Reveal) をデバッグする', /*Debugging a [BAD INSTRUCTION] Reveal*/
 ENS_Helper_24                   :  '開示時(Reveal)の障害について、サポート依頼する前に上記をお試しください。申し訳ございません。:(', /*Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We\'re so sorry. :(*/
 
-EOS_01                          :  '＊ＥＯＳの鍵対の生成＊', /* **Generate EOS Key-pair** */
-EOS_02                          :  '＊ＥＯＳの鍵を登録／転写する＊', /* **Register / Map your EOS Key** */
+EOS_01                          :  '**ＥＯＳの鍵対の生成**', /* **Generate EOS Key-pair** */
+EOS_02                          :  '**ＥＯＳの鍵を登録／転写する**', /* **Register / Map your EOS Key** */
 EOS_03                          :  '`register`を選択する', /*Select `register`*/
-EOS_04                          :  '＊ＥＯＳの公開鍵＊を入力する　<---　ＥＯＳの公開鍵に注意！', /*Enter your **EOS Public Key** <--- CAREFUL! EOS PUBLIC KEY!*/
+EOS_04                          :  '**ＥＯＳの公開鍵**を入力する　<---　ＥＯＳの公開鍵に注意！', /*Enter your **EOS Public Key** <--- CAREFUL! EOS PUBLIC KEY!*/
 EOS_05                          :  '送出ページでＥＯＳの契約に入金', /*Fund EOS Contract on Send Page*/
 EOS_06                          :  'Ether/トークンの送出ページに移動', /*Go to Send Ether & Tokens Page*/
-EOS_07                          :  '', /*Unlock same wallet you are unlocking here.*/
-EOS_08                          :  'Send Amount you want to Contribute to `0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf`', /**/
-EOS_09                          :  'Claim EOS Tokens', /**/
-EOS_10                          :  'Select `claimAll`.', /**/
+EOS_07                          :  '解錠中のお財布と同じものをここで解錠', /*Unlock same wallet you are unlocking here.*/
+EOS_08                          :  '支援する数量を`0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf`に送出する', /*Send Amount you want to Contribute to `0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf`*/
+EOS_09                          :  'ＥＯＳトークンを請求', /*Claim EOS Tokens*/
+EOS_10                          :  '`claimAll`を選択。', /*Select `claimAll`.*/
 
 /* Onboarding */
-ONBOARD_welcome_title           :  'Welcome to MyEtherWallet.com', /**/
-ONBOARD_welcome_content__1      :  'Please take some time to understand this for your own safety. 🙏', /**/
-ONBOARD_welcome_content__2      :  'Your funds will be stolen if you do not heed these warnings.', /**/
-ONBOARD_welcome_content__3      :  'We know this click-through stuff is annoying. We are sorry.', /**/
-ONBOARD_welcome_content__4      :  'What is MEW? ', /**/
-ONBOARD_welcome_content__5      :  'MyEtherWallet is a free, open-source, client-side interface.', /**/
-ONBOARD_welcome_content__6      :  'We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.', /**/
-ONBOARD_welcome_content__7      :  '**You** and **only you** are responsible for your security.', /**/
-ONBOARD_welcome_content__8      :  'We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.', /**/
-ONBOARD_bank_title              :  'MyEtherWallet is not a Bank', /**/
-ONBOARD_bank_content__1         :  'When you open an account with a bank or exchange, they create an account for you in their system.', /**/
-ONBOARD_bank_content__2         :  'The bank keeps track of your personal information, account passwords, balances, transactions and ultimately your money.', /**/
-ONBOARD_bank_content__3         :  'The bank charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.', /**/
-ONBOARD_bank_content__4         :  'The bank allows you to write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.',
-ONBOARD_bank_content__5         :  'You have an account *with the bank or exchange* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.',
-ONBOARD_welcome_title__alt      :  'Introduction', /**/
-ONBOARD_interface_title         :  'MyEtherWallet is an Interface', /**/
-ONBOARD_interface_content__1    :  'When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).', /**/
-ONBOARD_interface_content__2    :  'The handling of your keys happens entirely on your computer, inside your browser.', /**/
-ONBOARD_interface_content__3    :  'We never transmit, receive or store your private key, password, or other account information.', /**/
-ONBOARD_interface_content__4    :  'We do not charge a transaction fee.', /**/
-ONBOARD_interface_content__5    :  'You are simply using our **interface** to interact **directly with the blockchain**.', /**/
-ONBOARD_interface_content__6    :  'If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍', /**/
-ONBOARD_interface_content__7    :  'If you send your *private key* to someone, they now have full control of your account. 👎', /**/
-ONBOARD_bank_title__alt         :  'MEW isn\'t a Bank', /**/
-ONBOARD_blockchain_title__alt   :  'WTF is a Blockchain?', /**/
-ONBOARD_blockchain_skip         :  'I already know what a blockchain is...', /**/
-ONBOARD_blockchain_title        :  'Wait, WTF is a Blockchain?', /**/
-ONBOARD_blockchain_content__1   :  'The blockchain is like a huge, global, decentralized spreadsheet.', /**/
-ONBOARD_blockchain_content__2   :  'It keeps track of who sent how many coins to whom, and what the balance of every account is.', /**/
-ONBOARD_blockchain_content__3   :  'It is stored and maintained by thousands of people (miners) across the globe who have special computers.', /**/
-ONBOARD_blockchain_content__4   :  'The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.', /**/
-ONBOARD_blockchain_content__5   :  'When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.', /**/
-ONBOARD_blockchain_content__6   :  'Again: **we are not a bank**.', /**/
-ONBOARD_interface_title__alt    :  'MEW is an Interface', /**/
-ONBOARD_why_title__alt          :  'But...why does this matter?', /**/
-ONBOARD_why_title               :  'Why are you making me read all this?', /**/
-ONBOARD_why_content__1          :  'Because we need you to understand that we **cannot**...', /**/
+ONBOARD_welcome_title           :  'MyEtherWallet.com へようこそ！', /*Welcome to MyEtherWallet.com*/
+ONBOARD_welcome_content__1      :  '安全のため、お時間を少々頂戴いたします。 🙏', /*Please take some time to understand this for your own safety. 🙏*/
+ONBOARD_welcome_content__2      :  'これらの警告をよくご覧いただきませんと、資金が盗まれることになります。', /*Your funds will be stolen if you do not heed these warnings.*/
+ONBOARD_welcome_content__3      :  'この案内がわずらわしいことは承知いたしております。申し訳ございません。', /*We know this click-through stuff is annoying. We are sorry.*/
+ONBOARD_welcome_content__4      :  'ＭＥＷって何？', /*What is MEW*/
+ONBOARD_welcome_content__5      :  'ＭyＥtherＷallet は無料で公開ソースコードのクライアント側での使用者インターフェースです。', /*MyEtherWallet is a free, open-source, client-side interface.*/
+ONBOARD_welcome_content__6      :  'これによって、ブロックチェーン上の暗号鍵と暗号資産の直接管理を行うことが可能です。', /*We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.*/
+ONBOARD_welcome_content__7      :  '**自分**とそして**自分だけ**がセキュリティに全責任を負うことになります。', /***You** and **only you** are responsible for your security.*/
+ONBOARD_welcome_content__8      :  '詐欺サイトに行ってしまい、暗号鍵や、暗号資産を失ってしまっても、取り返したり凍結することは誰もできません。', /*We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.*/
+ONBOARD_bank_title              :  'ＭyＥtherＷalletは金融機関ではありません。', /*MyEtherWallet is not a Bank*/
+ONBOARD_bank_content__1         :  '金融機関、特に取引所に口座を開設すると、そのシステム中に自分の口座が開設されます。', /*When you open an account with a bank or exchange, they create an account for you in their system.*/
+ONBOARD_bank_content__2         :  'その金融機関は口座のパスワード、残高、取引記録や最終的にあなたの財産を含む個人情報を記録管理します。', /*The bank keeps track of your personal information, account passwords, balances, transactions and ultimately your money.*/
+ONBOARD_bank_content__3         :  'その金融機関は、カードが盗難に会った際の払い戻しなど、口座の維持管理に必要な手数料を徴収します。', /*The bank charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.*/
+ONBOARD_bank_content__4         :  'その金融機関は、送金したり、オンラインで口座の確認をしたり、パスワードや盗難に会ったカードの再発行ができるようにしています。', /*The bank allows you to write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.*/
+ONBOARD_bank_content__5         :  '金融機関や取引所にある口座では、その金融機関が送金額の上限、送金相手の設定、送金前に疑わしい相手送金をどれくらいの時間をかけて調べるか、などを決めています。これらは全て手数料が元になっています。', /*You have an account *with the bank or exchange* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.*/
+ONBOARD_welcome_title__alt      :  '前置き', /*Introduction*/
+ONBOARD_interface_title         :  'ＭyＥtherＷalletは、単なる使用者インターフェースです。', /*MyEtherWallet is an Interface*/
+ONBOARD_interface_content__1    :  'ＭyＥtherＷalletを使って口座を作る時、一対の暗号のための二つの長い数字、すなわち秘密鍵と公開鍵（アドレス)とが作成されます。', /*When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).*/
+ONBOARD_interface_content__2    :  'これらの暗号鍵の操作は全て自分のコンピューター上のブラウザの中で行われます。', /*The handling of your keys happens entirely on your computer, inside your browser.*/
+ONBOARD_interface_content__3    :  '私たちは、秘密鍵、パスワードや口座情報の送信や保存を一切いたしません。', /*We never transmit, receive or store your private key, password, or other account information.*/
+ONBOARD_interface_content__4    :  '私たちは手数料を一切徴収しません。', /*We do not charge a transaction fee.*/
+ONBOARD_interface_content__5    :  'あなたは、私たちの**使用者インターフェース**をブロックチェーンを**直接**操作するために使っています。', /*You are simply using our **interface** to interact **directly with the blockchain**.*/
+ONBOARD_interface_content__6    :  '公開鍵（アドレス)を送信すれば、ＥＴＨやトークンを受け渡し出来る様になります。👍', /*If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍*/
+ONBOARD_interface_content__7    :  '秘密鍵を誰かに送信すると、受け取った相手がその口座を完全に掌握します。👎', /*If you send your *private key* to someone, they now have full control of your account. 👎*/
+ONBOARD_blockchain_title__alt   :  'ブロックチェーンって、何それ？', /*WTF is a Blockchain?*/
+ONBOARD_blockchain_skip         :  '私はブロックチェーンを知ってるが...', /*I already know what a blockchain is...*/
+ONBOARD_blockchain_title        :  'お待ち下さい：ブロックチェーンって、何それ？', /*Wait, WTF is a Blockchain?*/
+ONBOARD_blockchain_content__1   :  'ブロックチェーンは、例えて言えば、世界共通の巨大な分散型のスプレッドシートのようなものです。', /*The blockchain is like a huge, global, decentralized spreadsheet.*/
+ONBOARD_blockchain_content__2   :  '誰が誰にコインをいくら送ったとか、どの口座にいくら、とかの記録を保存管理しています。', /*It keeps track of who sent how many coins to whom, and what the balance of every account is.*/
+ONBOARD_blockchain_content__3   :  '何千もの特殊なコンピューターを持った人（発掘者）によって記録と管理が行われます。', /*It is stored and maintained by thousands of people (miners) across the globe who have special computers.*/
+ONBOARD_blockchain_content__4   :  'ブロックチェーンのなかのブロックはＭyＥtherＷallet, MetaMask, Exodus, Mist, Geth, Parityなど至る所で行われている個々の処理や取引で作られています。', /*The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.*/
+ONBOARD_blockchain_content__5   :  'ＭyＥtherＷalletや[etherscan.io](https://etherscan.io)で残高や処理を見た時、見えるのは私たちのシステムの中ではなく、ブロックチェーンにあるデータです。', /*When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.*/
+ONBOARD_blockchain_content__6   :  '再度： **私たちは金融機関ではありません。**', /*Again: **we are not a bank**.*/
+ONBOARD_interface_title__alt    :  'ＭＥＷは、使用者インターフェースです。', /*MEW is an Interface*/
+ONBOARD_why_title__alt          :  'しかし、、、何でそんなに大事？', /*But...why does this matter?*/
+ONBOARD_why_title               :  'どうして全部読まないといけない訳？', /*Why are you making me read all this?*/
+ONBOARD_why_content__1          :  'それは、私たちが**出来ない**ことをあなたに理解して頂いてから、、、', /*Because we need you to understand that we **cannot**...*/
 ONBOARD_why_content__2          :  'Access your account or send your funds for you X.', /**/
 ONBOARD_why_content__3          :  'Recover or change your private key.', /**/
 ONBOARD_why_content__4          :  'Recover or reset your password.', /**/
