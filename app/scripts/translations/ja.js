@@ -106,7 +106,7 @@ EOS_10                          :  '`claimAll`を選択。', /*Select `claimAll`
 
 /* Onboarding */
 ONBOARD_welcome_title           :  'MyEtherWallet.com へようこそ！', /*Welcome to MyEtherWallet.com*/
-ONBOARD_welcome_content__1      :  '安全のため、お時間を少々頂戴いたします。 🙏', /*Please take some time to understand this for your own safety. 🙏*/
+ONBOARD_welcome_content__1      :  '安全を確保いただくために、ご理解を進めていただくお時間を少々頂戴いたします。 🙏', /*Please take some time to understand this for your own safety. 🙏*/
 ONBOARD_welcome_content__2      :  'これらの警告をよくご覧いただきませんと、資金が盗まれることになります。', /*Your funds will be stolen if you do not heed these warnings.*/
 ONBOARD_welcome_content__3      :  'この案内がわずらわしいことは承知いたしております。申し訳ございません。', /*We know this click-through stuff is annoying. We are sorry.*/
 ONBOARD_welcome_content__4      :  'ＭＥＷって何？', /*What is MEW*/
@@ -141,63 +141,63 @@ ONBOARD_blockchain_content__6   :  '再度： **私たちは金融機関では�
 ONBOARD_interface_title__alt    :  'ＭＥＷは、使用者インターフェースです。', /*MEW is an Interface*/
 ONBOARD_why_title__alt          :  'しかし、、、何でそんなに大事？', /*But...why does this matter?*/
 ONBOARD_why_title               :  'どうして全部読まないといけない訳？', /*Why are you making me read all this?*/
-ONBOARD_why_content__1          :  'それは、私たちが**出来ない**ことをあなたに理解して頂いてから、、、', /*Because we need you to understand that we **cannot**...*/
-ONBOARD_why_content__2          :  'Access your account or send your funds for you X.', /**/
-ONBOARD_why_content__3          :  'Recover or change your private key.', /**/
-ONBOARD_why_content__4          :  'Recover or reset your password.', /**/
-ONBOARD_why_content__5          :  'Reverse, cancel, or refund transactions.', /**/
-ONBOARD_why_content__6          :  'Freeze accounts.', /**/
-ONBOARD_why_content__7          :  '**You** and **only you** are responsible for your security.', /**/
-ONBOARD_why_content__8          :  'Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.', /**/
-ONBOARD_why_content__9          :  'If lose your private key or password, no one can recover it.', /**/
-ONBOARD_why_content__10         :  'If you enter your private key on a phishing website, you will have **all your funds taken**.', /**/
-ONBOARD_blockchain_title__alt   :  'WTF is a Blockchain?', /**/
-ONBOARD_point_title__alt        :  'What\'s the Point of MEW then?', /**/
-ONBOARD_whymew_title            :  'If MyEtherWallet can\'t do those things, what\'s the point?', /**/
-ONBOARD_whymew_content__1       :  'Because that is the point of decentralization and the blockchain.', /**/
-ONBOARD_whymew_content__2       :  'You don\'t have to rely on your bank, government, or anyone else when you want to move your funds.', /**/
-ONBOARD_whymew_content__3       :  'You don\'t have to rely on the security of an exchange or bank to keep your funds safe.', /**/
-ONBOARD_whymew_content__4       :  'If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉', /**/
-ONBOARD_whymew_content__5       :  'If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.', /**/
-ONBOARD_whymew_content__6       :  'If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.', /**/
-ONBOARD_why_title__alt          :  'But...why?', /**/
-ONBOARD_secure_title            :  'How To Protect Yourself & Your Funds', /**/
-ONBOARD_secure_1_title          :  'How To Protect Yourself from Phishers', /**/
-ONBOARD_secure_1_content__1     :  'Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.', /**/
-ONBOARD_secure_1_content__2     :  'Use the [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) Chrome Extension to block malicious websites.', /**/
-ONBOARD_secure_1_content__3     :  'Always check the URL: `https://www.myetherwallet.com`.', /**/
-ONBOARD_secure_1_content__4     :  'Always make sure the URL bar has `MYETHERWALLET LLC [US]` in green.', /**/
-ONBOARD_secure_1_content__5     :  'Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.', /**/
-ONBOARD_secure_1_content__6     :  'Always navigate directly to a site before you enter information. Do not enter information after clicking a link from a message or email.', /**/
-ONBOARD_secure_1_content__7     :  '[Install an AdBlocker](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) and do not click ads on your search engine (e.g. Google).', /**/
-ONBOARD_point_title__alt_2      :  'What\'s the point?', /**/
-ONBOARD_secure_2_title          :  'How To Protect Yourself from Scams', /**/
-ONBOARD_secure_2_content__1     :  'People will try to get you to give them money in return for nothing.', /**/
-ONBOARD_secure_2_content__2     :  'If it is too good to be true, it probably is.', /**/
-ONBOARD_secure_2_content__3     :  'Research before sending money to someone or some project. Look for information on a variety of websites and forums. Be wary.', /**/
-ONBOARD_secure_2_content__4     :  'Ask questions when you don\'t understand something or it doesn\'t seem right.', /**/
-ONBOARD_secure_2_content__5     :  'Don\'t let fear, FUD, or FOMO win over common sense. If something is very urgent, ask yourself "why?". It may be to create FOMO or prevent you from doing research.', /**/
-ONBOARD_secure_3_title__alt     :  'Phuck Phishers', /**/
-ONBOARD_secure_3_title          :  'How To Protect Yourself from Loss', /**/
-ONBOARD_secure_3_content__1     :  'If you lose your private key or password, it is gone forever. Don\'t lose it.', /**/
-ONBOARD_secure_3_content__2     :  'Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.', /**/
-ONBOARD_secure_3_content__3     :  'Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.', /**/
-ONBOARD_secure_3_content__4     :  'Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.', /**/
-ONBOARD_secure_3_content__5     :  'If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.', /**/
-ONBOARD_secure_3_content__6     :  '[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)', /**/
-ONBOARD_secure_2_title__alt_2   :  'Screw Scams', /**/
-ONBOARD_final_title__alt        :  'One more click & you\'re done! 🤘', /**/
-ONBOARD_final_title             :  'Alright, I\'m done lecturing you!', /**/
-ONBOARD_final_subtitle          :  'Sorry for being like this. Onwards!', /**/
+ONBOARD_why_content__1          :  '何故ならば、あなたに理解して頂きたい私たちが**出来ない**ことは、、、', /*Because we need you to understand that we **cannot**...*/
+ONBOARD_why_content__2          :  '口座にアクセスしてあなたに代わって送金することー不可（以下同様）。', /*Access your account or send your funds for you X.*/
+ONBOARD_why_content__3          :  '秘密鍵の回復または変更。', /*Recover or change your private key.*/
+ONBOARD_why_content__4          :  'パスワードのリセットまたは回復。', /*Recover or reset your password.*/
+ONBOARD_why_content__5          :  '処理の巻き戻し、取り消しあるいは再投資。', /*Reverse, cancel, or refund transactions.*/
+ONBOARD_why_content__6          :  '口座の凍結。', /*Freeze accounts.*/
+ONBOARD_why_content__7          :  '**あなた**が、そして**あなただけ**が自分のセキュリテイの責任者です。', /***You** and **only you** are responsible for your security.*/
+ONBOARD_why_content__8          :  '秘密鍵とパスワードの保全に努めてください。秘密鍵は、ニーモニックフレーズ、キーストアファイル、ＵＴＣファイル、ＪＳＯＮファイル、お財布（ワレット）ファイルと呼ばれることがあります。', /*Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.*/
+ONBOARD_why_content__9          :  'もし秘密鍵やパスワードを忘れると、誰も回復させることができません。', /*If lose your private key or password, no one can recover it.*/
+ONBOARD_why_content__10         :  'もし、あなたが秘密鍵を詐欺サイトで入力すると、**全ての資産**が持って行かれます。', /*If you enter your private key on a phishing website, you will have **all your funds taken**.*/
+ONBOARD_blockchain_title__alt   :  'ブロックチェーンって、何それ？', /*WTF is a Blockchain?*/
+ONBOARD_point_title__alt        :  'それじゃ、ＭＥＷの要点は何？', /*What\'s the Point of MEW then?*/
+ONBOARD_whymew_title            :  'ＭyＥtherＷalletがそれをできないなら、何があるの？', /*If MyEtherWallet can\'t do those things, what\'s the point?*/
+ONBOARD_whymew_content__1       :  'すなわち、それがブロックチェーンによる分散化の**きも**だからです。', /*Because that is the point of decentralization and the blockchain.*/
+ONBOARD_whymew_content__2       :  '自分の資産を動かすときに、金融機関、政府や他の誰かをたよりにする必要がありません。', /*You don\'t have to rely on your bank, government, or anyone else when you want to move your funds.*/
+ONBOARD_whymew_content__3       :  '自分の資産を守るために、取引所や金融機関のセキュリティをたよりにする必要がありません。', /*You don\'t have to rely on the security of an exchange or bank to keep your funds safe.*/
+ONBOARD_whymew_content__4       :  'もし、こういった事に価値を見い出せなければ、なぜブロックチェーンや仮想通貨に価値があるのかよく考えて見てください。', /*If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉*/
+ONBOARD_whymew_content__5       :  'もしこれらのことが気に入らなければ、[Coinbase](https://www.coinbase.com/) や [Blockchain.info](https://blockchain.info/wallet/#/signup)を使うことお考えください。これらは、より身近なＩＤとパスワードを使用しています。', /*If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.*/
+ONBOARD_whymew_content__6       :  'もし、少し怖いけれどもＭＥＷを使いたければ、[ハードウェアワレットを入手(英語)](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)！', /*If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.*/
+ONBOARD_why_title__alt          :  'しかし、、、何故？', /*But...why?*/
+ONBOARD_secure_title            :  '自分自身とその資産の守り方', /*How To Protect Yourself & Your Funds*/
+ONBOARD_secure_1_title          :  'オンライン詐欺師から自分自身を守る方法', /*How To Protect Yourself from Phishers*/
+ONBOARD_secure_1_content__1     :  'オンライン詐欺師は、MyEtherWallet、EtherDelta、Paypalやあなたの金融機関のリンクが含まれた個人メッセージを送りつけてきますが、これは偽のサイトです。あなたの情報を盗み、そして資産を盗みます。', /*Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.*/
+ONBOARD_secure_1_content__2     :  '[EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn)または[MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) のクローム拡張を使って、これらの悪意のサイトを遮断してください。', /*Use the [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) Chrome Extension to block malicious websites.*/
+ONBOARD_secure_1_content__3     :  'いつも、必ず、ＵＲＬ：「https://www.myetherwallet.com」を確認してください。', /*Always check the URL: `https://www.myetherwallet.com`.*/
+ONBOARD_secure_1_content__4     :  'ＵＲＬバーに、 `MYETHERWALLET LLC [US]`と緑色で表示されていることを必ず確認してください。', /**/
+ONBOARD_secure_1_content__5     :  'ｅメール、Slack、Reddit、Twitterやその他から送られてくるメッセージやリンクを信用しないでください。', /*Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.*/
+ONBOARD_secure_1_content__6     :  '情報を入力する前に、常に直接サイトを参照してから閲覧してください。ｅメールやメッセージのリンクを押してから情報を入力しないでください。', /*Always navigate directly to a site before you enter information. Do not enter information after clicking a link from a message or email.*/
+ONBOARD_secure_1_content__7     :  '[AdBlockerを導入](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=ja)し、サーチエンジンの広告（例：グーグル）をクリックしないでください。', /*[Install an AdBlocker](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) and do not click ads on your search engine (e.g. Google).*/
+ONBOARD_point_title__alt_2      :  '要点は？', /*What\'s the point?*/
+ONBOARD_secure_2_title          :  'オンライン詐欺から自分自身を守る方法', /*How To Protect Yourself from Scams*/
+ONBOARD_secure_2_content__1     :  'これらの人達は、何の見返りもなしにお金をあげる、と言って近づいてきます。', /*People will try to get you to give them money in return for nothing.*/
+ONBOARD_secure_2_content__2     :  'もしありそうにないほど良い話であれば、きっとその通りです。', /*If it is too good to be true, it probably is.*/
+ONBOARD_secure_2_content__3     :  '誰か、あるいは何かのプロジェクトに送金する前に、よくお調べください。サイトやフォーラムの情報をよく確かめてください。慎重に。', /*Research before sending money to someone or some project. Look for information on a variety of websites and forums. Be wary.*/
+ONBOARD_secure_2_content__4     :  '理解できなかったり、正しくないと思われる場合には、質問してください。', /*Ask questions when you don\'t understand something or it doesn\'t seem right.*/
+ONBOARD_secure_2_content__5     :  '不安、懐疑心、流行に遅れる恐怖が常識の範囲を越えないように。もし何かとても緊急の事があれば、なぜか、と自分でもう一度たずねてみてください。おそらくそれは、取り残される恐怖を煽るものか、十分な調査をさせないための罠です。', /*Don\'t let fear, FUD, or FOMO win over common sense. If something is very urgent, ask yourself "why?". It may be to create FOMO or prevent you from doing research.*/
+ONBOARD_secure_3_title__alt     :  'くたばれ詐欺師ども', /*Phuck Phishers*/
+ONBOARD_secure_3_title          :  '損失を防ぐ方法', /*How To Protect Yourself from Loss*/
+ONBOARD_secure_3_content__1     :  'もしパスワードや秘密鍵を無くしてしまうと、永久に返ってきません。絶対に無くすな。', /*If you lose your private key or password, it is gone forever. Don\'t lose it.*/
+ONBOARD_secure_3_content__2     :  '秘密鍵やパスワードのバックアップを作成してください。コンピューターに保存したままにしないでください。印刷したり、ＵＳＢキーに保存してください。', /*Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.*/
+ONBOARD_secure_3_content__3     :  'その紙やＵＳＢキーを別の場所に保管してください。一つだけのバックアップでは、火事や津波などで、ラップトップコンピューターと共に破壊されてしまいます。', /*Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.*/
+ONBOARD_secure_3_content__4     :  '秘密鍵をDropbox、Google Drive、や他のクラウドストレージに保管しないでください。そのアカウント（のセキュリティ）が損なわれた場合に、資産が盗まれてしまいます。', /*Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.*/
+ONBOARD_secure_3_content__5     :  'もし、あなたの１週間以上の労働に値する仮想通貨をお持ちであれば、ハードウェアワレットを入手してください。言い訳無用です。それだけの価値があります。私が保証します。', /*If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.*/
+ONBOARD_secure_3_content__6     :  '[さらに安全確保のためのセキュリティ情報！](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)', /*[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)*/
+ONBOARD_secure_2_title__alt_2   :  '詐欺撲滅', /*Screw Scams*/
+ONBOARD_final_title__alt        :  'もうひとクリックで完了です！ 🤘', /*One more click & you\'re done! 🤘*/
+ONBOARD_final_title             :  'オーライ！講義終了！', /*Alright, I\'m done lecturing you!*/
+ONBOARD_final_subtitle          :  'こんな風で申し訳ありません。次はこれ！', /*Sorry for being like this. Onwards!*/
 ONBOARD_final_content__1        :  'Create a wallet', /**/
-ONBOARD_final_content__2        :  'Get a hardware wallet', /**/
-ONBOARD_final_content__3        :  'How to Set up MEW + MetaMask', /**/
-ONBOARD_final_content__4        :  'How to Run MEW Offline / Locally', /**/
-ONBOARD_final_content__5        :  'How to Send via Ledger hardware wallet', /**/
-ONBOARD_final_content__6        :  'How to Send via TREZOR hardware wallet', /**/
-ONBOARD_final_content__7        :  'How to Send via MetaMask', /**/
-ONBOARD_final_content__8        :  'Learn More or Contact Us', /**/
-ONBOARD_final_content__9        :  'OMG, please just let me send FFS.', /**/
+ONBOARD_final_content__2        :  'ハードウェアワレットを入手する', /*Get a hardware wallet*/
+ONBOARD_final_content__3        :  'ＭＥＷとＭｅｔａｍａｓｋの設定方法', /*How to Set up MEW + MetaMask*/
+ONBOARD_final_content__4        :  'オフライン/手元でのＭＥＷの使い方', /*How to Run MEW Offline / Locally*/
+ONBOARD_final_content__5        :  'Ledgerハードウェアワレットでの送出方法', /*How to Send via Ledger hardware wallet*/
+ONBOARD_final_content__6        :  'TREZORハードウェアワレットでの送出方法', /*How to Send via TREZOR hardware wallet*/
+ONBOARD_final_content__7        :  'MetaMaskでの送出方法', /*How to Send via MetaMask*/
+ONBOARD_final_content__8        :  'もっと知る、連絡する', /*Learn More or Contact Us*/
+ONBOARD_final_content__9        :  '', /*OMG, please just let me send FFS.*/
 
 HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
 
