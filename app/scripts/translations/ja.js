@@ -197,7 +197,7 @@ ONBOARD_final_content__5        :  'Ledgerハードウェアワレットでの�
 ONBOARD_final_content__6        :  'TREZORハードウェアワレットでの送出方法', /*How to Send via TREZOR hardware wallet*/
 ONBOARD_final_content__7        :  'MetaMaskでの送出方法', /*How to Send via MetaMask*/
 ONBOARD_final_content__8        :  'もっと知る、連絡する', /*Learn More or Contact Us*/
-ONBOARD_final_content__9        :  '', /*OMG, please just let me send FFS.*/
+ONBOARD_final_content__9        :  'なんてこったい、マジかよ、とだけ言わせてくれ。', /*OMG, please just let me send FFS.*/
 
 HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
 
