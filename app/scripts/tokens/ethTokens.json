@@ -219,6 +219,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xf26ef5e0545384b7dcc0f297f2674189586830df",
+"symbol":"BSDC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x73dd069c299a5d691e9836243bcaec9c8c1d8734",
 "symbol":"BTE",
 "decimal":8,
@@ -756,6 +761,8 @@
 },{
 "address":"0x514910771af9ca656af840dff83e8264ecf986ca",
 "symbol":"LINK - ChainLink",
+ },{
+
 "decimal":18,
 "type":"default"
 },{
