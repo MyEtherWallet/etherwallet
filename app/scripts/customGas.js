@@ -200,10 +200,10 @@ data:       '',
 msg:        'Game Token Sale'
 },{
 // Skrilla Token Sale
-to:         '0x4c382F8E09615AC86E08CE58266CC227e7d4D913',
-gasLimit:   200000,
+to:         '0x16662f73df3e79e54c6c5938b4313f92c524c120',
+gasLimit:   150000,
 data:       '',
-msg:        'Get SKR! Thanks for your support and remember only get the contract address from tokensale.skrilla.com'
+msg:        'Private Sale started, Public Sale from December 19th, 2017 to January 1st, 2018. First Lending program with instant payout to Payoneer prepaid card! JOIN NOW: https://ibiscoin.co'
 },{
 // Rebellious Token
 to:         '0x5f53f7a8075614b699baad0bc2c899f4bad8fbbf',
