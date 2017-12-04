@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-body">
 
-        <article class="onboarding__msg" ng-show="onboardingMsg" translate="ONBOARD_resume">
+        <article class="onboarding__msg" ng-show="onboardMsg" translate="ONBOARD_resume">
           It looks like you didn't finish reading through these slides last time. ProTip: Finish reading through the slides 😉
         </article>
 
@@ -510,7 +510,7 @@
                   </a>
                 </li>
                 <li>
-                  <a ng-click="onboardingModal.close();globalService.currentTab=globalService.tabs.sendTransaction.id"
+                  <a ng-click="onboardModal.open();globalService.currentTab=globalService.tabs.sendTransaction.id"
                      class="strong">
                      <span translate="ONBOARD_final_content__9">
                        OMG, please just let me send FFS.

@@ -105,7 +105,7 @@
     
     <div class="tagline">
 
-    <span class="hidden-xs">3.10.9</span>
+    <span class="hidden-xs">3.10.9.2</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -6355,9 +6355,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <div class="modal-content">
       <div class="modal-body">
 
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
-
-        <article class="onboarding__msg" ng-show="onboardingMsg" translate="ONBOARD_resume">
+        <article class="onboarding__msg" ng-show="onboardMsg" translate="ONBOARD_resume">
           It looks like you didn't finish reading through these slides last time. ProTip: Finish reading through the slides 😉
         </article>
 
@@ -6860,7 +6858,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
                   </a>
                 </li>
                 <li>
-                  <a ng-click="onboardingModal.close();globalService.currentTab=globalService.tabs.sendTransaction.id"
+                  <a ng-click="onboardModal.open();globalService.currentTab=globalService.tabs.sendTransaction.id"
                      class="strong">
                      <span translate="ONBOARD_final_content__9">
                        OMG, please just let me send FFS.
