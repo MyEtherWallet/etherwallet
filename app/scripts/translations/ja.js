@@ -20,7 +20,7 @@ CONTRACT_Warning_1              :  'まもなく契約が送出されます。',
 CONTRACT_Warning_2              :  '次のネットワークに展開されます：', /*It will be deployed on the following network:*/
 CONTRACT_Warning_3              :  'まもなく契約上の機能が実行されます。', /*You are about to **execute a function on contract**.*/
 
-SEND_Helper_Contract            :  'ほとんどの場合、0のままではいけません。', /*In most cases you should leave this as 0.*/
+SEND_Helper_Contract            :  'ほとんどの場合、0のままにしてください。', /*In most cases you should leave this as 0.*/
 SEND_ViewOnly                   :  '自分のアドレスを指定するだけでは送信できません。お財布を解錠する必要があります。', /*You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.*/
 SEND_LoadTokens                 :  'トークンを読み込む', /*Load Tokens*/
 SEND_CustomAddrMsg              :  '対応するメッセージ', /*A message regarding*/
@@ -31,16 +31,16 @@ SWAP_Warning_2                  :  '資金を追加するか、別のお財布�
 X_Advanced                      :  '熟練者限定。', /*Advanced Users Only.*/
 X_HelpfulLinks                  :  '役立つリンクとよくある問答集', /*Helpful Links & FAQs*/
 X_HelpfulLinks_1                :  'お財布の操作方法', /*How to Access your Wallet*/
-X_HelpfulLinks_2                :  '秘密鍵を紛失しました', /*I lost my private key*/
+X_HelpfulLinks_2                :  '秘密鍵を紛失してしまいした', /*I lost my private key*/
 X_HelpfulLinks_3                :  '秘密鍵が別のアドレスを解錠しました', /*My private key opens a different address*/
-X_HelpfulLinks_4                :  'MyEtherWallet から/宛へ　移管中', /*Migrating to/from MyEtherWallet*/
+X_HelpfulLinks_4                :  'MyEtherWalletから、または宛へ移管中', /*Migrating to/from MyEtherWallet*/
 X_Network                       :  'チェーン', // aka "node" or "chain" - used in the dropdown in header  /*Network*/
 X_Network_Custom                :  'カスタムネットワークやノードを追加', /*Add Custom Network / Node*/
 
 DOMAIN_Buy                      :  'ドメインを購入', /*Buy the domain*/
 DOMAIN_BuyItNow                 :  'ドメイン即決価格：', /*Price to buy the domain immediately:*/
 DOMAIN_bid                      :  'ドメインを応札する', /*Bid for the domain*/
-DOMAIN_bid_0                    :  'あなたの応札が現在最高数値です。増量して再応札できますが、オークションの終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
+DOMAIN_bid_0                    :  'あなたの応札が現在最高数値です。増額して再応札できますが、オークションの終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
 DOMAIN_bid_1                    :  '最低応札額は', /*Bid at least*/
 DOMAIN_bid_2                    :  'が必要です。', /*on the domain.*/
 DOMAIN_bid_3                    :  '２４時間以内にさらに高額の応札がなければ落札することができます。', /*You will win the domain if no higher bids are placed within the next 24 hours.*/
@@ -65,19 +65,19 @@ DOMAIN_offer_15                 :  'ドメイン名の販売を中止して、�
 ENS_WrongAddress_1              :  '解錠したワレットにドメイン名がありません。', /*The wallet you unlocked does not own the name */
 ENS_WrongAddress_2              :  'アドレスを指定してお財布を解錠してください。', /*Please unlock the wallet with address */
 
-ENS_Finalize                    :  '最終処理', /*Finalize*/
-ENS_Finalize_content            :  '最終処理を行うと、ドメイン名が落札者に移管されます。落札者には、第二位の入札価格との差額が返却されます。入札が一件だけの場合には、0.01ethとの差額が返却されます。落札者以外の入札も返却されます。', /*Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.*/
+ENS_Finalize                    :  '終了処理', /*Finalize*/
+ENS_Finalize_content            :  '終了処理を行うと、ドメイン名が落札者に移管されます。落札者には、第二位の入札価格との差額が返却されます。入札が一件だけの場合には、0.01ethとの差額が返却されます。落札者以外の入札も返却されます。', /*Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.*/
 ENS_Finalize_content_2          :  'まもなく、オークションの最終処理と登録を行います。', /*You are about to finalize the auction & claim the name:*/
 ENS_Helper_1                    :  '処理プロセスの概要は？', /*What is the process like?*/
 ENS_Helper_2                    :  '１．準備', /*1. Preparation*/
 ENS_Helper_3                    :  'どのアカウント(お財布)を使用するか決めてから、複数のバックアップがあることを確認、あるいは作成してください。', /*Decide which account you wish to own the name & ensure you have multiple backups of that account.*/
-ENS_Helper_4                    :  'そのドメイン名に対して可能な最大の支払ETHを決めてください(自分の<u>Bid Amount</u>)。その口座に、入札に必要な額と0.01ETHのガス分が残っていることを確かめてください。', /*Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.*/
+ENS_Helper_4                    :  'そのドメイン名に対して可能な最大の支払ETHを決めてください(自分の<u>Bid Amount</u>)。その口座に、入札に必要な額と0.01ETHのガス消費分が残っていることを確かめてください。', /*Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.*/
 ENS_Helper_5                    :  '２．オークションの開始と入札', /*2. Start an Auction / Place a Bid*/
 ENS_Helper_6                    :  '入札期間は３日間（７２時間）です。', /*Bidding period lasts 3 days (72 hours).*/
 ENS_Helper_7                    :  '<u>Secret Phrase</u>で保護された<u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>を入力します。', /*You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.*/
 ENS_Helper_8                    :  '入札はここから行いますが、ここに表示された情報は入札開示を行うまで秘匿されます。', /*This places your bid, but this information is kept secret until you reveal it.*/
 ENS_Helper_9                    :  '３．入札の開示', /*3. Reveal your Bid*/
-ENS_Helper_10                   :  '入札を開示しないと、払い戻しされません。', /***If you do not reveal your bid, you will not be refunded.***/
+ENS_Helper_10                   :  '入札を開示しないと、払い戻しができません。', /***If you do not reveal your bid, you will not be refunded.***/
 ENS_Helper_11                   :  '開示期間は２日間（４８時間）です。', /*Reveal Period lasts 2 days (48 hours).*/
 ENS_Helper_12                   :  'アカウントを解錠してから, <u>Bid Amount</u>, と <u>Secret Phrase</u>を入力してください。', /*You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.*/
 ENS_Helper_13                   :  '同一価格での応札では、先に開示された応札が優先されます。', /*In the event that two parties bid exactly the same amount, the first bid revealed will win.*/
@@ -105,24 +105,24 @@ EOS_09                          :  'ＥＯＳトークンを請求', /*Claim EOS
 EOS_10                          :  '`claimAll`を選択。', /*Select `claimAll`.*/
 
 /* Onboarding */
-ONBOARD_welcome_title           :  'MyEtherWallet.com へようこそ！', /*Welcome to MyEtherWallet.com*/
-ONBOARD_welcome_content__1      :  '安全を確保いただくために、ご理解を進めていただくお時間を少々頂戴いたします。 🙏', /*Please take some time to understand this for your own safety. 🙏*/
-ONBOARD_welcome_content__2      :  'これらの警告をよくご覧いただきませんと、資金が盗まれることになります。', /*Your funds will be stolen if you do not heed these warnings.*/
-ONBOARD_welcome_content__3      :  'この案内がわずらわしいことは承知いたしております。申し訳ございません。', /*We know this click-through stuff is annoying. We are sorry.*/
+ONBOARD_welcome_title           :  'MyEtherWallet.com（マイ・イーサ・ワレット／ＭＥＷ) へようこそ！', /*Welcome to MyEtherWallet.com*/
+ONBOARD_welcome_content__1      :  '安全にお使いいただくためにご理解ください。 🙏', /*Please take some time to understand this for your own safety. 🙏*/
+ONBOARD_welcome_content__2      :  'これらの警告をよくご覧いただきませんと、**資産が盗まれる**ことになります。', /*Your funds will be stolen if you do not heed these warnings.*/
+ONBOARD_welcome_content__3      :  'この案内がわずらわしいことは重々に承知いたしております。申し訳ございません。', /*We know this click-through stuff is annoying. We are sorry.*/
 ONBOARD_welcome_content__4      :  'ＭＥＷって何？', /*What is MEW*/
-ONBOARD_welcome_content__5      :  'ＭyＥtherＷallet は無料で公開ソースコードのクライアント側での使用者インターフェースです。', /*MyEtherWallet is a free, open-source, client-side interface.*/
+ONBOARD_welcome_content__5      :  'MyEtherWalletはソースコードを公開したクライアント側での無料の使用者インターフェースです。', /*MyEtherWallet is a free, open-source, client-side interface.*/
 ONBOARD_welcome_content__6      :  'これによって、ブロックチェーン上の暗号鍵と暗号資産の直接管理を行うことが可能です。', /*We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.*/
 ONBOARD_welcome_content__7      :  '**自分**とそして**自分だけ**がセキュリティに全責任を負うことになります。', /***You** and **only you** are responsible for your security.*/
 ONBOARD_welcome_content__8      :  '詐欺サイトに行ってしまい、暗号鍵や、暗号資産を失ってしまっても、取り返したり凍結することは誰もできません。', /*We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.*/
-ONBOARD_bank_title              :  'ＭyＥtherＷalletは金融機関ではありません。', /*MyEtherWallet is not a Bank*/
+ONBOARD_bank_title              :  'MyEtherWalletは金融機関ではありません。', /*MyEtherWallet is not a Bank*/
 ONBOARD_bank_content__1         :  '金融機関、特に取引所に口座を開設すると、そのシステム中に自分の口座が開設されます。', /*When you open an account with a bank or exchange, they create an account for you in their system.*/
 ONBOARD_bank_content__2         :  'その金融機関は口座のパスワード、残高、取引記録や最終的にあなたの財産を含む個人情報を記録管理します。', /*The bank keeps track of your personal information, account passwords, balances, transactions and ultimately your money.*/
 ONBOARD_bank_content__3         :  'その金融機関は、カードが盗難に会った際の払い戻しなど、口座の維持管理に必要な手数料を徴収します。', /*The bank charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.*/
 ONBOARD_bank_content__4         :  'その金融機関は、送金したり、オンラインで口座の確認をしたり、パスワードや盗難に会ったカードの再発行ができるようにしています。', /*The bank allows you to write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.*/
 ONBOARD_bank_content__5         :  '金融機関や取引所にある口座では、その金融機関が送金額の上限、送金相手の設定、送金前に疑わしい相手送金をどれくらいの時間をかけて調べるか、などを決めています。これらは全て手数料が元になっています。', /*You have an account *with the bank or exchange* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.*/
 ONBOARD_welcome_title__alt      :  '前置き', /*Introduction*/
-ONBOARD_interface_title         :  'ＭyＥtherＷalletは、単なる使用者インターフェースです。', /*MyEtherWallet is an Interface*/
-ONBOARD_interface_content__1    :  'ＭyＥtherＷalletを使って口座を作る時、一対の暗号のための二つの長い数字、すなわち秘密鍵と公開鍵（アドレス)とが作成されます。', /*When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).*/
+ONBOARD_interface_title         :  'MyEtherWalletは、単なる使用者インターフェースです。', /*MyEtherWallet is an Interface*/
+ONBOARD_interface_content__1    :  'MyEtherWalletを使って口座を作る時、一対の暗号のための二つの長い数字、すなわち秘密鍵と公開鍵（アドレス)とが作成されます。', /*When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).*/
 ONBOARD_interface_content__2    :  'これらの暗号鍵の操作は全て自分のコンピューター上のブラウザの中で行われます。', /*The handling of your keys happens entirely on your computer, inside your browser.*/
 ONBOARD_interface_content__3    :  '私たちは、秘密鍵、パスワードや口座情報の送信や保存を一切いたしません。', /*We never transmit, receive or store your private key, password, or other account information.*/
 ONBOARD_interface_content__4    :  '私たちは手数料を一切徴収しません。', /*We do not charge a transaction fee.*/
@@ -136,7 +136,7 @@ ONBOARD_blockchain_content__1   :  'ブロックチェーンは、例えて言�
 ONBOARD_blockchain_content__2   :  '誰が誰にコインをいくら送ったとか、どの口座にいくら、とかの記録を保存管理しています。', /*It keeps track of who sent how many coins to whom, and what the balance of every account is.*/
 ONBOARD_blockchain_content__3   :  '何千もの特殊なコンピューターを持った人（発掘者）によって記録と管理が行われます。', /*It is stored and maintained by thousands of people (miners) across the globe who have special computers.*/
 ONBOARD_blockchain_content__4   :  'ブロックチェーンのなかのブロックはＭyＥtherＷallet, MetaMask, Exodus, Mist, Geth, Parityなど至る所で行われている個々の処理や取引で作られています。', /*The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.*/
-ONBOARD_blockchain_content__5   :  'ＭyＥtherＷalletや[etherscan.io](https://etherscan.io)で残高や処理を見た時、見えるのは私たちのシステムの中ではなく、ブロックチェーンにあるデータです。', /*When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.*/
+ONBOARD_blockchain_content__5   :  'MyEtherWalletや[etherscan.io](https://etherscan.io)で残高や処理を見た時、見えるのは私たちのシステムの中ではなく、ブロックチェーンにあるデータです。', /*When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.*/
 ONBOARD_blockchain_content__6   :  '再度： **私たちは金融機関ではありません。**', /*Again: **we are not a bank**.*/
 ONBOARD_interface_title__alt    :  'ＭＥＷは、使用者インターフェースです。', /*MEW is an Interface*/
 ONBOARD_why_title__alt          :  'しかし、、、何でそんなに大事？', /*But...why does this matter?*/
@@ -186,25 +186,25 @@ ONBOARD_secure_3_content__4     :  '秘密鍵をDropbox、Google Drive、や他�
 ONBOARD_secure_3_content__5     :  'もし、あなたの１週間以上の労働に値する仮想通貨をお持ちであれば、ハードウェアワレットを入手してください。言い訳無用です。それだけの価値があります。私が保証します。', /*If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.*/
 ONBOARD_secure_3_content__6     :  '[さらに安全確保のためのセキュリティ情報！](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)', /*[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)*/
 ONBOARD_secure_2_title__alt_2   :  '詐欺撲滅', /*Screw Scams*/
-ONBOARD_final_title__alt        :  'もうひとクリックで完了です！ 🤘', /*One more click & you\'re done! 🤘*/
+ONBOARD_final_title__alt        :  'もうワンクリックで完了です！ 🤘', /*One more click & you\'re done! 🤘*/
 ONBOARD_final_title             :  'オーライ！講義終了！', /*Alright, I\'m done lecturing you!*/
 ONBOARD_final_subtitle          :  'こんな風で申し訳ありません。次はこれ！', /*Sorry for being like this. Onwards!*/
-ONBOARD_final_content__1        :  'Create a wallet', /**/
-ONBOARD_final_content__2        :  'ハードウェアワレットを入手する', /*Get a hardware wallet*/
+ONBOARD_final_content__1        :  'お財布を作る', /**/
+ONBOARD_final_content__2        :  'ハードウェアワレットを手に入れる', /*Get a hardware wallet*/
 ONBOARD_final_content__3        :  'ＭＥＷとＭｅｔａｍａｓｋの設定方法', /*How to Set up MEW + MetaMask*/
 ONBOARD_final_content__4        :  'オフライン/手元でのＭＥＷの使い方', /*How to Run MEW Offline / Locally*/
 ONBOARD_final_content__5        :  'Ledgerハードウェアワレットでの送出方法', /*How to Send via Ledger hardware wallet*/
 ONBOARD_final_content__6        :  'TREZORハードウェアワレットでの送出方法', /*How to Send via TREZOR hardware wallet*/
 ONBOARD_final_content__7        :  'MetaMaskでの送出方法', /*How to Send via MetaMask*/
 ONBOARD_final_content__8        :  'もっと知る、連絡する', /*Learn More or Contact Us*/
-ONBOARD_final_content__9        :  'なんてこったい、マジかよ、とだけ言わせてくれ。', /*OMG, please just let me send FFS.*/
+ONBOARD_final_content__9        :  'もう勘弁、お願い、早く送らせて。', /*OMG, please just let me send FFS.*/
 
 HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
 
 /* New Generics */
 x_CancelReplaceTx           : '処理を中断、あるいは置換',
 x_CancelTx                  : '処理を中断',
-x_PasswordDesc              : 'このパスワードで秘密鍵を『暗号化』します。新しい鍵を作るための元種(seed)ではありません。［このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します］',
+x_PasswordDesc              : 'このパスワードで秘密鍵を『暗号化』します。新しい鍵を作るための元種(seed)ではありません。**このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します**',
 x_ReadMore                  : 'もっと読む',
 x_ReplaceTx                 : '処理を置き換える',
 x_TransHash                 : '処理ハッシュ',
@@ -629,7 +629,7 @@ GETH_GasLimit               : 'ブロックガスリミットを越えていま�
 GETH_NegativeValue          : '負の値です ',
 
 /* Tranlsation Info */
-translate_version           : '0.3 ',
+translate_version           : '0.4 ',
 Translator_Desc             : '日本語開発者に投げ銭： ',
 TranslatorName_1            : '[sekisanchi.eth](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ',
