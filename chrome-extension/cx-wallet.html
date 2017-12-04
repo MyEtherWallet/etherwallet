@@ -87,7 +87,7 @@
     
     <div class="tagline">
 
-    <span>3.10.8.7</span>
+    <span class="hidden-xs">3.10.9</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -149,6 +149,15 @@
              rel="noopener noreferrer"></a>
         </div>
       </ul>
+      <p class="dropdown-gas__msg""
+         ng-show="gasPriceMsg">
+        The network is a bit full right now. Maybe higher gas price?
+        <a href="https://etherscan.io/txsPending"
+           target="_blank" rel="noopener noreferrer">Pending TXs</a>
+        &middot;
+        <a href="https://ethgasstation.info/"
+           target="_blank" rel="noopener noreferrer">Eth Gas Station</a>
+      </p>
     </span>
 
     <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
@@ -1882,7 +1891,7 @@
             </tr>
             <tr>
               <td class="small text-right">Amount to Send:</td>
-              <td class="small text-left mono">{{parsedSignedTx.value}}</td>
+              <td class="small text-left mono">{{parsedSignedTx.value}} ETH</td>
             </tr>
             <tr>
               <td class="small text-right">Account Balance:</td>
@@ -1920,7 +1929,9 @@
 
           </tbody>
         </table>
+      </div>
 
+      <div class="modal-footer">
         <h4 class="text-center">
           <span translate="SENDModal_Content_1">You are about to send</span>
           <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
@@ -1929,11 +1940,6 @@
           <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.to}}.</strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.to}}</strong>
         </h4>
-
-      </div>
-
-
-      <div class="modal-footer">
         <p translate="SENDModal_Content_3">
           Are you sure you want to do this?
         </p>
@@ -2648,7 +2654,7 @@
             </tr>
             <tr>
               <td class="small text-right">Amount to Send:</td>
-              <td class="small text-left mono">{{parsedSignedTx.value}}</td>
+              <td class="small text-left mono">{{parsedSignedTx.value}} ETH</td>
             </tr>
             <tr>
               <td class="small text-right">Account Balance:</td>
@@ -2686,7 +2692,9 @@
 
           </tbody>
         </table>
+      </div>
 
+      <div class="modal-footer">
         <h4 class="text-center">
           <span translate="SENDModal_Content_1">You are about to send</span>
           <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
@@ -2695,11 +2703,6 @@
           <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.to}}.</strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.to}}</strong>
         </h4>
-
-      </div>
-
-
-      <div class="modal-footer">
         <p translate="SENDModal_Content_3">
           Are you sure you want to do this?
         </p>
@@ -5218,7 +5221,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
         <!-- Title (already offered) -->
         <div ng-show="objDomainSale.status==domainsaleModes.available">
-          <h2 translate="DOMAIN_offer_6">
+          <h2>
             <span translate="DOMAIN_offer_7">
               Alter Your Offer for:
             </span>
@@ -6344,7 +6347,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
             </tr>
             <tr>
               <td class="small text-right">Amount to Send:</td>
-              <td class="small text-left mono">{{parsedSignedTx.value}}</td>
+              <td class="small text-left mono">{{parsedSignedTx.value}} ETH</td>
             </tr>
             <tr>
               <td class="small text-right">Account Balance:</td>
@@ -6382,7 +6385,9 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
           </tbody>
         </table>
+      </div>
 
+      <div class="modal-footer">
         <h4 class="text-center">
           <span translate="SENDModal_Content_1">You are about to send</span>
           <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
@@ -6391,11 +6396,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
           <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.to}}.</strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.to}}</strong>
         </h4>
-
-      </div>
-
-
-      <div class="modal-footer">
         <p translate="SENDModal_Content_3">
           Are you sure you want to do this?
         </p>
@@ -6699,7 +6699,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
 
-        <article class="onboarding__msg" ng-show="onboardingMsg">
+        <article class="onboarding__msg" ng-show="onboardingMsg" translate="ONBOARD_resume">
           It looks like you didn't finish reading through these slides last time. ProTip: Finish reading through the slides 😉
         </article>
 
@@ -7016,7 +7016,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
             <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_secure_1_content__2">
-                  Use the [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) Chrome Extension to block malicious websites.
+                  Install [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige) or the [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) to block malicious websites.
                 </li>
                 <li translate="ONBOARD_secure_1_content__3">
                   Always check the URL: `https://www.myetherwallet.com`.

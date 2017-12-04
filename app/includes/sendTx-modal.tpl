@@ -73,7 +73,7 @@
             </tr>
             <tr>
               <td class="small text-right">Amount to Send:</td>
-              <td class="small text-left mono">{{parsedSignedTx.value}}</td>
+              <td class="small text-left mono">{{parsedSignedTx.value}} ETH</td>
             </tr>
             <tr>
               <td class="small text-right">Account Balance:</td>
@@ -111,7 +111,9 @@
 
           </tbody>
         </table>
+      </div>
 
+      <div class="modal-footer">
         <h4 class="text-center">
           <span translate="SENDModal_Content_1">You are about to send</span>
           <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
@@ -120,11 +122,6 @@
           <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.to}}.</strong>
           <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.to}}</strong>
         </h4>
-
-      </div>
-
-
-      <div class="modal-footer">
         <p translate="SENDModal_Content_3">
           Are you sure you want to do this?
         </p>

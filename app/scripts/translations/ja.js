@@ -51,6 +51,9 @@ DOMAIN_Finish_2                 :  'このアドレスは、主催者、応札�
 DOMAIN_Finish_3                 :  '競売を終了する', /*Finish the auction*/
 DOMAIN_Finish_4                 :  '競売を終了して、落札者にドメインを移管し、主催者に落札金を渡す。', /*Finish the auction to allocate the domain to the winner and the funds to the seller.*/
 DOMAIN_Finish_5                 :  'ドメイン名がDomainsaleに移管されているか確認するために、自分のTXハッシュをクリックしてください。', /*Click your TX hash to see if you successfully transferred the domain to DomainSale.*/
+DOMAIN_offer_1                  :  'Incorrect Wallet',
+DOMAIN_offer_2                  :  'The wallet you unlocked does not own this name.',
+DOMAIN_offer_3                  :  'In order to offer this name, please unlock the wallet with address:',
 DOMAIN_offer_4                  :  '募集価格：', /*Offer For Sale:*/
 DOMAIN_offer_5                  :  'ドメイン名を販売するために、以下のいずれか、あるいは双方の価格を設定してください。ドメイン名の供託金は落札者に、また落札額の10％は仲介者に支払われます。', /*Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
 DOMAIN_offer_7                  :  '変更後の募集価格：', /*Alter Your Offer for:*/
@@ -270,6 +273,7 @@ NAV_BulkGenerate            : 'バルク作成 ',
 NAV_Contact                 : '連絡する ',
 NAV_Contracts               : '契約 ',
 NAV_DeployContract          : '契約を展開 ',
+NAV_DomainSale              : 'DomainSale',
 NAV_ENS                     : 'ENS',
 NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'お財布の作成 ',
