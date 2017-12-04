@@ -4,209 +4,207 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
-GEN_Help_0                      :  'Already have a wallet somewhere?',
-GEN_Help_MetaMask               :  'So easy! Keys stay in MetaMask, not on a phishing site! Try it today.',
+GEN_Help_0                      :  'お財布をお持ちですか？', /*Already have a wallet somewhere?*/
+GEN_Help_MetaMask               :  'とでも簡単です！キーはフィッシングサイトではなく、メタマスク(Metamask)に残っています。すぐ試してください！', /*So easy! Keys stay in MetaMask, not on a phishing site! Try it today.*/
 
-GEN_Warning_1                   :  '**Do not lose it!** It cannot be recovered if you lose it.',
-GEN_Warning_2                   :  '**Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.',
-GEN_Warning_3                   :  '**Make a backup!** Secure it like the millions of dollars it may one day be worth.',
+GEN_Warning_1                   :  '**これは絶対に失くさないでください！**　なくした場合には二度と戻りません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
+GEN_Warning_2                   :  '**他人と共有しないでください**　悪意のあるサイトにこのファイルを盗まれると、あなたの資産が失われます。', /***Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.*/
+GEN_Warning_3                   :  '**バックアップを作成してください！**　いつの日か、億万単位の大金になるものと心得て安全を確保してください。', /***Make a backup!** Secure it like the millions of dollars it may one day be worth.*/
 
-GAS_Price_1                     : 'Not So Fast',
-GAS_Price_2                     : 'Fast',
-GAS_Price_3                     : 'Fast AF',
+GAS_Price_1                     : '普通',　/*Not So Fast*/
+GAS_Price_2                     : '迅速', /*Fast*/
+GAS_Price_3                     : '超迅速', /*Fast AF*/
 
-CONTRACT_Helper_1               :  'Please change the address to your own Multisig Contract Address.',
-CONTRACT_Warning_1              :  'You are about to **deploy a contract**.',
-CONTRACT_Warning_2              :  'It will be deployed on the following network:',
-CONTRACT_Warning_3              :  'You are about to **execute a function on contract**.',
+CONTRACT_Helper_1               :  'マルチシグのアドレスに変えてください', /*Please change the address to your own Multisig Contract Address.*/
+CONTRACT_Warning_1              :  'まもなく契約が送出されます。', /*You are about to **deploy a contract**.*/
+CONTRACT_Warning_2              :  '次のネットワークに展開されます：', /*It will be deployed on the following network:*/
+CONTRACT_Warning_3              :  'まもなく契約上の機能が実行されます。', /*You are about to **execute a function on contract**.*/
 
-SEND_Helper_Contract            :  'In most cases you should leave this as 0.',
-SEND_ViewOnly                   :  'You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.',
-SEND_LoadTokens                 :  'Load Tokens',
-SEND_CustomAddrMsg              :  'A message regarding',
+SEND_Helper_Contract            :  'ほとんどの場合、0のままにしてください。', /*In most cases you should leave this as 0.*/
+SEND_ViewOnly                   :  '自分のアドレスを指定するだけでは送信できません。お財布を解錠する必要があります。', /*You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.*/
+SEND_LoadTokens                 :  'トークンを読み込む', /*Load Tokens*/
+SEND_CustomAddrMsg              :  '対応するメッセージ', /*A message regarding*/
 
-SWAP_Warning_1                  :  'Warning! You do not have enough funds to complete this swap.',
-SWAP_Warning_2                  :  'Please add more funds to your wallet or access a different wallet.',
+SWAP_Warning_1                  :  '警告！交換に必要な資金が足りません。', /*Warning! You do not have enough funds to complete this swap.*/
+SWAP_Warning_2                  :  '資金を追加するか、別のお財布をお使いください。',　/*Please add more funds to your wallet or access a different wallet.*/
 
-X_Advanced                      :  'Advanced Users Only.',
-X_HelpfulLinks                  :  'Helpful Links & FAQs',
-X_HelpfulLinks_1                :  'How to Access your Wallet',
-X_HelpfulLinks_2                :  'I lost my private key',
-X_HelpfulLinks_3                :  'My private key opens a different address',
-X_HelpfulLinks_4                :  'Migrating to/from MyEtherWallet',
-X_Network                       :  'Network', // aka "node" or "chain" - used in the dropdown in header
-X_Network_Custom                :  'Add Custom Network / Node',
+X_Advanced                      :  '熟練者限定。', /*Advanced Users Only.*/
+X_HelpfulLinks                  :  '役立つリンクとよくある問答集', /*Helpful Links & FAQs*/
+X_HelpfulLinks_1                :  'お財布の操作方法', /*How to Access your Wallet*/
+X_HelpfulLinks_2                :  '秘密鍵を紛失してしまいした', /*I lost my private key*/
+X_HelpfulLinks_3                :  '秘密鍵が別のアドレスを解錠しました', /*My private key opens a different address*/
+X_HelpfulLinks_4                :  'MyEtherWalletから、または宛へ移管中', /*Migrating to/from MyEtherWallet*/
+X_Network                       :  'チェーン', // aka "node" or "chain" - used in the dropdown in header  /*Network*/
+X_Network_Custom                :  'カスタムネットワークやノードを追加', /*Add Custom Network / Node*/
 
-DOMAIN_Buy                      :  'Buy the domain',
-DOMAIN_BuyItNow                 :  'Price to buy the domain immediately:',
-DOMAIN_bid                      :  'Bid for the domain',
-DOMAIN_bid_0                    :  'You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.',
-DOMAIN_bid_1                    :  'Bid at least',
-DOMAIN_bid_2                    :  'on the domain.',
-DOMAIN_bid_3                    :  'You will win the domain if no higher bids are placed within the next 24 hours.',
-DOMAIN_bid_4                    :  'Note that the domain has a locked value of',
-DOMAIN_bid_5                    :  'As part of the sale you will receive the deed with this value but cannot claim it unless you release the name.',
-DOMAIN_Finish_1                 :  'Not related to that auction',
-DOMAIN_Finish_2                 :  'This address is neither the winner nor the seller of the auction.',
-DOMAIN_Finish_3                 :  'Finish the auction',
-DOMAIN_Finish_4                 :  'Finish the auction to allocate the domain to the winner and the funds to the seller.',
-DOMAIN_Finish_5                 :  'Click your TX hash to see if you successfully transferred the domain to DomainSale.',
-DOMAIN_offer_4                  :  'Offer For Sale:',
-DOMAIN_offer_5                  :  'Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.',
-DOMAIN_offer_7                  :  'Alter Your Offer for:',
-DOMAIN_offer_8                  :  'Change either of both of the prices below to alter your domain sale offer.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.',
-DOMAIN_offer_9                  :  'Buy price',
-DOMAIN_offer_10                 :  'This is the price at which someone can buy the domain immediately. 0 means that the domain cannot be purchased immediately.',
-DOMAIN_offer_11                 :  'This is the price at which someone can start an auction for the domain.  0 means that the domain will not be available for auction.',
-DOMAIN_offer_12                 :  'Offer your domain',
-DOMAIN_offer_13                 :  'Alter your sale',
-DOMAIN_offer_14                 :  'Cancel your sale',
-DOMAIN_offer_15                 :  'You can cancel your domain sale, which will return the domain to you with no charge.  This is only available before any bids have been received for the domain.',
+DOMAIN_Buy                      :  'ドメインを購入', /*Buy the domain*/
+DOMAIN_BuyItNow                 :  'ドメイン即決価格：', /*Price to buy the domain immediately:*/
+DOMAIN_bid                      :  'ドメインを応札する', /*Bid for the domain*/
+DOMAIN_bid_0                    :  'あなたの応札が現在最高数値です。増額して再応札できますが、オークションの終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
+DOMAIN_bid_1                    :  '最低応札額は', /*Bid at least*/
+DOMAIN_bid_2                    :  'が必要です。', /*on the domain.*/
+DOMAIN_bid_3                    :  '２４時間以内にさらに高額の応札がなければ落札することができます。', /*You will win the domain if no higher bids are placed within the next 24 hours.*/
+DOMAIN_bid_4                    :  'このドメイン名の供託額は', /*Note that the domain has a locked value of*/
+DOMAIN_bid_5                    :  'このドメイン名を開放して受け取ることができる供託額は', /*As part of the sale you will receive the deed with this value but cannot claim it unless you release the name.*/
+DOMAIN_Finish_1                 :  'この競売と無関係です', /*Not related to that auction*/
+DOMAIN_Finish_2                 :  'このアドレスは、主催者、応札者のいずれでもありません。', /*This address is neither the winner nor the seller of the auction.*/
+DOMAIN_Finish_3                 :  '競売を終了する', /*Finish the auction*/
+DOMAIN_Finish_4                 :  '競売を終了して、落札者にドメインを移管し、主催者に落札金を渡す。', /*Finish the auction to allocate the domain to the winner and the funds to the seller.*/
+DOMAIN_Finish_5                 :  'ドメイン名がDomainsaleに移管されているか確認するために、自分のTXハッシュをクリックしてください。', /*Click your TX hash to see if you successfully transferred the domain to DomainSale.*/
+DOMAIN_offer_4                  :  '募集価格：', /*Offer For Sale:*/
+DOMAIN_offer_5                  :  'ドメイン名を販売するために、以下のいずれか、あるいは双方の価格を設定してください。ドメイン名の供託金は落札者に、また落札額の10％は仲介者に支払われます。', /*Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
+DOMAIN_offer_7                  :  '変更後の募集価格：', /*Alter Your Offer for:*/
+DOMAIN_offer_8                  :  'ドメイン名販売募集価格を変更するには、以下のいずれか、あるいは双方を変更してください。ドメイン名の供託金は落札者に、また落札額の10％は仲介者に支払われます。', /*Change either of both of the prices below to alter your domain sale offer.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
+DOMAIN_offer_9                  :  '入札価格', /*Buy price*/
+DOMAIN_offer_10                 :  'これはドメイン名を落札するための即決価格です。ゼロの場合には、取引は即座に完了しません。', /*This is the price at which someone can buy the domain immediately. 0 means that the domain cannot be purchased immediately.*/
+DOMAIN_offer_11                 :  'これはドメイン名の競売の開始価格です。ゼロの場合には、オークションは始まっていません。', /*This is the price at which someone can start an auction for the domain.  0 means that the domain will not be available for auction.*/
+DOMAIN_offer_12                 :  '自分のドメイン名を競売に出す', /*Offer your domain*/
+DOMAIN_offer_13                 :  '販売条件の変更', /*Alter your sale*/
+DOMAIN_offer_14                 :  '販売の中止', /*Cancel your sale*/
+DOMAIN_offer_15                 :  'ドメイン名の販売を中止して、そのドメイン名の登録者を自分にもどすことが無料でできます。まだ入札がされていない場合のみ有効です。', /*You can cancel your domain sale, which will return the domain to you with no charge.  This is only available before any bids have been received for the domain.*/
+ENS_WrongAddress_1              :  '解錠したワレットにドメイン名がありません。', /*The wallet you unlocked does not own the name */
+ENS_WrongAddress_2              :  'アドレスを指定してお財布を解錠してください。', /*Please unlock the wallet with address */
 
-ENS_WrongAddress_1              :  'The wallet you unlocked does not own the name ',
-ENS_WrongAddress_2              :  'Please unlock the wallet with address ',
+ENS_Finalize                    :  '終了処理', /*Finalize*/
+ENS_Finalize_content            :  '終了処理を行うと、ドメイン名が落札者に移管されます。落札者には、第二位の入札価格との差額が返却されます。入札が一件だけの場合には、0.01ethとの差額が返却されます。落札者以外の入札も返却されます。', /*Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.*/
+ENS_Finalize_content_2          :  'まもなく、オークションの最終処理と登録を行います。', /*You are about to finalize the auction & claim the name:*/
+ENS_Helper_1                    :  '処理プロセスの概要は？', /*What is the process like?*/
+ENS_Helper_2                    :  '１．準備', /*1. Preparation*/
+ENS_Helper_3                    :  'どのアカウント(お財布)を使用するか決めてから、複数のバックアップがあることを確認、あるいは作成してください。', /*Decide which account you wish to own the name & ensure you have multiple backups of that account.*/
+ENS_Helper_4                    :  'そのドメイン名に対して可能な最大の支払ETHを決めてください(自分の<u>Bid Amount</u>)。その口座に、入札に必要な額と0.01ETHのガス消費分が残っていることを確かめてください。', /*Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.*/
+ENS_Helper_5                    :  '２．オークションの開始と入札', /*2. Start an Auction / Place a Bid*/
+ENS_Helper_6                    :  '入札期間は３日間（７２時間）です。', /*Bidding period lasts 3 days (72 hours).*/
+ENS_Helper_7                    :  '<u>Secret Phrase</u>で保護された<u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>を入力します。', /*You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.*/
+ENS_Helper_8                    :  '入札はここから行いますが、ここに表示された情報は入札開示を行うまで秘匿されます。', /*This places your bid, but this information is kept secret until you reveal it.*/
+ENS_Helper_9                    :  '３．入札の開示', /*3. Reveal your Bid*/
+ENS_Helper_10                   :  '入札を開示しないと、払い戻しができません。', /***If you do not reveal your bid, you will not be refunded.***/
+ENS_Helper_11                   :  '開示期間は２日間（４８時間）です。', /*Reveal Period lasts 2 days (48 hours).*/
+ENS_Helper_12                   :  'アカウントを解錠してから, <u>Bid Amount</u>, と <u>Secret Phrase</u>を入力してください。', /*You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.*/
+ENS_Helper_13                   :  '同一価格での応札では、先に開示された応札が優先されます。', /*In the event that two parties bid exactly the same amount, the first bid revealed will win.*/
+ENS_Helper_14                   :  '４．オークションを終了する', /*4. Finalize the Auction*/
+ENS_Helper_15                   :  'いったんオークションが（五日間、あるいは１２０時間後に）終了すると、その新しいドメイン名を確定するために、落札者は最終処理を行う必要があります。', /*Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.*/
+ENS_Helper_16                   :  '落札者には、その入札額と二番入札との差額が返金されます。', /*The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH.*/
+ENS_Helper_17                   :  '詳細情報', /*More Information*/
+ENS_Helper_18                   :  '登録のための競売は、封印入札方式で、詳細は', /*The auction for this registrar is a blind auction, and is described in*/
+ENS_Helper_19                   :  '基本的には応札中に何も開示されません。', /*Basically, no one can see *anything* during the auction.*/
+ENS_Helper_20                   :  'ＥＮＳ：解説書を読む', /*ENS: Read the Docs*/
+ENS_Helper_21                   :  'イサーリアムネームサービスの改訂日の発表！', /*Announcing the Ethereum Name Service Relaunch Date!*/
+ENS_Helper_22                   :  '知識ベース：ＥＮＳ', /*Knowledge Base: ENS*/
+ENS_Helper_23                   :  '開示時の[BAD INSTRUCTION] (Reveal) をデバッグする', /*Debugging a [BAD INSTRUCTION] Reveal*/
+ENS_Helper_24                   :  '開示時(Reveal)の障害について、サポート依頼する前に上記をお試しください。申し訳ございません。:(', /*Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We\'re so sorry. :(*/
 
-ENS_Finalize                    :  'Finalize',
-ENS_Finalize_content            :  'Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.',
-ENS_Finalize_content_2          :  'You are about to finalize the auction & claim the name:',
-ENS_Helper_1                    :  'What is the process like?',
-ENS_Helper_2                    :  '1. Preparation',
-ENS_Helper_3                    :  'Decide which account you wish to own the name & ensure you have multiple backups of that account.',
-ENS_Helper_4                    :  'Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.',
-ENS_Helper_5                    :  '2. Start an Auction / Place a Bid',
-ENS_Helper_6                    :  'Bidding period lasts 3 days (72 hours).',
-ENS_Helper_7                    :  'You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.',
-ENS_Helper_8                    :  'This places your bid, but this information is kept secret until you reveal it.',
-ENS_Helper_9                    :  '3. Reveal your Bid',
-ENS_Helper_10                   :  '**If you do not reveal your bid, you will not be refunded.**',
-ENS_Helper_11                   :  'Reveal Period lasts 2 days (48 hours).',
-ENS_Helper_12                   :  'You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.',
-ENS_Helper_13                   :  'In the event that two parties bid exactly the same amount, the first bid revealed will win.',
-ENS_Helper_14                   :  '4. Finalize the Auction',
-ENS_Helper_15                   :  'Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.',
-ENS_Helper_16                   :  'The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH.',
-ENS_Helper_17                   :  'More Information',
-ENS_Helper_18                   :  'The auction for this registrar is a blind auction, and is described in',
-ENS_Helper_19                   :  'Basically, no one can see *anything* during the auction.',
-ENS_Helper_20                   :  'ENS: Read the Docs',
-ENS_Helper_21                   :  'Announcing the Ethereum Name Service Relaunch Date!',
-ENS_Helper_22                   :  'Knowledge Base: ENS',
-ENS_Helper_23                   :  'Debugging a [BAD INSTRUCTION] Reveal',
-ENS_Helper_24                   :  'Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We\'re so sorry. :(',
-
-EOS_01                          :  '**Generate EOS Key-pair**',
-EOS_02                          :  '**Register / Map your EOS Key**',
-EOS_03                          :  'Select `register`',
-EOS_04                          :  'Enter your **EOS Public Key** <--- CAREFUL! EOS PUBLIC KEY!',
-EOS_05                          :  'Fund EOS Contract on Send Page',
-EOS_06                          :  'Go to Send Ether & Tokens Page',
-EOS_07                          :  'Unlock same wallet you are unlocking here.',
-EOS_08                          :  'Send Amount you want to Contribute to `0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf`',
-EOS_09                          :  'Claim EOS Tokens',
-EOS_10                          :  'Select `claimAll`.',
+EOS_01                          :  '**ＥＯＳの鍵対の生成**', /* **Generate EOS Key-pair** */
+EOS_02                          :  '**ＥＯＳの鍵を登録／転写する**', /* **Register / Map your EOS Key** */
+EOS_03                          :  '`register`を選択する', /*Select `register`*/
+EOS_04                          :  '**ＥＯＳの公開鍵**を入力する　<---　ＥＯＳの公開鍵に注意！', /*Enter your **EOS Public Key** <--- CAREFUL! EOS PUBLIC KEY!*/
+EOS_05                          :  '送出ページでＥＯＳの契約に入金', /*Fund EOS Contract on Send Page*/
+EOS_06                          :  'Ether/トークンの送出ページに移動', /*Go to Send Ether & Tokens Page*/
+EOS_07                          :  '解錠中のお財布と同じものをここで解錠', /*Unlock same wallet you are unlocking here.*/
+EOS_08                          :  '支援する数量を`0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf`に送出する', /*Send Amount you want to Contribute to `0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf`*/
+EOS_09                          :  'ＥＯＳトークンを請求', /*Claim EOS Tokens*/
+EOS_10                          :  '`claimAll`を選択。', /*Select `claimAll`.*/
 
 /* Onboarding */
-ONBOARD_welcome_title           :  'Welcome to MyEtherWallet.com',
-ONBOARD_welcome_content__1      :  'Please take some time to understand this for your own safety. 🙏',
-ONBOARD_welcome_content__2      :  'Your funds will be stolen if you do not heed these warnings.',
-ONBOARD_welcome_content__3      :  'We know this click-through stuff is annoying. We are sorry.',
-ONBOARD_welcome_content__4      :  'What is MEW? ',
-ONBOARD_welcome_content__5      :  'MyEtherWallet is a free, open-source, client-side interface.',
-ONBOARD_welcome_content__6      :  'We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.',
-ONBOARD_welcome_content__7      :  '**You** and **only you** are responsible for your security.',
-ONBOARD_welcome_content__8      :  'We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.',
-ONBOARD_bank_title              :  'MyEtherWallet is not a Bank',
-ONBOARD_bank_content__1         :  'When you open an account with a bank or exchange, they create an account for you in their system.',
-ONBOARD_bank_content__2         :  'The bank keeps track of your personal information, account passwords, balances, transactions and ultimately your money.',
-ONBOARD_bank_content__3         :  'The bank charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.',
-ONBOARD_bank_content__4         :  'The bank allows you to write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.',
-ONBOARD_bank_content__5         :  'You have an account *with the bank or exchange* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.',
-ONBOARD_welcome_title__alt      :  'Introduction',
-ONBOARD_interface_title         :  'MyEtherWallet is an Interface',
-ONBOARD_interface_content__1    :  'When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).',
-ONBOARD_interface_content__2    :  'The handling of your keys happens entirely on your computer, inside your browser.',
-ONBOARD_interface_content__3    :  'We never transmit, receive or store your private key, password, or other account information.',
-ONBOARD_interface_content__4    :  'We do not charge a transaction fee.',
-ONBOARD_interface_content__5    :  'You are simply using our **interface** to interact **directly with the blockchain**.',
-ONBOARD_interface_content__6    :  'If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍',
-ONBOARD_interface_content__7    :  'If you send your *private key* to someone, they now have full control of your account. 👎',
-ONBOARD_bank_title__alt         :  'MEW isn\'t a Bank',
-ONBOARD_blockchain_title__alt   :  'WTF is a Blockchain?',
-ONBOARD_blockchain_skip         :  'I already know what a blockchain is...',
-ONBOARD_blockchain_title        :  'Wait, WTF is a Blockchain?',
-ONBOARD_blockchain_content__1   :  'The blockchain is like a huge, global, decentralized spreadsheet.',
-ONBOARD_blockchain_content__2   :  'It keeps track of who sent how many coins to whom, and what the balance of every account is.',
-ONBOARD_blockchain_content__3   :  'It is stored and maintained by thousands of people (miners) across the globe who have special computers.',
-ONBOARD_blockchain_content__4   :  'The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.',
-ONBOARD_blockchain_content__5   :  'When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.',
-ONBOARD_blockchain_content__6   :  'Again: **we are not a bank**.',
-ONBOARD_interface_title__alt    :  'MEW is an Interface',
-ONBOARD_why_title__alt          :  'But...why does this matter?',
-ONBOARD_why_title               :  'Why are you making me read all this?',
-ONBOARD_why_content__1          :  'Because we need you to understand that we **cannot**...',
-ONBOARD_why_content__2          :  'Access your account or send your funds for you X.',
-ONBOARD_why_content__3          :  'Recover or change your private key.',
-ONBOARD_why_content__4          :  'Recover or reset your password.',
-ONBOARD_why_content__5          :  'Reverse, cancel, or refund transactions.',
-ONBOARD_why_content__6          :  'Freeze accounts.',
-ONBOARD_why_content__7          :  '**You** and **only you** are responsible for your security.',
-ONBOARD_why_content__8          :  'Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.',
-ONBOARD_why_content__9          :  'If lose your private key or password, no one can recover it.',
-ONBOARD_why_content__10         :  'If you enter your private key on a phishing website, you will have **all your funds taken**.',
-ONBOARD_blockchain_title__alt   :  'WTF is a Blockchain?',
-ONBOARD_point_title__alt        :  'What\'s the Point of MEW then?',
-ONBOARD_whymew_title            :  'If MyEtherWallet can\'t do those things, what\'s the point?',
-ONBOARD_whymew_content__1       :  'Because that is the point of decentralization and the blockchain.',
-ONBOARD_whymew_content__2       :  'You don\'t have to rely on your bank, government, or anyone else when you want to move your funds.',
-ONBOARD_whymew_content__3       :  'You don\'t have to rely on the security of an exchange or bank to keep your funds safe.',
-ONBOARD_whymew_content__4       :  'If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉',
-ONBOARD_whymew_content__5       :  'If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.',
-ONBOARD_whymew_content__6       :  'If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.',
-ONBOARD_why_title__alt          :  'But...why?',
-ONBOARD_secure_title            :  'How To Protect Yourself & Your Funds',
-ONBOARD_secure_1_title          :  'How To Protect Yourself from Phishers',
-ONBOARD_secure_1_content__1     :  'Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.',
-ONBOARD_secure_1_content__2     :  'Use the [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) Chrome Extension to block malicious websites.',
-ONBOARD_secure_1_content__3     :  'Always check the URL: `https://www.myetherwallet.com`.',
-ONBOARD_secure_1_content__4     :  'Always make sure the URL bar has `MYETHERWALLET LLC [US]` in green.',
-ONBOARD_secure_1_content__5     :  'Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.',
-ONBOARD_secure_1_content__6     :  'Always navigate directly to a site before you enter information. Do not enter information after clicking a link from a message or email.',
-ONBOARD_secure_1_content__7     :  '[Install an AdBlocker](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) and do not click ads on your search engine (e.g. Google).',
-ONBOARD_point_title__alt_2      :  'What\'s the point?',
-ONBOARD_secure_2_title          :  'How To Protect Yourself from Scams',
-ONBOARD_secure_2_content__1     :  'People will try to get you to give them money in return for nothing.',
-ONBOARD_secure_2_content__2     :  'If it is too good to be true, it probably is.',
-ONBOARD_secure_2_content__3     :  'Research before sending money to someone or some project. Look for information on a variety of websites and forums. Be wary.',
-ONBOARD_secure_2_content__4     :  'Ask questions when you don\'t understand something or it doesn\'t seem right.',
-ONBOARD_secure_2_content__5     :  'Don\'t let fear, FUD, or FOMO win over common sense. If something is very urgent, ask yourself "why?". It may be to create FOMO or prevent you from doing research.',
-ONBOARD_secure_3_title__alt     :  'Phuck Phishers',
-ONBOARD_secure_3_title          :  'How To Protect Yourself from Loss',
-ONBOARD_secure_3_content__1     :  'If you lose your private key or password, it is gone forever. Don\'t lose it.',
-ONBOARD_secure_3_content__2     :  'Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.',
-ONBOARD_secure_3_content__3     :  'Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.',
-ONBOARD_secure_3_content__4     :  'Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.',
-ONBOARD_secure_3_content__5     :  'If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.',
-ONBOARD_secure_3_content__6     :  '[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)',
-ONBOARD_secure_2_title__alt_2   :  'Screw Scams',
-ONBOARD_final_title__alt        :  'One more click & you\'re done! 🤘',
-ONBOARD_final_title             :  'Alright, I\'m done lecturing you!',
-ONBOARD_final_subtitle          :  'Sorry for being like this. Onwards!',
-ONBOARD_final_content__1        :  'Create a wallet',
-ONBOARD_final_content__2        :  'Get a hardware wallet',
-ONBOARD_final_content__3        :  'How to Set up MEW + MetaMask',
-ONBOARD_final_content__4        :  'How to Run MEW Offline / Locally',
-ONBOARD_final_content__5        :  'How to Send via Ledger hardware wallet',
-ONBOARD_final_content__6        :  'How to Send via TREZOR hardware wallet',
-ONBOARD_final_content__7        :  'How to Send via MetaMask',
-ONBOARD_final_content__8        :  'Learn More or Contact Us',
-ONBOARD_final_content__9        :  'OMG, please just let me send FFS.',
+ONBOARD_welcome_title           :  'MyEtherWallet.com（マイ・イーサ・ワレット／ＭＥＷ) へようこそ！', /*Welcome to MyEtherWallet.com*/
+ONBOARD_welcome_content__1      :  '安全にお使いいただくためにご理解ください。 🙏', /*Please take some time to understand this for your own safety. 🙏*/
+ONBOARD_welcome_content__2      :  'これらの警告をよくご覧いただきませんと、**資産が盗まれる**ことになります。', /*Your funds will be stolen if you do not heed these warnings.*/
+ONBOARD_welcome_content__3      :  'この案内がわずらわしいことは重々に承知いたしております。申し訳ございません。', /*We know this click-through stuff is annoying. We are sorry.*/
+ONBOARD_welcome_content__4      :  'ＭＥＷって何？', /*What is MEW*/
+ONBOARD_welcome_content__5      :  'MyEtherWalletはソースコードを公開したクライアント側での無料の使用者インターフェースです。', /*MyEtherWallet is a free, open-source, client-side interface.*/
+ONBOARD_welcome_content__6      :  'これによって、ブロックチェーン上の暗号鍵と暗号資産の直接管理を行うことが可能です。', /*We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.*/
+ONBOARD_welcome_content__7      :  '**自分**とそして**自分だけ**がセキュリティに全責任を負うことになります。', /***You** and **only you** are responsible for your security.*/
+ONBOARD_welcome_content__8      :  '詐欺サイトに行ってしまい、暗号鍵や、暗号資産を失ってしまっても、取り返したり凍結することは誰もできません。', /*We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.*/
+ONBOARD_bank_title              :  'MyEtherWalletは金融機関ではありません。', /*MyEtherWallet is not a Bank*/
+ONBOARD_bank_content__1         :  '金融機関、特に取引所に口座を開設すると、そのシステム中に自分の口座が開設されます。', /*When you open an account with a bank or exchange, they create an account for you in their system.*/
+ONBOARD_bank_content__2         :  'その金融機関は口座のパスワード、残高、取引記録や最終的にあなたの財産を含む個人情報を記録管理します。', /*The bank keeps track of your personal information, account passwords, balances, transactions and ultimately your money.*/
+ONBOARD_bank_content__3         :  'その金融機関は、カードが盗難に会った際の払い戻しなど、口座の維持管理に必要な手数料を徴収します。', /*The bank charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.*/
+ONBOARD_bank_content__4         :  'その金融機関は、送金したり、オンラインで口座の確認をしたり、パスワードや盗難に会ったカードの再発行ができるようにしています。', /*The bank allows you to write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.*/
+ONBOARD_bank_content__5         :  '金融機関や取引所にある口座では、その金融機関が送金額の上限、送金相手の設定、送金前に疑わしい相手送金をどれくらいの時間をかけて調べるか、などを決めています。これらは全て手数料が元になっています。', /*You have an account *with the bank or exchange* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.*/
+ONBOARD_welcome_title__alt      :  '前置き', /*Introduction*/
+ONBOARD_interface_title         :  'MyEtherWalletは、単なる使用者インターフェースです。', /*MyEtherWallet is an Interface*/
+ONBOARD_interface_content__1    :  'MyEtherWalletを使って口座を作る時、一対の暗号のための二つの長い数字、すなわち秘密鍵と公開鍵（アドレス)とが作成されます。', /*When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).*/
+ONBOARD_interface_content__2    :  'これらの暗号鍵の操作は全て自分のコンピューター上のブラウザの中で行われます。', /*The handling of your keys happens entirely on your computer, inside your browser.*/
+ONBOARD_interface_content__3    :  '私たちは、秘密鍵、パスワードや口座情報の送信や保存を一切いたしません。', /*We never transmit, receive or store your private key, password, or other account information.*/
+ONBOARD_interface_content__4    :  '私たちは手数料を一切徴収しません。', /*We do not charge a transaction fee.*/
+ONBOARD_interface_content__5    :  'あなたは、私たちの**使用者インターフェース**をブロックチェーンを**直接**操作するために使っています。', /*You are simply using our **interface** to interact **directly with the blockchain**.*/
+ONBOARD_interface_content__6    :  '公開鍵（アドレス)を送信すれば、ＥＴＨやトークンを受け渡し出来る様になります。👍', /*If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍*/
+ONBOARD_interface_content__7    :  '秘密鍵を誰かに送信すると、受け取った相手がその口座を完全に掌握します。👎', /*If you send your *private key* to someone, they now have full control of your account. 👎*/
+ONBOARD_blockchain_title__alt   :  'ブロックチェーンって、何それ？', /*WTF is a Blockchain?*/
+ONBOARD_blockchain_skip         :  '私はブロックチェーンを知ってるが...', /*I already know what a blockchain is...*/
+ONBOARD_blockchain_title        :  'お待ち下さい：ブロックチェーンって、何それ？', /*Wait, WTF is a Blockchain?*/
+ONBOARD_blockchain_content__1   :  'ブロックチェーンは、例えて言えば、世界共通の巨大な分散型のスプレッドシートのようなものです。', /*The blockchain is like a huge, global, decentralized spreadsheet.*/
+ONBOARD_blockchain_content__2   :  '誰が誰にコインをいくら送ったとか、どの口座にいくら、とかの記録を保存管理しています。', /*It keeps track of who sent how many coins to whom, and what the balance of every account is.*/
+ONBOARD_blockchain_content__3   :  '何千もの特殊なコンピューターを持った人（発掘者）によって記録と管理が行われます。', /*It is stored and maintained by thousands of people (miners) across the globe who have special computers.*/
+ONBOARD_blockchain_content__4   :  'ブロックチェーンのなかのブロックはＭyＥtherＷallet, MetaMask, Exodus, Mist, Geth, Parityなど至る所で行われている個々の処理や取引で作られています。', /*The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.*/
+ONBOARD_blockchain_content__5   :  'MyEtherWalletや[etherscan.io](https://etherscan.io)で残高や処理を見た時、見えるのは私たちのシステムの中ではなく、ブロックチェーンにあるデータです。', /*When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.*/
+ONBOARD_blockchain_content__6   :  '再度： **私たちは金融機関ではありません。**', /*Again: **we are not a bank**.*/
+ONBOARD_interface_title__alt    :  'ＭＥＷは、使用者インターフェースです。', /*MEW is an Interface*/
+ONBOARD_why_title__alt          :  'しかし、、、何でそんなに大事？', /*But...why does this matter?*/
+ONBOARD_why_title               :  'どうして全部読まないといけない訳？', /*Why are you making me read all this?*/
+ONBOARD_why_content__1          :  '何故ならば、あなたに理解して頂きたい私たちが**出来ない**ことは、、、', /*Because we need you to understand that we **cannot**...*/
+ONBOARD_why_content__2          :  '口座にアクセスしてあなたに代わって送金することー不可（以下同様）。', /*Access your account or send your funds for you X.*/
+ONBOARD_why_content__3          :  '秘密鍵の回復または変更。', /*Recover or change your private key.*/
+ONBOARD_why_content__4          :  'パスワードのリセットまたは回復。', /*Recover or reset your password.*/
+ONBOARD_why_content__5          :  '処理の巻き戻し、取り消しあるいは再投資。', /*Reverse, cancel, or refund transactions.*/
+ONBOARD_why_content__6          :  '口座の凍結。', /*Freeze accounts.*/
+ONBOARD_why_content__7          :  '**あなた**が、そして**あなただけ**が自分のセキュリテイの責任者です。', /***You** and **only you** are responsible for your security.*/
+ONBOARD_why_content__8          :  '秘密鍵とパスワードの保全に努めてください。秘密鍵は、ニーモニックフレーズ、キーストアファイル、ＵＴＣファイル、ＪＳＯＮファイル、お財布（ワレット）ファイルと呼ばれることがあります。', /*Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.*/
+ONBOARD_why_content__9          :  'もし秘密鍵やパスワードを忘れると、誰も回復させることができません。', /*If lose your private key or password, no one can recover it.*/
+ONBOARD_why_content__10         :  'もし、あなたが秘密鍵を詐欺サイトで入力すると、**全ての資産**が持って行かれます。', /*If you enter your private key on a phishing website, you will have **all your funds taken**.*/
+ONBOARD_blockchain_title__alt   :  'ブロックチェーンって、何それ？', /*WTF is a Blockchain?*/
+ONBOARD_point_title__alt        :  'それじゃ、ＭＥＷの要点は何？', /*What\'s the Point of MEW then?*/
+ONBOARD_whymew_title            :  'ＭyＥtherＷalletがそれをできないなら、何があるの？', /*If MyEtherWallet can\'t do those things, what\'s the point?*/
+ONBOARD_whymew_content__1       :  'すなわち、それがブロックチェーンによる分散化の**きも**だからです。', /*Because that is the point of decentralization and the blockchain.*/
+ONBOARD_whymew_content__2       :  '自分の資産を動かすときに、金融機関、政府や他の誰かをたよりにする必要がありません。', /*You don\'t have to rely on your bank, government, or anyone else when you want to move your funds.*/
+ONBOARD_whymew_content__3       :  '自分の資産を守るために、取引所や金融機関のセキュリティをたよりにする必要がありません。', /*You don\'t have to rely on the security of an exchange or bank to keep your funds safe.*/
+ONBOARD_whymew_content__4       :  'もし、こういった事に価値を見い出せなければ、なぜブロックチェーンや仮想通貨に価値があるのかよく考えて見てください。', /*If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉*/
+ONBOARD_whymew_content__5       :  'もしこれらのことが気に入らなければ、[Coinbase](https://www.coinbase.com/) や [Blockchain.info](https://blockchain.info/wallet/#/signup)を使うことお考えください。これらは、より身近なＩＤとパスワードを使用しています。', /*If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.*/
+ONBOARD_whymew_content__6       :  'もし、少し怖いけれどもＭＥＷを使いたければ、[ハードウェアワレットを入手(英語)](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)！', /*If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.*/
+ONBOARD_why_title__alt          :  'しかし、、、何故？', /*But...why?*/
+ONBOARD_secure_title            :  '自分自身とその資産の守り方', /*How To Protect Yourself & Your Funds*/
+ONBOARD_secure_1_title          :  'オンライン詐欺師から自分自身を守る方法', /*How To Protect Yourself from Phishers*/
+ONBOARD_secure_1_content__1     :  'オンライン詐欺師は、MyEtherWallet、EtherDelta、Paypalやあなたの金融機関のリンクが含まれた個人メッセージを送りつけてきますが、これは偽のサイトです。あなたの情報を盗み、そして資産を盗みます。', /*Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.*/
+ONBOARD_secure_1_content__2     :  '[EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn)または[MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) のクローム拡張を使って、これらの悪意のサイトを遮断してください。', /*Use the [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) Chrome Extension to block malicious websites.*/
+ONBOARD_secure_1_content__3     :  'いつも、必ず、ＵＲＬ：「https://www.myetherwallet.com」を確認してください。', /*Always check the URL: `https://www.myetherwallet.com`.*/
+ONBOARD_secure_1_content__4     :  'ＵＲＬバーに、 `MYETHERWALLET LLC [US]`と緑色で表示されていることを必ず確認してください。', /**/
+ONBOARD_secure_1_content__5     :  'ｅメール、Slack、Reddit、Twitterやその他から送られてくるメッセージやリンクを信用しないでください。', /*Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.*/
+ONBOARD_secure_1_content__6     :  '情報を入力する前に、常に直接サイトを参照してから閲覧してください。ｅメールやメッセージのリンクを押してから情報を入力しないでください。', /*Always navigate directly to a site before you enter information. Do not enter information after clicking a link from a message or email.*/
+ONBOARD_secure_1_content__7     :  '[AdBlockerを導入](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=ja)し、サーチエンジンの広告（例：グーグル）をクリックしないでください。', /*[Install an AdBlocker](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) and do not click ads on your search engine (e.g. Google).*/
+ONBOARD_point_title__alt_2      :  '要点は？', /*What\'s the point?*/
+ONBOARD_secure_2_title          :  'オンライン詐欺から自分自身を守る方法', /*How To Protect Yourself from Scams*/
+ONBOARD_secure_2_content__1     :  'これらの人達は、何の見返りもなしにお金をあげる、と言って近づいてきます。', /*People will try to get you to give them money in return for nothing.*/
+ONBOARD_secure_2_content__2     :  'もしありそうにないほど良い話であれば、きっとその通りです。', /*If it is too good to be true, it probably is.*/
+ONBOARD_secure_2_content__3     :  '誰か、あるいは何かのプロジェクトに送金する前に、よくお調べください。サイトやフォーラムの情報をよく確かめてください。慎重に。', /*Research before sending money to someone or some project. Look for information on a variety of websites and forums. Be wary.*/
+ONBOARD_secure_2_content__4     :  '理解できなかったり、正しくないと思われる場合には、質問してください。', /*Ask questions when you don\'t understand something or it doesn\'t seem right.*/
+ONBOARD_secure_2_content__5     :  '不安、懐疑心、流行に遅れる恐怖が常識の範囲を越えないように。もし何かとても緊急の事があれば、なぜか、と自分でもう一度たずねてみてください。おそらくそれは、取り残される恐怖を煽るものか、十分な調査をさせないための罠です。', /*Don\'t let fear, FUD, or FOMO win over common sense. If something is very urgent, ask yourself "why?". It may be to create FOMO or prevent you from doing research.*/
+ONBOARD_secure_3_title__alt     :  'くたばれ詐欺師ども', /*Phuck Phishers*/
+ONBOARD_secure_3_title          :  '損失を防ぐ方法', /*How To Protect Yourself from Loss*/
+ONBOARD_secure_3_content__1     :  'もしパスワードや秘密鍵を無くしてしまうと、永久に返ってきません。絶対に無くすな。', /*If you lose your private key or password, it is gone forever. Don\'t lose it.*/
+ONBOARD_secure_3_content__2     :  '秘密鍵やパスワードのバックアップを作成してください。コンピューターに保存したままにしないでください。印刷したり、ＵＳＢキーに保存してください。', /*Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.*/
+ONBOARD_secure_3_content__3     :  'その紙やＵＳＢキーを別の場所に保管してください。一つだけのバックアップでは、火事や津波などで、ラップトップコンピューターと共に破壊されてしまいます。', /*Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.*/
+ONBOARD_secure_3_content__4     :  '秘密鍵をDropbox、Google Drive、や他のクラウドストレージに保管しないでください。そのアカウント（のセキュリティ）が損なわれた場合に、資産が盗まれてしまいます。', /*Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.*/
+ONBOARD_secure_3_content__5     :  'もし、あなたの１週間以上の労働に値する仮想通貨をお持ちであれば、ハードウェアワレットを入手してください。言い訳無用です。それだけの価値があります。私が保証します。', /*If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.*/
+ONBOARD_secure_3_content__6     :  '[さらに安全確保のためのセキュリティ情報！](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)', /*[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)*/
+ONBOARD_secure_2_title__alt_2   :  '詐欺撲滅', /*Screw Scams*/
+ONBOARD_final_title__alt        :  'もうワンクリックで完了です！ 🤘', /*One more click & you\'re done! 🤘*/
+ONBOARD_final_title             :  'オーライ！講義終了！', /*Alright, I\'m done lecturing you!*/
+ONBOARD_final_subtitle          :  'こんな風で申し訳ありません。次はこれ！', /*Sorry for being like this. Onwards!*/
+ONBOARD_final_content__1        :  'お財布を作る', /**/
+ONBOARD_final_content__2        :  'ハードウェアワレットを手に入れる', /*Get a hardware wallet*/
+ONBOARD_final_content__3        :  'ＭＥＷとＭｅｔａｍａｓｋの設定方法', /*How to Set up MEW + MetaMask*/
+ONBOARD_final_content__4        :  'オフライン/手元でのＭＥＷの使い方', /*How to Run MEW Offline / Locally*/
+ONBOARD_final_content__5        :  'Ledgerハードウェアワレットでの送出方法', /*How to Send via Ledger hardware wallet*/
+ONBOARD_final_content__6        :  'TREZORハードウェアワレットでの送出方法', /*How to Send via TREZOR hardware wallet*/
+ONBOARD_final_content__7        :  'MetaMaskでの送出方法', /*How to Send via MetaMask*/
+ONBOARD_final_content__8        :  'もっと知る、連絡する', /*Learn More or Contact Us*/
+ONBOARD_final_content__9        :  'もう勘弁、お願い、早く送らせて。', /*OMG, please just let me send FFS.*/
 
 HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
 
 /* New Generics */
 x_CancelReplaceTx           : '処理を中断、あるいは置換',
 x_CancelTx                  : '処理を中断',
-x_PasswordDesc              : 'このパスワードで秘密鍵を『暗号化』します。新しい鍵を作るための元種(seed)ではありません。［このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します］',
+x_PasswordDesc              : 'このパスワードで秘密鍵を『暗号化』します。新しい鍵を作るための元種(seed)ではありません。**このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します**',
 x_ReadMore                  : 'もっと読む',
 x_ReplaceTx                 : '処理を置き換える',
 x_TransHash                 : '処理ハッシュ',
@@ -631,9 +629,9 @@ GETH_GasLimit               : 'ブロックガスリミットを越えていま�
 GETH_NegativeValue          : '負の値です ',
 
 /* Tranlsation Info */
-translate_version           : '0.3 ',
+translate_version           : '0.4 ',
 Translator_Desc             : '日本語開発者に投げ銭： ',
-TranslatorName_1            : '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) ',
+TranslatorName_1            : '[sekisanchi.eth](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ',
 /* Translator 1             : Kazunori Seki / 関一典 */
 TranslatorName_2            : '',
