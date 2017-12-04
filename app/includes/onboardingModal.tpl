@@ -3,8 +3,6 @@
     <div class="modal-content">
       <div class="modal-body">
 
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
-
         <article class="onboarding__msg" ng-show="onboardingMsg" translate="ONBOARD_resume">
           It looks like you didn't finish reading through these slides last time. ProTip: Finish reading through the slides 😉
         </article>
