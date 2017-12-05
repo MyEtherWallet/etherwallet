@@ -51,6 +51,9 @@ DOMAIN_Finish_2                 :  'このアドレスは、主催者、応札�
 DOMAIN_Finish_3                 :  '競売を終了する', /*Finish the auction*/
 DOMAIN_Finish_4                 :  '競売を終了して、落札者にドメインを移管し、主催者に落札金を渡す。', /*Finish the auction to allocate the domain to the winner and the funds to the seller.*/
 DOMAIN_Finish_5                 :  'ドメイン名がDomainsaleに移管されているか確認するために、自分のTXハッシュをクリックしてください。', /*Click your TX hash to see if you successfully transferred the domain to DomainSale.*/
+DOMAIN_offer_1                  :  'Incorrect Wallet',
+DOMAIN_offer_2                  :  'The wallet you unlocked does not own this name.',
+DOMAIN_offer_3                  :  'In order to offer this name, please unlock the wallet with address:',
 DOMAIN_offer_4                  :  '募集価格：', /*Offer For Sale:*/
 DOMAIN_offer_5                  :  'ドメイン名を販売するために、以下のいずれか、あるいは双方の価格を設定してください。ドメイン名の供託金は落札者に、また落札額の10％は仲介者に支払われます。', /*Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
 DOMAIN_offer_7                  :  '変更後の募集価格：', /*Alter Your Offer for:*/
@@ -104,7 +107,6 @@ EOS_08                          :  '支援する数量を`0xd0a6E6C54DbC68Db5db3
 EOS_09                          :  'ＥＯＳトークンを請求', /*Claim EOS Tokens*/
 EOS_10                          :  '`claimAll`を選択。', /*Select `claimAll`.*/
 
-/* Onboarding */
 ONBOARD_welcome_title           :  'いらっしゃいませ！ MyEtherWallet.com へようこそ！', /*Welcome to MyEtherWallet.com*/
 ONBOARD_welcome_content__1      :  '安全のためにご理解ください。 🙏', /*Please take some time to understand this for your own safety. 🙏*/
 ONBOARD_welcome_content__2      :  'これらの警告をよくご覧いただきませんと、**資産が盗まれる**ことになります。', /*Your funds will be stolen if you do not heed these warnings.*/
@@ -164,7 +166,7 @@ ONBOARD_why_title__alt          :  'でも...どうして？', /*But...why?*/
 ONBOARD_secure_title            :  '自分自身とその資産の守り方', /*How To Protect Yourself & Your Funds*/
 ONBOARD_secure_1_title          :  'オンライン詐欺師から自分自身を守る方法', /*How To Protect Yourself from Phishers*/
 ONBOARD_secure_1_content__1     :  'オンライン詐欺師は、MyEtherWallet、EtherDelta、Paypalやあなたの金融機関のリンクが含まれた個人メッセージを送りつけてきますが、これは偽のサイトです。あなたの情報を盗み、そして資産を盗みます。', /*Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.*/
-ONBOARD_secure_1_content__2     :  '[EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn)または[MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) のクローム拡張を使って、これらの悪意のサイトを遮断してください。', /*Use the [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) Chrome Extension to block malicious websites.*/
+ONBOARD_secure_1_content__2     :  '[EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn)または[MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) or [Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige). のクローム拡張を使って、これらの悪意のサイトを遮断してください。', /*Install [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or  or the [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) to block malicious websites.*/
 ONBOARD_secure_1_content__3     :  'いつも、必ず、ＵＲＬ：「https://www.myetherwallet.com」を確認してください。', /*Always check the URL: `https://www.myetherwallet.com`.*/
 ONBOARD_secure_1_content__4     :  'ＵＲＬバーに、 `MYETHERWALLET LLC [US]`と緑色で表示されていることを必ず確認してください。', /**/
 ONBOARD_secure_1_content__5     :  'ｅメール、Slack、Reddit、Twitterやその他から送られてくるメッセージやリンクを信用しないでください。', /*Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.*/
@@ -198,6 +200,7 @@ ONBOARD_final_content__6        :  'TREZORハードウェア・ワレットで�
 ONBOARD_final_content__7        :  'MetaMaskでの送出方法', /*How to Send via MetaMask*/
 ONBOARD_final_content__8        :  'もっと教えて、連絡したい', /*Learn More or Contact Us*/
 ONBOARD_final_content__9        :  'もう勘弁、お願い、早く使わせて。', /*OMG, please just let me send FFS.*/
+ONBOARD_resume                  :  '前回スライドを最後までお読みになっていないようです。プロのアドバイス：スライドを全部読みましょう😉',/*It looks like you didn\'t finish reading through these slides last time. ProTip: Finish reading through the slides 😉*/
 
 HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
 
@@ -269,6 +272,7 @@ NAV_BulkGenerate            : 'バルク作成 ',
 NAV_Contact                 : '連絡する ',
 NAV_Contracts               : '契約 ',
 NAV_DeployContract          : '契約を展開 ',
+NAV_DomainSale              : 'DomainSale',
 NAV_ENS                     : 'ENS',
 NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'お財布の作成 ',

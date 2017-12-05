@@ -78,15 +78,17 @@
 @@if (site === 'mew' ) {
   <div class="small announcement annoucement-danger">
     <div class="container">
-      DON'T GET PHISHED 🎣
+      DON'T GET PHISHED, please! 🎣 Thank you! 🤗
       <br />
-      1. BOOKMARK <a href="https://www.myetherwallet.com"> MYETHERWALLET.COM </a> RIGHT NOW
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      2. INSTALL <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a>
-      or
-      <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>.
-      <br />
-      Thank you! 🤗
+      1. BOOKMARK <a href="https://www.myetherwallet.com"> MYETHERWALLET.COM </a>
+      <span class="hidden-xs">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        2. INSTALL <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a>
+        or
+        <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>
+        or
+        <a href="https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige" target="_blank" rel="noopener noreferrer">Cryptonite</a>
+      </span>
     </div>
   </div>
 }
@@ -96,6 +98,7 @@
     @@if (site === 'mew' ) {
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
+        <p class="small visible-xs">3.10.8.7</p>
       </a>
     }
     @@if (site === 'cx'  ) {
@@ -105,7 +108,7 @@
     }
     <div class="tagline">
 
-    <span>3.10.8.7</span>
+    <span class="hidden-xs">3.10.9.2</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -167,6 +170,15 @@
              rel="noopener noreferrer"></a>
         </div>
       </ul>
+      <p class="dropdown-gas__msg""
+         ng-show="gasPriceMsg">
+        The network is a bit full right now. Maybe higher gas price?
+        <a href="https://etherscan.io/txsPending"
+           target="_blank" rel="noopener noreferrer">Pending TXs</a>
+        &middot;
+        <a href="https://ethgasstation.info/"
+           target="_blank" rel="noopener noreferrer">Eth Gas Station</a>
+      </p>
     </span>
 
     <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->

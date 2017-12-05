@@ -312,7 +312,8 @@
       <a class="btn btn-primary btn-block col-sm-11"
          data-toggle="modal"
          data-target="#sendTransaction"
-         translate="SEND_trans">
+         translate="SEND_trans"
+         ng-click="parseSignedTx( signedTx )">
              Send Transaction
       </a>
     </div>

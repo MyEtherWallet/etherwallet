@@ -1,0 +1,72 @@
+.onboarding__modal {
+  padding: @space;
+  .clearfix();
+  .btn-primary {
+    background-image: url(../images/icon-arrow-right.svg);
+    background-size: contain;
+    background-position: center right;
+    background-repeat: no-repeat;
+  }
+  .btn-default {
+    background-image: url(../images/icon-arrow-left.svg);
+    background-size: contain;
+    background-position: center left;
+    background-repeat: no-repeat;
+  }
+  .onboarding__title {
+    text-align: center;
+    margin-bottom: @space-lg;
+    @media (max-width: @screen-xs-max) {
+      margin: 0 auto @space-sm;
+    }
+  }
+  img {
+    margin-top: @space;
+    margin-bottom: @space;
+    @media (max-width: @screen-xs-max) {
+      max-height: 200px;
+    }
+  }
+  .onboarding__buttons {
+    .btn {
+      margin-top:    @space-sm;
+      margin-bottom: @space-sm;
+    }
+    @media (min-width: @screen-sm-min) {
+      margin-top:    @space-sm;
+      margin-bottom: @space-sm;
+      .clearfix();
+      .btn + .btn {  float: right;          }
+    }
+    @media (max-width: @screen-xs-max) {
+      .btn        {  display: block;        }
+      .btn + .btn {  margin-top: @space-lg  }
+    }
+  }
+  @media (max-width: @screen-xs-max) {
+    flex-direction: column;
+    .onboarding__content,
+    .onboarding__image {
+      order: 2;
+    }
+    .onboarding__content + .onboarding__image {
+      order: 1;
+    }
+  }
+}
+
+
+.row.row--flex {
+  display: flex;
+  align-items: center;
+  @media (max-width: @screen-xs-max) {
+    flex-direction: column;
+  }
+}
+
+
+
+.onboarding__msg {
+  text-align: center;
+  font-size: @font-size-small;
+}

@@ -79,15 +79,17 @@
 
   <div class="small announcement annoucement-danger">
     <div class="container">
-      DON'T GET PHISHED 🎣
+      DON'T GET PHISHED, please! 🎣 Thank you! 🤗
       <br />
-      1. BOOKMARK <a href="https://www.myetherwallet.com"> MYETHERWALLET.COM </a> RIGHT NOW
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      2. INSTALL <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a>
-      or
-      <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>.
-      <br />
-      Thank you! 🤗
+      1. BOOKMARK <a href="https://www.myetherwallet.com"> MYETHERWALLET.COM </a>
+      <span class="hidden-xs">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        2. INSTALL <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a>
+        or
+        <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>
+        or
+        <a href="https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige" target="_blank" rel="noopener noreferrer">Cryptonite</a>
+      </span>
     </div>
   </div>
 
@@ -97,12 +99,13 @@
     
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
+        <p class="small visible-xs">3.10.8.7</p>
       </a>
     
     
     <div class="tagline">
 
-    <span>3.10.8.7</span>
+    <span class="hidden-xs">3.10.9.2</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -164,6 +167,15 @@
              rel="noopener noreferrer"></a>
         </div>
       </ul>
+      <p class="dropdown-gas__msg""
+         ng-show="gasPriceMsg">
+        The network is a bit full right now. Maybe higher gas price?
+        <a href="https://etherscan.io/txsPending"
+           target="_blank" rel="noopener noreferrer">Pending TXs</a>
+        &middot;
+        <a href="https://ethgasstation.info/"
+           target="_blank" rel="noopener noreferrer">Eth Gas Station</a>
+      </p>
     </span>
 
     <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
@@ -1168,24 +1180,33 @@
     <div class="modal-content">
       <div class="modal-body">
 
+        <article class="onboarding__msg" ng-show="onboardMsg" translate="ONBOARD_resume">
+          It looks like you didn't finish reading through these slides last time. ProTip: Finish reading through the slides 😉
+        </article>
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==1">
-          <h3 class="onboarding__title" translate="ONBOARD_welcome_title">
-            Welcome to MyEtherWallet.com
+        <article class="onboarding__modal" ng-show="showOnboardSlide==1">
+          <h3 class="onboarding__title">
+            <span translate="ONBOARD_welcome_title">
+              Welcome to MyEtherWallet.com
+            </span>
+            <br />
+            <small translate="ONBOARD_welcome_content__3">
+              We know this click-through shit is annoying. We are sorry.
+            </small>
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-7 onboarding__content">
-              <ul>
-                <li class="text-danger strong" translate="ONBOARD_welcome_content__1">
+            <div class="col-xs-12 col-sm-7 onboarding__content">
+              <p class="alert-danger--outline">
+                <span translate="ONBOARD_welcome_content__1">
                   Please take some time to understand this for your own safety. 🙏
-                </li>
-                <li class="text-danger strong" translate="ONBOARD_welcome_content__2">
+                </span>
+                <span translate="ONBOARD_welcome_content__2">
                   Your funds will be stolen if you do not head these warnings.
-                </li>
-                <li translate="ONBOARD_welcome_content__3">
-                  We know this click-through shit is annoying. We are sorry.
-                </li>
-              </ul>
+                </span>
+              </p>
+              <p class="alert-danger--outline" translate="ONBOARD_welcome_content__8">
+                We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.
+              </p>
               <h5 translate="ONBOARD_welcome_content__4">
                 What is MEW?
               </h5>
@@ -1199,17 +1220,15 @@
                 <li translate="ONBOARD_welcome_content__7">
                   **You** and **only you** are responsible for your security.
                 </li>
-                <li class="text-danger strong" translate="ONBOARD_welcome_content__8">
-                  We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.
-                </li>
+
               </ul>
             </div>
-            <div class="col-sm-5 onboarding__image">
+            <div class="col-xs-12 col-sm-5 onboarding__image">
               <img src="./images/onboarding_icon-01.svg" width="100%" height="auto" />
             </div>
           </section>
           <div class="onboarding__buttons text-center">
-            <a ng-click="currentOnboardSlide=2" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(2)" class="btn btn-primary">
               <span translate="ONBOARD_bank_title">
                 MyEtherWallet is not a Bank
               </span>
@@ -1218,15 +1237,15 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==2">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==2">
           <h3 class="onboarding__title" translate="ONBOARD_bank_title">
             MyEtherWallet is not a Bank
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-02.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_bank_content__1">
                   When you open an account with a bank or exchange, they create an account for you in their system.
@@ -1247,12 +1266,12 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=1" class="btn btn-default">
+            <a ng-click="setOnboardStatus(1)" class="btn btn-default">
               <span translate="ONBOARD_welcome_title__alt">
                 Introduction
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=3" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(3)" class="btn btn-primary">
               <span translate="ONBOARD_interface_title">
                 MyEtherWallet is an Interface
               </span>
@@ -1261,15 +1280,15 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==3">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==3">
           <h3 class="onboarding__title" translate="ONBOARD_interface_title">
             MyEtherWallet is an Interface
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-03.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_interface_content__1">
                   When you create an account here, you are generating an cryptographic set of numbers: your private key and your public key (address).
@@ -1296,18 +1315,18 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=2" class="btn btn-default">
+            <a ng-click="setOnboardStatus(2)" class="btn btn-default">
               <span translate="ONBOARD_bank_title__alt">
                 MEW isn't a Bank
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=4" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(4)" class="btn btn-primary">
               <span translate="ONBOARD_blockchain_title__alt">
                 WTF is a Blockchain?
               </span>
             </a>
           </div>
-          <p ng-click="currentOnboardSlide=5" class="text-right small" style="cursor:pointer">
+          <p ng-click="setOnboardStatus(5)" class="text-right small" style="cursor:pointer">
             <span translate="ONBOARD_blockchain_skip">
               I already know what a blockchain is...
             </span>
@@ -1315,12 +1334,12 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==4">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==4">
           <h3 class="onboarding__title" translate="ONBOARD_blockchain_title">
             Wait, WTF is a Blockchain?
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_blockchain_content__1">
                   The blockchain is like a huge, global, decentralized spreadsheet.
@@ -1342,17 +1361,17 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-04.svg" width="100%" height="auto" />
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=3" class="btn btn-default">
+            <a ng-click="setOnboardStatus(3)" class="btn btn-default">
               <span translate="ONBOARD_interface_title__alt">
                 MEW is an Interface
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=5" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(5)" class="btn btn-primary">
               <span translate="ONBOARD_why_title__alt">
                 But...why does this matter?
               </span>
@@ -1361,15 +1380,15 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==5">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==5">
           <h3 class="onboarding__title" translate="ONBOARD_why_title">
             Why are you making me read all this?
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-05.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <h5 translate="ONBOARD_why_content__1">
                 Because we need you to understand that we **cannot**...
               </h5>
@@ -1407,12 +1426,12 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=4" class="btn btn-default">
+            <a ng-click="setOnboardStatus(4)" class="btn btn-default">
               <span translate="ONBOARD_blockchain_title__alt">
                 WTF is a Blockchain?
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=6" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(6)" class="btn btn-primary">
               <span translate="ONBOARD_point_title__alt">
                 What's the Point of MEW then?
               </span>
@@ -1421,15 +1440,15 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==6">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==6">
           <h3 class="onboarding__title" translate="ONBOARD_whymew_title">
             If MyEtherWallet can't do those things, what's the point?
           </h3>
           <section class="row row--flex">
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-06.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_whymew_content__1">
                   Because that is the point of decentralization and the blockchain.
@@ -1453,12 +1472,12 @@
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=5" class="btn btn-default">
+            <a ng-click="setOnboardStatus(5)" class="btn btn-default">
               <span translate="ONBOARD_why_title__alt">
                 But...why?
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=7" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(7)" class="btn btn-primary">
               <span translate="ONBOARD_secure_title">
                 How To Protect Yourself &amp; Your Funds
               </span>
@@ -1467,7 +1486,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==7">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==7">
           <h3 class="onboarding__title" translate="ONBOARD_secure_1_title">
             How To Protect Yourself from Phishers
           </h3>
@@ -1475,10 +1494,10 @@
             Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.
           </p>
           <section class="row row--flex">
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_secure_1_content__2">
-                  Use the [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) Chrome Extension to block malicious websites.
+                  Install [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige) or the [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) to block malicious websites.
                 </li>
                 <li translate="ONBOARD_secure_1_content__3">
                   Always check the URL: `https://www.myetherwallet.com`.
@@ -1497,17 +1516,17 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-07.svg" width="100%" height="auto" />
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=6" class="btn btn-default">
+            <a ng-click="setOnboardStatus(6)" class="btn btn-default">
               <span translate="ONBOARD_point_title__alt_2">
                 What's the point?
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=8" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(8)" class="btn btn-primary">
               <span translate="ONBOARD_secure_2_title">
                 How To Protect Yourself from Scams
               </span>
@@ -1516,7 +1535,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==8">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==8">
           <h3 class="onboarding__title" translate="ONBOARD_secure_2_title">
             How To Protect Yourself from Scams
           </h3>
@@ -1525,7 +1544,7 @@
           </p>
           <br />
           <section class="row row--flex">
-            <div class="col-sm-8 onboarding__content">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
               <ul>
                 <li translate="ONBOARD_secure_2_content__2">
                   If it is too good to be true, it probably is.
@@ -1541,17 +1560,17 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-08.svg" width="100%" height="auto" />
             </div>
           </section>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=7" class="btn btn-default">
+            <a ng-click="setOnboardStatus(7)" class="btn btn-default">
               <span translate="ONBOARD_secure_3_title__alt">
                 Phuck Phishers
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=9" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(9)" class="btn btn-primary">
               <span translate="ONBOARD_secure_3_title">
                 How To Protect Yourself from Loss
               </span>
@@ -1560,7 +1579,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==9">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==9">
           <h3 class="onboarding__title" translate="ONBOARD_secure_3_title">
             How To Protect Yourself from Loss
           </h3>
@@ -1568,7 +1587,7 @@
             If you lose your private key or password, it is gone forever. Don't lose it.
           </p>
           <section class="row row--flex">
-            <div class="col-sm-7">
+            <div class="col-xs-12 col-sm-7">
               <ul>
                 <li translate="ONBOARD_secure_3_content__2">
                   Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.
@@ -1585,7 +1604,7 @@
                 
               </ul>
             </div>
-            <div class="col-sm-4 onboarding__image">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
               <img src="./images/onboarding_icon-09.svg" width="100%" height="auto" />
             </div>
           </section>
@@ -1593,12 +1612,12 @@
             [Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)
           </h5>
           <div class="onboarding__buttons">
-            <a ng-click="currentOnboardSlide=8" class="btn btn-default">
+            <a ng-click="setOnboardStatus(8)" class="btn btn-default">
               <span translate="ONBOARD_secure_2_title__alt_2">
                 Screw Scams
               </span>
             </a>
-            <a ng-click="currentOnboardSlide=10" class="btn btn-primary">
+            <a ng-click="setOnboardStatus(10)" class="btn btn-primary">
               <span translate="ONBOARD_final_title__alt">
                 One more click &amp; you're done! 🤘
               </span>
@@ -1607,7 +1626,7 @@
         </article>
 
 
-        <article class="onboarding__modal" ng-show="currentOnboardSlide==10">
+        <article class="onboarding__modal" ng-show="showOnboardSlide==10">
           <h3 class="onboarding__title" translate="ONBOARD_final_title">
             Alright, I'm done lecturing you!
           </h3>
@@ -1616,10 +1635,10 @@
           </p>
           <br />
           <section class="row row--flex">
-            <div class="col-sm-4 col-sm-offset-1">
+            <div class="col-xs-12 col-sm-4 col-xs-12 col-sm-offset-1">
               <img src="./images/onboarding_icon-10.svg" width="100%" height="auto" />
             </div>
-            <div class="col-sm-7">
+            <div class="col-xs-12 col-sm-7">
               <ul>
                 <li>
                   <a href="https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html"
@@ -1664,7 +1683,7 @@
                   </a>
                 </li>
                 <li>
-                  <a ng-click="onboardingModal.close();globalService.currentTab=globalService.tabs.sendTransaction.id"
+                  <a ng-click="onboardModal.close();globalService.currentTab=globalService.tabs.sendTransaction.id"
                      class="strong">
                      <span translate="ONBOARD_final_content__9">
                        OMG, please just let me send FFS.
@@ -1675,7 +1694,6 @@
             </div>
           </section>
         </article>
-
 
       </div>
     </div>
