@@ -126,7 +126,7 @@ ONBOARD_interface_content__1    :  'MyEtherWalletを使って口座を作る時�
 ONBOARD_interface_content__2    :  'これらの暗号鍵の操作は全て自分のコンピューターのブラウザの中で行われます。', /*The handling of your keys happens entirely on your computer, inside your browser.*/
 ONBOARD_interface_content__3    :  '私たちは、秘密鍵、パスワードや口座情報の送信や保存を一切いたしません。', /*We never transmit, receive or store your private key, password, or other account information.*/
 ONBOARD_interface_content__4    :  '私たちは取引手数料を一切徴収しません。', /*We do not charge a transaction fee.*/
-ONBOARD_interface_content__5    :  'あなたは、私たちの**使用者インターフェース**をブロックチェーンで**直接**操作するために使っています。', /*You are simply using our **interface** to interact **directly with the blockchain**.*/
+ONBOARD_interface_content__5    :  'あなたは、私たちの**利用者窓口**をブロックチェーンを**直接**操作するために使っています。', /*You are simply using our **interface** to interact **directly with the blockchain**.*/
 ONBOARD_interface_content__6    :  '公開鍵（アドレス)を相手に教えると、ＥＴＨやトークンを受け渡し出来る様になります。👍', /*If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍*/
 ONBOARD_interface_content__7    :  '秘密鍵が誰かの手に渡ると、受け取った相手がその口座を完全に掌握します。👎', /*If you send your *private key* to someone, they now have full control of your account. 👎*/
 ONBOARD_blockchain_title__alt   :  'まじかよ、何だ一体ブロックチェーンってのは？', /*WTF is a Blockchain?*/
@@ -139,7 +139,7 @@ ONBOARD_blockchain_content__4   :  'ブロックチェーンのなかのブロ�
 ONBOARD_blockchain_content__5   :  'MyEtherWalletや[etherscan.io](https://etherscan.io)で残高や処理を見た時、見えるのは私たちのシステムの中ではなく、ブロックチェーンにあるデータです。', /*When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.*/
 ONBOARD_blockchain_content__6   :  'もう一度： **私たちは金融機関ではありません。**', /*Again: **we are not a bank**.*/
 ONBOARD_interface_title__alt    :  'ＭＥＷは共通の利用者窓口です。', /*MEW is an Interface*/
-ONBOARD_why_title__alt          :  'でも...なんでそんなに大事？', /*But...why does this matter?*/
+ONBOARD_why_title__alt          :  'でも...なんでそれがそんなに大事？', /*But...why does this matter?*/
 ONBOARD_why_title               :  'なんで全部読ませる訳？', /*Why are you making me read all this?*/
 ONBOARD_why_content__1          :  'それは私たちが**出来ない**事をわかってもらうためで...', /*Because we need you to understand that we **cannot**...*/
 ONBOARD_why_content__2          :  '口座にアクセスしてあなたに代わって送金すること。', /*Access your account or send your funds for you X.*/
@@ -147,7 +147,7 @@ ONBOARD_why_content__3          :  '秘密鍵の回復または変更。', /*Rec
 ONBOARD_why_content__4          :  'パスワードのリセットまたは回復。', /*Recover or reset your password.*/
 ONBOARD_why_content__5          :  '処理の巻き戻し、取り消しあるいは金額変更。', /*Reverse, cancel, or refund transactions.*/
 ONBOARD_why_content__6          :  '口座の凍結。', /*Freeze accounts.*/
-ONBOARD_why_content__7          :  '**あなた**が、そして**あなただけ**が自分のセキュリテイの責任を持ちます。', /***You** and **only you** are responsible for your security.*/
+ONBOARD_why_content__7          :  '**あなた**が、そして**あなただけ**が自分のセキュリテイの全責任を持ちます。', /***You** and **only you** are responsible for your security.*/
 ONBOARD_why_content__8          :  '秘密鍵とパスワードを大事に保管してください。秘密鍵は、ニーモニックフレーズ、キーストアファイル、ＵＴＣファイル、ＪＳＯＮファイル、お財布（ワレット）ファイルとも呼ばれることがあります。', /*Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.*/
 ONBOARD_why_content__9          :  'もし秘密鍵やパスワードを忘れると、誰も回復させることができません。', /*If lose your private key or password, no one can recover it.*/
 ONBOARD_why_content__10         :  'もし、あなたが秘密鍵を詐欺サイトで入力すると、**全ての資産**が持って行かれます。', /*If you enter your private key on a phishing website, you will have **all your funds taken**.*/
