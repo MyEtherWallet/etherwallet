@@ -7,8 +7,8 @@ ja.data = {
 GEN_Help_0                      :  'お財布をお持ちですか？', /*Already have a wallet somewhere?*/
 GEN_Help_MetaMask               :  'とでも簡単です！キーはフィッシングサイトではなく、メタマスク(Metamask)に残っています。すぐ試してください！', /*So easy! Keys stay in MetaMask, not on a phishing site! Try it today.*/
 
-GEN_Warning_1                   :  '**これは絶対に失くさないでください！**　なくした場合には二度と戻りません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
-GEN_Warning_2                   :  '**他人と共有しないでください**　悪意のあるサイトにこのファイルを盗まれると、あなたの資産が失われます。', /***Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.*/
+GEN_Warning_1                   :  '**これは絶対に失くさないでください！**　なくした場合には二度と戻ってきません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
+GEN_Warning_2                   :  '**他人と共有しないでください**　悪意のあるサイトでこのファイルを使うと、あなたの資産を盗られてしまいます。', /***Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.*/
 GEN_Warning_3                   :  '**バックアップを作成してください！**　いつの日か、億万単位の大金になるものと心得て安全を確保してください。', /***Make a backup!** Secure it like the millions of dollars it may one day be worth.*/
 
 GAS_Price_1                     : '普通',　/*Not So Fast*/
@@ -22,7 +22,7 @@ CONTRACT_Warning_3              :  'まもなく契約上の機能が実行さ�
 
 SEND_Helper_Contract            :  'ほとんどの場合、0のままにしてください。', /*In most cases you should leave this as 0.*/
 SEND_ViewOnly                   :  '自分のアドレスを指定するだけでは送信できません。お財布を解錠する必要があります。', /*You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.*/
-SEND_LoadTokens                 :  'トークンを読み込む', /*Load Tokens*/
+SEND_LoadTokens                 :  'トークン読込', /*Load Tokens*/
 SEND_CustomAddrMsg              :  '対応するメッセージ', /*A message regarding*/
 
 SWAP_Warning_1                  :  '警告！交換に必要な資金が足りません。', /*Warning! You do not have enough funds to complete this swap.*/
@@ -34,13 +34,13 @@ X_HelpfulLinks_1                :  'お財布の操作方法', /*How to Access y
 X_HelpfulLinks_2                :  '秘密鍵を紛失してしまいした', /*I lost my private key*/
 X_HelpfulLinks_3                :  '秘密鍵が別のアドレスを解錠しました', /*My private key opens a different address*/
 X_HelpfulLinks_4                :  'MyEtherWalletから、または宛へ移管中', /*Migrating to/from MyEtherWallet*/
-X_Network                       :  'チェーン', // aka "node" or "chain" - used in the dropdown in header  /*Network*/
+X_Network                       :  'ノード', // aka "node" or "chain" - used in the dropdown in header  /*Network*/
 X_Network_Custom                :  'カスタムネットワークやノードを追加', /*Add Custom Network / Node*/
 
 DOMAIN_Buy                      :  'ドメインを購入', /*Buy the domain*/
 DOMAIN_BuyItNow                 :  'ドメイン即決価格：', /*Price to buy the domain immediately:*/
 DOMAIN_bid                      :  'ドメインを応札する', /*Bid for the domain*/
-DOMAIN_bid_0                    :  'あなたの応札が現在最高数値です。増額して再応札できますが、オークションの終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
+DOMAIN_bid_0                    :  'あなたの応札が現在最高値です。増額して再応札できますが、オークションの終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
 DOMAIN_bid_1                    :  '最低応札額は', /*Bid at least*/
 DOMAIN_bid_2                    :  'が必要です。', /*on the domain.*/
 DOMAIN_bid_3                    :  '２４時間以内にさらに高額の応札がなければ落札することができます。', /*You will win the domain if no higher bids are placed within the next 24 hours.*/
@@ -141,7 +141,7 @@ ONBOARD_blockchain_content__6   :  'もう一度： **私たちは金融機関�
 ONBOARD_interface_title__alt    :  'ＭＥＷは共通の利用者窓口です。', /*MEW is an Interface*/
 ONBOARD_why_title__alt          :  'でも...なんでそんなに大事？', /*But...why does this matter?*/
 ONBOARD_why_title               :  'なんで全部読ませる訳？', /*Why are you making me read all this?*/
-ONBOARD_why_content__1          :  'それは私たちが**出来ない**事をわかってもらうためで、、、', /*Because we need you to understand that we **cannot**...*/
+ONBOARD_why_content__1          :  'それは私たちが**出来ない**事をわかってもらうためで...', /*Because we need you to understand that we **cannot**...*/
 ONBOARD_why_content__2          :  '口座にアクセスしてあなたに代わって送金すること。', /*Access your account or send your funds for you X.*/
 ONBOARD_why_content__3          :  '秘密鍵の回復または変更。', /*Recover or change your private key.*/
 ONBOARD_why_content__4          :  'パスワードのリセットまたは回復。', /*Recover or reset your password.*/
@@ -155,11 +155,11 @@ ONBOARD_blockchain_title__alt   :  'まじかよ、何だ一体ブロックチ�
 ONBOARD_point_title__alt        :  'それじゃＭＥＷは何ができるの？', /*What\'s the Point of MEW then?*/
 ONBOARD_whymew_title            :  'MyEtherWalletがそういう事をできないなら、どうすればいいの？', /*If MyEtherWallet can\'t do those things, what\'s the point?*/
 ONBOARD_whymew_content__1       :  'それがブロックチェーンによる分散化の**きも**だからです。', /*Because that is the point of decentralization and the blockchain.*/
-ONBOARD_whymew_content__2       :  '自分の資産やお金を動かすときに、金融機関、政府や他の誰かをたよる必要が全くありません。', /*You don\'t have to rely on your bank, government, or anyone else when you want to move your funds.*/
-ONBOARD_whymew_content__3       :  '自分の資産を守るために、取引所や金融機関のセキュリティをたよる必要もありません。', /*You don\'t have to rely on the security of an exchange or bank to keep your funds safe.*/
+ONBOARD_whymew_content__2       :  '自分の資産やお金を動かすときに、金融機関、政府や他の誰かを頼る必要が全くありません。', /*You don\'t have to rely on your bank, government, or anyone else when you want to move your funds.*/
+ONBOARD_whymew_content__3       :  '自分の資産を守るために、取引所や金融機関のセキュリティを頼る必要もありません。', /*You don\'t have to rely on the security of an exchange or bank to keep your funds safe.*/
 ONBOARD_whymew_content__4       :  'もし、こういった事には価値がない、と感じるのでしたら、なぜブロックチェーンや仮想通貨に価値があるのかよーく考えて見てください。', /*If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉*/
-ONBOARD_whymew_content__5       :  'もし、この基本概念が気に入らなければ、[Coinbase](https://www.coinbase.com/) や [Blockchain.info](https://blockchain.info/wallet/#/signup)をお使いください。これらは、より身近なＩＤとパスワードを使用しています。', /*If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.*/
-ONBOARD_whymew_content__6       :  'もし、少し怖いけれどもＭＥＷを使いたければ、[ハードウェアワレットを入手(英語)](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)！', /*If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.*/
+ONBOARD_whymew_content__5       :  'もし、お気に召さないようでしたら、[Coinbase](https://www.coinbase.com/) や [Blockchain.info](https://blockchain.info/wallet/#/signup)をお使いください。これらは、より身近なＩＤとパスワードを使用しています。', /*If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.*/
+ONBOARD_whymew_content__6       :  'もし、少し不安だけれどもＭＥＷを使いたければ、[ハードウェアワレットを入手(英語)](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)！', /*If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.*/
 ONBOARD_why_title__alt          :  'でも...どうして？', /*But...why?*/
 ONBOARD_secure_title            :  '自分自身とその資産の守り方', /*How To Protect Yourself & Your Funds*/
 ONBOARD_secure_1_title          :  'オンライン詐欺師から自分自身を守る方法', /*How To Protect Yourself from Phishers*/
@@ -188,15 +188,15 @@ ONBOARD_secure_3_content__6     :  '[さらに安全確保のためのセキュ�
 ONBOARD_secure_2_title__alt_2   :  '詐欺の撲滅', /*Screw Scams*/
 ONBOARD_final_title__alt        :  'もうワンクリックで完了です！ 🤘', /*One more click & you\'re done! 🤘*/
 ONBOARD_final_title             :  'オーライ！講義終了！', /*Alright, I\'m done lecturing you!*/
-ONBOARD_final_subtitle          :  'こんな風で申し訳ありません。次はこれ！', /*Sorry for being like this. Onwards!*/
+ONBOARD_final_subtitle          :  'こんな風で申し訳ありません。次はこれです！', /*Sorry for being like this. Onwards!*/
 ONBOARD_final_content__1        :  'お財布を作る', /**/
-ONBOARD_final_content__2        :  'ハードウェアワレットを手に入れる', /*Get a hardware wallet*/
+ONBOARD_final_content__2        :  'ハードウェア・ワレットを手に入れる', /*Get a hardware wallet*/
 ONBOARD_final_content__3        :  'ＭＥＷとＭｅｔａｍａｓｋの設定方法', /*How to Set up MEW + MetaMask*/
 ONBOARD_final_content__4        :  'オフライン/手元でのＭＥＷの使い方', /*How to Run MEW Offline / Locally*/
-ONBOARD_final_content__5        :  'Ledgerハードウェアワレットでの送出方法', /*How to Send via Ledger hardware wallet*/
-ONBOARD_final_content__6        :  'TREZORハードウェアワレットでの送出方法', /*How to Send via TREZOR hardware wallet*/
+ONBOARD_final_content__5        :  'Ledgerハードウェア・ワレットでの送出方法', /*How to Send via Ledger hardware wallet*/
+ONBOARD_final_content__6        :  'TREZORハードウェア・ワレットでの送出方法', /*How to Send via TREZOR hardware wallet*/
 ONBOARD_final_content__7        :  'MetaMaskでの送出方法', /*How to Send via MetaMask*/
-ONBOARD_final_content__8        :  'もっと知る、連絡する', /*Learn More or Contact Us*/
+ONBOARD_final_content__8        :  'もっと教えて、連絡したい', /*Learn More or Contact Us*/
 ONBOARD_final_content__9        :  'もう勘弁、お願い、早く使わせて。', /*OMG, please just let me send FFS.*/
 
 HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
@@ -204,7 +204,7 @@ HELP_2a_Title               : 'お財布の保管やバックアップの方法�
 /* New Generics */
 x_CancelReplaceTx           : '処理を中断、あるいは置換',
 x_CancelTx                  : '処理を中断',
-x_PasswordDesc              : 'このパスワードで秘密鍵を『暗号化』します。新しい鍵を作るための元種(seed)ではありません。**このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します**',
+x_PasswordDesc              : 'このパスワードで秘密鍵を**暗号化**します。新しい鍵を作るための元種(seed)ではありません。**このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します**',
 x_ReadMore                  : 'もっと読む',
 x_ReplaceTx                 : '処理を置き換える',
 x_TransHash                 : '処理ハッシュ',
