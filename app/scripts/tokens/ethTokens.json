@@ -629,6 +629,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x58ca3065c0f24c7c96aee8d6056b5b5decf9c2f8",
+"symbol":"GXC",
+"decimal":10,
+"type":"default"
+},{
 "address":"0x22F0AF8D78851b72EE799e05F54A77001586B18A",
 "symbol":"GXVC",
 "decimal":10,
