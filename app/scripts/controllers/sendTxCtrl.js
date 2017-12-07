@@ -34,8 +34,9 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         nonce: null,
         gasPrice: globalFuncs.urlGet('gasprice') == null ? null : globalFuncs.urlGet('gasprice'),
         donate: false,
-        tokensymbol: globalFuncs.urlGet('tokensymbol') == null ? false : globalFuncs.urlGet('tokensymbol')
+        tokensymbol: globalFuncs.urlGet('tokensymbol') == null ? false : globalFuncs.urlGet('tokensymbol'),
     }
+
 
     $scope.setSendMode = function(sendMode, tokenId = '', tokensymbol = '') {
         $scope.tx.sendMode = sendMode;
@@ -103,6 +104,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
                     $scope.tx.gasLimit = $scope.parentTxConfig.gasLimit;
                     $scope.gasLimitChanged = true;
                 }
+                $scope.tx.txFee = new BigNumber(parseInt($scope.tx.gasLimit)).times(new BigNumber(parseInt($scope.tx.gasPrice.wei)))
             }
             $scope.$watch('parentTxConfig', function() {
                 setTxObj();
@@ -188,6 +190,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
             if (!data.error) {
                 if (data.data == '-1') $scope.notifier.danger(globalFuncs.errorMsgs[21]);
                 $scope.tx.gasLimit = data.data;
+                $scope.tx.txFee = new BigNumber(parseInt($scope.tx.gasLimit)).times(new BigNumber(parseInt($scope.tx.gasPrice.wei)))
             } else $scope.notifier.danger(data.msg);
         });
     }
@@ -300,13 +303,3 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
 
 };
 module.exports = sendTxCtrl;
-
-
-//  var rawTx = {
-//  nonce: ethFuncs.sanitizeHex(data.nonce),
-//  gasPrice: data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
-//  gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
-//  to: ethFuncs.sanitizeHex(txData.to),
-//  value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
-//  data: ethFuncs.sanitizeHex(txData.data)
-//  }
