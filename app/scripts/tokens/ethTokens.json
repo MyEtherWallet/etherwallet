@@ -699,6 +699,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x16662f73df3e79e54c6c5938b4313f92c524c120",
+"symbol":"IIC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x88AE96845e157558ef59e9Ff90E766E22E480390",
 "symbol":"IKB",
 "decimal":0,
