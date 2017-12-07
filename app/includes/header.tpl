@@ -154,15 +154,16 @@
           <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
           {{gas.value}} Gwei
           <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" step="{{gas.step}}" ng-change="gasChanged()"/>
-          <p class="small col-xs-4 text-left" translate="GAS_Price_1">
-            Not So Fast
+          <p class="small col-xs-4 text-left"> <!--translate="GAS_Price_1"-->
+            Really, really slow
           </p>
-          <p class="small col-xs-4 text-center" translate="GAS_Price_2">
+          <p class="small col-xs-4 text-center"> <!--translate="GAS_Price_2"-->
+            Maybe Fast?
+          </p>
+          <p class="small col-xs-4 text-right"> <!--translate="GAS_Price_3"-->
             Fast
           </p>
-          <p class="small col-xs-4 text-right" translate="GAS_Price_3">
-            Fast AF
-          </p>
+          <br />
           <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
           <a class="small"
              translate="x_ReadMore"
@@ -172,7 +173,7 @@
         </div>
       </ul>
       <p class="dropdown-gas__msg""
-         ng-show="gasPriceMsg || true">
+         ng-show="gasPriceMsg">
         The network is really full right now. Check
         <a href="https://ethgasstation.info/"
            target="_blank" rel="noopener noreferrer">Eth Gas Station</a>
