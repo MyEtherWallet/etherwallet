@@ -222,4 +222,10 @@ to:         '0x7e7DC49715816d1f5712A1d7dFf083e4F9E588B6',
 gasLimit:   200000,
 data:       '',
 msg:        'PIXEL token sale contract. VR club franchise with neurointerfaces: https://vr-pixel.com. Ends 05.12.2017. Thank you for participating!'
+},{
+// RCT TOKEN
+to:         '0x2a3Aa9ECA41E720Ed46B5A70D6C37EfA47f768Ac',
+gasLimit:   200000,
+data:       '',
+msg:        'REAL CHAIN TOKEN!'
 }]
