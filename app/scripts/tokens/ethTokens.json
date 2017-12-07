@@ -134,6 +134,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xbc1234552EBea32B5121190356bBa6D3Bb225bb5",
+"symbol":"BCL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x1e797Ce986C3CFF4472F7D38d5C4aba55DfEFE40",
 "symbol":"BCDN",
 "decimal":15,
