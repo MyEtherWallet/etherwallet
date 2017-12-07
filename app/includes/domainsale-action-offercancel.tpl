@@ -57,7 +57,7 @@
 
         <!-- Title (already offered) -->
         <div ng-show="objDomainSale.status==domainsaleModes.available">
-          <h2 translate="DOMAIN_offer_6">
+          <h2>
             <span translate="DOMAIN_offer_7">
               Alter Your Offer for:
             </span>

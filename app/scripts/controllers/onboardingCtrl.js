@@ -3,7 +3,7 @@ var onboardingCtrl = function($scope, globalService, $translate, $sce) {
 
   $scope.onboardModal     = document.getElementById('onboardingModal') ? new Modal(document.getElementById('onboardingModal')) : null
 
-  $scope.onboardingMsg    = false  // a msg that displays on the modal if the user hasn't completed onboarding
+  $scope.onboardMsg       = false  // a msg that displays on the modal if the user hasn't completed onboarding
   $scope.onboardStatus    = 1      // set the status to slide 1 for local storage later
   $scope.showOnboardSlide = 1      // show slide 1
 
@@ -16,7 +16,7 @@ var onboardingCtrl = function($scope, globalService, $translate, $sce) {
     // if they've seen a few slides...
     if ( $scope.onboardStatus > 0  &&  $scope.onboardStatus < 10 ) {
       $scope.showOnboardSlide = $scope.onboardStatus // set the slide to the last slide they viewed
-      $scope.onboardingMsg = true                    // show a msg explaining they need to finish it
+      $scope.onboardMsg = true                    // show a msg explaining they need to finish it
       $scope.onboardModal.open()                     // show the modal
       console.log( $scope.onboardStatus )
     }
