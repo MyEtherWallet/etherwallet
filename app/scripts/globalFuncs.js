@@ -67,9 +67,9 @@ globalFuncs.errorMsgs = [
     'Could not connect to the node. Try refreshing, using different node in upper right corner, and checking firewall settings. If custom node, check your configs.', // 32
     'The wallet you have unlocked does not match the owner\'s address. ', // 33
     'The name you are attempting to reveal does not match the name you have entered. ', // 34
-    'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
-    'Enter valid TX hash', // 36
-    'Enter valid hex string (0-9, a-f)', // 37
+    'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Click here to learn what this means.</a>', // 35
+    'Please enter valid TX hash', // 36
+    'Please enter valid hex string (a b c d e f 1 2 3 4 5 6 7 8 9 0)', // 37
     'Offer must have either price or reserve set to more than 0', // 38
     'Bid must be more than the specified minimum' // 39
 ];
@@ -111,14 +111,14 @@ globalFuncs.getGethMsg = function(str) {
 
 // These are translated in the translation files
 globalFuncs.parityErrors = {
-    "Transaction with the same hash was already imported\\.": "PARITY_AlreadyImported",
-    "Transaction nonce is too low\\. Try incrementing the nonce\\.": "PARITY_Old",
-    "Transaction fee is too low\\. There is another transaction with same nonce in the queue\\. Try increasing the fee or incrementing the nonce\\.": "PARITY_TooCheapToReplace",
-    "There are too many transactions in the queue\\. Your transaction was dropped due to limit\\. Try increasing the fee\\.": "PARITY_LimitReached",
-    "Transaction fee is too low\\. It does not satisfy your node's minimal fee \\(minimal: (\\d+), got: (\\d+)\\)\\. Try increasing the fee\\.": "PARITY_InsufficientGasPrice",
-    "Insufficient funds\\. The account you tried to send transaction from does not have enough funds\\. Required (\\d+) and got: (\\d+)\\.": "ERROR_17",
-    "Transaction cost exceeds current gas limit\\. Limit: (\\d+), got: (\\d+)\\. Try decreasing supplied gas\\.": "PARITY_GasLimitExceeded",
-    "Supplied gas is beyond limit\\.": "PARITY_InvalidGasLimit"
+    "A transaction with the same hash was already imported\\. This means it was already broadcast. Please check your address on etherscan.io & wait 10 minutes before attempting to send again to avoid duplicate transactions. <a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more.</a>": "PARITY_AlreadyImported",
+    "This tx's nonce is too low\\. Try incrementing the nonce by pressing the Generate button again\\. <a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more.</a>": "PARITY_Old",
+    "There is another transaction with same nonce in the queue or the transaction fee is too low\\. Try increasing the fee or incrementing the nonce by clicking the Generate button again\\.<a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more.</a>": "PARITY_TooCheapToReplace",
+    "There are too many transactions in the queue\\. Your transaction was dropped due to limit\\. Try increasing the fee\\. <a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more.</a>": "PARITY_LimitReached",
+    "Transaction fee is too low\\. It does not satisfy your node's minimal fee \\(minimal: (\\d+), got: (\\d+)\\)\\. Try increasing the gas price and gas limit\\. <a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more.</a>": "PARITY_InsufficientGasPrice",
+    "Insufficient funds\\. The account you tried to send transaction from does not have enough funds\\. Required (\\d+) and got: (\\d+)\\. <a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more.</a>": "ERROR_17",
+    "Transaction cost exceeds current gas limit\\. Limit: (\\d+), got: (\\d+)\\. Try decreasing the gas limit\\. <a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more.</a>": "PARITY_GasLimitExceeded",
+    "Supplied gas is beyond limit\\. <a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more.</a>": "PARITY_InvalidGasLimit"
 };
 globalFuncs.parityErrorMsgs = {};
 globalFuncs.getParityMsg = function(str) {

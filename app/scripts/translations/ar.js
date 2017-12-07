@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
@@ -562,44 +562,65 @@ CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wa
 CX_quicksend                : 'QuickSend ', // if no appropriate translation, just use "Send"
 
 /* Error Messages */
-ERROR_0                     : 'Please enter a valid amount.', // 0
-ERROR_1                     : 'Your password must be at least 9 characters. Please ensure it is a strong password. ', // 1
-ERROR_2                     : 'Sorry! We don\'t recognize this type of wallet file. ', // 2
-ERROR_3                     : 'This is not a valid wallet file. ', // 3
-ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units ', // 4
-ERROR_5                     : 'Please enter a valid address. ', // 5
-ERROR_6                     : 'Please enter a valid password. ', // 6
-ERROR_7                     : 'Please enter valid decimals     (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Please enter a valid gas limit  (Must be integer. Try 21000-4000000.) ', // 8
-ERROR_9                     : 'Please enter a valid data value (Must be hex.) ', // 9
-ERROR_10                    : 'Please enter a valid gas price. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
-ERROR_11                    : 'Please enter a valid nonce      (Must be integer.) ', // 11
-ERROR_12                    : 'Invalid signed transaction. ', // 12
-ERROR_13                    : 'A wallet with this nickname already exists. ', // 13
-ERROR_14                    : 'Wallet not found. ', // 14
-ERROR_15                    : 'Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ', // 15 - NOT USED
-ERROR_16                    : 'A wallet with this address already exists in storage. Please check your wallets page. ', // 16
-ERROR_17                    : 'Account you are sending from does not have enough funds. If sending tokens, you must have 0.01 ETH in your account to cover the cost of gas. ', // 17
-ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
-ERROR_19                    : 'Please enter a valid symbol', // 19
-ERROR_20                    : 'Not a valid ERC-20 token', // 20
-ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
-ERROR_22                    : 'Please enter a valid node name', // 22
-ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
-ERROR_24                    : 'Please enter a valid port. ', // 24
-ERROR_25                    : 'Please enter a valid chain ID. ', // 25
-ERROR_26                    : 'Please enter a valid ABI. ', // 26
-ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
-ERROR_28                    : 'You need this `Keystore File + Password` or the `Private Key` (next page) to access this wallet in the future.  ', // 28
-ERROR_29                    : 'Please enter a valid user and password. ', // 29
-ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
-ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
-ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
-ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
-ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
-ERROR_36                    : 'Enter valid TX hash', // 36
-ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+ERROR_0                         :  '(error_01) Please enter a valid amount.', // 0
+ERROR_1                         :  '(error_02) Your password must be at least 9 characters. Please ensure it is a strong password.', // 1
+ERROR_2                         :  '(error_03) Sorry! We don\'t recognize this type of wallet file.', // 2
+ERROR_3                         :  '(error_04) This is not a valid wallet file.', // 3
+ERROR_4                         :  '(error_05) This unit doesn\'t exists, please use the one of the following units', // 4
+ERROR_5                         :  '(error_06) Please enter a valid address.', // 5
+ERROR_6                         :  '(error_07) Please enter a valid password.', // 6
+ERROR_7                         :  '(error_08) Please enter valid decimals     (Must be an integer. Try 0-18.)', // 7
+ERROR_8                         :  '(error_09) Please enter a valid gas limit  (Must be an integer. Try 21000-4000000.)', // 8
+ERROR_9                         :  '(error_10) Please enter a valid data value (Must be hex.)', // 9
+ERROR_10                        :  '(error_11) Please enter a valid gas price. (Must be an integer. Try 20 GWEI / 20000000000 WEI.)',
+ERROR_11                        :  '(error_12) Please enter a valid nonce (Must be an integer.)', // 11
+ERROR_12                        :  '(error_13) Invalid signed transaction.', // 12
+ERROR_13                        :  '(error_14) A wallet with this nickname already exists.', // 13
+ERROR_14                        :  '(error_15) Wallet not found.', // 14
+ERROR_15                        :  '(error_16) Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal.', // 15 - NOT USED
+ERROR_16                        :  '(error_17) A wallet with this address already exists in storage. Please check your wallets page.', // 16
+ERROR_17                        :  '(error_18) Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)', // 17
+ERROR_18                        :  '(error_19) All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
+ERROR_19                        :  '(error_20) Please enter a valid symbol', // 19
+ERROR_20                        :  '(error_21) Not a valid ERC-20 token', // 20
+ERROR_21                        :  '(error_22) Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                        :  '(error_23) Please enter a valid node name', // 22
+ERROR_23                        :  '(error_24) Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                        :  '(error_25) Please enter a valid port.', // 24
+ERROR_25                        :  '(error_26) Please enter a valid chain ID.', // 25
+ERROR_26                        :  '(error_27) Please enter a valid ABI.', // 26
+ERROR_27                        :  '(error_28) Minimum amount: 0.01. Max amount:', // 27
+ERROR_28                        :  '(error_29) You need this `Keystore File + Password` or the `Private Key` (next page) to access this wallet in the future. ', // 28
+ERROR_29                        :  '(error_30) Please enter a valid user and password.', // 29
+ERROR_30                        :  '(error_31) Please enter a valid name (7+ characters, limited punctuation)', // 30
+ERROR_31                        :  '(error_32) Please enter a valid secret phrase.', // 31
+ERROR_32                        :  '(error_33) Could not connect to the node. Refresh your page, try a different node (top-right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                        :  '(error_34) The wallet you have unlocked does not match the owner\'s address.', // 33
+ERROR_34                        :  '(error_35) The name you are attempting to reveal does not match the name you have entered.', // 34
+ERROR_35                        :  '(error_36) Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer">What does that mean?</a>', // 35
+ERROR_36                        :  '(error_37) Please enter a valid TX hash', // 36
+ERROR_37                        :  '(error_38) Please enter valid hex string. Hex only contains: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f', // 37
+ERROR_38                        :  '(error_39) Offer must have either price or reserve set to more than 0', // 38
+ERROR_39                        :  '(error_40) Bid must be more than the specified minimum', // 39
+
+GETH_Balance                    :  '(geth-01) Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_Cheap                      :  '(geth-02) Gas price too low for acceptance. Try raising the gas price to 21 GWEI via the dropdown in top-right.',
+GETH_GasLimit                   :  '(geth-03) Exceeds block gas limit. Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)',
+GETH_InsufficientFunds          :  '(geth-04) Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_IntrinsicGas               :  '(geth-05) Intrinsic gas too low. Try raising the gas price to 21 GWEI via the dropdown in top-right or the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again.',
+GETH_InvalidSender              :  '(geth-06) Invalid sender.',
+GETH_NegativeValue              :  '(geth-07) Negative value.',
+GETH_Nonce                      :  "(geth-08) This TX's [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html) is too low. Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
+GETH_NonExistentAccount         :  '(geth-09) Account does not exist or account balance too low',
+
+PARITY_AlreadyImported          :  "(parity-01) A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [etherscan.io](https://etherscan.io) & wait 10 minutes before attempting to send again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_GasLimitExceeded         :  "(parity-02) Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
+PARITY_InsufficientBalance      :  "(parity-03) Insufficient balance. The account you tried to send transaction from does not have enough funds. If you believe this is in error, try using the 'Send Entire Balance' button, or pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InsufficientGasPrice     :  "(parity-04) There is another transaction with same nonce in the queue, or the transaction fee is too low. Try incrementing the nonce by clicking the Generate button again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InvalidGasLimit          :  "(parity-05) Supplied gas limit is beyond limit. Try lowering the gas limit to 21000. [Learn More.](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
+PARITY_LimitReached             :  "(parity-06) There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the gas price. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_Old                      :  "(parity-07) There is already a transaction with this [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html). Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
+PARITY_TooCheapToReplace        :  "(parity-08) TX Fee is too low. It does not satisfy your node's minimal fee (minimal: (d+), got: (d+)). Try increasing the gas price and/or gas limit. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
 
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
@@ -610,26 +631,6 @@ SUCCESS_6                   : 'You are successfully connected ',
 SUCCESS_7                   : 'Message Signature Verified',
 WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
 
-/* Geth Error Messages */
-GETH_InvalidSender          : 'Invalid sender ',
-GETH_Nonce                  : 'Nonce too low ',
-GETH_Cheap                  : 'Gas price too low for acceptance ',
-GETH_Balance                : 'Insufficient balance ',
-GETH_NonExistentAccount     : 'Account does not exist or account balance too low ',
-GETH_InsufficientFunds      : 'Insufficient funds for gas * price + value ',
-GETH_IntrinsicGas           : 'Intrinsic gas too low ',
-GETH_GasLimit               : 'Exceeds block gas limit ',
-GETH_NegativeValue          : 'Negative value ',
-
-/* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
-PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
-PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei.",
-PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 
 /* Tranlsation Info */
 translate_version           : '0.5 ',

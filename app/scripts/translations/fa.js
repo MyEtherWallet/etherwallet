@@ -490,38 +490,67 @@ CX_quicksend: 'CX_quicksend',
 
 /* Error Messages */
 
-ERROR_0: 'لطفا مقدار معتبر وارد  کنید. ',
-ERROR_1: 'رمزعبور انتخابی حداقل باید 9 حرف باشد. لطفا از یک رمزعبور قوی استفاده کنید. ',
-ERROR_2: 'این نوع از فایل کیف پول قابل شناسایی نیست. ',
-ERROR_3: 'این فایل کیف پول معتبر نیست. ',
-ERROR_4: 'این واحد وجود ندارد، لطفا یکی از واحدهای زیر را انتخاب کنید. ',
-ERROR_5: 'آدرس نامعتبر است ',
-ERROR_6: 'رمز عبور نامعتبر است ',
-ERROR_7: 'مقدار نامعتبر است ',
-ERROR_8: 'میزان حد سوخت نامعتبر است ',
-ERROR_9: 'داده نامعتبر است ',
-ERROR_10: 'میزان سوخت نامعتبر است ',
-ERROR_11: 'ERROR_11',
-ERROR_12: 'تراکنش امضا شده نامعتبر است ',
-ERROR_13: 'قبلا کیف پولی با این نام ساخته شده است ',
-ERROR_14: 'کیف پول پیدا نشد ',
-ERROR_15: 'ERROR_15',
-ERROR_16: 'کیف پولی با این آدرس در حافظه وجود دارد، لطفا صفحه کیف پول خود را چک کنید ',
-ERROR_17: 'برای پوشش هزینه سوخت باید حداقل 0.001 اتر در حساب خود داشته باشید. لطفا مقداری اتر اضافه کرده و دوباره امتحان کنید ',
-ERROR_18: 'ERROR_18',
-ERROR_19: 'کاراکتر غیرمعتبر است ',
-ERROR_20: 'این توکن نامعتبر است ',
-ERROR_21: 'ERROR_21',
-ERROR_22: 'لطفا یک نام نود (گره) معتبر وارد کنید ',
-ERROR_23: 'لطفا url صحیح وارد کنید. در صورتی که از https استفاده می کنید url شما باید https باشد ',
-ERROR_24: 'لطفا یک پورت معتبر وارد کنید ',
-ERROR_25: 'لطفا آیدی زنجیره معتبر وارد کنید ',
-ERROR_26: 'لطفا ABI معتبر وارد کنید ',
-ERROR_27: 'کمترین مقدار: 0.01 ، بیشترین مقدار: ',
-ERROR_28: 'برای دسترسی به این کیف پول در آینده به فایل Keystore و رمزعبور خود (یا کلید خصوصی) نیاز خواهید داشت. لطفا آن را ذخیره کنید و یک نسخه پشتیبان خارجی بسازید. اگر آن را ذخیره نکنید، هیچ راهی برای بازگرداندن کیف پول وجود ندارد. برای راهنمایی [صفحه کمک](https://www.myetherwallet.com/#help)  را مطالعه بفرمایید. ',
-ERROR_29: 'لطفا شناسه و رمزعبور معتبر وارد کنید ',
-ERROR_30: 'لطفا نام ENS معتبر وارد کنید ',
-ERROR_31: 'عبارت خصوصی نامعتبر است ',
+ERROR_0                         :  '(error_01) لطفا مقدار معتبر وارد  کنید.. Please enter a valid amount.', // 0
+ERROR_1                         :  '(error_02) رمزعبور انتخابی حداقل باید 9 حرف باشد. لطفا از یک رمزعبور قوی استفاده کنید.. Your password must be at least 9 characters. Please ensure it is a strong password.', // 1
+ERROR_2                         :  '(error_03) این نوع از فایل کیف پول قابل شناسایی نیست.. Sorry! We don\'t recognize this type of wallet file.', // 2
+ERROR_3                         :  '(error_04) این فایل کیف پول معتبر نیست.. This is not a valid wallet file.', // 3
+ERROR_4                         :  '(error_05) این واحد وجود ندارد، لطفا یکی از واحدهای زیر را انتخاب کنید.. This unit doesn\'t exists, please use the one of the following units', // 4
+ERROR_5                         :  '(error_06) آدرس نامعتبر است. Please enter a valid address.', // 5
+ERROR_6                         :  '(error_07) رمز عبور نامعتبر است. Please enter a valid password.', // 6
+ERROR_7                         :  '(error_08) مقدار نامعتبر است. Please enter valid decimals     (Must be an integer. Try 0-18.)', // 7
+ERROR_8                         :  '(error_09) میزان حد سوخت نامعتبر است. Please enter a valid gas limit  (Must be an integer. Try 21000-4000000.)', // 8
+ERROR_9                         :  '(error_10) داده نامعتبر است. Please enter a valid data value (Must be hex.)', // 9
+ERROR_10                        :  '(error_11) میزان سوخت نامعتبر است. Please enter a valid gas price. (Must be an integer. Try 20 GWEI / 20000000000 WEI.)',
+ERROR_11                        :  '(error_12) تراکنش امضا شده نامعتبر است Please enter a valid nonce (Must be an integer.)', // 11
+ERROR_12                        :  '(error_13) قبلا کیف پولی با این نام ساخته شده است Invalid signed transaction.', // 12
+ERROR_13                        :  '(error_14) کیف پول پیدا نشد A wallet with this nickname already exists.', // 13
+ERROR_14                        :  '(error_15) Wallet not found.', // 14
+ERROR_15                        :  '(error_16) کیف پولی با این آدرس در حافظه وجود دارد، لطفا صفحه کیف پول خود را چک کنید. Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal.', // 15 - NOT USED
+ERROR_16                        :  '(error_17) برای پوشش هزینه سوخت باید حداقل 0.001 اتر در حساب خود داشته باشید. لطفا مقداری اتر اضافه کرده و دوباره امتحان کنید. A wallet with this address already exists in storage. Please check your wallets page.', // 16
+ERROR_17                        :  '(error_18) Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)', // 17
+ERROR_18                        :  '(error_19) کاراکتر غیرمعتبر است All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
+ERROR_19                        :  '(error_20) این توکن نامعتبر است Please enter a valid symbol', // 19
+ERROR_20                        :  '(error_21) Not a valid ERC-20 token', // 20
+ERROR_21                        :  '(error_22) لطفا یک نام نود (گره) معتبر وارد کنید Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                        :  '(error_23) لطفا url صحیح وارد کنید. در صورتی که از https استفاده می کنید url شما باید https باشد Please enter a valid node name', // 22
+ERROR_23                        :  '(error_24) لطفا یک پورت معتبر وارد کنید Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                        :  '(error_25) لطفا آیدی زنجیره معتبر وارد کنید Please enter a valid port.', // 24
+ERROR_25                        :  '(error_26) لطفا ABI معتبر وارد کنید Please enter a valid chain ID.', // 25
+ERROR_26                        :  '(error_27) کمترین مقدار: 0.01 ، بیشترین مقدار: Please enter a valid ABI.', // 26
+ERROR_27                        :  '(error_28) برای دسترسی به این کیف پول در آینده به فایل Keystore و رمزعبور خود (یا کلید خصوصی) نیاز خواهید داشت. لطفا آن را ذخیره کنید و یک نسخه پشتیبان خارجی بسازید. اگر آن را ذخیره نکنید، هیچ راهی برای بازگرداندن کیف پول وجود ندارد. برای راهنمایی [صفحه کمک](https://www.myetherwallet.com/#help)  را مطالعه بفرمایید. Minimum amount: 0.01. Max amount:', // 27
+ERROR_28                        :  '(error_29) لطفا شناسه و رمزعبور معتبر وارد کنید You need this `Keystore File + Password` or the `Private Key` (next page) to access this wallet in the future. ', // 28
+ERROR_29                        :  '(error_30) لطفا نام ENS معتبر وارد کنید Please enter a valid user and password.', // 29
+ERROR_30                        :  '(error_31) عبارت خصوصی نامعتبر است Please enter a valid name (7+ characters, limited punctuation)', // 30
+ERROR_31                        :  '(error_32) Please enter a valid secret phrase.', // 31
+ERROR_32                        :  '(error_33) Could not connect to the node. Refresh your page, try a different node (top-right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                        :  '(error_34) The wallet you have unlocked does not match the owner\'s address.', // 33
+ERROR_34                        :  '(error_35) The name you are attempting to reveal does not match the name you have entered.', // 34
+ERROR_35                        :  '(error_36) Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer">What does that mean?</a>', // 35
+ERROR_36                        :  '(error_37) Please enter a valid TX hash', // 36
+ERROR_37                        :  '(error_38) Please enter valid hex string. Hex only contains: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f', // 37
+ERROR_38                        :  '(error_39) Offer must have either price or reserve set to more than 0', // 38
+ERROR_39                        :  '(error_40) Bid must be more than the specified minimum', // 39
+
+GETH_Balance                    :  '(geth-01) موجودی کافی نیست. Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_Cheap                      :  '(geth-02) قیمت سوخت برای پذیرفته شدن کم است. Gas price too low for acceptance. Try raising the gas price to 21 GWEI via the dropdown in top-right.',
+GETH_GasLimit                   :  '(geth-03) سوخت بیش از حد است. Exceeds block gas limit. Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)',
+GETH_InsufficientFunds          :  '(geth-04) موجودی برای سوخت * قیمت + مقدار کافی نیست. Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_IntrinsicGas               :  '(geth-05) سوخت اصلی کم است. Intrinsic gas too low. Try raising the gas price to 21 GWEI via the dropdown in top-right or the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again.',
+GETH_InvalidSender              :  '(geth-06) ارسال کننده نامعتبر است. Invalid sender.',
+GETH_NegativeValue              :  '(geth-07) مقدار منفی. Negative value.',
+GETH_Nonce                      :  "(geth-08) This TX's [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html) is too low. Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
+GETH_NonExistentAccount         :  '(geth-09) حساب وجود ندارد و یا موجودی حساب کم است. Account does not exist or account balance too low',
+
+PARITY_AlreadyImported          :  "(parity-01) A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [etherscan.io](https://etherscan.io) & wait 10 minutes before attempting to send again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_GasLimitExceeded         :  "(parity-02) Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
+PARITY_InsufficientBalance      :  "(parity-03) Insufficient balance. The account you tried to send transaction from does not have enough funds. If you believe this is in error, try using the 'Send Entire Balance' button, or pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InsufficientGasPrice     :  "(parity-04) There is another transaction with same nonce in the queue, or the transaction fee is too low. Try incrementing the nonce by clicking the Generate button again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InvalidGasLimit          :  "(parity-05) Supplied gas limit is beyond limit. Try lowering the gas limit to 21000. [Learn More.](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
+PARITY_LimitReached             :  "(parity-06) There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the gas price. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_Old                      :  "(parity-07) There is already a transaction with this [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html). Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
+PARITY_TooCheapToReplace        :  "(parity-08) TX Fee is too low. It does not satisfy your node's minimal fee (minimal: (d+), got: (d+)). Try increasing the gas price and/or gas limit. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+
+
 SUCCESS_1: 'آدرس معتبر است ',
 SUCCESS_2: 'کیف پول با موفقیت رمزگشایی شد ',
 SUCCESS_3: 'تراکنش ثبت شد. TX ID ',
@@ -529,29 +558,6 @@ SUCCESS_4: 'کیف پول شما با موفقیت اضافه شد ',
 SUCCESS_5: 'فایل انتخاب شد ',
 
 WARN_Send_Link: 'شما از طریق یک لینک که آدرس، مقدار، سوخت، زمینه های داده و یا نوع تراکنش (مدل ارسال) که برای شما پر شده است را دارد به اینجا آمده اید. می توانید هر اطلاعاتی را پیش از انجام ارسال تغییر دهید. برای شروع، قفل کیف پول خود را باز کنید. ',
-
-/* Geth Error Messages */
-
-GETH_InvalidSender: 'ارسال کننده نامعتبر است ',
-GETH_Nonce: 'GETH_Nonce',
-GETH_Cheap: 'قیمت سوخت برای پذیرفته شدن کم است ',
-GETH_Balance: 'موجودی کافی نیست ',
-GETH_NonExistentAccount: 'حساب وجود ندارد و یا موجودی حساب کم است ',
-GETH_InsufficientFunds: 'موجودی برای سوخت * قیمت + مقدار کافی نیست ',
-GETH_IntrinsicGas: 'سوخت اصلی کم است ',
-GETH_GasLimit: 'سوخت بیش از حد است ',
-GETH_NegativeValue: 'مقدار منفی ',
-
-/* Parity Error Messages */
-
-PARITY_AlreadyImported: 'Transaction with the same hash was already imported.,تراکنشی با هش مشابه قبلا وارد شده است ',
-PARITY_Old: 'Transaction nonce is too low. Try incrementing the nonce.,مقدار nonce کم است. nonزث را افزایش دهید. ',
-PARITY_TooCheapToReplace: 'مقدار کارمزد تراکنش کم است. تراکنشی با Nonce مشابه در صف است. کارمزد و یا nonce را افزایش دهید. ',
-PARITY_LimitReached: 'تعداد تراکنش های موجود در صف زیاد است. تراکنش شما به دلیل محدودیت رد شد. می توانید افزایش دادن کارمزد را امتحان کنید. ',
-PARITY_InsufficientGasPrice: 'کارمزد تراکنش کم است و حداقل کارمزد نود شما را پوشش نمی دهد (minimal: {}, got: {}).  می توانید افزایش دادن کارمزد را امتحان کنید. ',
-PARITY_InsufficientBalance: 'سرمایه کافی نیست. در حسابی که سعی در ارسال تراکنش از آن دارید به اندازه کافی سرمایه وجود ندارد. Required {} wei and got: {} wei. ',
-PARITY_GasLimitExceeded: 'هزینه تراکنش از حد سوخت فعلی بیشتر است.  Limit: {}, got: {}. موجودی سوخت را افزایش دهید. ',
-PARITY_InvalidGasLimit: 'Supplied gas is beyond limit.',
 
 /* Tranlsation Info */
 translate_version: '0.4_Alpha',

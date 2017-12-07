@@ -258,7 +258,7 @@ GEN_Help_20                 : '隔離された保管場所', /*Cold Storage*/
 GET_ConfButton              : '理解できました。続けます。', /*I understand. Continue.*/
 GEN_Label_5                 : '自分の秘密鍵を保存する。', /*Save Your `Private Key`. */
 GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する', /*Unlock your wallet to see your address*/
-GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかるの料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するためにマイナーに支払う手数料です。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「10 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.*/
+GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかるの料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するためにマイナーに支払う手数料です。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「50 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.*/
 GAS_LIMIT_Desc              : 'ガスリミットは、その処理のために送出するガスの総量です。「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するための料金として支払われます。 この数字を増やしても、自分の処理が早くなることはありません。ETHの送出 = 「２１０００」、トークンの送出 = ~「２０００００」が目安になります。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
 NONCE_Desc                  : 'このnonceは、指定のアドレスから送出される処理の数です。正しい順番で重複しないように処理を確実にするためのものです。',
 TXFEE_Desc                  : 'この処理料金は自分の処理をブロックに配置するためにマイナーに支払われます。「ガスリミット」＊「ガス価格」で算出されます。 [GWEI -> ETHの単位変換はこちらです。](https://www.myetherwallet.com/helpers.html)',　/*The TX Fee is paid to miners for including your TX in a block. It is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)*/
@@ -563,44 +563,47 @@ VIEWWALLET_ShowPrivKey      : '(show)',
 VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Error Messages */
-ERROR_0                     : '正しい値を入力してください。 ',
-ERROR_1                     : 'パスワードは少なくとも９文字が必要です。強固なパスワードであることをお確かめください。 ',
-ERROR_2                     : '申し訳ございませんが、このタイプのお財布ファイルは認識できません。 ',
-ERROR_3                     : '正しいお財布ファイルではありません。 ',
-ERROR_4                     : 'この単位は存在しませんので、下記の中からお選びください。 ',
-ERROR_5                     : '無効なアドレスです。 ',
-ERROR_6                     : '無効なパスワードです。 ',
-ERROR_7                     : '無効な総量です。 (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : '無効なガスリミットです。 (Must be integer. Try 21000-4000000.) ', // 8
-ERROR_9                     : '無効なデータです。 (Must be hex.) ', // 9
-ERROR_10                    : '無効なガス総量です。 (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
-ERROR_11                    : '無効な nonce　です。 (Must be integer.) ', // 11
-ERROR_12                    : '無効な署名のトランザクションです。 ',
-ERROR_13                    : '同じニックネームのお財布が既にあります。 ',
-ERROR_14                    : 'お財布が見つかりません。 ',
-ERROR_15                    : 'このIDのプロポーサルは存在しない、あるいは正常に読み込みできません。 ',
-ERROR_16                    : '同じアドレスのお財布が既に存在します。お財布のページをご確認ください。 ',
-ERROR_17                    : '"ファンドが足りません。 トランザクション送出元のファンドが不足しています。ガスとして使われるために、少なくとも0.01 etherがお財布上に必要です。 ',
-ERROR_18                    : '全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。 ',
-ERROR_19                    : '無効なシンボル ',
-ERROR_20                    : ' は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。 ',
-ERROR_21                    : 'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。 ',
-ERROR_22                    : '正しいノード名を入力してください ',
-ERROR_23                    : '正しいURLを入力してください。 HTTPS接続の場合には、ノードはHTPPSで接続しなければなりません。 ',
-ERROR_24                    : '正しいポートを入力してください ',
-ERROR_25                    : '正しい chain ID を入力してください ',
-ERROR_26                    : '正しい ABI を入力してください ',
-ERROR_27                    : '最小値: 0.01. 最大値: ',
-ERROR_28                    : 'お財布を操作するためには**Keystore/JSONとパスワードか秘密鍵が必要** 保存してから、外部バックアップしてください！ここで保存しないとお財布が使用できなくなります。詳細はヘルプページを参照してください。(https://www.myetherwallet.com/#help) ',
-ERROR_29                    : '正しいユーザーとパスワードを入力してください ',
-ERROR_30                    : '正しい ENS名を入力してください ',
-ERROR_31                    : '無効な秘密フレーズです ',
-ERROR_32                    : 'ノードに接続できませんでした。ページを再表示したり、別のノード（画面の右上にあります）を試したり,ファイアーウォールの設定を確認してください。 カスタムノードの使用時には、構成設定を確認してください。', // 32
-ERROR_33                    : 'アンロックしたお財布のアドレスがオーナーのアドレスと一致しません。', // 33
-ERROR_34                    : '以前に入力したものと異なる名前です。 ', // 34
-ERROR_35                    : 'チェックサムが付いていません。 <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> 詳細</a>', // 35
-ERROR_36                    : '正しいトランザクションハッシュを入力してください', // 36
-ERROR_37                    : '１６進数を正しく入力してください (0-9, a-f)', // 37
+ERROR_0                     : '(error_01) 正しい値を入力してください。 (Please enter a valid amount.) ',
+ERROR_1                     : '(error_02) パスワードは少なくとも９文字が必要です。強固なパスワードであることをお確かめください。 (Your password must be at least 9 characters. Please ensure it is a strong password.) ',
+ERROR_2                     : '(error_03) 申し訳ございませんが、このタイプのお財布ファイルは認識できません。 (Sorry! We don\'t recognize this type of wallet file.) ',
+ERROR_3                     : '(error_04) 正しいお財布ファイルではありません。 (This is not a valid wallet file.) ',
+ERROR_4                     : '(error_05) この単位は存在しませんので、下記の中からお選びください。 (This unit doesn\'t exists, please use the one of the following units) ',
+ERROR_5                     : '(error_06) 無効なアドレスです。 (Please enter a valid address.) ',
+ERROR_6                     : '(error_07) 無効なパスワードです。 (Please enter a valid password.) ',
+ERROR_7                     : '(error_08) 無効な総量です。 (Must be integer. Try 0-18.) (Please enter valid decimals     (Must be an integer. Try 0-18.)) ',
+ERROR_8                     : '(error_09) 無効なガスリミットです。 (Must be integer. Try 21000-4000000.) (Please enter a valid gas limit  (Must be an integer. Try 21000-4000000.)) ',
+ERROR_9                     : '(error_10) 無効なデータです。 (Must be hex.) (Please enter a valid data value (Must be hex.)) ',
+ERROR_10                    : '(error_11) 無効なガス総量です。 (Must be integer. Try 20 GWEI / 20000000000 WEI.) (Please enter a valid gas price. (Must be an integer. Try 20 GWEI / 20000000000 WEI.)) ',
+ERROR_11                    : '(error_12) 無効な nonce　です。 (Must be integer.) (Please enter a valid nonce (Must be an integer.)) ',
+ERROR_12                    : '(error_13) 無効な署名のトランザクションです。 (Invalid signed transaction.) ',
+ERROR_13                    : '(error_14) 同じニックネームのお財布が既にあります。 (A wallet with this nickname already exists.) ',
+ERROR_14                    : '(error_15) お財布が見つかりません。 (Wallet not found.) ',
+ERROR_15                    : '(error_16) このIDのプロポーサルは存在しない、あるいは正常に読み込みできません。 (Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal.) ',
+ERROR_16                    : '(error_17) 同じアドレスのお財布が既に存在します。お財布のページをご確認ください。 (A wallet with this address already exists in storage. Please check your wallets page.) ',
+ERROR_17                    : '(error_18) "ファンドが足りません。 トランザクション送出元のファンドが不足しています。ガスとして使われるために、少なくとも0.01 etherがお財布上に必要です。 (Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)) ',
+ERROR_18                    : '(error_19) 全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。 (All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.) ',
+ERROR_19                    : '(error_20) 無効なシンボル (Please enter a valid symbol) ',
+ERROR_20                    : '(error_21)  は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。 (Not a valid ERC-20 token) ',
+ERROR_21                    : '(error_22) ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。 (Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.) ',
+ERROR_22                    : '(error_23) 正しいノード名を入力してください (Please enter a valid node name) ',
+ERROR_23                    : '(error_24) 正しいURLを入力してください。 HTTPS接続の場合には、ノードはHTPPSで接続しなければなりません。 (Please enter a valid URL. If you are on https, your URL must be https) ',
+ERROR_24                    : '(error_25) 正しいポートを入力してください (Please enter a valid port.) ',
+ERROR_25                    : '(error_26) 正しい chain ID を入力してください (Please enter a valid chain ID.) ',
+ERROR_26                    : '(error_27) 正しい ABI を入力してください (Please enter a valid ABI.) ',
+ERROR_27                    : '(error_28) 最小値: 0.01. 最大値: (Minimum amount: 0.01. Max amount:) ',
+ERROR_28                    : '(error_29) お財布を操作するためには**Keystore/JSONとパスワードか秘密鍵が必要** 保存してから、外部バックアップしてください！ここで保存しないとお財布が使用できなくなります。詳細はヘルプページを参照してください。(https://www.myetherwallet.com/#help) (You need this `Keystore File + Password` or the `Private Key` (next page) to access this wallet in the future. ) ',
+ERROR_29                    : '(error_30) 正しいユーザーとパスワードを入力してください (Please enter a valid user and password.) ',
+ERROR_30                    : '(error_31) 正しい ENS名を入力してください (Please enter a valid name (7+ characters, limited punctuation)) ',
+ERROR_31                    : '(error_32) 無効な秘密フレーズです (Please enter a valid secret phrase.) ',
+ERROR_32                    : '(error_33) ノードに接続できませんでした。ページを再表示したり、別のノード（画面の右上にあります）を試したり,ファイアーウォールの設定を確認してください。 カスタムノードの使用時には、構成設定を確認してください (Could not connect to the node. Refresh your page, try a different node (top-right corner), check your firewall settings. If custom node, check your configs.)。',
+ERROR_33                    : '(error_34) アンロックしたお財布のアドレスがオーナーのアドレスと一致しません (The wallet you have unlocked does not match the owner\'s address.)。',
+ERROR_34                    : '(error_35) 以前に入力したものと異なる名前です。 (The name you are attempting to reveal does not match the name you have entered.) ',
+ERROR_35                    : '(error_36) チェックサムが付いていません。 <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> 詳細</a (Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer">What does that mean?</a>)>',
+ERROR_36                    : '(error_37) 正しいトランザクションハッシュを入力してくださ (Please enter a valid TX hash)い',
+ERROR_37                    : '(error_38) １６進数を正しく入力してください (0-9, a-f (Please enter valid hex string. Hex only contains: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f))',
+ERROR_38                    : '(error_39) Offer must have either price or reserve set to more than 0',
+ERROR_39                    : '(error_40) Bid must be more than the specified minimum',
+
 
 SUCCESS_1                   : '有効なアドレス ',
 SUCCESS_2                   : 'お財布は正常に暗号解除されました。 ',
@@ -611,26 +614,26 @@ SUCCESS_6                   : '接続完了しました ',
 SUCCESS_7                   : 'メッセージの署名が確認されました',
 WARN_Send_Link              : '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、お財布を解錠してください。 ',
 
-/* Parity Error Messages */
-PARITY_AlreadyImported      : "同じハッシュのトランザクションがすでにインポートされています。",
-PARITY_Old                  : "トランザクション nonceが小さすぎます。増やしてみてください。",
-PARITY_TooCheapToReplace    : "トランザクションフィー不足です。同じ nonce のトランザクションが別のキューにあります。fee または nonce を増やしてみてください。",
-PARITY_LimitReached         : "キューにあるトランザクションの数が多すぎます。上限を超えたため、対象のトランザクションは除外されています。その fee を増やしてみてください。",
-PARITY_InsufficientGasPrice : "トランザクションフィー不足です。 ノードの最小 fee を満たしていません。 (minimal: {}, got: {}). fee を増やしてください。",
-PARITY_InsufficientBalance  : "ファンドが足りません。 トランザクション送出元のファンドが不足しています。 必要量 {} で 現在： {}　　です。",
-PARITY_GasLimitExceeded     : "トランザクションコストがガスリミットを超過しました。 リミット： {}, 現在: {}. ガス供給量を減らして見てください。",　　　/* increasing gas limit??? */
-PARITY_InvalidGasLimit      : "ガス供給量が制限を超過しています。",
+GETH_Balance                : '(geth-01) 残高不足 Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_Cheap                  : '(geth-02) ガス価格が低すぎます Gas price too low for acceptance. Try raising the gas price to 21 GWEI via the dropdown in top-right.',
+GETH_GasLimit               : '(geth-03) ブロックガスリミットを越えています Exceeds block gas limit. Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)',
+GETH_InsufficientFunds      : '(geth-04) ガス*価格+数量に足りません Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_IntrinsicGas           : '(geth-05) 基本のガス不足です Intrinsic gas too low. Try raising the gas price to 21 GWEI via the dropdown in top-right or the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again.',
+GETH_InvalidSender          : '(geth-06) 送出元が無効です Invalid sender.',
+GETH_NegativeValue          : '(geth-07) 負の値です Negative value.',
+GETH_Nonce                  : '(geth-08) Nonce が足りません This TX\'s [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html) is too low. Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).',
+GETH_NonExistentAccount     : '(geth-09) アカウントが存在しない、あるいはその残高不足です Account does not exist or account balance too low',
 
-/* Geth Error Messages */
-GETH_InvalidSender          : '送出元が無効です ',
-GETH_Nonce                  : 'Nonce が足りません ',
-GETH_Cheap                  : 'ガス価格が低すぎます ',
-GETH_Balance                : '残高不足 ',
-GETH_NonExistentAccount     : 'アカウントが存在しない、あるいはその残高不足です ',
-GETH_InsufficientFunds      : 'ガス*価格+数量に足りません ',
-GETH_IntrinsicGas           : '基本のガス不足です ',
-GETH_GasLimit               : 'ブロックガスリミットを越えています ',
-GETH_NegativeValue          : '負の値です ',
+PARITY_AlreadyImported      : "(parity-01) 同じハッシュのトランザクションがすでにインポートされています。 A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [etherscan.io](https://etherscan.io) & wait 10 minutes before attempting to send again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_GasLimitExceeded     : "(parity-02) トランザクションコストがガスリミットを超過しました。 リミット： {}, 現在: {}. ガス供給量を減らして見てください。",　　　/* increasing gas limit???  Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)*/
+PARITY_InsufficientBalance  : "(parity-03) ファンドが足りません。 トランザクション送出元のファンドが不足しています。 必要量 {} で 現在： {}　　です。 Insufficient balance. The account you tried to send transaction from does not have enough funds. If you believe this is in error, try using the 'Send Entire Balance' button, or pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InsufficientGasPrice : "(parity-04) トランザクションフィー不足です。 ノードの最小 fee を満たしていません。 (minimal: {}, got: {}). fee を増やしてください。 There is another transaction with same nonce in the queue, or the transaction fee is too low. Try incrementing the nonce by clicking the Generate button again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InvalidGasLimit      : "(parity-05) ガス供給量が制限を超過しています。 Supplied gas limit is beyond limit. Try lowering the gas limit to 21000. [Learn More.](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
+PARITY_LimitReached         : "(parity-06) キューにあるトランザクションの数が多すぎます。上限を超えたため、対象のトランザクションは除外されています。その fee を増やしてみてください。 There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the gas price. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_Old                  : "(parity-07) トランザクション nonceが小さすぎます。増やしてみてください。 There is already a transaction with this [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html). Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
+PARITY_TooCheapToReplace    : "(parity-08) トランザクションフィー不足です。同じ nonce のトランザクションが別のキューにあります。fee または nonce を増やしてみてください。 TX Fee is too low. It does not satisfy your node's minimal fee (minimal: (d+), got: (d+)). Try increasing the gas price and/or gas limit. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+
+
 
 /* Tranlsation Info */
 translate_version           : '0.3',
