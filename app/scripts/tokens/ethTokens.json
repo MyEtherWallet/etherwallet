@@ -1569,6 +1569,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x30f4A3e0aB7a76733D8b60b89DD93c3D0b4c9E2f",
+"symbol":"XGT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xB110eC7B1dcb8FAB8dEDbf28f53Bc63eA5BEdd84",
 "symbol":"XID",
 "decimal":8,
