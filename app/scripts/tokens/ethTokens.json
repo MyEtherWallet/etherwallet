@@ -1640,4 +1640,9 @@
 "symbol":"RCT",
 "decimal":18,
 "type":"default"
+},{
+"address":"0x62087245087125d3db5b9a3d713d78e7bbc31e54",
+"symbol":"WPC",
+"decimal":18,
+"type":"default"
 }]
