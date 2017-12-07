@@ -1594,6 +1594,11 @@
 "decimal":9,
 "type":"default"
 },{
+"address":"0x0F513fFb4926ff82D7F60A05069047AcA295C413",
+"symbol":"XSC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x0F33bb20a282A7649C7B3AFf644F084a9348e933",
 "symbol":"YUPIE",
 "decimal":18,
