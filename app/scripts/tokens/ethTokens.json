@@ -324,6 +324,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x672a1AD4f667FB18A333Af13667aa0Af1F5b5bDD",
+"symbol":"CRED",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x4E0603e2A27A30480E5e3a4Fe548e29EF12F64bE",
 "symbol":"CREDO",
 "decimal":18,
