@@ -222,4 +222,10 @@ to:         '0x7e7DC49715816d1f5712A1d7dFf083e4F9E588B6',
 gasLimit:   200000,
 data:       '',
 msg:        'PIXEL token sale contract. VR club franchise with neurointerfaces: https://vr-pixel.com. Ends 05.12.2017. Thank you for participating!'
+},{
+// Artex Token Sale (ARX)
+to:         '0x7705FaA34B16EB6d77Dfc7812be2367ba6B0248e',
+gasLimit:   200000,
+data:       '',
+msg:        'Artex - Art Provenance Blockchain. Official site https://artex.global'
 }]
