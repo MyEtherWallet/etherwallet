@@ -40,11 +40,11 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     }
     var setGasValues = function() {
         $scope.gas = {
-            curVal: 10,
-            value: globalFuncs.localStorage.getItem(gasPriceKey, null) ? parseInt(globalFuncs.localStorage.getItem(gasPriceKey)) : 10,
-            max: 60,
-            min: 0.1,
-            step: 0.1
+            curVal: 60,
+            value: globalFuncs.localStorage.getItem(gasPriceKey, null) ? parseInt(globalFuncs.localStorage.getItem(gasPriceKey)) : 60,
+            max: 120,
+            min: 1,
+            step: 1
         }
         ethFuncs.gasAdjustment = $scope.gas.value;
         $scope.gasPriceMsg = ethFuncs.gasAdjustment < 5 ? true : false

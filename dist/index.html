@@ -168,13 +168,11 @@
         </div>
       </ul>
       <p class="dropdown-gas__msg""
-         ng-show="gasPriceMsg">
-        The network is a bit full right now. Maybe higher gas price?
-        <a href="https://etherscan.io/txsPending"
-           target="_blank" rel="noopener noreferrer">Pending TXs</a>
-        &middot;
+         ng-show="gasPriceMsg || true">
+        The network is really full right now. Check
         <a href="https://ethgasstation.info/"
            target="_blank" rel="noopener noreferrer">Eth Gas Station</a>
+        for fas price to use.
       </p>
     </span>
 
