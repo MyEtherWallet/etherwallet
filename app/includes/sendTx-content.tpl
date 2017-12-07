@@ -169,17 +169,6 @@
       </div>
     </section>
 
-
-    <!-- TX Fee -->
-    <section class="row form-group">
-      <div class="col-sm-11 clearfix">
-        <label>
-          TX Fee: <code>{{tx.gasLimit}}</code> (gas limit) * <code>{{tx.gasPrice}}</code> (gas price) = {{tx.txFee}} GWEI
-        </label>
-      </div>
-    </section>
-
-
     <!-- Advanced Option Panel -->
     <a ng-click="showAdvance=true"
        ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>

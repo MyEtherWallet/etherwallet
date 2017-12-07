@@ -104,7 +104,6 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
                     $scope.tx.gasLimit = $scope.parentTxConfig.gasLimit;
                     $scope.gasLimitChanged = true;
                 }
-                $scope.tx.txFee = new BigNumber(parseInt($scope.tx.gasLimit)).times(new BigNumber(parseInt($scope.tx.gasPrice.wei)))
             }
             $scope.$watch('parentTxConfig', function() {
                 setTxObj();
@@ -190,7 +189,6 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
             if (!data.error) {
                 if (data.data == '-1') $scope.notifier.danger(globalFuncs.errorMsgs[21]);
                 $scope.tx.gasLimit = data.data;
-                $scope.tx.txFee = new BigNumber(parseInt($scope.tx.gasLimit)).times(new BigNumber(parseInt($scope.tx.gasPrice.wei)))
             } else $scope.notifier.danger(data.msg);
         });
     }

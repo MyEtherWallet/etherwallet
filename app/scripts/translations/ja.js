@@ -70,7 +70,7 @@ ENS_WrongAddress_2              :  'アドレスを指定してお財布を解�
 
 ENS_Finalize                    :  '終了処理', /*Finalize*/
 ENS_Finalize_content            :  '終了処理を行うと、ドメイン名が落札者に移管されます。落札者には、第二位の入札価格との差額が返却されます。入札が一件だけの場合には、0.01ethとの差額が返却されます。落札者以外の入札も返却されます。', /*Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.*/
-ENS_Finalize_content_2          :  'まもなく、オークションの最終処理と登録を行います。', /*You are about to finalize the auction & claim the name:*/
+ENS_Finalize_content_1          :  'まもなく、オークションの最終処理と登録を行います。', /*You are about to finalize the auction & claim the name:*/
 ENS_Helper_1                    :  '処理プロセスの概要は？', /*What is the process like?*/
 ENS_Helper_2                    :  '１．準備', /*1. Preparation*/
 ENS_Helper_3                    :  'どのアカウント(お財布)を使用するか決めてから、複数のバックアップがあることを確認、あるいは作成してください。', /*Decide which account you wish to own the name & ensure you have multiple backups of that account.*/
