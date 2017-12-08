@@ -40,14 +40,14 @@ X_Network_Custom                :  'カスタムネットワークやノード�
 DOMAIN_Buy                      :  'ドメインを購入', /*Buy the domain*/
 DOMAIN_BuyItNow                 :  'ドメイン即決価格：', /*Price to buy the domain immediately:*/
 DOMAIN_bid                      :  'ドメインを応札する', /*Bid for the domain*/
-DOMAIN_bid_0                    :  'あなたの応札が現在最高値です。増額して再応札できますが、オークションの終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
+DOMAIN_bid_0                    :  'あなたの応札が現在最高値です。増額して再応札できますが、競売の終了が２４時間延長されます。', /*You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.*/
 DOMAIN_bid_1                    :  '最低応札額は', /*Bid at least*/
 DOMAIN_bid_2                    :  'が必要です。', /*on the domain.*/
 DOMAIN_bid_3                    :  '２４時間以内にさらに高額の応札がなければ落札することができます。', /*You will win the domain if no higher bids are placed within the next 24 hours.*/
 DOMAIN_bid_4                    :  'このドメイン名の供託額は', /*Note that the domain has a locked value of*/
 DOMAIN_bid_5                    :  'このドメイン名を開放して受け取ることができる供託額は', /*As part of the sale you will receive the deed with this value but cannot claim it unless you release the name.*/
 DOMAIN_Finish_1                 :  'この競売と無関係です', /*Not related to that auction*/
-DOMAIN_Finish_2                 :  'このアドレスは、主催者、応札者のいずれでもありません。', /*This address is neither the winner nor the seller of the auction.*/
+DOMAIN_Finish_2                 :  'このアドレスは、落札者、主催者のいずれでもありません。', /*This address is neither the winner nor the seller of the auction.*/
 DOMAIN_Finish_3                 :  '競売を終了する', /*Finish the auction*/
 DOMAIN_Finish_4                 :  '競売を終了して、落札者にドメインを移管し、主催者に落札金を渡す。', /*Finish the auction to allocate the domain to the winner and the funds to the seller.*/
 DOMAIN_Finish_5                 :  'ドメイン名がDomainsaleに移管されているか確認するために、自分のTXハッシュをクリックしてください。', /*Click your TX hash to see if you successfully transferred the domain to DomainSale.*/
@@ -60,32 +60,31 @@ DOMAIN_offer_7                  :  '変更後の募集価格：', /*Alter Your O
 DOMAIN_offer_8                  :  'ドメイン名販売募集価格を変更するには、以下のいずれか、あるいは双方を変更してください。ドメイン名の供託金は落札者に、また落札額の10％は仲介者に支払われます。', /*Change either of both of the prices below to alter your domain sale offer.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
 DOMAIN_offer_9                  :  '入札価格', /*Buy price*/
 DOMAIN_offer_10                 :  'これはドメイン名を落札するための即決価格です。ゼロの場合には、取引は即座に完了しません。', /*This is the price at which someone can buy the domain immediately. 0 means that the domain cannot be purchased immediately.*/
-DOMAIN_offer_11                 :  'これはドメイン名の競売の開始価格です。ゼロの場合には、オークションは始まっていません。', /*This is the price at which someone can start an auction for the domain.  0 means that the domain will not be available for auction.*/
+DOMAIN_offer_11                 :  'これはドメイン名の競売の入札開始価格です。ゼロの場合には、オークションは始まっていません。', /*This is the price at which someone can start an auction for the domain.  0 means that the domain will not be available for auction.*/
 DOMAIN_offer_12                 :  '自分のドメイン名を競売に出す', /*Offer your domain*/
 DOMAIN_offer_13                 :  '販売条件の変更', /*Alter your sale*/
 DOMAIN_offer_14                 :  '販売の中止', /*Cancel your sale*/
 DOMAIN_offer_15                 :  'ドメイン名の販売を中止して、そのドメイン名の登録者を自分にもどすことが無料でできます。まだ入札がされていない場合のみ有効です。', /*You can cancel your domain sale, which will return the domain to you with no charge.  This is only available before any bids have been received for the domain.*/
-ENS_WrongAddress_1              :  '解錠したワレットにドメイン名がありません。', /*The wallet you unlocked does not own the name */
-ENS_WrongAddress_2              :  'アドレスを指定してお財布を解錠してください。', /*Please unlock the wallet with address */
 
+ENS_Bid_Title                   :  '入札する', /*Place a Bid*/
 ENS_Finalize                    :  '終了処理', /*Finalize*/
 ENS_Finalize_content            :  '終了処理を行うと、ドメイン名が落札者に移管されます。落札者には、第二位の入札価格との差額が返却されます。入札が一件だけの場合には、0.01ethとの差額が返却されます。落札者以外の入札も返却されます。', /*Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.*/
 ENS_Finalize_content_1          :  'まもなく、オークションの最終処理と登録を行います。', /*You are about to finalize the auction & claim the name:*/
 ENS_Helper_1                    :  '処理プロセスの概要は？', /*What is the process like?*/
-ENS_Helper_2                    :  '１．準備', /*1. Preparation*/
+ENS_Helper_2                    :  '１) 準備', /*1. Preparation*/
 ENS_Helper_3                    :  'どのアカウント(お財布)を使用するか決めてから、複数のバックアップがあることを確認、あるいは作成してください。', /*Decide which account you wish to own the name & ensure you have multiple backups of that account.*/
 ENS_Helper_4                    :  'そのドメイン名に対して可能な最大の支払ETHを決めてください(自分の<u>Bid Amount</u>)。その口座に、入札に必要な額と0.01ETHのガス消費分が残っていることを確かめてください。', /*Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.*/
-ENS_Helper_5                    :  '２．オークションの開始と入札', /*2. Start an Auction / Place a Bid*/
+ENS_Helper_5                    :  '２) 競売の開始と入札', /*2. Start an Auction / Place a Bid*/
 ENS_Helper_6                    :  '入札期間は３日間（７２時間）です。', /*Bidding period lasts 3 days (72 hours).*/
 ENS_Helper_7                    :  '<u>Secret Phrase</u>で保護された<u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>を入力します。', /*You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.*/
 ENS_Helper_8                    :  '入札はここから行いますが、ここに表示された情報は入札開示を行うまで秘匿されます。', /*This places your bid, but this information is kept secret until you reveal it.*/
-ENS_Helper_9                    :  '３．入札の開示', /*3. Reveal your Bid*/
+ENS_Helper_9                    :  '３) 入札の開示', /*3. Reveal your Bid*/
 ENS_Helper_10                   :  '入札を開示しないと、払い戻しができません。', /***If you do not reveal your bid, you will not be refunded.***/
 ENS_Helper_11                   :  '開示期間は２日間（４８時間）です。', /*Reveal Period lasts 2 days (48 hours).*/
 ENS_Helper_12                   :  'アカウントを解錠してから, <u>Bid Amount</u>, と <u>Secret Phrase</u>を入力してください。', /*You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.*/
 ENS_Helper_13                   :  '同一価格での応札では、先に開示された応札が優先されます。', /*In the event that two parties bid exactly the same amount, the first bid revealed will win.*/
-ENS_Helper_14                   :  '４．オークションを終了する', /*4. Finalize the Auction*/
-ENS_Helper_15                   :  'いったんオークションが（五日間、あるいは１２０時間後に）終了すると、その新しいドメイン名を確定するために、落札者は最終処理を行う必要があります。', /*Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.*/
+ENS_Helper_14                   :  '４) 競売を終了する', /*4. Finalize the Auction*/
+ENS_Helper_15                   :  'いったん競売が（五日間、あるいは１２０時間後に）終了すると、その新しいドメイン名を確定するために、落札者は最終処理を行う必要があります。', /*Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.*/
 ENS_Helper_16                   :  '落札者には、その入札額と二番入札との差額が返金されます。', /*The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH.*/
 ENS_Helper_17                   :  '詳細情報', /*More Information*/
 ENS_Helper_18                   :  '登録のための競売は、封印入札方式で、詳細は', /*The auction for this registrar is a blind auction, and is described in*/
@@ -93,8 +92,12 @@ ENS_Helper_19                   :  '基本的には応札中に何も開示さ�
 ENS_Helper_20                   :  'ＥＮＳ：解説書を読む', /*ENS: Read the Docs*/
 ENS_Helper_21                   :  'イサーリアムネームサービスの改訂日の発表！', /*Announcing the Ethereum Name Service Relaunch Date!*/
 ENS_Helper_22                   :  '知識ベース：ＥＮＳ', /*Knowledge Base: ENS*/
-ENS_Helper_23                   :  '開示時の[BAD INSTRUCTION] (Reveal) をデバッグする', /*Debugging a [BAD INSTRUCTION] Reveal*/
-ENS_Helper_24                   :  '開示時(Reveal)の障害について、サポート依頼する前に上記をお試しください。申し訳ございません。:(', /*Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We\'re so sorry. :(*/
+ENS_Helper_23                   :  '開札時の[BAD INSTRUCTION] (Reveal) をデバッグする', /*Debugging a [BAD INSTRUCTION] Reveal*/
+ENS_Helper_24                   :  '開札時(Reveal)の障害について、サポート依頼する前に上記をお試しください。申し訳ございません。:(', /*Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We\'re so sorry. :(*/
+ENS_Reveal_Title                :  '開札する', /*Reveal your Bid*/
+ENS_Start_Title                 :  '競売を始める', /*Start an Auction*/
+ENS_WrongAddress_1              :  '解錠したワレットにドメイン名がありません。', /*The wallet you unlocked does not own the name */
+ENS_WrongAddress_2              :  'アドレスを指定してお財布を解錠してください。', /*Please unlock the wallet with address */
 
 EOS_01                          :  '**ＥＯＳの鍵対の生成**', /* **Generate EOS Key-pair** */
 EOS_02                          :  '**ＥＯＳの鍵を登録／転写する**', /* **Register / Map your EOS Key** */
@@ -107,43 +110,45 @@ EOS_08                          :  '支援する数量を`0xd0a6E6C54DbC68Db5db3
 EOS_09                          :  'ＥＯＳトークンを請求', /*Claim EOS Tokens*/
 EOS_10                          :  '`claimAll`を選択。', /*Select `claimAll`.*/
 
+/* Onboarding */
 ONBOARD_welcome_title           :  'いらっしゃいませ！ MyEtherWallet.com へようこそ！', /*Welcome to MyEtherWallet.com*/
-ONBOARD_welcome_content__1      :  '安全のためにご理解ください。 🙏', /*Please take some time to understand this for your own safety. 🙏*/
+ONBOARD_welcome_content__1      :  '安全のためにご理解ください🙏 。', /*Please take some time to understand this for your own safety. 🙏*/
 ONBOARD_welcome_content__2      :  'これらの警告をよくご覧いただきませんと、**資産が盗まれる**ことになります。', /*Your funds will be stolen if you do not heed these warnings.*/
-ONBOARD_welcome_content__3      :  'わずらわしいご案内、と重々に承知いたしております。申し訳ございません。', /*We know this click-through stuff is annoying. We are sorry.*/
+ONBOARD_welcome_content__3      :  'わずらわしい説明と重々に承知いたしております。申し訳ございません。', /*We know this click-through stuff is annoying. We are sorry.*/
 ONBOARD_welcome_content__4      :  'ＭＥＷって何？', /*What is MEW*/
-ONBOARD_welcome_content__5      :  'MyEtherWalletはソースコード公開で、クライアント側にある無料で共通の利用者窓口です。', /*MyEtherWallet is a free, open-source, client-side interface.*/
+ONBOARD_welcome_content__5      :  'MyEtherWalletはソースコード公開で、クライアント側にある無料で共用の利用者窓口です。', /*MyEtherWallet is a free, open-source, client-side interface.*/
 ONBOARD_welcome_content__6      :  'ブロックチェーン上の暗号鍵と暗号資産の管理を直接行うことができます。', /*We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.*/
 ONBOARD_welcome_content__7      :  'セキュリティの全責任は**自分**に、そして**自分だけ**にあります。', /***You** and **only you** are responsible for your security.*/
-ONBOARD_welcome_content__8      :  'ＭＥＷを騙る詐欺サイトに行って、暗号鍵や、暗号資産を盗られてしまっても、取り返したり凍結することは誰もできません。', /*We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.*/
-ONBOARD_bank_title              :  'MyEtherWalletは金融機関ではありません。', /*MyEtherWallet is not a Bank*/
+ONBOARD_welcome_content__8      :  'ＭＥＷを騙る詐欺サイトに行って、暗号鍵や、暗号資産を盗られてしまったら、誰も取り返したり凍結することはできません。', /*We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.*/
+ONBOARD_bank_title              :  'MyEtherWalletは金融機関にあらず　', /*MyEtherWallet is not a Bank*/
 ONBOARD_bank_content__1         :  '取引所などの金融機関に口座を開設すると、その金融機関がシステムの中にあなたの口座を作成します。', /*When you open an account with a bank or exchange, they create an account for you in their system.*/
 ONBOARD_bank_content__2         :  'その金融機関は口座のパスワード、残高、取引記録や最終的にあなたの財産を含む個人情報を記録管理します。', /*The bank keeps track of your personal information, account passwords, balances, transactions and ultimately your money.*/
 ONBOARD_bank_content__3         :  'また、カードが盗難に会った際の払い戻しなど、口座の維持管理に必要な手数料を徴収します。', /*The bank charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.*/
 ONBOARD_bank_content__4         :  'そのため、送金したり、オンラインで口座の確認をしたり、パスワードや盗難に会ったカードの再発行ができます。', /*The bank allows you to write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.*/
 ONBOARD_bank_content__5         :  '金融機関や取引所にある口座では、送金額の上限、送金相手の設定、送金前にどれくらいの時間をかけて相手の疑わしさを調べるか、などを独自に決めています。全て手数料が元になっています。', /*You have an account *with the bank or exchange* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.*/
 ONBOARD_welcome_title__alt      :  '前置き', /*Introduction*/
-ONBOARD_interface_title         :  'MyEtherWalletは、共通の利用者窓口です。', /*MyEtherWallet is an Interface*/
-ONBOARD_interface_content__1    :  'MyEtherWalletを使って口座を作る時、一対の暗号のための二つの長い数字、すなわち秘密鍵と公開鍵（アドレス)とが作成されます。', /*When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).*/
+ONBOARD_interface_title         :  'MyEtherWalletは、共用の利用者窓口　', /*MyEtherWallet is an Interface*/
+ONBOARD_interface_content__1    :  'MyEtherWalletを使って口座を作る時、一対の暗号のための二つの長い数字、すなわち秘密鍵と公開鍵（アドレス）とが作成されます。', /*When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).*/
 ONBOARD_interface_content__2    :  'これらの暗号鍵の操作は全て自分のコンピューターのブラウザの中で行われます。', /*The handling of your keys happens entirely on your computer, inside your browser.*/
-ONBOARD_interface_content__3    :  '私たちは、秘密鍵、パスワードや口座情報の送信や保存を一切いたしません。', /*We never transmit, receive or store your private key, password, or other account information.*/
-ONBOARD_interface_content__4    :  '私たちは取引手数料を一切徴収しません。', /*We do not charge a transaction fee.*/
-ONBOARD_interface_content__5    :  'あなたは、私たちの**利用者窓口**をブロックチェーンを**直接**操作するために使っています。', /*You are simply using our **interface** to interact **directly with the blockchain**.*/
-ONBOARD_interface_content__6    :  '公開鍵（アドレス)を相手に教えると、ＥＴＨやトークンを受け渡し出来る様になります。👍', /*If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍*/
-ONBOARD_interface_content__7    :  '秘密鍵が誰かの手に渡ると、受け取った相手がその口座を完全に掌握します。👎', /*If you send your *private key* to someone, they now have full control of your account. 👎*/
-ONBOARD_blockchain_title__alt   :  'まじかよ、何だ一体ブロックチェーンってのは？', /*WTF is a Blockchain?*/
+ONBOARD_interface_content__3    :  '私たちは、秘密鍵、パスワードや口座情報の送信や保管を一切いたしません。', /*We never transmit, receive or store your private key, password, or other account information.*/
+ONBOARD_interface_content__4    :  '私たちは取引手数料を一切いただきません。', /*We do not charge a transaction fee.*/
+ONBOARD_interface_content__5    :  'あなたは、私たちの**利用者窓口**でブロックチェーンを**直接**操作しています。', /*You are simply using our **interface** to interact **directly with the blockchain**.*/
+ONBOARD_interface_content__6    :  '公開鍵（アドレス）を相手に教えると、ＥＴＨやトークンを受け渡し出来る様になります。👍', /*If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍*/
+ONBOARD_interface_content__7    :  '秘密鍵が誰かの手に渡ると、受け取った相手がその口座を自分のものにします。👎', /*If you send your *private key* to someone, they now have full control of your account. 👎*/
+ONBOARD_bank_title__alt         :  'MyEtherWalletは金融機関にあらず　', /*MEW isn\'t a Bank*/
+ONBOARD_blockchain_title__alt   :  '一体ブロックチェーンって何？　', /*WTF is a Blockchain?*/
 ONBOARD_blockchain_skip         :  'もう知ってるんだけど...', /*I already know what a blockchain is...*/
-ONBOARD_blockchain_title        :  'お待ち下さい：まじかよ、何だ一体ブロックチェーンってのは？', /*Wait, WTF is a Blockchain?*/
+ONBOARD_blockchain_title        :  'ちょっと待って、一体ブロックチェーンって何？ ', /*Wait, WTF is a Blockchain?*/
 ONBOARD_blockchain_content__1   :  'ブロックチェーンは、世界共通の巨大な分散型のスプレッドシートのようなものです。', /*The blockchain is like a huge, global, decentralized spreadsheet.*/
 ONBOARD_blockchain_content__2   :  '誰が誰にコインをいくら送ったとか、どの口座にいくら、などの履歴を全て持っています。', /*It keeps track of who sent how many coins to whom, and what the balance of every account is.*/
 ONBOARD_blockchain_content__3   :  '何千もいる特殊なコンピューターを持った人（発掘者）によって記録と管理が行われます。', /*It is stored and maintained by thousands of people (miners) across the globe who have special computers.*/
 ONBOARD_blockchain_content__4   :  'ブロックチェーンのなかのブロックはMyEtherWallet, MetaMask, Exodus, Mist, Geth, Parityなど至る所で行われている個々の処理や取引で作られています。', /*The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.*/
 ONBOARD_blockchain_content__5   :  'MyEtherWalletや[etherscan.io](https://etherscan.io)で残高や処理を見た時、見えるのは私たちのシステムの中ではなく、ブロックチェーンにあるデータです。', /*When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.*/
 ONBOARD_blockchain_content__6   :  'もう一度： **私たちは金融機関ではありません。**', /*Again: **we are not a bank**.*/
-ONBOARD_interface_title__alt    :  'ＭＥＷは共通の利用者窓口です。', /*MEW is an Interface*/
+ONBOARD_interface_title__alt    :  'ＭＥＷは共用の利用者窓口　', /*MEW is an Interface*/
 ONBOARD_why_title__alt          :  'でも...なんでそれがそんなに大事？', /*But...why does this matter?*/
 ONBOARD_why_title               :  'なんで全部読ませる訳？', /*Why are you making me read all this?*/
-ONBOARD_why_content__1          :  'それは私たちが**出来ない**事をわかってもらうためで...', /*Because we need you to understand that we **cannot**...*/
+ONBOARD_why_content__1          :  'それは私たちに**出来ない**事をわかっていただくためで...', /*Because we need you to understand that we **cannot**...*/
 ONBOARD_why_content__2          :  '口座にアクセスしてあなたに代わって送金すること。', /*Access your account or send your funds for you X.*/
 ONBOARD_why_content__3          :  '秘密鍵の回復または変更。', /*Recover or change your private key.*/
 ONBOARD_why_content__4          :  'パスワードのリセットまたは回復。', /*Recover or reset your password.*/
@@ -152,10 +157,10 @@ ONBOARD_why_content__6          :  '口座の凍結。', /*Freeze accounts.*/
 ONBOARD_why_content__7          :  '**あなた**が、そして**あなただけ**が自分のセキュリテイの全責任を持ちます。', /***You** and **only you** are responsible for your security.*/
 ONBOARD_why_content__8          :  '秘密鍵とパスワードを大事に保管してください。秘密鍵は、ニーモニックフレーズ、キーストアファイル、ＵＴＣファイル、ＪＳＯＮファイル、お財布（ワレット）ファイルとも呼ばれることがあります。', /*Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.*/
 ONBOARD_why_content__9          :  'もし秘密鍵やパスワードを忘れると、誰も回復させることができません。', /*If lose your private key or password, no one can recover it.*/
-ONBOARD_why_content__10         :  'もし、あなたが秘密鍵を詐欺サイトで入力すると、**全ての資産**が持って行かれます。', /*If you enter your private key on a phishing website, you will have **all your funds taken**.*/
-ONBOARD_blockchain_title__alt   :  'まじかよ、何だ一体ブロックチェーンってのは？', /*WTF is a Blockchain?*/
+ONBOARD_why_content__10         :  'もし、あなたが秘密鍵を詐欺サイトで入力すると、**全ての資産**が盗まれてしまいます。', /*If you enter your private key on a phishing website, you will have **all your funds taken**.*/
+ONBOARD_blockchain_title__alt   :  '一体ブロックチェーンって何？ ', /*WTF is a Blockchain?*/
 ONBOARD_point_title__alt        :  'それじゃＭＥＷは何ができるの？', /*What\'s the Point of MEW then?*/
-ONBOARD_whymew_title            :  'MyEtherWalletがそういう事をできないなら、どうすればいいの？', /*If MyEtherWallet can\'t do those things, what\'s the point?*/
+ONBOARD_whymew_title            :  'MyEtherWalletにできないなら、どうすればいいの？', /*If MyEtherWallet can\'t do those things, what\'s the point?*/
 ONBOARD_whymew_content__1       :  'それがブロックチェーンによる分散化の**きも**だからです。', /*Because that is the point of decentralization and the blockchain.*/
 ONBOARD_whymew_content__2       :  '自分の資産やお金を動かすときに、金融機関、政府や他の誰かを頼る必要が全くありません。', /*You don\'t have to rely on your bank, government, or anyone else when you want to move your funds.*/
 ONBOARD_whymew_content__3       :  '自分の資産を守るために、取引所や金融機関のセキュリティを頼る必要もありません。', /*You don\'t have to rely on the security of an exchange or bank to keep your funds safe.*/
@@ -163,8 +168,8 @@ ONBOARD_whymew_content__4       :  'もし、こういった事には価値が�
 ONBOARD_whymew_content__5       :  'もし、お気に召さないようでしたら、[Coinbase](https://www.coinbase.com/) や [Blockchain.info](https://blockchain.info/wallet/#/signup)をお使いください。これらは、より身近なＩＤとパスワードを使用しています。', /*If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.*/
 ONBOARD_whymew_content__6       :  'もし、少し不安だけれどもＭＥＷを使いたければ、[ハードウェアワレットを入手(英語)](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)！', /*If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.*/
 ONBOARD_why_title__alt          :  'でも...どうして？', /*But...why?*/
-ONBOARD_secure_title            :  '自分自身とその資産の守り方', /*How To Protect Yourself & Your Funds*/
-ONBOARD_secure_1_title          :  'オンライン詐欺師から自分自身を守る方法', /*How To Protect Yourself from Phishers*/
+ONBOARD_secure_title            :  '自分自身とその資産の守り方　', /*How To Protect Yourself & Your Funds*/
+ONBOARD_secure_1_title          :  'オンライン詐欺から自分自身を守る方法　', /*How To Protect Yourself from Phishers*/
 ONBOARD_secure_1_content__1     :  'オンライン詐欺師は、MyEtherWallet、EtherDelta、Paypalやあなたの金融機関のリンクが含まれた個人メッセージを送りつけてきますが、これは偽のサイトです。あなたの情報を盗み、そして資産を盗みます。', /*Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.*/
 ONBOARD_secure_1_content__2     :  '[EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn)または[MetaMask](https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html) or [Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige). のクローム拡張を使って、これらの悪意のサイトを遮断してください。', /*Install [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or  or the [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) to block malicious websites.*/
 ONBOARD_secure_1_content__3     :  'いつも、必ず、ＵＲＬ：「https://www.myetherwallet.com」を確認してください。', /*Always check the URL: `https://www.myetherwallet.com`.*/
@@ -179,15 +184,15 @@ ONBOARD_secure_2_content__2     :  'もし、ありそうにないほど良い�
 ONBOARD_secure_2_content__3     :  '誰か、あるいは何かのプロジェクトに送金する前に、よくお調べください。サイトやフォーラムの情報をよく確かめてください。慎重に。', /*Research before sending money to someone or some project. Look for information on a variety of websites and forums. Be wary.*/
 ONBOARD_secure_2_content__4     :  '理解できなかったり、正しくないと思われる場合には、直接質問してください。', /*Ask questions when you don\'t understand something or it doesn\'t seem right.*/
 ONBOARD_secure_2_content__5     :  '不安や懐疑心、流行遅れになる事の恐怖が常識の範囲を越えないように。もし何かとても緊急だと言われたら、なぜだろう、と自分でもう一度考えてみてください。おそらくそれは、時期を逃してしまう恐怖を煽るものか、十分な下調べをさせないための罠です。', /*Don\'t let fear, FUD, or FOMO win over common sense. If something is very urgent, ask yourself "why?". It may be to create FOMO or prevent you from doing research.*/
-ONBOARD_secure_3_title__alt     :  'くたばれ詐欺師ども', /*Phuck Phishers*/
-ONBOARD_secure_3_title          :  '損失を防ぐ方法', /*How To Protect Yourself from Loss*/
-ONBOARD_secure_3_content__1     :  'もしパスワードや秘密鍵を無くしてしまうと、財産は永久に返ってきません。絶対に無くすな。', /*If you lose your private key or password, it is gone forever. Don\'t lose it.*/
+ONBOARD_secure_3_title__alt     :  '　くたばれ詐欺師ども', /*Phuck Phishers*/
+ONBOARD_secure_3_title          :  '損失を防ぐ方法　', /*How To Protect Yourself from Loss*/
+ONBOARD_secure_3_content__1     :  'もしパスワードや秘密鍵を無くすと、財産を永久に失います。絶対に無くすな。', /*If you lose your private key or password, it is gone forever. Don\'t lose it.*/
 ONBOARD_secure_3_content__2     :  '秘密鍵やパスワードのバックアップを作成してください。コンピューターに保存したままにしないでください。印刷したり、ＵＳＢキーに保存してください。', /*Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.*/
 ONBOARD_secure_3_content__3     :  'その紙やＵＳＢキーを別の場所に保管してください。一つだけのバックアップでは、火事や津波などで、ラップトップコンピューターと共に破壊されてしまいます。', /*Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.*/
 ONBOARD_secure_3_content__4     :  '秘密鍵をDropbox、Google Drive、や他のクラウドストレージに保管しないでください。そのアカウント（のセキュリティ）が損なわれた場合に、資産が盗まれてしまいます。', /*Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.*/
-ONBOARD_secure_3_content__5     :  'もし、あなたが自分の１週間以上の給料に値する仮想通貨をお持ちであれば、ハードウェアワレットを入手してください。言い訳無用です。それだけの価値があります。私が保証します。', /*If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.*/
+ONBOARD_secure_3_content__5     :  'もし、あなたが自分の１週間以上の給料に値する仮想通貨をお持ちであれば、ハードウェア・ワレットを入手してください。言い訳無用です。それだけの価値があります。私が保証します。', /*If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.*/
 ONBOARD_secure_3_content__6     :  '[さらに安全確保のためのセキュリティ情報！](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)', /*[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)*/
-ONBOARD_secure_2_title__alt_2   :  '詐欺の撲滅', /*Screw Scams*/
+ONBOARD_secure_2_title__alt_2   :  '詐欺の撲滅　', /*Screw Scams*/
 ONBOARD_final_title__alt        :  'もうワンクリックで完了です！ 🤘', /*One more click & you\'re done! 🤘*/
 ONBOARD_final_title             :  'オーライ！講義終了！', /*Alright, I\'m done lecturing you!*/
 ONBOARD_final_subtitle          :  'こんな風で申し訳ありません。次はこれです！', /*Sorry for being like this. Onwards!*/
@@ -202,157 +207,29 @@ ONBOARD_final_content__8        :  'もっと教えて、連絡したい', /*Lea
 ONBOARD_final_content__9        :  'もう勘弁、お願い、早く使わせて。', /*OMG, please just let me send FFS.*/
 ONBOARD_resume                  :  '前回スライドを最後までお読みになっていないようです。プロのアドバイス：スライドを全部読みましょう😉',/*It looks like you didn\'t finish reading through these slides last time. ProTip: Finish reading through the slides 😉*/
 
-HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
-
-/* New Generics */
-x_CancelReplaceTx           : '処理を中断、あるいは置換',
-x_CancelTx                  : '処理を中断',
-x_PasswordDesc              : 'このパスワードで秘密鍵を**暗号化**します。新しい鍵を作るための元種(seed)ではありません。**このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します**',
-x_ReadMore                  : 'もっと読む',
-x_ReplaceTx                 : '処理を置き換える',
-x_TransHash                 : '処理ハッシュ',
-x_TXFee                     : '処理料',
-x_TxHash                    : '処理ハッシュ',
-
-/* Check TX Status */
-NAV_CheckTxStatus           : '処理状況を確認',
-NAV_TxStatus                : '処理状況',
-tx_Details                  : '処理内容詳細',
-tx_Summary                  : '数日後に処理状況を確認した場合をのぞいて、大量の処理発生時(ICO期間など)には、数時間処理が遅れる場合があります。本ツールは、そのような状況において処理待ちの処理を探し出し取り消す、あるいは更新する機能を提供します。＊＊これは特殊な操作で、処理プールが満杯の場合にのみ有効です。  [このツールに関しては、こちらを参考にしてください。](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
-tx_notFound                 : '対象の処理が見つかりません',
-tx_notFound_1               : 'この処理は、現在接続中の処理プールの中にありませんでした。',
-tx_notFound_2               : 'もし今、処理を送出した直後であれば、１５秒待ってから「処理状況を確認」ボタンを再度押してください。',
-tx_notFound_3               : '別の処理プールで発掘待ちになっているかもしれません。',
-tx_notFound_4               : '右上の下展開メニューから、別のノードを選択してください。 (例： `ETH (Etherscan.io)` or `ETH (Infura.io)` or `ETH (MyEtherWallet)`) から選んで再度確認する。',
-tx_foundInPending           : '待機中の処理が見つかりました。',
-tx_foundInPending_1         : 'あなたの処理が、現在接続中のノードの処理待ちプールの中で見つかりました。',
-tx_foundInPending_2         : '現在待機中です（発掘待ち）。',
-tx_foundInPending_3         : 'この処理を取り消す、あるいは置き換えることができます。下記のお財布をアンロックしてください。 ',
-tx_FoundOnChain             : '処理が見つかりました',
-tx_FoundOnChain_1           : 'あなたの待機中の処理は発掘され、ブロックチェーンに配置されました。',
-tx_FoundOnChain_2           : '**もし赤い `( ! )`, `BAD INSTRUCTION` あるいは `OUT OF GAS` のエラーメッセージを見つけたら**, これは、処理送出に失敗したということです。処理の取り消しや置き換えはできません。代わりに、新しい処理を送出してください。 "Out of Gas" エラーの場合には, ガスリミットをはじめに指定した値の倍にしてください。',
-tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
-
-/* Gen Wallet Updates */
-GEN_Help_1                  : 'この', /* Use your */
-GEN_Help_2                  : 'で自分の口座アドレスにアクセスしてください。', /* to access your account. */
-GEN_Help_3                  : '自分のデバイスそのものが、自分のお財布です。',　/* Your device * is * your wallet. */
-GEN_Help_4                  : 'ガイドとＦＡＱ',　/* Guides & FAQ */
-GEN_Help_5                  : 'お財布の作り方', /* How to Create a Wallet */
-GEN_Help_6                  : 'ここから始める', /* Getting Started */
-GEN_Help_7                  : '安全な所で保管してください · バックアップを作成してください · 他の誰にも教えないでください · 絶対になくさないでください · 無くした時には回復する方法はありません。',
-GEN_Help_8                  : 'ファイルをダウンロードしませんでしたか？', /* Not Downloading a File? */
-GEN_Help_9                  : 'Google Chromeをお使いください', /* Try using Google Chrome */
-GEN_Help_10                 : '右クリックしてファイルを保存。ファイル名: ', /* Right click & save file as. Filename:  */
-GEN_Help_11                 : 'このファイルは自分のコンピューターで開かないでください', /*Don\'t open this file on your computer */
-GEN_Help_12                 : 'MyEtherWalletの上でこれを使って自分のお財布をアンロックしてください（Mist, Geth, Parityや他のお財布クライアントも可）', /*Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity and other wallet clients.)
-*/
-GEN_Help_13                 : '自分のキーストアファイルのバックアップ作成方法', /*How to Back Up Your Keystore File */
-GEN_Help_14                 : 'これらの方式の違いは？',　/*What are these Different Formats? */
-GEN_Help_15                 : '自分の資金の紛失や盗難を防止する。', /* Preventing loss & theft of your funds. */
-GEN_Help_16                 : 'これらの方式の違いは？', /*What are these Different Formats?*/
-GEN_Help_17                 : 'なぜこれらをすべきか？', /*Why Should I?*/
-GEN_Help_18                 : '２番目のバックアップ作成のため', /*To have a secondary backup.*/
-GEN_Help_19                 : 'パスワードを忘れた場合には', /*In case you ever forget your password.*/
-GEN_Help_20                 : '隔離された保管場所', /*Cold Storage*/
-GET_ConfButton              : '理解できました。続けます。', /*I understand. Continue.*/
-GEN_Label_5                 : '自分の秘密鍵を保存する。', /*Save Your `Private Key`. */
-GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する', /*Unlock your wallet to see your address*/
-GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかるの料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するためにマイナーに支払う手数料です。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「50 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.*/
-GAS_LIMIT_Desc              : 'ガスリミットは、その処理のために送出するガスの総量です。「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するための料金として支払われます。 この数字を増やしても、自分の処理が早くなることはありません。ETHの送出 = 「２１０００」、トークンの送出 = ~「２０００００」が目安になります。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
-NONCE_Desc                  : 'このnonceは、指定のアドレスから送出される処理の数です。正しい順番で重複しないように処理を確実にするためのものです。',
-TXFEE_Desc                  : 'この処理料金は自分の処理をブロックに配置するためにマイナーに支払われます。「ガスリミット」＊「ガス価格」で算出されます。 [GWEI -> ETHの単位変換はこちらです。](https://www.myetherwallet.com/helpers.html)',　/*The TX Fee is paid to miners for including your TX in a block. It is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)*/
-
-
-
-
-/* Navigation*/
-NAV_AddWallet               : 'お財布の追加 ',
-NAV_BulkGenerate            : 'バルク作成 ',
-NAV_Contact                 : '連絡する ',
-NAV_Contracts               : '契約 ',
-NAV_DeployContract          : '契約を展開 ',
-NAV_DomainSale              : 'DomainSale',
-NAV_ENS                     : 'ENS',
-NAV_GenerateWallet_alt      : 'New Wallet ',
-NAV_GenerateWallet          : 'お財布の作成 ',
-NAV_Help                    : 'ヘルプ ',
-NAV_InteractContract        : '契約を操作 ',
-NAV_Multisig                : '多重署名 ',
-NAV_MyWallets               : '自分のお財布 ',
-NAV_Offline                 : 'オフライン送出 ',
-NAV_SendEther               : 'Ether/トークンの送出 ',
-NAV_SendTokens              : 'トークン送出 ',
-NAV_SignMsg                 : 'メッセージ署名 ',
-NAV_Swap                    : '通貨の両替 ',
-NAV_ViewWallet              : 'お財布情報を見る ',
-NAV_YourWallets             : '自分のお財布 ',
-
-/* General */
-x_Access                    : 'アクセス ',
-x_AddessDesc                : '自分のアドレスは、アカウント番号や公開キーでも知ることができます。誰かとETHやトークンの受け渡しをするために、これらを用います。きれいな色のついたアドレスアイコンを見つけてください。自分のペーパーウォレットや、アドレスを入力する際に、同じアイコンであることをしっかりと確認してください。 これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
-x_Address                   : '自分のアドレス ',
-x_Cancel                    : '取り消す ',
-x_CSV                       : 'CSV ファイル (未暗号化) ',
-x_Download                  : 'ダウンロード ',
-x_Json                      : 'JSON ファイル (未暗号化) ',
-x_JsonDesc                  : 'これはパスワードが不要な暗号化されていないJSONフォーマットの秘密鍵です。この暗号化されていないJSONフォーマットの秘密鍵を使えば、誰でもパスワードを使わずに自分のお財布とEtherにアクセスできます。 ',
-x_Keystore                  : 'Keystore ファイル (UTC / JSON · 推奨 · 暗号化) ',
-x_Keystore2                 : 'Keystore ファイル (UTC / JSON) ',
-x_KeystoreDesc              : 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。 ',
-x_Ledger                    : 'Ledger Wallet ',
-x_MetaMask                  : 'Metamask / Mist ',
-x_Mnemonic                  : 'ニーモニック文節 ',
-x_ParityPhrase              : 'パリティ文節 ',
-x_Password                  : 'パスワード ',
-x_Print                     : 'お財布紙情報を印刷 ',
-x_PrintDesc                 : 'アドバイス: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。 ',
-x_PrintShort                : '印刷 ',
-x_PrivKey                   : '秘密鍵（未暗号化） ',
-x_PrivKey2                  : '秘密鍵 ',
-x_PrivKeyDesc               : 'これはパスワードが不要な暗号化されていない秘密鍵です。この暗号化されていない秘密鍵を使えば、誰でもパスワードなしで自分のお財布を使用できます。従って、暗号化された秘密鍵の利用をおすすめします。 ',
-x_Save                      : '保存する ',
-x_Trezor                    : 'TREZOR ',
-x_TXT                       : 'TXT ファイル (未暗号化) ',
-x_Wallet                    : 'お財布 ',
-
-/* Header */
-MEW_Warning_1               : 'お財布を操作したり新しいお財布を作成する前に、必ずURLを確認してください。詐欺サイトに御注意ください！ ',
-CX_Warning_1                : '必ずここに保管するすべてのお財布の「外部バックアップ」を作成してください。このChrome Extensionでは、再導入などで、データが保存されずの消失することが頻繁に起こります。このエクステンションは容易な操作を提供するのみで、「バックアップ」は行いません。 ',
-MEW_Tagline                 : 'オープンソース JavaScript クライアントサイド Etherお財布 ',
-CX_Tagline                  : 'オープンソース JavaScript クライアントサイド Etherお財布 Chrome Extension ',
-
-/* Footer */
-FOOTER_1                    : 'イサーリアムお財布の作成とトランザクション実行のためのオープンソース、javascript、 クライアントサイドツール。 ',
-FOOTER_1b                   : '制作 ',
-FOOTER_2                    : '投げ銭に感謝致します！: ',
-FOOTER_3                    : 'クライアントサイドお財布制作 ',
-FOOTER_4                    : '免責事項 ',
-
-/* Sidebar */
-sidebar_AccountInfo         : 'アカウント情報 ',
-sidebar_AccountAddr         : 'アカウントアドレス:  ',
-sidebar_AccountBal          : 'アカウント残高 ',
-sidebar_TokenBal            : 'トークン残高 ',
-sidebar_Equiv               : '等価 ',
-sidebar_TransHistory        : 'トランザクション履歴 ',
-sidebar_donation            : 'MyEtherWalletは、プライバシーとセキュリティのための無料のオープンソースサービスです。　寄付が増えることによって、新機能やフィードバックの反映を行い、よりユーザーの皆様のご希望に沿った制作の時間を増やす事が可能になります。私たちは、たった二人で世界を変えようとしています。お手伝いいただけますか? ',
-sidebar_donate              : '寄付する ',
-sidebar_thanks              : '感謝します!!! ',
-sidebar_DisplayOnTrezor     : 'TREZORでアドレスを表示',
-sidebar_DisplayOnLedger     : 'Ledgerでアドレスを表示',
-
-/* Chrome Extension */
-CX_error_1                  : 'お財布が保存されていません。["Add Wallet"](/cx-wallet.html#add-wallet)をクリックして追加してください。 ',
-CX_quicksend                : '簡易送信 ', // if no appropriate translation, just use "Send"
-
-/* Decrypt Panel */
-decrypt_Access              : 'どの方法でお財布を操作しますか？ ',
-decrypt_Title               : '秘密鍵形式の選択： ',
-decrypt_Select              : 'お財布の選択 ',
-
-/* Add Wallet */
+/* Old */
+ADD_DigitalBitbox_0a        : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
+ADD_DigitalBitbox_0b        : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
+ADD_DigitalBitbox_scan      : 'DigitalBitboxに接続する ',
 ADD_Label_1                 : 'ご希望の操作方法をお選びください ',
+ADD_Label_2                 : 'ニックネームの作成： ',
+ADD_Label_3                 : 'お財布が暗号化されています。パスワードを入力してください： ',
+ADD_Label_4                 : '監視するアカウントを追加 ',
+ADD_Label_5                 : 'アドレスを入力 ',
+ADD_Label_6                 : 'お財布をアンロック： ',
+ADD_Label_6_short           : 'アンロック ',
+ADD_Label_7                 : 'アカウント追加 ',
+ADD_Label_8                 : 'パスワード（任意）: ',
+ADD_Ledger_0a               : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
+ADD_Ledger_0b               : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
+ADD_Ledger_1                : '自分の Ledger Wallet　を接続する ',
+ADD_Ledger_2                : 'イサリアムアプリケーション（あるいはコントラクトアプリケーション）を開く　。 ',
+ADD_Ledger_2_Exp            : 'Expanseアプリケーション（または契約アプリケーション）を開きます。',
+ADD_Ledger_2_Ubq            : 'Ubiqアプリケーション（または契約アプリケーション）を開きます。',
+ADD_Ledger_3                : '設定中で、ブラウザサポートが有効にされていることを確認してください。 ',
+ADD_Ledger_4                : '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager) ',
+ADD_Ledger_scan             : 'Ledger Wallet に接続 ',
+ADD_MetaMask                : 'MetaMask に接続 ',
 ADD_Radio_1                 : 'お財布の新規作成 ',
 ADD_Radio_2                 : 'お財布ファイルの選択 (Keystore / JSON) ',
 ADD_Radio_2_alt             : 'お財布ファイルの選択： ',
@@ -366,202 +243,35 @@ ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
 ADD_Radio_5_PathAlternative : '(Ledger)',
 ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'カスタム',
-ADD_Label_2                 : 'ニックネームの作成： ',
-ADD_Label_3                 : 'お財布が暗号化されています。パスワードを入力してください： ',
-ADD_Label_4                 : '監視するアカウントを追加 ',
-ADD_Warning_1               : '任意のアカウントを監視する目的で、秘密鍵をアップロードせずにお財布タブに追加することできます。これによってお財布の操作や、ETHERの移動が可能になるわけではありません。 ',
-ADD_Label_5                 : 'アドレスを入力 ',
-ADD_Label_6                 : 'お財布をアンロック： ',
-ADD_Label_6_short           : 'アンロック ',
-ADD_Label_7                 : 'アカウント追加 ',
-ADD_Label_8                 : 'パスワード（任意）: ',
-
-/* Mnemonic */
-MNEM_1                      : '操作したいアドレスを選択してください。 ',
-MNEM_2                      : 'ＨＤニーモニックの一つの文節で、複数のお財布やアドレスが操作可能です。操作したいアドレスを選択してください。 ',
-MNEM_more                   : 'さらにアドレスを表示 ',
-MNEM_prev                   : '前のアドレス表示 ',
-
-/* Hardware wallets */
-ADD_Ledger_1                : '自分の Ledger Wallet　を接続する ',
-ADD_Ledger_2                : 'イサリアムアプリケーション（あるいはコントラクトアプリケーション）を開く　。 ',
-ADD_Ledger_2_Exp            : 'Expanseアプリケーション（または契約アプリケーション）を開きます。',
-ADD_Ledger_2_Ubq            : 'Ubiqアプリケーション（または契約アプリケーション）を開きます。',
-ADD_Ledger_3                : '設定中で、ブラウザサポートが有効にされていることを確認してください。 ',
-ADD_Ledger_4                : '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
-ADD_Ledger_0b               : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
-ADD_Ledger_scan             : 'Ledger Wallet に接続 ',
-
-ADD_MetaMask                : 'MetaMask に接続 ',
-
 ADD_Trezor_scan             : 'TREZORに接続 ',
-ADD_Trezor_select           : 'これはTREZORのシードです ',
-x_DigitalBitbox             : 'Digital Bitbox ',
-ADD_DigitalBitbox_0a        : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
-ADD_DigitalBitbox_0b        : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
-ADD_DigitalBitbox_scan      : 'DigitalBitboxに接続する ',
+ADD_Warning_1               : '任意のアカウントを監視する目的で、秘密鍵をアップロードせずにお財布タブに追加することできます。これによってお財布の操作や、ETHERの移動が可能になるわけではありません。 ',
 
-/* Generate Wallets */
-GEN_desc                    : '複数のお財布の作成をこのタブで行う事ができます： ',
-GEN_Label_1                 : '強固なパスワードを入力(９文字以上） ',
-GEN_Placeholder_1           : '必ず保存してください！ ',
-GEN_SuccessMsg              : '成功！お財布が作成されました。 ',
-GEN_Label_2                 : 'Keystore/JSON あるいは秘密鍵を保存してください。パスワードを絶対に忘れないようにしてください。 ',
-GEN_Label_3                 : 'アドレスを保存してください。 ',
-GEN_Label_4                 : '必要であれば、お財布紙情報、あるいはQRコードを印刷してください。 ',
-
-/* Bulk Generate Wallets */
 BULK_Label_1                : '作成するお財布の数 ',
 BULK_Label_2                : 'お財布を複数を作成する ',
 BULK_SuccessMsg             : '成功！お財布が作成されました。 ',
 
-/* Sending Ether and Tokens */
-SEND_addr                   : '宛先アドレス： ',
-SEND_amount                 : '送出数量： ',
-SEND_amount_short           : '数量 ',
-SEND_custom                 : 'カスタム ',
-SEND_gas                    : 'ガス ',
-SEND_TransferTotal          : '残高をすべて送出する ',
-SEND_generate               : 'トランザクションを生成 ',
-SEND_raw                    : '未加工トランザクション ',
-SEND_signed                 : '署名済みトランザクション ',
-SEND_trans                  : 'トランザクションの送出 ',
-SENDModal_Title             : '警告！ ',
-SEND_custom                 : 'カスタムトークンを追加 ',
-/* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
-SENDModal_Content_1         : '送出準備が ',
-SENDModal_Content_2         : 'について、アドレス ',
-SENDModal_Content_3         : 'に対し完了。本当に送出してよろしいですか？ ',
-SENDModal_Content_4         : 'ノート：最も起こりやすいエラーの原因は、送出のためのガス不足で、その場合には、ETHを追加する必要があります。ガスはETHで支払われます。 ',
-SENDModal_No                : 'いいえ、中断します。 ',
-SENDModal_Yes               : 'はい、確かです。処理を実行します。 ',
+CONTRACT_ByteCode           : 'バイトコード ',
+CONTRACT_Interact_CTA       : '機能を一つ選ぶ ',
+CONTRACT_Interact_Title     : '契約の読込や書込 ',
+CONTRACT_Json               : 'ABI / JSON インターフェース ',
+CONTRACT_Read               : '読み取り ',
+CONTRACT_Title              : '契約アドレス ',
+CONTRACT_Title_2            : '既存の契約を選択 ',
+CONTRACT_Write              : '書き込み ',
 
-/* Tokens */
-TOKEN_Addr                  : 'Token Contract アドレス： ',
-TOKEN_Symbol                : 'トークンシンボル： ',
-TOKEN_Dec                   : 'ケタ数： ',
-TOKEN_show                  : '全てのトークンを表示 ',
-TOKEN_hide                  : 'トークンを隠す ',
+CX_error_1                  : 'お財布が保存されていません。["Add Wallet"](/cx-wallet.html#add-wallet)をクリックして追加してください。 ',
+CX_quicksend                : '簡易送信 ', // if no appropriate translation, just use "Send"
+CX_Tagline                  : 'オープンソース JavaScript クライアントサイド Etherお財布 Chrome Extension ',
+CX_Warning_1                : '必ずここに保管するすべてのお財布の「外部バックアップ」を作成してください。このChrome Extensionでは、再導入などで、データが保存されずの消失することが頻繁に起こります。このエクステンションは容易な操作を提供するのみで、「バックアップ」は行いません。 ',
 
-/* Send Transaction */
-TRANS_desc                  : 'トークンを送出するには「トークン送出」のタブを選択してください。 ',
-TRANS_warning               : 'コントラクト上で、「ETHのみ」あるいは「ETCのみ」の送出を行う場合、受け入れサービスによって、これらのトランザクションに問題を生ずる場合があります。以下参照。 ',
-TRANS_advanced              : '+Advanced: ガスあるいはデータを追加してください ',
-TRANS_data                  : 'データ： ',
-TRANS_gas                   : 'ガスリミット： ',
-TRANS_sendInfo              : '21000ガスを使用する標準トランザクションは、0.000441 ETHを消費します。迅速な処理を行うために、若干最小量よりも多めの0.000000021 ETHのガスを使用します。当サービスでは、トランザクション料金は徴収いたしません。 ',
+decrypt_Access              : 'どの方法でお財布を操作しますか？ ',
+decrypt_Title               : '秘密鍵形式の選択： ',
+decrypt_Select              : 'お財布の選択 ',
 
-/* Send Transaction Modals */
-TRANSModal_Title            : '「ETHのみ」と「ETCのみ」トランザクション ',
-TRANSModal_Content_0        : '異なるトランザクションと異なるサービスの注釈： ',
-TRANSModal_Content_1        : '**ETH(標準トランザクション): ** これは、アドレス間移動のデファルトのトランザクションを生成します。デフォルトガス値は21000です。このメソッドで送出されたETHは、高い可能性でETCチェーンでリプレイされます。 ',
-TRANSModal_Content_2        : '**ETHのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETH**チェーンのみに送出します。 ',
-TRANSModal_Content_3        : '**ETCのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETC**チェーンのみに送出します。 ',
-TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** スタンダードトランザクションのみで送出します。どちらかのみのコントラクトで送出する場合には、サポートスタッフに連絡して、手動で残高に追加したり払い戻しをする必要があります。[Shapeshiftの「スプリット」ツールも使用可能です。(https://split.shapeshift.io/) ',
-TRANSModal_Content_5        : '**Kraken & Poloniex:** 問題は確認されていません。どれでもお使いください。 ',
-TRANSModal_Yes              : '理解しました。 ',
-TRANSModal_No               : 'わかりません。おしえてください。 ',
-
-/* Offline Transaction */
-OFFLINE_Title               : 'オフライントランザクションを作成し送出 ',
-OFFLINE_Desc                : 'オフライントランザクションの作成は、3ステップで行う事ができます。ステップ１と３はオンラインのコンピューター上で行い、ステップ２は、オフライン、あるいは物理的にネットワークと切断されたコンピューターを用います。これにより、秘密鍵が、インターネットに接続したデバイスと接触する事を避ける事ができます。 ',
-OFFLLINE_Step1_Title        : 'ステップ1: 情報生成 (オンラインコンピューター) ',
-OFFLINE_Step1_Button        : '情報生成 ',
-OFFLINE_Step1_Label_1       : '送出元アドレス： ',
-OFFLINE_Step1_Label_2       : 'ノート：これは、送出元アドレスであって、送出先アドレスではありません。操作元アカウントからは「Nonce」が生成されます。切断されたコンピューターを使用する場合に、このアドレスはコールドストレージのアカウントのものになります。 ',
-OFFLINE_Step2_Title         : 'ステップ2: 情報生成 (オフラインコンピューター) ',
-OFFLINE_Step2_Label_1       : '送出先アドレス： ',
-OFFLINE_Step2_Label_2       : '送出する値/総量 ',
-OFFLINE_Step2_Label_3       : 'ガス価格 ',
-OFFLINE_Step2_Label_3b      : 'これは、ステップ１でオンラインコンピューターに表示されたものです。 ',
-OFFLINE_Step2_Label_4       : 'ガスリミット ',
-OFFLINE_Step2_Label_4b      : 'デフォルトガスリミット値は21000です。契約や付加データーを送出する場合には、これらの値は　異なるものにする必要があります。使用されなかったガスは全て返却されます。 ',
-OFFLINE_Step2_Label_5       : 'Nonce ',
-OFFLINE_Step2_Label_5b      : 'これらは、ステップ１でオンラインコンピューターに表示されたものです。 ',
-OFFLINE_Step2_Label_6       : 'データ ',
-OFFLINE_Step2_Label_6b      : 'これは、任意の付加データです。契約に対してトランザクションを送出する際などでよく使われます。 ',
-OFFLINE_Step2_Label_7       : '秘密鍵/JSONの入力/選択 ',
-OFFLINE_Step3_Title         : 'ステップ３: トランザクションの送出/公開(オンラインコンピューター) ',
-OFFLINE_Step3_Label_1       : 'ステップ２で署名されたトランザクションをここにペーストして「トランザクションの送出」ボタンをクリックする。 ',
-
-/* Contracts */
 DEP_generate                : 'バイトコードを生成する ',
 DEP_generated               : '生成されたバイトコード ',
 DEP_signtx                  : 'トランザクションに署名 ',
 DEP_interface               : '生成されたインターフェース ',
-CONTRACT_Title              : '契約アドレス ',
-CONTRACT_Title_2            : '既存の契約を選択 ',
-CONTRACT_Json               : 'ABI / JSON インターフェース ',
-CONTRACT_Interact_Title     : '契約の読込や書込 ',
-CONTRACT_Interact_CTA       : '機能を一つ選ぶ ',
-CONTRACT_ByteCode           : 'バイトコード ',
-CONTRACT_Read               : '読み取り ',
-CONTRACT_Write              : '書き込み ',
-
-/* My Wallet */
-MYWAL_Nick                  : 'お財布ニックネーム ',
-MYWAL_Address               : 'お財布アドレス ',
-MYWAL_Bal                   : '残高 ',
-MYWAL_Edit                  : '編集 ',
-MYWAL_View                  : '表示 ',
-MYWAL_Remove                : '消去 ',
-MYWAL_RemoveWal             : 'お財布を消去： ',
-MYWAL_WatchOnly             : '監視中のアカウント ',
-MYWAL_Viewing               : 'お財布を表示： ',
-MYWAL_Hide                  : 'お財布情報を隠す ',
-MYWAL_Edit_2                : 'お財布を編集： ',
-MYWAL_Name                  : 'お財布名 ',
-MYWAL_Content_1             : '警告！　お財布を消去しようとしています： ',
-MYWAL_Content_2             : '**秘密鍵と鍵保存ファイル及びパスワード**が保管されているか確認してください。 ',
-MYWAL_Content_3             : 'MyEtherWallet CXでこのお財布を使用するためには、秘密鍵あるいはJSONとパスワードを手動で追加する必要があります。 ',
-
-/* Node Switcher */
-NODE_Title                  : 'カスタムノードをセットアップ',
-NODE_Subtitle               : 'ローカルノードに接続するには...',
-NODE_Warning                : 'MyEtherWallet.com 経由で接続するためには、HTTPSノードが必要です。[MyEtherWalletをレポジトリからダウンロードして、手元で走らせ、](https://github.com/kvhnuke/etherwallet/releases/latest)いずれかのノードに接続することもできます。 あるいは、無料のSSL証明書を[LetsEncrypt](https://letsencrypt.org/)から入手してください',
-NODE_Name                   : 'ノード名',
-NODE_Port                   : 'ノードポート',
-NODE_CTA                    : '保存してカスタムノードを使用',
-
-/* Swap / Exchange */
-SWAP_rates                  : "現在のレート ",
-SWAP_init_1                 : "これから両替で ",
-SWAP_init_2                 : " を ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "次へ ", // or "Continue"
-SWAP_information            : "あなたの情報 ",
-SWAP_send_amt               : "送出総額 ",
-SWAP_rec_amt                : "受け取り総額 ",
-SWAP_your_rate              : "変換レート ",
-SWAP_rec_add                : "受け取りアドレス ",
-SWAP_start_CTA              : "交換開始 ",
-SWAP_ref_num                : "参照番号 ",
-SWAP_time                   : "送出するまでにあと、 ",
-SWAP_elapsed				        : "Time elapsed since sent ",
-SWAP_progress_1             : "注文を開始しました ",
-SWAP_progress_2             : "到着待機中 ", // Waiting for your BTC...
-SWAP_progress_3             : "ETH受け取り完了 ", // ETH Received!
-SWAP_progress_4             : "送出中 {{orderResult.output.currency}} ",
-SWAP_progress_5             : "注文完了 ",
-SWAP_order_CTA              : "お送りいただきたいのは ", // Please send 1 ETH...
-SWAP_unlock                 : "このページから直接ETHあるいはトークンを送出するためには、お財布を解錠してください。",
-
-/* Sign Message */
-MSG_message                 : 'メッセージ ',
-MSG_date                    : '日付 ',
-MSG_signature               : '署名 ',
-MSG_verify                  : 'メッセージを確認 ',
-MSG_info1                   : 'この署名が別の日付で再度使われないようにするために、現時点の日付を入れてください。 ',
-MSG_info2                   : '他人に使われないようにするため、あなたのニックネームとそれが使われるところを入れてください。 ',
-MSG_info3                   : '異なった目的で使用されないようにするために、利用目的を入れてください。 ',
-
-/* View Wallet Details */
-VIEWWALLET_Subtitle         : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。[import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)する時に必要です。残高をチェックするためには、[etherscan.io](http://etherscan.io/)のようなブロックチェーンエクスプローラーサービスを使う事をおすすめします。 ',
-VIEWWALLET_Subtitle_Short   : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。 ',
-VIEWWALLET_SuccessMsg       : '成功しました! お財布の詳細は以下の通りです。 ',
-VIEWWALLET_ShowPrivKey      : '(show)',
-VIEWWALLET_HidePrivKey      : '(hide)',
-
 /* Error Messages */
 ERROR_0                     : '(error_01) 正しい値を入力してください。 (Please enter a valid amount.) ',
 ERROR_1                     : '(error_02) パスワードは少なくとも９文字が必要です。強固なパスワードであることをお確かめください。 (Your password must be at least 9 characters. Please ensure it is a strong password.) ',
@@ -604,16 +314,6 @@ ERROR_37                    : '(error_38) １６進数を正しく入力して�
 ERROR_38                    : '(error_39) Offer must have either price or reserve set to more than 0',
 ERROR_39                    : '(error_40) Bid must be more than the specified minimum',
 
-
-SUCCESS_1                   : '有効なアドレス ',
-SUCCESS_2                   : 'お財布は正常に暗号解除されました。 ',
-SUCCESS_3                   : 'トランザクションはブロックチェイン上に展開されています。ガス不足や契約実行エラーがないことを確認するために、下のボタンをクリックしてトランザクション(TX)を表示してください。 TX Hash:  ', //'トランザクションが送出されました。 TX Hash ',
-SUCCESS_4                   : 'お財布が追加されました： ',
-SUCCESS_5                   : '選択されました： ',
-SUCCESS_6                   : '接続完了しました ',
-SUCCESS_7                   : 'メッセージの署名が確認されました',
-WARN_Send_Link              : '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、お財布を解錠してください。 ',
-
 GETH_Balance                : '(geth-01) 残高不足 Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
 GETH_Cheap                  : '(geth-02) ガス価格が低すぎます Gas price too low for acceptance. Try raising the gas price to 21 GWEI via the dropdown in top-right.',
 GETH_GasLimit               : '(geth-03) ブロックガスリミットを越えています Exceeds block gas limit. Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)',
@@ -632,6 +332,307 @@ PARITY_InvalidGasLimit      : "(parity-05) ガス供給量が制限を超過し�
 PARITY_LimitReached         : "(parity-06) キューにあるトランザクションの数が多すぎます。上限を超えたため、対象のトランザクションは除外されています。その fee を増やしてみてください。 There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the gas price. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
 PARITY_Old                  : "(parity-07) トランザクション nonceが小さすぎます。増やしてみてください。 There is already a transaction with this [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html). Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
 PARITY_TooCheapToReplace    : "(parity-08) トランザクションフィー不足です。同じ nonce のトランザクションが別のキューにあります。fee または nonce を増やしてみてください。 TX Fee is too low. It does not satisfy your node's minimal fee (minimal: (d+), got: (d+)). Try increasing the gas price and/or gas limit. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+
+
+FOOTER_1                    : 'イサーリアムお財布の作成とトランザクション実行のためのオープンソース、javascript、 クライアントサイドツール。 ',
+FOOTER_1b                   : '制作 ',
+FOOTER_2                    : '投げ銭に感謝致します！: ',
+FOOTER_3                    : 'クライアントサイドお財布制作 ',
+FOOTER_4                    : '免責事項 ',
+
+GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかるの料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するためにマイナーに支払う手数料です。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「50 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.*/
+GAS_LIMIT_Desc              : 'ガスリミットは、その処理のために送出するガスの総量です。「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するための料金として支払われます。 この数字を増やしても、自分の処理が早くなることはありません。ETHの送出 = 「２１０００」、トークンの送出 = ~「２０００００」が目安になります。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
+/* Gen Wallet Updates */
+GEN_desc                    : '複数のお財布の作成をこのタブで行う事ができます： ',
+GEN_Help_1                  : 'この', /* Use your */
+GEN_Help_2                  : 'で自分の口座アドレスにアクセスしてください。', /* to access your account. */
+GEN_Help_3                  : '自分のデバイスそのものが、自分のお財布です。',　/* Your device * is * your wallet. */
+GEN_Help_4                  : 'ガイドとＦＡＱ',　/* Guides & FAQ */
+GEN_Help_5                  : 'お財布の作り方', /* How to Create a Wallet */
+GEN_Help_6                  : 'ここから始める', /* Getting Started */
+GEN_Help_7                  : '安全な所で保管してください · バックアップを作成してください · 他の誰にも教えないでください · 絶対になくさないでください · 無くした時には回復する方法はありません。',
+GEN_Help_8                  : 'ファイルをダウンロードしませんでしたか？', /* Not Downloading a File? */
+GEN_Help_9                  : 'Google Chromeをお使いください', /* Try using Google Chrome */
+GEN_Help_10                 : '右クリックしてファイルを保存。ファイル名: ', /* Right click & save file as. Filename:  */
+GEN_Help_11                 : 'このファイルは自分のコンピューターで開かないでください', /*Don\'t open this file on your computer */
+GEN_Help_12                 : 'MyEtherWalletの上でこれを使って自分のお財布をアンロックしてください（Mist, Geth, Parityや他のお財布クライアントも可）', /*Use it to unlock your wallet via MyEtherWallet (or Mist, Geth, Parity and other wallet clients.)*/
+GEN_Help_13                 : '自分のキーストアファイルのバックアップ作成方法', /*How to Back Up Your Keystore File */
+GEN_Help_14                 : 'これらの方式の違いは？',　/*What are these Different Formats? */
+GEN_Help_15                 : '自分の資金の紛失や盗難を防止する。', /* Preventing loss & theft of your funds. */
+GEN_Help_16                 : 'これらの方式の違いは？', /*What are these Different Formats?*/
+GEN_Help_17                 : 'なぜこれらをすべきか？', /*Why Should I?*/
+GEN_Help_18                 : '２番目のバックアップ作成のため', /*To have a secondary backup.*/
+GEN_Help_19                 : 'パスワードを忘れた場合には', /*In case you ever forget your password.*/
+GEN_Help_20                 : '隔離された保管場所', /*Cold Storage*/
+GEN_Label_1                 : '強固なパスワードを入力(９文字以上） ',
+GEN_Label_2                 : 'Keystore/JSON あるいは秘密鍵を保存してください。パスワードを絶対に忘れないようにしてください。 ',
+GEN_Label_3                 : 'アドレスを保存してください。 ',
+GEN_Label_4                 : '必要であれば、お財布紙情報、あるいはQRコードを印刷してください。 ',
+GEN_Label_5                 : '自分の秘密鍵を保存する。', /*Save Your `Private Key`. */
+GEN_Placeholder_1           : '必ず保存してください！ ',
+GEN_SuccessMsg              : '成功！お財布が作成されました。 ',
+GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する', /*Unlock your wallet to see your address*/
+GET_ConfButton              : '理解できました。続けます。', /*I understand. Continue.*/
+
+MEW_Warning_1               : 'お財布を操作したり新しいお財布を作成する前に、必ずURLを確認してください。詐欺サイトに御注意ください！ ',
+MEW_Tagline                 : 'オープンソース JavaScript クライアントサイド Etherお財布 ',
+
+MNEM_1                      : '操作したいアドレスを選択してください。 ',
+MNEM_2                      : 'ＨＤニーモニックの一つの文節で、複数のお財布やアドレスが操作可能です。操作したいアドレスを選択してください。 ',
+MNEM_more                   : 'さらにアドレスを表示 ',
+MNEM_prev                   : '前のアドレス表示 ',
+
+MSG_message                 : 'メッセージ ',
+MSG_date                    : '日付 ',
+MSG_signature               : '署名 ',
+MSG_verify                  : 'メッセージを確認 ',
+MSG_info1                   : 'この署名が別の日付で再度使われないようにするために、現時点の日付を入れてください。 ',
+MSG_info2                   : '他人に使われないようにするため、あなたのニックネームとそれが使われるところを入れてください。 ',
+MSG_info3                   : '異なった目的で使用されないようにするために、利用目的を入れてください。 ',
+
+MYWAL_Nick                  : 'お財布ニックネーム ',
+MYWAL_Address               : 'お財布アドレス ',
+MYWAL_Bal                   : '残高 ',
+MYWAL_Edit                  : '編集 ',
+MYWAL_View                  : '表示 ',
+MYWAL_Remove                : '消去 ',
+MYWAL_RemoveWal             : 'お財布を消去： ',
+MYWAL_WatchOnly             : '監視中のアカウント ',
+MYWAL_Viewing               : 'お財布を表示： ',
+MYWAL_Hide                  : 'お財布情報を隠す ',
+MYWAL_Edit_2                : 'お財布を編集： ',
+MYWAL_Name                  : 'お財布名 ',
+MYWAL_Content_1             : '警告！　お財布を消去しようとしています： ',
+MYWAL_Content_2             : '**秘密鍵と鍵保存ファイル及びパスワード**が保管されているか確認してください。 ',
+MYWAL_Content_3             : 'MyEtherWallet CXでこのお財布を使用するためには、秘密鍵あるいはJSONとパスワードを手動で追加する必要があります。 ',
+
+NAV_AddWallet               : 'お財布の追加 ',
+NAV_BulkGenerate            : 'バルク作成 ',
+NAV_CheckTxStatus           : '処理状況を確認',
+NAV_Contact                 : '連絡する ',
+NAV_Contracts               : '契約 ',
+NAV_DeployContract          : '契約を展開 ',
+NAV_DomainSale              : 'DomainSale',
+NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'New Wallet ',
+NAV_GenerateWallet          : 'お財布の作成 ',
+NAV_Help                    : 'ヘルプ ',
+NAV_InteractContract        : '契約を操作 ',
+NAV_Multisig                : '多重署名 ',
+NAV_MyWallets               : '自分のお財布 ',
+NAV_Offline                 : 'オフライン送出 ',
+NAV_SendEther               : 'Ether/トークンの送出 ',
+NAV_SendTokens              : 'トークン送出 ',
+NAV_SignMsg                 : 'メッセージ署名 ',
+NAV_Swap                    : '通貨の両替 ',
+NAV_TxStatus                : '処理状況',
+NAV_ViewWallet              : 'お財布情報を見る ',
+NAV_YourWallets             : '自分のお財布 ',
+
+NODE_Title                  : 'カスタムノードをセットアップ',
+NODE_Subtitle               : 'ローカルノードに接続するには...',
+NODE_Warning                : 'MyEtherWallet.com 経由で接続するためには、HTTPSノードが必要です。[MyEtherWalletをレポジトリからダウンロードして、手元で走らせ、](https://github.com/kvhnuke/etherwallet/releases/latest)いずれかのノードに接続することもできます。 あるいは、無料のSSL証明書を[LetsEncrypt](https://letsencrypt.org/)から入手してください',
+NODE_Name                   : 'ノード名',
+NODE_Port                   : 'ノードポート',
+NODE_CTA                    : '保存してカスタムノードを使用',
+
+NONCE_Desc                  : 'このnonceは、指定のアドレスから送出される処理の数です。正しい順番で重複しないように処理を確実にするためのものです。',
+
+OFFLINE_Desc                : 'オフライントランザクションの作成は、3ステップで行う事ができます。ステップ１と３はオンラインのコンピューター上で行い、ステップ２は、オフライン、あるいは物理的にネットワークと切断されたコンピューターを用います。これにより、秘密鍵が、インターネットに接続したデバイスと接触する事を避ける事ができます。 ',
+OFFLINE_Step1_Button        : '情報生成 ',
+OFFLINE_Step1_Label_1       : '送出元アドレス： ',
+OFFLINE_Step1_Label_2       : 'ノート：これは、送出元アドレスであって、送出先アドレスではありません。操作元アカウントからは「Nonce」が生成されます。切断されたコンピューターを使用する場合に、このアドレスはコールドストレージのアカウントのものになります。 ',
+OFFLINE_Step2_Title         : 'ステップ2: 情報生成 (オフラインコンピューター) ',
+OFFLINE_Step2_Label_1       : '送出先アドレス： ',
+OFFLINE_Step2_Label_2       : '送出する値/総量 ',
+OFFLINE_Step2_Label_3       : 'ガス価格 ',
+OFFLINE_Step2_Label_3b      : 'これは、ステップ１でオンラインコンピューターに表示されたものです。 ',
+OFFLINE_Step2_Label_4       : 'ガスリミット ',
+OFFLINE_Step2_Label_4b      : 'デフォルトガスリミット値は21000です。契約や付加データーを送出する場合には、これらの値は　異なるものにする必要があります。使用されなかったガスは全て返却されます。 ',
+OFFLINE_Step2_Label_5       : 'Nonce ',
+OFFLINE_Step2_Label_5b      : 'これらは、ステップ１でオンラインコンピューターに表示されたものです。 ',
+OFFLINE_Step2_Label_6       : 'データ ',
+OFFLINE_Step2_Label_6b      : 'これは、任意の付加データです。契約に対してトランザクションを送出する際などでよく使われます。 ',
+OFFLINE_Step2_Label_7       : '秘密鍵/JSONの入力/選択 ',
+OFFLINE_Step3_Title         : 'ステップ３: トランザクションの送出/公開(オンラインコンピューター) ',
+OFFLINE_Step3_Label_1       : 'ステップ２で署名されたトランザクションをここにペーストして「トランザクションの送出」ボタンをクリックする。 ',
+OFFLINE_Title               : 'オフライントランザクションを作成し送出 ',
+OFFLLINE_Step1_Title        : 'ステップ1: 情報生成 (オンラインコンピューター) ',
+
+SEND_addr                   : '宛先アドレス： ',
+SEND_amount                 : '送出数量： ',
+SEND_amount_short           : '数量 ',
+SEND_custom                 : 'カスタムトークンを追加 ',
+SEND_gas                    : 'ガス ',
+SEND_generate               : 'トランザクションを生成 ',
+SEND_raw                    : '未加工トランザクション ',
+SEND_signed                 : '署名済みトランザクション ',
+SEND_trans                  : 'トランザクションの送出 ',
+SEND_TransferTotal          : '残高をすべて送出する ',
+SENDModal_Content_1         : '送出準備が ',
+SENDModal_Content_2         : 'について、アドレス ',
+SENDModal_Content_3         : 'に対し完了。本当に送出してよろしいですか？ ',
+SENDModal_Content_4         : 'ノート：最も起こりやすいエラーの原因は、送出のためのガス不足で、その場合には、ETHを追加する必要があります。ガスはETHで支払われます。 ',
+SENDModal_No                : 'いいえ、中断します。 ',
+SENDModal_Title             : '警告！ ',
+SENDModal_Yes               : 'はい、確かです。処理を実行します。 ',
+
+sidebar_AccountInfo         : 'アカウント情報 ',
+sidebar_AccountAddr         : 'アカウントアドレス:  ',
+sidebar_AccountBal          : 'アカウント残高 ',
+sidebar_TokenBal            : 'トークン残高 ',
+sidebar_Equiv               : '等価 ',
+sidebar_TransHistory        : 'トランザクション履歴 ',
+sidebar_donation            : 'MyEtherWalletは、プライバシーとセキュリティのための無料のオープンソースサービスです。　寄付が増えることによって、新機能やフィードバックの反映を行い、よりユーザーの皆様のご希望に沿った制作の時間を増やす事が可能になります。私たちは、たった二人で世界を変えようとしています。お手伝いいただけますか? ',
+sidebar_donate              : '寄付する ',
+sidebar_thanks              : '感謝します!!! ',
+sidebar_DisplayOnTrezor     : 'TREZORでアドレスを表示',
+sidebar_DisplayOnLedger     : 'Ledgerでアドレスを表示',
+
+SUCCESS_1                   : '有効なアドレス ',
+SUCCESS_2                   : 'お財布は正常に暗号解除されました。 ',
+SUCCESS_3                   : 'トランザクションはブロックチェイン上に展開されています。ガス不足や契約実行エラーがないことを確認するために、下のボタンをクリックしてトランザクション(TX)を表示してください。 TX Hash:  ', //'トランザクションが送出されました。 TX Hash ',
+SUCCESS_4                   : 'お財布が追加されました： ',
+SUCCESS_5                   : '選択されました： ',
+SUCCESS_6                   : '接続完了しました ',
+SUCCESS_7                   : 'メッセージの署名が確認されました',
+
+SWAP_rates                  : "現在のレート ",
+SWAP_init_1                 : "これから両替で ",
+SWAP_init_2                 : " を ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "次へ ", // or "Continue"
+SWAP_information            : "あなたの情報 ",
+SWAP_send_amt               : "送出総額 ",
+SWAP_rec_amt                : "受け取り総額 ",
+SWAP_your_rate              : "変換レート ",
+SWAP_rec_add                : "受け取りアドレス ",
+SWAP_start_CTA              : "交換開始 ",
+SWAP_ref_num                : "参照番号 ",
+SWAP_time                   : "送出するまでにあと、 ",
+SWAP_elapsed				        : "Time elapsed since sent ",
+SWAP_progress_1             : "注文を開始しました ",
+SWAP_progress_2             : "到着待機中 ", // Waiting for your BTC...
+SWAP_progress_3             : "ETH受け取り完了 ", // ETH Received!
+SWAP_progress_4             : "送出中 {{orderResult.output.currency}} ",
+SWAP_progress_5             : "注文完了 ",
+SWAP_order_CTA              : "お送りいただきたいのは ", // Please send 1 ETH...
+SWAP_unlock                 : "このページから直接ETHあるいはトークンを送出するためには、お財布を解錠してください。",
+
+TOKEN_Addr                  : 'Token Contract アドレス： ',
+TOKEN_Symbol                : 'トークンシンボル： ',
+TOKEN_Dec                   : 'ケタ数： ',
+TOKEN_show                  : '全てのトークンを表示 ',
+TOKEN_hide                  : 'トークンを隠す ',
+
+TRANS_advanced              : '+Advanced: ガスあるいはデータを追加してください ',
+TRANS_data                  : 'データ： ',
+TRANS_desc                  : 'トークンを送出するには「トークン送出」のタブを選択してください。 ',
+TRANS_gas                   : 'ガスリミット： ',
+TRANS_sendInfo              : '21000ガスを使用する標準トランザクションは、0.000441 ETHを消費します。迅速な処理を行うために、若干最小量よりも多めの0.000000021 ETHのガスを使用します。当サービスでは、トランザクション料金は徴収いたしません。 ',
+
+/* New Generics */
+x_CancelReplaceTx           : '処理を中断、あるいは置換',
+x_CancelTx                  : '処理を中断',
+x_DigitalBitbox             : 'Digital Bitbox ',
+x_PasswordDesc              : 'このパスワードで秘密鍵を**暗号化**します。新しい鍵を作るための元種(seed)ではありません。**このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します**',
+x_ReadMore                  : 'もっと読む',
+x_ReplaceTx                 : '処理を置き換える',
+x_TransHash                 : '処理ハッシュ',
+x_TXFee                     : '処理料',
+x_TxHash                    : '処理ハッシュ',
+
+/* Check TX Status */
+tx_Details                  : '処理内容詳細',
+tx_Summary                  : '数日後に処理状況を確認した場合をのぞいて、大量の処理発生時(ICO期間など)には、数時間処理が遅れる場合があります。本ツールは、そのような状況において処理待ちの処理を探し出し取り消す、あるいは更新する機能を提供します。＊＊これは特殊な操作で、処理プールが満杯の場合にのみ有効です。  [このツールに関しては、こちらを参考にしてください。](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
+tx_notFound                 : '対象の処理が見つかりません',
+tx_notFound_1               : 'この処理は、現在接続中の処理プールの中にありませんでした。',
+tx_notFound_2               : 'もし今、処理を送出した直後であれば、１５秒待ってから「処理状況を確認」ボタンを再度押してください。',
+tx_notFound_3               : '別の処理プールで発掘待ちになっているかもしれません。',
+tx_notFound_4               : '右上の下展開メニューから、別のノードを選択してください。 (例： `ETH (Etherscan.io)` or `ETH (Infura.io)` or `ETH (MyEtherWallet)`) から選んで再度確認する。',
+tx_foundInPending           : '待機中の処理が見つかりました。',
+tx_foundInPending_1         : 'あなたの処理が、現在接続中のノードの処理待ちプールの中で見つかりました。',
+tx_foundInPending_2         : '現在待機中です（発掘待ち）。',
+tx_foundInPending_3         : 'この処理を取り消す、あるいは置き換えることができます。下記のお財布をアンロックしてください。 ',
+tx_FoundOnChain             : '処理が見つかりました',
+tx_FoundOnChain_1           : 'あなたの待機中の処理は発掘され、ブロックチェーンに配置されました。',
+tx_FoundOnChain_2           : '**もし赤い `( ! )`, `BAD INSTRUCTION` あるいは `OUT OF GAS` のエラーメッセージを見つけたら**, これは、処理送出に失敗したということです。処理の取り消しや置き換えはできません。代わりに、新しい処理を送出してください。 "Out of Gas" エラーの場合には, ガスリミットをはじめに指定した値の倍にしてください。',
+tx_FoundOnChain_3           : '**何もエラーメッセージが返ってこなければ、あなたの処理は正しく送出されています。** ETHあるいはトークンは、送ろうとしたあて先の場所にあります。 もし、ETHやトークンが他のお財布や交換所のお財布に見つからず、処理を開始してから２４時間以上経っていたら、 [そのサービスに連絡](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html)してください。状況を確認してもらうために、自分の処理のリンクをうまく知らせてください。',
+
+TXFEE_Desc                  : 'この処理料金は自分の処理をブロックに配置するためにマイナーに支払われます。「ガスリミット」＊「ガス価格」で算出されます。 [GWEI -> ETHの単位変換はこちらです。](https://www.myetherwallet.com/helpers.html)',　/*The TX Fee is paid to miners for including your TX in a block. It is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)*/
+
+
+
+
+
+
+/* General */
+x_Access                    : 'アクセス ',
+x_AddessDesc                : '自分のアドレスは、アカウント番号や公開キーでも知ることができます。誰かとETHやトークンの受け渡しをするために、これらを用います。きれいな色のついたアドレスアイコンを見つけてください。自分のペーパーウォレットや、アドレスを入力する際に、同じアイコンであることをしっかりと確認してください。 これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
+x_Address                   : '自分のアドレス ',
+x_Cancel                    : '取り消す ',
+x_CSV                       : 'CSV ファイル (未暗号化) ',
+x_Download                  : 'ダウンロード ',
+x_Json                      : 'JSON ファイル (未暗号化) ',
+x_JsonDesc                  : 'これはパスワードが不要な暗号化されていないJSONフォーマットの秘密鍵です。この暗号化されていないJSONフォーマットの秘密鍵を使えば、誰でもパスワードを使わずに自分のお財布とEtherにアクセスできます。 ',
+x_Keystore                  : 'Keystore ファイル (UTC / JSON · 推奨 · 暗号化) ',
+x_Keystore2                 : 'Keystore ファイル (UTC / JSON) ',
+x_KeystoreDesc              : 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。 ',
+x_Ledger                    : 'Ledger Wallet ',
+x_MetaMask                  : 'Metamask / Mist ',
+x_Mnemonic                  : 'ニーモニック文節 ',
+x_ParityPhrase              : 'パリティ文節 ',
+x_Password                  : 'パスワード ',
+x_Print                     : 'お財布紙情報を印刷 ',
+x_PrintDesc                 : 'アドバイス: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。 ',
+x_PrintShort                : '印刷 ',
+x_PrivKey                   : '秘密鍵（未暗号化） ',
+x_PrivKey2                  : '秘密鍵 ',
+x_PrivKeyDesc               : 'これはパスワードが不要な暗号化されていない秘密鍵です。この暗号化されていない秘密鍵を使えば、誰でもパスワードなしで自分のお財布を使用できます。従って、暗号化された秘密鍵の利用をおすすめします。 ',
+x_Save                      : '保存する ',
+x_Trezor                    : 'TREZOR ',
+x_TXT                       : 'TXT ファイル (未暗号化) ',
+x_Wallet                    : 'お財布 ',
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Send Transaction Modals */
+TRANSModal_Title            : '「ETHのみ」と「ETCのみ」トランザクション ',
+TRANSModal_Content_0        : '異なるトランザクションと異なるサービスの注釈： ',
+TRANSModal_Content_1        : '**ETH(標準トランザクション): ** これは、アドレス間移動のデファルトのトランザクションを生成します。デフォルトガス値は21000です。このメソッドで送出されたETHは、高い可能性でETCチェーンでリプレイされます。 ',
+TRANSModal_Content_2        : '**ETHのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETH**チェーンのみに送出します。 ',
+TRANSModal_Content_3        : '**ETCのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETC**チェーンのみに送出します。 ',
+TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** スタンダードトランザクションのみで送出します。どちらかのみのコントラクトで送出する場合には、サポートスタッフに連絡して、手動で残高に追加したり払い戻しをする必要があります。[Shapeshiftの「スプリット」ツールも使用可能です。(https://split.shapeshift.io/) ',
+TRANSModal_Content_5        : '**Kraken & Poloniex:** 問題は確認されていません。どれでもお使いください。 ',
+TRANSModal_Yes              : '理解しました。 ',
+TRANSModal_No               : 'わかりません。おしえてください。 ',
+
+
+
+
+
+
+
+
+/* View Wallet Details */
+VIEWWALLET_Subtitle         : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。[import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)する時に必要です。残高をチェックするためには、[etherscan.io](http://etherscan.io/)のようなブロックチェーンエクスプローラーサービスを使う事をおすすめします。 ',
+VIEWWALLET_Subtitle_Short   : '異なったバージョンの秘密鍵をダウンロードしたり、お財布紙情報を再印刷することができます。 ',
+VIEWWALLET_SuccessMsg       : '成功しました! お財布の詳細は以下の通りです。 ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
+
+
+WARN_Send_Link              : '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、お財布を解錠してください。 ',
+
 
 
 
@@ -682,7 +683,7 @@ HELP_2a_Desc_3              : 'Save versions of the private key. Do not share it
 HELP_2a_Desc_4              : 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive. ',
 HELP_2a_Desc_5              : 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive. ',
 HELP_2a_Desc_6              : 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). ',
-
+HELP_2a_Title               : 'お財布の保管やバックアップの方法は？ ',
 HELP_2b_Title               : '2b) How do I safely / offline / cold storage with MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
 HELP_2b_Desc_2              : 'Click on `etherwallet-vX.X.X.X.zip`. ',
