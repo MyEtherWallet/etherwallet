@@ -68,21 +68,21 @@ ENS_WrongAddress_2              :  'Please unlock the wallet with address ',
 
 ENS_Finalize                    :  'Finalize',
 ENS_Finalize_content            :  'Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.',
-ENS_Finalize_content_2          :  'You are about to finalize the auction & claim the name:',
+ENS_Finalize_content_1          :  'You are about to finalize the auction & claim the name:',
 ENS_Helper_1                    :  'What is the process like?',
-ENS_Helper_2                    :  '1. Preparation',
+ENS_Helper_2                    :  '1) Preparation',
 ENS_Helper_3                    :  'Decide which account you wish to own the name & ensure you have multiple backups of that account.',
 ENS_Helper_4                    :  'Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.',
-ENS_Helper_5                    :  '2. Start an Auction / Place a Bid',
+ENS_Helper_5                    :  '2) Start an Auction / Place a Bid',
 ENS_Helper_6                    :  'Bidding period lasts 3 days (72 hours).',
 ENS_Helper_7                    :  'You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.',
 ENS_Helper_8                    :  'This places your bid, but this information is kept secret until you reveal it.',
-ENS_Helper_9                    :  '3. Reveal your Bid',
+ENS_Helper_9                    :  '3) Reveal your Bid',
 ENS_Helper_10                   :  '**If you do not reveal your bid, you will not be refunded.**',
 ENS_Helper_11                   :  'Reveal Period lasts 2 days (48 hours).',
 ENS_Helper_12                   :  'You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.',
 ENS_Helper_13                   :  'In the event that two parties bid exactly the same amount, the first bid revealed will win.',
-ENS_Helper_14                   :  '4. Finalize the Auction',
+ENS_Helper_14                   :  '4) Finalize the Auction',
 ENS_Helper_15                   :  'Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.',
 ENS_Helper_16                   :  'The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH.',
 ENS_Helper_17                   :  'More Information',
@@ -257,7 +257,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
@@ -575,45 +575,66 @@ CX_quicksend                : 'QuickSend ', // if no appropriate translation, ju
 FOOTER_1b                   : 'Created by ',
 FOOTER_4                    : 'Disclaimer ',
 
-/* Error Messages */
-ERROR_0                     : 'Ole hyvä ja syötä kelpaava summa. ',
-ERROR_1                     : 'Salasanasi pitää olla vähintään 9 merkkiä pitkä. Ole hyvä ja varmista että käytät vahvaa salasanaa. ',
-ERROR_2                     : 'Pahoittelut! Emme tunnista tämänlaista lompakko tiedostoa. ',
-ERROR_3                     : 'Tämä ei ole validi lompakko tiedosto. ',
-ERROR_4                     : 'Tätä yksikköä ei ole olemassa, ole hyvä ja käytä jotain seuraavista yksiköistä ',
-ERROR_5                     : 'Virheellinen osoite. ',
-ERROR_6                     : 'Virheellinen salasana. ',
-ERROR_7                     : 'Virheellinen summa. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Virheellinen gas raja. (Must be integer. Try 21000-4000000.) ', // 8
-ERROR_9                     : 'Virheellinen tieto arvo. (Must be hex.) ', // 9
-ERROR_10                    : 'Virheellinen gasin määrä. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
-ERROR_11                    : 'Virheellinen nonce. (Must be integer.) ', // 11
-ERROR_12                    : 'Virheellinen allekirjoitettu siirto. ',
-ERROR_13                    : 'Lompakko tällä kutsumanimellä on jo olemassa. ',
-ERROR_14                    : 'Lompakkoa ei löytynyt. ',
-ERROR_15                    : 'Ei näytä että ehdotusta tällä ID:llä olisi vielä olemassa tai tapahtui virhe ehdotusta luettaessa. ',
-ERROR_16                    : 'Lompakko jolla on tämä osoite on jo muistissa. Ole hyvä ja tarkista oma lompakko sivusi. ',
-ERROR_17                    : 'Riittämätön saldo gas * hinta + arvo. Sinulla täytyy olla vähintään 0.01 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
-ERROR_18                    : 'Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai debaatti aika on jo päättynyt. ',
-ERROR_19                    : 'Virheellinen merkki ',
-ERROR_20                    : 'Not a valid ERC-20 token', // 20
-ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
-ERROR_22                    : 'Please enter a valid node name', // 22
-ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
-ERROR_24                    : 'Please enter a valid port. ', // 24
-ERROR_25                    : 'Please enter a valid chain ID. ', // 25
-ERROR_26                    : 'Please enter a valid ABI. ', // 26
-ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
-ERROR_28                    : '**Tarvitset Avainsäilö Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help). ',
-ERROR_29                    : 'Please enter a valid user and password. ', // 29
-ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
-ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
-ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
-ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
-ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
-ERROR_36                    : 'Enter valid TX hash', // 36
-ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+ERROR_0                         :  '(error_01) Ole hyvä ja syötä kelpaava summa. Please enter a valid amount.', // 0
+ERROR_1                         :  '(error_02) Salasanasi pitää olla vähintään 9 merkkiä pitkä. Ole hyvä ja varmista että käytät vahvaa salasanaa. Your password must be at least 9 characters. Please ensure it is a strong password.', // 1
+ERROR_2                         :  '(error_03) Pahoittelut! Emme tunnista tämänlaista lompakko tiedostoa. Sorry! We don\'t recognize this type of wallet file.', // 2
+ERROR_3                         :  '(error_04) Tämä ei ole validi lompakko tiedosto. This is not a valid wallet file.', // 3
+ERROR_4                         :  '(error_05) Tätä yksikköä ei ole olemassa, ole hyvä ja käytä jotain seuraavista yksiköistä This unit doesn\'t exists, please use the one of the following units', // 4
+ERROR_5                         :  '(error_06) Virheellinen osoite. Please enter a valid address.', // 5
+ERROR_6                         :  '(error_07) Virheellinen salasana. Please enter a valid password.', // 6
+ERROR_7                         :  '(error_08) Virheellinen summa. Please enter valid decimals (Must be an integer. Try 0-18.)', // 7
+ERROR_8                         :  '(error_09) Virheellinen gas raja.Please enter a valid gas limit  (Must be an integer. Try 21000-4000000.)', // 8
+ERROR_9                         :  '(error_10) Virheellinen tieto arvo.  Please enter a valid data value (Must be hex.)', // 9
+ERROR_10                        :  '(error_11) Virheellinen gasin määrä. Try 20 GWEI / 20000000000 WEI.) Please enter a valid gas price. (Must be an integer. Try 20 GWEI / 20000000000 WEI.)',
+ERROR_11                        :  '(error_12) Virheellinen nonce. (Must be integer.) ',
+ERROR_12                        :  '(error_13) Virheellinen allekirjoitettu siirto. Invalid signed transaction.', // 12
+ERROR_13                        :  '(error_14) Lompakko tällä kutsumanimellä on jo olemassa. A wallet with this nickname already exists.', // 13
+ERROR_14                        :  '(error_15) Lompakkoa ei löytynyt. Wallet not found.', // 14
+ERROR_15                        :  '(error_16) Ei näytä että ehdotusta tällä ID:llä olisi vielä olemassa tai tapahtui virhe ehdotusta luettaessa. Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal.', // 15 - NOT USED
+ERROR_16                        :  '(error_17) Lompakko jolla on tämä osoite on jo muistissa. Ole hyvä ja tarkista oma lompakko sivusi. A wallet with this address already exists in storage. Please check your wallets page.', // 16
+ERROR_17                        :  '(error_18) Riittämätön saldo gas * hinta + arvo. Sinulla täytyy olla vähintään 0.01 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)', // 17
+ERROR_18                        :  '(error_19) Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai debaatti aika on jo päättynyt. All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
+ERROR_19                        :  '(error_20) Virheellinen merkki Please enter a valid symbol', // 19
+ERROR_20                        :  '(error_21) Not a valid ERC-20 token', // 20
+ERROR_21                        :  '(error_22) Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                        :  '(error_23) Please enter a valid node name', // 22
+ERROR_23                        :  '(error_24) Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                        :  '(error_25) Please enter a valid port.', // 24
+ERROR_25                        :  '(error_26) Please enter a valid chain ID.', // 25
+ERROR_26                        :  '(error_27) Please enter a valid ABI.', // 26
+ERROR_27                        :  '(error_28) Minimum amount: 0.01. Max amount:', // 27
+ERROR_28                        :  '(error_29) You need this `Keystore File + Password` or the `Private Key` (next page) to access this wallet in the future. ', // 28
+ERROR_29                        :  '(error_30) Please enter a valid user and password.', // 29
+ERROR_30                        :  '(error_31) Please enter a valid name (7+ characters, limited punctuation)', // 30
+ERROR_31                        :  '(error_32) Please enter a valid secret phrase.', // 31
+ERROR_32                        :  '(error_33) Could not connect to the node. Refresh your page, try a different node (top-right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                        :  '(error_34) The wallet you have unlocked does not match the owner\'s address.', // 33
+ERROR_34                        :  '(error_35) The name you are attempting to reveal does not match the name you have entered.', // 34
+ERROR_35                        :  '(error_36) Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer">What does that mean?</a>', // 35
+ERROR_36                        :  '(error_37) Please enter a valid TX hash', // 36
+ERROR_37                        :  '(error_38) Please enter valid hex string. Hex only contains: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f', // 37
+ERROR_38                        :  '(error_39) Offer must have either price or reserve set to more than 0', // 38
+ERROR_39                        :  '(error_40) Bid must be more than the specified minimum', // 39
+
+GETH_Balance                    :  '(geth-01) Riittämätön saldo. Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_Cheap                      :  '(geth-02) Gasin hinta liian matala hyväksyttäväksi. Gas price too low for acceptance. Try raising the gas price to 21 GWEI via the dropdown in top-right.',
+GETH_GasLimit                   :  '(geth-03) Ylittää blockin gas rajan. Exceeds block gas limit. Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)',
+GETH_InsufficientFunds          :  '(geth-04) Riittämätön saldo gas * hinta + arvo. Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_IntrinsicGas               :  '(geth-05) Olennainen gas liian pieni. Intrinsic gas too low. Try raising the gas price to 21 GWEI via the dropdown in top-right or the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again.',
+GETH_InvalidSender              :  '(geth-06) Virheellinen lähettäjä. Invalid sender.',
+GETH_NegativeValue              :  '(geth-07) Negatiivinen arvo. Negative value.',
+GETH_Nonce                      :  "(geth-08) Nonce liian pieni. This TX's [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html) is too low. Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
+GETH_NonExistentAccount         :  '(geth-09) Tiliä ei ole olemassa tai tilin saldo liian pieni. Account does not exist or account balance too low',
+
+PARITY_AlreadyImported          :  "(parity-01) A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [etherscan.io](https://etherscan.io) & wait 10 minutes before attempting to send again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_GasLimitExceeded         :  "(parity-02) Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
+PARITY_InsufficientBalance      :  "(parity-03) Insufficient balance. The account you tried to send transaction from does not have enough funds. If you believe this is in error, try using the 'Send Entire Balance' button, or pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InsufficientGasPrice     :  "(parity-04) There is another transaction with same nonce in the queue, or the transaction fee is too low. Try incrementing the nonce by clicking the Generate button again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InvalidGasLimit          :  "(parity-05) Supplied gas limit is beyond limit. Try lowering the gas limit to 21000. [Learn More.](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
+PARITY_LimitReached             :  "(parity-06) There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the gas price. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_Old                      :  "(parity-07) There is already a transaction with this [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html). Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
+PARITY_TooCheapToReplace        :  "(parity-08) TX Fee is too low. It does not satisfy your node's minimal fee (minimal: (d+), got: (d+)). Try increasing the gas price and/or gas limit. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+
 
 SUCCESS_1                   : 'Validi osoite ',
 SUCCESS_2                   : 'Lompakon salaus onnistuneesti purettu ',
@@ -623,27 +644,6 @@ SUCCESS_5                   : 'Valittu Tiedosto ',
 SUCCESS_6                   : 'You are successfully connected ',
 SUCCESS_7                   : 'Message Signature Verified',
 WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
-
-/* Geth Error Messages */
-GETH_InvalidSender          : 'Virheellinen lähettäjä ',
-GETH_Nonce                  : 'Nonce liian pieni ',
-GETH_Cheap                  : 'Gasin hinta liian matala hyväksyttäväksi ',
-GETH_Balance                : 'Riittämätön saldo ',
-GETH_NonExistentAccount     : 'Tiliä ei ole olemassa tai tilin saldo liian pieni ',
-GETH_InsufficientFunds      : 'Riittämätön saldo gas * hinta + arvo ',
-GETH_IntrinsicGas           : 'Olennainen gas liian pieni ',
-GETH_GasLimit               : 'Ylittää blockin gas rajan ',
-GETH_NegativeValue          : 'Negatiivinen arvo ',
-
-/* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
-PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
-PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei.",
-PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 
 /* Tranlsation Info */
 translate_version           : '0.4 ',

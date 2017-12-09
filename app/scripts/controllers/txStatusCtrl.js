@@ -53,7 +53,7 @@ var txStatusCtrl = function($scope) {
                 nonce: new BigNumber(tx.nonce).toString()
             }
             if ($scope.txInfo.status == txStatus.found) {
-                var _gasPrice = new BigNumber($scope.txInfo.gasPrice.wei).mul(1.1);
+                var _gasPrice = new BigNumber($scope.txInfo.gasPrice.wei).mul(1.1).floor();
                 if (_gasPrice.lt(etherUnits.getValueOfUnit('gwei') * MIN_GAS)) _gasPrice = new BigNumber(etherUnits.getValueOfUnit('gwei') * MIN_GAS)
                 $scope.parentTxConfig = {
                     to: $scope.txInfo.from,

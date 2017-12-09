@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// DIVX Token Sale
+to:         '0x13f11C9905A08ca76e3e853bE63D4f0944326C72',
+gasLimit:   300000,
+data:       '0xb4427263',
+msg:        'DIVX Token Sale - www.diviproject.org'
+},{
 // NOX Token Sale
 to:         '0x4b0712de9b75bc68a566215acca876ea5e55c172',
 gasLimit:   114293,
@@ -228,4 +234,10 @@ to:         '0x2a3Aa9ECA41E720Ed46B5A70D6C37EfA47f768Ac',
 gasLimit:   200000,
 data:       '',
 msg:        'REAL CHAIN TOKEN!'
+},{
+// Artex Token Sale (ARX)
+to:         '0x7705FaA34B16EB6d77Dfc7812be2367ba6B0248e',
+gasLimit:   200000,
+data:       '',
+msg:        'Artex - Art Provenance Blockchain. Official site https://artex.global'
 }]
