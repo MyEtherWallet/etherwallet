@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// DIVX Token Sale
+to:         '0x13f11C9905A08ca76e3e853bE63D4f0944326C72',
+gasLimit:   300000,
+data:       '0xb4427263',
+msg:        'DIVX Token Sale - www.diviproject.org'
+},{
 // NOX Token Sale
 to:         '0x4b0712de9b75bc68a566215acca876ea5e55c172',
 gasLimit:   114293,
@@ -38,10 +44,10 @@ data:       '',
 msg:        'Aigang token sale contract. Autonomous insurance network - fully automated insurance for IoT devices and a platform for insurance innovation built around data: https://aigang.network . Ends 12/15/2017'
 },{
 // Confideal (CDL)
-to:         '0x22A97c80D7e0a9Ae616737E3B8b531248f4ef91d',
+to:         '0x17681500757628C7AA56d7E6546E119f94Dd9479',
 gasLimit:   170000,
 data:       '',
-msg:        'Confideal token sale. Confideal is a platform for making deals. https://confideal.io, NOV 2-22, 2017'
+msg:        'Confideal token sale. Confideal is a platform for making deals. https://confideal.io, ends Jan 31, 2018'
 },{
 // Flixxo (FLIXX)
 to:         '0x876359dCb1745073909CC810311EC3f119e8D5E8',
@@ -200,10 +206,10 @@ data:       '',
 msg:        'Game Token Sale'
 },{
 // Skrilla Token Sale
-to:         '0x4c382F8E09615AC86E08CE58266CC227e7d4D913',
-gasLimit:   200000,
+to:         '0x16662f73df3e79e54c6c5938b4313f92c524c120',
+gasLimit:   150000,
 data:       '',
-msg:        'Get SKR! Thanks for your support and remember only get the contract address from tokensale.skrilla.com'
+msg:        'Private Sale started, Public Sale from December 19th, 2017 to January 1st, 2018. First Lending program with instant payout to Payoneer prepaid card! JOIN NOW: https://ibiscoin.co'
 },{
 // Rebellious Token
 to:         '0x5f53f7a8075614b699baad0bc2c899f4bad8fbbf',
@@ -222,4 +228,10 @@ to:         '0x7e7DC49715816d1f5712A1d7dFf083e4F9E588B6',
 gasLimit:   200000,
 data:       '',
 msg:        'PIXEL token sale contract. VR club franchise with neurointerfaces: https://vr-pixel.com. Ends 05.12.2017. Thank you for participating!'
+},{
+// Artex Token Sale (ARX)
+to:         '0x7705FaA34B16EB6d77Dfc7812be2367ba6B0248e',
+gasLimit:   200000,
+data:       '',
+msg:        'Artex - Art Provenance Blockchain. Official site https://artex.global'
 }]

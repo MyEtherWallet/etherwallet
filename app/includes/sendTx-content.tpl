@@ -169,8 +169,6 @@
       </div>
     </section>
 
-
-
     <!-- Advanced Option Panel -->
     <a ng-click="showAdvance=true"
        ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>

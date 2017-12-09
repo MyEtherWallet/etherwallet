@@ -83,11 +83,12 @@
     
       <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">
         <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
+        <p class="small visible-xs">3.10.9.6</p>
       </a>
     
     <div class="tagline">
 
-    <span class="hidden-xs">3.10.9.2</span>
+    <span class="hidden-xs">3.10.9.6</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -132,15 +133,16 @@
           <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
           {{gas.value}} Gwei
           <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" step="{{gas.step}}" ng-change="gasChanged()"/>
-          <p class="small col-xs-4 text-left" translate="GAS_Price_1">
-            Not So Fast
+          <p class="small col-xs-4 text-left"> <!--translate="GAS_Price_1"-->
+            Really, really slow
           </p>
-          <p class="small col-xs-4 text-center" translate="GAS_Price_2">
+          <p class="small col-xs-4 text-center"> <!--translate="GAS_Price_2"-->
+            Maybe Fast?
+          </p>
+          <p class="small col-xs-4 text-right"> <!--translate="GAS_Price_3"-->
             Fast
           </p>
-          <p class="small col-xs-4 text-right" translate="GAS_Price_3">
-            Fast AF
-          </p>
+          <br />
           <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
           <a class="small"
              translate="x_ReadMore"
@@ -151,12 +153,10 @@
       </ul>
       <p class="dropdown-gas__msg""
          ng-show="gasPriceMsg">
-        The network is a bit full right now. Maybe higher gas price?
-        <a href="https://etherscan.io/txsPending"
-           target="_blank" rel="noopener noreferrer">Pending TXs</a>
-        &middot;
+        The network is really full right now. Check
         <a href="https://ethgasstation.info/"
            target="_blank" rel="noopener noreferrer">Eth Gas Station</a>
+        for gas price to use.
       </p>
     </span>
 
@@ -1626,8 +1626,6 @@
       </div>
     </section>
 
-
-
     <!-- Advanced Option Panel -->
     <a ng-click="showAdvance=true"
        ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
@@ -1883,7 +1881,10 @@
           <tbody>
             <tr>
               <td class="small text-right">To Address:</td>
-              <td class="small text-left mono">{{parsedSignedTx.to}}</td>
+              <td class="small text-left mono">{{parsedSignedTx.to}}
+                <br />
+                <em><small>If sending tokens, this should be the token contract address.</small></em>
+              </td>
             </tr>
             <tr>
               <td class="small text-right">From Address:</td>
@@ -1911,12 +1912,12 @@
             </tr>
             <tr>
               <td class="small text-right">Gas Price:</td>
-              <td class="small text-left mono">{{parsedSignedTx.gasPrice.wei}}  WEI == {{parsedSignedTx.gasPrice.gwei}} GWEI == {{parsedSignedTx.gasPrice.eth}} ETH
+              <td class="small text-left mono">{{parsedSignedTx.gasPrice.gwei}} GWEI <small>({{parsedSignedTx.gasPrice.eth}} ETH)</small>
               </td>
             </tr>
             <tr>
-              <td class="small text-right">TX Fee (max):</td>
-              <td class="small text-left mono">{{parsedSignedTx.txFee.wei}}  WEI == {{parsedSignedTx.txFee.gwei}} GWEI == {{parsedSignedTx.txFee.eth}} ETH</td>
+              <td class="small text-right">Max TX Fee:</td>
+              <td class="small text-left mono"> {{parsedSignedTx.txFee.eth}} ETH <small>({{parsedSignedTx.txFee.gwei}} GWEI)</small></td>
             </tr>
             <tr>
               <td class="small text-right">Nonce:</td>
@@ -1952,7 +1953,11 @@
         </button>
       </div>
 
-      <p class="small text-center" style="padding: 0px 5px;"><em>If you are encountering erroneous errors (too low gas, tx hash already imported), please copy &amp; paste the above (no screenshots, plz) when you email us. 🤗</em></p>
+      <p class="small text-center" style="padding: 0px 5px;">
+        <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank" ref="noopener noreferrer">
+          The network is a bit overloaded. If you're having issues with TXs, please read me.
+        </a>
+      </p>
 
 
 
@@ -2389,8 +2394,6 @@
       </div>
     </section>
 
-
-
     <!-- Advanced Option Panel -->
     <a ng-click="showAdvance=true"
        ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
@@ -2646,7 +2649,10 @@
           <tbody>
             <tr>
               <td class="small text-right">To Address:</td>
-              <td class="small text-left mono">{{parsedSignedTx.to}}</td>
+              <td class="small text-left mono">{{parsedSignedTx.to}}
+                <br />
+                <em><small>If sending tokens, this should be the token contract address.</small></em>
+              </td>
             </tr>
             <tr>
               <td class="small text-right">From Address:</td>
@@ -2674,12 +2680,12 @@
             </tr>
             <tr>
               <td class="small text-right">Gas Price:</td>
-              <td class="small text-left mono">{{parsedSignedTx.gasPrice.wei}}  WEI == {{parsedSignedTx.gasPrice.gwei}} GWEI == {{parsedSignedTx.gasPrice.eth}} ETH
+              <td class="small text-left mono">{{parsedSignedTx.gasPrice.gwei}} GWEI <small>({{parsedSignedTx.gasPrice.eth}} ETH)</small>
               </td>
             </tr>
             <tr>
-              <td class="small text-right">TX Fee (max):</td>
-              <td class="small text-left mono">{{parsedSignedTx.txFee.wei}}  WEI == {{parsedSignedTx.txFee.gwei}} GWEI == {{parsedSignedTx.txFee.eth}} ETH</td>
+              <td class="small text-right">Max TX Fee:</td>
+              <td class="small text-left mono"> {{parsedSignedTx.txFee.eth}} ETH <small>({{parsedSignedTx.txFee.gwei}} GWEI)</small></td>
             </tr>
             <tr>
               <td class="small text-right">Nonce:</td>
@@ -2715,7 +2721,11 @@
         </button>
       </div>
 
-      <p class="small text-center" style="padding: 0px 5px;"><em>If you are encountering erroneous errors (too low gas, tx hash already imported), please copy &amp; paste the above (no screenshots, plz) when you email us. 🤗</em></p>
+      <p class="small text-center" style="padding: 0px 5px;">
+        <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank" ref="noopener noreferrer">
+          The network is a bit overloaded. If you're having issues with TXs, please read me.
+        </a>
+      </p>
 
 
 
@@ -6082,8 +6092,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       </div>
     </section>
 
-
-
     <!-- Advanced Option Panel -->
     <a ng-click="showAdvance=true"
        ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
@@ -6339,7 +6347,10 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
           <tbody>
             <tr>
               <td class="small text-right">To Address:</td>
-              <td class="small text-left mono">{{parsedSignedTx.to}}</td>
+              <td class="small text-left mono">{{parsedSignedTx.to}}
+                <br />
+                <em><small>If sending tokens, this should be the token contract address.</small></em>
+              </td>
             </tr>
             <tr>
               <td class="small text-right">From Address:</td>
@@ -6367,12 +6378,12 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
             </tr>
             <tr>
               <td class="small text-right">Gas Price:</td>
-              <td class="small text-left mono">{{parsedSignedTx.gasPrice.wei}}  WEI == {{parsedSignedTx.gasPrice.gwei}} GWEI == {{parsedSignedTx.gasPrice.eth}} ETH
+              <td class="small text-left mono">{{parsedSignedTx.gasPrice.gwei}} GWEI <small>({{parsedSignedTx.gasPrice.eth}} ETH)</small>
               </td>
             </tr>
             <tr>
-              <td class="small text-right">TX Fee (max):</td>
-              <td class="small text-left mono">{{parsedSignedTx.txFee.wei}}  WEI == {{parsedSignedTx.txFee.gwei}} GWEI == {{parsedSignedTx.txFee.eth}} ETH</td>
+              <td class="small text-right">Max TX Fee:</td>
+              <td class="small text-left mono"> {{parsedSignedTx.txFee.eth}} ETH <small>({{parsedSignedTx.txFee.gwei}} GWEI)</small></td>
             </tr>
             <tr>
               <td class="small text-right">Nonce:</td>
@@ -6408,7 +6419,11 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
         </button>
       </div>
 
-      <p class="small text-center" style="padding: 0px 5px;"><em>If you are encountering erroneous errors (too low gas, tx hash already imported), please copy &amp; paste the above (no screenshots, plz) when you email us. 🤗</em></p>
+      <p class="small text-center" style="padding: 0px 5px;">
+        <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank" ref="noopener noreferrer">
+          The network is a bit overloaded. If you're having issues with TXs, please read me.
+        </a>
+      </p>
 
 
 
