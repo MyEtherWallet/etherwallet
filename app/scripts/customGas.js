@@ -229,6 +229,12 @@ gasLimit:   200000,
 data:       '',
 msg:        'PIXEL token sale contract. VR club franchise with neurointerfaces: https://vr-pixel.com. Ends 05.12.2017. Thank you for participating!'
 },{
+// REAL CHAIN TOKEN
+to:         '0x2a3Aa9ECA41E720Ed46B5A70D6C37EfA47f768Ac',
+gasLimit:   200000,
+data:       '',
+msg:        'REAL CHAIN TOKEN!'
+},{
 // Artex Token Sale (ARX)
 to:         '0x7705FaA34B16EB6d77Dfc7812be2367ba6B0248e',
 gasLimit:   200000,
