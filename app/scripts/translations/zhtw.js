@@ -230,7 +230,7 @@ tx_foundInPending_2         : '此筆交易正在等待中 (等待確認). ',
 tx_foundInPending_3         : '你有機會 "取消" 或取代這筆交易。 請在底下解鎖錢包。',
 tx_FoundOnChain             : '找到交易',
 tx_FoundOnChain_1           : '你的交易已經成功被確認且存在於區塊鏈上。',
-tx_FoundOnChain_2           : '**你如果看到紅色的 `( ! )` 、 `BAD INSTRUCTION` 或 `OUT OF GAS` 的錯誤訊息**，這表示該筆交易並沒有被成功的 *送出*。你不能取消或替換這筆交易，你必須重新送出一筆交易。如果你看到 "Out of Gas" 錯誤，你得使用之前Gas總量的兩倍。',
+tx_FoundOnChain_2           : '**你如果看到紅色的 `( ! )` 、 `BAD INSTRUCTION` 或 `OUT OF GAS` 的錯誤訊息**，這表示該筆交易並沒有被成功的 *送出*。你不能取消或替換這筆交易，你必須重新送出一筆交易。如果你看到 "Out of Gas" 錯誤，你得使用之前gas總量的兩倍。',
 tx_FoundOnChain_3           : '**如果你沒有看到任何錯誤，你的交易已被成功送出。** 你的乙太幣或代幣已經在目的地錢包。如果你沒有看到你的乙太幣或代幣出現在目的地錢包 / 交易所帳戶，而且你已經等待超過24小時，[請連絡該服務提供者](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). 給他們你的交易紀錄 *連結* ，並且友善地請他們處裡你遇到的問題。',
 
 /* Gen Wallet Updates */
@@ -288,7 +288,7 @@ NAV_YourWallets             : '你的錢包 ',
 
 /* General */
 x_Access                    : '存取合約 ',
-x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. 你可以把地址當作是你的"帳號"或者"公鑰"。將地址告訴他人，他人就能發送乙太幣給你。這個圖標能幫助你判別地址。 ',
+x_AddessDesc                : '你可以把地址當作是你的"帳號"或者"公鑰"。將地址告訴他人，他人就能發送乙太幣或代幣給你。找到漂亮的地址圖標，確定該圖標符合你的紙錢包和所有你輸入地址的地方。 ',
 x_Address                   : '你的地址 ',
 x_Cancel                    : '取消 ',
 x_CSV                       : 'CSV 檔 (未加密) ',
@@ -500,13 +500,13 @@ DEP_interface               : '已產生的合約介面 ',
 /* Node Switcher */
 NODE_Title                  : '設定你的客製節點',
 NODE_Subtitle               : '連線至一個區域/私人節點...',
-NODE_Warning                : '你的節點必須使用HTTPS安全連線的方式才能夠由MyEtherWallet.com連接到它。 你可以下載[MyEtherWallet repo](https://github.com/kvhnuke/etherwallet/releases/latest)並建立起一個你的節點來連接至其他的節點。或著從[LetsEncrypt](https://letsencrypt.org/)獲取免費的SSL憑證',
+NODE_Warning                : '你的節點必須使用HTTPS安全連線的方式才能夠由 MyEtherWallet.com 連接到它。 你可以下載 [MyEtherWallet repo](https://github.com/kvhnuke/etherwallet/releases/latest) 並建立起一個你的節點來連接至其他的節點。或著從 [LetsEncrypt](https://letsencrypt.org/) 獲取免費的SSL憑證',
 NODE_Name                   : '節點名稱',
 NODE_Port                   : '節點連線的端口號碼',
 NODE_CTA                    : '儲存設定並使用客製節點',
 
 /* Swap / Exchange */
-SWAP_rates                  : "當前的匯率 ",
+SWAP_rates                  : "目前的匯率 ",
 SWAP_init_1                 : "我想要用我的 ",
 SWAP_init_2                 : " 換 ", // "I want to swap my X ETH for X BTC"
 SWAP_init_CTA               : "下一步 ", // or "Continue"
@@ -540,11 +540,11 @@ MSG_info3                   : '填入這個訊息的源由來避免被用在其�
 VIEWWALLET_Subtitle         : '這可以讓你下載不同版本的私鑰並且重新印製出你的紙錢包。你可能會需要這個功能來將你的帳戶[讀入Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)。 如果你想要檢查你的帳號餘額，我們建議你使用區塊鏈瀏覽網頁像是[etherscan.io](http://etherscan.io/)。 ',
 VIEWWALLET_Subtitle_Short   : '這可以讓你下載不同版本的私鑰並且重新印製出你的紙錢包。 ',
 VIEWWALLET_SuccessMsg       : '成功！這些是你的錢包內容。 ',
-VIEWWALLET_ShowPrivKey      : '(show)',
-VIEWWALLET_HidePrivKey      : '(hide)',
+VIEWWALLET_ShowPrivKey      : '(顯示)',
+VIEWWALLET_HidePrivKey      : '(隱藏)',
 
 /* Chrome Extension */
-CX_error_1                  : '你沒有儲存過任何錢包。 點擊["新增錢包"](/cx-wallet.html#add-wallet)來新增一個錢包！ ',
+CX_error_1                  : '你沒有儲存過任何錢包。點擊 ["新增錢包"](/cx-wallet.html#add-wallet) 來新增一個錢包！ ',
 CX_quicksend                : '傳送 ', // if no appropriate translation, just use "Send"
 
 /* Error Messages */
@@ -565,7 +565,7 @@ ERROR_13                    : '已經有一個使用相同暱稱的錢包存在�
 ERROR_14                    : '找不到錢包。 ',
 ERROR_15                    : 'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
 ERROR_16                    : '儲存裝置中已經有一個包含這個地址的錢包存在。 請見錢包頁面。 ',
-ERROR_17                    : '你帳戶中必須有至少 **0.01 ETH** 來支付gas的成本。 請添加一些 ETH 並重試。 ',
+ERROR_17                    : '你帳戶中必須有至少 **0.01 ETH** 來支付gas的成本。 請增加一些 ETH 並重試。 ',
 ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
 ERROR_19                    : '無效的符號 ',
 ERROR_20                    : '並不是一個有效的 ERC-20 代幣 ',
@@ -589,11 +589,11 @@ ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : '有效的地址 ',
 SUCCESS_2                   : '成功解密錢包 ',
-SUCCESS_3                   : 'Your TX has been broadcast to the network. This does not mean it has been mined & sent. During times of extreme volume, it may take 3+ hours to send. 1) Check your TX below. 2) If it is pending for hours or disappears, use the Check TX Status Page to replace. 3) Use [ETH Gas Station](https://ethgasstation.info/) to see what gas price is optimal. 4) Save your TX Hash in case you need it later:   ', //'Your TX has been broadcast to the network. This does not mean it has been mined & sent. During times of extreme volume, it may take 3+ hours to send. 1) Check your TX below. 2) If it is pending for hours or disappears, use the Check TX Status Page to replace. 3) Use [ETH Gas Station](https://ethgasstation.info/) to see what gas price is optimal. 4) Save your TX Hash in case you need it later:    ', //
+SUCCESS_3                   : '你的交易已被發布到網路上。這並不表示該交易已被確認或完成。遇到區塊鏈網路流量極大時，你可能需要超過三個小時才能完成交易 1) 在下面確認你的交易狀態。 2) 如果該交易已經等待(pending)數小時或消失，使用 檢查交易狀態 頁面來替換它。 3) 使用 [ETH加油站](https://ethgasstation.info/) 來確認最佳的Gas價格。 4) 存下該筆交易的雜湊值，你可能需要它:   ', //'Your TX has been broadcast to the network. This does not mean it has been mined & sent. During times of extreme volume, it may take 3+ hours to send. 1) Check your TX below. 2) If it is pending for hours or disappears, use the Check TX Status Page to replace. 3) Use [ETH Gas Station](https://ethgasstation.info/) to see what gas price is optimal. 4) Save your TX Hash in case you need it later:    ', //
 SUCCESS_4                   : '成功新增你的錢包 ',
 SUCCESS_5                   : '已選擇檔案 ',
-SUCCESS_6                   : 'You are successfully connected ',
-SUCCESS_7                   : 'Message Signature Verified',
+SUCCESS_6                   : '你已經成功連上網路 ',
+SUCCESS_7                   : '訊息簽章驗證成功',
 WARN_Send_Link              : '你藉由一條連結到達此頁面，且該連結已幫你將地址、金額、gas和data欄位或交易類別(傳送模式)填好。 送出前你可以自由更改其中的值。 首先先解鎖你的錢包。 ',
 
 /* Geth Error Messages */
