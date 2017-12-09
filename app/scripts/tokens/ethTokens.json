@@ -1584,6 +1584,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x62087245087125d3db5b9a3d713d78e7bbc31e54",
+"symbol":"WPC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
 "symbol":"XAUR",
 "decimal":8,
@@ -1637,15 +1642,5 @@
 "address":"0xe386b139ed3715ca4b18fd52671bdcea1cdfe4b1",
 "symbol":"ZST",
 "decimal":8,
-"type":"default"
-},{
-"address":"0x2a3Aa9ECA41E720Ed46B5A70D6C37EfA47f768Ac",
-"symbol":"RCT",
-"decimal":18,
-"type":"default"
-},{
-"address":"0x62087245087125d3db5b9a3d713d78e7bbc31e54",
-"symbol":"WPC",
-"decimal":18,
 "type":"default"
 }]
