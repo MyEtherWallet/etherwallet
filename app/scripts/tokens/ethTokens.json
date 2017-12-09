@@ -154,11 +154,6 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x3A0181e8f2DD081ace83EaC027EEC2E0c2255Ed5",
-"symbol":"BCV",
-"decimal":2,
-"type":"default"
-},{
 "address":"0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
 "symbol":"BeerCoin 🍺 ",
 "decimal":0,
@@ -427,6 +422,11 @@
 "address":"0x2e071D2966Aa7D8dECB1005885bA1977D6038A65",
 "symbol":"DICE",
 "decimal":16,
+"type":"default"
+},{
+"address":"0x13f11C9905A08ca76e3e853bE63D4f0944326C72",
+"symbol":"DIVX",
+"decimal":18,
 "type":"default"
 },{
 "address":"0x07e3c70653548b04f0a75970c1f81b4cbbfb606f",
@@ -796,8 +796,6 @@
 },{
 "address":"0x514910771af9ca656af840dff83e8264ecf986ca",
 "symbol":"LINK - ChainLink",
- },{
-
 "decimal":18,
 "type":"default"
 },{

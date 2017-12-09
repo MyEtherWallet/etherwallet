@@ -65,7 +65,10 @@
           <tbody>
             <tr>
               <td class="small text-right">To Address:</td>
-              <td class="small text-left mono">{{parsedSignedTx.to}}</td>
+              <td class="small text-left mono">{{parsedSignedTx.to}}
+                <br />
+                <em><small>If sending tokens, this should be the token contract address.</small></em>
+              </td>
             </tr>
             <tr>
               <td class="small text-right">From Address:</td>
@@ -93,12 +96,12 @@
             </tr>
             <tr>
               <td class="small text-right">Gas Price:</td>
-              <td class="small text-left mono">{{parsedSignedTx.gasPrice.wei}}  WEI == {{parsedSignedTx.gasPrice.gwei}} GWEI == {{parsedSignedTx.gasPrice.eth}} ETH
+              <td class="small text-left mono">{{parsedSignedTx.gasPrice.gwei}} GWEI <small>({{parsedSignedTx.gasPrice.eth}} ETH)</small>
               </td>
             </tr>
             <tr>
-              <td class="small text-right">TX Fee (max):</td>
-              <td class="small text-left mono">{{parsedSignedTx.txFee.wei}}  WEI == {{parsedSignedTx.txFee.gwei}} GWEI == {{parsedSignedTx.txFee.eth}} ETH</td>
+              <td class="small text-right">Max TX Fee:</td>
+              <td class="small text-left mono"> {{parsedSignedTx.txFee.eth}} ETH <small>({{parsedSignedTx.txFee.gwei}} GWEI)</small></td>
             </tr>
             <tr>
               <td class="small text-right">Nonce:</td>
@@ -134,7 +137,11 @@
         </button>
       </div>
 
-      <p class="small text-center" style="padding: 0px 5px;"><em>If you are encountering erroneous errors (too low gas, tx hash already imported), please copy &amp; paste the above (no screenshots, plz) when you email us. 🤗</em></p>
+      <p class="small text-center" style="padding: 0px 5px;">
+        <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank" ref="noopener noreferrer">
+          The network is a bit overloaded. If you're having issues with TXs, please read me.
+        </a>
+      </p>
 
 
 
