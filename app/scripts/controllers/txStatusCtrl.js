@@ -8,7 +8,7 @@ var txStatusCtrl = function($scope) {
         notFound: 1,
         mined: 2
     }
-    var MIN_GAS = 30;
+    var MIN_GAS = 41;
     $scope.txInfo = {
         status: null, // notFound foundInPending foundOnChain
         hash: globalFuncs.urlGet('txHash') == null ? "" : globalFuncs.urlGet('txHash'),

@@ -341,7 +341,7 @@ FOOTER_3                        :  'Client-side wallet generation by',
 FOOTER_4                        :  'Disclaimer',
 
 GAS_LIMIT_Desc                  :  'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
-GAS_PRICE_Desc                  :  'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.',
+GAS_PRICE_Desc                  :  'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `41 GWEI`.',
 
 GEN_desc                        :  'If you want to generate multiple wallets, you can do so here',
 GEN_Help_1                      :  'Use your',

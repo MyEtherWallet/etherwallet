@@ -340,7 +340,7 @@ FOOTER_2                    : '投げ銭に感謝致します！: ',
 FOOTER_3                    : 'クライアントサイドお財布制作 ',
 FOOTER_4                    : '免責事項 ',
 
-GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかるの料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するためにマイナーに支払う手数料です。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「50 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.*/
+GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかるの料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するためにマイナーに支払う手数料です。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「41 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `41 GWEI`.*/
 GAS_LIMIT_Desc              : 'ガスリミットは、その処理のために送出するガスの総量です。「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するための料金として支払われます。 この数字を増やしても、自分の処理が早くなることはありません。ETHの送出 = 「２１０００」、トークンの送出 = ~「２０００００」が目安になります。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
 /* Gen Wallet Updates */
 GEN_desc                    : '複数のお財布の作成をこのタブで行う事ができます： ',
@@ -532,7 +532,7 @@ TRANS_sendInfo              : '21000ガスを使用する標準トランザク�
 
 translate_version           : '0.5',
 Translator_Desc             : '日本語開発者をサポート： ',
-TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ', 
+TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ',
 TranslatorAddr_2            : '',
 TranslatorAddr_3            : '',
 TranslatorAddr_4            : '',
