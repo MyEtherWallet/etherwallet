@@ -424,6 +424,11 @@
 "decimal":16,
 "type":"default"
 },{
+"address":"0x13f11C9905A08ca76e3e853bE63D4f0944326C72",
+"symbol":"DIVX",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x07e3c70653548b04f0a75970c1f81b4cbbfb606f",
 "symbol":"DLT",
 "decimal":18,
