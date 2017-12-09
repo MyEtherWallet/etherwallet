@@ -1364,6 +1364,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x7dd7f56d697cc0f2b52bd55c057f378f1fe6ab4b",
+"symbol":"$TEAK",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xB64ef51C888972c908CFacf59B47C1AfBC0Ab8aC",
 "symbol":"STORJ",
 "decimal":8,
