@@ -622,7 +622,7 @@ PARITY_TooCheapToReplace        :  "(parity-08) TX Fee is too low. It does not s
 
 SUCCESS_1                   : 'Dirección válida ',
 SUCCESS_2                   : 'Cartera descifrada con éxito ',
-SUCCESS_3                   : 'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:   ', //'Transacción enviada. TX Hash ',
+SUCCESS_3                   : 'Your TX has been broadcast to the network. This does not mean it has been mined & sent. During times of extreme volume, it may take 3+ hours to send. 1) Check your TX below. 2) If it is pending for hours or disappears, use the Check TX Status Page to replace. 3) Use [ETH Gas Station](https://ethgasstation.info/) to see what gas price is optimal. 4) Save your TX Hash in case you need it later:    ', //'Transacción enviada. TX Hash ',
 SUCCESS_4                   : 'Se ha añadido tu cartera ',
 SUCCESS_5                   : 'Archivo seleccionado ',
 SUCCESS_6                   : 'You are successfully connected ',

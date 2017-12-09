@@ -586,7 +586,7 @@ ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : '유효한 주소 ',
 SUCCESS_2                   : '지갑이 성공적으로 복호화 되었습니다. ',
-SUCCESS_3                   : '트랜잭션이 블록체인으로 공개됩니다. 트랜잭션 내역과 가스가 채굴되었는지 확인려면 클릭해주세요. 가스 또는 컨트랙트 실행 오류가 없는지 확인해주세요. TX Hash : ', //'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:   ', //
+SUCCESS_3                   : '트랜잭션이 블록체인으로 공개됩니다. 트랜잭션 내역과 가스가 채굴되었는지 확인려면 클릭해주세요. 가스 또는 컨트랙트 실행 오류가 없는지 확인해주세요. TX Hash : ', //'Your TX has been broadcast to the network. This does not mean it has been mined & sent. During times of extreme volume, it may take 3+ hours to send. 1) Check your TX below. 2) If it is pending for hours or disappears, use the Check TX Status Page to replace. 3) Use [ETH Gas Station](https://ethgasstation.info/) to see what gas price is optimal. 4) Save your TX Hash in case you need it later:    ', //
 SUCCESS_4                   : '지갑이 성공적으로 추가되었습니다. ',
 SUCCESS_5                   : '파일이 선택되었습니다. ',
 SUCCESS_6                   : '성공적으로 연결되었습니다. ',
