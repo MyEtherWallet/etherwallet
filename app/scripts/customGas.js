@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// DIVX Token Sale
+to:         '0x13f11C9905A08ca76e3e853bE63D4f0944326C72',
+gasLimit:   300000,
+data:       '0xb4427263',
+msg:        'DIVX Token Sale - www.diviproject.org'
+},{
 // NOX Token Sale
 to:         '0x4b0712de9b75bc68a566215acca876ea5e55c172',
 gasLimit:   114293,
