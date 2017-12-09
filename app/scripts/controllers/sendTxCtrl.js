@@ -34,8 +34,9 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         nonce: null,
         gasPrice: globalFuncs.urlGet('gasprice') == null ? null : globalFuncs.urlGet('gasprice'),
         donate: false,
-        tokensymbol: globalFuncs.urlGet('tokensymbol') == null ? false : globalFuncs.urlGet('tokensymbol')
+        tokensymbol: globalFuncs.urlGet('tokensymbol') == null ? false : globalFuncs.urlGet('tokensymbol'),
     }
+
 
     $scope.setSendMode = function(sendMode, tokenId = '', tokensymbol = '') {
         $scope.tx.sendMode = sendMode;
@@ -300,13 +301,3 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
 
 };
 module.exports = sendTxCtrl;
-
-
-//  var rawTx = {
-//  nonce: ethFuncs.sanitizeHex(data.nonce),
-//  gasPrice: data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
-//  gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
-//  to: ethFuncs.sanitizeHex(txData.to),
-//  value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
-//  data: ethFuncs.sanitizeHex(txData.data)
-//  }
