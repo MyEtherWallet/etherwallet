@@ -245,5 +245,5 @@ msg:        'Artex - Art Provenance Blockchain. Official site https://artex.glob
 to:         '0x313f29Ea49a9e6ca3B3E254335d4eC32EF5045F8',
 gasLimit:   200000,
 data:       '',
-msg:        'SIRIN LABS - Secure Open Source Consumer Electronics for The Blockchain Era. Official website https://sirinlabs.com'
+msg:        'SIRIN LABS official crowdsale address. Official website https://sirinlabs.com'
 }]
