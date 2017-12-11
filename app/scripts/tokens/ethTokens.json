@@ -1589,6 +1589,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x910Dfc18D6EA3D6a7124A6F8B5458F281060fa4c",
+"symbol":"X8X",
+"decimal":18,
+"type":"default"
+ },{
 "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
 "symbol":"XAUR",
 "decimal":8,
