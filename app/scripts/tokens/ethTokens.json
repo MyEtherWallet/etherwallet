@@ -104,6 +104,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x7705FaA34B16EB6d77Dfc7812be2367ba6B0248e",
+"symbol":"ARX",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x27054b13b1B798B345b591a4d22e6562d47eA75a",
 "symbol":"AST",
 "decimal":4,
