@@ -799,6 +799,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x2eb86e8fc520e0f6bb5d9af08f924fe70558ab89",
+"symbol":"LGR",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xff18dbc487b4c2e3222d115952babfda8ba52f5f",
 "symbol":"LIFE",
 "decimal":18,
