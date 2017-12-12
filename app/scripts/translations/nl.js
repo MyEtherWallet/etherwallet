@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Ik begrijp het. Ga door.',
 GEN_Label_5                 : 'Sla je Prive Sleutel op. ',
 GEN_Unlock                  : 'Open je wallet om je adres te bekijken',
-GAS_PRICE_Desc              : 'Gas Prijs is het bedrag dat je betaald per unit gas. `TX vergoeding = gas prijs * gas limiet` & wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. Des te hoger de gas prijs = de sneller je transactie, maar ook duurder. Standaard is `20 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Prijs is het bedrag dat je betaald per unit gas. `TX vergoeding = gas prijs * gas limiet` & wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. Des te hoger de gas prijs = de sneller je transactie, maar ook duurder. Standaard is `40 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limiet is de hoeveelheid gas waarmee je je TX verstuurd. `TX vergoeding = gas prijs * gas limiet` & wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. Het verhogen van dit nummer zorgt er niet voor dat je TX sneller ge-mined zal worden. Verzenden van ETH = `21000`. Verzenden van Tokens = ~`200000`.',
 NONCE_Desc                  : 'De nonce is het aantal transacties die reeds verzonden zijn van een gegeven adres. De nonce verzekert dat transacties in de juiste volgorde worden verzonden en dat een transactie slechts 1 keer geldig is.',
 TXFEE_Desc                  : 'De TX vergoeding (`fee`) wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. De vergoeding is de `gas limiet` * `gas prijs`. [Je kunt hier GWEI -> ETH converteren](https://www.myetherwallet.com/helpers.html)',
@@ -552,7 +552,7 @@ ERROR_6                     : 'Ongeldig wachtwoord. ',
 ERROR_7                     : 'Ongeldig bedrag. (Moet een getal zijn. Probeer 0-18.) ', // 7
 ERROR_8                     : 'Ongeldige gas limiet. (Moet een getal zijn. Probeer 21000-4000000.) ', // 8
 ERROR_9                     : 'Ongeldige data waarde. (Moet hexadecimaal zijn.) ', // 9
-ERROR_10                    : 'Ongeldige gas bedrag. (Moet een getal zijn. Probeer 20 GWEI / 20000000000 WEI.) ',
+ERROR_10                    : 'Ongeldige gas bedrag. (Moet een getal zijn. Probeer 40 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Ongeldige nonce. (Moet een getal zijn.) ', // 11
 ERROR_12                    : 'Ongeldige gesigneerde transactie. ',
 ERROR_13                    : 'Een wallet met deze nickname bestaat reeds. ',

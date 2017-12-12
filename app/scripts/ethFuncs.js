@@ -1,6 +1,6 @@
 'use strict';
 var ethFuncs = function() {}
-ethFuncs.gasAdjustment = 20;
+ethFuncs.gasAdjustment = 40;
 ethFuncs.validateEtherAddress = function(address) {
     if (address.substring(0, 2) != "0x") return false;
     else if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) return false;

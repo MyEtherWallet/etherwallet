@@ -570,7 +570,7 @@ ERROR_6                     : '(error_07) Please enter a valid password. Veuille
 ERROR_7                     : '(error_08) Please enter valid decimals     (Must be an integer. Try 0-18.) Veuillez entrer un montant valide. (Must be integer. Try 0-18.) ', // 7
 ERROR_8                     : '(error_09) Please enter a valid gas limit  (Must be an integer. Try 21000-4000000.) Veuillez entrer une limite de Gas valide. (Must be integer. Try 21000-4000000.) ', // 8
 ERROR_9                     : '(error_10) Please enter a valid data value (Must be hex.) Veuillez entrer des donnnées valides (en héxadécimal).', // 9
-ERROR_10                    : '(error_11) Please enter a valid gas price. (Must be an integer. Try 20 GWEI / 20000000000 WEI.) Veuillez entrer un montant de Gas valide (une valeur entière. Essayez 20 Gwei, soit 20000000000 wei).',
+ERROR_10                    : '(error_11) Please enter a valid gas price. (Must be an integer. Try 40 GWEI / 20000000000 WEI.) Veuillez entrer un montant de Gas valide (une valeur entière. Essayez 20 Gwei, soit 20000000000 wei).',
 ERROR_11                    : '(error_12) Please enter a valid nonce (Must be an integer.) Veuillez entrer un nonce valide (nombre entier).', // 11
 ERROR_12                    : '(error_13) Invalid signed transaction. Transaction signée invalide.',
 ERROR_13                    : '(error_14) A wallet with this nickname already exists. Un portefeuille portant ce nom existe déjà.',

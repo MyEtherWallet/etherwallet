@@ -258,7 +258,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Saya paham. Lanjutkan.',
 GEN_Label_5                 : 'SSimpan `Private Key` Anda. ',
 GEN_Unlock                  : 'Buka kunci dompet Anda untuk melihat alamat Anda',
-GAS_PRICE_Desc              : 'Harga Gas Price adalah jumlah yang Anda bayar per unit gas. `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Makin tinggi harga gas = transaksi makin cepat, tapi makin mahal. Default-nya `20 GWEI`.',
+GAS_PRICE_Desc              : 'Harga Gas Price adalah jumlah yang Anda bayar per unit gas. `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Makin tinggi harga gas = transaksi makin cepat, tapi makin mahal. Default-nya `40 GWEI`.',
 GAS_LIMIT_Desc              : 'Batas Gas (Gas limit) adalah jumlah gas untuk dikirim bersama TX Anda.  `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Menaikkan angka ini tidak mempercepat TX Anda untuk ditambang. Pengiriman ETH = `21000`. Pengiriman Token = ~`200000`.',
 NONCE_Desc                  : 'Nonce adalah nomor transaksi yang dikirimn dari sebuah alamat. Ini untuk menjamin agar pengiriman terlaksana secara runtut dan tidak ada yang dilakukan lebih dari sekali.',
 TXFEE_Desc                  : 'Biaya TX Fee dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Jumlahnya =  `gas limit` * `gas price`. [Anda dapat mengkonversi GWEI -> ETH](https://www.myetherwallet.com/helpers.html)',
@@ -570,7 +570,7 @@ ERROR_6                     : 'Password tidak valid. ',
 ERROR_7                     : 'Jumlah tidak valid. (Harus integer. Coba 0-18.) ', // 7
 ERROR_8                     : 'Gas limit tidak valid. (Harus integer. Coba 21000-4000000.) ', // 8
 ERROR_9                     : 'Nilai data tidak valid. (Harus hex.) ', // 9
-ERROR_10                    : 'Jumlah Gas tidak valid. (Harus integer. Coba 20 GWEI / 20000000000 WEI.) ',
+ERROR_10                    : 'Jumlah Gas tidak valid. (Harus integer. Coba 40 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Nonce tidak valid. (Harus integer.) ', // 11
 ERROR_12                    : 'Signed transaction tidak valid. ',
 ERROR_13                    : 'Sudah ada Dompet dengan nickname ini. ',

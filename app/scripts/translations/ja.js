@@ -283,7 +283,7 @@ ERROR_6                     : '(error_07) 無効なパスワードです。 (Ple
 ERROR_7                     : '(error_08) 無効な総量です。 (Must be integer. Try 0-18.) (Please enter valid decimals     (Must be an integer. Try 0-18.)) ',
 ERROR_8                     : '(error_09) 無効なガスリミットです。 (Must be integer. Try 21000-4000000.) (Please enter a valid gas limit  (Must be an integer. Try 21000-4000000.)) ',
 ERROR_9                     : '(error_10) 無効なデータです。 (Must be hex.) (Please enter a valid data value (Must be hex.)) ',
-ERROR_10                    : '(error_11) 無効なガス総量です。 (Must be integer. Try 20 GWEI / 20000000000 WEI.) (Please enter a valid gas price. (Must be an integer. Try 20 GWEI / 20000000000 WEI.)) ',
+ERROR_10                    : '(error_11) 無効なガス総量です。 (Must be integer. Try 40 GWEI / 20000000000 WEI.) (Please enter a valid gas price. (Must be an integer. Try 40 GWEI / 20000000000 WEI.)) ',
 ERROR_11                    : '(error_12) 無効な nonce　です。 (Must be integer.) (Please enter a valid nonce (Must be an integer.)) ',
 ERROR_12                    : '(error_13) 無効な署名のトランザクションです。 (Invalid signed transaction.) ',
 ERROR_13                    : '(error_14) 同じニックネームのお財布が既にあります。 (A wallet with this nickname already exists.) ',
@@ -340,7 +340,7 @@ FOOTER_2                    : '投げ銭に感謝致します！: ',
 FOOTER_3                    : 'クライアントサイドお財布制作 ',
 FOOTER_4                    : '免責事項 ',
 
-GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかるの料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するためにマイナーに支払う手数料です。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「20 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `20 GWEI`.*/
+GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位にかかるの料金のことです。 「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するためにマイナーに支払う手数料です。ガス価格が高いほど処理は早く行われますが、料金は高くなります。デファルトは 「40 GWEI」です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `40 GWEI`.*/
 GAS_LIMIT_Desc              : 'ガスリミットは、その処理のために送出するガスの総量です。「処理料金 = ガス価格 ＊ ガスリミット」で算出され、自分の処理をブロックに配置するための料金として支払われます。 この数字を増やしても、自分の処理が早くなることはありません。ETHの送出 = 「２１０００」、トークンの送出 = ~「２０００００」が目安になります。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
 /* Gen Wallet Updates */
 GEN_desc                    : '複数のお財布の作成をこのタブで行う事ができます： ',

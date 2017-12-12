@@ -558,7 +558,7 @@ ERROR_6                     : '無效的密碼。 ',
 ERROR_7                     : '無效的數量。(Must be integer. Try 0-18.) ', // 7
 ERROR_8                     : '無效的gas上限。(Must be integer. Try 21000-4000000.) ', // 8
 ERROR_9                     : '無效的data。(Must be hex.) ', // 9
-ERROR_10                    : '無效的gas數量。(Must be integer. Try 20 GWEI / 20000000000 WEI.)',
+ERROR_10                    : '無效的gas數量。(Must be integer. Try 40 GWEI / 20000000000 WEI.)',
 ERROR_11                    : '無效的nonce值。(Must be integer.)', // 11
 ERROR_12                    : '無效的已簽名交易。 ',
 ERROR_13                    : '已經有一個使用相同暱稱的錢包存在。 ',

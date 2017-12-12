@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Ich verstehe. Weiter.',
 GEN_Label_5                 : 'Sichern Sie Ihren `Privaten Schlüssel`. ',
 GEN_Unlock                  : 'Entsperren Sie Ihr Wallet um Ihre Adresse zu sehen.',
-GAS_PRICE_Desc              : 'Der `Gas Preis` ist der Betrag, den Sie für eine Einheit `Gas` bezahlen. `Transaktionsgebühr = Gas Preis  * Gas Limit`. Dieser Betrag wird den Minern gezahlt, die Ihre Transaktion in einem Block einschließen. Je höher der Gas-Preis, desto schneller wird die Transaktion verarbeitet, aber desto teurer wird die Transaktionsgebühr. Der Standardwert ist `20 GWEI`.',
+GAS_PRICE_Desc              : 'Der `Gas Preis` ist der Betrag, den Sie für eine Einheit `Gas` bezahlen. `Transaktionsgebühr = Gas Preis  * Gas Limit`. Dieser Betrag wird den Minern gezahlt, die Ihre Transaktion in einem Block einschließen. Je höher der Gas-Preis, desto schneller wird die Transaktion verarbeitet, aber desto teurer wird die Transaktionsgebühr. Der Standardwert ist `40 GWEI`.',
 GAS_LIMIT_Desc              : 'Das Gas-Limit ist der Betrag an Gas, der mit Ihrer Transaktion mitgeschickt wird. `Transaktionsgebühr = Gas Preis  * Gas Limit`. Dieser Betrag wird den Minern gezahlt, die Ihre Transaktion in einem Block einschließen. Wenn Sie diese Zahl erhöhen, wird ihre Transaktion nicht schneller verarbeitet. Eine zu kleine Zahl kann jedoch bedeuten, dass die Transaktion nicht erfolgreich verarbeitet werden kann. Ein Anhaltspunkt: Eine einfache Überweisung benötigt ca. 21000 Gas, ein Token-Transfer etwa 200.000 Gas.',
 NONCE_Desc                  : 'Der `Nonce` ist die Zahl der Transaktionen, die von einer bestimmten Adresse aus gesendet wurden. Er stellt sicher, dass Transaktionen der Reihe nach und nicht doppelt ausgeführt werden können.',
 TXFEE_Desc                  : 'Die Transaktionsgebühr wird den Miner(n) bezahlt, die Ihre Transaktion in einen Block einschließen. Es wird durch `Gas-Limit` * `Gas-Preis` berechnet. [Du kannst GWEI -> ETH hier umwandeln](https://www.myetherwallet.com/helpers.html)',
@@ -572,7 +572,7 @@ ERROR_6                     : 'Bitte gebe eine gültige Passwort ein. ',
 ERROR_7                     : 'Bitte gebe eine gültige Betrag ein. (Must be integer. Try 0-18.) ', // 7
 ERROR_8                     : 'Bitte gebe eine gültige Gasverbrauch ein. (Must be integer. Try 21000-4000000.) ', // 8
 ERROR_9                     : 'Bitte gebe eine gültige Datenwert ein. (Must be hex.) ', // 9
-ERROR_10                    : 'Bitte gebe eine gültige Gasbetrag ein. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_10                    : 'Bitte gebe eine gültige Gasbetrag ein. (Must be integer. Try 40 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Bitte gebe eine gültige Nonce ein. (Must be integer.) ', // 11
 ERROR_12                    : 'Ungültige unterzeichnete Transaktion. ',
 ERROR_13                    : 'Ein Wallet mit diesem Spitznamen existiert bereits. ',

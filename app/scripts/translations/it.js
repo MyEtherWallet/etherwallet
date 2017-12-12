@@ -256,7 +256,7 @@ GEN_Help_20                 : 'Portafoglio offline',
 GET_ConfButton              : 'Ho capito. Continua.',
 GEN_Label_5                 : 'Salva la tua `chiave privata`. ',
 GEN_Unlock                  : 'Sblocca il portafoglio per vedere l\'indirizzo',
-GAS_PRICE_Desc              : 'Il prezzo gas è la somma che paghi per unità di gas. `Commissione transazione = prezzo gas * limite gas` e si paga ai *miner* perché includano la tua transazione in un blocco. Più alto il prezzo gas = più veloce la transazione, ma più costosa. Di default è `20 GWEI`.',
+GAS_PRICE_Desc              : 'Il prezzo gas è la somma che paghi per unità di gas. `Commissione transazione = prezzo gas * limite gas` e si paga ai *miner* perché includano la tua transazione in un blocco. Più alto il prezzo gas = più veloce la transazione, ma più costosa. Di default è `40 GWEI`.',
 GAS_LIMIT_Desc              : 'Il limite gas è la quantità di gas da inviare con la transazione. `Commissione transazione` = prezzo gas * limite gas e si paga ai *miner* perché includano la tua transazione in un blocco. Aumentare questo numero non farà in modo che la tua transazione sia inclusa prima. Invio di ETH = `21000`. Invio di token = ~`200000`.',
 NONCE_Desc                  : 'Il *nonce* è il numero di transazioni inviate da un certo indirizzo. Fa in modo che le transazioni siano inviate nel giusto ordine e non più di una volta.',
 TXFEE_Desc                  : 'La commissione transazione si paga ai *miner* perché includano la transazione in un blocco. Si calcola come `limite gas` * `prezzo gas`. [Puoi calcolare la conversione GWEI -> ETH qui](https://www.myetherwallet.com/helpers.html)',
@@ -555,7 +555,7 @@ ERROR_6                     : 'Inserisci una password valida. ',
 ERROR_7                     : 'Inserisci dei decimali validi. (Deve essere un intero. Prova 0-18.) ', // 7
 ERROR_8                     : 'Inserisci un limite gas valido. (Deve essere un intero. Prova 21000-4000000.) ', // 8
 ERROR_9                     : 'Inserisci un valore valido per i dati. (Deve essere una stringa esadecimale.) ', // 9
-ERROR_10                    : 'Inserisci prezzo valido per il gas. (Deve essere un intero. Prova 20 GWEI / 20000000000 WEI.) ',
+ERROR_10                    : 'Inserisci prezzo valido per il gas. (Deve essere un intero. Prova 40 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Inserisci un nonce valido. (Deve essere un intero.) ', // 11
 ERROR_12                    : 'Transazione firmata non valida. ',
 ERROR_13                    : 'Esiste già un portafoglio con questo nome. ',
