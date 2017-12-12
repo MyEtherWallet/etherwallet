@@ -532,7 +532,7 @@ MSG_info2                   : 'Inclou el teu àlies i on el fas servir per tal q
 MSG_info3                   : 'Inclou una raó específica per tal que el missatge no pugui ser reutilitzat per un altre propòsit. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Això et permet descarregar diferents versions de les claus privades i tornar a imprimir la teva cartera de paper. És possible que vulguis fer això per [importar el teu compte a Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vols comprovar el teu saldo, recomanem utilitzar un explorador de la blockchain com [etherscan.io](http://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Això et permet descarregar diferents versions de les claus privades i tornar a imprimir la teva cartera de paper. És possible que vulguis fer això per [importar el teu compte a Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vols comprovar el teu saldo, recomanem utilitzar un explorador de la blockchain com [etherscan.io](https://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Això et permet descarregar diferents versions de les claus privades i tornar a imprimir la teva cartera de paper. ',
 VIEWWALLET_SuccessMsg       : 'Enhorabona! Aquests són els detalls de la teva cartera. ',
 VIEWWALLET_ShowPrivKey      : '(mostra)',
@@ -810,7 +810,7 @@ HELP_15_Title               : '15) Why hasn\'t the account I just created show u
 HELP_15_Desc_1              : 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
 
 HELP_16_Title               : '16) How do I check the balance of my account? ',
-HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
+HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
 
 HELP_17_Title               : '17) Why isn\'t my balance showing up when I unlock my wallet? ',
 HELP_17_Desc_1              : ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',

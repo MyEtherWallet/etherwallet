@@ -476,7 +476,7 @@ MYWAL_Content_2             : 'Assurez-vous d\'avoir bien **sauvegardé la clé 
 MYWAL_Content_3             : 'Si vous voulez utiliser ce portefeuille avec MyEtherWallet CX à l\'avenir, vous devrez le rajouter manuellement en utilisant la clé privée / fichier JSON et le mot de passe.',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Ceci vous permet de télécharger plusieurs versions des clefs privées et d\'imprimer votre portefeuille papier. Vous devrez le faire pour [importer votre compte dans Geth / Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vous voulez seulement consulter votre solde, nous recommandons d\'utiliser un explorateur de blockchain comme [etherscan.io](http://etherscan.io/).',
+VIEWWALLET_Subtitle         : 'Ceci vous permet de télécharger plusieurs versions des clefs privées et d\'imprimer votre portefeuille papier. Vous devrez le faire pour [importer votre compte dans Geth / Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vous voulez seulement consulter votre solde, nous recommandons d\'utiliser un explorateur de blockchain comme [etherscan.io](https://etherscan.io/).',
 VIEWWALLET_Subtitle_Short   : 'Ceci vous permet de télécharger plusieurs versions des clefs privées et d\'imprimer votre portefeuille papier.',
 VIEWWALLET_SuccessMsg       : 'Réussi ! Voici les détails de votre portefeuille :',
 VIEWWALLET_ShowPrivKey      : '(montrer)',
@@ -826,7 +826,7 @@ HELP_15_Title               : '15) Pourquoi le compte que je viens de créer n\'
 HELP_15_Desc_1              : 'Les comptes n\'apparaissent dans un explorateur de blockchain qu\'après une activité, comme par exemple, un envoi ou une réception d\'Ether.',
 
 HELP_16_Title               : '16) Comment puis-je vérifier le solde de mon compte ?',
-HELP_16_Desc_1              : 'Vous pouvez utiliser un explorateur de blockchain comme [etherscan.io](http://etherscan.io/). Collez votre adresse dans la barre de recherche et cela récupérera votre solde et l\'historique de vos transactions. Par exemple, voici ce que montre notre [compte de donations](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) sur etherscan.io',
+HELP_16_Desc_1              : 'Vous pouvez utiliser un explorateur de blockchain comme [etherscan.io](https://etherscan.io/). Collez votre adresse dans la barre de recherche et cela récupérera votre solde et l\'historique de vos transactions. Par exemple, voici ce que montre notre [compte de donations](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) sur etherscan.io',
 
 HELP_17_Title               : '17) Pourquoi mon solde n\'apparaît-il pas quand je déverrouille mon portefeuille ?',
 HELP_17_Desc_1              : 'C\'est probablement dû au fait que vous vous trouviez derrière un parefeu. L\'API que nous utilisons pour obtenir le solde et converir celui-ci est souvent bloquée par des parefeus pour des raisons diverses. Vous êtes toujours capable d\'envoyer des transactions mais il vous faut employer une autre méthode pour voir le solde, comme etherscan.io',
