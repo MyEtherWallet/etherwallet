@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Ik begrijp het. Ga door.',
 GEN_Label_5                 : 'Sla je Prive Sleutel op. ',
 GEN_Unlock                  : 'Open je wallet om je adres te bekijken',
-GAS_PRICE_Desc              : 'Gas Prijs is het bedrag dat je betaald per unit gas. `TX vergoeding = gas prijs * gas limiet` & wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. Des te hoger de gas prijs = de sneller je transactie, maar ook duurder. Standaard is `50 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Prijs is het bedrag dat je betaald per unit gas. `TX vergoeding = gas prijs * gas limiet` & wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. Des te hoger de gas prijs = de sneller je transactie, maar ook duurder. Standaard is `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limiet is de hoeveelheid gas waarmee je je TX verstuurd. `TX vergoeding = gas prijs * gas limiet` & wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. Het verhogen van dit nummer zorgt er niet voor dat je TX sneller ge-mined zal worden. Verzenden van ETH = `21000`. Verzenden van Tokens = ~`200000`.',
 NONCE_Desc                  : 'De nonce is het aantal transacties die reeds verzonden zijn van een gegeven adres. De nonce verzekert dat transacties in de juiste volgorde worden verzonden en dat een transactie slechts 1 keer geldig is.',
 TXFEE_Desc                  : 'De TX vergoeding (`fee`) wordt betaald aan de miners om jouw TX in een blok op de blockchain op te nemen. De vergoeding is de `gas limiet` * `gas prijs`. [Je kunt hier GWEI -> ETH converteren](https://www.myetherwallet.com/helpers.html)',
@@ -531,7 +531,7 @@ MSG_info2                   : 'Voeg je nickname toe en waar je deze gebruikt zod
 MSG_info3                   : 'Geef een specifieke reden op voor de boodschap, zodat deze niet kan worden hergebruikt voor een ander doel. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. Je zou dit kunnen doen om [je account in Geth/Mist te importeren](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Als je enkel je saldo wilt raadplegen, adviseren we je om gebruik te maken van een blockchain explorer zoals [etherscan.io](http://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. Je zou dit kunnen doen om [je account in Geth/Mist te importeren](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Als je enkel je saldo wilt raadplegen, adviseren we je om gebruik te maken van een blockchain explorer zoals [etherscan.io](https://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. ',
 VIEWWALLET_SuccessMsg       : 'Gelukt! Hier zijn je wallet details. ',
 VIEWWALLET_ShowPrivKey      : '(laat zien)',
@@ -809,7 +809,7 @@ HELP_15_Title               : '15) Hoe komt het dat het wallet wat ik zojuist he
 HELP_15_Desc_1              : 'Adresen zullen enkel in een blockchain explorer worden weergegeven zodra er activiteit op een account heeft plaats gevonden. Bijvoorbeeld, zodra je er wat Ether naar toe verzonden hebt. ',
 
 HELP_16_Title               : '16) Hoe check ik het saldo van mijn account? ',
-HELP_16_Desc_1              : 'Je kunt hiervoor een blockchain explorer gebruiken zoals bijvoorbeeld [etherscan.io](http://etherscan.io/). Plak daar je adres in de zoekbalk en je adres en transactie geschiedenis zullen worden getoond. Bekijk bijvoobeeld hoe ons [donatie account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8)  eruit ziet op etherscan.io ',
+HELP_16_Desc_1              : 'Je kunt hiervoor een blockchain explorer gebruiken zoals bijvoorbeeld [etherscan.io](https://etherscan.io/). Plak daar je adres in de zoekbalk en je adres en transactie geschiedenis zullen worden getoond. Bekijk bijvoobeeld hoe ons [donatie account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8)  eruit ziet op etherscan.io ',
 
 HELP_17_Title               : '17) Waarom wordt mijn saldo niet weergegeven nadat ik mijn wallet heb ontsleuteld? ',
 HELP_17_Desc_1              : 'Dit wordt zeer waarschijnlijk veroorzaakt door het feit dat je achter een firwall zit. De API waarvan we gebruik maken om je saldo op te halen en te converteren wordt vaak geblokkeerd door firewalls om wat voor reden dan ook. Het is nog steeds mogelijk om transacties te verzenden, je hebt enkel een andere methode nodig om je saldo the checken, zoals bijvoorbeeld etherscan.io ',

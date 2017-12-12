@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
@@ -541,7 +541,7 @@ MYWAL_Content_2             : 'Hãy chắc chắn bạn đã **Lưu giữ Privat
 MYWAL_Content_3             : 'Nếu bạn muốn sử dụng địa chỉ Ví này với MyEtherWallet CX trong tương lai, bạn sẽ cần phải tự thêm vào lại bằng cách sử dụng tập tin Private Key / JSON và mật khẩu. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Việc này cho phép bạn tải về các phiên bản khác nhau của Private Key và in lại ví giấy của bạn. Bạn có thể muốn làm điều này để [nhập tài khoản của bạn vào Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Nếu bạn muốn kiễm tra số dư của bạn, chúng tôi khuyên bạn sử dụng một blockchain explorer như [etherscan.io] (http://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Việc này cho phép bạn tải về các phiên bản khác nhau của Private Key và in lại ví giấy của bạn. Bạn có thể muốn làm điều này để [nhập tài khoản của bạn vào Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Nếu bạn muốn kiễm tra số dư của bạn, chúng tôi khuyên bạn sử dụng một blockchain explorer như [etherscan.io] (https://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Việc này cho phép bạn tải về các phiên bản khác nhau của Private Key và in lại ví giấy của bạn. ',
 VIEWWALLET_SuccessMsg       : 'Đã Thành Công! Đây là thông tin chi tiết về Ví của bạn. ',
 VIEWWALLET_ShowPrivKey      : '(show)',
@@ -825,7 +825,7 @@ HELP_15_Title               : '15) Vì sao tài khoản của tôi vừa tạo l
 HELP_15_Desc_1              : 'Tài khoản của bạn chỉ tồn tại duy nhất trên một Blockchain Explorer và tài khoản được kích hoạt khi bởi chính nó khi bạn dùng tài khoản đó và chuyển Ether vào tức khắc tài khoản sử dụng sẽ hiển thị trên hệ thống Blockchain Explorer thích hợp. ',
 
 HELP_16_Title               : '16) Làm thế nào dễ kiễm tra số dư hiện tại của tài khoản? ',
-HELP_16_Desc_1              : 'Bạn có thể sử dụng Blockchain Explorer dễ kiễm tra, Ví dụ: [etherscan.io](http://etherscan.io/). Dán địa chỉ của bạn vào khung tìm kiếm và nó sẽ hiển thị tài khoản của bạn và toạn bộ lịch sữ giao dịch đã thực hiện đối với địa chỉ này. Ví Dụ: Đây là địa chỉ của chúng tôi [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) được trông thấy trên etherscan.io ',
+HELP_16_Desc_1              : 'Bạn có thể sử dụng Blockchain Explorer dễ kiễm tra, Ví dụ: [etherscan.io](https://etherscan.io/). Dán địa chỉ của bạn vào khung tìm kiếm và nó sẽ hiển thị tài khoản của bạn và toạn bộ lịch sữ giao dịch đã thực hiện đối với địa chỉ này. Ví Dụ: Đây là địa chỉ của chúng tôi [donation account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) được trông thấy trên etherscan.io ',
 
 HELP_17_Title               : '17) Tại sao số dư tài khoản của tôi không hiển thị khi tôi truy cập vào tài khoản? ',
 HELP_17_Desc_1              : 'Vấn đề này rất có thể xảy ra nếu như máy tính của bạn đang kích hoạt tường lửa. Các API mà chúng tôi sử dụng nhằm tải xuống số Dư của hiện có của tài khoản và chuyển đổi số dư thường bị chặn bởi tường lửa bởi bất kì lý do nào. Nhưng bạn vẫn có thể gửi đi các giao dịch và bạn chỉ cần sử dụng một phương pháp khác dễ kiễm tra số dư của bạn hiện tại trước và sau khi giao dịch được thực hiện, ví dụ: etherscan.io ',

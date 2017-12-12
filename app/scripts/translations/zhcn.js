@@ -257,7 +257,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
@@ -475,7 +475,7 @@ MYWAL_Content_2             : '确保在移除以前你已经保存了私钥和K
 MYWAL_Content_3             : '如果你想将来在MyEtherWallet插件中使用该钱包，你需要手动添加私钥/JSON文件和密码。 ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : '这允许你下载不同格式的私钥和重新打印你的纸钱包。为了将[你的账户导入到Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)，你可能需要这个操作。如果你想查看你的余额，我们推荐使用区块浏览器，例如[etherscan.io](http://etherscan.io/)。 ',
+VIEWWALLET_Subtitle         : '这允许你下载不同格式的私钥和重新打印你的纸钱包。为了将[你的账户导入到Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)，你可能需要这个操作。如果你想查看你的余额，我们推荐使用区块浏览器，例如[etherscan.io](https://etherscan.io/)。 ',
 VIEWWALLET_Subtitle_Short   : '这允许你下载不同格式的私钥和重新打印你的纸钱包。 ',
 VIEWWALLET_SuccessMsg       : '成功！这是你的钱包细节！ ',
 VIEWWALLET_ShowPrivKey      : '(show)',
@@ -831,7 +831,7 @@ HELP_15_Title               : '15) Why hasn\'t the account I just created show u
 HELP_15_Desc_1              : 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
 
 HELP_16_Title               : '16) How do I check the balance of my account? ',
-HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
+HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
 
 HELP_17_Title               : '17) Why isn\'t my balance showing up when I unlock my wallet? ',
 HELP_17_Desc_1              : 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',

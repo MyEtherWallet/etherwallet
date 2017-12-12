@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Ich verstehe. Weiter.',
 GEN_Label_5                 : 'Sichern Sie Ihren `Privaten Schlüssel`. ',
 GEN_Unlock                  : 'Entsperren Sie Ihr Wallet um Ihre Adresse zu sehen.',
-GAS_PRICE_Desc              : 'Der `Gas Preis` ist der Betrag, den Sie für eine Einheit `Gas` bezahlen. `Transaktionsgebühr = Gas Preis  * Gas Limit`. Dieser Betrag wird den Minern gezahlt, die Ihre Transaktion in einem Block einschließen. Je höher der Gas-Preis, desto schneller wird die Transaktion verarbeitet, aber desto teurer wird die Transaktionsgebühr. Der Standardwert ist `50 GWEI`.',
+GAS_PRICE_Desc              : 'Der `Gas Preis` ist der Betrag, den Sie für eine Einheit `Gas` bezahlen. `Transaktionsgebühr = Gas Preis  * Gas Limit`. Dieser Betrag wird den Minern gezahlt, die Ihre Transaktion in einem Block einschließen. Je höher der Gas-Preis, desto schneller wird die Transaktion verarbeitet, aber desto teurer wird die Transaktionsgebühr. Der Standardwert ist `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Das Gas-Limit ist der Betrag an Gas, der mit Ihrer Transaktion mitgeschickt wird. `Transaktionsgebühr = Gas Preis  * Gas Limit`. Dieser Betrag wird den Minern gezahlt, die Ihre Transaktion in einem Block einschließen. Wenn Sie diese Zahl erhöhen, wird ihre Transaktion nicht schneller verarbeitet. Eine zu kleine Zahl kann jedoch bedeuten, dass die Transaktion nicht erfolgreich verarbeitet werden kann. Ein Anhaltspunkt: Eine einfache Überweisung benötigt ca. 21000 Gas, ein Token-Transfer etwa 200.000 Gas.',
 NONCE_Desc                  : 'Der `Nonce` ist die Zahl der Transaktionen, die von einer bestimmten Adresse aus gesendet wurden. Er stellt sicher, dass Transaktionen der Reihe nach und nicht doppelt ausgeführt werden können.',
 TXFEE_Desc                  : 'Die Transaktionsgebühr wird den Miner(n) bezahlt, die Ihre Transaktion in einen Block einschließen. Es wird durch `Gas-Limit` * `Gas-Preis` berechnet. [Du kannst GWEI -> ETH hier umwandeln](https://www.myetherwallet.com/helpers.html)',
@@ -472,7 +472,7 @@ MYWAL_Content_2             : 'Stellen Sie sicher, dass Sie **die private Key/JS
 MYWAL_Content_3             : 'Wenn Sie dieses Wallet in Zukunft mit MyEtherWallet CX verwenden wollen, müssen Sie es mittels des privaten Schlüssels/JSON Datei und Ihrem Passwort manuell wieder hinzufügen. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Dies erlaubt Ihnen, den Download verschiedener Versionen Ihres privaten Schlüssels sowie das erneute Drucken Ihres Papier-Wallets. Es wird empfohlen, dies zu tun um [Ihren Account in Geth/Mist zu importieren.](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Zum Überprüfen Ihres Kontostands empfehlen wir, einen Blockchain Explorer wie [etherscan.io](http://etherscan.io/) zu verwenden. ',
+VIEWWALLET_Subtitle         : 'Dies erlaubt Ihnen, den Download verschiedener Versionen Ihres privaten Schlüssels sowie das erneute Drucken Ihres Papier-Wallets. Es wird empfohlen, dies zu tun um [Ihren Account in Geth/Mist zu importieren.](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Zum Überprüfen Ihres Kontostands empfehlen wir, einen Blockchain Explorer wie [etherscan.io](https://etherscan.io/) zu verwenden. ',
 VIEWWALLET_Subtitle_Short   : 'Dies erlaubt Ihnen den Download verschiedener Versionen Ihres privaten Schlüssel sowie das erneute Drucken Ihres Papier-Wallets. ',
 VIEWWALLET_SuccessMsg       : 'Erfolgreich! Hier sind die Daten Ihres Wallets. ',
 VIEWWALLET_ShowPrivKey      : '(anzeigen)',
@@ -830,7 +830,7 @@ HELP_15_Title               : '15) Why hasn\'t the account I just created show u
 HELP_15_Desc_1              : 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
 
 HELP_16_Title               : '16) How do I check the balance of my account? ',
-HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
+HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
 
 HELP_17_Title               : '17) Why isn\'t my balance showing up when I unlock my wallet? ',
 HELP_17_Desc_1              : 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',

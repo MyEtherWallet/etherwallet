@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `50 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
@@ -480,7 +480,7 @@ MYWAL_Content_2             : 'Upewnij się, że **zapisałeś klucz prywatny/pl
 MYWAL_Content_3             : 'Jeśli będziesz chciał w przyszłości używać ten portfel ze swoim MyEtherWallet CX, będziesz musiał go ponownie dodać używając klucza prywatnego/pliku JSON i hasła. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Ta zakładka pozwoli Ci na odczyt kluczy prywatnych, pobranie kopii portfeli oraz wydrukowanie portfeli papierowych. Pobrane za jej pomocą portfele możesz [zaimportować do Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jeśli chcesz sprawdzić stan Twojego konta, zalecamy użyć eksploratora bloków np. [etherscan.io](http://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Ta zakładka pozwoli Ci na odczyt kluczy prywatnych, pobranie kopii portfeli oraz wydrukowanie portfeli papierowych. Pobrane za jej pomocą portfele możesz [zaimportować do Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jeśli chcesz sprawdzić stan Twojego konta, zalecamy użyć eksploratora bloków np. [etherscan.io](https://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Ta zakładka pozwala Ci na pobranie różnych typów kluczy prywatnych oraz ponowne wydrukowanie portfeli papierowych. ',
 VIEWWALLET_SuccessMsg       : 'Sukces! Oto dane twojego portfela. ',
 VIEWWALLET_ShowPrivKey      : '(show)',
@@ -826,10 +826,10 @@ HELP_15_Title               : '15) Dlaczego portfel, który właśnie wygenerowa
 HELP_15_Desc_1              : 'Adres pojawi się w eksploratorze bloków dopiero jak adres portfela będzie uczestniczył w jakichś transakcjach, np. jak wyślesz do niego jakieś środki. ',
 
 HELP_16_Title               : '16) Jak sprawdzić stan mojego konta? ',
-HELP_16_Desc_1              : 'Możesz użyć eksploratora bloków jak [etherscan.io](http://etherscan.io/). Wklej swój adres w wyszukiwarkę na stronie eksploratora, pokaże ona stan Twojego konta oraz historię transakcji. Tak na przykład wygląda nasze [konto donacji](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) na etherscan.io. ',
+HELP_16_Desc_1              : 'Możesz użyć eksploratora bloków jak [etherscan.io](https://etherscan.io/). Wklej swój adres w wyszukiwarkę na stronie eksploratora, pokaże ona stan Twojego konta oraz historię transakcji. Tak na przykład wygląda nasze [konto donacji](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) na etherscan.io. ',
 
 HELP_17_Title               : '17) Dlaczeg stan mojego konta nie pojawia się, kiedy odblokowuje mój portfel? ',
-HELP_17_Desc_1              : 'Najprawdopodobniej przyczyną tego jest firewall. API, które używamy do odczytu stanu konta oraz jego konwersji jest często blokowane przez firewall z różnych przyczyn. Wciąż możesz wysyłać transakcje, jednak stan konta musisz sprawdzać w inny sposób, np. na [etherscan.io](http://etherscan.io/) ',
+HELP_17_Desc_1              : 'Najprawdopodobniej przyczyną tego jest firewall. API, które używamy do odczytu stanu konta oraz jego konwersji jest często blokowane przez firewall z różnych przyczyn. Wciąż możesz wysyłać transakcje, jednak stan konta musisz sprawdzać w inny sposób, np. na [etherscan.io](https://etherscan.io/) ',
 
 HELP_18_Title               : '18) Gdzie jest plik mojego portfela w geth? ',
 

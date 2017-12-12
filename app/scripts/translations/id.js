@@ -258,7 +258,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Saya paham. Lanjutkan.',
 GEN_Label_5                 : 'SSimpan `Private Key` Anda. ',
 GEN_Unlock                  : 'Buka kunci dompet Anda untuk melihat alamat Anda',
-GAS_PRICE_Desc              : 'Harga Gas Price adalah jumlah yang Anda bayar per unit gas. `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Makin tinggi harga gas = transaksi makin cepat, tapi makin mahal. Default-nya `50 GWEI`.',
+GAS_PRICE_Desc              : 'Harga Gas Price adalah jumlah yang Anda bayar per unit gas. `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Makin tinggi harga gas = transaksi makin cepat, tapi makin mahal. Default-nya `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Batas Gas (Gas limit) adalah jumlah gas untuk dikirim bersama TX Anda.  `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Menaikkan angka ini tidak mempercepat TX Anda untuk ditambang. Pengiriman ETH = `21000`. Pengiriman Token = ~`200000`.',
 NONCE_Desc                  : 'Nonce adalah nomor transaksi yang dikirimn dari sebuah alamat. Ini untuk menjamin agar pengiriman terlaksana secara runtut dan tidak ada yang dilakukan lebih dari sekali.',
 TXFEE_Desc                  : 'Biaya TX Fee dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Jumlahnya =  `gas limit` * `gas price`. [Anda dapat mengkonversi GWEI -> ETH](https://www.myetherwallet.com/helpers.html)',
@@ -505,7 +505,7 @@ MYWAL_Content_2             : 'Pastkan Anda telah **menyimpan private key dan/at
 MYWAL_Content_3             : 'Jika Anda akan memakai dompet ini dengan MyEtherWallet CX Anda ke depan, private key/JSON dan password harus ditambahkan lagi secara manual. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Memungkinkan Anda untuk mencetak Dompet Kertas dari berbagai format atau versi "private key". Hal ini diperlukan pada saat anda ingin [mengimpor akun Anda ke Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jika Anda hanya ingin pengecekan saldo, pakailah salah satu layanan blockchain explorer seperti [etherscan.io](http://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Memungkinkan Anda untuk mencetak Dompet Kertas dari berbagai format atau versi "private key". Hal ini diperlukan pada saat anda ingin [mengimpor akun Anda ke Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jika Anda hanya ingin pengecekan saldo, pakailah salah satu layanan blockchain explorer seperti [etherscan.io](https://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Untuk pencetakan Dompet Kertas dari berbagai format "private key". ',
 VIEWWALLET_SuccessMsg       : 'Berhasil! Berikut detil dari dompet Anda. ',
 VIEWWALLET_ShowPrivKey      : '(show)',
@@ -826,7 +826,7 @@ HELP_15_Title               : '15) Why hasn\'t the account I just created show u
 HELP_15_Desc_1              : 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
 
 HELP_16_Title               : '16) How do I check the balance of my account? ',
-HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
+HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
 
 HELP_17_Title               : '17) Why isn\'t my balance showing up when I unlock my wallet? ',
 HELP_17_Desc_1              : 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',

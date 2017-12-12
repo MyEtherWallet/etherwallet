@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Ho entenc. Continua.',
 GEN_Label_5                 : 'Desa la teva `Clau Privada`. ',
 GEN_Unlock                  : 'Desbloqueja la teva cartera per veure\'n l\'adreça',
-GAS_PRICE_Desc              : 'El preu del gas és la quantitat que pagues per unitat de gas. `TX fee = preu del gas * límit de gas` i es paga als miners per incloure la teva TX a un block. Preu de gas més elevat = transacció més ràpida, però més cara. Per defecte és `50 GWEI`.',
+GAS_PRICE_Desc              : 'El preu del gas és la quantitat que pagues per unitat de gas. `TX fee = preu del gas * límit de gas` i es paga als miners per incloure la teva TX a un block. Preu de gas més elevat = transacció més ràpida, però més cara. Per defecte és `41 GWEI`.',
 GAS_LIMIT_Desc              : 'El límit de gas és la quantitat de gas a enviar amb la teva TX. `TX fee` = preu del gas * límit de gas; i es paga als miners per incloure la teva TX a un block. Incrementat aquest nombre no farà que la teva TX sigui minada més ràpidament. Enviant ETH = `21000`. Enviant Tokens = ~`200000`.',
 NONCE_Desc                  : 'El nonce és el nombre de transaccions enviades des d\'una adreça determinada. Assegura que les transaccions  s\'envien en ordre i no més d\'una vegada.',
 TXFEE_Desc                  : 'La comissió per la TX es paga als miners per incloure la teva TX en un block. És el `límit de gas` * `preu del gas`. [Pots convertir GWEI -> ETH aquí](https://www.myetherwallet.com/helpers.html)',
@@ -532,7 +532,7 @@ MSG_info2                   : 'Inclou el teu àlies i on el fas servir per tal q
 MSG_info3                   : 'Inclou una raó específica per tal que el missatge no pugui ser reutilitzat per un altre propòsit. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Això et permet descarregar diferents versions de les claus privades i tornar a imprimir la teva cartera de paper. És possible que vulguis fer això per [importar el teu compte a Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vols comprovar el teu saldo, recomanem utilitzar un explorador de la blockchain com [etherscan.io](http://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Això et permet descarregar diferents versions de les claus privades i tornar a imprimir la teva cartera de paper. És possible que vulguis fer això per [importar el teu compte a Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vols comprovar el teu saldo, recomanem utilitzar un explorador de la blockchain com [etherscan.io](https://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Això et permet descarregar diferents versions de les claus privades i tornar a imprimir la teva cartera de paper. ',
 VIEWWALLET_SuccessMsg       : 'Enhorabona! Aquests són els detalls de la teva cartera. ',
 VIEWWALLET_ShowPrivKey      : '(mostra)',
@@ -810,7 +810,7 @@ HELP_15_Title               : '15) Why hasn\'t the account I just created show u
 HELP_15_Desc_1              : 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
 
 HELP_16_Title               : '16) How do I check the balance of my account? ',
-HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
+HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
 
 HELP_17_Title               : '17) Why isn\'t my balance showing up when I unlock my wallet? ',
 HELP_17_Desc_1              : ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',

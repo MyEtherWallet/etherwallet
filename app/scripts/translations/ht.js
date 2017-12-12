@@ -257,7 +257,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Je comprends. Continuer.',
 GEN_Label_5                 : 'Sauvegardez votre `clé privée`. ',
 GEN_Unlock                  : 'Déverouillez votre portefeuille pour voir votre adresse.',
-GAS_PRICE_Desc              : 'Le prix du gaz est le montant que vous payez par unité de gaz. `frais de TX  = prix du gaz * limite en gaz` & est payé aux mineurs pour inclure votre transaction à un bloc. Prix de gaz plus haut = transaction plus rapide, mais plus coûteuse. Le prix par défaut est de `50 GWEI`.',
+GAS_PRICE_Desc              : 'Le prix du gaz est le montant que vous payez par unité de gaz. `frais de TX  = prix du gaz * limite en gaz` & est payé aux mineurs pour inclure votre transaction à un bloc. Prix de gaz plus haut = transaction plus rapide, mais plus coûteuse. Le prix par défaut est de `41 GWEI`.',
 GAS_LIMIT_Desc              : 'La limite en gaz est le montant de gaz à envoyer avec votre transaction. `frais de TX  = prix du gaz * limite en gaz` et est payé aux mineurs pour inclure votre transaction à un bloc. Augmenter ce nombre n\'exécutera pas votre transaction plus rapidement. Envoyer ETH = `21000`. Envoyer des Tokens = ~`200000`.',
 NONCE_Desc                  : 'Le nonce est le nombre de transactions envoyées depuis une adresse. Il fait en sorte que les transactions sont envoyées en ordre et pas plus d\'une fois.',
 TXFEE_Desc                  : 'Les frais de transaction sont payés aux mineurs pour inclure votre transaction dans un bloc. Cela représente le `gas limit` * le `gas price`. [Vous pouvez convertir GWEI -> ETH ici](https://www.myetherwallet.com/helpers.html)',
@@ -536,7 +536,7 @@ MSG_info2                   : 'METE TI NON W’ NAN KOTE W’ KONN SÈVI AK LI A
 MSG_info3                   : 'METE YON SÈL BON REZON POU MESAJ LA  POU L’ PA SÈVI ANKÒ POU YON LÒT  REZON ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'SA PÈMÈT OU POU W’ PRAN PLIZYÈ VÈZSYON KLE SEKRÈ  YO EPI AK SÒTI BOUS OU A ANKÒ SOU PAPYE. OU DWE FÈ L’ POU [ PRAN KONT OU A NAN GETH/MIST] (http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). SI W’ VLE  WÈ VALÈ KÒB OU A, NOU MANDE W’ POU SÈVI AK YON EKSPLORATÈ POU BLOCKCHAIN TANKOU[etherscan.io](http://etherscan.io/).',
+VIEWWALLET_Subtitle         : 'SA PÈMÈT OU POU W’ PRAN PLIZYÈ VÈZSYON KLE SEKRÈ  YO EPI AK SÒTI BOUS OU A ANKÒ SOU PAPYE. OU DWE FÈ L’ POU [ PRAN KONT OU A NAN GETH/MIST] (http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). SI W’ VLE  WÈ VALÈ KÒB OU A, NOU MANDE W’ POU SÈVI AK YON EKSPLORATÈ POU BLOCKCHAIN TANKOU[etherscan.io](https://etherscan.io/).',
 VIEWWALLET_Subtitle_Short   : 'SA PÈMÈT OU POU W’ PRAN PLIZYÈ VÈZSYON KLE SEKRÈ  YO EPI POU SÒTI BOUS OU A ANKÒ SOU PAPYE ',
 VIEWWALLET_SuccessMsg       : 'SIKSÈ ! MEN DETAY YO POU BOUS OU A ',
 VIEWWALLET_ShowPrivKey      : '(show)',
@@ -813,7 +813,7 @@ HELP_15_Title               : '15) POUKISA KONT SA M’ SOT KREYE A PA PARÈT NA
 HELP_15_Desc_1              : 'KONT YO PA PARÈT NAN YON EKSPLORATÈ BLOCKCHAIN LÈ YON AKTIVITE FIN FÈT TANKOU, EGZANP, LE N’ TA GEN POU N’ FE YON TRANSFÈ ETHER . ',
 
 HELP_16_Title               : '16) KÒMAN POU M’ VERIFYE LAJAN SOU KONT MWEN AN ? ',
-HELP_16_Desc_1              : 'OU KAPAB SÈVI AK YON EKSPLORATÈ BLOCKCHAIN TANKOU [etherscan.io](http://etherscan.io/). KOLE ADRÈS OU A NAN BA KOT E POU YO CHÈCHE A EPI SA AP È W’ JWENN LAJAN SOU KONT OU A EPI LIS TRANSFÈ W’ YO. EGZANP, MEN SA [KONT DON NOU YO MONTRE](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) SOU  etherscan.io ',
+HELP_16_Desc_1              : 'OU KAPAB SÈVI AK YON EKSPLORATÈ BLOCKCHAIN TANKOU [etherscan.io](https://etherscan.io/). KOLE ADRÈS OU A NAN BA KOT E POU YO CHÈCHE A EPI SA AP È W’ JWENN LAJAN SOU KONT OU A EPI LIS TRANSFÈ W’ YO. EGZANP, MEN SA [KONT DON NOU YO MONTRE](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) SOU  etherscan.io ',
 
 HELP_17_Title               : '17) POUKISA LAJAN SOU KONT MWEN AN PA PARÈT LÈ M’ OUVRI BOUS MWEN AN ? ',
 HELP_17_Desc_1              : 'SA KI KA LAKÒZ SA SE PASKE W’ KA DÈYÈ YON FIREWALL. APLIKASYON NOU SÈVI AK LI POU N’ JWENN LAJAN SOU KONT OU A EPI KONVÈTI L’ LI SOUVAN BLOKE AK FIREWALL YO POU PLIZYÈ REZON. W’AP TOUJOU KAPAB  VOYE TRANSFÈ MEN FÒK OU FÈL NAN YON LÒT FASON POU W’ KA WÈ LAJAN SOU KONT OU A, TANKOU etherscan.io ',
