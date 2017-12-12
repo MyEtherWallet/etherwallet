@@ -242,7 +242,7 @@ msg:        'Artex - Art Provenance Blockchain. Official site https://artex.glob
 },
 {
 // Sirin Token Sale (SRN)
-to:         '0x313f29Ea49a9e6ca3B3E254335d4eC32EF5045F8',
+to:         '0x29AfA3443f752eb29d814d9042Fd88A4a2dc0F1e',
 gasLimit:   200000,
 data:       '',
 msg:        'SIRIN LABS official crowdsale address. Official website https://sirinlabs.com'
