@@ -1374,6 +1374,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x68d57c9a1C35f63E2c83eE8e49A64e9d70528D25",
+"symbol":"SRN",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x2C4e8f2D746113d0696cE89B35F0d8bF88E0AEcA",
 "symbol":"ST",
 "decimal":18,
