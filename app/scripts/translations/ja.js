@@ -156,7 +156,7 @@ ONBOARD_why_content__5          :  '処理の巻き戻し、取り消しある�
 ONBOARD_why_content__6          :  '口座の凍結。', /*Freeze accounts.*/
 ONBOARD_why_content__7          :  '**あなた**が、そして**あなただけ**が自分のセキュリテイの全責任を持ちます。', /***You** and **only you** are responsible for your security.*/
 ONBOARD_why_content__8          :  '秘密鍵とパスワードを大事に保管してください。秘密鍵は、ニーモニックフレーズ、キーストアファイル、ＵＴＣファイル、ＪＳＯＮファイル、お財布（ワレット）ファイルとも呼ばれることがあります。', /*Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.*/
-ONBOARD_why_content__9          :  'もし秘密鍵やパスワードを忘れると、誰も回復させることができません。', /*If lose your private key or password, no one can recover it.*/
+ONBOARD_why_content__9          :  'もし秘密鍵やパスワードを忘れると、誰も回復させることができません。', /*If you lose your private key or password, no one can recover it.*/
 ONBOARD_why_content__10         :  'もし、あなたが秘密鍵を詐欺サイトで入力すると、**全ての資産**が盗まれてしまいます。', /*If you enter your private key on a phishing website, you will have **all your funds taken**.*/
 ONBOARD_blockchain_title__alt   :  '一体ブロックチェーンって何？ ', /*WTF is a Blockchain?*/
 ONBOARD_point_title__alt        :  'それじゃＭＥＷは何ができるの？', /*What\'s the Point of MEW then?*/

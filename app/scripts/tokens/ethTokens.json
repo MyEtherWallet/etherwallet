@@ -384,6 +384,11 @@
 "decimal":16,
 "type":"default"
 },{
+"address":"0x81c9151de0c8bafcd325a57e3db5a5df1cebf79c",
+"symbol":"DAT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x1b5f21ee98eed48d292e8e2d3ed82b40a9728a22",
 "symbol":"DATA (DataBrokerDAO)",
 "decimal":18,
@@ -466,6 +471,11 @@
 },{
 "address":"0xafc39788c51f0c1ff7b55317f3e70299e521fff6",
 "symbol":"eBCH",
+"decimal":8,
+"type":"default"
+},{
+"address":"eBTC",
+"symbol":"0xeb7c20027172e5d143fb030d50f91cece2d1485d",
 "decimal":8,
 "type":"default"
 },{
@@ -811,6 +821,11 @@
 },{
 "address":"0x63e634330A20150DbB61B15648bC73855d6CCF07",
 "symbol":"LNC",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x6beb418fc6e1958204ac8baddcf109b8e9694966",
+"symbol":"LNC-Linker Coin",
 "decimal":18,
 "type":"default"
 },{
@@ -1177,6 +1192,11 @@
 "address":"0xf05a9382A4C3F29E2784502754293D88b835109C",
 "symbol":"REX",
 "decimal":18,
+"type":"default"
+},{
+"address":"0xdd007278b667f6bef52fd0a4c23604aa1f96039a",
+"symbol":"RIPT",
+"decimal":8,
 "type":"default"
 },{
 "address":"0x607F4C5BB672230e8672085532f7e901544a7375",
