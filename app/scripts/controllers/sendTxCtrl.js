@@ -162,9 +162,9 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         if ($scope.gasLimitChanged) return;
         for (var i in $scope.customGas) {
             if ($scope.tx.to.toLowerCase() == $scope.customGas[i].to.toLowerCase()) {
-                $scope.showAdvance = $scope.customGas[i].data != '' ? true : false;
+                $scope.showAdvance = $scope.tx.data != '' || $scope.customGas[i].data != '' ? true : false;
                 $scope.tx.gasLimit = $scope.customGas[i].gasLimit;
-                $scope.tx.data = $scope.customGas[i].data;
+                if ($scope.customGas[i].data != '') $scope.tx.data = $scope.customGas[i].data;
                 $scope.customGasMsg = $scope.customGas[i].msg != '' ? $scope.customGas[i].msg : ''
                 return;
             }
