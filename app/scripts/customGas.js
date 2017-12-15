@@ -252,4 +252,10 @@ to:         '0xA671f2914Ba0e73979FFc47cD350801d1714b18f',
 gasLimit:   150000,
 data:       '',
 msg:        'TRV Ongoing Sale.'
+},{
+// Bitlle Token Sale (BTL)
+to:         '0x92685E93956537c25Bb75D5d47fca4266dd628B8',
+gasLimit:   200000,
+data:       '',
+msg:        'Bitlle Token. Official website https://bitlle.com'
 }]
