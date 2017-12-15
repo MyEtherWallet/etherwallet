@@ -246,4 +246,11 @@ to:         '0x29AfA3443f752eb29d814d9042Fd88A4a2dc0F1e',
 gasLimit:   200000,
 data:       '',
 msg:        'SIRIN LABS official crowdsale address. Official website https://sirinlabs.com'
+},
+{
+// Bitlle Token Sale (BTL)
+to:         '0x92685E93956537c25Bb75D5d47fca4266dd628B8',
+gasLimit:   200000,
+data:       '',
+msg:        'Bitlle Token. Official website https://bitlle.com'
 }]
