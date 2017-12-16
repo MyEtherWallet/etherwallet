@@ -1129,6 +1129,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x88a3e4f35d64aad41a6d4030ac9afe4356cb84fa",
+"symbol":"PRE",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x226bb599a12C826476e3A771454697EA52E9E220",
 "symbol":"PRO",
 "decimal":8,
