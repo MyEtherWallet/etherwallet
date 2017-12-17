@@ -13,6 +13,7 @@ nodes.nodeTypes = {
     RSK: "RSK",
     EXP: "EXP",
     UBQ: "UBQ",
+    POA: "POA",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -200,6 +201,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'ubiqscan.io',
         'lib': new nodes.customNode('https://pyrus2.ubiqscan.io', '')
+    },
+    'poa': {
+        'name': 'POA',
+        'blockExplorerTX': 'https://core-explorer.poa.network/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://core-explorer.poa.network/account/[[address]]',
+        'type': nodes.nodeTypes.POA,
+        'eip155': true,
+        'chainId': 99,
+        'tokenList': require('./tokens/poaTokens.json'),
+        'abiList': require('./abiDefinitions/poaAbi.json'),
+        'estimateGas': true,
+        'service': 'core.poa.network',
+        'lib': new nodes.customNode('https://core.poa.network', '')
     }
 };
 
