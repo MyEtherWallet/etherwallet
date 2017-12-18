@@ -126,7 +126,7 @@
 },{
 "address":"0x887834D3b8D450B6bAB109c252Df3DA286d73CE4",
 "symbol":"ATT",
-"decimal":"18",
+"decimal":18,
 "type":"default"
 },{
 "address":"0xeD247980396B10169BB1d36f6e278eD16700a60f",
@@ -251,7 +251,7 @@
 },{
 "address":"0xcb97e65f07da24d46bcdd078ebebd7c6e6e3d750",
 "symbol":"BTM",
-"decimal":"8",
+"decimal":8,
 "type":"default"
 },{
 "address":"0x26E75307Fc0C021472fEb8F727839531F112f317",
@@ -1561,7 +1561,7 @@
 },{
 "address":"0x519475b31653e46d20cd09f9fdcf3b12bdacb4f5",
 "symbol":"VIU",
-"decimal":"18",
+"decimal":18,
 "type":"default"
 },{
 "address":"0x83eEA00D838f92dEC4D1475697B9f4D3537b56E3",
@@ -1651,7 +1651,7 @@
 },{
 "address":"0xab95e915c123fded5bdfb6325e35ef5515f1ea69",
 "symbol":"XNN",
-"decimal":"18",
+"decimal":18,
 "type":"default"
 },{
 "address":"0xB24754bE79281553dc1adC160ddF5Cd9b74361a4",
