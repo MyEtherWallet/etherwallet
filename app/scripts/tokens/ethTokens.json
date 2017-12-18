@@ -126,7 +126,7 @@
 },{
 "address":"0x887834D3b8D450B6bAB109c252Df3DA286d73CE4",
 "symbol":"ATT",
-"decimal"18,
+"decimal":18,
 "type":"default"
 },{
 "address":"0xeD247980396B10169BB1d36f6e278eD16700a60f",
