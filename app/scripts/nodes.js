@@ -162,19 +162,6 @@ nodes.nodeList = {
         'service': 'infura.io',
         'lib': new nodes.infuraNode('https://rinkeby.infura.io/mew')
     },
-    'rsk': {
-        'name': 'RSK',
-        'blockExplorerTX': 'https://explorer.rsk.co/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://explorer.rsk.co/addr/[[address]]',
-        'type': nodes.nodeTypes.RSK,
-        'eip155': true,
-        'chainId': 31,
-        'tokenList': require('./tokens/rskTokens.json'),
-        'abiList': require('./abiDefinitions/rskAbi.json'),
-        'estimateGas': true,
-        'service': 'GK2.sk',
-        'lib': new nodes.customNode('https://rsk-test.gk2.sk/', '')
-    },
     'exp': {
         'name': 'EXP',
         'blockExplorerTX': 'http://www.gander.tech/tx/[[txHash]]',
