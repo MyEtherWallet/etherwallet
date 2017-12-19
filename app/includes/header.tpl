@@ -172,7 +172,7 @@
              rel="noopener noreferrer"></a>
         </div>
       </ul>
-      <p class="dropdown-gas__msg""
+      <p class="dropdown-gas__msg"
          ng-show="gasPriceMsg"
          ng-hide="ajaxReq.type!='ETH'">
         The network is really full right now. Check
