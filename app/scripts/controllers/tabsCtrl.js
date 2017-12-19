@@ -46,6 +46,17 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             min: 0.5,
             step: 0.5
         }
+
+        var curNode = globalFuncs.localStorage.getItem('curNode', null);
+
+        if (curNode) {
+            curNode = JSON.parse(curNode);
+            var customGasPrice = $scope.nodeList[curNode.key].customGasPrice;
+            if (customGasPrice) {
+                $scope.gas.value = customGasPrice;
+            }
+        }
+
         ethFuncs.gasAdjustment = $scope.gas.value;
         $scope.gasPriceMsg = ethFuncs.gasAdjustment < 40 ? true : false
     }
