@@ -213,7 +213,8 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/poaAbi.json'),
         'estimateGas': true,
         'service': 'core.poa.network',
-        'lib': new nodes.customNode('https://core.poa.network', '')
+        'lib': new nodes.customNode('https://core.poa.network', ''),
+        'customGasPrice' : 1
     }
 };
 
