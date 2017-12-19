@@ -499,6 +499,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x5b26C5D0772E5bbaC8b3182AE9a13f9BB2D03765",
+"symbol":"EDU",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2",
 "symbol":"EHT",
 "decimal":8,

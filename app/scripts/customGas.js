@@ -258,4 +258,10 @@ to:         '0x92685E93956537c25Bb75D5d47fca4266dd628B8',
 gasLimit:   200000,
 data:       '',
 msg:        'Bitlle Token. Official website https://bitlle.com'
+},{
+// EDU Token Sale (LiveEdu.tv)
+to:         '0x2097175d0abb8258f2468E3487F8db776E29D076',
+gasLimit:   200000,
+data:       '',
+msg:        'LiveEdu EDU token sale. Official website: https://tokensale.liveedu.tv/'
 }]
