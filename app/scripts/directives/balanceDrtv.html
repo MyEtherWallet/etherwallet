@@ -161,21 +161,6 @@
       </a>
     </p>
 
-    <!-- Balances -->
-    <table class="account-info">
-      <tr ng-repeat="token in wallet.tokenObjs track by $index"
-          ng-show="token.balance!=0 || token.type!=='default' || tokenVisibility=='shown'">
-        <td class="mono wrap point">
-          <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
-          {{ token.getBalance() }}
-        </td>
-        <td>
-          {{ token.getSymbol() }}
-        </td>
-      </tr>
-    </table>
-
-
     <!-- Buttons -->
     <a class="btn btn-default btn-xs" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden' && globalService.tokensLoaded">
       Show Tokens
@@ -221,6 +206,21 @@
       <button class="btn btn-primary btn-xs" ng-click="saveTokenToLocal()" translate="x_Save">Save</button>
 
     </div>
+
+    <!-- Balances -->
+    <table class="account-info">
+      <tr ng-repeat="token in wallet.tokenObjs track by $index"
+          ng-show="token.balance!=0 || token.type!=='default' || tokenVisibility=='shown'">
+        <td class="mono wrap point">
+          <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
+          {{ token.getBalance() }}
+        </td>
+        <td>
+          {{ token.getSymbol() }}
+        </td>
+      </tr>
+    </table>
+
   </div>
 
 
