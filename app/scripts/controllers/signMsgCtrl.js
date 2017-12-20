@@ -110,7 +110,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                             version: '2'
                         }, null, 2)
                         $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString())
-                    } else{ 
+                    } else{
                         $scope.notifier.danger(response.error);
                     }
                 })
@@ -119,9 +119,9 @@ var signMsgCtrl = function($scope, $sce, walletService) {
             } else {
                 var msg         = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage))
                 var signed      = ethUtil.ecsign(msg, $scope.wallet.getPrivateKey())
-                console.log(signed.r)
-                console.log(signed.s)
-                console.log([signed.v])
+                //console.log(signed.r)
+                //console.log(signed.s)
+                //console.log([signed.v])
                 var combined    = Buffer.concat([Buffer.from(signed.r), Buffer.from(signed.s), Buffer.from([signed.v])])
                 var combinedHex = combined.toString('hex')
                 var signingAddr = $scope.wallet.getAddressString()

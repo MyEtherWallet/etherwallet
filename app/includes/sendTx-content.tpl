@@ -105,9 +105,9 @@
               <li ng-repeat="token in wallet.tokenObjs track by $index"
                   ng-show="token.balance!=0 &&
                            token.balance!='loading' &&
-                          token.balance.trim()!='Not a valid ERC-20 token' ||
-                          token.type!=='default' ||
-                          tokenVisibility=='shown'" >
+                           token.balance!='Click to Load' &&
+                           token.balance.trim()!='Not a valid ERC-20 token' ||
+                           token.type!=='default'" >
                   <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]"
                      ng-click="setSendMode('token', $index, token.getSymbol())" >
                       {{token.getSymbol()}}
@@ -121,7 +121,7 @@
 
       </div>
 
-      <!-- Amount to Send - Load Token Balances -->
+      <!-- Amount to Send - Load Token Balances
       <a class="col-sm-1 send__load-tokens"
          title="Load Token Balances"
          ng-click="wallet.setTokens(); globalService.tokensLoaded=true"
@@ -131,6 +131,7 @@
             Load Tokens
           </p>
       </a>
+      -->
 
       <!-- Amount to Send - Transfer Entire Balance -->
       <p class="col-xs-12" ng-hide="tx.readOnly">

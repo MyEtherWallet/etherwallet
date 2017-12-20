@@ -18,7 +18,7 @@ var onboardingCtrl = function($scope, globalService, $translate, $sce) {
       $scope.showOnboardSlide = $scope.onboardStatus // set the slide to the last slide they viewed
       $scope.onboardMsg = true                    // show a msg explaining they need to finish it
       $scope.onboardModal.open()                     // show the modal
-      console.log( $scope.onboardStatus )
+      //console.log( $scope.onboardStatus )
     }
 
   // otherwise, show the modal (starts at slide 1 by default, above)
@@ -30,7 +30,7 @@ var onboardingCtrl = function($scope, globalService, $translate, $sce) {
   $scope.setOnboardStatus = function( slideNum ) {
     $scope.showOnboardSlide = slideNum                                            // show the slide indicated
     globalFuncs.localStorage.setItem("onboardStatus", JSON.stringify( slideNum )) // save number to localStorage for later
-    console.log( "setOnboardStatus " + slideNum )
+    //console.log( "setOnboardStatus " + slideNum )
   }
 
   $scope.setOnboardStatus( $scope.onboardStatus )

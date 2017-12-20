@@ -14,7 +14,6 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
     $scope.tx.readOnly = globalFuncs.urlGet('readOnly') == null ? false : true;
     var currentTab = $scope.globalService.currentTab;
     var tabs = $scope.globalService.tabs;
-    $scope.tokenVisibility = "hidden";
     $scope.tokenTx = {
         to: '',
         value: 0,
@@ -89,7 +88,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         $scope.wallet = walletService.wallet;
         $scope.wd = true;
         $scope.wallet.setBalance(applyScope);
-        //$scope.wallet.setTokens();
+        $scope.wallet.setTokens();
         if ($scope.parentTxConfig) {
             var setTxObj = function() {
                 $scope.addressDrtv.ensAddressField = $scope.parentTxConfig.to;

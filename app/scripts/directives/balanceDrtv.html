@@ -125,14 +125,14 @@
   <div class="block token-balances">
     <h5 translate="sidebar_TokenBal">Token Balances</h5>
 
-    <!-- Load Token Balances -->
+    <!-- Load Token Balances
     <a class="btn btn-warning btn-xs"
        ng-click="wallet.setTokens(); globalService.tokensLoaded=true"
        ng-hide="globalService.tokensLoaded">
       <img src="images/icon-load-tokens.svg" style="height: 1em; width: auto; margin-right: 5px;" />
       Load Tokens
     </a>
-    <br ng-hide="globalService.tokensLoaded" /><br ng-hide="globalService.tokensLoaded" />
+     -->
 
     <!-- you can your Balance on Blockchain Explorer -->
     <p class="u__protip">
@@ -162,27 +162,20 @@
     </p>
 
     <!-- Buttons -->
-    <a class="btn btn-default btn-xs" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden' && globalService.tokensLoaded">
-      Show Tokens
-    </a>
-    <a class="btn btn-default btn-xs" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown' && globalService.tokensLoaded">
-      Hide Tokens
-    </a>
     <a class="btn btn-default btn-xs" ng-click="customTokenField=!customTokenField">
       <span translate="SEND_custom">Add Custom Token</span>
     </a>
+    <a class="btn btn-warning btn-xs" ng-click="showAllTokens=true" ng-show="showAllTokens==false">
+      Show All Tokens
+    </a>
+    <a class="btn btn-warning btn-xs" ng-click="showAllTokens=false" ng-show="showAllTokens==true">
+      Only Show Balances
+    </a>
+
+    <br ng-show="customTokenField" />
 
     <!-- Add Custom Token -->
     <div class="custom-token-fields" ng-show="customTokenField">
-
-      <h6 class="u__protip">
-        <a href="https://myetherwallet.github.io/knowledge-base/send/adding-new-token-and-sending-custom-tokens.html"
-           rel="noopener noreferrer"
-           target="_blank">
-           Learn how to Add a Custom Token
-        </a>
-      </h6>
-
       <div class="row">
         <address-field
           placeholder="{{ ajaxReq.type=='ETH' ? 'mewsupport.eth' : '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8' }}"
@@ -204,16 +197,18 @@
              ng-class="Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'" />
 
       <button class="btn btn-primary btn-xs" ng-click="saveTokenToLocal()" translate="x_Save">Save</button>
-
     </div>
+
+    <br />
+    <br />
 
     <!-- Balances -->
     <table class="account-info">
       <tr ng-repeat="token in wallet.tokenObjs track by $index"
-          ng-show="token.balance!=0 || token.type!=='default' || tokenVisibility=='shown'">
+          ng-hide="(token.balance==0 || token.balance=='Click to Load') && showAllTokens==false">
         <td class="mono wrap point">
           <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
-          {{ token.getBalance() }}
+          <span ng-click="setAndVerifyBalance(token)"> {{ token.getBalance() }} </span>
         </td>
         <td>
           {{ token.getSymbol() }}

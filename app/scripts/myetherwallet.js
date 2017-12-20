@@ -37,7 +37,14 @@ Wallet.prototype.setTokens = function () {
           tokens[i].type
         )
       );
-      this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+
+      var autoTokens = globalFuncs.localStorage.getItem('autoLoadTokens')
+      var autoLoadTokens = autoTokens ? autoTokens : [];
+      var thisAddr = tokens[i].address
+
+      if ( autoLoadTokens.indexOf( thisAddr ) > -1 ) {
+        this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+      }
     }
 
     var storedTokens = globalFuncs.localStorage.getItem('localTokens', null) != null ? JSON.parse(globalFuncs.localStorage.getItem('localTokens')) : [];
