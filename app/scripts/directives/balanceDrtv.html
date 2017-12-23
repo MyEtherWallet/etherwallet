@@ -135,6 +135,16 @@
      -->
 
     <!-- you can your Balance on Blockchain Explorer -->
+
+
+    <p class="u__protip">
+      <a href="https://myetherwallet.github.io/knowledge-base/tokens/showing-and-loading-tokens.html"
+         rel="noopener noreferrer"
+         target="_blank">
+         Where are my tokens? Where is the 'load' button?!
+      </a>
+    </p>
+
     <p class="u__protip">
       Remember, you can always view your Balances On
       <a ng-show="ajaxReq.type != 'CUS'"
@@ -152,24 +162,15 @@
       </span>
     </p>
 
-    <p class="u__protip">
-      Not seeing your token?
-      <a href="https://myetherwallet.github.io/knowledge-base/send/adding-new-token-and-sending-custom-tokens.html"
-         rel="noopener noreferrer"
-         target="_blank">
-         Learn how to Add a Custom Token
-      </a>
-    </p>
-
     <!-- Buttons -->
-    <a class="btn btn-default btn-xs" ng-click="customTokenField=!customTokenField">
-      <span translate="SEND_custom">Add Custom Token</span>
-    </a>
-    <a class="btn btn-warning btn-xs" ng-click="showAllTokens=true" ng-show="showAllTokens==false">
+    <a class="btn btn-warning btn-xs" ng-click="showAllTokens=true" ng-show="showAllTokens==false" translate="TOKEN_show">
       Show All Tokens
     </a>
     <a class="btn btn-warning btn-xs" ng-click="showAllTokens=false" ng-show="showAllTokens==true">
       Only Show Balances
+    </a>
+    <a class="btn btn-default btn-xs" ng-click="customTokenField=!customTokenField">
+      <span translate="SEND_custom">Add Custom Token</span>
     </a>
 
     <br ng-show="customTokenField" />
