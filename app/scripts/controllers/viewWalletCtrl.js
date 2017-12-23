@@ -28,12 +28,12 @@ var viewWalletCtrl = function($scope, walletService) {
             $scope.encFileName = $scope.wallet.getV3Filename();
         }
         $scope.wallet.setBalance();
-        //$scope.wallet.setTokens();
+        $scope.wallet.setTokens();
     });
     $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {
             $scope.wallet.setBalance();
-            //$scope.wallet.setTokens();
+            $scope.wallet.setTokens();
         }
     });
 
