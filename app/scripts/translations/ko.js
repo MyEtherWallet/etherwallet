@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `40 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `20 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
@@ -555,7 +555,7 @@ ERROR_6                     : '잘못된 비밀번호입니다. ',
 ERROR_7                     : '잘못된 수량입니다. (Must be integer. Try 0-18.) ', // 7
 ERROR_8                     : '잘못된 가스 한도입니다. (Must be integer. Try 21000-4000000.) ', // 8
 ERROR_9                     : '잘못된 데이터입니다. (Must be hex.) ', // 9
-ERROR_10                    : '잘못된 가스 수량입니다. (Must be integer. Try 40 GWEI / 20000000000 WEI.) ',
+ERROR_10                    : '잘못된 가스 수량입니다. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : '잘못된 nonce 입니다. (Must be integer.) ', // 11
 ERROR_12                    : '잘못된 서명 트랜잭션입니다. ',
 ERROR_13                    : '이미 같은 닉네임의 지갑이 존재합니다. ',

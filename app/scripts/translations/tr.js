@@ -257,7 +257,7 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `40 GWEI`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `20 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
 TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
@@ -572,7 +572,7 @@ ERROR_6                     : 'Geçersiz parola. ',
 ERROR_7                     : 'Yetersiz bakiye. (Must be integer. Try 0-18.) ', // 7
 ERROR_8                     : 'Geçersiz gas limit. (Must be integer. Try 21000-4000000.) ', // 8
 ERROR_9                     : 'Geçersiz data value. (Must be hex.) ', // 9
-ERROR_10                    : 'Yetersiz gas. (Must be integer. Try 40 GWEI / 20000000000 WEI.) ',
+ERROR_10                    : 'Yetersiz gas. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Geçersiz veri. (Must be integer.) ', // 11
 ERROR_12                    : 'Geçersiz imzali isleme. ',
 ERROR_13                    : 'Secdigin Nickname baska bir cüzdanda kullaniliyor. ',

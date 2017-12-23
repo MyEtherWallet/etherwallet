@@ -255,7 +255,7 @@ GEN_Help_20                 : 'Kald-lagring',
 GET_ConfButton              : 'Jeg forstår. Fortsett. ',
 GEN_Label_5                 : 'Lagre din `Private Nøkkel`. ',
 GEN_Unlock                  : 'Lås opp lommeboken for å se adressen. ',
-GAS_PRICE_Desc              : 'Gas-pris er beløpet du betaler per gas-enhet. `Transaksjonsavgift = gas-pris * gas-grense` & betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Høyere gas-pris = raskere transaksjon, men dyrere. Standardinnstillingen er `40 GWEI`. ',
+GAS_PRICE_Desc              : 'Gas-pris er beløpet du betaler per gas-enhet. `Transaksjonsavgift = gas-pris * gas-grense` & betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Høyere gas-pris = raskere transaksjon, men dyrere. Standardinnstillingen er `20 GWEI`. ',
 GAS_LIMIT_Desc              : 'Gas-grense er mengden gas som sendes med transaksjonen din. `Tr.avg.` = gas-pris * gas-grense & betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Å øke dette tallet vil ikke få gjennom transaksjonen din raskere. Ulike typer transaksjoner krever ulik mengde gas. F.eks. koster det `21000` å sende ETH og ~`200 000` å sende tokens. ',
 NONCE_Desc                  : '"Nonce" er antall transaksjoner som noensinne har blitt sendt fra en gitt adresse. Det sikrer at transaksjoner sendes i riktig rekkefølge, og ikke mer enn én gang. ',
 TXFEE_Desc                  : 'Transaksjonsavgiften betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Det er `gas-grense` * `gas-pris`. [Du kan regne om GWEI -> ETH her](https://www.myetherwallet.com/helpers.html)',
@@ -568,7 +568,7 @@ ERROR_6                     : 'Ugyldig passord. ',
 ERROR_7                     : 'Ugyldig beløp. (Må være heltall. Prøv 0-18.) ', // 7
 ERROR_8                     : 'Ugyldig gas-grense. (Må være heltall. Prøv 21000-4000000.) ', // 8
 ERROR_9                     : 'Ugyldig dataverdi. (Må være hex.) ', // 9
-ERROR_10                    : 'Ugyldig gas-mengde. (Må være heltall. Prøv 40 GWEI / 20000000000 WEI.) ',
+ERROR_10                    : 'Ugyldig gas-mengde. (Må være heltall. Prøv 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Ugyldig nonce. (Må være heltall.) ', // 11
 ERROR_12                    : 'Ugyldig signert transaksjon. ',
 ERROR_13                    : 'En lommebok med dette kallenavnet eksisterer allerede. ',
