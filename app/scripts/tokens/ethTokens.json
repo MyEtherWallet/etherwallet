@@ -724,6 +724,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xb45d7Bc4cEBcAB98aD09BABDF8C818B2292B672c",
+"symbol":"HODL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x554C20B7c486beeE439277b4540A434566dC4C02",
 "symbol":"HST",
 "decimal":18,
