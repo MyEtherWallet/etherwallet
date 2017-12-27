@@ -260,8 +260,13 @@
 "type":"default"
 },{
 "address":"0x2accaB9cb7a48c3E82286F0b2f8798D201F4eC3f",
-"symbol":"BTL",
+"symbol":"BTL (Battle)",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x92685E93956537c25Bb75D5d47fca4266dd628B8",
+"symbol":"BTL (Bitlle)",
+"decimal":4,
 "type":"default"
 },{
 "address":"0xcb97e65f07da24d46bcdd078ebebd7c6e6e3d750",
@@ -301,6 +306,11 @@
 },{
 "address":"0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8",
 "symbol":"CAT (Blockcat)",
+"decimal":18,
+"type":"default"
+},{
+"address":"0xc166038705FFBAb3794185b3a9D925632A1DF37D",
+"symbol":"CC3",
 "decimal":18,
 "type":"default"
 },{
@@ -371,6 +381,11 @@
 },{
 "address":"0x4E0603e2A27A30480E5e3a4Fe548e29EF12F64bE",
 "symbol":"CREDO",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x80a7e048f37a50500351c204cb407766fa3bae7f",
+"symbol":"CRPT",
 "decimal":18,
 "type":"default"
 },{
@@ -491,6 +506,11 @@
 },{
 "address":"0x01b3Ec4aAe1B8729529BEB4965F27d008788B0EB",
 "symbol":"DPP",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x419c4db4b9e25d6db2ad9691ccb832c8d9fda05e",
+"symbol":"DRGN",
 "decimal":18,
 "type":"default"
 },{
@@ -1119,6 +1139,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x53148Bb4551707edF51a1e8d7A93698d18931225",
+"symbol":"PCL",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xE64509F0bf07ce2d29A7eF19A8A9bc065477C1B4",
 "symbol":"PIPL",
 "decimal":8,
@@ -1254,6 +1279,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x8f8221aFbB33998d8584A2B05749bA73c37a938a",
+"symbol":"REQ",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xf05a9382A4C3F29E2784502754293D88b835109C",
 "symbol":"REX",
 "decimal":18,
@@ -1301,11 +1331,6 @@
  },{
 "address":"0x3d1ba9be9f66b8ee101911bc36d3fb562eac2244",
 "symbol":"RVT",
-"decimal":18,
-"type":"default"
-},{
-"address":"0x8f8221aFbB33998d8584A2B05749bA73c37a938a",
-"symbol":"REQ",
 "decimal":18,
 "type":"default"
 },{
@@ -1568,7 +1593,12 @@
 "symbol":"TRST",
 "decimal":6,
 "type":"default"
-  },{
+},{
+"address":"0xBa138976D8e7644BA8fE74409286a85Dba85Ba2a",
+"symbol":"TRV",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xf230b790e05390fc8295f4d3f60332c93bed42e2",
 "symbol":"TRX",
 "decimal":6,
