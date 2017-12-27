@@ -14,6 +14,7 @@ nodes.nodeTypes = {
     EXP: "EXP",
     UBQ: "UBQ",
     POA: "POA",
+    TOMO: "TOMO",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -201,6 +202,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'core.poa.network',
         'lib': new nodes.customNode('https://core.poa.network', '')
+    },
+    'tomo': {
+        'name': 'TOMO',
+        'blockExplorerTX': 'https://explorer.tomocoin.io/#/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.tomocoin.io/#/address/[[address]]',
+        'type': nodes.nodeTypes.TOMO,
+        'eip155': true,
+        'chainId': 40686,
+        'tokenList': require('./tokens/tomoTokens.json'),
+        'abiList': require('./abiDefinitions/tomoAbi.json'),
+        'estimateGas': true,
+        'service': 'core.tomocoin.io',
+        'lib': new nodes.customNode('https://core.tomocoin.io', '')
     }
 };
 
