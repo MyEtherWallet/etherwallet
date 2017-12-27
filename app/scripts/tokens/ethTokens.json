@@ -754,6 +754,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xC0Eb85285d83217CD7c891702bcbC0FC401E2D9D",
+"symbol":"HVN",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x5a84969bb663fb64F6d015DcF9F622Aedc796750",
 "symbol":"ICE",
 "decimal":18,
