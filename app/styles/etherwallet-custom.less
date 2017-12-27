@@ -514,6 +514,8 @@ label small {
 @brand-exp: #673ab7;
 @brand-music: #b37aff;
 @brand-ubq: #00ad85;
+@brand-poa: #4568bb;
+@brand-tomo: #6a488d;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -547,6 +549,12 @@ label small {
   }
   li:nth-child(13) {
     border-left: 2px solid @brand-ubq;
+  }
+  li:nth-child(14) {
+    border-left: 2px solid @brand-poa;
+  }
+  li:nth-child(15) {
+    border-left: 2px solid @brand-tomo;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -626,6 +634,20 @@ header.UBQ {
   & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ubq;  }
   & + .container .modal-content          { border: 0.25rem solid @brand-ubq;      }
   & + .container .alert-info             { background-color:@brand-ubq;           }
+}
+
+header.POA {
+  .nav-container                         { border-top: 0.25rem solid @brand-poa;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-poa;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-poa;      }
+  & + .container .alert-info             { background-color:@brand-poa;           }
+}
+
+header.TOMO {
+  .nav-container                         { border-top: 0.25rem solid @brand-tomo;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-tomo;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-tomo;      }
+  & + .container .alert-info             { background-color:@brand-tomo;           }
 }
 
 
