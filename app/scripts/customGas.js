@@ -175,6 +175,12 @@ gasLimit:   200000,
 data:       '',
 msg:        'Mitrav ICO Sale. Thank you for your support!'
 },{
+// WinBitcoin (WBC) ICO Sale
+to:         '0xA5DD8cDe486436F0Cfd62652952E1fcEC5A61CAe',
+gasLimit:   300000,
+data:       '',
+msg:        'WinBitcoin ICO Sale. Thank you for your support!'
+},{
 // BMCHAIN ICO
 to:         '0x19d7a9ad3b49252fd2ef640d0e43dfd651168499',
 gasLimit:   100000,
