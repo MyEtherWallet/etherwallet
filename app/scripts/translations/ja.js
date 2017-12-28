@@ -51,9 +51,9 @@ DOMAIN_Finish_2                 :  'このアドレスは、落札者、主催�
 DOMAIN_Finish_3                 :  '競売を終了する', /*Finish the auction*/
 DOMAIN_Finish_4                 :  '競売を終了して、落札者にドメインを移管し、主催者に落札金を渡す。', /*Finish the auction to allocate the domain to the winner and the funds to the seller.*/
 DOMAIN_Finish_5                 :  'ドメイン名がDomainsaleに移管されているか確認するために、自分のTXハッシュをクリックしてください。', /*Click your TX hash to see if you successfully transferred the domain to DomainSale.*/
-DOMAIN_offer_1                  :  'Incorrect Wallet',
-DOMAIN_offer_2                  :  'The wallet you unlocked does not own this name.',
-DOMAIN_offer_3                  :  'In order to offer this name, please unlock the wallet with address:',
+DOMAIN_offer_1                  :  'お財布が違います', /*Incorrect Wallet*/
+DOMAIN_offer_2                  :  'アンロックされたお財布にこの名前がありません。', /*The wallet you unlocked does not own this name.*/
+DOMAIN_offer_3                  :  'この名前を提供するにはこのアドレスのお財布をアンロック：', /*In order to offer this name, please unlock the wallet with address:*/
 DOMAIN_offer_4                  :  '募集価格：', /*Offer For Sale:*/
 DOMAIN_offer_5                  :  'ドメイン名を販売するために、以下のいずれか、あるいは双方の価格を設定してください。ドメイン名の供託金は落札者に、また落札額の10％は仲介者に支払われます。', /*Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.*/
 DOMAIN_offer_7                  :  '変更後の募集価格：', /*Alter Your Offer for:*/
@@ -412,9 +412,9 @@ NAV_CheckTxStatus           : '処理状況を確認',
 NAV_Contact                 : '連絡する ',
 NAV_Contracts               : '契約 ',
 NAV_DeployContract          : '契約を展開 ',
-NAV_DomainSale              : 'DomainSale',
-NAV_ENS                     : 'ENS',
-NAV_GenerateWallet_alt      : 'New Wallet ',
+NAV_DomainSale              : 'ドメイン販売', /*DomainSale*/
+NAV_ENS                     : 'ＥＮＳ',
+NAV_GenerateWallet_alt      : 'お財布の作成 ', /*New Wallet*/
 NAV_GenerateWallet          : 'お財布の作成 ',
 NAV_Help                    : 'ヘルプ ',
 NAV_InteractContract        : '契約を操作 ',
@@ -448,7 +448,7 @@ OFFLINE_Step2_Label_2       : '送出する値/総量 ',
 OFFLINE_Step2_Label_3       : 'ガス価格 ',
 OFFLINE_Step2_Label_3b      : 'これは、ステップ１でオンラインコンピューターに表示されたものです。 ',
 OFFLINE_Step2_Label_4       : 'ガスリミット ',
-OFFLINE_Step2_Label_4b      : 'デフォルトガスリミット値は21000です。契約や付加データーを送出する場合には、これらの値は　異なるものにする必要があります。使用されなかったガスは全て返却されます。 ',
+OFFLINE_Step2_Label_4b      : 'ガスリミットの既定値は21000です。契約や付加データーを送出する場合には、これらの値は　異なるものにする必要があります。使用されなかったガスは全て返却されます。 ',
 OFFLINE_Step2_Label_5       : 'Nonce ',
 OFFLINE_Step2_Label_5b      : 'これらは、ステップ１でオンラインコンピューターに表示されたものです。 ',
 OFFLINE_Step2_Label_6       : 'データ ',
@@ -498,7 +498,7 @@ SUCCESS_6                   : '接続完了しました ',
 SUCCESS_7                   : 'メッセージの署名が確認されました',
 
 SWAP_rates                  : "現在のレート ",
-SWAP_init_1                 : "これから両替で ",
+SWAP_init_1                 : "両替する ",
 SWAP_init_2                 : " を ", // "I want to swap my X ETH for X BTC"
 SWAP_init_CTA               : "次へ ", // or "Continue"
 SWAP_information            : "あなたの情報 ",
@@ -509,7 +509,7 @@ SWAP_rec_add                : "受け取りアドレス ",
 SWAP_start_CTA              : "交換開始 ",
 SWAP_ref_num                : "参照番号 ",
 SWAP_time                   : "送出するまでにあと、 ",
-SWAP_elapsed				        : "Time elapsed since sent ",
+SWAP_elapsed				        : "発注後の経過時間 ", /*Time elapsed since sent*/
 SWAP_progress_1             : "注文を開始しました ",
 SWAP_progress_2             : "到着待機中 ", // Waiting for your BTC...
 SWAP_progress_3             : "ETH受け取り完了 ", // ETH Received!
@@ -518,20 +518,20 @@ SWAP_progress_5             : "注文完了 ",
 SWAP_order_CTA              : "お送りいただきたいのは ", // Please send 1 ETH...
 SWAP_unlock                 : "このページから直接ETHあるいはトークンを送出するためには、お財布を解錠してください。",
 
-TOKEN_Addr                  : 'Token Contract アドレス： ',
+TOKEN_Addr                  : 'トークン契約アドレス： ',
 TOKEN_Symbol                : 'トークンシンボル： ',
 TOKEN_Dec                   : 'ケタ数： ',
 TOKEN_show                  : '全てのトークンを表示 ',
 TOKEN_hide                  : 'トークンを隠す ',
 
-TRANS_advanced              : '+Advanced: ガスあるいはデータを追加してください ',
+TRANS_advanced              : '+上級：ガスあるいはデータを追加してください ',
 TRANS_data                  : 'データ： ',
 TRANS_desc                  : 'トークンを送出するには「トークン送出」のタブを選択してください。 ',
 TRANS_gas                   : 'ガスリミット： ',
 TRANS_sendInfo              : '21000ガスを使用する標準トランザクションは、0.000441 ETHを消費します。迅速な処理を行うために、若干最小量よりも多めの0.000000021 ETHのガスを使用します。当サービスでは、トランザクション料金は徴収いたしません。 ',
 
 translate_version           : '0.5',
-Translator_Desc             : '日本語開発者をサポート： ',
+Translator_Desc             : '日本語開発者を支援する： ',
 TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ',
 TranslatorAddr_2            : '',
 TranslatorAddr_3            : '',
