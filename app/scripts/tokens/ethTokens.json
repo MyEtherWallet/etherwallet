@@ -1214,6 +1214,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x1844b21593262668b7248d0f57a220caaba46ab9",
+"symbol":"PRL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x226bb599a12C826476e3A771454697EA52E9E220",
 "symbol":"PRO",
 "decimal":8,
@@ -1777,10 +1782,5 @@
 "address":"0xe386b139ed3715ca4b18fd52671bdcea1cdfe4b1",
 "symbol":"ZST",
 "decimal":8,
-"type":"default"
-},{
-"address":"0x1844b21593262668b7248d0f57a220caaba46ab9",
-"symbol":"PRL",
-"decimal":18,
 "type":"default"
 }]
