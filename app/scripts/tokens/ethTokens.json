@@ -1778,4 +1778,9 @@
 "symbol":"ZST",
 "decimal":8,
 "type":"default"
+},{
+"address":"0x1844b21593262668b7248d0f57a220caaba46ab9",
+"symbol":"PRL",
+"decimal":18,
+"type":"default"
 }]
