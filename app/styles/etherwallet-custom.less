@@ -524,6 +524,7 @@ label small {
 @brand-ubq: #00ad85;
 @brand-poa: #4568bb;
 @brand-tomo: #6a488d;
+@brand-ella: #046111;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -563,6 +564,9 @@ label small {
   }
   li:nth-child(15) {
     border-left: 2px solid @brand-tomo;
+  }
+  li:nth-child(16) {
+    border-left: 2px solid @brand-ella;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -656,6 +660,13 @@ header.TOMO {
   & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-tomo;  }
   & + .container .modal-content          { border: 0.25rem solid @brand-tomo;      }
   & + .container .alert-info             { background-color:@brand-tomo;           }
+}
+
+header.ELLA {
+  .nav-container                         { border-top: 0.25rem solid @brand-ella;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ella;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-ella;      }
+  & + .container .alert-info             { background-color:@brand-ella;           }
 }
 
 

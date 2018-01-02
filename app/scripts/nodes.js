@@ -15,6 +15,7 @@ nodes.nodeTypes = {
     UBQ: "UBQ",
     POA: "POA",
     TOMO: "TOMO",
+    ELLA: "ELLA",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -215,6 +216,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'core.tomocoin.io',
         'lib': new nodes.customNode('https://core.tomocoin.io', '')
+    },
+    'ella': {
+        'name': 'ELLA',
+        'blockExplorerTX': 'https://explorer.ellaism.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.ellaism.org/addr/[[address]]',
+        'type': nodes.nodeTypes.ELLA,
+        'eip155': true,
+        'chainId': 64,
+        'tokenList': require('./tokens/ellaTokens.json'),
+        'abiList': require('./abiDefinitions/ellaAbi.json'),
+        'estimateGas': true,
+        'service': 'ellaism.org',
+        'lib': new nodes.customNode('https://jsonrpc.ellaism.org', '')
     }
 };
 
