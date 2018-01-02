@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// MNT Token Sale
+to:         '0xA9877b1e05D035899131DBd1e403825166D09f92',
+gasLimit:   200000,
+data:       '',
+msg:        'MNT Token Sale - http://mnt.coinjoker.com'
+},{
 // DIVX Token Sale
 to:         '0x13f11C9905A08ca76e3e853bE63D4f0944326C72',
 gasLimit:   300000,
