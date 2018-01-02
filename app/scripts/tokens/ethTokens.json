@@ -179,6 +179,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x107c4504cd79C5d2696Ea0030a8dD4e92601B82e",
+"symbol":"BLT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xce59d29b09aae565feeef8e52f47c3cd5368c663",
 "symbol":"BLX? Bullion Crypto",
 "decimal":18,
@@ -294,7 +299,7 @@
 "decimal":9,
 "type":"default"
 },{
-"address":"0x111111f7e9B1Fe072ade438F77E1Ce861C7eE4E3",
+"address":"0x1234567461d3f8db7496581774bd869c83d51c93",
 "symbol":"CAT (BitClave)",
 "decimal":18,
 "type":"default"
@@ -559,6 +564,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xb53a96bcbdd9cf78dff20bab6c2be7baec8f00f8",
+"symbol":"eGas",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2",
 "symbol":"EHT",
 "decimal":8,
@@ -712,6 +722,11 @@
 "address":"0x22F0AF8D78851b72EE799e05F54A77001586B18A",
 "symbol":"GXVC",
 "decimal":10,
+"type":"default"
+},{
+"address":"0x8C65e992297d5f092A756dEf24F4781a280198Ff",
+"symbol":"GZE",
+"decimal":18,
 "type":"default"
 },{
 "address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
@@ -1002,6 +1017,11 @@
 "address":"0x1a95B271B0535D15fa49932Daba31BA612b52946",
 "symbol":"MNE",
 "decimal":8,
+"type":"default"
+},{
+"address":"0xA9877b1e05D035899131DBd1e403825166D09f92",
+"symbol":"MNT",
+"decimal":18,
 "type":"default"
 },{
 "address":"0x83cee9e086a77e492ee0bb93c2b0437ad6fdeccc",
@@ -1452,6 +1472,11 @@
 "address":"0x744d70FDBE2Ba4CF95131626614a1763DF805B9E",
 "symbol":"SNT",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x1f54638b7737193ffd86c19ec51907a7c41755d8",
+"symbol":"SOL",
+"decimal":8,
 "type":"default"
 },{
 "address":"0x58bf7df57d9DA7113c4cCb49d8463D4908C735cb",
