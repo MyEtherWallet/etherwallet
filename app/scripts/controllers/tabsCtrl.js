@@ -87,7 +87,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         for (var attrname in $scope.curNode)
             if (attrname != 'name' && attrname != 'tokenList' && attrname != 'lib')
                 ajaxReq[attrname] = $scope.curNode[attrname];
-        globalFuncs.localStorage.setItem('curNode', JSON.stringify({
+            globalFuncs.localStorage.setItem('curNode', JSON.stringify({
             key: key
         }));
         if (nodes.ensNodeTypes.indexOf($scope.curNode.type) == -1) $scope.tabNames.ens.cx = $scope.tabNames.ens.mew = false;
@@ -102,7 +102,9 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
                 $scope.notifier.info( globalFuncs.successMsgs[5] + '— Now, check the URL: <strong>' + window.location.href + '.</strong> <br /> Network: <strong>' + $scope.nodeType + ' </strong> provided by <strong>' + $scope.nodeService + '.</strong>', 5000)
             }
         });
-        networkHasChanged && window.setTimeout(function() {location.reload() }, 250)
+        networkHasChanged && window.setTimeout(function() {
+            window.location = window.location.href.replace(window.location.search, '');
+        }, 250)
     }
     $scope.checkNodeUrl = function(nodeUrl) {
         return $scope.Validator.isValidURL(nodeUrl);
@@ -112,7 +114,17 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         if (node === JSON.stringify({"key":"eth_metamask"})) {
           node = JSON.stringify({"key":"eth_infura"})
         }
-       if (node == null) {
+
+        var requestedCoin = globalFuncs.urlGet('coin');
+        if (requestedCoin) {
+            if (requestedCoin === 'etc') {
+                node = JSON.stringify({"key":"etc_epool"});
+            } else if(requestedCoin === 'eth') {
+                node = JSON.stringify({"key":"eth_mew"});
+            }
+        }
+        
+        if (node == null) {
             $scope.changeNode($scope.defaultNodeKey);
         } else {
             node = JSON.parse(node);
