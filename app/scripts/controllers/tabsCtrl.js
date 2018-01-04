@@ -103,7 +103,12 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             }
         });
         networkHasChanged && window.setTimeout(function() {
-            window.location = window.location.href.replace(window.location.search, '');
+            if (window.location.search.length > 0) {
+                window.location = window.location.href.replace(window.location.search, '');
+            } else {
+                window.location.reload();
+            }
+            
         }, 250)
     }
     $scope.checkNodeUrl = function(nodeUrl) {
