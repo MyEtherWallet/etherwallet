@@ -13,6 +13,12 @@ gasLimit:   200000,
 data:       '',
 msg:        'MNT Token Sale - http://mnt.coinjoker.com'
 },{
+// PUC Token Sale
+to:         '0xEf6B4cE8C9Bc83744fbcdE2657b32eC18790458A',
+gasLimit:   930000,
+data:       '',
+msg:        'MNT Token Sale - http://price-s.info'
+},{
 // DIVX Token Sale
 to:         '0x13f11C9905A08ca76e3e853bE63D4f0944326C72',
 gasLimit:   300000,
