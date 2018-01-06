@@ -1476,7 +1476,7 @@
 },{
 "address":"0x1f54638b7737193ffd86c19ec51907a7c41755d8",
 "symbol":"SOL",
-"decimal":8,
+"decimal":6,
 "type":"default"
 },{
 "address":"0x58bf7df57d9DA7113c4cCb49d8463D4908C735cb",
