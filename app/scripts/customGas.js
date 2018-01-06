@@ -13,6 +13,12 @@ gasLimit:   200000,
 data:       '',
 msg:        'MNT Token Sale - http://mnt.coinjoker.com'
 },{
+// PUC Token Sale
+to:         '0xEf6B4cE8C9Bc83744fbcdE2657b32eC18790458A',
+gasLimit:   930000,
+data:       '',
+msg:        'MNT Token Sale - http://price-s.info'
+},{
 // DIVX Token Sale
 to:         '0x13f11C9905A08ca76e3e853bE63D4f0944326C72',
 gasLimit:   300000,
@@ -276,4 +282,11 @@ to:         '0x2097175d0abb8258f2468E3487F8db776E29D076',
 gasLimit:   200000,
 data:       '',
 msg:        'LiveEdu EDU token sale. Official website: https://tokensale.liveedu.tv/'
+},{
+// HEdpAY (Hdp.ф) Sale (hedpay.com)
+to:         '0x4F8B6cA78711207E1B281DB63e8d6EAA1ce2F63E',
+gasLimit:   230000,
+data:       '',
+msg:        'HEdpAY (Hdp.ф) sale. Official sale website: https://ibiginvestments.com/hedpay'
 }]
+  ]

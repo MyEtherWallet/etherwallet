@@ -1234,6 +1234,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x1844b21593262668b7248d0f57a220caaba46ab9",
+"symbol":"PRL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x226bb599a12C826476e3A771454697EA52E9E220",
 "symbol":"PRO",
 "decimal":8,
@@ -1476,7 +1481,7 @@
 },{
 "address":"0x1f54638b7737193ffd86c19ec51907a7c41755d8",
 "symbol":"SOL",
-"decimal":8,
+"decimal":6,
 "type":"default"
 },{
 "address":"0x58bf7df57d9DA7113c4cCb49d8463D4908C735cb",
