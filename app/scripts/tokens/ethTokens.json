@@ -699,14 +699,14 @@
 "decimal":8,
 "type":"default"
 },{
-"address":"0x24083Bb30072643C3bB90B44B7285860a755e687",
+"address":"0x24083bb30072643c3bb90b44b7285860a755e687",
 "symbol":"GELD",
 "decimal":18,
 "type":"default"
 },{
-"address":"0xae4f56f072c34c0a65b3ae3e4db797d831439d93",
+"address":"0xaE4f56F072c34C0a65B3ae3E4DB797D831439D93",
 "symbol":"GIM",
-"decimal":8,
+"decimal":18,
 "type":"default"
 },{
 "address":"0xb3Bd49E28f8F832b8d1E246106991e546c323502",
@@ -721,6 +721,11 @@
 },{
 "address":"0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
 "symbol":"GNT",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x8C65e992297d5f092A756dEf24F4781a280198Ff",
+"symbol":"GZE",
 "decimal":18,
 "type":"default"
 },{
@@ -759,18 +764,18 @@
 "decimal":10,
 "type":"default"
 },{
-"address":"0x8C65e992297d5f092A756dEf24F4781a280198Ff",
-"symbol":"GZE",
-"decimal":18,
-"type":"default"
-},{
-"address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
-"symbol":"H2O",
+"address":"0x84543f868ec1b1fac510d49d13c069f64cd2d5f9",
+"symbol":"Hdp.ф",
 "decimal":18,
 "type":"default"
 },{
 "address":"0xffe8196bc259e8dedc544d935786aa4709ec3e64",
 "symbol":"HDG",
+"decimal":18,
+"type":"default"
+},{
+"address":"0xe9ff07809ccff05dae74990e25831d0bc5cbe575",
+"symbol":"Hdp",
 "decimal":18,
 "type":"default"
 },{
@@ -863,7 +868,7 @@
 "symbol":"IND",
 "decimal":18,
 "type":"default"
-}, {
+},{
 "address":"0x5b2e4a700dfbc560061e957edec8f6eeeb74a320",
 "symbol":"INS",
 "decimal":10,
@@ -903,8 +908,8 @@
 "symbol":"JetCoins",
 "decimal":18,
 "type":"default"
- },{
- "address":"0xa5Fd1A791C4dfcaacC963D4F73c6Ae5824149eA7",
+},{
+"address":"0xa5Fd1A791C4dfcaacC963D4F73c6Ae5824149eA7",
 "symbol":"JNT",
 "decimal":18,
 "type":"default"
@@ -1044,6 +1049,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
+"symbol":"MKR_OLD",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1",
 "symbol":"MLN",
 "decimal":18,
@@ -1179,6 +1189,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x2C4e8f2D746113d0696cE89B35F0d8bF88E0AEcA",
+"symbol":"OST",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x65a15014964f2102ff58647e16a16a6b9e14bcf6",
 "symbol":"Ox Fina",
 "decimal":3,
@@ -1214,6 +1229,11 @@
 "decimal":0,
 "type":"default"
  },{
+"address":"0x59416A25628A76b4730eC51486114c32E0B582A1",
+"symbol":"PLASMA",
+"decimal":6,
+"type":"default"
+},{
 "address":"0xE477292f1B3268687A29376116B0ED27A9c76170",
 "symbol":"PLAY",
 "decimal":18,
@@ -1237,6 +1257,11 @@
 "address":"0x0e0989b1f9b8a38983c2ba8053269ca62ec9b195",
 "symbol":"POE",
 "decimal":8,
+"type":"default"
+},{
+"address":"0x43f6a1be992dee408721748490772b15143ce0a7",
+"symbol":"POIN",
+"decimal":0,
 "type":"default"
 },{
 "address":"0x779B7b713C86e3E6774f5040D9cCC2D43ad375F8",
@@ -1284,11 +1309,6 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x7728dfef5abd468669eb7f9b48a7f70a501ed29d",
-"symbol":"PRG",
-"decimal":6,
-"type":"default"
-},{
 "address":"0x0c04d4f331da8df75f9e2e271e3f3f1494c66c36",
 "symbol":"PRSP",
 "decimal":9,
@@ -1301,6 +1321,11 @@
 },{
 "address":"0x8Ae4BF2C33a8e667de34B54938B0ccD03Eb8CC06",
 "symbol":"PTOY",
+"decimal":8,
+"type":"default"
+},{
+"address":"0xc14830e53aa344e8c14603a91229a0b925b0b262",
+"symbol":"PXT",
 "decimal":8,
 "type":"default"
 },{
@@ -1494,13 +1519,13 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0xaeC2E87E0A235266D9C5ADc9DEb4b2E29b54D009",
-"symbol":"SNGLS",
+"address":"0xf333b2Ace992ac2bBD8798bF57Bc65a06184afBa",
+"symbol":"SND",
 "decimal":0,
 "type":"default"
 },{
-"address":"0xf333b2Ace992ac2bBD8798bF57Bc65a06184afBa",
-"symbol":"SND",
+"address":"0xaeC2E87E0A235266D9C5ADc9DEb4b2E29b54D009",
+"symbol":"SNGLS",
 "decimal":0,
 "type":"default"
 },{
@@ -1536,11 +1561,6 @@
 },{
 "address":"0x68d57c9a1C35f63E2c83eE8e49A64e9d70528D25",
 "symbol":"SRN",
-"decimal":18,
-"type":"default"
-},{
-"address":"0x2C4e8f2D746113d0696cE89B35F0d8bF88E0AEcA",
-"symbol":"ST",
 "decimal":18,
 "type":"default"
 },{
