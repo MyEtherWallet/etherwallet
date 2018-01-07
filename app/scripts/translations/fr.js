@@ -295,7 +295,7 @@ x_Keystore                  : 'Fichier Keystore (UTC / JSON · Recommandé · Ch
 x_Keystore2                 : 'Fichier Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Ce fichier Keystore utilise le même format que Mist, vous pouvez donc facilement l\'importer plus tard dans ce client. C\'est le fichier que nous vous recommandons de télécharger et de garder en sécurité. ',
 x_Ledger                    : 'Ledger (Portefeuille matériel)',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : 'Phrase mnémonique ',
 x_ParityPhrase              : 'Phrase Parity ',
 x_Password                  : 'Mot de passe ',

@@ -294,7 +294,7 @@ x_JsonDesc                  : 'Aquesta és la teva clau privada no xifrada, en f
 x_Keystore                  : 'Fitxer Keystore (UTC / JSON · Recomanat · Xifrat) ',
 x_Keystore2                 : 'Fitxer Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Aquest fitxer Keystore coincideix amb el format que utilitza Mist perquè pugui importar-lo fàcilment en el futur. És el fitxer recomanat per descarregar i fer una còpia de seguretat. ',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : 'Frase Mnemònica',
 x_ParityPhrase              : 'Frase de Parity ',
 x_Password                  : 'Contrasenya ',

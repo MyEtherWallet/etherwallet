@@ -296,7 +296,7 @@ x_JsonDesc                  : 'Questa è la tua chiave privata in formato JSON n
 x_Keystore                  : 'File Keystore (UTC / JSON · Consigliato · Crittografato) ',
 x_Keystore2                 : 'File Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare. ',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : 'Frase mnemonica ',
 x_ParityPhrase              : 'Frase di Parity ',
 x_Password                  : 'Password ',
@@ -317,7 +317,7 @@ MEW_Tagline                 : 'Portafoglio ether JavaScript lato client Open Sou
 CX_Tagline                  : 'Portafoglio ether JavaScript lato client Open Source (Estensione Chrome) ',
 
 /* Footer */
-FOOTER_1                    : 'Interfaccia gratuita, open source, lato client per generare portafogli Ethereum e altro. Interagisci con la *blockchain* Ethereum facilmente e in modo sicuro. Controlla bene l\'URL ( .com ) prima di sbloccare un portafoglio.',
+FOOTER_1                    : 'Interfaccia gratuita, open source, lato client per generare portafogli Ethereum e altro. Interagisci con la *blockchain* Ethereum facilmente e in modo sicuro. Controlla bene l\'URL ( myetherwallet.com ) prima di sbloccare un portafoglio.',
 FOOTER_1b                   : 'Creato da ',
 FOOTER_2                    : 'Donazioni molto apprezzate: ',
 FOOTER_3                    : 'Generazione portafogli lato client da parte di ',

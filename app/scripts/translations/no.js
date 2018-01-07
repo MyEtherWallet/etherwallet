@@ -295,7 +295,7 @@ x_JsonDesc                  : 'Dette er det ukrypterte JSON-formatet av din priv
 x_Keystore                  : 'Keystore-fil (UTC / JSON · Anbefalt · Kryptert) ',
 x_Keystore2                 : 'Keystore-fil (UTC / JSON) ',
 x_KeystoreDesc              : 'Denne Keystore-filen samsvarer med formatet som brukes av Mist, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere. ',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : 'Mnemonisk Frase ',
 x_ParityPhrase              : 'Parity-frase ',
 x_Password                  : 'Passord ',

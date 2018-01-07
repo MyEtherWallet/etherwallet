@@ -295,7 +295,7 @@ x_JsonDesc                  : '이것은 암호화되지 않은 JSON 형식의 �
 x_Keystore                  : 'Keystore 파일 (UTC / JSON · 권장 · 암호화됨) ',
 x_Keystore2                 : 'Keystore 파일 (UTC / JSON) ',
 x_KeystoreDesc              : '이 Keystore / JSON 파일은 Mist에서 사용하는 형식과 일치하므로 나중에 쉽게 가져올 수 있습니다. 다운로드하고 백업하는 것을 권장합니다. ',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : 'Mnemonic 문구 ',
 x_ParityPhrase              : 'Parity 문구 ',
 x_Password                  : '비밀번호 ',
