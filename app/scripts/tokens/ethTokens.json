@@ -159,6 +159,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x3A0181e8f2DD081ace83EaC027EEC2E0c2255Ed5",
+"symbol":"BCV",
+"decimal":2,
+"type":"default"
+},{
 "address":"0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
 "symbol":"BeerCoin",
 "decimal":0,
@@ -185,12 +190,12 @@
 "type":"default"
 },{
 "address":"0xce59d29b09aae565feeef8e52f47c3cd5368c663",
-"symbol":"BLX? Bullion Crypto",
+"symbol":"BLX Bullion Crypto",
 "decimal":18,
 "type":"default"
 },{
 "address":"0xE5a7c12972f3bbFe70ed29521C8949b8Af6a0970",
-"symbol":"BLX? Iconomi",
+"symbol":"BLX Iconomi",
 "decimal":18,
 "type":"default"
 },{
@@ -460,12 +465,12 @@
 "type":"default"
 },{
 "address":"0x1b5f21ee98eed48d292e8e2d3ed82b40a9728a22",
-"symbol":"DATA (DataBrokerDAO)",
+"symbol":"DATABroker",
 "decimal":18,
 "type":"default"
 },{
 "address":"0x0cf0ee63788a0849fe5297f3407f701e122cc023",
-"symbol":"DATA (Streamr)",
+"symbol":"DATACoin",
 "decimal":18,
 "type":"default"
 },{
@@ -619,7 +624,12 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x86Fa049857E0209aa7D9e616F7eb3b3B78ECfdb0",
+"address":"0xd780Ae2Bf04cD96E577D3D014762f831d97129d0",
+"symbol":"ENV",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0",
 "symbol":"EOS",
 "decimal":18,
 "type":"default"
@@ -874,6 +884,11 @@
 "decimal":10,
 "type":"default"
 },{
+"address":"0x52903256dd18D85c2Dc4a6C999907c9793eA61E3",
+"symbol":"INSP",
+"decimal":0,
+"type":"default"
+},{
 "address":"0xa8006c4ca56f24d6836727d106349320db7fef82",
 "symbol":"INXT",
 "decimal":8,
@@ -894,13 +909,8 @@
 "decimal":0,
 "type":"default"
 },{
-"address":"0x8727c112C712c4a03371AC87a74dD6aB104Af768",
-"symbol":"JET (new)",
-"decimal":18,
-"type":"default"
-},{
-"address":"0xc1E6C6C681B286Fb503B36a9dD6c1dbFF85E73CF",
-"symbol":"JET (old)",
+"address":"0x8727c112c712c4a03371ac87a74dd6ab104af768",
+"symbol":"JET",
 "decimal":18,
 "type":"default"
 },{
@@ -1219,6 +1229,16 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xec18f898b4076a3e18f1089d33376cc380bde61d",
+"symbol":"PETRO",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x55c2A0C171D920843560594dE3d6EEcC09eFc098",
+"symbol":"PEXT",
+"decimal":4,
+"type":"default"
+},{
 "address":"0xE64509F0bf07ce2d29A7eF19A8A9bc065477C1B4",
 "symbol":"PIPL",
 "decimal":8,
@@ -1228,7 +1248,12 @@
 "symbol":"PIX",
 "decimal":0,
 "type":"default"
- },{
+},{
+"address":"0x7e7DC49715816d1f5712A1d7dFf083e4F9E588B6",
+"symbol":"PIXEL",
+"decimal":14,
+"type":"default"
+},{
 "address":"0x59416A25628A76b4730eC51486114c32E0B582A1",
 "symbol":"PLASMA",
 "decimal":6,
@@ -1292,6 +1317,11 @@
 "address":"0x88a3e4f35d64aad41a6d4030ac9afe4356cb84fa",
 "symbol":"PRE",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x7728dfef5abd468669eb7f9b48a7f70a501ed29d",
+"symbol":"PRG",
+"decimal":6,
 "type":"default"
 },{
 "address":"0x1844b21593262668b7248d0f57a220caaba46ab9",
@@ -1584,11 +1614,6 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x599346779e90fc3F5F997b5ea715349820F91571",
-"symbol":"STN",
-"decimal":4,
-"type":"default"
-},{
 "address":"0x46492473755e8dF960F8034877F61732D718CE96",
 "symbol":"STRC",
 "decimal":8,
@@ -1700,7 +1725,7 @@
 "type":"default"
 },{
 "address":"0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
-"symbol":"Unicorn 🦄",
+"symbol":"Unicorn",
 "decimal":0,
 "type":"default"
 },{
@@ -1818,10 +1843,15 @@
 "symbol":"X8X",
 "decimal":18,
 "type":"default"
- },{
+},{
 "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
 "symbol":"XAUR",
 "decimal":8,
+"type":"default"
+},{
+"address":"0x0F513fFb4926ff82D7F60A05069047AcA295C413",
+"symbol":"XSC",
+"decimal":18,
 "type":"default"
 },{
 "address":"0x533ef0984b2FAA227AcC620C67cce12aA39CD8CD",
@@ -1847,11 +1877,6 @@
 "address":"0xB24754bE79281553dc1adC160ddF5Cd9b74361a4",
 "symbol":"XRL",
 "decimal":9,
-"type":"default"
-},{
-"address":"0x0F513fFb4926ff82D7F60A05069047AcA295C413",
-"symbol":"XSC",
-"decimal":18,
 "type":"default"
 },{
 "address":"0x0F33bb20a282A7649C7B3AFf644F084a9348e933",
