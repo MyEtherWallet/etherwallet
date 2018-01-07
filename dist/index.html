@@ -99,13 +99,13 @@
     
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.11.1.8</p>
+        <p class="small visible-xs">3.11.2</p>
       </a>
     
     
     <div class="tagline">
 
-    <span class="hidden-xs">3.11.1.8</span>
+    <span class="hidden-xs">3.11.2</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -578,13 +578,13 @@
       <br />
 
       <h1 translate="GEN_Label_5"> Save your Private Key</h1>
-      <input aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc"
-             value="{{wallet.getPrivateKeyString()}}"
+      <textarea aria-label="{{'x_PrivKey'|translate}}"
+             aria-describedby="{{'x_PrivKeyDesc'|translate}}"
              class="form-control"
-             type="text"
              readonly="readonly"
-             style="max-width: 50rem;margin: auto;"/>
-
+             rows="3"
+             style="max-width: 50rem;margin: auto;"
+      >{{wallet.getPrivateKeyString()}}</textarea>
       <br />
 
       <a tabindex="0"
@@ -6176,7 +6176,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
       <p>
         <span translate="FOOTER_1">
-          Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.
+          Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( myetherwallet.com ) before unlocking your wallet.
         </span>
       </p>
 
