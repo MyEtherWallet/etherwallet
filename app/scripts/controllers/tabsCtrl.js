@@ -120,13 +120,9 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
           node = JSON.stringify({"key":"eth_infura"})
         }
 
-        var requestedCoin = globalFuncs.urlGet('coin');
-        if (requestedCoin) {
-            if (requestedCoin === 'etc') {
-                node = JSON.stringify({"key":"etc_epool"});
-            } else if(requestedCoin === 'eth') {
-                node = JSON.stringify({"key":"eth_mew"});
-            }
+        var requestedNetwork = globalFuncs.urlGet('network');
+        if (requestedNetwork && nodes.nodeList.hasOwnProperty(requestedNetwork)) {
+            node = JSON.stringify({ "key": requestedNetwork });
         }
         
         if (node == null) {
