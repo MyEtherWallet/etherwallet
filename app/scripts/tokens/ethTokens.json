@@ -1774,11 +1774,11 @@
 "decimal":18,
 "type":"default"
 },{
-"address":" 0x83eEA00D838f92dEC4D1475697B9f4D3537b56E3",
+"address":" 0x83eea00d838f92dec4d1475697b9f4d3537b56e3",
 "symbol":"VOISE",
 "decimal":8,
 "type":"default"
- },{
+},{
 "address":"0xeDBaF3c5100302dCddA53269322f3730b1F0416d",
 "symbol":"VRS",
 "decimal":5,
