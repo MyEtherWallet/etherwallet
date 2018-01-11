@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// Accord (ARD) Token sale
+to:         '0x75aa7b0d02532f3833b66c7f0ad35376d373ddf8',
+gasLimit:   300000,
+data:       '',
+msg:        ' Accord (ARD) ERC20 token sale - http://accordtoken.com'
+},{
 // BTQ Token Sale
 to:         '0x16B0E62aC13a2fAeD36D18bce2356d25Ab3CfAD3',
 gasLimit:   200000,
