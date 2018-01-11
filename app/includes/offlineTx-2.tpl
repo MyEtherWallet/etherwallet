@@ -2,14 +2,34 @@
 
   <!-- To Address -->
   <article class="clearfix">
-    <h2 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
 
-    <address-field var-name="tx.to"></address-field>
+    <h2 class="col-xs-12" translate="OFFLINE_Step2_Title">
+      Step 2: Generate Transaction (Offline Computer)
+    </h2>
+
+    <section class="col-xs-11">
+      <label translate="OFFLINE_Step2_Label_1">
+        To Address:
+      </label>
+      <input class="form-control"
+             type="text"
+             placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
+             ng-model="tx.to"
+             ng-change="validateAddress(tx.to,'')"/>
+    </section>
+
+    <section class="col-xs-1 address-identicon-container">
+      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+    </section>
 
     <section class="col-xs-12">
-      <p>{{customGasMsg}}</p>
+      <p>
+        {{customGasMsg}}
+      </p>
     </section>
+
   </article>
+
 
   <!-- Amount to Send -->
   <article class="clearfix">
@@ -24,12 +44,19 @@
              class="btn btn-default dropdown-toggle"
              ng-click="dropdownAmount = !dropdownAmount"
              ng-class="dropdownEnabled ? '' : 'disabled'">
-                {{unitReadable}}<i class="caret"></i>
+                {{unitReadable}}
+                <i class="caret"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
-            <li><a ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
+            <li>
+              <a ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">
+                {{ajaxReq.type}}
+              </a>
+            </li>
             <li ng-repeat="token in tokenObjs track by $index">
-              <a ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index, token.getSymbol())" > {{token.getSymbol()}} </a>
+              <a ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index, token.getSymbol())" >
+                {{token.getSymbol()}}
+              </a>
             </li>
           </ul>
         </div>
@@ -37,26 +64,42 @@
     </section>
   </article>
 
+
   <!-- Gas Limit -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener">
+      <a class="account-help-icon"
+         href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">21000 is the default gas limit.</p>
+        <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">
+          21000 is the default gas limit.
+        </p>
       </a>
-      <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
+      <label translate="OFFLINE_Step2_Label_4">
+        Gas Limit
+      </label>
       <input class="form-control" type="text" placeholder="" ng-model="tx.gasLimit"/>
     </section>
   </article>
 
+
   <!-- Gas Price -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html" target="_blank" rel="noopener">
+      <a class="account-help-icon"
+         href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
+        <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">
+          This was displayed in Step 1
+        </p>
       </a>
-      <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
+      <label translate="OFFLINE_Step2_Label_3">
+        Gas Price
+      </label>
       <div class="input-group">
         <input type="text"
                class="form-control"
@@ -65,7 +108,7 @@
                ng-disabled="checkTxReadOnly"
                ng-class="Validator.isPositiveNumber(gasPriceDec) ? 'is-valid' : 'is-invalid'" />
         <div class="input-group-btn">
-          <button style="min-width: 170px" class="btn btn-default">  WEI </button>
+          <button style="min-width: 170px" class="btn btn-default"> WEI </button>
         </div>
       </div>
     </section>
@@ -75,11 +118,18 @@
   <!-- Nonce -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html" target="_blank" rel="noopener">
+      <a class="account-help-icon"
+         href="https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_5b">This was displayed in Step 1.</p>
+        <p class="account-help-text" translate="OFFLINE_Step2_Label_5b">
+          This was displayed in Step 1.
+        </p>
       </a>
-      <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
+      <label translate="OFFLINE_Step2_Label_5">
+        Nonce
+      </label>
       <input class="form-control" type="text" placeholder="" ng-model="nonceDec"/>
     </section>
   </article>
@@ -90,9 +140,13 @@
     <section class="col-sm-11" ng-show="tokenTx.id=='ether'">
       <span class="account-help-icon">
         <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
+        <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">
+          This is optional.
+        </p>
       </span>
-      <label translate="OFFLINE_Step2_Label_6"> Data </label>
+      <label translate="OFFLINE_Step2_Label_6">
+        Data
+      </label>
       <input class="form-control" type="text" placeholder="0x4d792045746865722057616c6c6574" id="offlineData" ng-model="tx.data" />
     </section>
   </article>
@@ -109,14 +163,20 @@
 <!-- Button -->
 <article class="row block" ng-show="wallet!=null">
   <section class="col-xs-12 clearfix">
-    <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">Generate Signed Transaction</a>
+    <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">
+      Generate Signed Transaction
+    </a>
   </section>
   <section class="col-sm-6 clearfix">
-    <label translate="SEND_raw"> Raw Transaction </label>
+    <label translate="SEND_raw">
+      Raw Transaction
+    </label>
     <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="rawTx"></textarea>
   </section>
   <section class="col-sm-6 clearfix">
-    <label translate="SEND_signed"> Signed Transaction </label>
+    <label translate="SEND_signed">
+      Signed Transaction
+    </label>
     <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="signedTx"></textarea>
   </section>
 </article>

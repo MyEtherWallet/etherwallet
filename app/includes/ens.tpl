@@ -4,9 +4,16 @@
 
       <!-- Title -->
       <article class="cont-md">
-        <h1 class="text-center" translate="NAV_ENS"> ENS </h1>
+        <h1 class="text-center" translate="NAV_ENS">
+          ENS
+        </h1>
         <p>
-          The <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener">Ethereum Name Service</a> is a distributed, open, and extensible naming system based on the Ethereum blockchain. Once you have a name, you can tell your friends to send ETH to <code>mewtopia.eth</code> instead of <code>0x7cB57B5A97eAbe942.....</code>.
+          The
+          <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener noreferrer">
+            Ethereum Name Service
+          </a>
+          is a distributed, open, and extensible naming system based on the Ethereum blockchain.
+          Once you have a name, you can tell your friends to send ETH to <code>mewtopia.eth</code> instead of <code>0x7cB57B5A97eAbe942.....</code>.
         </p>
       </article>
       <!-- / Title -->
@@ -19,7 +26,7 @@
           <div class="input-group">
             <input class="form-control"
                    type="text"
-                   placeholder="myetherwallet"
+                   placeholder="mewtopia"
                    ng-model="objENS.name"
                    ng-keyup="$event.keyCode==13 && checkName()"
                    ng-change="nameOnChange()"
@@ -27,7 +34,9 @@
                    ng-class="Validator.isValidENSName(objENS.name) && objENS.name.indexOf('.') == -1 ? 'is-valid' : 'is-invalid'"/>
             <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
           </div>
-          <button class="btn btn-primary" ng-click="checkName()"> Check ENS Name </button>
+          <button class="btn btn-primary" ng-click="checkName()">
+            Check ENS Name
+          </button>
         </section>
       </article>
       <!-- / IF ENS CHAIN: Check Status of Name -->
@@ -37,7 +46,11 @@
 
   <!-- IF NOT ENS CHAIN -->
   <div ng-hide="showENS()" class="alert alert-danger text-center">
-    <p> The ENS is only available on the ETH and Ropsten (Testnet) chains. You are currently on the {{ajaxReq.type}} chain. <br /> Please use the node switcher in the upper right corner to select "ETH" or "Ropsten". </p>
+    <p>
+      The ENS is only available on the ETH and Ropsten (Testnet) chains. You are currently on the {{ajaxReq.type}} chain.
+      <br />
+      Please use the node switcher in the upper right corner to select "ETH" or "Ropsten".
+    </p>
   </div>
   <!-- / IF NOT ENS CHAIN -->
 
@@ -68,11 +81,21 @@
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
         <h4>
-          <span ng-show="objENS.status==ensModes.open">    Do you want {{objENS.name}}.eth? Unlock your Wallet to Start an Auction </span>
-          <span ng-show="objENS.status==ensModes.auction"> Do you want {{objENS.name}}.eth? Unlock your Wallet to Place a Bid </span>
-          <span ng-show="objENS.status==ensModes.reveal">  Did you bid on {{objENS.name}}.eth? You must reveal your bid now. </span>
-          <span ng-show="objENS.status==ensModes.owned && objENS.owner!==objENS.deedOwner"> Is that your address? Finalize the auction to claim your new name. </span>
-          <span ng-show="objENS.status==ensModes.owned && objENS.owner==objENS.deedOwner"> Is that your address? It is ready to set up a resolver. </span>
+          <span ng-show="objENS.status==ensModes.open">
+            Do you want {{objENS.name}}.eth? Unlock your Wallet to Start an Auction
+          </span>
+          <span ng-show="objENS.status==ensModes.auction">
+            Do you want {{objENS.name}}.eth? Unlock your Wallet to Place a Bid
+          </span>
+          <span ng-show="objENS.status==ensModes.reveal">
+            Did you bid on {{objENS.name}}.eth? You must reveal your bid now.
+          </span>
+          <span ng-show="objENS.status==ensModes.owned && objENS.owner!==objENS.deedOwner">
+            Is that your address? Finalize the auction to claim your new name.
+          </span>
+          <span ng-show="objENS.status==ensModes.owned && objENS.owner==objENS.deedOwner">
+            Is that your address? It is ready to set up a resolver.
+          </span>
 
         </h4>
       </div>

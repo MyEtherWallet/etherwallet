@@ -13,9 +13,13 @@ nodes.nodeTypes = {
     RSK: "RSK",
     EXP: "EXP",
     UBQ: "UBQ",
+    POA: "POA",
+    TOMO: "TOMO",
+    ELLA: "ELLA",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
+nodes.domainsaleNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
 nodes.customNodeObj = {
     'name': 'CUS',
     'blockExplorerTX': '',
@@ -125,6 +129,18 @@ nodes.nodeList = {
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscanKov')
     },
+    'kov_infura': {
+        'name': 'Kovan',
+        'type': nodes.nodeTypes.Kovan,
+        'blockExplorerTX': 'https://kovan.etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://kovan.etherscan.io/address/[[address]]',
+        'eip155': true,
+        'chainId': 42,
+        'tokenList': require('./tokens/kovanTokens.json'),
+        'abiList': require('./abiDefinitions/kovanAbi.json'),
+        'service': 'infura.io',
+        'lib': new nodes.infuraNode('https://kovan.infura.io/mew')
+    },
     'rin_ethscan': {
         'name': 'Rinkeby',
         'type': nodes.nodeTypes.Rinkeby,
@@ -148,19 +164,6 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/rinkebyAbi.json'),
         'service': 'infura.io',
         'lib': new nodes.infuraNode('https://rinkeby.infura.io/mew')
-    },
-    'rsk': {
-        'name': 'RSK',
-        'blockExplorerTX': 'https://explorer.rsk.co/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://explorer.rsk.co/addr/[[address]]',
-        'type': nodes.nodeTypes.RSK,
-        'eip155': true,
-        'chainId': 31,
-        'tokenList': require('./tokens/rskTokens.json'),
-        'abiList': require('./abiDefinitions/rskAbi.json'),
-        'estimateGas': true,
-        'service': 'GK2.sk',
-        'lib': new nodes.customNode('https://rsk-test.gk2.sk/', '')
     },
     'exp': {
         'name': 'EXP',
@@ -187,6 +190,45 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'ubiqscan.io',
         'lib': new nodes.customNode('https://pyrus2.ubiqscan.io', '')
+    },
+    'poa': {
+        'name': 'POA',
+        'blockExplorerTX': 'https://core-explorer.poa.network/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://core-explorer.poa.network/account/[[address]]',
+        'type': nodes.nodeTypes.POA,
+        'eip155': true,
+        'chainId': 99,
+        'tokenList': require('./tokens/poaTokens.json'),
+        'abiList': require('./abiDefinitions/poaAbi.json'),
+        'estimateGas': true,
+        'service': 'core.poa.network',
+        'lib': new nodes.customNode('https://core.poa.network', '')
+    },
+    'tomo': {
+        'name': 'TOMO',
+        'blockExplorerTX': 'https://explorer.tomocoin.io/#/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.tomocoin.io/#/address/[[address]]',
+        'type': nodes.nodeTypes.TOMO,
+        'eip155': true,
+        'chainId': 40686,
+        'tokenList': require('./tokens/tomoTokens.json'),
+        'abiList': require('./abiDefinitions/tomoAbi.json'),
+        'estimateGas': true,
+        'service': 'core.tomocoin.io',
+        'lib': new nodes.customNode('https://core.tomocoin.io', '')
+    },
+    'ella': {
+        'name': 'ELLA',
+        'blockExplorerTX': 'https://explorer.ellaism.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.ellaism.org/addr/[[address]]',
+        'type': nodes.nodeTypes.ELLA,
+        'eip155': true,
+        'chainId': 64,
+        'tokenList': require('./tokens/ellaTokens.json'),
+        'abiList': require('./abiDefinitions/ellaAbi.json'),
+        'estimateGas': true,
+        'service': 'ellaism.org',
+        'lib': new nodes.customNode('https://jsonrpc.ellaism.org', '')
     }
 };
 

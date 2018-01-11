@@ -9,30 +9,33 @@
     display: flex;
     align-items: center;
     @media screen and (max-width: 900px) {
-      flex-direction: column;
       padding-left: @cont-padding;
       padding-right: @cont-padding;
+      flex-direction: row;
     }
   }
   .brand {
-    @media screen and (min-width: 901px) {
-      flex-basis: 245px;
-    }
     img {
-      max-width: 20rem;
       padding: @space-xs 0;
-      min-width: 13rem;
+      @media screen and (max-width: 900px) {
+        max-width: 10rem;
+      }
     }
   }
   .tagline {
-    font-size: 18px;
     font-weight: 200;
     color: white;
     flex: 1 auto;
     text-align: right;
     padding: @space-xs 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
     @media screen and (max-width: 900px) {
-      text-align: center;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
     }
   }
   a {
@@ -50,27 +53,41 @@
     transition: 250ms all ease;
   }
   .dropdown {
-    padding: @space-xs 0;
-    white-space: nowrap;
-    display: inline-block;
-    font-size: 14px;
-    .dropdown-menu {
-      right: -10px;
-      left: auto;
-      min-width: auto;
-      left: auto;
-      top: 2.45rem;
+    padding: .2rem;
+  }
+  @media screen and (max-width: 900px) {
+    .dropdown {
+      padding: .2rem 0;
+      white-space: nowrap;
+      display: inline-block;
       font-size: 14px;
-      & > li > a {
+      .dropdown-menu {
+        right: -10px;
+        left: auto;
+        min-width: auto;
+        left: auto;
+        top: 2.45rem;
         font-size: 14px;
-        padding: @space-xs 30px @space-xs 15px;
-        position: relative;
+        & > li > a {
+          font-size: 14px;
+          padding: @space-xs 30px @space-xs 15px;
+          position: relative;
+        }
       }
     }
   }
-  .dropdown-toggle { font-size: 14px; padding: .4rem 1rem; }
+  .dropdown-toggle {
+    font-size: 14px;
+    padding: .3em .6rem;
+  }
   .dropdown-gas {
     display: inline-block;
+    @media screen and (max-width: 900px) {
+      margin-bottom: 1.8rem;
+    }
+    .dropdown-toggle {
+      min-width: 200px;
+    }
     .dropdown-menu{
       min-width: 100%;
       padding: .5rem;

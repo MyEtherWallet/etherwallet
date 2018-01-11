@@ -75,6 +75,30 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                 }
                 app.signPersonalMessage_async( $scope.wallet.getPath(), msg, localCallback);
 
+            // Sign via Digital Bitbox
+            } else if ((typeof hwType != "undefined") && (hwType == "digitalBitbox")) {
+                var msg = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage));
+                var localCallback = function(signed, error) {
+                    if (typeof error != "undefined") {
+                        error = error.errorCode ? u2f.getErrorByCode(error.errorCode) : error;
+                        $scope.notifier.danger(error);
+                        return;
+                    }
+                    var combined    = signed['r'] + signed['s'] + signed['v']
+                    var combinedHex = combined.toString('hex')
+                    var signingAddr = $scope.wallet.getAddressString()
+                    $scope.signMsg.signedMsg = JSON.stringify({
+                        address: $scope.wallet.getAddressString(),
+                        msg: thisMessage,
+                        sig: '0x' + combinedHex,
+                        version: '2'
+                    }, null, 2)
+                    $scope.notifier.success('Successfully Signed Message with ' + signingAddr);
+                }
+                $scope.notifier.info("Touch the LED for 3 seconds to sign the message. Or tap the LED to cancel.");
+                var app = new DigitalBitboxEth($scope.wallet.getHWTransport(), '');
+                app.signMessage($scope.wallet.getPath(), msg, localCallback);
+
             // Sign via trezor
             } else if ((typeof hwType != "undefined") && (hwType == "trezor")) {
                 TrezorConnect.ethereumSignMessage($scope.wallet.getPath(), thisMessage, function(response){
@@ -86,7 +110,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                             version: '2'
                         }, null, 2)
                         $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString())
-                    } else{ 
+                    } else{
                         $scope.notifier.danger(response.error);
                     }
                 })
@@ -95,9 +119,9 @@ var signMsgCtrl = function($scope, $sce, walletService) {
             } else {
                 var msg         = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage))
                 var signed      = ethUtil.ecsign(msg, $scope.wallet.getPrivateKey())
-                console.log(signed.r)
-                console.log(signed.s)
-                console.log([signed.v])
+                //console.log(signed.r)
+                //console.log(signed.s)
+                //console.log([signed.v])
                 var combined    = Buffer.concat([Buffer.from(signed.r), Buffer.from(signed.s), Buffer.from([signed.v])])
                 var combinedHex = combined.toString('hex')
                 var signingAddr = $scope.wallet.getAddressString()

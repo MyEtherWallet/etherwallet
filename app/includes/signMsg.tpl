@@ -1,9 +1,17 @@
 <article class="col-xs-12 clearfix">
   <div class="block text-center">
     <h2>
-      <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
+      <a translate="NAV_SignMsg"
+         ng-class="{ 'isActive': visibility=='signView'}"
+         ng-click="setVisibility('signView')">
+           Sign Message
+      </a>
       or
-      <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
+      <a translate="MSG_verify"
+         ng-class="{ 'isActive': visibility=='verifyView'}"
+         ng-click="setVisibility('verifyView')">
+          Verify Message
+      </a>
     </h2>
   </div>
 </article>
@@ -12,7 +20,9 @@
 
   <section class="block" ng-switch-when="signView">
 
-    <h4 translate="MSG_message"> Message </h4>
+    <h4 translate="MSG_message">
+      Message
+    </h4>
 
     <textarea class="form-control"
               ng-model="signMsg.message"
@@ -40,7 +50,9 @@
     </a>
 
     <div ng-show="signMsg.signedMsg">
-      <h4 translate="MSG_signature"> Signature </h4>
+      <h4 translate="MSG_signature">
+        Signature
+      </h4>
       <textarea class="form-control"
                 rows="8"
                 style="word-break: break-all;"
@@ -52,7 +64,9 @@
 
   <section class="block" ng-switch-when="verifyView">
 
-    <h5 translate="MSG_signature"> Signature </h5>
+    <h5 translate="MSG_signature">
+      Signature
+    </h5>
     <textarea class="form-control"
               ng-model="verifyMsg.signedMsg"
               rows="8"
@@ -62,7 +76,8 @@
     <a class="btn btn-info btn-block"
        ng-click="verifySignedMessage()"
        translate="MSG_verify"
-       ng-show="verifyMsg.signedMsg!=''"> Verify Message
+       ng-show="verifyMsg.signedMsg!=''">
+          Verify Message
     </a>
 
     <p class="alert alert-success"

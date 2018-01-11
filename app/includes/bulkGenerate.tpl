@@ -1,19 +1,35 @@
 <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'  ng-cloak>
 
-  <h1 translate="NAV_BulkGenerate"> Bulk Generate Wallets </h1>
+  <h1 translate="NAV_BulkGenerate">
+    Bulk Generate Wallets
+  </h1>
 
   <!-- Top - Bulk Generate -->
   <section class="row">
+
     <div class="col-md-6 col-sm-12 form-group">
-      <h4 translate="BULK_Label_1">Number of Wallets To Generate</h4>
-      <input class="form-control" type="text" placeholder="{{ 'BULK_Label_1' | translate }}" ng-model="amount">
+      <h4 translate="BULK_Label_1">
+        Number of Wallets To Generate
+      </h4>
+      <input class="form-control"
+             type="text"
+             placeholder="{{ 'BULK_Label_1' | translate }}"
+             ng-model="amount" />
     </div>
+
     <div class="col-md-6 col-sm-12 form-group">
-      <h4 translate="BULK_Label_2">Generate Wallets</h4>
-      <a class="btn btn-primary btn-block" ng-click="genWallets()" translate="BULK_Label_2">Generate Wallets</a>
+      <h4 translate="BULK_Label_2">
+        Generate Wallets
+      </h4>
+      <a class="btn btn-primary btn-block" ng-click="genWallets()" translate="BULK_Label_2">
+        Generate Wallets
+      </a>
     </div>
+
   </section>
   <!-- / Top - Bulk Generate -->
+
+
 
   <!-- Bottom - Display Bulk Generated Wallets -->
   <section ng-show="showWallets">
@@ -22,9 +38,13 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <h1 translate="BULK_SuccessMsg">Success! Your wallets have been generated.</h1>
+        <h1 translate="BULK_SuccessMsg">
+          Success! Your wallets have been generated.
+        </h1>
 
-        <div class="alert alert-danger" translate="ERROR_28">**You need your Keystore File + password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
+        <div class="alert alert-danger" translate="ERROR_28">
+          **You need your Keystore File + password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.
+        </div>
       </div>
 
       <article class="col-md-9">
@@ -56,15 +76,15 @@
           <a class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
         </div>
         <div class="form-group">
-          <label translate="x_Json"> JSON file (unencrypted)</label>
+          <label translate="x_Json">JSON file (unencrypted)</label>
           <a class="btn btn-info btn-block" href="{{bJSON}}" download="bulk_ether_accounts.json" translate="x_Download">DOWNLOAD</a>
         </div>
         <div class="form-group">
-          <label translate="x_CSV"> CSV file (unencrypted)</label>
+          <label translate="x_CSV">CSV file (unencrypted)</label>
           <a class="btn btn-info btn-block" href="{{bCSV}}" download="bulk_ether_accounts.csv" translate="x_Download">DOWNLOAD</a>
         </div>
         <div class="form-group">
-          <label translate="x_TXT"> TXT file (unencrypted)</label>
+          <label translate="x_TXT">TXT file (unencrypted)</label>
           <a class="btn btn-info btn-block" href="{{bTXT}}" download="bulk_ether_accounts.txt" translate="x_Download">DOWNLOAD</a>
         </div>
       </article>

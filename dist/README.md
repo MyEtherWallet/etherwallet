@@ -16,7 +16,7 @@
 - [Anti-phish CX](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn)
 - [FB: https://www.facebook.com/MyEtherWallet/](https://www.facebook.com/MyEtherWallet/)
 - [Twitter: https://twitter.com/myetherwallet](https://twitter.com/myetherwallet)
-- [Medium: https://medium.com/@myetherwallet_96408](https://medium.com/@myetherwallet_96408)
+- [Medium: https://medium.com/@myetherwallet](https://medium.com/@myetherwallet)
 - [Help Center: https://myetherwallet.groovehq.com/help_center](https://myetherwallet.groovehq.com/help_center)
 - [Github MEW Repo: https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet)
 - [Github MEW Org: https://github.com/MyEtherWallet](https://github.com/MyEtherWallet)
@@ -35,8 +35,8 @@
 
 ### `mercury` is the development branch. gh-pages contains only the smaller dist folder only and is served to MyEtherWallet.com
 
-- Our infrastructure ("node") is on AWS. [You can also use your own node.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node)
-- We also provide access to Infura.io & Etherscan.io nodes. Use the dropdown in the top-right.
+- Our infrastructure ("node") is on AWS. [You can also use your own node.](https://myetherwallet.github.io/knowledge-base/networks/run-your-own-node-with-myetherwallet.html)
+- We also provide access to Infura.io & Etherscan.io nodes. Use the drop-down in the top-right.
 
 
 ### MyEtherWallet
@@ -69,7 +69,7 @@
  - **Empower the people**: Give people the ability to interact with the Ethereum blockchain easily, without having to run a full node.
  - **Make it easy & free**: Everyone should be able to create a wallet and send Ether & Tokens without additional cost.
  - **People are the Priority**: People are the most important & their experience trumps all else. If monetization worsens the experience, we don't do it. (e.g. ads)
- - **A learning experience, too**: We want to educate about Ethereum, security, privacy, importance of controlling your own keys, how the blockchain works, and how Ethereum and blockchain technologies enable a better world.
+ - **A learning experience, too**: We want to educate about Ethereum, security, privacy, the importance of controlling your own keys, how the blockchain works, and how Ethereum and blockchain technologies enable a better world.
  - **If it can be hacked, it will be hacked**: Never save, store, or transmit secret info, like passwords or keys.
  - **Offline / Client-Side**: User should be able to run locally and offline without issue.
  - **Private**: No tracking!!! No emails. No ads. No demographics. We don't even know how many wallets have been generated, let alone who / what / where you are.
@@ -80,7 +80,7 @@
 
 ### Users (non-developers)
 
-- [It is recommended you start here.](https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443)
+- [It is recommended you start here.](https://myetherwallet.github.io/knowledge-base/getting-started/getting-started-new.html)
 - You can run MyEtherWallet.com on your computer. You can create a wallet completely offline & send transactions from the "Offline Transaction" page.
 
 1. Go to https://github.com/kvhnuke/etherwallet/releases/latest.
@@ -105,8 +105,8 @@ If you want to help contribute, here's what you need to know to get it up and ru
 - Both the Chrome Extension and the MyEtherWallet.com are compiling from the same codebase. This code is found in the `app` folder. Don't touch the `dist` or `chrome-extension` folders.
 - We use angular and bootstrap. We used to use jQuery and Bootstrap until it was converted in April 2016. If you wonder why some things are set up funky, that's why.
 - The mercury branch is currently the active development branch. We then push the dist folder live to gh-pages, which then gets served to MyEtherWallet.com.
-- We use npm / gulp for compiling. There is a lot of stuff happening in the compliation.
-- Old node setups can be found in in `json_relay_node` (node.js) & `json_relay_php` (php). These are great resources for developers looking to get started and launch a public node on a $40 linode instance.
+- We use npm / gulp for compiling. There is a lot of stuff happening in the compilation.
+- Old node setups can be found in in `json_relay_node` (node.js) & `json_relay_php` (php). These are great resources for developers looking to get started and launch a public node on a $40 Linode instance.
 
 **Getting Started**
 
@@ -116,13 +116,13 @@ If you want to help contribute, here's what you need to know to get it up and ru
 
 **Folder Structure**
 - `fonts` and `images` get moved into their respective folders. This isn't watched via gulp so if you add an image or font, you need to run `gulp` again.
-- `includes` are the pieces of the pages / the pages themselves. These are pretty self explanatory and where you will make most frontend changes.
+- `includes` are the pieces of the pages / the pages themselves. These are pretty self-explanatory and where you will make most frontend changes.
 - `layouts` are the pages themselves. These basically take all the pieces of the pages and compile into one massive page. The navigation is also found here...sort of.
     * `index.html` is for MyEtherWallet.com.
     * `cx-wallet.html` is the main page for the Chrome Extension.
     * `embedded.html` is for https://www.myetherwallet.com/embedded.html.
 
-- You can control what shows up on MyEtherWallet.com vs the Chrome Extension by using: `@@if (site === 'cx' )  {  ...  }` and `@@if (site === 'mew' ) { ... }`. Check out `sendTransaction.tpl` to see it in action. The former will only compile to the Chrome Extension. The latter only to MyEtherWallet.com.
+- You can control what shows up on MyEtherWallet.com vs the Chrome Extension by using: `@@if (site === 'cx' )  {  ...  }` and `@@if (site === 'mew' ) { ... }`. Check out `sendTransaction.tpl` to see it in action. The former will only compile for the Chrome Extension. The latter only to MyEtherWallet.com.
 - `embedded.html` is for embedding the wallet generation into third-party sites. [Read more about it and how to listen for the address generated here.](https://www.reddit.com/r/ethereum/comments/4gn37o/embeddable_myetherwallet_super_simple_wallet/)
 - The wallet decrypt directives are at `scripts/directives/walletDecryptDrtv.js`. These show up on a lot of pages.
 - The navigation is in `scripts/services/globalServices.js`. Again, we control which navigation items show up in which version of the site in this single file.
@@ -139,7 +139,7 @@ If you want to help contribute, here's what you need to know to get it up and ru
 
 - [Setting up on AWS super easily.](https://github.com/MyEtherWallet/docker-geth-lb)
 
-- [Running MyEtherWallet w/ Your Own Personal Node](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node)
+- [Running MyEtherWallet w/ Your Own Personal Node](https://myetherwallet.github.io/knowledge-base/networks/run-your-own-node-with-myetherwallet.html)
 
 - [Guide by benjaminion for MEW + Ledger Nano S + Local Parity Node](https://github.com/benjaminion/eth-parity-qnap/wiki/Connecting-to-MyEtherWallet)
 
@@ -165,14 +165,14 @@ If you want to help contribute, here's what you need to know to get it up and ru
 
 **If you are NOT a developer and have no idea how this works:**
 
-Anyone can help out and it looks way more complicated than it is! If you would rather not deal with Github, please just email us a info@myetherwallet.com and I'll email you the file and you can make changes and send it back to us and I'll make sure you don't screw anything up. If you feel like experiencing something new, read on!
+Anyone can help out and it looks way more complicated than it is! If you would rather not deal with Github, please send us an email to info@myetherwallet.com and I'll email you the file and you can make changes and send it back to us and I'll make sure you don't screw anything up. If you feel like experiencing something new, read on!
 
 1. Sign into your Github account or make a new Github account.
 2. Go to https://github.com/kvhnuke/etherwallet/tree/mercury/app/scripts/translations
 3. Click on the language file you want to update.
 4. Look in the upper right. Click the pencil icon. This will then tell you, *"You’re editing a file in a project you don’t have write access to. We’ve created a fork of this project for you to commit your proposed changes to. Submitting a change to this file will write it to a new branch in your fork, so you can send a pull request."* Ignore it all.
 5. In your browser, start translating. Translate as little or as much as you want.
-6. Scroll down about halfway to the translators section. Enter your name/username, donation address, and any comments you would like to leave.
+6. Scroll down to halfway to the translator's section. Enter your name/username, donation address, and any comments you would like to leave.
 7. When you are done, tell us what language you updated. You can also leave any notes about problems you had or things you'd like us to know.
 8. Click the green "Propose File change" button.
 9. This next page is a review of what you did.
@@ -186,7 +186,7 @@ Anyone can help out and it looks way more complicated than it is! If you would r
 2. Go to `/app/scripts/translations/`.
 3. Open the language you want to translate.
 4. Translate as much or as little as you wish.
-5. Add your name/username, donation address, and any notes you would like on in the translators section, about halfway down.
+5. Add your name/username, donation address, and any notes you would like on in the translator's section, about halfway down.
 6. Open a PR and leave us a brief description of what you did and any issues you ran into or comments you have.
 
 Read more @ [Help us translate MyEtherWallet.com into ALL THE LANGUAGES!](https://www.reddit.com/r/ethereum/comments/4z55s2/help_us_translate_myetherwalletcom_into_all_the/)
@@ -230,6 +230,7 @@ If you can think of any other features or run into bugs, let us know. You can fo
 - 4/9/17: [Ethereum vanity address generator](https://www.reddit.com/r/ethereum/comments/5yeb4n/ethereum_vanity_address_generator/?utm_content=comments&utm_medium=user&utm_source=reddit&utm_name=frontpage)
 - 4/30/17: [MEW v3.6.6: Enables you to access any path for your Mnemonic, Ledger & TREZOR. (ATTN: folks who have ETH / ETC / Tokens stuck in a different path)](https://www.reddit.com/r/ethereum/comments/68f70l/mew_v366_enables_you_to_access_any_path_for_your/)
 - 5/7/17: [ENS disguise bid issue on MyEtherWallet](https://www.reddit.com/r/ethereum/comments/69vz57/ens_disguise_bid_issue_on_myetherwallet/)
-
+- - 8/15/17: [MyEtherWallet needs motivated devs!](https://www.reddit.com/r/ethereum/comments/6tqrs1/myetherwallet_needs_motivated_devs/?utm_content=comments&utm_medium=user&utm_source=reddit&utm_name=frontpage)
+- 10/28/17: [MyEtherWallet - New Contract Interaction Tools](https://www.reddit.com/r/ethereum/comments/7961ml/myetherwallet_new_contract_interaction_tools/)
 
 #### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).

@@ -7,7 +7,7 @@ textarea {
   resize: vertical;
 }
 
-// anouncement bars
+// announcement bars
 .announcement {
   padding: 3px 10px;
   text-align: center;
@@ -56,6 +56,7 @@ textarea {
     }
   }
 }
+
 
 // address icenticons
 .address-identicon-container {
@@ -212,26 +213,34 @@ textarea {
     list-style-type: none;
     word-break: break-all;
   }
-  table& {
-    font-weight: 200;
-    border-bottom: 0;
-    min-width: 200px;
-    width: 100%;
-    td {
-      padding: .3rem;
-      line-height: 1;
-    }
-    td:first-child {
-      word-wrap: break-word;
-      padding-left: 1em;
-    }
-    tr {
-      border-bottom: 1px solid #f3f3f3;
-    }
-    tr:nth-last-child(2),
-    tr:last-child {
-      border-bottom: 0px solid #f3f3f3;
-    }
+}
+
+table.account-info {
+  font-weight: 200;
+  border-bottom: 0;
+  min-width: 200px;
+  width: 100%;
+  tbody {
+    display: flex;
+    flex-direction: column;
+  }
+  td {
+    padding: .3rem;
+    line-height: 1;
+  }
+  td:first-child {
+    word-wrap: break-word;
+    padding-left: 1em;
+  }
+  tr {
+    border-bottom: 1px solid #f3f3f3;
+  }
+  tr:nth-last-child(2),
+  tr:last-child {
+    border-bottom: 0px solid #f3f3f3;
+  }
+  tr.custom-token {
+    order: -1;
   }
 }
 
@@ -320,6 +329,8 @@ input[type="password"]+.eye {
 .token-balances {
   margin-bottom: 15px;
   font-size: 14px;
+  max-height: 60vh;
+  overflow: scroll;
 }
 
 h2 a.isActive {
@@ -427,6 +438,28 @@ label small {
   }
 }
 
+.dropdown-gas {
+  padding-bottom: 1rem;
+  @media screen and (max-width: 900px) {
+    padding-bottom: 2rem;
+  }
+}
+
+.dropdown-gas__msg {
+  font-size: 12px;
+  font-weight:300;
+  left: -100%;
+  margin: 0;
+  position: absolute;
+  right: -100%;
+  white-space:normal;
+  @media screen and (max-width: 900px) {
+    left: -25%;
+    right: 0;
+  }
+
+}
+
 .view-wallet-content {
   h5 {
     margin-bottom: @space-xs;
@@ -489,11 +522,15 @@ label small {
 @brand-exp: #673ab7;
 @brand-music: #b37aff;
 @brand-ubq: #00ad85;
+@brand-poa: #4568bb;
+@brand-tomo: #6a488d;
+@brand-ella: #046111;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
   li {
     border-left: 2px solid @brand-cust;
+    position: relative;
   }
   li:last-child {
     border-top: 1px solid @gray-lighter;
@@ -512,32 +549,35 @@ label small {
   li:nth-child(7),
   li:nth-child(8),
   li:nth-child(9),
-  li:nth-child(10) {
-    border-left: 2px solid @brand-test;
-  }
+  li:nth-child(10),
   li:nth-child(11) {
-    border-left: 2px solid @brand-rsk;
+    border-left: 2px solid @brand-test;
   }
   li:nth-child(12) {
     border-left: 2px solid @brand-exp;
   }
-  li:nth-child(13),
+  li:nth-child(13) {
+    border-left: 2px solid @brand-ubq;
+  }
   li:nth-child(14) {
-    border-left: 2px solid @brand-music;
+    border-left: 2px solid @brand-poa;
   }
   li:nth-child(15) {
-    border-left: 2px solid @brand-ubq;
+    border-left: 2px solid @brand-tomo;
+  }
+  li:nth-child(16) {
+    border-left: 2px solid @brand-ella;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
   }
   li:nth-child(4),
   li:nth-child(5),
-  li:nth-child(10),
   li:nth-child(11),
   li:nth-child(12),
   li:nth-child(13),
-  li:nth-child(14) {
+  li:nth-child(14),
+  li:nth-child(15) {
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -607,3 +647,26 @@ header.UBQ {
   & + .container .modal-content          { border: 0.25rem solid @brand-ubq;      }
   & + .container .alert-info             { background-color:@brand-ubq;           }
 }
+
+header.POA {
+  .nav-container                         { border-top: 0.25rem solid @brand-poa;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-poa;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-poa;      }
+  & + .container .alert-info             { background-color:@brand-poa;           }
+}
+
+header.TOMO {
+  .nav-container                         { border-top: 0.25rem solid @brand-tomo;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-tomo;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-tomo;      }
+  & + .container .alert-info             { background-color:@brand-tomo;           }
+}
+
+header.ELLA {
+  .nav-container                         { border-top: 0.25rem solid @brand-ella;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ella;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-ella;      }
+  & + .container .alert-info             { background-color:@brand-ella;           }
+}
+
+

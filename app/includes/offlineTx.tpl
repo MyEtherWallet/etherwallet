@@ -1,6 +1,11 @@
-<main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.offlineTransaction.id" ng-controller='offlineTxCtrl' ng-cloak>
+<main class="tab-pane active"
+      ng-if="globalService.currentTab==globalService.tabs.offlineTransaction.id"
+      ng-controller='offlineTxCtrl'
+      ng-cloak>
 
-  <h1 translate="OFFLINE_Title"> Generate & Send Offline Transaction </h1>
+  <h1 translate="OFFLINE_Title">
+    Generate &amp; Send Offline Transaction
+  </h1>
 
   @@if (site === 'mew' ) { @@include( './offlineTx-1.tpl',     { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './offlineTx-1.tpl',     { "site": "cx"  } ) }

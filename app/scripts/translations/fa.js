@@ -4,6 +4,204 @@ var fa = function () {}
 fa.code = 'fa';
 fa.data = {
 
+GEN_Help_0                      :  'Already have a wallet somewhere?',
+GEN_Help_MetaMask               :  'So easy! Keys stay in MetaMask, not on a phishing site! Try it today.',
+
+GEN_Warning_1                   :  '**Do not lose it!** It cannot be recovered if you lose it.',
+GEN_Warning_2                   :  '**Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.',
+GEN_Warning_3                   :  '**Make a backup!** Secure it like the millions of dollars it may one day be worth.',
+
+GAS_Price_1                     : 'Not So Fast',
+GAS_Price_2                     : 'Fast',
+GAS_Price_3                     : 'Fast AF',
+
+CONTRACT_Helper_1               :  'Please change the address to your own Multisig Contract Address.',
+CONTRACT_Warning_1              :  'You are about to **deploy a contract**.',
+CONTRACT_Warning_2              :  'It will be deployed on the following network:',
+CONTRACT_Warning_3              :  'You are about to **execute a function on contract**.',
+
+SEND_Helper_Contract            :  'In most cases you should leave this as 0.',
+SEND_ViewOnly                   :  'You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.',
+SEND_LoadTokens                 :  'Load Tokens',
+SEND_CustomAddrMsg              :  'A message regarding',
+
+SWAP_Warning_1                  :  'Warning! You do not have enough funds to complete this swap.',
+SWAP_Warning_2                  :  'Please add more funds to your wallet or access a different wallet.',
+
+X_Advanced                      :  'Advanced Users Only.',
+X_HelpfulLinks                  :  'Helpful Links & FAQs',
+X_HelpfulLinks_1                :  'How to Access your Wallet',
+X_HelpfulLinks_2                :  'I lost my private key',
+X_HelpfulLinks_3                :  'My private key opens a different address',
+X_HelpfulLinks_4                :  'Migrating to/from MyEtherWallet',
+X_Network                       :  'Network', // aka "node" or "chain" - used in the dropdown in header
+X_Network_Custom                :  'Add Custom Network / Node',
+
+DOMAIN_Buy                      :  'Buy the domain',
+DOMAIN_BuyItNow                 :  'Price to buy the domain immediately:',
+DOMAIN_bid                      :  'Bid for the domain',
+DOMAIN_bid_0                    :  'You are currently winning this auction with the highest bid. You can bid higher if you want, but it will delay the close of the auction for 24 hours.',
+DOMAIN_bid_1                    :  'Bid at least',
+DOMAIN_bid_2                    :  'on the domain.',
+DOMAIN_bid_3                    :  'You will win the domain if no higher bids are placed within the next 24 hours.',
+DOMAIN_bid_4                    :  'Note that the domain has a locked value of',
+DOMAIN_bid_5                    :  'As part of the sale you will receive the deed with this value but cannot claim it unless you release the name.',
+DOMAIN_Finish_1                 :  'Not related to that auction',
+DOMAIN_Finish_2                 :  'This address is neither the winner nor the seller of the auction.',
+DOMAIN_Finish_3                 :  'Finish the auction',
+DOMAIN_Finish_4                 :  'Finish the auction to allocate the domain to the winner and the funds to the seller.',
+DOMAIN_Finish_5                 :  'Click your TX hash to see if you successfully transferred the domain to DomainSale.',
+DOMAIN_offer_4                  :  'Offer For Sale:',
+DOMAIN_offer_5                  :  'Set either of both of the prices below to offer your domain for sale.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.',
+DOMAIN_offer_7                  :  'Alter Your Offer for:',
+DOMAIN_offer_8                  :  'Change either of both of the prices below to alter your domain sale offer.  Remember that any funds you have locked in the domain\'s deed will go to the buyer and 10% of the funds when sold goes to referrers.',
+DOMAIN_offer_9                  :  'Buy price',
+DOMAIN_offer_10                 :  'This is the price at which someone can buy the domain immediately. 0 means that the domain cannot be purchased immediately.',
+DOMAIN_offer_11                 :  'This is the price at which someone can start an auction for the domain.  0 means that the domain will not be available for auction.',
+DOMAIN_offer_12                 :  'Offer your domain',
+DOMAIN_offer_13                 :  'Alter your sale',
+DOMAIN_offer_14                 :  'Cancel your sale',
+DOMAIN_offer_15                 :  'You can cancel your domain sale, which will return the domain to you with no charge.  This is only available before any bids have been received for the domain.',
+
+ENS_WrongAddress_1              :  'The wallet you unlocked does not own the name ',
+ENS_WrongAddress_2              :  'Please unlock the wallet with address ',
+
+ENS_Finalize                    :  'Finalize',
+ENS_Finalize_content            :  'Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.',
+ENS_Finalize_content_1          :  'You are about to finalize the auction & claim the name:',
+ENS_Helper_1                    :  'What is the process like?',
+ENS_Helper_2                    :  '1) Preparation',
+ENS_Helper_3                    :  'Decide which account you wish to own the name & ensure you have multiple backups of that account.',
+ENS_Helper_4                    :  'Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.',
+ENS_Helper_5                    :  '2) Start an Auction / Place a Bid',
+ENS_Helper_6                    :  'Bidding period lasts 3 days (72 hours).',
+ENS_Helper_7                    :  'You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.',
+ENS_Helper_8                    :  'This places your bid, but this information is kept secret until you reveal it.',
+ENS_Helper_9                    :  '3) Reveal your Bid',
+ENS_Helper_10                   :  '**If you do not reveal your bid, you will not be refunded.**',
+ENS_Helper_11                   :  'Reveal Period lasts 2 days (48 hours).',
+ENS_Helper_12                   :  'You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.',
+ENS_Helper_13                   :  'In the event that two parties bid exactly the same amount, the first bid revealed will win.',
+ENS_Helper_14                   :  '4) Finalize the Auction',
+ENS_Helper_15                   :  'Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.',
+ENS_Helper_16                   :  'The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH.',
+ENS_Helper_17                   :  'More Information',
+ENS_Helper_18                   :  'The auction for this registrar is a blind auction, and is described in',
+ENS_Helper_19                   :  'Basically, no one can see *anything* during the auction.',
+ENS_Helper_20                   :  'ENS: Read the Docs',
+ENS_Helper_21                   :  'Announcing the Ethereum Name Service Relaunch Date!',
+ENS_Helper_22                   :  'Knowledge Base: ENS',
+ENS_Helper_23                   :  'Debugging a [BAD INSTRUCTION] Reveal',
+ENS_Helper_24                   :  'Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We\'re so sorry. :(',
+
+EOS_01                          :  '**Generate EOS Key-pair**',
+EOS_02                          :  '**Register / Map your EOS Key**',
+EOS_03                          :  'Select `register`',
+EOS_04                          :  'Enter your **EOS Public Key** <--- CAREFUL! EOS PUBLIC KEY!',
+EOS_05                          :  'Fund EOS Contract on Send Page',
+EOS_06                          :  'Go to Send Ether & Tokens Page',
+EOS_07                          :  'Unlock same wallet you are unlocking here.',
+EOS_08                          :  'Send Amount you want to Contribute to `0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf`',
+EOS_09                          :  'Claim EOS Tokens',
+EOS_10                          :  'Select `claimAll`.',
+
+/* Onboarding */
+ONBOARD_welcome_title           :  'Welcome to MyEtherWallet.com',
+ONBOARD_welcome_content__1      :  'Please take some time to understand this for your own safety. 🙏',
+ONBOARD_welcome_content__2      :  'Your funds will be stolen if you do not heed these warnings.',
+ONBOARD_welcome_content__3      :  'We know this click-through stuff is annoying. We are sorry.',
+ONBOARD_welcome_content__4      :  'What is MEW? ',
+ONBOARD_welcome_content__5      :  'MyEtherWallet is a free, open-source, client-side interface.',
+ONBOARD_welcome_content__6      :  'We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.',
+ONBOARD_welcome_content__7      :  '**You** and **only you** are responsible for your security.',
+ONBOARD_welcome_content__8      :  'We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.',
+ONBOARD_bank_title              :  'MyEtherWallet is not a Bank',
+ONBOARD_bank_content__1         :  'When you open an account with a bank or exchange, they create an account for you in their system.',
+ONBOARD_bank_content__2         :  'The bank keeps track of your personal information, account passwords, balances, transactions and ultimately your money.',
+ONBOARD_bank_content__3         :  'The bank charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.',
+ONBOARD_bank_content__4         :  'The bank allows you to write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.',
+ONBOARD_bank_content__5         :  'You have an account *with the bank or exchange* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.',
+ONBOARD_welcome_title__alt      :  'Introduction',
+ONBOARD_interface_title         :  'MyEtherWallet is an Interface',
+ONBOARD_interface_content__1    :  'When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).',
+ONBOARD_interface_content__2    :  'The handling of your keys happens entirely on your computer, inside your browser.',
+ONBOARD_interface_content__3    :  'We never transmit, receive or store your private key, password, or other account information.',
+ONBOARD_interface_content__4    :  'We do not charge a transaction fee.',
+ONBOARD_interface_content__5    :  'You are simply using our **interface** to interact **directly with the blockchain**.',
+ONBOARD_interface_content__6    :  'If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍',
+ONBOARD_interface_content__7    :  'If you send your *private key* to someone, they now have full control of your account. 👎',
+ONBOARD_bank_title__alt         :  'MEW isn\'t a Bank',
+ONBOARD_blockchain_title__alt   :  'WTF is a Blockchain?',
+ONBOARD_blockchain_skip         :  'I already know what a blockchain is...',
+ONBOARD_blockchain_title        :  'Wait, WTF is a Blockchain?',
+ONBOARD_blockchain_content__1   :  'The blockchain is like a huge, global, decentralized spreadsheet.',
+ONBOARD_blockchain_content__2   :  'It keeps track of who sent how many coins to whom, and what the balance of every account is.',
+ONBOARD_blockchain_content__3   :  'It is stored and maintained by thousands of people (miners) across the globe who have special computers.',
+ONBOARD_blockchain_content__4   :  'The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.',
+ONBOARD_blockchain_content__5   :  'When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.',
+ONBOARD_blockchain_content__6   :  'Again: **we are not a bank**.',
+ONBOARD_interface_title__alt    :  'MEW is an Interface',
+ONBOARD_why_title__alt          :  'But...why does this matter?',
+ONBOARD_why_title               :  'Why are you making me read all this?',
+ONBOARD_why_content__1          :  'Because we need you to understand that we **cannot**...',
+ONBOARD_why_content__2          :  'Access your account or send your funds for you X.',
+ONBOARD_why_content__3          :  'Recover or change your private key.',
+ONBOARD_why_content__4          :  'Recover or reset your password.',
+ONBOARD_why_content__5          :  'Reverse, cancel, or refund transactions.',
+ONBOARD_why_content__6          :  'Freeze accounts.',
+ONBOARD_why_content__7          :  '**You** and **only you** are responsible for your security.',
+ONBOARD_why_content__8          :  'Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.',
+ONBOARD_why_content__9          :  'If you lose your private key or password, no one can recover it.',
+ONBOARD_why_content__10         :  'If you enter your private key on a phishing website, you will have **all your funds taken**.',
+ONBOARD_blockchain_title__alt   :  'WTF is a Blockchain?',
+ONBOARD_point_title__alt        :  'What\'s the Point of MEW then?',
+ONBOARD_whymew_title            :  'If MyEtherWallet can\'t do those things, what\'s the point?',
+ONBOARD_whymew_content__1       :  'Because that is the point of decentralization and the blockchain.',
+ONBOARD_whymew_content__2       :  'You don\'t have to rely on your bank, government, or anyone else when you want to move your funds.',
+ONBOARD_whymew_content__3       :  'You don\'t have to rely on the security of an exchange or bank to keep your funds safe.',
+ONBOARD_whymew_content__4       :  'If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉',
+ONBOARD_whymew_content__5       :  'If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.',
+ONBOARD_whymew_content__6       :  'If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.',
+ONBOARD_why_title__alt          :  'But...why?',
+ONBOARD_secure_title            :  'How To Protect Yourself & Your Funds',
+ONBOARD_secure_1_title          :  'How To Protect Yourself from Phishers',
+ONBOARD_secure_1_content__1     :  'Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.',
+ONBOARD_secure_1_content__2     :  'Install [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige) or the [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) to block malicious websites.',
+ONBOARD_secure_1_content__3     :  'Always check the URL: `https://www.myetherwallet.com`.',
+ONBOARD_secure_1_content__4     :  'Always make sure the URL bar has `MYETHERWALLET LLC [US]` in green.',
+ONBOARD_secure_1_content__5     :  'Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.',
+ONBOARD_secure_1_content__6     :  'Always navigate directly to a site before you enter information. Do not enter information after clicking a link from a message or email.',
+ONBOARD_secure_1_content__7     :  '[Install an AdBlocker](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) and do not click ads on your search engine (e.g. Google).',
+ONBOARD_point_title__alt_2      :  'What\'s the point?',
+ONBOARD_secure_2_title          :  'How To Protect Yourself from Scams',
+ONBOARD_secure_2_content__1     :  'People will try to get you to give them money in return for nothing.',
+ONBOARD_secure_2_content__2     :  'If it is too good to be true, it probably is.',
+ONBOARD_secure_2_content__3     :  'Research before sending money to someone or some project. Look for information on a variety of websites and forums. Be wary.',
+ONBOARD_secure_2_content__4     :  'Ask questions when you don\'t understand something or it doesn\'t seem right.',
+ONBOARD_secure_2_content__5     :  'Don\'t let fear, FUD, or FOMO win over common sense. If something is very urgent, ask yourself "why?". It may be to create FOMO or prevent you from doing research.',
+ONBOARD_secure_3_title__alt     :  'Phuck Phishers',
+ONBOARD_secure_3_title          :  'How To Protect Yourself from Loss',
+ONBOARD_secure_3_content__1     :  'If you lose your private key or password, it is gone forever. Don\'t lose it.',
+ONBOARD_secure_3_content__2     :  'Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.',
+ONBOARD_secure_3_content__3     :  'Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.',
+ONBOARD_secure_3_content__4     :  'Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.',
+ONBOARD_secure_3_content__5     :  'If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.',
+ONBOARD_secure_3_content__6     :  '[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)',
+ONBOARD_secure_2_title__alt_2   :  'Screw Scams',
+ONBOARD_final_title__alt        :  'One more click & you\'re done! 🤘',
+ONBOARD_final_title             :  'Alright, I\'m done lecturing you!',
+ONBOARD_final_subtitle          :  'Sorry for being like this. Onwards!',
+ONBOARD_final_content__1        :  'Create a wallet',
+ONBOARD_final_content__2        :  'Get a hardware wallet',
+ONBOARD_final_content__3        :  'How to Set up MEW + MetaMask',
+ONBOARD_final_content__4        :  'How to Run MEW Offline / Locally',
+ONBOARD_final_content__5        :  'How to Send via Ledger hardware wallet',
+ONBOARD_final_content__6        :  'How to Send via TREZOR hardware wallet',
+ONBOARD_final_content__7        :  'How to Send via MetaMask',
+ONBOARD_final_content__8        :  'Learn More or Contact Us',
+ONBOARD_final_content__9        :  'OMG, please just let me send FFS.',
+ONBOARD_resume                  :  'It looks like you didn\'t finish reading through these slides last time. ProTip: Finish reading through the slides 😉',
+
 NAV_AddWallet: 'اضافه کردن کیف پول ',
 NAV_BulkGenerate: 'ساخت جمعی ',
 NAV_Contact: 'مخاطب ',
@@ -92,6 +290,8 @@ MNEM_prev: 'آدرس های قبلی ',
 x_Ledger: 'لجر نانو اس (Ledger Nano S) ',
 ADD_Ledger_1: 'لجر نانو اس خود را متصل کنید ',
 ADD_Ledger_2: 'برنامه Ethereum را باز کنید (یا یک برنامه قرارداد را) ',
+ADD_Ledger_2_Exp: 'برنامه Expanse را باز کنید (یا یک برنامه قرارداد را) ',
+ADD_Ledger_2_Ubq: 'برنامه Ubiq را باز کنید (یا یک برنامه قرارداد را) ',
 ADD_Ledger_3: 'تایید کنید که پشتیبانی مرورگر (Browser Support) از قسمت Settings فعالی است. ',
 ADD_Ledger_4: 'اگر هیچ حمایتی از طرف مرورگرها در تنظیمات پیدا نشد، مطمئن شوید که نسخه [Firmware شماره 1.2](https://www.ledgerwallet.com/apps/manager) را دارید. ',
 ADD_Ledger_0a: 'با یک کانکشن امن (SSL) دوباره MyEtherWallet را باز کنید. ',
@@ -183,9 +383,9 @@ SENDModal_Yes: 'بله مطمئن هستم. تراکنش را انجام بده 
 
 /* Tokens */
 
-TOKEN_Addr: 'آدرس ',
+TOKEN_Addr: 'Token Contract Address',
 TOKEN_Symbol: 'علامت توکن ',
-TOKEN_Dec: 'TOKEN_Dec',
+TOKEN_Dec: 'Decimals',
 TOKEN_show: 'نمایش تمام توکن ها ',
 TOKEN_hide: 'پنهان سازی توکن ها ',
 
@@ -279,7 +479,7 @@ MSG_info3: 'یک دلیل مخصوص برای این پیام انتخاب کن�
 
 /* View Wallet Details */
 
-VIEWWALLET_Subtitle: 'این موضوع به شما اجازه می دهد که نسخه های مختلفی از کلید خصوصی را دانلود کنید و از کیف پول کاغذی خود دوباره پرینت بگیرید. شاید بخواهید این کار را جهت انتقال حساب خود به [Geth یا Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/) انجام دهید. اگر می خواهید موجودی خود را ببینید پیشنهاد می کنیم که از یک مرورگر بلاکچین مثل [etherscan.io](http://etherscan.io/) استفاده کنید. ',
+VIEWWALLET_Subtitle: 'این موضوع به شما اجازه می دهد که نسخه های مختلفی از کلید خصوصی را دانلود کنید و از کیف پول کاغذی خود دوباره پرینت بگیرید. شاید بخواهید این کار را جهت انتقال حساب خود به [Geth یا Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/) انجام دهید. اگر می خواهید موجودی خود را ببینید پیشنهاد می کنیم که از یک مرورگر بلاکچین مثل [etherscan.io](https://etherscan.io/) استفاده کنید. ',
 VIEWWALLET_Subtitle_Short: 'این موضوع به شما اجازه می دهد که نسخه های مختلفی از کلید خصوصی را دانلود کنید و از کیف پول کاغذی خود دوباره پرینت بگیرید. ',
 VIEWWALLET_SuccessMsg: 'با موفقیت انجام شد. می توانید جزئیات کیف پول خود را ببینید. ',
 
@@ -290,38 +490,67 @@ CX_quicksend: 'CX_quicksend',
 
 /* Error Messages */
 
-ERROR_0: 'لطفا مقدار معتبر وارد  کنید. ',
-ERROR_1: 'رمزعبور انتخابی حداقل باید 9 حرف باشد. لطفا از یک رمزعبور قوی استفاده کنید. ',
-ERROR_2: 'این نوع از فایل کیف پول قابل شناسایی نیست. ',
-ERROR_3: 'این فایل کیف پول معتبر نیست. ',
-ERROR_4: 'این واحد وجود ندارد، لطفا یکی از واحدهای زیر را انتخاب کنید. ',
-ERROR_5: 'آدرس نامعتبر است ',
-ERROR_6: 'رمز عبور نامعتبر است ',
-ERROR_7: 'مقدار نامعتبر است ',
-ERROR_8: 'میزان حد سوخت نامعتبر است ',
-ERROR_9: 'داده نامعتبر است ',
-ERROR_10: 'میزان سوخت نامعتبر است ',
-ERROR_11: 'ERROR_11',
-ERROR_12: 'تراکنش امضا شده نامعتبر است ',
-ERROR_13: 'قبلا کیف پولی با این نام ساخته شده است ',
-ERROR_14: 'کیف پول پیدا نشد ',
-ERROR_15: 'ERROR_15',
-ERROR_16: 'کیف پولی با این آدرس در حافظه وجود دارد، لطفا صفحه کیف پول خود را چک کنید ',
-ERROR_17: 'برای پوشش هزینه سوخت باید حداقل 0.001 اتر در حساب خود داشته باشید. لطفا مقداری اتر اضافه کرده و دوباره امتحان کنید ',
-ERROR_18: 'ERROR_18',
-ERROR_19: 'کاراکتر غیرمعتبر است ',
-ERROR_20: 'این توکن نامعتبر است ',
-ERROR_21: 'ERROR_21',
-ERROR_22: 'لطفا یک نام نود (گره) معتبر وارد کنید ',
-ERROR_23: 'لطفا url صحیح وارد کنید. در صورتی که از https استفاده می کنید url شما باید https باشد ',
-ERROR_24: 'لطفا یک پورت معتبر وارد کنید ',
-ERROR_25: 'لطفا آیدی زنجیره معتبر وارد کنید ',
-ERROR_26: 'لطفا ABI معتبر وارد کنید ',
-ERROR_27: 'کمترین مقدار: 0.01 ، بیشترین مقدار: ',
-ERROR_28: 'برای دسترسی به این کیف پول در آینده به فایل Keystore و رمزعبور خود (یا کلید خصوصی) نیاز خواهید داشت. لطفا آن را ذخیره کنید و یک نسخه پشتیبان خارجی بسازید. اگر آن را ذخیره نکنید، هیچ راهی برای بازگرداندن کیف پول وجود ندارد. برای راهنمایی [صفحه کمک](https://www.myetherwallet.com/#help)  را مطالعه بفرمایید. ',
-ERROR_29: 'لطفا شناسه و رمزعبور معتبر وارد کنید ',
-ERROR_30: 'لطفا نام ENS معتبر وارد کنید ',
-ERROR_31: 'عبارت خصوصی نامعتبر است ',
+ERROR_0                         :  '(error_01) لطفا مقدار معتبر وارد  کنید.. Please enter a valid amount.', // 0
+ERROR_1                         :  '(error_02) رمزعبور انتخابی حداقل باید 9 حرف باشد. لطفا از یک رمزعبور قوی استفاده کنید.. Your password must be at least 9 characters. Please ensure it is a strong password.', // 1
+ERROR_2                         :  '(error_03) این نوع از فایل کیف پول قابل شناسایی نیست.. Sorry! We don\'t recognize this type of wallet file.', // 2
+ERROR_3                         :  '(error_04) این فایل کیف پول معتبر نیست.. This is not a valid wallet file.', // 3
+ERROR_4                         :  '(error_05) این واحد وجود ندارد، لطفا یکی از واحدهای زیر را انتخاب کنید.. This unit doesn\'t exists, please use the one of the following units', // 4
+ERROR_5                         :  '(error_06) آدرس نامعتبر است. Please enter a valid address.', // 5
+ERROR_6                         :  '(error_07) رمز عبور نامعتبر است. Please enter a valid password.', // 6
+ERROR_7                         :  '(error_08) مقدار نامعتبر است. Please enter valid decimals     (Must be an integer. Try 0-18.)', // 7
+ERROR_8                         :  '(error_09) میزان حد سوخت نامعتبر است. Please enter a valid gas limit  (Must be an integer. Try 21000-4000000.)', // 8
+ERROR_9                         :  '(error_10) داده نامعتبر است. Please enter a valid data value (Must be hex.)', // 9
+ERROR_10                        :  '(error_11) میزان سوخت نامعتبر است. Please enter a valid gas price. (Must be an integer. Try 20 GWEI / 20000000000 WEI.)',
+ERROR_11                        :  '(error_12) تراکنش امضا شده نامعتبر است Please enter a valid nonce (Must be an integer.)', // 11
+ERROR_12                        :  '(error_13) قبلا کیف پولی با این نام ساخته شده است Invalid signed transaction.', // 12
+ERROR_13                        :  '(error_14) کیف پول پیدا نشد A wallet with this nickname already exists.', // 13
+ERROR_14                        :  '(error_15) Wallet not found.', // 14
+ERROR_15                        :  '(error_16) کیف پولی با این آدرس در حافظه وجود دارد، لطفا صفحه کیف پول خود را چک کنید. Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal.', // 15 - NOT USED
+ERROR_16                        :  '(error_17) برای پوشش هزینه سوخت باید حداقل 0.001 اتر در حساب خود داشته باشید. لطفا مقداری اتر اضافه کرده و دوباره امتحان کنید. A wallet with this address already exists in storage. Please check your wallets page.', // 16
+ERROR_17                        :  '(error_18) Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)', // 17
+ERROR_18                        :  '(error_19) کاراکتر غیرمعتبر است All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
+ERROR_19                        :  '(error_20) این توکن نامعتبر است Please enter a valid symbol', // 19
+ERROR_20                        :  '(error_21) Not a valid ERC-20 token', // 20
+ERROR_21                        :  '(error_22) لطفا یک نام نود (گره) معتبر وارد کنید Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                        :  '(error_23) لطفا url صحیح وارد کنید. در صورتی که از https استفاده می کنید url شما باید https باشد Please enter a valid node name', // 22
+ERROR_23                        :  '(error_24) لطفا یک پورت معتبر وارد کنید Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                        :  '(error_25) لطفا آیدی زنجیره معتبر وارد کنید Please enter a valid port.', // 24
+ERROR_25                        :  '(error_26) لطفا ABI معتبر وارد کنید Please enter a valid chain ID.', // 25
+ERROR_26                        :  '(error_27) کمترین مقدار: 0.01 ، بیشترین مقدار: Please enter a valid ABI.', // 26
+ERROR_27                        :  '(error_28) برای دسترسی به این کیف پول در آینده به فایل Keystore و رمزعبور خود (یا کلید خصوصی) نیاز خواهید داشت. لطفا آن را ذخیره کنید و یک نسخه پشتیبان خارجی بسازید. اگر آن را ذخیره نکنید، هیچ راهی برای بازگرداندن کیف پول وجود ندارد. برای راهنمایی [صفحه کمک](https://www.myetherwallet.com/#help)  را مطالعه بفرمایید. Minimum amount: 0.01. Max amount:', // 27
+ERROR_28                        :  '(error_29) لطفا شناسه و رمزعبور معتبر وارد کنید You need this `Keystore File + Password` or the `Private Key` (next page) to access this wallet in the future. ', // 28
+ERROR_29                        :  '(error_30) لطفا نام ENS معتبر وارد کنید Please enter a valid user and password.', // 29
+ERROR_30                        :  '(error_31) عبارت خصوصی نامعتبر است Please enter a valid name (7+ characters, limited punctuation)', // 30
+ERROR_31                        :  '(error_32) Please enter a valid secret phrase.', // 31
+ERROR_32                        :  '(error_33) Could not connect to the node. Refresh your page, try a different node (top-right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                        :  '(error_34) The wallet you have unlocked does not match the owner\'s address.', // 33
+ERROR_34                        :  '(error_35) The name you are attempting to reveal does not match the name you have entered.', // 34
+ERROR_35                        :  '(error_36) Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer">What does that mean?</a>', // 35
+ERROR_36                        :  '(error_37) Please enter a valid TX hash', // 36
+ERROR_37                        :  '(error_38) Please enter valid hex string. Hex only contains: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f', // 37
+ERROR_38                        :  '(error_39) Offer must have either price or reserve set to more than 0', // 38
+ERROR_39                        :  '(error_40) Bid must be more than the specified minimum', // 39
+
+GETH_Balance                    :  '(geth-01) موجودی کافی نیست. Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_Cheap                      :  '(geth-02) قیمت سوخت برای پذیرفته شدن کم است. Gas price too low for acceptance. Try raising the gas price to 21 GWEI via the dropdown in top-right.',
+GETH_GasLimit                   :  '(geth-03) سوخت بیش از حد است. Exceeds block gas limit. Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)',
+GETH_InsufficientFunds          :  '(geth-04) موجودی برای سوخت * قیمت + مقدار کافی نیست. Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_IntrinsicGas               :  '(geth-05) سوخت اصلی کم است. Intrinsic gas too low. Try raising the gas price to 21 GWEI via the dropdown in top-right or the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again.',
+GETH_InvalidSender              :  '(geth-06) ارسال کننده نامعتبر است. Invalid sender.',
+GETH_NegativeValue              :  '(geth-07) مقدار منفی. Negative value.',
+GETH_Nonce                      :  "(geth-08) This TX's [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html) is too low. Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
+GETH_NonExistentAccount         :  '(geth-09) حساب وجود ندارد و یا موجودی حساب کم است. Account does not exist or account balance too low',
+
+PARITY_AlreadyImported          :  "(parity-01) A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [etherscan.io](https://etherscan.io) & wait 10 minutes before attempting to send again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_GasLimitExceeded         :  "(parity-02) Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
+PARITY_InsufficientBalance      :  "(parity-03) Insufficient balance. The account you tried to send transaction from does not have enough funds. If you believe this is in error, try using the 'Send Entire Balance' button, or pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InsufficientGasPrice     :  "(parity-04) There is another transaction with same nonce in the queue, or the transaction fee is too low. Try incrementing the nonce by clicking the Generate button again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InvalidGasLimit          :  "(parity-05) Supplied gas limit is beyond limit. Try lowering the gas limit to 21000. [Learn More.](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
+PARITY_LimitReached             :  "(parity-06) There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the gas price. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_Old                      :  "(parity-07) There is already a transaction with this [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html). Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
+PARITY_TooCheapToReplace        :  "(parity-08) TX Fee is too low. It does not satisfy your node's minimal fee (minimal: (d+), got: (d+)). Try increasing the gas price and/or gas limit. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+
+
 SUCCESS_1: 'آدرس معتبر است ',
 SUCCESS_2: 'کیف پول با موفقیت رمزگشایی شد ',
 SUCCESS_3: 'تراکنش ثبت شد. TX ID ',
@@ -329,29 +558,6 @@ SUCCESS_4: 'کیف پول شما با موفقیت اضافه شد ',
 SUCCESS_5: 'فایل انتخاب شد ',
 
 WARN_Send_Link: 'شما از طریق یک لینک که آدرس، مقدار، سوخت، زمینه های داده و یا نوع تراکنش (مدل ارسال) که برای شما پر شده است را دارد به اینجا آمده اید. می توانید هر اطلاعاتی را پیش از انجام ارسال تغییر دهید. برای شروع، قفل کیف پول خود را باز کنید. ',
-
-/* Geth Error Messages */
-
-GETH_InvalidSender: 'ارسال کننده نامعتبر است ',
-GETH_Nonce: 'GETH_Nonce',
-GETH_Cheap: 'قیمت سوخت برای پذیرفته شدن کم است ',
-GETH_Balance: 'موجودی کافی نیست ',
-GETH_NonExistentAccount: 'حساب وجود ندارد و یا موجودی حساب کم است ',
-GETH_InsufficientFunds: 'موجودی برای سوخت * قیمت + مقدار کافی نیست ',
-GETH_IntrinsicGas: 'سوخت اصلی کم است ',
-GETH_GasLimit: 'سوخت بیش از حد است ',
-GETH_NegativeValue: 'مقدار منفی ',
-
-/* Parity Error Messages */
-
-PARITY_AlreadyImported: 'Transaction with the same hash was already imported.,تراکنشی با هش مشابه قبلا وارد شده است ',
-PARITY_Old: 'Transaction nonce is too low. Try incrementing the nonce.,مقدار nonce کم است. nonزث را افزایش دهید. ',
-PARITY_TooCheapToReplace: 'مقدار کارمزد تراکنش کم است. تراکنشی با Nonce مشابه در صف است. کارمزد و یا nonce را افزایش دهید. ',
-PARITY_LimitReached: 'تعداد تراکنش های موجود در صف زیاد است. تراکنش شما به دلیل محدودیت رد شد. می توانید افزایش دادن کارمزد را امتحان کنید. ',
-PARITY_InsufficientGasPrice: 'کارمزد تراکنش کم است و حداقل کارمزد نود شما را پوشش نمی دهد (minimal: {}, got: {}).  می توانید افزایش دادن کارمزد را امتحان کنید. ',
-PARITY_InsufficientBalance: 'سرمایه کافی نیست. در حسابی که سعی در ارسال تراکنش از آن دارید به اندازه کافی سرمایه وجود ندارد. Required {} wei and got: {} wei. ',
-PARITY_GasLimitExceeded: 'هزینه تراکنش از حد سوخت فعلی بیشتر است.  Limit: {}, got: {}. موجودی سوخت را افزایش دهید. ',
-PARITY_InvalidGasLimit: 'Supplied gas is beyond limit.',
 
 /* Tranlsation Info */
 translate_version: '0.4_Alpha',
@@ -552,7 +758,7 @@ HELP_15_Title: 'سوال 15: چرا حسابی که همین الان ساخته
 HELP_15_Desc_1: 'HELP_15_Desc_1',
 
 HELP_16_Title: 'سوال 16: چگونه موجودی حساب خود را ببینم؟ ',
-HELP_16_Desc_1: 'برای این کار می توانید از یک مرورگر بلاکچین مثل  [etherscan.io](http://etherscan.io/) استفاده کنید. آدرس خود را در قسمت search (جستجو) وارد کنید و بعد می توانید آدرس و سابقه تراکنش های خود را مشاهده کنید. برای مثال حساب اهدایی ما [بدین صورت](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) است. ',
+HELP_16_Desc_1: 'برای این کار می توانید از یک مرورگر بلاکچین مثل  [etherscan.io](https://etherscan.io/) استفاده کنید. آدرس خود را در قسمت search (جستجو) وارد کنید و بعد می توانید آدرس و سابقه تراکنش های خود را مشاهده کنید. برای مثال حساب اهدایی ما [بدین صورت](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) است. ',
 
 HELP_17_Title: 'سوال 17: چرا زمانی که قفل کیف پول خود را باز می کنم موجودی من نمایش داده نمی شود؟ ',
 HELP_17_Desc_1: 'این موضوع احتمالا بخاطر این است که شما پشت یک firewall (دیوار آتشین) هستید. API که ما برای بدست آوردن موجودی استفاده می کنیم به دلایلی معمولا توسط فایر وال ها بلاک می شوند. شما همچنان می توانید تراکنش هایتان را ارسال کنید و برای دیدن موجودی خود تنها باید از راه دیگری (مثل etherscan.io) استفاده کنید. ',

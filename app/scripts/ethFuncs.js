@@ -1,6 +1,6 @@
 'use strict';
 var ethFuncs = function() {}
-ethFuncs.gasAdjustment = 21;
+ethFuncs.gasAdjustment = 40;
 ethFuncs.validateEtherAddress = function(address) {
     if (address.substring(0, 2) != "0x") return false;
     else if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) return false;
@@ -34,10 +34,6 @@ ethFuncs.padLeftEven = function(hex) {
 }
 ethFuncs.addTinyMoreToGas = function(hex) {
     hex = this.sanitizeHex(hex);
-    //if (parseInt(ethFuncs.gasAdjustment) >= 80) {
-        //uiFuncs.notifier.danger("We are currently trying to debug a weird issue. Please contact support@myetherwallet.com w/ subject line WEIRD ISSUE to help.");
-        //throw "error";
-    //}
     return new BigNumber(ethFuncs.gasAdjustment * etherUnits.getValueOfUnit('gwei')).toString(16);
 }
 ethFuncs.decimalToHex = function(dec) {
@@ -81,7 +77,7 @@ ethFuncs.getFunctionSignature = function(name) {
 ethFuncs.estimateGas = function(dataObj, callback) {
     var adjustGas = function(gasLimit) {
         if (gasLimit == "0x5209") return "21000";
-        if (new BigNumber(gasLimit).gt(3500000)) return "-1";
+        if (new BigNumber(gasLimit).gt(4000000)) return "-1";
         return new BigNumber(gasLimit).toString();
     }
     ajaxReq.getEstimatedGas(dataObj, function(data) {
