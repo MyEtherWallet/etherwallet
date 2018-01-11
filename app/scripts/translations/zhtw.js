@@ -298,7 +298,7 @@ x_JsonDesc                  : '這是未加密的JSON格式私鑰檔。這表示
 x_Keystore                  : 'Keystore 檔 (UTC / JSON · 推薦 · 經過加密) ',
 x_Keystore2                 : 'Keystore 檔 (UTC / JSON) ',
 x_KeystoreDesc              : '此Keystore檔和Mist錢包相容，因此你可以輕鬆地匯入錢包。我們推薦你下載並備份此檔案。 ',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : '助憶口令 ',
 x_ParityPhrase              : 'Parity口令 ',
 x_Password                  : '密碼 ',
@@ -351,7 +351,7 @@ MNEM_prev                   : '之前的地址 ',
 
 /* Hardware wallets */
 x_Ledger                    : 'Ledger Wallet 錢包',
-ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
+ADD_Ledger_0a               : 'Please use MyEtherWallet on a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_1                : '連接至你的 Ledger Wallet ',
 ADD_Ledger_2                : '開啟基於以太坊開發的應用程式（或一個寫成合約的應用程式） ',
 ADD_Ledger_2_Exp            : '開打開基於Expanse（或合同書面申請）開發的應用程序 ',

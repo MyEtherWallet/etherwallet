@@ -299,7 +299,7 @@ x_Keystore                  : 'File Keystore (UTC / JSON · Format yang direkome
 x_Keystore2                 : 'File Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'File Keystore ini sesuai dengan format yang dipakai Mist sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup. ',
 x_Ledger                    : 'Ledger Wallet ',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : '"Mnemonic Phrase" ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Password ',

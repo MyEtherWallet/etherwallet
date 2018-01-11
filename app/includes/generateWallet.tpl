@@ -245,13 +245,13 @@
       <br />
 
       <h1 translate="GEN_Label_5"> Save your Private Key</h1>
-      <input aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc"
-             value="{{wallet.getPrivateKeyString()}}"
+      <textarea aria-label="{{'x_PrivKey'|translate}}"
+             aria-describedby="{{'x_PrivKeyDesc'|translate}}"
              class="form-control"
-             type="text"
              readonly="readonly"
-             style="max-width: 50rem;margin: auto;"/>
-
+             rows="3"
+             style="max-width: 50rem;margin: auto;"
+      >{{wallet.getPrivateKeyString()}}</textarea>
       <br />
 
       <a tabindex="0"

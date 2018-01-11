@@ -14,7 +14,7 @@ var cxWalletDecryptDrtv = function() {
         <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="password" ng-keyup="$event.keyCode == 13 && decryptWallet()" >\n \
       </div>\n \
       <div class="col-md-4 col-sm-6" id="walletuploadbutton" ng-show="password.length>0">\n \
-        <h4 id="uploadbtntxt-wallet" translate="ADD_Label_6"> Unlock Your Wallet:</h4>\n \
+        <h4 translate="ADD_Label_6"> Unlock Your Wallet:</h4>\n \
         <div class="form-group"><a ng-click="decryptWallet()" class="btn btn-primary btn-block" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
       </div>\n \
     </div>'

@@ -297,7 +297,7 @@ x_JsonDesc                  : 'SE YON LÒT VÈSYON SAN KÒD SOU FÒM JSON POU KL
 x_Keystore                  : 'PAJ KEYSTORE (UTC/ JSON DWE GEN KÒD) ',
 x_Keystore2                 : 'PAJ KEYSTORE (UTC / JSON) ',
 x_KeystoreDesc              : 'PAJ KEYSTORE SA SÈVI AK MENM  FÒM  MIST LA SÈVI A TOU, OU KAPAB PRAN L’ FASILMAN  PITA NAN LOGISYÈL YO. SE PAJ SA NOU MANDE W’ POU W’ PRAN AK KENBE L ',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : 'LÈT FRAZ KACHE.',
 x_ParityPhrase              : 'FRAZ KI SANBLE ',
 x_Password                  : 'KÒD SEKRÈ ',
@@ -356,7 +356,7 @@ ADD_Ledger_2_Exp            : 'Open the Expanse application (or a contract appli
 ADD_Ledger_2_Ubq            : 'Open the Ubiq application (or a contract application) ',
 ADD_Ledger_3                : 'Verify that Browser Support is enabled in Settings ',
 ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
+ADD_Ledger_0a               : 'Please use MyEtherWallet on a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Connect to Ledger Wallet ',
 

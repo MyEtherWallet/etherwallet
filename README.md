@@ -16,7 +16,7 @@
 - [Anti-phish CX](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn)
 - [FB: https://www.facebook.com/MyEtherWallet/](https://www.facebook.com/MyEtherWallet/)
 - [Twitter: https://twitter.com/myetherwallet](https://twitter.com/myetherwallet)
-- [Medium: https://medium.com/@myetherwallet_96408](https://medium.com/@myetherwallet_96408)
+- [Medium: https://medium.com/@myetherwallet](https://medium.com/@myetherwallet)
 - [Help Center: https://myetherwallet.groovehq.com/help_center](https://myetherwallet.groovehq.com/help_center)
 - [Github MEW Repo: https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet)
 - [Github MEW Org: https://github.com/MyEtherWallet](https://github.com/MyEtherWallet)

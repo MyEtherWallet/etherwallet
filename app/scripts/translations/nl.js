@@ -295,7 +295,7 @@ x_JsonDesc                  : 'Dit is het onversleutelde, JSON formaat van je pr
 x_Keystore                  : 'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld) ',
 x_Keystore2                 : 'Keystore Bestand (UTC / JSON) ',
 x_KeystoreDesc              : 'Dit Keystore bestand voldoet aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up. ',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : 'Mnemonic Zin ',
 x_ParityPhrase              : 'Parity herstelzin ',
 x_Password                  : 'Wachtwoord ',
@@ -316,7 +316,7 @@ MEW_Tagline                 : 'Open Source JavaScript Client-Side Ether Wallet '
 MEW_Warning_1               : 'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites! ',
 
 /* Footer */
-FOOTER_1                    : 'Een gratis, open source, client-side interface om Ethereum wallets te genereren &amp; meer. Wissel op een gemakkelijke &amp; veilige manier informatie uit met de Ethereum blockchain. Dubbel-check de URL/link ( .com ) alvorens je wallet te openen.',
+FOOTER_1                    : 'Een gratis, open source, client-side interface om Ethereum wallets te genereren &amp; meer. Wissel op een gemakkelijke &amp; veilige manier informatie uit met de Ethereum blockchain. Dubbel-check de URL/link ( myetherwallet.com ) alvorens je wallet te openen.',
 FOOTER_1b                   : 'Gemaakt door ',
 FOOTER_2                    : 'Donaties worden zeer gewaardeerd: ',
 FOOTER_3                    : 'Client-side wallet genereren door ',

@@ -295,7 +295,7 @@ x_JsonDesc                  : 'Nieszyfrowany klucz prywatny, plik w formacie JSO
 x_Keystore                  : 'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany) ',
 x_Keystore2                 : 'Plik Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej. ',
-x_MetaMask                  : 'Metamask / Mist ',
+x_MetaMask                  : 'MetaMask / Mist ',
 x_Mnemonic                  : 'Mnemonik ',
 x_ParityPhrase              : 'Fraza Parity ',
 x_Password                  : 'Hasło ',

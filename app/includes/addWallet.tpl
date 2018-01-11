@@ -127,10 +127,10 @@
 
 
 
-      <!-- Paste/Type Your Private Key -->
+      <!-- Paste Your Private Key -->
       <section ng-show="walletType=='pasteprivkey'">
         <h4 translate="ADD_Radio_3">
-          Paste / type your private key:
+          Paste your private key:
         </h4>
 
         <div class="form-group">
@@ -161,10 +161,10 @@
 
 
 
-      <!-- Paste/Type Your Mnemonic -->
+      <!-- Paste Your Mnemonic -->
       <section ng-show="walletType=='pastemnemonic'">
         <h4 translate="ADD_Radio_5">
-          Paste / type your mnemonic:
+          Paste your mnemonic:
         </h4>
         <div class="form-group">
           <textarea rows="4"
