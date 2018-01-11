@@ -7,6 +7,18 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// Accord (ARD) Token sale
+to:         '0x75aa7b0d02532f3833b66c7f0ad35376d373ddf8',
+gasLimit:   300000,
+data:       '',
+msg:        ' Accord (ARD) ERC20 token sale - http://accordtoken.com'
+},{
+// BTQ Token Sale
+to:         '0x16B0E62aC13a2fAeD36D18bce2356d25Ab3CfAD3',
+gasLimit:   200000,
+data:       '',
+msg:        'BTQ ICO ends February 1, 2018. btc btq is your exclusive bitcoin boutique and world's premier cryptocurrency lifestyle brand. https://thebtcbtq.com/btq'
+},{
 // MNT Token Sale
 to:         '0xA9877b1e05D035899131DBd1e403825166D09f92',
 gasLimit:   200000,
@@ -17,7 +29,7 @@ msg:        'MNT Token Sale - http://mnt.coinjoker.com'
 to:         '0xEf6B4cE8C9Bc83744fbcdE2657b32eC18790458A',
 gasLimit:   930000,
 data:       '',
-msg:        'MNT Token Sale - http://price-s.info'
+msg:        'PUC Token Sale - http://price-s.info'
 },{
 // DIVX Token Sale
 to:         '0x13f11C9905A08ca76e3e853bE63D4f0944326C72',
