@@ -1760,7 +1760,7 @@
 "type":"default"
 },{
 "address":"0xD850942eF8811f2A866692A623011bDE52a462C1",
-"symbol":"VET",
+"symbol":"VET (VEN)",
 "decimal":18,
 "type":"default"
 },{
@@ -1784,6 +1784,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":" 0x83eEA00D838f92dEC4D1475697B9f4D3537b56E3",
+"symbol":"VOISE",
+"decimal":8,
+"type":"default"
+ },{
 "address":"0xeDBaF3c5100302dCddA53269322f3730b1F0416d",
 "symbol":"VRS",
 "decimal":5,
@@ -1792,11 +1797,6 @@
 "address":"0x5c543e7AE0A1104f78406C340E9C64FD9fCE5170",
 "symbol":"VSL",
 "decimal":18,
-"type":"default"
-},{
-"address":"0x83eEA00D838f92dEC4D1475697B9f4D3537b56E3",
-"symbol":"VSM",
-"decimal":0,
 "type":"default"
 },{
 "address":"0x286BDA1413a2Df81731D4930ce2F862a35A609fE",
