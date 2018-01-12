@@ -694,12 +694,7 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x7585F835ae2d522722d2684323a0ba83401f32f5",
-"symbol":"GBT",
-"decimal":18,
-"type":"default"
-},{
-"address":"0x4F4f0Db4de903B88f2B1a2847971E231D54F8fd3",
+address":"0x4F4f0Db4de903B88f2B1a2847971E231D54F8fd3",
 "symbol":"GEE",
 "decimal":8,
 "type":"default"
@@ -729,7 +724,12 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x8C65e992297d5f092A756dEf24F4781a280198Ff",
+"address":"0xeAb43193CF0623073Ca89DB9B712796356FA7414",
+"symbol":"GOLDX",
+"decimal":18,
+"type":"default"
+},{
+""address":"0x8C65e992297d5f092A756dEf24F4781a280198Ff",
 "symbol":"GZE",
 "decimal":18,
 "type":"default"
