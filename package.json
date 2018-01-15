@@ -1,4 +1,4 @@
-{
+  {
   "name": "mew-custom",
   "version": "1.1.0",
   "description": "",
@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "gulp",
-    "dist": "gulp clean",
+    "dist": "gulp prep",
     "build": "gulp build"
   },
   "devDependencies": {
