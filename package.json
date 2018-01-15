@@ -7,7 +7,8 @@
   "license": "ISC",
   "scripts": {
     "dev": "gulp",
-    "dist": "gulp clean"
+    "dist": "gulp clean",
+    "build": "gulp build"
   },
   "devDependencies": {
     "angular": "^1.6.2",
@@ -15,6 +16,7 @@
     "angular-sanitize": "^1.6.2",
     "angular-translate": "^2.15.1",
     "angular-translate-handler-log": "^2.15.1",
+    "babel-preset-env": "^1.6.1",
     "bignumber.js": "^4.0.2",
     "bip39": "^2.3.1",
     "browserify": "^14.3.0",
