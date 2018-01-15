@@ -929,6 +929,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x72D32ac1c5E66BfC5b08806271f8eEF915545164",
+"symbol":"KEE",
+"decimal":0,
+"type":"default"
+},{
 "address":"0x27695E09149AdC738A978e9A678F99E4c39e9eb9",
 "symbol":"KICK",
 "decimal":8,
