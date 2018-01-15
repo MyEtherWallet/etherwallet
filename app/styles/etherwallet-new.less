@@ -393,6 +393,24 @@ a.footer__pill {
   }
 }
 
+.u__download {
+  display: table;
+  margin-left: .5em;
+  &:before {
+    content: "";
+    display: table-cell;
+    width: 1.25em;
+    height: 1em;
+    background-image: url(../images/icon-external-link.svg);
+    background-size: contain;
+    vertical-align: middle;
+    text-align: center;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border-right: .5em solid transparent;
+  }
+}
+
 .send__load-tokens {
   padding: 5px 2px;
   margin: 0;

@@ -7,11 +7,29 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// Accord (ARD) Token sale
+to:         '0x75aa7b0d02532f3833b66c7f0ad35376d373ddf8',
+gasLimit:   300000,
+data:       '',
+msg:        ' Accord (ARD) ERC20 token sale - http://accordtoken.com'
+},{
+// BTQ Token Sale
+to:         '0x16B0E62aC13a2fAeD36D18bce2356d25Ab3CfAD3',
+gasLimit:   200000,
+data:       '',
+msg:        'BTQ ICO ends February 1, 2018. btc btq is your exclusive bitcoin boutique and world\'s premier cryptocurrency lifestyle brand. https://thebtcbtq.com/btq'
+},{
 // MNT Token Sale
 to:         '0xA9877b1e05D035899131DBd1e403825166D09f92',
 gasLimit:   200000,
 data:       '',
 msg:        'MNT Token Sale - http://mnt.coinjoker.com'
+},{
+// PUC Token Sale
+to:         '0xEf6B4cE8C9Bc83744fbcdE2657b32eC18790458A',
+gasLimit:   930000,
+data:       '',
+msg:        'PUC Token Sale - http://price-s.info'
 },{
 // DIVX Token Sale
 to:         '0x13f11C9905A08ca76e3e853bE63D4f0944326C72',
@@ -55,24 +73,6 @@ gasLimit:   170000,
 data:       '',
 msg:        'Confideal token sale. Confideal is a platform for making deals. https://confideal.io, ends Jan 31, 2018'
 },{
-// Flixxo (FLIXX)
-to:         '0x876359dCb1745073909CC810311EC3f119e8D5E8',
-gasLimit:   200000,
-data:       '',
-msg:        'Flixxo token sale contract. Decentralized video distribution https://flixxo.com. Ends 11/24/2017'
-},{
-// FAKE Flixxo1
-to:         '0x16112015d50fac2d084e096feea0863800517f94',
-gasLimit:   -1,
-data:       '',
-msg:        '**** FAKE ADDRESS **** Phishing attempt!!! DO NOT USE! Flixxo copycat'
-},{
-// FAKE Flixxo2
-to:         '0x394f59e83D88469D3Ca3B8da15F31B73f27eadA7',
-gasLimit:   -1,
-data:       '',
-msg:        '**** FAKE ADDRESS **** Phishing attempt!!! DO NOT USE! Flixxo copycat'
-},{
 // Vibehub (VIBEX) ICO Sale
 to:         '0x5454af9d2ba75a60fa5b0419c251810544cea21d',
 gasLimit:   200000,
@@ -103,23 +103,11 @@ gasLimit:   400000,
 data:       '',
 msg:        'YUPIE (YUPIE) ICO'
 },{
-// Atlant.io ATLANT ICO Sale
-to:         '0xF46ede17c0bAb20d87Cd079a2632f71433A407b9',
-gasLimit:   150000,
-data:       '',
-msg:        'ATLANT ICO Sale. Thank you for your support. '
-},{
 // horizonstate.com Horizon State Token Sale
 to:         '0xbD2ED3E85faa3433c068c7B3f9C8C7d839CE88d7',
 gasLimit:   69153,
 data:       '',
 msg:        'Horizon State Token Sale. Thank you for your support. '
-},{
-// DCORP
-to:         '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
-gasLimit:   21000,
-data:       '',
-msg:        'Thank you for donating to MyEtherWallet.com! 🌝'
 },{
 // DataBrokerDAO
 to:         '0x8aec8f09a840faea966f4b0e29a497d8f5b5a6b4',
@@ -145,12 +133,6 @@ gasLimit:   200000,
 data:       '',
 msg:        'SunContract ICO address - suncontract.org'
 },{
-// SoerenGelderCom
-to:         '0xA64AD5dA94137327F0895AC8C3A10924af73400d',
-gasLimit:   200000,
-data:       '',
-msg:        'SGelderGER (symbol: GELD) coin ICO starts 07th of August 2017'
-},{
 // NVC
 to:         '0xd88755197e107603C139df6E709ed09EEC6b6bB3',
 gasLimit:   200000,
@@ -162,12 +144,6 @@ to:         '0x2a8a7afa955d8616e2e60e454e5a9c6b6c0a60fc',
 gasLimit:   200000,
 data:       '',
 msg:        'OHNI ICO. Restoration of our communities!'
-},{
-// Relex
-to:         '0xb306b47b36705332f48537b02b581ea36d108b79',
-gasLimit:   200000,
-data:       '',
-msg:        'Developing real estate, at the speed of crowd. Relex ICO October 16, 2017'
 },{
 // Easy Homes Token (EHT)
 to:         '0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2',
@@ -199,12 +175,6 @@ gasLimit:   200000,
 data:       '',
 msg:        'Tbot ICO Sale.'
 },{
-// Cobinhood Token Sale
-to:         '0xb2f7eb1f2c37645be61d73953035360e768d81e6',
-gasLimit:   200000,
-data:       '',
-msg:        'Cobinhood Token Sale'
-},{
 // Zeus exchange token sale
 to:         '0xe386B139Ed3715Ca4B18Fd52671bDcea1cdFE4b1',
 gasLimit:   200000,
@@ -217,12 +187,6 @@ gasLimit:   200000,
 data:       '',
 msg:        'Game Token Sale'
 },{
-// Skrilla Token Sale
-to:         '0x16662f73df3e79e54c6c5938b4313f92c524c120',
-gasLimit:   150000,
-data:       '',
-msg:        'Private Sale started, Public Sale from December 19th, 2017 to January 1st, 2018. First Lending program with instant payout to Payoneer prepaid card! JOIN NOW: https://ibiscoin.co'
-},{
 // Rebellious Token
 to:         '0x5f53f7a8075614b699baad0bc2c899f4bad8fbbf',
 gasLimit:   200000,
@@ -234,12 +198,6 @@ to:         '0xd5E3036d5CE7eC222379D16f6ffC38C38c55BF7f',
 gasLimit:   200000,
 data:       '',
 msg:        'Ethereum High HIG is a robust and feather-light cryptocurrency designed to hedge the risk of your portfolio'
-},{
-// PIXEL Token Sale (PIXEL)
-to:         '0x7e7DC49715816d1f5712A1d7dFf083e4F9E588B6',
-gasLimit:   200000,
-data:       '',
-msg:        'PIXEL token sale contract. VR club franchise with neurointerfaces: https://vr-pixel.com. Ends 05.12.2017. Thank you for participating!'
 },{
 to:         '0x2a3Aa9ECA41E720Ed46B5A70D6C37EfA47f768Ac',
 gasLimit:   200000,
@@ -276,4 +234,10 @@ to:         '0x2097175d0abb8258f2468E3487F8db776E29D076',
 gasLimit:   200000,
 data:       '',
 msg:        'LiveEdu EDU token sale. Official website: https://tokensale.liveedu.tv/'
+},{
+// HEdpAY (Hdp.ф) Sale (hedpay.com)
+to:         '0x4F8B6cA78711207E1B281DB63e8d6EAA1ce2F63E',
+gasLimit:   230000,
+data:       '',
+msg:        'HEdpAY (Hdp.ф) sale. Official sale website: https://ibiginvestments.com/hedpay'
 }]
