@@ -74,6 +74,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x1a7a8bd9106f2b8d977e08582dc7d24c723ab0db",
+"symbol":"APPC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x23ae3c5b39b12f0693e05435eeaa1e51d8c61530",
 "symbol":"APT",
 "decimal":18,
@@ -1479,8 +1484,13 @@
 "decimal":8,
 "type":"default"
 },{
-"address":"0x4ca74185532dc1789527194e5b9c866dd33f4e82",
+"address":"0x6745fAB6801e376cD24F03572B9C9B0D4EdDDCcf",
 "symbol":"SENSE",
+"decimal":8,
+"type":"default"
+},{
+"address":"0x4ca74185532dc1789527194e5b9c866dd33f4e82",
+"symbol":"SenSatorI",
 "decimal":18,
 "type":"default"
 },{
