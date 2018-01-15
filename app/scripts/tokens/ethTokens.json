@@ -609,6 +609,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x44197a4c44d6a059297caf6be4f7e172bd56caaf",
+"symbol":"ELTCOIN",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xB802b24E0637c2B87D2E8b7784C055BBE921011a",
 "symbol":"EMV",
 "decimal":2,
@@ -694,11 +699,6 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x7585F835ae2d522722d2684323a0ba83401f32f5",
-"symbol":"GBT",
-"decimal":18,
-"type":"default"
-},{
 "address":"0x4F4f0Db4de903B88f2B1a2847971E231D54F8fd3",
 "symbol":"GEE",
 "decimal":8,
@@ -726,6 +726,11 @@
 },{
 "address":"0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
 "symbol":"GNT",
+"decimal":18,
+"type":"default"
+},{
+"address":"0xeAb43193CF0623073Ca89DB9B712796356FA7414",
+"symbol":"GOLDX",
 "decimal":18,
 "type":"default"
 },{
@@ -1889,6 +1894,11 @@
 "address":"0x6781a0f84c7e9e846dcb84a9a5bd49333067b104",
 "symbol":"ZAP",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x05f4a42e251f2d52b8ed15E9FEdAacFcEF1FAD27",
+"symbol":"ZIL",
+"decimal":12,
 "type":"default"
 },{
 "address":"0xE41d2489571d322189246DaFA5ebDe1F4699F498",
