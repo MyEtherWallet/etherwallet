@@ -609,6 +609,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x44197a4c44d6a059297caf6be4f7e172bd56caaf",
+"symbol":"ELTCOIN",
+"decimal":8,
+"type":"default"
+},{
 "address":"0xB802b24E0637c2B87D2E8b7784C055BBE921011a",
 "symbol":"EMV",
 "decimal":2,
