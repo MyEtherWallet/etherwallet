@@ -559,6 +559,11 @@
 "decimal":9,
 "type":"default"
 },{
+"address":"0xf6cfe53d6febaeea051f400ff5fc14f0cbbdaca1",
+"symbol":"DGPT",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x55b9a11c2e8351b4Ffc7b11561148bfaC9977855",
 "symbol":"DGX",
 "decimal":9,
