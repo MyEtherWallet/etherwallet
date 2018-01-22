@@ -179,11 +179,6 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x3A0181e8f2DD081ace83EaC027EEC2E0c2255Ed5",
-"symbol":"BCV",
-"decimal":2,
-"type":"default"
-},{
 "address":"0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
 "symbol":"BeerCoin",
 "decimal":0,
@@ -999,11 +994,6 @@
 "decimal":10,
 "type":"default"
 },{
-"address":"0x52903256dd18D85c2Dc4a6C999907c9793eA61E3",
-"symbol":"INSP",
-"decimal":0,
-"type":"default"
-},{
 "address":"0xa8006c4ca56f24d6836727d106349320db7fef82",
 "symbol":"INXT",
 "decimal":8,
@@ -1392,11 +1382,6 @@
 "address":"0x8eFFd494eB698cc399AF6231fCcd39E08fd20B15",
 "symbol":"PIX",
 "decimal":0,
-"type":"default"
-},{
-"address":"0x7e7DC49715816d1f5712A1d7dFf083e4F9E588B6",
-"symbol":"PIXEL",
-"decimal":14,
 "type":"default"
 },{
 "address":"0x59416A25628A76b4730eC51486114c32E0B582A1",
