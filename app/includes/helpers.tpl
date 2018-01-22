@@ -213,6 +213,28 @@
   <section class="row">
     <div class="form-group col-xs-12">
       <label>
+        Start Auction And Bid Data
+      </label>
+      <input class="form-control" type="text" ng-model="startAndBidAuctionData" readonly />
+      <p>
+        To:
+        <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code>
+        &nbsp;&middot;&nbsp;
+        Amount:
+        <code>0</code>
+        &nbsp;&middot;&nbsp;
+        Gas Limit:
+        <code>200000</code>
+        &nbsp;&middot;&nbsp;
+        Data:
+        <code>[ABOVE]</code>
+      </p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="form-group col-xs-12">
+      <label>
         New Bid Data
         <small>If your reveals aren't working, this is the string that needs to match your bid data on Etherscan)</small>
     </label>
