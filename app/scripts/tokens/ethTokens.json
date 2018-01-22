@@ -1009,6 +1009,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x64CdF819d3E75Ac8eC217B3496d7cE167Be42e80",
+"symbol":"IPL",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xc34b21f6f8e51cc965c2393b3ccfa3b82beb2403",
 "symbol":"IoT",
 "decimal":6,
