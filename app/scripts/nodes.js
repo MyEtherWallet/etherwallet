@@ -45,6 +45,18 @@ nodes.nodeList = {
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
     },
+    'eth_mycrypto': {
+        'name': 'ETH',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
+        'eip155': true,
+        'chainId': 1,
+        'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
+        'service': 'MyCrypto',
+        'lib': new nodes.customNode('https://api.mycryptoapi.com/eth', '')
+    },
     'eth_ethscan': {
         'name': 'ETH',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
