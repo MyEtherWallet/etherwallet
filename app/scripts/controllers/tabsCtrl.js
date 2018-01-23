@@ -99,7 +99,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
                 $scope.notifier.danger(globalFuncs.errorMsgs[32]);
             } else {
                 $scope.nodeIsConnected = true;
-                $scope.notifier.info( globalFuncs.successMsgs[5] + '— Now, check the URL: <strong>' + window.location.href + '.</strong> <br /> Network: <strong>' + $scope.nodeType + ' </strong> provided by <strong>' + $scope.nodeService + '.</strong>', 5000)
+                $scope.notifier.info( globalFuncs.successMsgs[5] + '<br /> URL: <strong>' + window.location.href + '</strong> <br /> Network: <strong>' + $scope.nodeType + ' </strong> provided by <strong>' + $scope.nodeService + '</strong>', 10000)
             }
         });
         networkHasChanged && window.setTimeout(function() {
@@ -108,7 +108,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             } else {
                 window.location.reload();
             }
-            
+
         }, 250)
     }
     $scope.checkNodeUrl = function(nodeUrl) {
@@ -124,7 +124,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         if (requestedNetwork && nodes.nodeList.hasOwnProperty(requestedNetwork)) {
             node = JSON.stringify({ "key": requestedNetwork });
         }
-        
+
         if (node == null) {
             $scope.changeNode($scope.defaultNodeKey);
         } else {

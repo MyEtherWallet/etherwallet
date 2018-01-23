@@ -47,7 +47,7 @@
   padding: 0;
   margin: 2px 0 0; // override default ul
   list-style: none;
-  font-size: @font-size-base;
+  font-size: @font-size-small;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   background-color: @dropdown-bg;
   border-radius: @border-radius;
@@ -73,14 +73,14 @@
   // Links within the dropdown menu
 
   >li:first-child {
-    padding-top: 4px;
+    padding-top: 2px;
   }
   >li:last-child {
-    padding-bottom: 4px;
+    padding-bottom: 2px;
   }
   > li > a {
     display: block;
-    padding: 3px 20px;
+    padding: 2px @font-size-base;
     clear: both;
     font-weight: 300;
     line-height: @line-height-base;

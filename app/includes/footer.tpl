@@ -53,10 +53,10 @@
         </div>
         <p> Buy a... </p>
         <div class="footer__pill-wrap">
-          <a class="footer__pill" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener noreferrer">Ledger Wallet</a>
-          <a class="footer__pill" href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener noreferrer">TREZOR</a>
-          <a class="footer__pill" href="https://digitalbitbox.com/?ref=mew" target="_blank" rel="noopener noreferrer">Digital Bitbox</a>
-          <a class="footer__pill" href="https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site" target="_blank" rel="noopener noreferrer">ether.card</a>
+          <a class="footer__pill" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Ledger Wallet</a>
+          <a class="footer__pill" href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">TREZOR</a>
+          <a class="footer__pill" href="https://digitalbitbox.com/?ref=mew" target="_blank" rel="noopener">Digital Bitbox</a>
+          <a class="footer__pill" href="https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site" target="_blank" rel="noopener">ether.card</a>
         </div>
 
         <h5><i aria-hidden="true">💝</i> Donations are always appreciated!</h5>

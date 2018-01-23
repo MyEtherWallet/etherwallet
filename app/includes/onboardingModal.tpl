@@ -326,7 +326,7 @@
                   Always check the URL: `https://www.myetherwallet.com`.
                 </li>
                 <li translate="ONBOARD_secure_1_content__4">
-                  Always make sure the URL bar has `MYETHERWALLET LLC [US]` in green.
+                  Always make sure the URL bar has `MYETHERWALLET LLC` in green.
                 </li>
                 <li translate="ONBOARD_secure_1_content__5">
                   Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.
