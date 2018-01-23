@@ -148,7 +148,7 @@ globalFuncs.getEthNodeMsg = function(str) {
         return this.getParityMsg(str);
 };
 globalFuncs.scrypt = {
-    n: 1024
+    n: 8192
 };
 globalFuncs.postDelay = 300;
 globalFuncs.kdf = "scrypt";
