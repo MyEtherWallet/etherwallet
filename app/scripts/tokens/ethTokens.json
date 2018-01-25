@@ -734,6 +734,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xabdf147870235fcfc34153828c769a70b3fae01f",
+"symbol":"EURT",
+"decimal":6,
+"type":"default"
+},{
 "address":"0x923108a439C4e8C2315c4f6521E5cE95B44e9B4c",
 "symbol":"EVE",
 "decimal":18,
@@ -1897,6 +1902,11 @@
 "address":"0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
 "symbol":"Unicorn",
 "decimal":0,
+"type":"default"
+},{
+"address":"0xdac17f958d2ee523a2206206994597c13d831ec7",
+"symbol":"USDT",
+"decimal":6,
 "type":"default"
 },{
 "address":"0xd01db73e047855efb414e6202098c4be4cd2423b",
