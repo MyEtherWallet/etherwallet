@@ -223,6 +223,12 @@ gasLimit:   150000,
 data:       '',
 msg:        'TRV Ongoing Sale.'
 },{
+// TWN Token Sale
+to:         '0xdee3bfae40ac2ae9c69ebf30ecaf67a499a9dd5e',
+gasLimit:   150000,
+data:       '',
+msg:        'The World News Pre-ICO.'
+},{
 // Bitlle Token Sale (BTL)
 to:         '0x92685E93956537c25Bb75D5d47fca4266dd628B8',
 gasLimit:   200000,
