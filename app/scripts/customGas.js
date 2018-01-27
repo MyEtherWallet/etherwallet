@@ -193,12 +193,13 @@ gasLimit:   200000,
 data:       '',
 msg:        'Rebellious Token'
 },{
-  // Ethereum High Token Sale
+// Ethereum High Token Sale
 to:         '0xd5E3036d5CE7eC222379D16f6ffC38C38c55BF7f',
 gasLimit:   200000,
 data:       '',
 msg:        'Ethereum High HIG is a robust and feather-light cryptocurrency designed to hedge the risk of your portfolio'
 },{
+// REAL CHAIN TOKEN!
 to:         '0x2a3Aa9ECA41E720Ed46B5A70D6C37EfA47f768Ac',
 gasLimit:   200000,
 data:       '',
