@@ -98,18 +98,18 @@
     @@if (site === 'mew' ) {
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.11.3.2</p>
+        <p class="small visible-xs">3.11.3.3</p>
       </a>
     }
     @@if (site === 'cx'  ) {
       <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">
         <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.11.3.2</p>
+        <p class="small visible-xs">3.11.3.3</p>
       </a>
     }
     <div class="tagline">
 
-    <span class="hidden-xs">3.11.3.2</span>
+    <span class="hidden-xs">3.11.3.3</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
