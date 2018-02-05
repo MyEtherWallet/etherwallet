@@ -247,4 +247,10 @@ to:         '0x4F8B6cA78711207E1B281DB63e8d6EAA1ce2F63E',
 gasLimit:   230000,
 data:       '',
 msg:        'HEdpAY (Hdp.ф) sale. Official sale website: https://ibiginvestments.com/hedpay'
+},{
+// COPYTRACK (CPY) Token Sale
+to:         '0xF04436B2eDaa1B777045E1EEFc6DBA8bD2aEbAB8',
+gasLimit:   150000,
+data:       '',
+msg:        'COPYTRACK (CPY) Token Sale. Official sale website: https://copytrack.io'
 }]
