@@ -579,11 +579,6 @@
 "decimal":0,
 "type":"default"
 },{
-"address":"0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6",
-"symbol":"DCN",
-"decimal":0,
-"type":"default"
-},{
 "address":"0xcC4eF9EEAF656aC1a2Ab886743E98e97E090ed38",
 "symbol":"DDF",
 "decimal":18,
