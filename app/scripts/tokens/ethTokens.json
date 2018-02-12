@@ -49,6 +49,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x4CEdA7906a5Ed2179785Cd3A40A69ee8bc99C466",
+"symbol":"AION",
+"decimal":"8",
+"type":"default"
+},{
 "address":"0x27dce1ec4d3f72c3e457cc50354f1f975ddef488",
 "symbol":"AIR",
 "decimal":8,
@@ -732,6 +737,11 @@
 "address":"0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2",
 "symbol":"EHT",
 "decimal":8,
+"type":"default"
+},{
+"address":"0xbf2179859fc6d5bee9bf9158632dc51678a4100e",
+"symbol":"ELF",
+"decimal":"18",
 "type":"default"
 },{
 "address":"0xc8C6A31A4A806d3710A7B38b7B296D2fABCCDBA8",
