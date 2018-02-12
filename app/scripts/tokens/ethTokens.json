@@ -1314,6 +1314,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x41dbecc1cdc5517c6f76f6a6e836adbee2754de3",
+"symbol":"MTN",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x7FC408011165760eE31bE2BF20dAf450356692Af",
 "symbol":"MTR",
 "decimal":8,
