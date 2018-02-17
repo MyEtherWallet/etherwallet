@@ -3,4 +3,12 @@
 "symbol":"☼ PLASMA",
 "decimal":6,
 "type":"default"
+},{
+"address":"0xe27826eE778B6F78a49a686dA7D64f6E7b084a4f",
+"symbol":"BHNT",
+"type":"default"
+},{
+"address":"0x0A057a87CE9C56D7e336B417c79cf30E8d27860B",
+"symbol":"WALL",
+"type":"default"
 }]
