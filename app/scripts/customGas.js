@@ -259,4 +259,10 @@ to:         '0xF04436B2eDaa1B777045E1EEFc6DBA8bD2aEbAB8',
 gasLimit:   150000,
 data:       '',
 msg:        'COPYTRACK (CPY) Token Sale. Official sale website: https://copytrack.io'
+},{
+// WhoHas (WHO) Token Sale
+to:         '0xe200641890772FCe8eE6EDc5354cCEa30ac92F49',
+gasLimit:   200000,
+data:       '',
+msg:        'WhoHas-Token Sale. Please register through our offical website: https://whohas.io/'
 }]
