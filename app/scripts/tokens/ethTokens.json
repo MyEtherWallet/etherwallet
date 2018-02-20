@@ -342,6 +342,12 @@
     "type": "default"
   },
   {
+    "address": "0x327682779bAB2BF4d1337e8974ab9dE8275A7Ca8",
+    "symbol": "BPT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x9E77D5a1251b6F7D456722A6eaC6D2d5980bd891",
     "symbol": "BRAT",
     "decimal": 8,
@@ -606,6 +612,12 @@
     "type": "default"
   },
   {
+    "address": "0x7f585b9130c64e9e9f470b618a7badd03d79ca7e",
+    "symbol": "CR7",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xAef38fBFBF932D1AeF3B808Bc8fBd8Cd8E1f8BC5",
     "symbol": "CRB",
     "decimal": 8,
@@ -632,6 +644,12 @@
   {
     "address": "0xF0da1186a4977226b9135d0613ee72e229EC3F4d",
     "symbol": "CRT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x4545750F39aF6Be4F237B6869D4EccA928Fd5A85",
+    "symbol": "CTF",
     "decimal": 18,
     "type": "default"
   },
@@ -1041,6 +1059,12 @@
     "address": "0x190e569bE071F40c704e15825F285481CB74B6cC",
     "symbol": "FAM",
     "decimal": 12,
+    "type": "default"
+  },
+  {
+    "address": "0x009e864923b49263c7F10D19B7f8Ab7a9A5AAd33",
+    "symbol": "FKX",
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -1866,6 +1890,12 @@
     "type": "default"
   },
   {
+    "address": "0x5884969Ec0480556E11d119980136a4C17eDDEd1",
+    "symbol": "PET",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xec18f898b4076a3e18f1089d33376cc380bde61d",
     "symbol": "PETRO",
     "decimal": 18,
@@ -2568,6 +2598,12 @@
     "type": "default"
   },
   {
+    "address": "0x566Fd7999B1Fc3988022bD38507A48F0bCf22c77",
+    "symbol": "TRCN",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xcb94be6f13a1182e4a4b6140cb7bf2025d28e41b",
     "symbol": "TRST",
     "decimal": 6,
@@ -2583,6 +2619,12 @@
     "address": "0x2eF1aB8a26187C58BB8aAeB11B2fC6D25C5c0716",
     "symbol": "TWN",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xfbd0d1c77b501796a35d86cf91d65d9778eee695",
+    "symbol": "TWNKL",
+    "decimal": 3,
     "type": "default"
   },
   {
@@ -2714,6 +2756,12 @@
   {
     "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     "symbol": "WETH",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xe200641890772FCe8eE6EDc5354cCEa30ac92F49",
+    "symbol": "WHO",
     "decimal": 18,
     "type": "default"
   },
