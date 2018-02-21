@@ -260,6 +260,12 @@ gasLimit:   150000,
 data:       '',
 msg:        'COPYTRACK (CPY) Token Sale. Official sale website: https://copytrack.io'
 },{
+// DoBetAcceptBet (DCA) Token Sale
+to:         '0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416',
+gasLimit:   150000,
+data:       '',
+msg:        'DoBetAcceptBet (DCA) Token Sale. Official sale website: https://dobetacceptbet.com'
+},{
 // WhoHas (WHO) Token Sale
 to:         '0xe933c0Cd9784414d5F278C114904F5A84b396919',
 gasLimit:   200000,
