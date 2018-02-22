@@ -369,17 +369,7 @@
     "decimal": 6,
     "type": "default"
 }, {
-    "address": " 0x1d462414fe14cf489c7A21CaC78509f4bF8CD7c0",
-    "symbol": "CAN",
-    "decimal": 6,
-    "type": "default"
-}, {
     "address": "0x423e4322cdda29156b49a17dfbd2acc4b280600d",
-    "symbol": "CAR",
-    "decimal": 9,
-    "type": "default"
-}, {
-    "address": " 0x423e4322cdda29156b49a17dfbd2acc4b280600d",
     "symbol": "CAR",
     "decimal": 9,
     "type": "default"
@@ -765,11 +755,6 @@
     "type": "default"
 }, {
     "address": "0x17F93475d2A978f527c3f7c44aBf44AdfBa60D5C",
-    "symbol": "ECO2",
-    "decimal": 2,
-    "type": "default"
-}, {
-    "address": "0x17F93475d2A978f527c3f7c44aBf44AdfBa60D5C ",
     "symbol": "ECO2",
     "decimal": 2,
     "type": "default"
@@ -2304,7 +2289,7 @@
     "decimal": 18,
     "type": "default"
 }, {
-    "address": "0xe200641890772FCe8eE6EDc5354cCEa30ac92F49",
+    "address": "0xe933c0Cd9784414d5F278C114904F5A84b396919",
     "symbol": "WHO",
     "decimal": 18,
     "type": "default"
