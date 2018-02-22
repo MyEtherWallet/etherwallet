@@ -365,6 +365,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'เปิด MyEtherWallet อีกครั้งผ่านการเชื่อมต่อที่ปลอดภัย (SSL) ',
 ADD_DigitalBitbox_0b        : 'เปิด MyEtherWallet อีกครั้งด้วย [Chrome](https://www.google.com/chrome/browser/desktop/) หรือ [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'เชื่อมต่อไปยัง Digital Bitbox ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 /* Add Wallet */
 ADD_Label_1                 : 'คุณต้องการจะทำอะไร? ',

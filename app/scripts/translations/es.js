@@ -558,6 +558,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'Volver a abrir MyEtherWallet en una conexión segura (SSL) ',
 ADD_DigitalBitbox_0b        : 'Volver a abrir MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) u [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'Conectar a Digital Bitbox ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 
 ERROR_0                         :  '(error_01) Introduce una cantidad válida. Please enter a valid amount.', // 0

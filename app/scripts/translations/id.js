@@ -395,6 +395,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman ',
 ADD_DigitalBitbox_0b        : 'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'Hubungkan ke Digital Bitbox ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Jika Anda memerlukan lebih dari satu dompet, Anda dapat memakai fitur ',

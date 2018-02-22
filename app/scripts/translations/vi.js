@@ -516,6 +516,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'Hảy mở lại trang MyEtherWallet trên một kết nối có tính bảo mật (SSL) ',
 ADD_DigitalBitbox_0b        : 'Sử dụng [Chrome](https://www.google.com/chrome/browser/desktop/) hoặc [Opera](https://www.opera.com/) Để mở lại trang MyEtherWallet ',
 ADD_DigitalBitbox_scan      : 'Kết nối với Digital Bitbox ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 /* Deploy Contracts */
 DEP_generate                : 'Tạo Bytecode ',
