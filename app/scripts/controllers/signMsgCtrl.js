@@ -140,7 +140,8 @@ var signMsgCtrl = function($scope, $sce, walletService) {
     }
 
     $scope.verifySignedMessage = function() {
-        var hwType = $scope.wallet.getHWType()
+        if($scope.wallet)
+            var hwType = $scope.wallet.getHWType()
         // Verify via trezor
         if ((typeof hwType != "undefined") && (hwType == "trezor")) {
             var json = JSON.parse($scope.verifyMsg.signedMsg)
