@@ -265,4 +265,10 @@ to:         '0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416',
 gasLimit:   150000,
 data:       '',
 msg:        'DoBetAcceptBet (DCA) Token Sale. Official sale website: https://dobetacceptbet.com'
+},{
+// LALA World (LALA) Token Sale
+to:         '0xfD107B473AB90e8Fbd89872144a3DC92C40Fa8C9',
+gasLimit:   200000,
+data:       '',
+msg:        'LALA World (LALA) Token Sale. Official sale website: https://lalaworld.io/'
 }]
