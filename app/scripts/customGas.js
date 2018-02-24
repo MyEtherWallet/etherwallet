@@ -260,6 +260,18 @@ gasLimit:   150000,
 data:       '',
 msg:        'COPYTRACK (CPY) Token Sale. Official sale website: https://copytrack.io'
 },{
+// MaxRoyalCoin (MRC) Token Sale
+to:         '0xcb40d378d5a173436f4c947d8a5ae7caab00e745',
+gasLimit:   150000,
+data:       '',
+msg:        'Thank you for participating in MaxRoyal Coin ICO'
+},{
+// HashcoCoin (HCC) Token Sale
+to:         '0x4178b60fd27dda312cc6e4232d063503c3f99040',
+gasLimit:   150000,
+data:       '',
+msg:        'Thank you for participating in Hashco Coin ICO'
+},{
 // DoBetAcceptBet (DCA) Token Sale
 to:         '0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416',
 gasLimit:   150000,
