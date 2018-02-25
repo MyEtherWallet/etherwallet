@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "address": "0x991e7fe4b05f2b3db1d788e705963f5d647b0044",
+    "symbol": "MINING",
+    "decimal": 18,
+    "type": "default"
+  }
+]
