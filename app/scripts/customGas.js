@@ -31,6 +31,12 @@ gasLimit:   200000,
 data:       '',
 msg:        'MNT Token Sale - http://mnt.coinjoker.com'
 },{
+// J8T Token Sale
+to:         '0xa76ea481aebdd5703e476cfcb2315d4e014232c1',
+gasLimit:   200000,
+data:       '',
+msg:        'J8T Token Sale - https://jet8.io/token - JET8 · Democratizing influence'
+},{
 // PUC Token Sale
 to:         '0xEf6B4cE8C9Bc83744fbcdE2657b32eC18790458A',
 gasLimit:   930000,
