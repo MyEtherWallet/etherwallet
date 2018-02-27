@@ -134,7 +134,7 @@ SecalotEth.prototype.signTransaction = function(path, eTx, callback) {
     rawData = new Buffer(dataToHash, 'hex');
 
     while (offset != rawData.length) {
-        var maxChunkSize = 128;
+        var maxChunkSize = 64;
         var chunkSize = (offset + maxChunkSize > rawData.length ? rawData.length - offset : maxChunkSize);
         var buffer = new Buffer(5 + chunkSize);
         buffer[0] = 0x80;
@@ -208,7 +208,7 @@ SecalotEth.prototype.signMessage = function(path, message, callback) {
     rawData = new Buffer( Buffer.from(message).toString("hex"), 'hex');
 
     while (offset != rawData.length) {
-        var maxChunkSize = 128;
+        var maxChunkSize = 64;
         var chunkSize = (offset + maxChunkSize > rawData.length ? rawData.length - offset : maxChunkSize);
         var buffer = new Buffer(5 + chunkSize);
         buffer[0] = 0x80;

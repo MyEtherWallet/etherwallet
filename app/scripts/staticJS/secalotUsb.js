@@ -26,7 +26,7 @@ SecalotUsb.prototype.u2fCallback = function(response, callback) {
 
 // callback is function(response, error)
 SecalotUsb.prototype.exchange = function(apduHex, callback) {
-    var apdu = new Buffer(apduHex, 'hex');
+    var apdu = new Buffer('1122334455667788' + apduHex, 'hex');
     var challenge = new Buffer("0000000000000000000000000000000000000000000000000000000000000000", 'hex');
     var key = {};
     key['version'] = 'U2F_V2';
