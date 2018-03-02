@@ -279,8 +279,14 @@ data:       '',
 msg:        'LATOKEN (LA). Official sale website: https://latoken.com'
 },{
 // LALA World (LALA) Token Sale
-to:         ' 0xfD107B473AB90e8Fbd89872144a3DC92C40Fa8C9',
+to:         '0xfD107B473AB90e8Fbd89872144a3DC92C40Fa8C9',
 gasLimit:   200000,
 data:       '',
 msg:        'LALA World Token (LALA) Token Sale. Official sale website: https://lalaworld.io'
+},{
+// Duty of Care (VDOC) Token sale
+to:         '0xe8DB4ceA1f7ad7Ba22F3DbbAb55A336545701d96',
+gasLimit:   200000,
+data:       '',
+msg:        ' Duty of Care VDOC token sale - https://dutyof.care/token-launch/'
 }]
