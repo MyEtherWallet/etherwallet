@@ -518,6 +518,14 @@
                   </a>
                 </li>
               </ul>
+
+              <div class="onboarding__buttons">
+                <a ng-click="onboardModal.close()" class="btn btn-primary col-sm-5 col-sm-offset-7">
+                  <span>
+                    Done &nbsp;
+                  </span>
+                </a>
+              </div>
             </div>
           </section>
         </article>
