@@ -925,7 +925,7 @@
   },
   {
     "address": "0x2799d90c6d44cb9aa5fbc377177f16c33e056b82",
-    "symbol": "DRP",
+    "symbol": "DRP (Dripcoin)",
     "decimal": 0,
     "type": "default"
   },
@@ -2455,13 +2455,13 @@
   },
   {
     "address": "0x324a48ebcbb46e61993931ef9d35f6697cd2901b",
-    "symbol": "SKRP",
+    "symbol": "SKRP (Phase 1-E)",
     "decimal": 18,
     "type": "default"
   },
   {
     "address": "0x6E34d8d84764D40f6D7b39cd569Fd017bF53177D",
-    "symbol": "SKRP",
+    "symbol": "SKRP (Phase 1)",
     "decimal": 18,
     "type": "default"
   },
