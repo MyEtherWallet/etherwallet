@@ -2455,13 +2455,13 @@
   },
   {
     "address": "0x324a48ebcbb46e61993931ef9d35f6697cd2901b",
-    "symbol": "SKRP",
+    "symbol": "SKRP (Phase 1 Extended)",
     "decimal": 18,
     "type": "default"
   },
   {
     "address": "0x6E34d8d84764D40f6D7b39cd569Fd017bF53177D",
-    "symbol": "SKRP",
+    "symbol": "SKRP (Phase 1)",
     "decimal": 18,
     "type": "default"
   },
