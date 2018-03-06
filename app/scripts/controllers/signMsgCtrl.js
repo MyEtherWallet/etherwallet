@@ -44,12 +44,13 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                         address: signingAddr,
                         msg: thisMessage,
                         sig: result.result,
-                        version: '2'
+                        version: '3',
+                        signer: 'web3'
                     }, null, 2)
                     $scope.notifier.success('Successfully Signed Message with ' + signingAddr)
                 })
 
-            // Sign via Ledger
+                // Sign via Ledger
             } else if ((typeof hwType != "undefined") && (hwType == "ledger")) {
                 var msg = Buffer.from(thisMessage).toString("hex")
                 var app = new ledgerEth($scope.wallet.getHWTransport());
@@ -62,20 +63,21 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                         });
                         return;
                     }
-                    var combined    = signed['r'] + signed['s'] + signed['v']
+                    var combined = signed['r'] + signed['s'] + signed['v']
                     var combinedHex = combined.toString('hex')
                     var signingAddr = $scope.wallet.getAddressString()
                     $scope.signMsg.signedMsg = JSON.stringify({
                         address: $scope.wallet.getAddressString(),
                         msg: thisMessage,
                         sig: '0x' + combinedHex,
-                        version: '2'
+                        version: '3',
+                        signer: 'ledger'
                     }, null, 2)
                     $scope.notifier.success('Successfully Signed Message with ' + signingAddr)
                 }
-                app.signPersonalMessage_async( $scope.wallet.getPath(), msg, localCallback);
+                app.signPersonalMessage_async($scope.wallet.getPath(), msg, localCallback);
 
-            // Sign via Digital Bitbox
+                // Sign via Digital Bitbox
             } else if ((typeof hwType != "undefined") && (hwType == "digitalBitbox")) {
                 var msg = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage));
                 var localCallback = function(signed, error) {
@@ -84,14 +86,15 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                         $scope.notifier.danger(error);
                         return;
                     }
-                    var combined    = signed['r'] + signed['s'] + signed['v']
+                    var combined = signed['r'] + signed['s'] + signed['v']
                     var combinedHex = combined.toString('hex')
                     var signingAddr = $scope.wallet.getAddressString()
                     $scope.signMsg.signedMsg = JSON.stringify({
                         address: $scope.wallet.getAddressString(),
                         msg: thisMessage,
                         sig: '0x' + combinedHex,
-                        version: '2'
+                        version: '3',
+                        signer: 'digitalBitbox'
                     }, null, 2)
                     $scope.notifier.success('Successfully Signed Message with ' + signingAddr);
                 }
@@ -99,37 +102,36 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                 var app = new DigitalBitboxEth($scope.wallet.getHWTransport(), '');
                 app.signMessage($scope.wallet.getPath(), msg, localCallback);
 
-            // Sign via trezor
+                // Sign via trezor
             } else if ((typeof hwType != "undefined") && (hwType == "trezor")) {
-                TrezorConnect.ethereumSignMessage($scope.wallet.getPath(), thisMessage, function(response){
+                TrezorConnect.ethereumSignMessage($scope.wallet.getPath(), thisMessage, function(response) {
                     if (response.success) {
                         $scope.signMsg.signedMsg = JSON.stringify({
                             address: '0x' + response.address,
                             msg: thisMessage,
                             sig: '0x' + response.signature,
-                            version: '2'
+                            version: '3',
+                            signer: 'trezor'
                         }, null, 2)
                         $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString())
-                    } else{
+                    } else {
                         $scope.notifier.danger(response.error);
                     }
                 })
 
-            // Sign via PK
+                // Sign via PK
             } else {
-                var msg         = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage))
-                var signed      = ethUtil.ecsign(msg, $scope.wallet.getPrivateKey())
-                //console.log(signed.r)
-                //console.log(signed.s)
-                //console.log([signed.v])
-                var combined    = Buffer.concat([Buffer.from(signed.r), Buffer.from(signed.s), Buffer.from([signed.v])])
+                var msg = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage))
+                var signed = ethUtil.ecsign(msg, $scope.wallet.getPrivateKey())
+                var combined = Buffer.concat([Buffer.from(signed.r), Buffer.from(signed.s), Buffer.from([signed.v])])
                 var combinedHex = combined.toString('hex')
                 var signingAddr = $scope.wallet.getAddressString()
                 $scope.signMsg.signedMsg = JSON.stringify({
                     address: $scope.wallet.getAddressString(),
                     msg: thisMessage,
                     sig: '0x' + combinedHex,
-                    version: '2'
+                    version: '3',
+                    signer: 'MEW'
                 }, null, 2)
                 $scope.notifier.success('Successfully Signed Message with ' + signingAddr)
             }
@@ -138,51 +140,41 @@ var signMsgCtrl = function($scope, $sce, walletService) {
             $scope.notifier.danger(e)
         }
     }
-
-    $scope.verifySignedMessage = function() {
-        if($scope.wallet)
-            var hwType = $scope.wallet.getHWType()
-        // Verify via trezor
-        if ((typeof hwType != "undefined") && (hwType == "trezor")) {
-            var json = JSON.parse($scope.verifyMsg.signedMsg)
-            var address = ethFuncs.getNakedAddress(json.address)
-            var sig = ethFuncs.getNakedAddress(json.sig);
-            var message = json.msg;
-            TrezorConnect.ethereumVerifyMessage(address, sig, message, function(response) {
-                if (response.success) {
-                    $scope.notifier.success(globalFuncs.successMsgs[6])
-                    $scope.verifiedMsg = {
-                        address: json.address,
-                        msg: json.msg,
-                        sig: json.sig,
-                        version: json.version
-                    }
-                } else {
-                    $scope.notifier.danger(response.error);
-                }
-            })
-            return;
+    var getTrezorLenBuf = function(msgLen) {
+        if (msgLen < 253) return Buffer.from([msgLen & 0xff])
+        else if (msgLen < 0x10000) return Buffer.from([253, msgLen & 0xff, (msgLen >> 8) & 0xFF])
+        else {
+            return Buffer.from([254, msgLen & 0xFF, (msgLen >> 8) & 0xFF, (msgLen >> 16) & 0xFF, (msgLen >> 24) & 0xFF])
         }
-
+    }
+    var getTrezorHash = function(msg) {
+        return ethUtil.sha3(Buffer.concat([ethUtil.toBuffer("\u0019Ethereum Signed Message:\n"), getTrezorLenBuf(msg.length), ethUtil.toBuffer(msg)]))
+    }
+    $scope.verifySignedMessage = function() {
         try {
-
             var json = JSON.parse($scope.verifyMsg.signedMsg)
             var sig = new Buffer(ethFuncs.getNakedAddress(json.sig), 'hex')
             if (sig.length != 65) throw globalFuncs.errorMsgs[12]
             sig[64] = sig[64] == 0 || sig[64] == 1 ? sig[64] + 27 : sig[64]
-            var hash = json.version=='2' ? ethUtil.hashPersonalMessage(ethUtil.toBuffer(json.msg)) : ethUtil.sha3(json.msg)
+            var hash = ethUtil.hashPersonalMessage(ethUtil.toBuffer(json.msg))
+            if (json.version == '3') {
+                if (json.signer == 'trezor') {
+                    hash = getTrezorHash(json.msg)
+                }
+            } else if (json.version == '1') {
+                hash = ethUtil.sha3(json.msg)
+            }
             var pubKey = ethUtil.ecrecover(hash, sig[64], sig.slice(0, 32), sig.slice(32, 64))
             if (ethFuncs.getNakedAddress(json.address) != ethUtil.pubToAddress(pubKey).toString('hex')) throw globalFuncs.errorMsgs[12]
             else {
-              $scope.notifier.success(globalFuncs.successMsgs[6])
-              $scope.verifiedMsg = {
-                  address: json.address,
-                  msg: json.msg,
-                  sig: json.sig,
-                  version: json.version
-              }
+                $scope.notifier.success(globalFuncs.successMsgs[6])
+                $scope.verifiedMsg = {
+                    address: json.address,
+                    msg: json.msg,
+                    sig: json.sig,
+                    version: json.version
+                }
             }
-
         } catch (e) {
             $scope.notifier.danger(e);
         }
