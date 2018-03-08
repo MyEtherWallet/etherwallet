@@ -21,7 +21,7 @@ before_deploy:
 - gulp travisZip
 - |
   for f in deploy/*; do
-    gpg --output $f.asc --detach-sig $f
+    gpg --output $f.sig --detach-sig $f
   done
 deploy:
   provider: releases
