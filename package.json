@@ -16,6 +16,7 @@
     "angular-sanitize": "^1.6.2",
     "angular-translate": "^2.15.1",
     "angular-translate-handler-log": "^2.15.1",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "bignumber.js": "^4.0.2",
     "bip39": "^2.3.1",

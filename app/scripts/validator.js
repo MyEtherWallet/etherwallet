@@ -13,6 +13,13 @@ validator.isChecksumAddress = function(address) {
 validator.isValidENSorEtherAddress = function(address) {
     return (validator.isValidAddress(address) || validator.isValidENSAddress(address));
 }
+validator.isValidSubName = function(str) {
+    try {
+        return (str.length > 0 && ens.normalise(str) != '' && str.substring(0, 2) != '0x');
+    } catch (e) {
+        return false;
+    }
+}
 validator.isValidENSName = function(str) {
     try {
         return (str.length > 6 && ens.normalise(str) != '' && str.substring(0, 2) != '0x');
