@@ -3,8 +3,6 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
     $scope.hideEnsInfoPanel = false;
     walletService.wallet = null;
-    $scope.ensConfirmModalModal = new Modal(document.getElementById('ensConfirmModal'));
-    $scope.ensFinalizeModal = new Modal(document.getElementById('ensFinalizeConfirm'));
     $scope.Validator = Validator;
     $scope.wd = false;
     $scope.haveNotAlreadyCheckedLength = true;
@@ -57,7 +55,7 @@ var ensCtrl = function($scope, $sce, walletService) {
     var resetToDefault = function() {
         $scope.objENS = JSON.parse(JSON.stringify($scope.objENSClone));
         $scope.objSub = JSON.parse(JSON.stringify($scope.objSubClone));
-        $scope.wallet= null;
+        $scope.wallet = null;
         walletService.wallet = null;
         $scope.wd = false;
     }
@@ -166,6 +164,8 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.checkName = function() {
         // checks if it's the same length as a PK and if so, warns them.
         // If they confirm they can set haveNotAlreadyCheckedLength to true and carry on
+        $scope.ensConfirmModalModal = new Modal(document.getElementById('ensConfirmModal'));
+        $scope.ensFinalizeModal = new Modal(document.getElementById('ensFinalizeConfirm'));
         if ($scope.haveNotAlreadyCheckedLength && ($scope.objENS.name.length == 128 || $scope.objENS.name.length == 132 || $scope.objENS.name.length == 64 || $scope.objENS.name.length == 66)) {
             $scope.notifier.danger("That looks an awful lot like a private key. Are you sure you would like to check if this name is available on the ENS network? If so, click `Check`. If it is your private key, click refresh & try again.");
             $scope.haveNotAlreadyCheckedLength = false;

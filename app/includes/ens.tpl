@@ -14,11 +14,11 @@
     </h1>
   </div>
   <!-- / Title -->
-  <div ng-show="visibility=='ens'">
+  <div ng-if="visibility=='ens'">
     @@if (site === 'mew' ) { @@include( './ens-domain.tpl', { "site": "mew" } ) }
     @@if (site === 'cx'  ) { @@include( './ens-domain.tpl', { "site": "cx"  } ) }
   </div>
-  <div ng-show="visibility=='subdomain'">
+  <div ng-if="visibility=='subdomain'">
     <div class="block">
       <!-- ENS Title -->
       <article class="cont-md">

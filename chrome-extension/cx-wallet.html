@@ -3754,7 +3754,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </h1>
   </div>
   <!-- / Title -->
-  <div ng-show="visibility=='ens'">
+  <div ng-if="visibility=='ens'">
     
      <div class="block">
       <!-- ENS Title -->
@@ -4820,7 +4820,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
  
  
   </div>
-  <div ng-show="visibility=='subdomain'">
+  <div ng-if="visibility=='subdomain'">
     <div class="block">
       <!-- ENS Title -->
       <article class="cont-md">
