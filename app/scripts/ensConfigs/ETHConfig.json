@@ -5,7 +5,7 @@
         "ethAuction": "0x6090a6e47849629b7245dfa1ca21d94cd15878ef",
         "subDomain": {
         	"contract":"0x0b07463b30b302a98407d3E3dF85EBC073B0DBd1",
-        	"domains": ["gimmethe","wantsome"],
+        	"domains": ["gimmethe","wantsome","etherbase"],
         	"tld": "eth"
         }
     },
