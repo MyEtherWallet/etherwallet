@@ -68,9 +68,9 @@
           <div>
             <div class="input-group pad-bot" ng-repeat="data in objSub.validNames track by $index" > 
             <input class="form-control" type="text" value="{{data.fullName}}" ng-disabled="true"/>
-            <div class="input-group-btn"><button ng-show="data.available" ng-click="registerSubName($index)" class="btn btn-primary">Buy ({{data.EthVal}} ETH)
+            <div class="input-group-btn"><button ng-show="data.available" ng-click="registerSubName($index)" class="btn btn-primary btn-primary-buy-button">Buy ({{data.EthVal}} ETH)
             </button>
-            <button ng-show="!data.available" class="btn btn-primary btn-red">Not Available
+            <button ng-show="!data.available" class="btn btn-primary btn-red" disabled><span class="na">X</span>
             </button></br>
           </div>
           </div>
