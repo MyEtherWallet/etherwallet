@@ -118,7 +118,8 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                         address: $scope.wallet.getAddressString(),
                         msg: thisMessage,
                         sig: '0x' + combinedHex,
-                        version: '2'
+                        version: '3',
+                        signer: 'secalot'
                     }, null, 2)
                     $scope.notifier.success('Successfully Signed Message with ' + signingAddr);
                 }
