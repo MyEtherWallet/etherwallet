@@ -172,7 +172,7 @@
 
     <!-- Advanced Option Panel -->
     <a ng-click="showAdvance=true"
-       ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
+       ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id || tx.data != ""'>
       <p class="strong" translate="TRANS_advanced">
         + Advanced: Add Data
       </p>
