@@ -462,6 +462,11 @@
     "type": "default"
   },
   {
+		"address": "0xca3c18a65b802ec267f8f4802545e7f53d24c75e",
+		"symbol": "BUC",
+		"decimal": 18
+	},
+  {
     "address": "0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
     "symbol": "BeerCoin",
     "decimal": 0,
@@ -1128,6 +1133,11 @@
     "type": "default"
   },
   {
+		"address": "0x5976F7dac1525eF3277836043bA474a35E6B4272",
+		"symbol": "FLMC",
+		"decimal": 0
+	},
+  {
     "address": "0x3a1Bda28AdB5B0a812a7CF10A1950c920F79BcD3",
     "symbol": "FLP",
     "decimal": 18,
@@ -1349,6 +1359,11 @@
     "decimal": 18,
     "type": "default"
   },
+  {
+		"address": "0x9af839687f6c94542ac5ece2e317daae355493a1",
+		"symbol": "HOT",
+		"decimal": 18
+	},
   {
     "address": "0x554C20B7c486beeE439277b4540A434566dC4C02",
     "symbol": "HST",
@@ -1698,6 +1713,11 @@
     "type": "default"
   },
   {
+		"address": "0x5b09a0371c1da44a8e24d36bf5deb1141a84d875",
+		"symbol": "MAD",
+		"decimal": 18
+	},
+  {
     "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
     "symbol": "MANA",
     "decimal": 18,
@@ -1944,11 +1964,10 @@
     "type": "default"
   },
   {
-    "address": "0x7F2176cEB16dcb648dc924eff617c3dC2BEfd30d",
-    "symbol": "OHNI",
-    "decimal": 0,
-    "type": "default"
-  },
+		"address": "0x6f539a9456a5bcb6334a1a41207c3788f5825207",
+		"symbol": "OHNI",
+		"decimal": 18
+	},
   {
     "address": "0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
     "symbol": "OLD_MKR",
