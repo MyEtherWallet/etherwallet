@@ -244,10 +244,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         } finally {
           try {
             ethUtil.privateToPublic("0x" + $scope.manualprivkey);
-            console.log("Hello there!");
           } catch(e) {
             $scope.wallet = null;
-            console.log("General Kenobi?", e);
             $scope.notifier.danger(globalFuncs.errorMsgs[40]);
             return;
           }
