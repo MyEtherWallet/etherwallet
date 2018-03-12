@@ -313,6 +313,7 @@ ERROR_36                        :  '(error_37) Please enter a valid TX hash',
 ERROR_37                        :  '(error_38) Please enter valid hex string. Hex only contains: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f',
 ERROR_38                        :  '(error_39) Offer must have either price or reserve set to more than 0',
 ERROR_39                        :  '(error_40) Bid must be more than the specified minimum',
+ERROR_40                        :  '(error_41) Please enter a valid private key',
 
 GETH_Balance                    :  '(geth-01) Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
 GETH_Cheap                      :  '(geth-02) Gas price too low for acceptance. Try raising the gas price to 21 GWEI via the dropdown in top-right.',
