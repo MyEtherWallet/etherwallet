@@ -241,8 +241,19 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             walletService.wallet = $scope.wallet;
         } catch (e) {
             $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
+        } finally {
+          try {
+            ethUtil.privateToPublic("0x" + $scope.manualprivkey);
+            console.log("Hello there!");
+          } catch(e) {
+            $scope.wallet = null;
+            console.log("General Kenobi?", e);
+            $scope.notifier.danger(globalFuncs.errorMsgs[40]);
+            return;
+          }
         }
-        if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
+
+        if ($scope.wallet !== null) $scope.notifier.info(globalFuncs.successMsgs[1]);
         $scope.wallet.type = "default";
     };
     $scope.decryptAddressOnly = function() {
