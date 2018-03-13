@@ -241,18 +241,17 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             walletService.wallet = $scope.wallet;
         } catch (e) {
             $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
-        } finally {
-          try {
-            ethUtil.privateToPublic("0x" + $scope.manualprivkey);
-          } catch(e) {
-            $scope.wallet = null;
-            $scope.notifier.danger(globalFuncs.errorMsgs[40]);
-            return;
-          }
         }
 
-        if ($scope.wallet !== null) $scope.notifier.info(globalFuncs.successMsgs[1]);
-        $scope.wallet.type = "default";
+        if(!ethUtil.isValidPrivate(ethUtil.toBuffer($scope.manualprivkey))) {
+          $scope.wallet = null;
+          $scope.notifier.danger(globalFuncs.errorMsgs[40]);
+        }
+
+        if ($scope.wallet !== null) {
+          $scope.notifier.info(globalFuncs.successMsgs[1]);
+          $scope.wallet.type = "default";
+        }
     };
     $scope.decryptAddressOnly = function() {
         if ($scope.Validator.isValidAddress($scope.addressOnly)) {
