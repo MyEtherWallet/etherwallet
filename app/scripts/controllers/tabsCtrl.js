@@ -99,7 +99,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
                 $scope.notifier.danger(globalFuncs.errorMsgs[32]);
             } else {
                 $scope.nodeIsConnected = true;
-                $scope.notifier.info( globalFuncs.successMsgs[5] + '<br /> URL: <strong>' + window.location.href + '</strong> <br /> Network: <strong>' + $scope.nodeType + ' </strong> provided by <strong>' + $scope.nodeService + '</strong>', 10000)
+                $scope.notifier.info( globalFuncs.successMsgs[5] + '<br /> URL: <strong>' + globalFuncs.stripTags(window.location.href) + '</strong> <br /> Network: <strong>' + $scope.nodeType + ' </strong> provided by <strong>' + $scope.nodeService + '</strong>', 10000)
             }
         });
         networkHasChanged && window.setTimeout(function() {
