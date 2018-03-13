@@ -74,6 +74,11 @@ globalFuncs.errorMsgs = [
     'Bid must be more than the specified minimum' // 39
 ];
 
+globalFuncs.phishingWarning = [
+  'This address has been flagged: ',
+  'This address has been flagged in our Phishing list. Please make sure you are sending to the right address'
+]
+
 // These are translated in the translation files
 globalFuncs.successMsgs = [
     'Valid address',
