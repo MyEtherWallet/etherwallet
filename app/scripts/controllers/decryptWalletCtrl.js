@@ -227,9 +227,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             if (!$scope.Validator.isValidHex($scope.manualprivkey)) {
               $scope.notifier.danger(globalFuncs.errorMsgs[37]);
               return;
-            }
-
-            if(!ethUtil.isValidPrivate(ethUtil.toBuffer(privKey))) {
+            } else if(!ethUtil.isValidPrivate(ethUtil.toBuffer(privKey))) {
               $scope.wallet = null;
               $scope.notifier.danger(globalFuncs.errorMsgs[40]);
               return;
