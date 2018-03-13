@@ -217,6 +217,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     }
     $scope.decryptWallet = function() {
         $scope.wallet = null;
+        let privKey = $scope.manualprivkey.indexOf("0x") === 0 ? $scope.manualprivkey : "0x" + $scope.manualprivkey;
         try {
             if ($scope.showPDecrypt && $scope.requirePPass) {
                 $scope.wallet = Wallet.fromMyEtherWalletKey($scope.manualprivkey, $scope.privPassword);
@@ -242,8 +243,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         } catch (e) {
             $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
         }
-
-        if(!ethUtil.isValidPrivate(ethUtil.toBuffer($scope.manualprivkey))) {
+        if(!ethUtil.isValidPrivate(ethUtil.toBuffer(privKey))) {
           $scope.wallet = null;
           $scope.notifier.danger(globalFuncs.errorMsgs[40]);
         }
