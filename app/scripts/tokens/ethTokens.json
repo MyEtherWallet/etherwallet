@@ -1682,6 +1682,12 @@
     "decimal": 18,
     "type": "default"
   },
+	{
+    "address": "0xa4e8c3ec456107ea67d3075bf9e3df3a75823db0",
+    "symbol": "LOOM",
+    "decimal": 18,
+    "type": "default"
+  },
   {
     "address": "0xEF68e7C694F40c8202821eDF525dE3782458639f",
     "symbol": "LRC",
@@ -3042,6 +3048,13 @@
     "decimal": 8,
     "type": "default"
   },
+	{
+    "address": "0xBC86727E770de68B1060C91f6BB6945c73e10388",
+    "symbol": "XNK",
+    "decimal": 18,
+    "type": "default"
+  },
+
   {
     "address": "0xab95e915c123fded5bdfb6325e35ef5515f1ea69",
     "symbol": "XNN",
