@@ -11,8 +11,6 @@ var angularAnimate           = require('angular-animate');
 var bip39                    = require('bip39');
 var HDKey                    = require('hdkey');
 window.hd                    = { bip39: bip39, HDKey: HDKey };
-var Darklist                 = require('./addresses/addresses-darklist');
-window.Darklist              = Darklist;
 var BigNumber                = require('bignumber.js');
 window.BigNumber             = BigNumber;
 var marked                   = require('./staticJS/customMarked');
@@ -76,6 +74,7 @@ if (IS_CX) {
 }
 var CustomGasMessages        = require('./customGas.js')
 window.CustomGasMessages     = CustomGasMessages;
+var darkListConst            = require('./constants/darkListConst');
 var tabsCtrl                 = require('./controllers/tabsCtrl');
 var viewCtrl                 = require('./controllers/viewCtrl');
 var walletGenCtrl            = require('./controllers/walletGenCtrl');
@@ -124,12 +123,13 @@ app.config(['$animateProvider', function($animateProvider) {
 app.factory('globalService', ['$http', '$httpParamSerializerJQLike', globalService]);
 app.factory('walletService', walletService);
 app.directive('blockieAddress', blockiesDrtv);
-app.directive('addressField', ['$compile', addressFieldDrtv]);
+app.directive('addressField', ['$compile', 'darkList', addressFieldDrtv]);
 app.directive('qrCode', QRCodeDrtv);
 app.directive('onReadFile', fileReaderDrtv);
 app.directive('walletBalanceDrtv', balanceDrtv);
 app.directive('walletDecryptDrtv', walletDecryptDrtv);
 app.directive('cxWalletDecryptDrtv', cxWalletDecryptDrtv);
+app.constant('darkList', darkListConst);
 app.controller('tabsCtrl', ['$scope', 'globalService', '$translate', '$sce', tabsCtrl]);
 app.controller('viewCtrl', ['$scope', 'globalService', '$sce', viewCtrl]);
 app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);

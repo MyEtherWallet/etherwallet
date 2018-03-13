@@ -1,8 +1,9 @@
 'use strict';
-var addressFieldDrtv = function($compile) {
+var addressFieldDrtv = function($compile, darkList) {
     return {
         restrict: "E",
         link: function(scope, element, attrs) {
+            var Darklist = darkList();
             var varName = attrs.varName;
             var varArr = varName.split('.');
             var placeholder = attrs.placeholder == undefined ? 'mewtopia.eth or 0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D' : attrs.placeholder ;
@@ -77,7 +78,7 @@ var addressFieldDrtv = function($compile) {
 
               for(let i = 0; i < Darklist.length; i++) {
                 if(scope.addressDrtv.ensAddressField.length > 0 && scope.addressDrtv.ensAddressField === Darklist[i].address) {
-                  scope.phishing.msg = Darklist[i].comment !== '' ? `This address has been flagged: ${Darklist[i].comment}` : 'This address has been flagged in our Phishing list. Please make sure you are typing the right address';
+                  scope.phishing.msg = Darklist[i].comment !== '' ? `This address has been flagged: ${Darklist[i].comment}` : 'This address has been flagged in our Phishing list. Please make sure you are sending to the right address';
                   scope.phishing.error = true;
                   return;
                 } else {
