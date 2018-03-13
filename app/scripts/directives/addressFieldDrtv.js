@@ -23,16 +23,61 @@ var addressFieldDrtv = function($compile) {
                 readOnly: false
             }
 
-
             scope.phishing = {
               msg: '',
               error: false
             }
 
-            scope.checkIfPhishing = (text) => {
+
+            element.html(`
+              <div class="col-xs-11">
+                <label translate="${labelTranslated}"></label>
+                <input class="form-control" type="text" placeholder="${placeholder}" ng-model="addressDrtv.ensAddressField" ng-disabled="addressDrtv.readOnly" ng-class="Validator.isValidENSorEtherAddress(${varName}) ? 'is-valid' : 'is-invalid'"/>
+                <p class="flagged-address" ng-show="phishing.error">
+                  <span class="mono ng-binding"> {{phishing.msg}} </span>
+                </p>
+                <p class="ens-response" ng-show="addressDrtv.showDerivedAddress">
+                  <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span>
+                </p>
+                <p class="ens-response" ng-show="addressDrtv.showDerivedAddress">
+                  <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span>
+                </p>
+              </div>
+              <div class="col-xs-1 address-identicon-container">
+                <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{ ${varName} }}" watch-var="${varName}"></div>
+              </div>
+            `)
+
+            scope.$watch('addressDrtv.ensAddressField', function() {
+              var _ens = new ens();
+              if (Validator.isValidAddress(scope.addressDrtv.ensAddressField)) {
+
+                setValue(scope.addressDrtv.ensAddressField);
+                if (!Validator.isChecksumAddress(scope.addressDrtv.ensAddressField)) {
+                  scope.notifier.info(globalFuncs.errorMsgs[35]);
+                }
+
+              } else if (Validator.isValidENSAddress(scope.addressDrtv.ensAddressField)) {
+                _ens.getAddress(scope.addressDrtv.ensAddressField, function(data) {
+                  if (data.error) uiFuncs.notifier.danger(data.msg);
+                  else if (data.data == '0x0000000000000000000000000000000000000000' || data.data == '0x') {
+                    setValue('0x0000000000000000000000000000000000000000');
+                    scope.addressDrtv.derivedAddress = '0x0000000000000000000000000000000000000000';
+                    scope.addressDrtv.showDerivedAddress = true;
+                  } else {
+                    setValue(data.data);
+                    scope.addressDrtv.derivedAddress = ethUtil.toChecksumAddress(data.data);
+                    scope.addressDrtv.showDerivedAddress = true;
+                  }
+                });
+              } else {
+                setValue('');
+                scope.addressDrtv.showDerivedAddress = false;
+              }
+
               for(let i = 0; i < Darklist.length; i++) {
-                if(text === Darklist[i].address) {
-                  scope.phishing.msg = Darklist[i].comment !== '' ? Darklist[i].comment : 'This address has been flagged in our Phishing list. Please make sure you are typing the right address';
+                if(scope.addressDrtv.ensAddressField.length > 0 && scope.addressDrtv.ensAddressField === Darklist[i].address) {
+                  scope.phishing.msg = Darklist[i].comment !== '' ? `This address has been flagged: ${Darklist[i].comment}` : 'This address has been flagged in our Phishing list. Please make sure you are typing the right address';
                   scope.phishing.error = true;
                   return;
                 } else {
@@ -40,46 +85,6 @@ var addressFieldDrtv = function($compile) {
                   scope.phishing.error = false;
                 }
               }
-            };
-            element.html(`
-              <div class="col-xs-11">
-                <input class="form-control" type="text" placeholder="${placeholder}" ng-model="${scope.addressDrtv.ensAddressField}" ng-disabled="${scope.addressDrtv.readOnly}" ng-change="checkIfPhishing(scope.addressDrtv.ensAddressField)" ng-class="${Validator.isValidENSorEtherAddress(varName) ? "is-valid" : "is-invalid"}"/>
-                <p class="ens-response" ng-show="${scope.addressDrtv.showDerivedAddress}">
-                  <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span>
-                </p>
-                <p class="ens-response" ng-show="${scope.addressDrtv.showDerivedAddress}">
-                  <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span>
-                </p>
-              </div>
-              <div class="col-xs-1 address-identicon-container">
-                <div class="addressIdenticon" title="Address Indenticon" blockie-address=${varName} watch-var=${varName}></div>
-              </div>
-            `)
-
-            scope.$watch('addressDrtv.ensAddressField', function() {
-                var _ens = new ens();
-                if (Validator.isValidAddress(scope.addressDrtv.ensAddressField)) {
-                    setValue(scope.addressDrtv.ensAddressField);
-                    if (!Validator.isChecksumAddress(scope.addressDrtv.ensAddressField)) {
-                        scope.notifier.info(globalFuncs.errorMsgs[35]);
-                    }
-                } else if (Validator.isValidENSAddress(scope.addressDrtv.ensAddressField)) {
-                    _ens.getAddress(scope.addressDrtv.ensAddressField, function(data) {
-                        if (data.error) uiFuncs.notifier.danger(data.msg);
-                        else if (data.data == '0x0000000000000000000000000000000000000000' || data.data == '0x') {
-                            setValue('0x0000000000000000000000000000000000000000');
-                            scope.addressDrtv.derivedAddress = '0x0000000000000000000000000000000000000000';
-                            scope.addressDrtv.showDerivedAddress = true;
-                        } else {
-                            setValue(data.data);
-                            scope.addressDrtv.derivedAddress = ethUtil.toChecksumAddress(data.data);
-                            scope.addressDrtv.showDerivedAddress = true;
-                        }
-                    });
-                } else {
-                    setValue('');
-                    scope.addressDrtv.showDerivedAddress = false;
-                }
             });
             $compile(element.contents())(scope);
         }
