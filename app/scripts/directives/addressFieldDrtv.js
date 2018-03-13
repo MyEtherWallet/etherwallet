@@ -17,6 +17,19 @@ var addressFieldDrtv = function($compile, darkList) {
                     }
                 }
             }
+
+            var checkDarkList = function(value) {
+              for(let i = 0; i < Darklist.length; i++) {
+                if(value.length > 0 && value === Darklist[i].address) {
+                  scope.phishing.msg = Darklist[i].comment !== '' ? `This address has been flagged: ${Darklist[i].comment}` : 'This address has been flagged in our Phishing list. Please make sure you are sending to the right address';
+                  scope.phishing.error = true;
+                  return;
+                } else {
+                  scope.phishing.msg = '';
+                  scope.phishing.error = false;
+                }
+              }
+            }
             scope.addressDrtv = {
                 showDerivedAddress: false,
                 ensAddressField: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
@@ -34,14 +47,11 @@ var addressFieldDrtv = function($compile, darkList) {
               <div class="col-xs-11">
                 <label translate="${labelTranslated}"></label>
                 <input class="form-control" type="text" placeholder="${placeholder}" ng-model="addressDrtv.ensAddressField" ng-disabled="addressDrtv.readOnly" ng-class="Validator.isValidENSorEtherAddress(${varName}) ? 'is-valid' : 'is-invalid'"/>
+                <p class="ens-response" ng-show="addressDrtv.showDerivedAddress">
+                  <span class="mono ng-binding"> ↳ {{addressDrtv.derivedAddress}} </span>
+                </p>
                 <p class="flagged-address" ng-show="phishing.error">
                   <span class="mono ng-binding"> {{phishing.msg}} </span>
-                </p>
-                <p class="ens-response" ng-show="addressDrtv.showDerivedAddress">
-                  <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span>
-                </p>
-                <p class="ens-response" ng-show="addressDrtv.showDerivedAddress">
-                  <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span>
                 </p>
               </div>
               <div class="col-xs-1 address-identicon-container">
@@ -49,14 +59,18 @@ var addressFieldDrtv = function($compile, darkList) {
               </div>
             `)
 
+
+
             scope.$watch('addressDrtv.ensAddressField', function() {
               var _ens = new ens();
               if (Validator.isValidAddress(scope.addressDrtv.ensAddressField)) {
 
                 setValue(scope.addressDrtv.ensAddressField);
+                scope.addressDrtv.showDerivedAddress = false;
                 if (!Validator.isChecksumAddress(scope.addressDrtv.ensAddressField)) {
                   scope.notifier.info(globalFuncs.errorMsgs[35]);
                 }
+                checkDarkList(scope.addressDrtv.ensAddressField);
 
               } else if (Validator.isValidENSAddress(scope.addressDrtv.ensAddressField)) {
                 _ens.getAddress(scope.addressDrtv.ensAddressField, function(data) {
@@ -68,6 +82,7 @@ var addressFieldDrtv = function($compile, darkList) {
                   } else {
                     setValue(data.data);
                     scope.addressDrtv.derivedAddress = ethUtil.toChecksumAddress(data.data);
+                    checkDarkList(ethUtil.toChecksumAddress(data.data));
                     scope.addressDrtv.showDerivedAddress = true;
                   }
                 });
@@ -76,16 +91,6 @@ var addressFieldDrtv = function($compile, darkList) {
                 scope.addressDrtv.showDerivedAddress = false;
               }
 
-              for(let i = 0; i < Darklist.length; i++) {
-                if(scope.addressDrtv.ensAddressField.length > 0 && scope.addressDrtv.ensAddressField === Darklist[i].address) {
-                  scope.phishing.msg = Darklist[i].comment !== '' ? `This address has been flagged: ${Darklist[i].comment}` : 'This address has been flagged in our Phishing list. Please make sure you are sending to the right address';
-                  scope.phishing.error = true;
-                  return;
-                } else {
-                  scope.phishing.msg = '';
-                  scope.phishing.error = false;
-                }
-              }
             });
             $compile(element.contents())(scope);
         }
