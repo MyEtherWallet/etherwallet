@@ -19,6 +19,9 @@ var addressFieldDrtv = function($compile, darkList) {
             }
 
             var checkDarkList = function(value) {
+              if(value.length === 0) {
+                console.log("Hello there general Kenobi!");
+              }
               for(let i = 0; i < Darklist.length; i++) {
                 if(value.length > 0 && value === Darklist[i].address) {
                   scope.phishing.msg = Darklist[i].comment !== '' ? `This address has been flagged: ${Darklist[i].comment}` : 'This address has been flagged in our Phishing list. Please make sure you are sending to the right address';
@@ -89,6 +92,8 @@ var addressFieldDrtv = function($compile, darkList) {
               } else {
                 setValue('');
                 scope.addressDrtv.showDerivedAddress = false;
+                scope.phishing.msg = '';
+                scope.phishing.error = false;
               }
 
             });
