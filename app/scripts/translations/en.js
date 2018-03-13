@@ -799,6 +799,8 @@ HELP_SecCX_Desc_6               :  'If we were to encrypt these items, you would
 HELP_SecCX_Title                :  'Security - MyEtherWallet CX',
 HELP_Warning                    :  'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
 
+PHISHING_Warning_1              :  'This address has been flagged: ',
+PHISHING_Warning_2              :  'This address has been flagged in our Phishing list. Please make sure you are sending to the right address'
 };
 
 module.exports = en;

@@ -21,7 +21,7 @@ var addressFieldDrtv = function($compile, darkList) {
             var checkDarkList = function(value) {
               for(let i = 0; i < Darklist.length; i++) {
                 if(value.length > 0 && value === Darklist[i].address) {
-                  scope.phishing.msg = Darklist[i].comment !== '' ? `This address has been flagged: ${Darklist[i].comment}` : 'This address has been flagged in our Phishing list. Please make sure you are sending to the right address';
+                  scope.phishing.msg = Darklist[i].comment !== '' ? `${globalFuncs.phishingWarning[0] + Darklist[i].comment}` : `${globalFuncs.phishingWarning[1]}`;
                   scope.phishing.error = true;
                   return;
                 } else {
