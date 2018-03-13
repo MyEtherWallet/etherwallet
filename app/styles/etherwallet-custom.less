@@ -107,6 +107,32 @@ textarea {
   margin-right: @space-sm;
 }
 
+.transaction-modal{
+
+  tbody{
+    tr{
+      td:nth-child(1){
+        width: 30%;
+      }
+      td:nth-child(2){
+        width: 70%;
+      }
+    }
+  }
+
+  .text-width-limit{
+    display: grid;
+    grid-auto-rows: 1fr;
+    
+    p{
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
 // helpers
 .wrap {
   word-wrap: break-word;
