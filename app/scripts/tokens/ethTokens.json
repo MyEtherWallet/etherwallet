@@ -887,12 +887,6 @@
     "type": "default"
   },
   {
-    "address": "0xEEF6E90034eEa89E31Eb4B8eaCd323F28A92eaE4",
-    "symbol": "DOW",
-    "decimal": 18,
-    "type": "default"
-  },
-  {
     "address": "0x76974c7b79dc8a6a109fd71fd7ceb9e40eff5382",
     "symbol": "DOW",
     "decimal": 18,
