@@ -22,14 +22,40 @@ var addressFieldDrtv = function($compile) {
                 derivedAddress: '',
                 readOnly: false
             }
-            element.html('<div class=\"col-xs-11\">\n \
-                    <label translate=\"' + labelTranslated + '\"></label>\n \
-                    <input class=\"form-control\" type=\"text\" placeholder=\"' + placeholder + '\" ng-model=\"addressDrtv.ensAddressField\" ng-disabled=\"addressDrtv.readOnly\" ng-class=\"Validator.isValidENSorEtherAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
-                    <p class="ens-response" ng-show="addressDrtv.showDerivedAddress"> ↳ <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span> </p>\n \
-                </div>\n \
-                <div class=\"col-xs-1 address-identicon-container\">\n \
-                   <div class=\"addressIdenticon\" title=\"Address Indenticon\" blockie-address=\"{{' + varName + '}}\" watch-var=\"' + varName + '\"></div>\n \
-                </div>');
+
+
+            scope.phishing = {
+              msg: '',
+              error: false
+            }
+
+            scope.checkIfPhishing = (text) => {
+              for(let i = 0; i < Darklist.length; i++) {
+                if(text === Darklist[i].address) {
+                  scope.phishing.msg = Darklist[i].comment !== '' ? Darklist[i].comment : 'This address has been flagged in our Phishing list. Please make sure you are typing the right address';
+                  scope.phishing.error = true;
+                  return;
+                } else {
+                  scope.phishing.msg = '';
+                  scope.phishing.error = false;
+                }
+              }
+            };
+            element.html(`
+              <div class="col-xs-11">
+                <input class="form-control" type="text" placeholder="${placeholder}" ng-model="${scope.addressDrtv.ensAddressField}" ng-disabled="${scope.addressDrtv.readOnly}" ng-change="checkIfPhishing(scope.addressDrtv.ensAddressField)" ng-class="${Validator.isValidENSorEtherAddress(varName) ? "is-valid" : "is-invalid"}"/>
+                <p class="ens-response" ng-show="${scope.addressDrtv.showDerivedAddress}">
+                  <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span>
+                </p>
+                <p class="ens-response" ng-show="${scope.addressDrtv.showDerivedAddress}">
+                  <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span>
+                </p>
+              </div>
+              <div class="col-xs-1 address-identicon-container">
+                <div class="addressIdenticon" title="Address Indenticon" blockie-address=${varName} watch-var=${varName}></div>
+              </div>
+            `)
+
             scope.$watch('addressDrtv.ensAddressField', function() {
                 var _ens = new ens();
                 if (Validator.isValidAddress(scope.addressDrtv.ensAddressField)) {
