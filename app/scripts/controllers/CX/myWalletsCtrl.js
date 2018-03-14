@@ -18,16 +18,33 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
             $scope.nickNames = nicks;
         });
     };
+
+    $scope.addProp = (arr, prop, val) => {
+      return arr.map(item => {
+        item[prop] = val;
+        return item;
+      });
+    }
+
+    $scope.toggleTokens = (wlt) => {
+      wlt.showToken = !wlt.showToken;
+      $scope.$apply;
+    }
+
+
     $scope.setAllWallets = function () {
         cxFuncs.getWalletsArr(function (wlts) {
-            $scope.allWallets = wlts;
-            $scope.updateBalance('allWallets');
-            $scope.setTokens('allWallets');
+          $scope.allWallets = $scope.addProp(wlts, 'showToken', false);
+
+          $scope.updateBalance('allWallets');
+          $scope.setTokens('allWallets');
         });
+
         cxFuncs.getWatchOnlyArr(function (wlts) {
-            $scope.allWatchOnly = wlts;
-            $scope.updateBalance('allWatchOnly');
-            $scope.setTokens('allWatchOnly');
+          $scope.allWatchOnly = $scope.addProp(wlts, 'showToken', false);
+
+          $scope.updateBalance('allWatchOnly');
+          $scope.setTokens('allWatchOnly');
         });
     };
     $scope.$watch('ajaxReq.key', function () {
@@ -60,6 +77,7 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
             $scope.setBalance($scope[varWal][i].addr, i, varWal);
         }
     };
+
     $scope.setBalance = function (address, id, varWal) {
         ajaxReq.getBalance(address, function (data) {
             if (data.error) {
@@ -71,8 +89,8 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
                 $scope[varWal][id].eur = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.eur);
                 $scope[varWal][id].btc = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.btc);
 
-                $scope[varWal][id].balance = $scope.wallet.setBalance();
-                $scope[varWal][id].balanceR = $scope.wallet.setTokens();
+                // $scope[varWal][id].balance = $scope.wallet.setBalance();
+                // $scope[varWal][id].balanceR = $scope.wallet.setTokens();
             }
         });
     };
