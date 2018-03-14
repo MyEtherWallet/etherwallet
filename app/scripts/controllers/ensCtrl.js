@@ -78,7 +78,7 @@ var ensCtrl = function($scope, $sce, walletService) {
                 value: $scope.objSub.buy.EthVal,
                 sendMode: 'ether',
                 data: ENS.getSubDomainBuyData($scope.objSub.buy.domain, $scope.objSub.buy.subdomain, $scope.wallet.getAddressString()),
-                readOnly: false
+                readOnly: true
             }
         }
     }
