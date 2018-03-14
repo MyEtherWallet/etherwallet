@@ -39,7 +39,7 @@
         <!-- Only shows the tokens you have more than 0 of -->
         <span class="point"
           ng-repeat="token in twallet.tokens"
-          ng-show="token.balance > 0 && token.balance !== 'loading'"
+          ng-show="token.balance > 0"
           ng-dblclick="showLongToken=!showLongToken"
           title="{{token.getBalance()}} (Double-Click)">
             <strong ng-show="!showLongToken">
