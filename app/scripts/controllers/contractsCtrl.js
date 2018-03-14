@@ -58,8 +58,8 @@ var contractsCtrl = function($scope, $sce, walletService) {
     $scope.$watch('contract.address', function(newValue, oldValue) {
         if ($scope.Validator.isValidAddress($scope.contract.address)) {
             for (var i in ajaxReq.abiList) {
-                if (ajaxReq.abiList[i].address.toLowerCase() === $scope.contract.address.toLowerCase()) {
-                    $scope.contract.abi = JSON.stringify(ajaxReq.abiList[i].abi);
+                if (ajaxReq.abiList[i].address.toLowerCase() == $scope.contract.address.toLowerCase()) {
+                    $scope.contract.abi = ajaxReq.abiList[i].abi;
                     break;
                 }
             }
