@@ -497,12 +497,6 @@
     "type": "default"
   },
   {
-    "address": "0x2108E62D335Bbdc89eC3E9d8582F18DCFB0cDFf4",
-    "symbol": "CARCO",
-    "decimal": 8,
-    "type": "default"
-  },
-  {
     "address": "0xe8780B48bdb05F928697A5e8155f672ED91462F7",
     "symbol": "CAS",
     "decimal": 18,
@@ -2361,18 +2355,6 @@
   {
     "address": "0x54b293226000ccBFC04DF902eEC567CB4C35a903",
     "symbol": "RTN",
-    "decimal": 18,
-    "type": "default"
-  },
-  {
-    "address": "0x41f615e24fabd2b097a320e9e6c1f448cb40521c",
-    "symbol": "RVL",
-    "decimal": 18,
-    "type": "default"
-  },
-  {
-    "address": "0x3d1ba9be9f66b8ee101911bc36d3fb562eac2244",
-    "symbol": "RVT",
     "decimal": 18,
     "type": "default"
   },
