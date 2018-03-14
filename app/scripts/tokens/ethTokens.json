@@ -2250,12 +2250,12 @@
     "decimal": 18,
     "type": "default"
   },
-  {
-    "address": "0x2a3Aa9ECA41E720Ed46B5A70D6C37EfA47f768Ac",
-    "symbol": "RCT",
-    "decimal": 18,
-    "type": "default"
-  },
+	{
+		"address": "0x3d1ba9be9f66b8ee101911bc36d3fb562eac2244",
+		"symbol": "RVT",
+		"decimal": 18,
+		"type": "default"
+	},
   {
     "address": "0x255aa6df07540cb5d3d297f0d0d4d84cb52bc8e6",
     "symbol": "RDN",
