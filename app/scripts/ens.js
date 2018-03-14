@@ -306,20 +306,24 @@ ens.prototype.getValidDomains = async function(subdomain) {
         }
     })
 }
-ens.prototype.getSubDomainBuyData = function (domain, subdomain, sender) {
+ens.prototype.getSubDomainBuyData = function(domain, subdomain, sender) {
     var _this = this;
     subdomain = ens.normalise(subdomain);
     var funcABI = _this.subDomainABI.register;
-    var dataString = _this.getDataString(funcABI, [_this.getSHA3(domain), subdomain, sender, globalFuncs.donateAddress, _this.curRegistry.public.resolver]);
+    var dataString = ""
+    if (domain.version == "0.9")
+        dataString = _this.getDataString(funcABI, [_this.getSHA3(domain.name), subdomain, sender, _this.curRegistry.public.resolver, globalFuncs.donateAddress]);
+    else
+        dataString = _this.getDataString(funcABI, [_this.getSHA3(domain.name), subdomain, sender, globalFuncs.donateAddress, _this.curRegistry.public.resolver]);
     return dataString;
 }
 ens.prototype.checkDomain = async function(domain, subdomain) {
     var _this = this
     var funcABI = _this.subDomainABI.query;
-    var dataString = _this.getDataString(funcABI, [_this.getSHA3(domain), subdomain]);
+    var dataString = _this.getDataString(funcABI, [_this.getSHA3(domain.name), subdomain]);
     return new Promise((resolve, reject) => {
         ajaxReq.getEthCall({
-            to: _this.curRegistry.public.subDomain.contract,
+            to: domain.registrar,
             data: dataString
         }, function(data) {
             if (data.error) reject(data);

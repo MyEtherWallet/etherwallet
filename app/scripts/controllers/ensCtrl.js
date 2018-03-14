@@ -74,11 +74,11 @@ var ensCtrl = function($scope, $sce, walletService) {
     var setSubDomainTx = function() {
         if ($scope.wallet != null) {
             $scope.parentTxConfig = {
-                to: ENS.curRegistry.public.subDomain.contract,
+                to: $scope.objSub.buy.registrar,
                 value: $scope.objSub.buy.EthVal,
                 sendMode: 'ether',
                 data: ENS.getSubDomainBuyData($scope.objSub.buy.domain, $scope.objSub.buy.subdomain, $scope.wallet.getAddressString()),
-                readOnly: true
+                readOnly: false
             }
         }
     }
@@ -145,9 +145,10 @@ var ensCtrl = function($scope, $sce, walletService) {
                         available: name.data[0] != "",
                         EthVal: etherUnits.toEther(name.data[1].toString(), 'wei'),
                         weiBN: name.data[1],
-                        fullName: $scope.objSub.name + "." + name.domain + "." + tld,
-                        domain: name.data[0],
-                        subdomain: $scope.objSub.name
+                        fullName: $scope.objSub.name + "." + name.domain.name + "." + tld,
+                        domain: name.domain,
+                        subdomain: $scope.objSub.name,
+                        registrar: name.domain.registrar
                     })
                 })
                 $scope.objSub.showNames = true;
