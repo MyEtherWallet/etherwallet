@@ -23,7 +23,7 @@
         </span>
       </td>
 
-      <td width="350" class="chrome-tokens">
+      <td width="400" class="chrome-tokens">
         <h3 class="text-success point"
             ng-show="!showLongBal"
             ng-dblclick="showLongBal=!showLongBal"
@@ -37,7 +37,7 @@
         </h3>
 
         <!-- Only shows the tokens you have more than 0 of -->
-        <span class="point"
+        <span class="point truncate"
           ng-repeat="token in twallet.tokens"
           ng-show="token.balance > 0"
           ng-if="!twallet.showToken"
@@ -63,7 +63,7 @@
 
         <!-- Contains all other tokens you can show -->
         <div ng-if="twallet.showToken" class="walletTokensContainer">
-          <span class="point"
+          <span class="point truncate"
             ng-repeat="token in twallet.tokens"
             ng-show="token.balance !== 0 && token.balance !== 'loading'"
             ng-dblclick="showLongToken=!showLongToken"
@@ -117,7 +117,7 @@
           </span>
 
         </td>
-        <td width="350" class="chrome-tokens">
+        <td width="400" class="chrome-tokens">
 
           <h3 class="text-success point"
               ng-show="!showLongBal"
@@ -133,7 +133,7 @@
           </h3>
 
           <!-- Only shows the tokens you have more than 0 of -->
-          <span class="point"
+          <span class="point truncate"
             ng-repeat="token in twallet.tokens"
             ng-show="token.balance > 0"
             ng-if="!twallet.showToken"
@@ -159,7 +159,7 @@
 
           <!-- Contains all other tokens you can show -->
           <div ng-if="twallet.showToken" class="walletTokensContainer">
-            <span class="point"
+            <span class="point truncate"
               ng-repeat="token in twallet.tokens"
               ng-show="token.balance !== 0 && token.balance !== 'loading'"
               ng-dblclick="showLongToken=!showLongToken"
