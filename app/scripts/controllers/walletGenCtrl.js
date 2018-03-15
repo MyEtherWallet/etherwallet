@@ -1,5 +1,6 @@
 'use strict';
 var walletGenCtrl = function($scope) {
+    $scope.appleMobileModal = document.getElementById('appleMobileModal') ? new Modal(document.getElementById('appleMobileModal')) : null
     $scope.password = "";
     $scope.wallet = null;
     $scope.showWallet = false;
@@ -49,6 +50,29 @@ var walletGenCtrl = function($scope) {
         $scope.showPaperWallet = false;
         $scope.wallet = null;
         $scope.showGetAddress = true;
+    }
+
+    $scope.closeModal = function() {
+      globalFuncs.localStorage.setItem('awareAppleMopbile', 1);
+      $scope.appleMobileModal.close();
+    }
+
+    if(globalFuncs.localStorage.getItem('awareAppleMopbile') === null) {
+      $scope.appleMobileModal.open();
+    }
+
+    $scope.isMobileApple = function() {
+
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        if (!!window.indexedDB || !!window.SpeechSynthesisUtterance || !!window.webkitAudioContext ||
+          !!window.matchMedia || (!!window.history && 'pushState' in window.history)) {
+            return true;
+          }
+
+        return true;
+      } else {
+        return false;
+      }
     }
 };
 module.exports = walletGenCtrl;

@@ -801,7 +801,11 @@ HELP_SecCX_Title                :  'Security - MyEtherWallet CX',
 HELP_Warning                    :  'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
 
 PHISHING_Warning_1              :  'This address has been flagged: ',
-PHISHING_Warning_2              :  'This address has been flagged in our Phishing list. Please make sure you are sending to the right address'
+PHISHING_Warning_2              :  'This address has been flagged in our Phishing list. Please make sure you are sending to the right address',
+APPLE_Mob_Notice_Head           :  "It seems like you're using an IPhone or an IPad.",
+APPLE_Mob_Notice_Body_1         :  "Just letting you know that generating wallets isn't supported in these devices because of Apple's storage restrictions.",
+APPLE_Mob_Notice_Body_2         :  'Please use the actual website on a laptop or computer.',
+APPLE_Mob_Notice_Understand     :  'I will heed this warning.'
 };
 
 module.exports = en;
