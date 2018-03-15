@@ -20,7 +20,7 @@ var addressFieldDrtv = function($compile, darkList) {
 
             var checkDarkList = function(value) {
               for(let i = 0; i < Darklist.length; i++) {
-                if(value.length > 0 && value === Darklist[i].address) {
+                if(value.length > 0 && value.toLowerCase() === Darklist[i].address.toLowerCase()) {
                   scope.phishing.msg = Darklist[i].comment !== '' ? `${globalFuncs.phishingWarning[0] + Darklist[i].comment}` : `${globalFuncs.phishingWarning[1]}`;
                   scope.phishing.error = true;
                   return;

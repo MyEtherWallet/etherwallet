@@ -38,7 +38,7 @@ var quickSendCtrl = function($scope, $sce, darkList) {
 	$scope.validateAddress = function() {
 		if (ethFuncs.validateEtherAddress($scope.tx.to)) {
 			for(let i = 0; i < Darklist.length; i++) {
-				if($scope.tx.to.length > 0 && $scope.tx.to === Darklist[i].address) {
+				if($scope.tx.to.length > 0 && $scope.tx.to.toLowerCase() === Darklist[i].address.toLowerCase()) {
 					$scope.validateAddressStatus = Darklist[i].comment !== ""? $sce.trustAsHtml(globalFuncs.getDangerText(`${globalFuncs.phishingWarning[0] + Darklist[i].comment}`)) : $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.phishingWarning[1]));
 					return;
 				} else {

@@ -23,7 +23,7 @@
         </span>
       </td>
 
-      <td width="300" class="chrome-tokens">
+      <td width="350" class="chrome-tokens">
         <h3 class="text-success point"
             ng-show="!showLongBal"
             ng-dblclick="showLongBal=!showLongBal"
@@ -103,11 +103,11 @@
     </h1>
     <table class="table table-striped" id="tblWatchOnlyMain">
       <tr ng-repeat="twallet in allWatchOnly track by $index">
-        <td>
+        <td width="10">
           <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet">
         </div>
       </td>
-        <td>
+        <td width="10">
           <h2>
             {{twallet.nick}}
           </h2>
@@ -116,7 +116,7 @@
           </span>
 
         </td>
-        <td class="chrome-tokens">
+        <td width="350" class="chrome-tokens">
 
           <h3 class="text-success point"
               ng-show="!showLongBal"
@@ -131,22 +131,49 @@
                 {{twallet.balance }} ETH
           </h3>
 
+          <!-- Only shows the tokens you have more than 0 of -->
           <span class="point"
-                ng-repeat="token in twallet.tokens"
-                ng-show="token.balance!=0 && token.balance!='loading'"
-                ng-dblclick="showLongToken=!showLongToken"
-                title="{{token.getBalance()}} (Double-Click)">
-                  <strong ng-show="!showLongToken">
-                    {{token.getBalance()|number}}
-                  </strong>
-                  <strong ng-show="showLongToken">
-                    {{token.getBalance()}}
-                  </strong>
-                  &nbsp;{{token.getSymbol()}} &nbsp;&nbsp;
+            ng-repeat="token in twallet.tokens"
+            ng-show="token.balance > 0"
+            ng-dblclick="showLongToken=!showLongToken"
+            title="{{token.getBalance()}} (Double-Click)">
+              <strong ng-show="!showLongToken">
+                {{token.getBalance()|number}}
+              </strong>
+              <strong ng-show="showLongToken">
+                {{token.getBalance()}}
+              </strong>
+              {{token.getSymbol()}} &nbsp;&nbsp;
           </span>
+
+          <div class="toggleTokenContainer">
+            <span ng-click="toggleTokens(twallet)" ng-show="!twallet.showToken">
+              Show tokens
+            </span>
+            <span ng-click="toggleTokens(twallet)" ng-hide="!twallet.showToken">
+              Hide tokens
+            </span>
+          </div>
+
+          <!-- Contains all other tokens you can show -->
+          <div ng-if="twallet.showToken" class="walletTokensContainer">
+            <span class="point"
+              ng-repeat="token in twallet.tokens"
+              ng-show="token.balance !== 0 && token.balance !== 'loading'"
+              ng-dblclick="showLongToken=!showLongToken"
+              title="{{token.getBalance()}} (Double-Click)">
+                <strong ng-show="!showLongToken">
+                  {{token.getBalance()|number}}
+                </strong>
+                <strong ng-show="showLongToken">
+                  {{token.getBalance()}}
+                </strong>
+                {{token.getSymbol()}} &nbsp;&nbsp;
+            </span>
+          </div>
         </td>
 
-        <td class="text-center">
+        <td width="100" class="text-center">
           <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')">
             <img src="images/icon-remove-red.svg" title="Remove" />
          </a>
