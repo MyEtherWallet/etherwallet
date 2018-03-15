@@ -40,6 +40,7 @@
         <span class="point"
           ng-repeat="token in twallet.tokens"
           ng-show="token.balance > 0"
+          ng-if="!twallet.showToken"
           ng-dblclick="showLongToken=!showLongToken"
           title="{{token.getBalance()}} (Double-Click)">
             <strong ng-show="!showLongToken">
@@ -53,10 +54,10 @@
 
         <div class="toggleTokenContainer">
           <span ng-click="toggleTokens(twallet)" ng-show="!twallet.showToken">
-            Show tokens
+            Show all tokens
           </span>
           <span ng-click="toggleTokens(twallet)" ng-hide="!twallet.showToken">
-            Hide tokens
+            Hide all tokens
           </span>
         </div>
 
@@ -135,6 +136,7 @@
           <span class="point"
             ng-repeat="token in twallet.tokens"
             ng-show="token.balance > 0"
+            ng-if="!twallet.showToken"
             ng-dblclick="showLongToken=!showLongToken"
             title="{{token.getBalance()}} (Double-Click)">
               <strong ng-show="!showLongToken">
@@ -148,10 +150,10 @@
 
           <div class="toggleTokenContainer">
             <span ng-click="toggleTokens(twallet)" ng-show="!twallet.showToken">
-              Show tokens
+              Show all tokens
             </span>
             <span ng-click="toggleTokens(twallet)" ng-hide="!twallet.showToken">
-              Hide tokens
+              Hide all tokens
             </span>
           </div>
 
