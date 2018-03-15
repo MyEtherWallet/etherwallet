@@ -53,12 +53,8 @@ var walletGenCtrl = function($scope) {
     }
 
     $scope.closeModal = function() {
-      globalFuncs.localStorage.setItem('awareAppleMopbile', 1);
+      globalFuncs.localStorage.setItem('awareAppleMobile', 1);
       $scope.appleMobileModal.close();
-    }
-
-    if(globalFuncs.localStorage.getItem('awareAppleMopbile') === null) {
-      $scope.appleMobileModal.open();
     }
 
     $scope.isMobileApple = function() {
@@ -73,6 +69,10 @@ var walletGenCtrl = function($scope) {
       } else {
         return false;
       }
+    }
+
+    if(globalFuncs.localStorage.getItem('awareAppleMobile') === null && $scope.isMobileApple()) {
+      $scope.appleMobileModal.open();
     }
 };
 module.exports = walletGenCtrl;
