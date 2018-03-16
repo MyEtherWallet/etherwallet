@@ -1,3 +1,178 @@
+.text-ellipsis{
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.block-title1{
+  color: white;
+  background-color: #007CC0;
+  padding: 10px 20px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.block-title2{
+  color: white;
+  background-color: #3E4B5A;
+  padding: 10px 20px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+
+.mywallet-container{
+
+  padding-bottom: 50px;
+  border-bottom: 2px solid black;
+
+
+  /* width */
+  ::-webkit-scrollbar {
+      width: 7px;
+
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: #D7D7D7;
+      
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: #3E4B5A;
+      border-radius: 12px;
+  }
+
+
+
+
+  p{
+    margin: 0;
+  }
+
+  h3{
+    margin: 0;
+    font-weight: 900;
+  }
+
+  .addressIdenticon{
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .grid-bg{
+    background-color: #F5F5F5;
+  }
+
+  .grid-frame{
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    grid-gap: 20px;
+
+    .data:last-child{
+      margin: 0;
+    }
+
+    .data{
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      grid-gap: 4px;
+      margin-bottom: 20px;
+
+      .wallet{
+        
+        .content{
+          padding: 40px 30px;
+          &>div{
+            display: inline-block;
+            vertical-align: top;
+          }
+
+          .balance{
+            padding: 0 20px;
+
+            .balance-amount{
+              font-size: 40px;
+              font-weight: 900;
+              color: #00C599;
+              margin-bottom: 30px;
+
+            }
+
+            .copy-block{
+              margin-top: 5px;
+              //margin-bottom: 25px;
+              p{
+                background-color: white;
+                padding-left: 20px;
+                font-weight: 500;
+
+                span{
+                  background-color: #B3B3B4;
+                  color: white;
+                  display: inline-block;
+                  padding: 15px 30px;
+                  margin-left: 70px;
+                }
+              }
+            }
+
+
+          }
+        }
+
+
+      }
+
+      .tokens{
+
+        .content{
+          height: 300px;
+          overflow-y: scroll;
+          position: relative;
+
+          &>div{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 10px 20px;
+            border-bottom: 1px solid #EDEDED;
+            p{
+              font-size: 15px;
+              font-weight: 500;
+              .text-ellipsis;
+            }
+          }
+
+          .col-title{
+            background-color: white;
+
+            p{
+              font-weight: 900;
+            }
+          }
+
+        }
+
+
+
+      }
+    }
+
+    .sidebar{
+
+    }
+  }
+
+
+}
+
+
+
+
+
 #etherWalletPopUp {
   padding: 10px;
   position: relative;
