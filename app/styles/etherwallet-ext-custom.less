@@ -131,13 +131,13 @@
 
         .content{
           height: 300px;
-          overflow-y: scroll;
+          overflow-y: auto;
           position: relative;
 
           &>div{
             display: grid;
             grid-template-columns: 1fr 1fr;
-            padding: 10px 20px;
+            padding: 15px 20px;
             border-bottom: 1px solid #EDEDED;
             p{
               font-size: 15px;
@@ -153,16 +153,101 @@
               font-weight: 900;
             }
           }
-
         }
-
-
-
       }
     }
 
     .sidebar{
+      
+      .title-container{
+        display: flex;
+        color: white;
+        background-color: #3E4B5A;
+        padding: 10px 20px;
+        
+        .title{
+          display: inline-block;
+          font-weight: 900;
+          font-size: 20px;
 
+        }
+
+        .total-of{
+          display: inline-block;
+          margin-left: auto;
+          font-size: 13px;
+          margin-top: 10px;
+        }
+
+      }
+
+      .content{
+        
+        overflow-y: auto;
+        position: relative;
+
+        &>div{
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          padding: 15px 20px;
+          border-bottom: 1px solid #EDEDED;
+          p{
+            font-size: 15px;
+            font-weight: 500;
+            .text-ellipsis;
+          }
+
+          .add-button{
+
+            position: relative;
+
+            p{
+              cursor: pointer;
+              width: 90px;
+              position: absolute;
+              padding: 7px 0px;
+              border: 1px solid blue;            
+              font-size: 12px;
+              color: blue;
+              text-align: center;
+              top: -6px;
+              left: 0px;
+            }
+          }
+
+
+
+          .remove-button{
+
+            position: relative;
+
+            p{
+              cursor: pointer;
+              width: 90px;
+              position: absolute;
+              padding: 7px 0px;
+              border: 1px solid red;            
+              font-size: 12px;
+              color: red;
+              text-align: center;
+              top: -6px;
+              left: 0px;
+            }
+          }
+
+
+        }
+
+        .col-title{
+          background-color: white;
+
+          p{
+            font-weight: 900;
+          }
+        }
+
+      }
+      
     }
   }
 
