@@ -10,9 +10,18 @@ var walletGenCtrl = function($scope) {
     $scope.fileDownloaded = false;
     $scope.showPaperWallet = false;
     $scope.showGetAddress = false;
+    $scope.isMobileApple = function() {
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        return true;
+      } else {
+        return false;
+      }
+    }
     $scope.genNewWallet = function() {
         if (!$scope.isStrongPass()) {
             $scope.notifier.danger(globalFuncs.errorMsgs[1]);
+        } else if ($scope.isMobileApple()) {
+          $scope.appleMobileModal.open();
         } else if ($scope.isDone) {
             $scope.wallet = $scope.blob = $scope.blobEnc = null;
             if (!$scope.$$phase) $scope.$apply();
@@ -53,26 +62,7 @@ var walletGenCtrl = function($scope) {
     }
 
     $scope.closeModal = function() {
-      globalFuncs.localStorage.setItem('awareAppleMobile', 1);
       $scope.appleMobileModal.close();
-    }
-
-    $scope.isMobileApple = function() {
-
-      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-        if (!!window.indexedDB || !!window.SpeechSynthesisUtterance || !!window.webkitAudioContext ||
-          !!window.matchMedia || (!!window.history && 'pushState' in window.history)) {
-            return true;
-          }
-
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    if(globalFuncs.localStorage.getItem('awareAppleMobile') === null && $scope.isMobileApple()) {
-      $scope.appleMobileModal.open();
     }
 };
 module.exports = walletGenCtrl;

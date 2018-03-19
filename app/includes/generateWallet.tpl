@@ -21,7 +21,6 @@
              ng-model="password"
              ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"
              aria-label="{{'GEN_Label_1' | translate}}"
-             ng-disabled="isMobileApple()"
              />
         <span tabindex="0"
               aria-label="make password visible"
@@ -33,8 +32,7 @@
       <a tabindex="0"
          role="button"
          class="btn btn-primary"
-         ng-click="isMobileApple() === true || genNewWallet()"
-         ng-disabled="isMobileApple()"
+         ng-click="genNewWallet()"
          translate="NAV_GenerateWallet">
            Generate Wallet
       </a>
