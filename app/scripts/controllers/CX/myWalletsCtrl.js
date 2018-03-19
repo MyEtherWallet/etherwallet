@@ -3,6 +3,12 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
     $scope.editModal = new Modal(document.getElementById('editWallet'));
     $scope.viewModal = new Modal(document.getElementById('viewWalletDetails'));
     $scope.removeModal = new Modal(document.getElementById('removeWallet'));
+    $scope.tokens = Token.popTokens;
+    $scope.currentPagination = 25;
+    $scope.currentIndex = 0;
+    $scope.tokensShown = $scope.tokens.slice($scope.currentIndex, $scope.currentPagination);
+    $scope.sideBarTokens = document.getElementById('sideBarTokens');
+
     $scope.allWallets = [];
     $scope.allWatchOnly = [];
     $scope.nickNames = [];
@@ -19,34 +25,91 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
         });
     };
 
-    $scope.addProp = (arr, prop, val) => {
-      return arr.map(item => {
-        item[prop] = val;
-        return item;
+    $scope.getLocalTokens = function() {
+      cxFuncs.getLocalTokens(function(tokens) {
+        if(tokens['localTokens'] === undefined) {
+          cxFuncs.setLocalTokens()
+          $scope.localTokens = [];
+        } else {
+          $scope.localTokens = tokens['localTokens']
+        }
+      });
+    };
+
+    angular.element($scope.sideBarTokens).bind('scroll', function(e) {
+      if(e.target.scrollTop === (e.target.scrollHeight - e.target.offsetHeight)) {
+        $scope.nextPage(25);
+        $scope.$apply();
+      }
+    });
+
+    $scope.nextPage = (currentIndex) => {
+      $scope.currentIndex += currentIndex;
+      $scope.currentPagination += currentIndex;
+      $scope.tokens.slice($scope.currentIndex, $scope.currentPagination).forEach((item) => {
+        $scope.tokensShown.push(item);
       });
     }
 
-    $scope.toggleTokens = (wlt) => {
-      wlt.showToken = !wlt.showToken;
-      $scope.$apply;
+    $scope.checkIfExists = (arr) => {
+      return typeof arr === 'object';
     }
 
+    $scope.checkIfAdded = (token) => {
+      if($scope.localTokens && $scope.localTokens.length === 0) {
+        return false;
+      } else if($scope.localTokens && $scope.localTokens.length > 0) {
+        for(let i = 0; i <= $scope.localTokens.length; i++) {
+          if($scope.localTokens.find(function(item) { return item.address === token.address}) === undefined) {
+            return false;
+          } else {
+            return true;
+          }
+        }
+      }
+    }
+
+    $scope.addTokenToLocal = (token) => {
+      if($scope.localTokens.length === 0) {
+        $scope.localTokens.push(token);
+      } else {
+        if(!!$scope.localTokens.find(function(item) { return item.address === token.address}) === false) {
+          $scope.localTokens.push(token);
+        }
+      }
+
+      chrome.storage.sync.set({localTokens: $scope.localTokens});
+      $scope.setTokens('allWallets');
+      $scope.setTokens('allWatchOnly');
+    }
+
+    $scope.removeTokenLocal = (token) => {
+      let tokenToRemove = $scope.localTokens.findIndex((locTk) => {
+        return locTk.address.toLowerCase() === token.address.toLowerCase() && locTk.symbol === token.symbol
+      });
+
+      $scope.localTokens.splice(tokenToRemove, 1);
+      chrome.storage.sync.set({localTokens: $scope.localTokens});
+      $scope.setTokens('allWallets');
+      $scope.setTokens('allWatchOnly');
+    }
 
     $scope.setAllWallets = function () {
         cxFuncs.getWalletsArr(function (wlts) {
-          $scope.allWallets = $scope.addProp(wlts, 'showToken', false);
+          $scope.allWallets = wlts;
 
           $scope.updateBalance('allWallets');
           $scope.setTokens('allWallets');
         });
 
         cxFuncs.getWatchOnlyArr(function (wlts) {
-          $scope.allWatchOnly = $scope.addProp(wlts, 'showToken', false);
+          $scope.allWatchOnly = wlts;
 
           $scope.updateBalance('allWatchOnly');
           $scope.setTokens('allWatchOnly');
         });
     };
+
     $scope.$watch('ajaxReq.key', function () {
         if ($scope.allWallets) {
             $scope.updateBalance('allWallets');
@@ -58,19 +121,13 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
         }
     });
     $scope.setTokens = function (varWal) {
-        for (var j = 0; j < $scope[varWal].length; j++) {
-            $scope.tokens = Token.popTokens;
-            $scope[varWal][j].tokens = [];
-            for (var i = 0; i < $scope.tokens.length; i++) {
-                $scope[varWal][j].tokens.push(new Token($scope.tokens[i].address, $scope[varWal][j].addr, $scope.tokens[i].symbol, $scope.tokens[i].decimal));
-                $scope[varWal][j].tokens[$scope[varWal][j].tokens.length - 1].setBalance();
-            }
-            var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
-            for (var i = 0; i < storedTokens.length; i++) {
-                $scope[varWal][j].tokens.push(new Token(storedTokens[i].contractAddress, $scope[varWal][j].addr, globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
-                $scope[varWal][j].tokens[$scope[varWal][j].tokens.length - 1].setBalance();
-            }
+      for (var j = 0; j < $scope[varWal].length; j++) {
+        $scope[varWal][j].tokens = [];
+        for (var i = 0; i < $scope.localTokens.length; i++) {
+          $scope[varWal][j].tokens.push(new Token($scope.localTokens[i].address, $scope[varWal][j].addr, $scope.localTokens[i].symbol, $scope.localTokens[i].decimal));
+          $scope[varWal][j].tokens[$scope[varWal][j].tokens.length - 1].setBalance();
         }
+      }
     };
     $scope.updateBalance = function (varWal) {
         for (var i = 0; i < $scope[varWal].length; i++) {
@@ -88,9 +145,6 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
                 $scope[varWal][id].usd = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.usd);
                 $scope[varWal][id].eur = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.eur);
                 $scope[varWal][id].btc = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.btc);
-
-                // $scope[varWal][id].balance = $scope.wallet.setBalance();
-                // $scope[varWal][id].balanceR = $scope.wallet.setTokens();
             }
         });
     };
@@ -176,5 +230,6 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
         $scope.setAllWallets();
     });
     $scope.setNickNames();
+    $scope.getLocalTokens();
 };
 module.exports = myWalletsCtrl;
