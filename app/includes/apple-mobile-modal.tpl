@@ -11,13 +11,13 @@
           Just letting you know that generating wallets isn't supported in these devices because of Apple's storage restrictions.
         </p>
         <p translate="APPLE_Mob_Notice_Body_2">
-          Please use the actual website on a laptop or computer.
+          Please use the website on a laptop or computer.
         </p>
       </div>
 
       <div class="modal-footer">
         <button class="btn btn-primary col-xs-12" ng-click="closeModal()" translate="APPLE_Mob_Notice_Understand">
-          I will heed this warning.
+          I understand.
         </button>
       </div>
     </section>

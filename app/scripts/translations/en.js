@@ -805,7 +805,7 @@ PHISHING_Warning_2              :  'This address has been flagged in our Phishin
 APPLE_Mob_Notice_Head           :  "It seems like you're using an IPhone or an IPad.",
 APPLE_Mob_Notice_Body_1         :  "Just letting you know that generating wallets isn't supported in these devices because of Apple's storage restrictions.",
 APPLE_Mob_Notice_Body_2         :  'Please use the actual website on a laptop or computer.',
-APPLE_Mob_Notice_Understand     :  'I will heed this warning.'
+APPLE_Mob_Notice_Understand     :  'I understand.'
 };
 
 module.exports = en;
