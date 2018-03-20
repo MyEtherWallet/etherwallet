@@ -122,7 +122,7 @@ data:       '',
 msg:        'Horizon State Token Sale. Thank you for your support. '
 },{
 // DataBrokerDAO
-to:         '0x8aec8f09a840faea966f4b0e29a497d8f5b5a6b4',
+to:         '0x439b54caf661c21e6b231d972d7eaa98f199590f',
 gasLimit:   200000,
 data:       '',
 msg:        'DataBrokerDAO. https://databrokerdao.com'
