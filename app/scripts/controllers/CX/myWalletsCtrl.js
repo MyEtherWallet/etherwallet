@@ -36,6 +36,18 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
       });
     };
 
+    $scope.copy = function(addr) {
+      const copyElm = document.createElement("textarea");
+      const body = document.getElementsByTagName('body')[0];
+      copyElm.style.position = 'fixed';
+      copyElm.style.opacity = 0;
+      copyElm.textContent = addr;
+      body.appendChild(copyElm);
+      copyElm.select();
+      document.execCommand('copy');
+      body.removeChild(copyElm);
+    }
+
     angular.element($scope.sideBarTokens).bind('scroll', function(e) {
       if(e.target.scrollTop === (e.target.scrollHeight - e.target.offsetHeight)) {
         $scope.nextPage(25);

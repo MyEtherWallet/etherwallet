@@ -11,7 +11,20 @@
       <!-- Loop begins for each wallets =====================================================-->
       <div class="data" ng-repeat="twallet in allWallets track by $index">
         <div class="wallet grid-bg">
-          <p class="block-title1">{{twallet.nick}}</p>
+          <div class="block-title1" style="display: flex;">
+            <p style="flex: 80;">{{twallet.nick}}</p>
+            <div>
+              <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')">
+                <img src="images/icon-edit.svg" title="Edit" />
+              </a>
+              <a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')">
+                <img src="images/icon-view.svg" title="View" />
+              </a>
+              <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')">
+                <img src="images/icon-remove-red.svg" title="Remove" />
+              </a>
+            </div>
+          </div>
           <div class="content">
             <div>
               <div class="addressIdenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div>
@@ -28,8 +41,7 @@
               </p>
               <h3>Address</h3>
               <div class="copy-block">
-                <p>{{twallet.addr}} <span>Copy it</span></p>
-
+                <p>{{twallet.addr}} <button ng-click="copy(twallet.addr)">Copy it</button></p>
               </div>
             </div>
           </div>
@@ -51,11 +63,17 @@
         </div>
       </div>
       <!-- Loop ends for each wallets =====================================================-->
-
       <h1 translate="MYWAL_WatchOnly">Your Watch-Only Accounts</h1>
       <div class="data" ng-repeat="twallet in allWatchOnly track by $index">
         <div class="wallet grid-bg">
-          <p class="block-title1">{{twallet.nick}}</p>
+          <div class="block-title1" style="display: flex;">
+            <p style="flex: 80;">{{twallet.nick}}</p>
+            <div>
+              <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')">
+                <img src="images/icon-remove-red.svg" title="Remove" />
+              </a>
+            </div>
+          </div>
           <div class="content">
             <div>
               <div class="addressIdenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div>
@@ -72,7 +90,7 @@
               </p>
               <h3>Address</h3>
               <div class="copy-block">
-                <p>{{twallet.addr}} <span>Copy it</span></p>
+                <p>{{twallet.addr}} <button ng-click="copy(twallet.addr)">Copy it</button></p>
 
               </div>
             </div>
@@ -127,14 +145,7 @@
 
 <!-- New Style ============================================================================================ -->
 
-
-
-
-  <!-- Your Wallet Table -->
-  <h1 translate="NAV_YourWallets">
-    Your Wallets
-  </h1>
-  <table class="table table-striped" id="tblwalletsmain">
+  <!-- <table class="table table-striped" id="tblwalletsmain">
     <tr ng-repeat="twallet in allWallets track by $index">
 
       <td width="10">
@@ -164,7 +175,6 @@
               {{twallet.balance }} ETH
         </h3>
 
-        <!-- Only shows the tokens you have more than 0 of -->
         <span class="point truncate"
           ng-repeat="token in twallet.tokens"
           ng-show="token.balance > 0"
@@ -189,7 +199,6 @@
           </span>
         </div>
 
-        <!-- Contains all other tokens you can show -->
         <div ng-if="twallet.showToken" class="walletTokensContainer">
           <span class="point truncate"
             ng-repeat="token in twallet.tokens"
@@ -221,12 +230,9 @@
 
     </tr>
 
-  </table>
-  <!-- / Your Wallet Table -->
+  </table> -->
 
-
-  <!-- Watch Only Account Table -->
-  <section id="secWatchOnlyMain">
+  <!-- <section id="secWatchOnlyMain">
     <h1 translate="MYWAL_WatchOnly">
       Your Watch-Only Accounts
     </h1>
@@ -260,7 +266,6 @@
                 {{twallet.balance }} ETH
           </h3>
 
-          <!-- Only shows the tokens you have more than 0 of -->
           <span class="point truncate"
             ng-repeat="token in twallet.tokens"
             ng-show="token.balance > 0"
@@ -285,7 +290,6 @@
             </span>
           </div>
 
-          <!-- Contains all other tokens you can show -->
           <div ng-if="twallet.showToken" class="walletTokensContainer">
             <span class="point truncate"
               ng-repeat="token in twallet.tokens"
@@ -311,8 +315,7 @@
       </tr>
     </table>
 
-  </section>
-  <!-- / Watch Only Account Table -->
+  </section> -->
 
 
   <!-- View Wallet Section -->
