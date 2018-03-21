@@ -16,6 +16,7 @@ nodes.nodeTypes = {
     POA: "POA",
     TOMO: "TOMO",
     ELLA: "ELLA",
+    ETSC: "ETSC",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -242,6 +243,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'ellaism.org',
         'lib': new nodes.customNode('https://jsonrpc.ellaism.org', '')
+    },
+    'etsc': {
+        'name': 'ETSC',
+        'blockExplorerTX': 'https://explorer.ethereumsocial.kr/#/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.ethereumsocial.kr/#/address/[[address]]',
+        'type': nodes.nodeTypes.ETSC,
+        'eip155': true,
+        'chainId': 214,
+        'tokenList': require('./tokens/etscTokens.json'),
+        'abiList': require('./abiDefinitions/etscAbi.json'),
+        'estimateGas': true,
+        'service': 'gazua.tv',
+        'lib': new nodes.customNode('https://node.ethereumsocial.kr', '')
     }
 };
 

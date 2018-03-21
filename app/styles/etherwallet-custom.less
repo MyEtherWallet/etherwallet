@@ -590,6 +590,7 @@ label small {
 @brand-poa: #4568bb;
 @brand-tomo: #6a488d;
 @brand-ella: #046111;
+@brand-etsc: #673ab7;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -633,6 +634,9 @@ label small {
   li:nth-child(16) {
     border-left: 2px solid @brand-ella;
   }
+  li:nth-child(17) {
+    border-left: 2px solid @brand-etsc;
+  }
   li:last-child {
     border-left: 2px solid @gray-light;
   }
@@ -642,7 +646,8 @@ label small {
   li:nth-child(12),
   li:nth-child(13),
   li:nth-child(14),
-  li:nth-child(15) {
+  li:nth-child(15),
+  li:nth-child(16) {
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -734,4 +739,9 @@ header.ELLA {
   & + .container .alert-info             { background-color:@brand-ella;           }
 }
 
-
+header.ETSC {
+  .nav-container                         { border-top: 0.25rem solid @brand-etsc;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-etsc;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-etsc;      }
+  & + .container .alert-info             { background-color:@brand-etsc;           }
+}
