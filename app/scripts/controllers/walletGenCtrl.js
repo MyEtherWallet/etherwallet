@@ -1,5 +1,6 @@
 'use strict';
 var walletGenCtrl = function($scope) {
+    $scope.appleMobileModal = document.getElementById('appleMobileModal') ? new Modal(document.getElementById('appleMobileModal')) : null
     $scope.password = "";
     $scope.wallet = null;
     $scope.showWallet = false;
@@ -9,9 +10,18 @@ var walletGenCtrl = function($scope) {
     $scope.fileDownloaded = false;
     $scope.showPaperWallet = false;
     $scope.showGetAddress = false;
+    $scope.isMobileApple = function() {
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        return true;
+      } else {
+        return false;
+      }
+    }
     $scope.genNewWallet = function() {
         if (!$scope.isStrongPass()) {
             $scope.notifier.danger(globalFuncs.errorMsgs[1]);
+        } else if ($scope.isMobileApple()) {
+          $scope.appleMobileModal.open();
         } else if ($scope.isDone) {
             $scope.wallet = $scope.blob = $scope.blobEnc = null;
             if (!$scope.$$phase) $scope.$apply();
@@ -49,6 +59,10 @@ var walletGenCtrl = function($scope) {
         $scope.showPaperWallet = false;
         $scope.wallet = null;
         $scope.showGetAddress = true;
+    }
+
+    $scope.closeModal = function() {
+      $scope.appleMobileModal.close();
     }
 };
 module.exports = walletGenCtrl;
