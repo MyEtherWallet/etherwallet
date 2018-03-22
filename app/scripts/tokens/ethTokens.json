@@ -1164,9 +1164,9 @@
     "type": "default"
   },
   {
-		"address": "0x5976F7dac1525eF3277836043bA474a35E6B4272",
+		"address": "0x04cC783b450b8D11F3C7d00DD03fDF7FB51fE9F2",
 		"symbol": "FLMC",
-		"decimal": 0,
+		"decimal": 18,
     "type": "default"
 	},
   {
