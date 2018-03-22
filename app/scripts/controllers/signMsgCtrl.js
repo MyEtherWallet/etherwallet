@@ -102,7 +102,32 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                 var app = new DigitalBitboxEth($scope.wallet.getHWTransport(), '');
                 app.signMessage($scope.wallet.getPath(), msg, localCallback);
 
-                // Sign via trezor
+            // Sign via Secalot
+            } else if ((typeof hwType != "undefined") && (hwType == "secalot")) {
+
+                var localCallback = function(signed, error) {
+                    if (typeof error != "undefined") {
+                        error = error.errorCode ? u2f.getErrorByCode(error.errorCode) : error;
+                        $scope.notifier.danger(error);
+                        return;
+                    }
+                    var combined    = signed['r'] + signed['s'] + signed['v']
+                    var combinedHex = combined.toString('hex')
+                    var signingAddr = $scope.wallet.getAddressString()
+                    $scope.signMsg.signedMsg = JSON.stringify({
+                        address: $scope.wallet.getAddressString(),
+                        msg: thisMessage,
+                        sig: '0x' + combinedHex,
+                        version: '3',
+                        signer: 'secalot'
+                    }, null, 2)
+                    $scope.notifier.success('Successfully Signed Message with ' + signingAddr);
+                }
+                $scope.notifier.info("Tap a touch button on your device to confirm signing.");
+                var app = new SecalotEth($scope.wallet.getHWTransport());
+                app.signMessage($scope.wallet.getPath(), thisMessage, localCallback);
+                
+            // Sign via trezor
             } else if ((typeof hwType != "undefined") && (hwType == "trezor")) {
                 TrezorConnect.ethereumSignMessage($scope.wallet.getPath(), thisMessage, function(response) {
                     if (response.success) {

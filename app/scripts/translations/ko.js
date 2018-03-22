@@ -366,6 +366,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'MyEtherWallet을 보안 연결(SSL)로 다시 연결해주세요. ',
 ADD_DigitalBitbox_0b        : 'MyEtherWallet을 [Chrome](https://www.google.com/chrome/browser/desktop/) 또는 [Opera](https://www.opera.com/) 브라우저로 다시 열어주세요. ',
 ADD_DigitalBitbox_scan      : 'Digital Bitbox 에 연결하기 ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 /* Add Wallet */
 ADD_Label_1                 : '어떤 걸 진행하시겠습니까? ',
