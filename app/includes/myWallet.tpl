@@ -15,13 +15,13 @@
             <p style="flex: 80;">{{twallet.nick}}</p>
             <div>
               <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')">
-                <img src="images/icon-edit.svg" title="Edit" />
+                <img class="editor-icons" src="images/icon-edit-white.png" title="Edit" />
               </a>
               <a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')">
-                <img src="images/icon-view.svg" title="View" />
+                <img class="editor-icons" src="images/icon-view-white.png" title="View" />
               </a>
               <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')">
-                <img src="images/icon-remove-red.svg" title="Remove" />
+                <img class="editor-icons" src="images/icon-remove-red-white.png" title="Remove" />
               </a>
             </div>
           </div>
@@ -30,30 +30,38 @@
               <div class="addressIdenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div>
             </div>
             <div class="balance">
-              <h3>Balance</h3>
-              <p class="balance-amount" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)">
-                {{twallet.balance|number}} ETH
-              </p>
-              <p class="balance-amount"
-                  ng-show="showLongBal"
-                  ng-dblclick="showLongBal=!showLongBal">
-                    {{twallet.balance }} ETH
-              </p>
-              <h3>Address</h3>
-              <div class="copy-block">
-                <p>{{twallet.addr}} <button ng-click="copy(twallet.addr)">Copy it</button></p>
+              
+              <div class="balance-block">
+                <h3 class="block-title">Balance</h3>
+                <p class="balance-amount" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)">
+                  {{twallet.balance|number}} ETH
+                </p>
+                <p class="balance-amount"
+                    ng-show="showLongBal"
+                    ng-dblclick="showLongBal=!showLongBal">
+                      {{twallet.balance }} ETH
+                </p>
               </div>
+              
+              <div class="address-block">
+                <h3 class="block-title">Address</h3>
+                <div class="copy-block">
+                  <p>{{twallet.addr}} <button ng-click="copy(twallet.addr)">Copy it</button></p>
+                </div>
+              </div>
+
+
             </div>
           </div>
         </div>
         <div class="tokens grid-bg">
           <p class="block-title1">Selected tokens</p>
-          <div class="content">
-            <div class="col-title">
+          <div class="col-title">
               <p>Token Name</p>
               <p>Token Value</p>
-            </div>
-
+          </div>
+          
+          <div class="content">
             <!-- Tokens to be added here -->
             <div ng-repeat="token in twallet.tokens">
               <p>{{ token.symbol }}</p>
@@ -70,7 +78,7 @@
             <p style="flex: 80;">{{twallet.nick}}</p>
             <div>
               <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')">
-                <img src="images/icon-remove-red.svg" title="Remove" />
+                <img class="editor-icons" src="images/icon-remove-red-white.png" title="Remove" />
               </a>
             </div>
           </div>
@@ -79,30 +87,37 @@
               <div class="addressIdenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div>
             </div>
             <div class="balance">
-              <h3>Balance</h3>
-              <p class="balance-amount" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)">
-                {{twallet.balance|number}} ETH
-              </p>
-              <p class="balance-amount"
-                  ng-show="showLongBal"
-                  ng-dblclick="showLongBal=!showLongBal">
-                    {{twallet.balance }} ETH
-              </p>
-              <h3>Address</h3>
-              <div class="copy-block">
-                <p>{{twallet.addr}} <button ng-click="copy(twallet.addr)">Copy it</button></p>
-
+              <div class="balance-block">
+                <h3 class="block-title">Balance</h3>
+                <p class="balance-amount" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)">
+                  {{twallet.balance|number}} ETH
+                </p>
+                <p class="balance-amount"
+                    ng-show="showLongBal"
+                    ng-dblclick="showLongBal=!showLongBal">
+                      {{twallet.balance }} ETH
+                </p>
               </div>
+
+              <div class="address-block">
+                <h3 class="block-title">Address</h3>
+                <div class="copy-block">
+                  <p>{{twallet.addr}} <button ng-click="copy(twallet.addr)">Copy it</button></p>
+
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
         <div class="tokens grid-bg">
           <p class="block-title1">Selected tokens</p>
+          <div class="col-title">
+            <p>Token Name</p>
+            <p>Token Value</p>
+          </div>
           <div class="content">
-            <div class="col-title">
-              <p>Token Name</p>
-              <p>Token Value</p>
-            </div>
+            
 
             <!-- Tokens to be added here -->
             <div ng-repeat="token in twallet.tokens">
@@ -114,18 +129,19 @@
       </div>
     </div>
 
-    <div class="sidebar grid-bg" id="sideBarTokens" style="height: 600px; overflow-y: scroll;">
+    <div class="sidebar grid-bg" id="sideBarTokens">
       <div class="title-container block-title2">
         <p class="title">Tokens</p>
         <p class="total-of">Total of {{ tokens.length }}</p>
       </div>
 
-      <div class="content">
-        <div class="col-title">
-          <p>Token Name</p>
-          <p>Edit</p>
-        </div>
+      <div class="col-title">
+        <p>Token Name</p>
+        <p>Edit</p>
+      </div>
 
+      <div class="content">
+        
         <!-- Tokens to be added here -->
         <div ng-repeat="token in tokensShown">
           <p>{{ token.symbol }}</p>
