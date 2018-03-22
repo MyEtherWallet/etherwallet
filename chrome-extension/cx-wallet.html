@@ -377,10 +377,9 @@
           <div class="col-title">
               <p>Token Name</p>
               <p>Token Value</p>
-            </div>
+          </div>
+          
           <div class="content">
-            
-
             <!-- Tokens to be added here -->
             <div ng-repeat="token in twallet.tokens">
               <p>{{ token.symbol }}</p>
@@ -441,18 +440,19 @@
       </div>
     </div>
 
-    <div class="sidebar grid-bg" id="sideBarTokens" style="height: 600px; overflow-y: scroll;">
+    <div class="sidebar grid-bg" id="sideBarTokens">
       <div class="title-container block-title2">
         <p class="title">Tokens</p>
         <p class="total-of">Total of {{ tokens.length }}</p>
       </div>
 
-      <div class="content">
-        <div class="col-title">
-          <p>Token Name</p>
-          <p>Edit</p>
-        </div>
+      <div class="col-title">
+        <p>Token Name</p>
+        <p>Edit</p>
+      </div>
 
+      <div class="content">
+        
         <!-- Tokens to be added here -->
         <div ng-repeat="token in tokensShown">
           <p>{{ token.symbol }}</p>
