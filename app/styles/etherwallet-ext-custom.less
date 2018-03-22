@@ -78,14 +78,18 @@
 
     .data{
       display: grid;
-      grid-template-columns: 1fr 400px;
+      grid-template-columns: 1fr 350px;
       grid-gap: 4px;
       margin-bottom: 20px;
 
       .wallet{
 
+        .block-title1 p{
+          font-weight: 900;
+        }
+
         .content{
-          padding: 40px 30px;
+          padding: 25px 30px 20px 30px;
           &>div{
             display: inline-block;
             vertical-align: top;
@@ -94,30 +98,60 @@
           .balance{
             padding: 0 20px;
 
-            .balance-amount{
-              font-size: 40px;
-              font-weight: 900;
-              color: #00C599;
-              margin-bottom: 30px;
-
-            }
-
-            .copy-block{
-              margin-top: 5px;
-              p {
-                background-color: white;
-                padding-left: 20px;
-                font-weight: 500;
-
-                button {
-                  background-color: #B3B3B4 !important;
-                  color: white !important;
-                  display: inline-block;
-                  margin-left: 70px;
-                  padding: 15px 30px !important;
-                }
+            .balance-block,
+            .address-block{
+              margin-bottom: 15px;
+              .block-title{
+                width: 125px;
               }
-            }
+
+              h3{
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 20px;
+              }
+
+              .balance-amount{
+                vertical-align: middle;
+                display: inline-block;
+                font-size: 20px; 
+                font-weight: 900;
+                color: #00C599;
+                
+              }
+
+
+              .copy-block{
+                display: inline-block;
+                vertical-align: middle;
+                
+                p {
+                  background-color: white;
+                  padding-left: 20px;
+                  font-weight: 500;
+                  //max-width: 200px;
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  font-size: 14px;
+
+                  button {
+                    background-color: #B3B3B4 !important;
+                    color: white !important;
+                    display: inline-block;
+                    margin-left: 30px;
+                    padding: 12px 17px !important;
+                    border: none;
+                    transition: all 0.2s ease;
+                  }
+
+                  button:hover{
+                    background-color: grey !important;
+                  }
+                }
+              }//.copy-block
+
+            }//.balance-block
 
 
           }
@@ -128,30 +162,45 @@
 
       .tokens{
 
+
+        .col-title{
+          background-color: white;
+
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding: 5px 20px;
+          border-bottom: 1px solid #EDEDED;
+
+          p{
+            font-weight: 900;
+            font-size: 13px;
+          }
+        }//.col-title
+
+
+
         .content{
-          height: 300px;
+          height: 116px;
           overflow-y: auto;
           position: relative;
 
           &>div{
+
+            &:nth-child(even){
+              background-color: #ebebeb;
+            }
+
             display: grid;
             grid-template-columns: 1fr 1fr;
-            padding: 15px 20px;
+            padding: 5px 20px;
             border-bottom: 1px solid #EDEDED;
             p{
-              font-size: 15px;
+              font-size: 13px;
               font-weight: 500;
               .text-ellipsis;
             }
           }
 
-          .col-title{
-            background-color: white;
-
-            p{
-              font-weight: 900;
-            }
-          }
         }
       }
     }
@@ -180,8 +229,27 @@
 
       }
 
+
+
+      .col-title{
+        background-color: white;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        padding: 15px 20px;
+        border-bottom: 1px solid #EDEDED;
+
+        p{
+          font-size: 15px;
+          font-weight: 900;
+        }
+      }//.col-title
+
+
+
       .content{
 
+        height: 600px;
+        
         overflow-y: auto;
         position: relative;
 
@@ -211,6 +279,12 @@
               text-align: center;
               top: -6px;
               left: 0px;
+              transition: all 0.2s ease;
+            }
+
+            p:hover{
+              color: white;
+              background-color: blue;
             }
           }
 
@@ -231,6 +305,12 @@
               text-align: center;
               top: -6px;
               left: 0px;
+              transition: all 0.2s ease;
+            }
+
+            p:hover{
+              color: white;
+              background-color: red;
             }
           }
 
