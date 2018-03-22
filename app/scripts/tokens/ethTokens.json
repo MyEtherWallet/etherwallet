@@ -821,6 +821,12 @@
     "decimal": 18,
     "type": "default"
   },
+	{
+    "address": "0x61725f3db4004afe014745b21dab1e1677cc328b",
+    "symbol": "DAXT",
+    "decimal": 18,
+    "type": "default"
+  },
   {
     "address": "0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416",
     "symbol": "DCA",
