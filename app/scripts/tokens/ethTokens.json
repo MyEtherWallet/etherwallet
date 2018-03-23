@@ -1991,6 +1991,12 @@
     "type": "default"
   },
   {
+    "address": "0x4ce6b362bc77a24966dda9078f9cef81b3b886a7",
+    "symbol": "NPER",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xb91318f35bdb262e9423bc7c7c2a3a93dd93c92c",
     "symbol": "NULS",
     "decimal": 18,
@@ -2323,6 +2329,12 @@
   {
     "address": "0xfc2c4d8f95002c14ed0a7aa65102cac9e5953b5e",
     "symbol": "RBLX",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xf970b8e36e23f7fc3fd752eea86f8be8d83375a6",
+    "symbol": "RCN",
     "decimal": 18,
     "type": "default"
   },
