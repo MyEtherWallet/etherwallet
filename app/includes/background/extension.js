@@ -1,44 +1,82 @@
 (function() {
-	var ealObject =
-		localStorage.getItem("eal-blacklisted-domains") === null
-			? getBlackListedDomains("eal")
-			: checkIfDataIsRecent("eal");
-	var iosiroObject =
-		localStorage.getItem("iosiro-blacklisted-domains") === null
-			? getBlackListedDomains("iosiro")
-			: checkIfDataIsRecent("iosiro");
-	var segasecObject =
-		localStorage.getItem("segasec-blacklisted-domains") === null
-			? getBlackListedDomains("segasec")
-			: checkIfDataIsRecent("segasec");
+	localStorage.getItem("eal-blacklisted-domains") === null
+		? getBlackListedDomains("eal")
+		: checkIfDataIsRecent("eal");
+	localStorage.getItem("iosiro-blacklisted-domains") === null
+		? getBlackListedDomains("iosiro")
+		: checkIfDataIsRecent("iosiro");
 
 	setInterval(function() {
 		getBlackListedDomains();
 	}, 180000);
 
-  chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function(tabs) {
-    querycB(tabs);
-  });
+	chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
+		querycB(tabs);
+	});
 
-  chrome.tabs.onUpdate.addListener(onUpdateCb);
-  chrome.tabs.onActivated.addListener(onActivatedcB);
+	chrome.tabs.onActivated.addListener(onActivatedcB);
+	chrome.tabs.onUpdated.addListener(onUpdatedCb);
 })();
 
-
-
-function onActivatedcB (tabs) {
-  console.log(info);
+function onActivatedcB() {
+	chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
+		querycB(tabs);
+	});
 }
 
-function onUpdateCb (id, changeInfo, tab) {
-  console.log(id)
-  console.log(changeInfo)
-  console.log(tab)
+function onUpdatedCb(id, changeInfo, tab) {
+	chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
+		querycB(tabs);
+	});
 }
 
 function querycB(tabs) {
-  console.log(chrome);
-  console.log(tabs);
+	const ealBlacklisted = JSON.parse(
+		localStorage.getItem("eal-blacklisted-domains")
+	);
+	const iosiroBlacklisted = JSON.parse(
+		localStorage.getItem("iosiro-blacklisted-domains")
+	);
+	const allDomains = ealBlacklisted.domains.concat(iosiroBlacklisted.domains);
+	let urlRedirect;
+	let found = allDomains.find(dom => {
+		return dom === extractRootDomain(tabs[0].url);
+	});
+
+	if (found !== undefined) {
+		urlRedirect = encodeURI(`file:///Users/yelpadillo/workspace/mew/myetherwallet/dist/phishing.html?phishing-address=${
+			tabs[0].url
+		}`);
+		chrome.tabs.update(null, { url: urlRedirect });
+	}
+}
+
+function extractHostname(url) {
+	let hostname;
+	if (url.indexOf("://") > -1) {
+		hostname = url.split("/")[2];
+	} else {
+		hostname = url.split("/")[0];
+	}
+
+	hostname = hostname.split(":")[0];
+	hostname = hostname.split("?")[0];
+
+	return hostname;
+}
+
+function extractRootDomain(url) {
+	let domain = extractHostname(url),
+		splitArr = domain.split("."),
+		arrLen = splitArr.length;
+
+	if (arrLen > 2) {
+		domain = splitArr[arrLen - 2] + "." + splitArr[arrLen - 1];
+		if (splitArr[arrLen - 2].length == 2 && splitArr[arrLen - 1].length == 2) {
+			domain = splitArr[arrLen - 3] + "." + domain;
+		}
+	}
+	return domain;
 }
 
 function checkIfDataIsRecent(str) {
@@ -70,14 +108,6 @@ function getBlackListedDomains(str) {
 			repo:
 				"https://raw.githubusercontent.com/iosiro/counter_phishing_blacklist/master/blacklists/domains.json",
 			identifer: "iosiro"
-		},
-		segasec: {
-			timestamp: 0,
-			domains: [],
-			format: "sha256",
-			repo:
-				"https://segasec.github.io/PhishingFeed/phishing-domains-sha256.json",
-			identifer: "segasec"
 		}
 	};
 
@@ -91,7 +121,7 @@ function getBlackListedDomains(str) {
 	} else {
 		Object.keys(blackListDomains).forEach(src => {
 			getDomainsFromSource(blackListDomains[src]).then(domains => {
-        newName = src + "-blacklisted-domains";
+				newName = src + "-blacklisted-domains";
 				blackListDomains[src].timestamp = Math.floor(Date.now() / 1000);
 				blackListDomains[src].domains = domains;
 				localStorage.setItem(newName, JSON.stringify(blackListDomains[src]));
@@ -100,10 +130,6 @@ function getBlackListedDomains(str) {
 	}
 }
 
-function isMatch(tab) {
-  console.log("Hello There!");
-  console.log(tab);
-}
 
 async function getDomainsFromSource(objBlacklist) {
 	try {
