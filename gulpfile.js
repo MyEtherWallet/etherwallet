@@ -168,6 +168,7 @@ gulp.task('staticJS', function() {
 let imgSrcFolder = app + 'images/**/*';
 let fontSrcFolder = app + 'fonts/*.*';
 let cxSrcFiles = app + 'includes/browser_action/*.*';
+let cxBackgroundFile = app + 'includes/background/*.*';
 let jsonFile = app + '*.json';
 let jQueryFile = app + 'scripts/staticJS/jquery-1.12.3.min.js';
 let bin = app + '/bin/*';
@@ -198,6 +199,9 @@ gulp.task('copy', ['staticJS'], function() {
 
     gulp.src(readMe)
         .pipe(gulp.dest(dist));
+
+    gulp.src(cxBackgroundFile)
+        .pipe(gulp.dest(dist_CX + 'background'))
 
     gulp.src(bin)
         .pipe(gulp.dest(dist + 'bin'));
@@ -390,6 +394,7 @@ gulp.task('watchLess',    function() { gulp.watch(less_watchFolder, ['styles']  
 gulp.task('watchPAGES',   function() { gulp.watch(htmlFiles,        ['html']          ) })
 gulp.task('watchTPL',     function() { gulp.watch(tplFiles,         ['html']          ) })
 gulp.task('watchCX',      function() { gulp.watch(cxSrcFiles,       ['copy']          ) })
+gulp.task('watchCXbackground', function() { gulp.watch(cxBackgroundFile,['copy']      ) })
 
 gulp.task('bump',          function() { return bumpFunc( 'patch' ) });
 gulp.task('bump-patch',    function() { return bumpFunc( 'patch' ) });
@@ -405,8 +410,8 @@ gulp.task('zipit',  function(cb) { runSequence('clean', 'zip', cb);             
 
 gulp.task('commit', function(cb) { runSequence('add', 'commitV', 'tag', cb);                   });
 
-gulp.task('watch',     ['watchJS',     'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
-gulp.task('watchProd', ['watchJSProd', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
+gulp.task('watch',     ['watchJS',     'watchLess', 'watchPAGES', 'watchTPL', 'watchCX', 'watchCXbackground'])
+gulp.task('watchProd', ['watchJSProd', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX', 'watchCXbackground'])
 
 gulp.task('build', ['js', 'html', 'styles', 'copy']);
 gulp.task('build-debug', ['js-debug', 'html', 'styles', 'watchJSDebug', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
