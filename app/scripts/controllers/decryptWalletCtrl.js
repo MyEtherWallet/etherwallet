@@ -127,7 +127,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             $scope.scanTrezor();
         } else if ($scope.walletType == 'digitalBitbox') {
             $scope.scanDigitalBitbox();
-        }
+        } else if ($scope.walletType == 'secalot') {
+            $scope.scanSecalot();
+        }        
     }
     $scope.onCustomHDDPathChange = function() {
         $scope.HDWallet.dPath = $scope.HDWallet.customDPath;
@@ -191,6 +193,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, $scope.walletType, $scope.ledger));
             } else if ($scope.walletType == "digitalBitbox") {
                 $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, $scope.walletType, $scope.digitalBitbox));
+            } else if ($scope.walletType == "secalot") {
+                $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, $scope.walletType, $scope.secalot));                
             } else {
                 $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, $scope.walletType));
             }
@@ -201,7 +205,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         $scope.HDWallet.numWallets = start + limit;
     }
     $scope.AddRemoveHDAddresses = function(isAdd) {
-        if ($scope.walletType == "ledger" || $scope.walletType == "trezor" || $scope.walletType == "digitalBitbox") {
+        if ($scope.walletType == "ledger" || $scope.walletType == "trezor" || $scope.walletType == "digitalBitbox" || $scope.walletType == "secalot") {
             if (isAdd) $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
             else $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets - 2 * $scope.HDWallet.walletsPerDialog, $scope.HDWallet.walletsPerDialog);
         } else {
@@ -311,6 +315,12 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         } else
             $scope.notifier.danger(error);
     }
+    $scope.secalotCallback = function(result, error) {
+        if (typeof result != "undefined") {
+            $scope.HWWalletCreate(result['publicKey'], result['chainCode'], "secalot", $scope.HDWallet.dPath);
+        } else
+            $scope.notifier.danger(error);
+    }    
     $scope.scanLedger = function() {
         $scope.ledgerError = false;
         $scope.ledger = new Ledger3("w0w");
@@ -324,6 +334,15 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         var path = $scope.HDWallet.dPath;
         app.getAddress(path, $scope.digitalBitboxCallback);
     };
+    $scope.scanSecalot = function() {
+        $scope.secalot = new SecalotUsb();
+        if (typeof $scope.HDWallet.secalotSecret == "undefined") {
+            $scope.HDWallet.secalotSecret = "";
+        }
+        var app = new SecalotEth($scope.secalot, $scope.HDWallet.secalotSecret);
+        var path = $scope.HDWallet.dPath;
+        app.getAddress(path, $scope.secalotCallback);
+    };    
     $scope.scanTrezor = function() {
         // trezor is using the path without change level id
         var path = $scope.getTrezorPath();

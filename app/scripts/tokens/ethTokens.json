@@ -372,6 +372,12 @@
     "type": "default"
   },
   {
+    "address": "0xdA2C424Fc98c741c2d4ef2f42897CEfed897CA75",
+    "symbol": "BNFT",
+    "decimal": 9,
+    "type": "default"
+  },
+  {
     "address": "0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C",
     "symbol": "BNT",
     "decimal": 18,
@@ -519,6 +525,12 @@
     "address": "0x423e4322cdda29156b49a17dfbd2acc4b280600d",
     "symbol": "CAR",
     "decimal": 9,
+    "type": "default"
+  },
+  {
+    "address": "0xa517a46baad6b054a76bd19c46844f717fe69fea",
+    "symbol": "CARB",
+    "decimal": 8,
     "type": "default"
   },
   {
@@ -1260,6 +1272,12 @@
     "type": "default"
   },
   {
+    "address": "0x12fCd6463E66974cF7bBC24FFC4d40d6bE458283",
+    "symbol": "GBX",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x4F4f0Db4de903B88f2B1a2847971E231D54F8fd3",
     "symbol": "GEE",
     "decimal": 8,
@@ -1991,6 +2009,12 @@
     "type": "default"
   },
   {
+    "address": "0x4ce6b362bc77a24966dda9078f9cef81b3b886a7",
+    "symbol": "NPER",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xb91318f35bdb262e9423bc7c7c2a3a93dd93c92c",
     "symbol": "NULS",
     "decimal": 18,
@@ -2069,6 +2093,12 @@
     "type": "default"
   },
   {
+    "address": "0xfeDAE5642668f8636A11987Ff386bfd215F942EE",
+    "symbol": "PAL",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xea5f88e54d982cbb0c441cde4e79bc305e5b43bc",
     "symbol": "PARETO",
     "decimal": 18,
@@ -2077,6 +2107,12 @@
   {
     "address": "0x694404595e3075a942397f466aacd462ff1a7bd0",
     "symbol": "PATENTS",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "PATH",
+    "symbol": "0xf813f3902bbc00a6dce378634d3b79d84f9803d7",
     "decimal": 18,
     "type": "default"
   },
@@ -2323,6 +2359,12 @@
   {
     "address": "0xfc2c4d8f95002c14ed0a7aa65102cac9e5953b5e",
     "symbol": "RBLX",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xf970b8e36e23f7fc3fd752eea86f8be8d83375a6",
+    "symbol": "RCN",
     "decimal": 18,
     "type": "default"
   },

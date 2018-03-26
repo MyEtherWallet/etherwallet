@@ -67,12 +67,16 @@ if (IS_CX) {
     var trezorConnect        = require('./staticJS/trezorConnect');
     var digitalBitboxUsb     = require('./staticJS/digitalBitboxUsb');
     var digitalBitboxEth     = require('./staticJS/digitalBitboxEth');
+    var secalotUsb           = require('./staticJS/secalotUsb');
+    var secalotEth           = require('./staticJS/secalotEth');
     window.u2f               = u2f;
     window.Ledger3           = ledger3;
     window.ledgerEth         = ledgerEth;
     window.TrezorConnect     = trezorConnect.TrezorConnect;
     window.DigitalBitboxUsb  = digitalBitboxUsb;
     window.DigitalBitboxEth  = digitalBitboxEth;
+    window.SecalotUsb        = secalotUsb;
+    window.SecalotEth        = secalotEth;
 }
 var CustomGasMessages        = require('./customGas.js')
 window.CustomGasMessages     = CustomGasMessages;
