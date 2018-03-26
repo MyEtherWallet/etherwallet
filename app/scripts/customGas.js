@@ -19,6 +19,18 @@ gasLimit:   200000,
 data:       '',
 msg:        'BTQ ICO ends February 1, 2018. btc btq is your exclusive bitcoin boutique and world\'s premier cryptocurrency lifestyle brand. https://thebtcbtq.com/btq'
 },{
+// EPX Token Sale
+to:         '0x5A8658dE344972fC8b6b6a01Cd87a64bc7420A38',
+gasLimit:   200000,
+data:       '',
+msg:        'ethPoker.io EPX token sale - https://ethPoker.io'
+},{
+// ARXT Token Sale
+to:         '0xb65E16b44A80C9c44aDdD56a5014CbA2814a82D1',
+gasLimit:   200000,
+data:       '',
+msg:        'Assistive Reality ARXT token sale - https://aronline.io'
+},{
 // STC Token Sale
 to:         '0x8d040556214125F3fE7d8B22cF17c364603A6035',
 gasLimit:   400000,
