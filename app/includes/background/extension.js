@@ -51,13 +51,15 @@ function querycB(tabs) {
 		return dom === extractRootDomain(tabs[0].url);
 	});
 
-	if (foundBlacklist !== undefined || checkUrlSimilarity(tabs[0].url, SEARCH_STRING) || foundWhitelist === undefined) {
-		urlRedirect = encodeURI(
-			`file:///Users/yelpadillo/workspace/mew/myetherwallet/dist/phishing.html?phishing-address=${
-				tabs[0].url
-			}`
-		);
-		chrome.tabs.update(null, { url: urlRedirect });
+	if(foundWhitelist === undefined) {
+		if (foundBlacklist !== undefined || checkUrlSimilarity(tabs[0].url, SEARCH_STRING)) {
+			urlRedirect = encodeURI(
+				`https://www.myetherwallet.com/phishing.html?phishing-address=${
+					tabs[0].url
+				}`
+			);
+			chrome.tabs.update(null, { url: urlRedirect });
+		}
 	}
 }
 
@@ -86,7 +88,7 @@ function extractRootDomain(url) {
 			domain = splitArr[arrLen - 3] + "." + domain;
 		}
 	}
-	return domain;
+	return domain.toLowerCase();
 }
 
 function checkIfDataIsRecent(str) {
@@ -132,11 +134,14 @@ function getDomains(str) {
 		}
 	}
 
+	let newName;
+
 	if (str && str !== "" && (str === "eal" || str === "iosiro")) {
-		let newName = str + "-blacklisted-domains";
-		setInStorage(blackListDomains[src], newName);
+		newName = str + "-blacklisted-domains";
+		setInStorage(blackListDomains[str], newName);
 	} else if (str && str !== "" && (str !== "eal" || str !== "iosiro")) {
-		setInStorage(whiteListDomains[src], newName);
+		newName = str + "-whitelisted-domains";
+		setInStorage(whiteListDomains[str], newName);
 	} else {
 		Object.keys(blackListDomains).forEach(src => {
 			newName = src + "-blacklisted-domains";
@@ -151,7 +156,7 @@ function getDomains(str) {
 }
 
 function setInStorage(src, storageName) {
-	getDomainsFromSource(blackListDomains).then(domains => {
+	getDomainsFromSource(src).then(domains => {
 		src.timestamp = Math.floor(Date.now() / 1000);
 		src.domains = domains;
 		localStorage.setItem(storageName, JSON.stringify(src));
@@ -185,7 +190,7 @@ function isNewBlacklist(url, arr) {
 function isSimilar(newUrl, comparedToUrl, arr, percent) {
 	for (let i = 0; i < arr.length; i++) {
 		let sim = window.cxHelpers.similarity(arr[i], newUrl);
-		if (sim >= percent && !levenshteinCheck(comparedToUrl, arr[i])) {
+		if (sim >= percent || !levenshteinCheck(comparedToUrl, arr[i])) {
 			return true;
 		}
 	}
@@ -202,7 +207,7 @@ function parseUrl(url) {
 }
 
 function levenshteinCheck(url, validString) {
-	const distance = new window.cxHelpers.levenshtein(mLink, validString).distance;
+	const distance = new window.cxHelpers.levenshtein(url, validString).distance;
 	const holisticStd = 3.639774978064392;
 	const holisticLimit = 4 + 1 * holisticStd;
 	return distance > 0 && distance < holisticLimit ? true : false;

@@ -6,7 +6,7 @@
 </section>
 <script>
 (function() {
-	const url = window.location.search.replace("?phishing-address=", "");
+	const url = globalFuncs.stripTags(window.location.search.replace("?phishing-address=", ""));
 	const body = document.getElementById("phishingMsg");
 	const fragment = document.createDocumentFragment();
 	const newP1 = document.createElement("p");
