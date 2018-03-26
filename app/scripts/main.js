@@ -156,7 +156,7 @@ app.controller('walletBalanceCtrl', ['$scope', '$sce', '$rootScope', walletBalan
 app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 if (IS_CX) {
   app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
-  app.controller('myWalletsCtrl', ['$scope', '$sce','walletService', myWalletsCtrl]);
+  app.controller('myWalletsCtrl', ['$scope', '$sce', '$timeout', 'walletService', myWalletsCtrl]);
   app.controller('mainPopCtrl', ['$scope', '$sce', mainPopCtrl]);
   app.controller('quickSendCtrl', ['$scope', '$sce', 'darkList', quickSendCtrl]);
   app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);

@@ -119,17 +119,17 @@
               .balance-amount{
                 vertical-align: middle;
                 display: inline-block;
-                font-size: 20px; 
+                font-size: 20px;
                 font-weight: 900;
                 color: #00C599;
-                
+
               }
 
 
               .copy-block{
                 display: inline-block;
                 vertical-align: middle;
-                
+
                 p {
                   background-color: white;
                   padding-left: 20px;
@@ -254,7 +254,7 @@
       .content{
 
         height: 600px;
-        
+
         overflow-y: auto;
         position: relative;
 
@@ -416,4 +416,20 @@
 #secWatchOnlyMain .mainWalletDelete {
   width: 60px;
   display: block;
+}
+
+.spinner {
+  animation: spin 2s linear infinite;
+  height: 52px;
+}
+
+.spinner-container {
+  display: inherit !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
 }
