@@ -53,15 +53,16 @@
           <div class="tokens grid-bg">
             <p class="block-title1">Selected tokens</p>
             <div class="col-title">
-                <p>Token Name</p>
-                <p>Token Value</p>
+              <p>Name</p>
+              <p>Value</p>
             </div>
 
             <div class="content">
               <!-- Tokens to be added here -->
-              <div ng-repeat="token in twallet.tokens">
+              <div ng-repeat="token in twallet.tokens | orderBy: 'symbol'">
                 <p>{{ token.symbol }}</p>
-                <p>{{ token.getBalance() }}</p>
+                <p ng-if="token.getBalance() !== 'Click to Load'">{{ token.getBalance() }}</p>
+                <p ng-if="token.getBalance() === 'Click to Load'">Loading</p>
               </div>
             </div>
           </div>
@@ -109,35 +110,36 @@
           <div class="tokens grid-bg">
             <p class="block-title1">Selected tokens</p>
             <div class="col-title">
-              <p>Token Name</p>
-              <p>Token Value</p>
+              <p>Name</p>
+              <p>Value</p>
             </div>
             <div class="content">
 
 
               <!-- Tokens to be added here -->
-              <div ng-repeat="token in twallet.tokens">
+              <div ng-repeat="token in twallet.tokens | orderBy: 'symbol'">
                 <p>{{ token.symbol }}</p>
-                <p>{{ token.getBalance() }}</p>
+                <p ng-if="token.getBalance() !== 'Click to Load'">{{ token.getBalance() }}</p>
+                <p ng-if="token.getBalance() === 'Click to Load'">Loading</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="sidebar grid-bg">
+      <div class="sidebar grid-bg" ng-if="allWallets.length > 0 || allWatchOnly.length > 0">
         <div class="title-container block-title2">
           <p class="title">Tokens</p>
           <p class="total-of">Total of {{ tokens.length }}</p>
         </div>
 
         <div class="col-title">
-          <p>Token Name</p>
+          <p>Name</p>
           <p>Edit</p>
         </div>
 
         <div class="content" id="sideBarTokens">
-          <div ng-repeat="token in tokensShown">
+          <div ng-repeat="token in tokensShown | orderBy: 'symbol'">
             <p>{{ token.symbol }}</p>
             <div class="add-button" ng-show="!!checkIfExists(localTokens) && !checkIfAdded(token)" ng-click="addTokenToLocal(token)">
               <p>Add</p>
