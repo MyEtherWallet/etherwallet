@@ -284,6 +284,12 @@ gasLimit:   200000,
 data:       '',
 msg:        'LALA World Token (LALA) Token Sale. Official sale website: https://lalaworld.io'
 },{
+// Digital Asset Exchange Token (DAXT) Token Sale
+to:         '0x61725f3db4004afe014745b21dab1e1677cc328b',
+gasLimit:   200000,
+data:       '',
+msg:        'Digital Asset Exchange Token (DAXT) Token Sale. Official sale website: https://www.daxt.io'
+},{
 // Duty of Care (VDOC) Token sale
 to:         '0xe8DB4ceA1f7ad7Ba22F3DbbAb55A336545701d96',
 gasLimit:   200000,
