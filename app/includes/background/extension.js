@@ -1,6 +1,4 @@
 (function() {
-	const SEARCH_STRING = ["myetherwallet"];
-	const CHECK_PER = 0.8;
 	localStorage.getItem("eal-blacklisted-domains") === null
 		? getDomains("eal")
 		: checkIfDataIsRecent("eal");
@@ -31,6 +29,7 @@ function cb() {
 }
 
 function querycB(tabs) {
+	const SEARCH_STRING = ["myetherwallet"];
 	const ealBlacklisted = JSON.parse(
 		localStorage.getItem("eal-blacklisted-domains")
 	);
@@ -52,7 +51,7 @@ function querycB(tabs) {
 		return dom === extractRootDomain(tabs[0].url);
 	});
 
-	if ((foundBlacklist !== undefined && foundWhitelist === undefined) || checkUrlSimilarity(tabs[0].url, allDomains)) {
+	if ((foundBlacklist !== undefined && foundWhitelist === undefined) || checkUrlSimilarity(tabs[0].url, SEARCH_STRING)) {
 		urlRedirect = encodeURI(
 			`file:///Users/yelpadillo/workspace/mew/myetherwallet/dist/phishing.html?phishing-address=${
 				tabs[0].url
@@ -91,13 +90,8 @@ function extractRootDomain(url) {
 }
 
 function checkIfDataIsRecent(str) {
-	let storedName;
-	if(str === "eal" || "iosiro") {
-		storedName = str + "-blacklisted-domains";
-	} else {
-		storedName = str + "-whitelisted-domains";
-	}
-	const dataObj = JSON.parse(localStorage.getItem(storedName));
+	let storedName = (str === "eal" || str === "iosiro") ? str + "-blacklisted-domains" : str + "-whitelisted-domains";
+	let dataObj = JSON.parse(localStorage.getItem(storedName));
 	if (
 		dataObj.timestamp === 0 ||
 		Math.floor(Date.now() / 1000) - dataObj.timestamp > 300
@@ -140,39 +134,28 @@ function getDomains(str) {
 
 	if (str && str !== "" && (str === "eal" || str === "iosiro")) {
 		let newName = str + "-blacklisted-domains";
-		getDomainsFromSource(blackListDomains[str]).then(domains => {
-			blackListDomains[str].timestamp = Math.floor(Date.now() / 1000);
-			blackListDomains[str].domains = domains;
-			localStorage.setItem(newName, JSON.stringify(blackListDomains[str]));
-		});
+		setInStorage(blackListDomains[src], newName);
 	} else if (str && str !== "" && (str !== "eal" || str !== "iosiro")) {
-		Object.keys(whiteListDomains).forEach(src => {
-			getDomainsFromSource(whiteListDomains[src]).then(domains => {
-				newName = src + "-whitelisted-domains";
-				whiteListDomains[src].timestamp = Math.floor(Date.now() / 1000);
-				whiteListDomains[src].domains = domains;
-				localStorage.setItem(newName, JSON.stringify(whiteListDomains[src]));
-			});
-		});
+		setInStorage(whiteListDomains[src], newName);
 	} else {
 		Object.keys(blackListDomains).forEach(src => {
-			getDomainsFromSource(blackListDomains[src]).then(domains => {
-				newName = src + "-blacklisted-domains";
-				blackListDomains[src].timestamp = Math.floor(Date.now() / 1000);
-				blackListDomains[src].domains = domains;
-				localStorage.setItem(newName, JSON.stringify(blackListDomains[src]));
-			});
+			newName = src + "-blacklisted-domains";
+			setInStorage(blackListDomains[src], newName);
 		});
 
 		Object.keys(whiteListDomains).forEach(src => {
-			getDomainsFromSource(whiteListDomains[src]).then(domains => {
-				newName = src + "-whitelisted-domains";
-				whiteListDomains[src].timestamp = Math.floor(Date.now() / 1000);
-				whiteListDomains[src].domains = domains;
-				localStorage.setItem(newName, JSON.stringify(whiteListDomains[src]));
-			});
+			newName = src + "-whitelisted-domains";
+			setInStorage(whiteListDomains[src], newName);
 		});
 	}
+}
+
+function setInStorage(src, storageName) {
+	getDomainsFromSource(blackListDomains).then(domains => {
+		src.timestamp = Math.floor(Date.now() / 1000);
+		src.domains = domains;
+		localStorage.setItem(storageName, JSON.stringify(src));
+	});
 }
 
 async function getDomainsFromSource(objBlacklist) {
