@@ -372,6 +372,12 @@
     "type": "default"
   },
   {
+    "address": "0xdA2C424Fc98c741c2d4ef2f42897CEfed897CA75",
+    "symbol": "BNFT",
+    "decimal": 9,
+    "type": "default"
+  },
+  {
     "address": "0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C",
     "symbol": "BNT",
     "decimal": 18,
@@ -519,6 +525,12 @@
     "address": "0x423e4322cdda29156b49a17dfbd2acc4b280600d",
     "symbol": "CAR",
     "decimal": 9,
+    "type": "default"
+  },
+  {
+    "address": "0xa517a46baad6b054a76bd19c46844f717fe69fea",
+    "symbol": "CARB",
+    "decimal": 8,
     "type": "default"
   },
   {
@@ -1256,6 +1268,12 @@
   {
     "address": "0x7585F835ae2d522722d2684323a0ba83401f32f5",
     "symbol": "GBT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x12fCd6463E66974cF7bBC24FFC4d40d6bE458283",
+    "symbol": "GBX",
     "decimal": 18,
     "type": "default"
   },
@@ -2075,6 +2093,12 @@
     "type": "default"
   },
   {
+    "address": "0xfeDAE5642668f8636A11987Ff386bfd215F942EE",
+    "symbol": "PAL",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xea5f88e54d982cbb0c441cde4e79bc305e5b43bc",
     "symbol": "PARETO",
     "decimal": 18,
@@ -2083,6 +2107,12 @@
   {
     "address": "0x694404595e3075a942397f466aacd462ff1a7bd0",
     "symbol": "PATENTS",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "PATH",
+    "symbol": "0xf813f3902bbc00a6dce378634d3b79d84f9803d7",
     "decimal": 18,
     "type": "default"
   },
