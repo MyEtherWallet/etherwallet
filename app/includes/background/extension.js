@@ -1,30 +1,30 @@
 (function() {
+	const SEARCH_STRING = ["myetherwallet"];
+	const CHECK_PER = 0.8;
 	localStorage.getItem("eal-blacklisted-domains") === null
-		? getBlackListedDomains("eal")
+		? getDomains("eal")
 		: checkIfDataIsRecent("eal");
 	localStorage.getItem("iosiro-blacklisted-domains") === null
-		? getBlackListedDomains("iosiro")
+		? getDomains("iosiro")
 		: checkIfDataIsRecent("iosiro");
 
+	localStorage.getItem("409h-whitelisted-domains") === null
+		? getDomains("409h")
+		: checkIfDataIsRecent("409h");
+
 	setInterval(function() {
-		getBlackListedDomains();
+		getDomains();
 	}, 180000);
 
 	chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
 		querycB(tabs);
 	});
 
-	chrome.tabs.onActivated.addListener(onActivatedcB);
-	chrome.tabs.onUpdated.addListener(onUpdatedCb);
+	chrome.tabs.onActivated.addListener(cb);
+	chrome.tabs.onUpdated.addListener(cb);
 })();
 
-function onActivatedcB() {
-	chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
-		querycB(tabs);
-	});
-}
-
-function onUpdatedCb(id, changeInfo, tab) {
+function cb() {
 	chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
 		querycB(tabs);
 	});
@@ -37,16 +37,27 @@ function querycB(tabs) {
 	const iosiroBlacklisted = JSON.parse(
 		localStorage.getItem("iosiro-blacklisted-domains")
 	);
+
+	const whitelisted = JSON.parse(
+		localStorage.getItem("409h-whitelisted-domains")
+	);
+
 	const allDomains = ealBlacklisted.domains.concat(iosiroBlacklisted.domains);
 	let urlRedirect;
-	let found = allDomains.find(dom => {
+	let foundWhitelist = whitelisted.domains.find(dom => {
 		return dom === extractRootDomain(tabs[0].url);
 	});
 
-	if (found !== undefined) {
-		urlRedirect = encodeURI(`file:///Users/yelpadillo/workspace/mew/myetherwallet/dist/phishing.html?phishing-address=${
-			tabs[0].url
-		}`);
+	let foundBlacklist = allDomains.find(dom => {
+		return dom === extractRootDomain(tabs[0].url);
+	});
+
+	if ((foundBlacklist !== undefined && foundWhitelist === undefined) || checkUrlSimilarity(tabs[0].url, allDomains)) {
+		urlRedirect = encodeURI(
+			`file:///Users/yelpadillo/workspace/mew/myetherwallet/dist/phishing.html?phishing-address=${
+				tabs[0].url
+			}`
+		);
 		chrome.tabs.update(null, { url: urlRedirect });
 	}
 }
@@ -80,19 +91,24 @@ function extractRootDomain(url) {
 }
 
 function checkIfDataIsRecent(str) {
-	const storedName = str + "-blacklisted-domains";
+	let storedName;
+	if(str === "eal" || "iosiro") {
+		storedName = str + "-blacklisted-domains";
+	} else {
+		storedName = str + "-whitelisted-domains";
+	}
 	const dataObj = JSON.parse(localStorage.getItem(storedName));
 	if (
 		dataObj.timestamp === 0 ||
 		Math.floor(Date.now() / 1000) - dataObj.timestamp > 300
 	) {
-		return getBlackListedDomains(str);
+		return getDomains(str);
 	}
 	return dataObj;
 }
 
-function getBlackListedDomains(str) {
-	var blackListDomains = {
+function getDomains(str) {
+	let blackListDomains = {
 		eal: {
 			timestamp: 0,
 			domains: [],
@@ -111,12 +127,32 @@ function getBlackListedDomains(str) {
 		}
 	};
 
-	if (str && str !== "") {
+	let whiteListDomains = {
+		"409h": {
+			timestamp: 0,
+			domains: [],
+			format: "plain",
+			repo:
+				"https://raw.githubusercontent.com/409H/EtherAddressLookup/master/whitelists/domains.json",
+			identifer: "whitelist"
+		}
+	}
+
+	if (str && str !== "" && (str === "eal" || str === "iosiro")) {
 		let newName = str + "-blacklisted-domains";
 		getDomainsFromSource(blackListDomains[str]).then(domains => {
 			blackListDomains[str].timestamp = Math.floor(Date.now() / 1000);
 			blackListDomains[str].domains = domains;
 			localStorage.setItem(newName, JSON.stringify(blackListDomains[str]));
+		});
+	} else if (str && str !== "" && (str !== "eal" || str !== "iosiro")) {
+		Object.keys(whiteListDomains).forEach(src => {
+			getDomainsFromSource(whiteListDomains[src]).then(domains => {
+				newName = src + "-whitelisted-domains";
+				whiteListDomains[src].timestamp = Math.floor(Date.now() / 1000);
+				whiteListDomains[src].domains = domains;
+				localStorage.setItem(newName, JSON.stringify(whiteListDomains[src]));
+			});
 		});
 	} else {
 		Object.keys(blackListDomains).forEach(src => {
@@ -127,9 +163,17 @@ function getBlackListedDomains(str) {
 				localStorage.setItem(newName, JSON.stringify(blackListDomains[src]));
 			});
 		});
+
+		Object.keys(whiteListDomains).forEach(src => {
+			getDomainsFromSource(whiteListDomains[src]).then(domains => {
+				newName = src + "-whitelisted-domains";
+				whiteListDomains[src].timestamp = Math.floor(Date.now() / 1000);
+				whiteListDomains[src].domains = domains;
+				localStorage.setItem(newName, JSON.stringify(whiteListDomains[src]));
+			});
+		});
 	}
 }
-
 
 async function getDomainsFromSource(objBlacklist) {
 	try {
@@ -138,4 +182,61 @@ async function getDomainsFromSource(objBlacklist) {
 	} catch (objError) {
 		console.log("Failed to get blacklist for " + objBlacklist.repo, objError);
 	}
+}
+
+function checkUrlSimilarity(url, arr) {
+	let newUrl = transformHomoglyphs(parseUrl(url));
+	if(isSimilar(newUrl, url, arr, 0.8) && !isNewBlacklist(url, arr)) return true;
+	return false;
+}
+
+function isNewBlacklist(url, arr) {
+	for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === url) {
+			return false;
+		}
+  }
+  return true;
+}
+
+function isSimilar(newUrl, comparedToUrl, arr, percent) {
+	for (let i = 0; i < arr.length; i++) {
+		let sim = window.cxHelpers.similarity(arr[i], newUrl);
+		if (sim >= percent && !levenshteinCheck(comparedToUrl, arr[i])) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+function parseUrl(url) {
+	try {
+		return window.cxHelpers.punycode.toUnicode(url);
+	} catch (e) {
+		return url;
+	}
+}
+
+function levenshteinCheck(url, validString) {
+	const distance = new window.cxHelpers.levenshtein(mLink, validString).distance;
+	const holisticStd = 3.639774978064392;
+	const holisticLimit = 4 + 1 * holisticStd;
+	return distance > 0 && distance < holisticLimit ? true : false;
+}
+
+function transformHomoglyphs(str) {
+	let asciiStr = "";
+	for (const char of str) {
+		let uInfo = window.cxHelpers.uniMap[char.charCodeAt(0)];
+
+		if (uInfo && uInfo.mapping) {
+			let maps = uInfo.mapping.split(" ");
+			asciiStr += String.fromCharCode(parseInt('0x') + maps[0]);
+		} else {
+			asciiStr += window.cxHelpers.homoglyphs[char] ? window.cxHelpers.homoglyphs[char] : char;
+		}
+	}
+
+	return asciiStr;
 }

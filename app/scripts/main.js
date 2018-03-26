@@ -59,7 +59,18 @@ window.domainsale            = domainsale;
 var translate                = require('./translations/translate.js');
 if (IS_CX) {
   var cxFuncs                = require('./cxFuncs');
+  var punycode               = require('punycode');
+  var similarity             = require('similarity');
+  var levenshtein            = require('levenshtein');
+  var uniMap                 = require('unicode/category/Ll');
+  var homoglyphs             = require('./homoglyphs.json');
+  window.cxHelpers           = {};
   window.cxFuncs             = cxFuncs;
+  window.cxHelpers['punycode'] = punycode;
+  window.cxHelpers['uniMap'] = uniMap;
+  window.cxHelpers['homoglyphs'] = homoglyphs;
+  window.cxHelpers['similarity'] = similarity;
+  window.cxHelpers['levenshtein'] = levenshtein;
 } else {
     var u2f                  = require('./staticJS/u2f-api');
     var ledger3              = require('./staticJS/ledger3');
