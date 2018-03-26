@@ -51,7 +51,7 @@ function querycB(tabs) {
 		return dom === extractRootDomain(tabs[0].url);
 	});
 
-	if ((foundBlacklist !== undefined && foundWhitelist === undefined) || checkUrlSimilarity(tabs[0].url, SEARCH_STRING)) {
+	if (foundBlacklist !== undefined || checkUrlSimilarity(tabs[0].url, SEARCH_STRING) || foundWhitelist === undefined) {
 		urlRedirect = encodeURI(
 			`file:///Users/yelpadillo/workspace/mew/myetherwallet/dist/phishing.html?phishing-address=${
 				tabs[0].url
