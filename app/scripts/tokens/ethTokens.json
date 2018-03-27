@@ -42,6 +42,12 @@
     "type": "default"
   },
   {
+    "address": "0xE69a353b3152Dd7b706ff7dD40fe1d18b7802d31",
+    "symbol": "ADH",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x8810C63470d38639954c6B41AaC545848C46484a",
     "symbol": "ADI",
     "decimal": 18,
@@ -312,6 +318,12 @@
     "type": "default"
   },
   {
+    "address": "0x763186eb8d4856d536ed4478302971214febc6a9",
+    "symbol": "BETR",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xb2bfeb70b903f1baac7f2ba2c62934c7e5b974c4",
     "symbol": "BKB",
     "decimal": 8,
@@ -452,6 +464,12 @@
   {
     "address": "0xfad572db566e5234ac9fc3d570c4edc0050eaa92",
     "symbol": "BTH",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xa02e3bb9cebc03952601b3724b4940e0845bebcf",
+    "symbol": "BTHR",
     "decimal": 18,
     "type": "default"
   },
@@ -609,6 +627,12 @@
     "address": "0x12FEF5e57bF45873Cd9B62E9DBd7BFb99e32D73e",
     "symbol": "CFI",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xba9d4199fab4f26efe3551d490e3821486f135ba",
+    "symbol": "CHSB",
+    "decimal": 8,
     "type": "default"
   },
   {
