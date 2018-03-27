@@ -5,17 +5,26 @@ cxFuncs.getAllNickNames = function(callback) {
 	var nickNames = [];
 	this.storage.get(null, function(items) {
 		for (var key in items) {
-			if (items.hasOwnProperty(key)) {
+			if (key !== 'localTokens' && items.hasOwnProperty(key)) {
 				var tobj = JSON.parse(items[key]);
-				if (tobj.type == 'wallet' || tobj.type == 'watchOnly') {
-				    nickNames.push(tobj.nick);
-                    nickNames.push(key);
-                }
+				if (tobj.type === 'wallet' || tobj.type === 'watchOnly') {
+			    nickNames.push(tobj.nick);
+          nickNames.push(key);
+        }
 			}
 		}
 		callback(nickNames);
 	});
 };
+
+cxFuncs.setLocalTokens = function() {
+	this.storage.set({localTokens: []});
+}
+
+cxFuncs.getLocalTokens = function(callback) {
+	this.storage.get('localTokens', callback);
+}
+
 cxFuncs.addWalletToStorage = function(address, encStr, nickname, callback) {
 	nickname = nickname.replace(/(<([^>]+)>)/ig, "");
 	var value = {
@@ -43,7 +52,7 @@ cxFuncs.getStorageArr = function(filter, callback) {
 	var wallets = [];
 	this.storage.get(null, function(items) {
 		for (var key in items) {
-			if (items.hasOwnProperty(key)) {
+			if (key !== 'localTokens' && items.hasOwnProperty(key)) {
 				var tobj = JSON.parse(items[key]);
 				if (tobj.type == filter) {
 					tobj['addr'] = key;

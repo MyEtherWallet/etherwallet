@@ -1,3 +1,357 @@
+.text-ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.block-title1{
+  color: white;
+  background-color: #007CC0;
+  padding: 10px 20px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.block-title2{
+  color: white;
+  background-color: #3E4B5A;
+  padding: 10px 20px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+
+.mywallet-container{
+
+  //padding-bottom: 50px;
+  //border-bottom: 2px solid black;
+
+
+  /* width */
+  ::-webkit-scrollbar {
+      width: 7px;
+
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: #D7D7D7;
+
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: #3E4B5A;
+      border-radius: 12px;
+  }
+
+
+
+
+  p{
+    margin: 0;
+  }
+
+  h3{
+    margin: 0;
+    font-weight: 900;
+  }
+
+  .addressIdenticon{
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .grid-bg{
+    background-color: #F5F5F5;
+  }
+
+  .grid-frame{
+    display: flex;
+    justify-content: space-between;
+    // grid-template-columns: 1fr 350px;
+    // grid-gap: 20px;
+
+    #walletsContainer {
+      flex: 50;
+      height: 100%;
+    }
+
+
+    .data:last-child{
+      margin: 0;
+    }
+
+    .data{
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      grid-gap: 4px;
+      margin-bottom: 20px;
+
+      .wallet{
+
+        .editor-icons{
+          height: 20px;
+          width: 20px;
+        }
+
+        .block-title1 p{
+          font-weight: 900;
+        }
+
+        .content{
+          padding: 25px 30px 20px 30px;
+          &>div{
+            display: inline-block;
+            vertical-align: top;
+          }
+
+          .balance{
+            padding: 0 20px;
+
+            .balance-block,
+            .address-block{
+              margin-bottom: 15px;
+              .block-title{
+                width: 125px;
+              }
+
+              h3{
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 20px;
+              }
+
+              .balance-amount{
+                vertical-align: middle;
+                display: inline-block;
+                font-size: 20px;
+                font-weight: 900;
+                color: #00C599;
+
+              }
+
+
+              .copy-block{
+                display: inline-block;
+                vertical-align: middle;
+
+                p {
+                  background-color: white;
+                  padding-left: 20px;
+                  font-weight: 500;
+                  //max-width: 200px;
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  font-size: 14px;
+
+                  button {
+                    background-color: #B3B3B4 !important;
+                    color: white !important;
+                    display: inline-block;
+                    margin-left: 30px;
+                    padding: 12px 17px !important;
+                    border: none;
+                    transition: all 0.2s ease;
+                  }
+
+                  button:hover{
+                    background-color: grey !important;
+                  }
+                }
+              }//.copy-block
+
+            }//.balance-block
+
+
+          }
+        }
+
+
+      }
+
+      .tokens{
+
+
+        .col-title{
+          background-color: white;
+
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding: 5px 20px;
+          border-bottom: 1px solid #EDEDED;
+
+          p{
+            font-weight: 900;
+            font-size: 13px;
+          }
+        }//.col-title
+
+
+
+        .content{
+          height: 116px;
+          overflow-y: auto;
+          position: relative;
+
+          &>div{
+
+            &:nth-child(even){
+              background-color: #ebebeb;
+            }
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 5px 20px;
+            border-bottom: 1px solid #EDEDED;
+            p{
+              font-size: 13px;
+              font-weight: 500;
+              .text-ellipsis;
+            }
+          }
+
+        }
+      }
+    }
+
+    .sidebar{
+      display: flex;
+      flex: 15;
+      flex-direction: column;
+      height: fit-content;
+      margin-left: 15px;
+      margin-top: 4.2rem;
+
+      .title-container{
+        display: flex;
+        color: white;
+        background-color: #3E4B5A;
+        padding: 10px 20px;
+
+        .title{
+          display: inline-block;
+          font-weight: 900;
+          font-size: 20px;
+
+        }
+
+        .total-of{
+          display: inline-block;
+          margin-left: auto;
+          font-size: 13px;
+          margin-top: 10px;
+        }
+
+      }
+
+
+
+      .col-title{
+        background-color: white;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        padding: 15px 20px;
+        border-bottom: 1px solid #EDEDED;
+
+        p{
+          font-size: 15px;
+          font-weight: 900;
+        }
+      }//.col-title
+
+
+
+      .content{
+        overflow-y: scroll;
+        position: relative;
+
+        &>div{
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          padding: 15px 20px;
+          border-bottom: 1px solid #EDEDED;
+          p{
+            font-size: 15px;
+            font-weight: 500;
+            .text-ellipsis;
+          }
+
+          .add-button{
+
+            position: relative;
+
+            p{
+              cursor: pointer;
+              width: 90px;
+              position: absolute;
+              padding: 7px 0px;
+              border: 1px solid blue;
+              font-size: 12px;
+              color: blue;
+              text-align: center;
+              top: -6px;
+              left: 0px;
+              transition: all 0.2s ease;
+            }
+
+            p:hover{
+              color: white;
+              background-color: blue;
+            }
+          }
+
+
+
+          .remove-button{
+
+            position: relative;
+
+            p{
+              cursor: pointer;
+              width: 90px;
+              position: absolute;
+              padding: 7px 0px;
+              border: 1px solid red;
+              font-size: 12px;
+              color: red;
+              text-align: center;
+              top: -6px;
+              left: 0px;
+              transition: all 0.2s ease;
+            }
+
+            p:hover{
+              color: white;
+              background-color: red;
+            }
+          }
+
+
+        }
+
+        .col-title{
+          background-color: white;
+
+          p{
+            font-weight: 900;
+          }
+        }
+
+      }
+
+    }
+  }
+
+
+}
+
+
+
+
+
 #etherWalletPopUp {
   padding: 10px;
   position: relative;
@@ -14,6 +368,22 @@
   }
 }
 
+.toggleTokenContainer {
+  span {
+    color: #0e97c0;
+    cursor: pointer;
+
+    &:hover {
+      color: #095f79;
+    }
+  }
+}
+
+.walletTokensContainer {
+  max-height: 70px;
+  overflow: scroll;
+}
+
 .quicksend-address {
   font-family: @font-family-monospace;
   max-width: 170px;
@@ -26,6 +396,13 @@
 .chrome-tokens span {
   min-width: 130px;
   display: inline-block;
+}
+
+.truncate {
+  max-width: 130px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .mainWalletEdit,
@@ -49,4 +426,20 @@
 #secWatchOnlyMain .mainWalletDelete {
   width: 60px;
   display: block;
+}
+
+.spinner {
+  animation: spin 2s linear infinite;
+  height: 37px;
+}
+
+.spinner-container {
+  display: inherit !important;
+  padding: 7.5px 20px !important;
+  text-align: center;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
 }
