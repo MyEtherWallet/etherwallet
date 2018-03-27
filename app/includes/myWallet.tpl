@@ -1,10 +1,10 @@
 <!-- My Wallet Page -->
 <main class="tab-pane active myWalletCtrl" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
   <div class="mywallet-container">
-    <h1 translate="NAV_YourWallets">Your Wallets</h1>
     <div class="grid-frame">
-      <div>
+      <div id="walletsContainer">
         <!-- Loop begins for each wallets =====================================================-->
+        <h1 translate="NAV_YourWallets">Your Wallets</h1>
         <div class="data" ng-repeat="twallet in allWallets track by $index">
           <div class="wallet grid-bg">
             <div class="block-title1" style="display: flex;">
@@ -127,7 +127,7 @@
         </div>
       </div>
 
-      <div class="sidebar grid-bg" ng-if="allWallets.length > 0 || allWatchOnly.length > 0">
+      <div class="sidebar grid-bg" ng-show="allWallets.length > 0 || allWatchOnly.length > 0">
         <div class="title-container block-title2">
           <p class="title">Tokens</p>
           <p class="total-of">Total of {{ tokens.length }}</p>
@@ -313,8 +313,5 @@
 
   </section>
   <!--/ Remove modal-->
-
-
-
 </main>
 <!-- / My Wallet Page -->

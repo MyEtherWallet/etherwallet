@@ -11,8 +11,12 @@ var myWalletsCtrl = function($scope, $sce, $timeout, walletService) {
 		$scope.currentPagination
 	);
 
-  $scope.loadingTokens = false;
+	$scope.qtyPerPage = 25;
+
+	$scope.walletsContainer = document.getElementById("walletsContainer");
 	$scope.sideBarTokens = document.getElementById("sideBarTokens");
+
+  $scope.loadingTokens = false;
 
 	$scope.allWallets = [];
 	$scope.allWatchOnly = [];
@@ -22,6 +26,7 @@ var myWalletsCtrl = function($scope, $sce, $timeout, walletService) {
 		eur: 0,
 		btc: 0
 	};
+
 	$scope.viewWallet = {};
 	$scope.ajaxReq = ajaxReq;
 	$scope.setNickNames = function() {
@@ -53,17 +58,38 @@ var myWalletsCtrl = function($scope, $sce, $timeout, walletService) {
 		body.removeChild(copyElm);
 	};
 
-	angular.element($scope.sideBarTokens).bind("scroll", function(e) {
-		if (e.target.scrollTop === e.target.scrollHeight - e.target.offsetHeight) {
-      $scope.loadingTokens = true;
-      const loadTokens = $timeout(function(){
-        $scope.nextPage(25);
-      }, 500);
+	function scrollContent () {
+		$scope.loadingTokens = true;
+		const loadTokens = $timeout(function(){
+			$scope.nextPage($scope.qtyPerPage);
+		}, 500);
+		$scope.loadTokens = false;
+	}
 
-      $scope.loadTokens = false;
+	angular.element(function() {
+		angular.element($scope.sideBarTokens).bind("scroll", function(e) {
+			if (e.target.scrollTop === e.target.scrollHeight - e.target.offsetHeight) {
+				scrollContent();
+				$scope.$apply();
+			}
+		});
+	});
 
-			$scope.$apply();
+	// Update height when height is changed and keep watching height
+	$scope.$watch('walletsContainer.clientHeight', function() {
+		if($scope.allWatchOnly.length !== 0) {
+			angular.element($scope.sideBarTokens).css('maxHeight', (($scope.walletsContainer.clientHeight - 167.200) + 'px'));
+		} else {
+			angular.element($scope.sideBarTokens).css('maxHeight', (($scope.walletsContainer.clientHeight - 237) + 'px'));
 		}
+	});
+
+	// Only check if scroll exists once
+	const checkForScroll = $scope.$watch('sideBarTokens.scrollHeight', function() {
+		if($scope.sideBarTokens.scrollHeight === $scope.sideBarTokens.clientHeight) {
+			scrollContent();
+		}
+		checkForScroll();
 	});
 
 	$scope.nextPage = currentIndex => {
