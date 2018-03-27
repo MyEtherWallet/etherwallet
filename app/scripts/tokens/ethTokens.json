@@ -2141,6 +2141,12 @@
     "type": "default"
   },
   {
+    "address": "0xF4c07b1865bC326A3c01339492Ca7538FD038Cc0",
+    "symbol": "PBT",
+    "decimal": 4,
+    "type": "default"
+  },
+  {
     "address": "0xfcAC7A7515e9A9d7619fA77A1fa738111f66727e",
     "symbol": "PCH",
     "decimal": 18,
