@@ -654,6 +654,12 @@
     "type": "default"
   },
   {
+    "address": "0xEBf2F9E8De960f64ec0fDCDa6Cb282423133347B",
+    "symbol": "CNB",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0xd4c435f5b09f855c3317c8524cb1f586e42795fa",
     "symbol": "CND",
     "decimal": 18,
@@ -1125,6 +1131,12 @@
     "address": "0x3a26746Ddb79B1B8e4450e3F4FFE3285A307387E",
     "symbol": "ETHB",
     "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0x6927C69fb4daf2043fbB1Cb7b86c5661416bea29",
+    "symbol": "ETR",
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -2111,8 +2123,8 @@
     "type": "default"
   },
   {
-    "address": "PATH",
-    "symbol": "0xf813f3902bbc00a6dce378634d3b79d84f9803d7",
+    "address": "0xF813F3902bBc00A6DCe378634d3B79D84F9803d7",
+    "symbol": "PATH",
     "decimal": 18,
     "type": "default"
   },
