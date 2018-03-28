@@ -1,7 +1,7 @@
 'use strict';
 var offlineTxCtrl = function($scope, $sce, walletService) {
     $scope.gpDropdown = false;
-    $scope.gasPriceDef = 'WEI';
+    $scope.gasPriceDef = globalFuncs.localStorage.getItem('gasPriceDef') || 'WEI';
     $scope.ajaxReq = ajaxReq;
     walletService.wallet = null;
     walletService.password = '';
@@ -48,6 +48,7 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
 
     $scope.changePrice = function(price) {
       $scope.gasPriceDef = price;
+      globalFuncs.localStorage.setItem('gasPriceDef', price);
       $scope.gpDropdown = false;
     }
 
