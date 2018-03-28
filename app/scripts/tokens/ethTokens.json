@@ -2321,6 +2321,12 @@
     "type": "default"
   },
   {
+    "address": "PRON",
+    "symbol": "0xA3149E0fA0061A9007fAf307074cdCd290f0e2Fd",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x7641b2Ca9DDD58adDf6e3381c1F994Aac5f1A32f",
     "symbol": "PRPS",
     "decimal": 18,
@@ -2450,6 +2456,12 @@
     "address": "0xf05a9382A4C3F29E2784502754293D88b835109C",
     "symbol": "REX",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xd0929d411954c47438dc1d871dd6081f5c5e149c",
+    "symbol": "RFR",
+    "decimal": 4,
     "type": "default"
   },
   {
