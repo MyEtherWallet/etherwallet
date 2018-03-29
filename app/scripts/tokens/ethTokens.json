@@ -2327,8 +2327,8 @@
     "type": "default"
   },
   {
-    "address": "PRON",
-    "symbol": "0xA3149E0fA0061A9007fAf307074cdCd290f0e2Fd",
+    "address": "0xA3149E0fA0061A9007fAf307074cdCd290f0e2Fd",
+    "symbol": "PRON",
     "decimal": 8,
     "type": "default"
   },
