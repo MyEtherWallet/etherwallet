@@ -313,4 +313,10 @@ to:         '0xe8DB4ceA1f7ad7Ba22F3DbbAb55A336545701d96',
 gasLimit:   200000,
 data:       '',
 msg:        ' Duty of Care VDOC token sale - https://dutyof.care/token-launch/'
+},{
+// APIS Token sale
+to:         '0x749e66e12c09E4105381e373c0E6CA0bCe573d36',
+gasLimit:   200000,
+data:       '',
+msg:        ' APIS token sale - https://apisplatform.io'
 }]
