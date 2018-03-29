@@ -61,7 +61,7 @@
 
         <br />
 
-        <table class="table small table-condensed table-hover">
+        <table class="table small table-condensed table-hover transaction-modal">
           <tbody>
             <tr>
               <td class="small text-right">To Address:</td>
@@ -109,7 +109,7 @@
             </tr>
             <tr>
               <td class="small text-right">Data:</td>
-              <td class="small text-left mono">{{parsedSignedTx.data}}</td>
+              <td class="small text-left mono text-width-limit"><p>{{parsedSignedTx.data}}</p></td>
             </tr>
 
           </tbody>

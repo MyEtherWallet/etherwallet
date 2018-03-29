@@ -75,29 +75,9 @@
     </div>
   </a>
 
-  <!-- Coinbase -->
-  <a href="https://buy.coinbase.com?code=a6e1bd98-6464-5552-84dd-b27f0388ac7d&address={{wallet.getChecksumAddressString()}}&crypto_currency=ETH&currency=USD"
-     ng-show="ajaxReq.type=='ETH' && slide==2"
-     class="block swap--usd"
-     target="_blank" rel="noopener noreferrer">
-    <div class="col-sm-7">
-      <p class="swap__subhead" ng-show="wallet.balance<=0">Aw...you don't have any ETH</p>
-      <p class="swap__subhead" ng-show="wallet.balance>0">It's now easier to get more ETH</p>
-      <h5 class="swap__cta">Buy ETH with USD</h5>
-    </div>
-    <div class="col-sm-5">
-      <img src="images/logo-coinbase.svg" width="64" height="auto" class="swap__logo">
-      <p class="swap-flag--price">1 ETH ≈ <br /> {{wallet.usdPrice}} USD</p>
-    </div>
-  </a>
-
-
-
-
-
   <!-- Bity -->
   <a ng-click="globalService.currentTab=globalService.tabs.swap.id"
-     ng-show="ajaxReq.type=='ETH' && slide==3"
+     ng-show="ajaxReq.type=='ETH' && slide==2"
      class="block swap--btc"
      target="_blank" rel="noopener noreferrer">
     <div class="col-sm-7">
@@ -112,10 +92,26 @@
     </div>
   </a>
 
+  <!-- Coinbase
+  <a href="#"
+     ng-show="ajaxReq.type=='ETH' && slide==2"
+     class="block swap--usd"
+     target="_blank" rel="noopener noreferrer">
+    <div class="col-sm-7">
+      <p class="swap__subhead" ng-show="wallet.balance<=0">Aw...you don't have any ETH</p>
+      <p class="swap__subhead" ng-show="wallet.balance>0">It's now easier to get more ETH</p>
+      <h5 class="swap__cta">Buy ETH with USD</h5>
+    </div>
+    <div class="col-sm-5">
+      <img src="images/logo-coinbase.svg" width="64" height="auto" class="swap__logo">
+      <p class="swap-flag--price">1 ETH ≈ <br /> {{wallet.usdPrice}} USD</p>
+    </div>
+  </a>
+  -->
+
   <div class="swap__nav" ng-show="ajaxReq.type=='ETH'">
     <a ng-click="slide=1"> &bull; </a>
     <a ng-click="slide=2"> &bull; </a>
-    <a ng-click="slide=3"> &bull; </a>
   </div>
 
 
@@ -179,7 +175,7 @@
     <div class="custom-token-fields" ng-show="customTokenField">
       <div class="row">
         <address-field
-          placeholder="{{ ajaxReq.type=='ETH' ? 'mewsupport.eth' : '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8' }}"
+          placeholder="{{ ajaxReq.type=='ETH' ? 'mewtopia.eth' : '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D' }}"
           var-name="localToken.contractAdd"
           labelTranslated="TOKEN_Addr">
         </address-field>

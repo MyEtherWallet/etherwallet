@@ -495,6 +495,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'Riapri MyEtherWallet su una connessione sicura (SSL) ',
 ADD_DigitalBitbox_0b        : 'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'Collega il tuo Digital Bitbox ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 /* CX */
 CX_error_1                  : 'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno! ',
@@ -812,7 +816,7 @@ HELP_15_Title               : '15) Perché il conto che ho appena creato non ris
 HELP_15_Desc_1              : 'I conti vengono mostrati in quegli strumenti solamente dopo che c\'è stata un\'attività sul conto in questione&mdash;ad esempio, dopo che ci hai trasferito degli ether. ',
 
 HELP_16_Title               : '16) Come faccio a controllare il saldo del mio conto? ',
-HELP_16_Desc_1              : 'Puoi usare uno strumento per l\'esplorazione della *blockchain* come [etherscan.io](https://etherscan.io/). Incolla il tuo indirizzo nella barra di ricerca e vedrai il tuo indirizzo e lo storico delle transazioni. Ad esempio, questo è come si presenta il nostro [conto donazioni](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) su etherscan.io ',
+HELP_16_Desc_1              : 'Puoi usare uno strumento per l\'esplorazione della *blockchain* come [etherscan.io](https://etherscan.io/). Incolla il tuo indirizzo nella barra di ricerca e vedrai il tuo indirizzo e lo storico delle transazioni. Ad esempio, questo è come si presenta il nostro [conto donazioni](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) su etherscan.io ',
 
 HELP_17_Title               : '17) Perché non viene mostrato il saldo quando sblocco il mio portafoglio? ',
 HELP_17_Desc_1              : 'Probabilmente perché sei dietro a un firewall. Le API che utilizziamo per ottenere il saldo e convertirlo sono spesso bloccate dai firewall per qualche ragione. Sarai ancora in grado di inviare transazioni, dovrai solo usare un metodo diverso per vedere il tuo saldo, come etherscan.io ',

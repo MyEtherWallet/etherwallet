@@ -16,9 +16,11 @@ nodes.nodeTypes = {
     POA: "POA",
     TOMO: "TOMO",
     ELLA: "ELLA",
+    ETSC: "ETSC",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
+nodes.ensSubNodeTypes = [nodes.nodeTypes.ETH];
 nodes.domainsaleNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
 nodes.customNodeObj = {
     'name': 'CUS',
@@ -44,18 +46,6 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/ethAbi.json'),
         'service': 'myetherapi.com',
         'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
-    },
-    'eth_mycrypto': {
-        'name': 'ETH',
-        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
-        'type': nodes.nodeTypes.ETH,
-        'eip155': true,
-        'chainId': 1,
-        'tokenList': require('./tokens/ethTokens.json'),
-        'abiList': require('./abiDefinitions/ethAbi.json'),
-        'service': 'mycryptoapi.com',
-        'lib': new nodes.customNode('https://api.mycryptoapi.com/eth', '')
     },
     'eth_ethscan': {
         'name': 'ETH',
@@ -93,6 +83,18 @@ nodes.nodeList = {
         'service': 'giveth.io',
         'lib': new nodes.customNode('https://mew.giveth.io', '')
     },
+    'etc_ethereum_commonwealth': {
+        'name': 'ETC',
+        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
+        'type': nodes.nodeTypes.ETC,
+        'eip155': true,
+        'chainId': 61,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'service': 'Ethereum Commonwealth',
+        'lib': new nodes.customNode('https://etc-geth.0xinfra.com', '')
+    },
     'etc_epool': {
         'name': 'ETC',
         'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
@@ -103,7 +105,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/etcTokens.json'),
         'abiList': require('./abiDefinitions/etcAbi.json'),
         'service': 'epool.io',
-        'lib': new nodes.customNode('https://mewapi.epool.io', '')
+        'lib': new nodes.customNode('https://mew.epool.io', '')
     },
     'rop_mew': {
         'name': 'Ropsten',
@@ -241,6 +243,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'ellaism.org',
         'lib': new nodes.customNode('https://jsonrpc.ellaism.org', '')
+    },
+    'etsc': {
+        'name': 'ETSC',
+        'blockExplorerTX': 'https://explorer.ethereumsocial.kr/#/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.ethereumsocial.kr/#/address/[[address]]',
+        'type': nodes.nodeTypes.ETSC,
+        'eip155': true,
+        'chainId': 214,
+        'tokenList': require('./tokens/etscTokens.json'),
+        'abiList': require('./abiDefinitions/etscAbi.json'),
+        'estimateGas': true,
+        'service': 'gazua.tv',
+        'lib': new nodes.customNode('https://node.ethereumsocial.kr', '')
     }
 };
 

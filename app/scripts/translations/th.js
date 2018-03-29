@@ -256,7 +256,7 @@ GET_ConfButton              : 'ฉันเข้าใจ ดำเนินก
 GEN_Label_5                 : 'บันทึก `กุญแจส่วนตัว (Private Key)` ของคุณ ',
 GEN_Unlock                  : 'ปลดล็อกกระเป๋าเพื่อดูที่อยู่ของคุณ',
 GAS_PRICE_Desc              : 'ราคาแก๊สคือจำนวนที่คุณจ่ายต่อหนึ่งหน่วยของจำนวนแก๊ส `ค่าธรรมเนียมของ ธุรกรรม (TX) = ราคาแก๊ส * จำนวนจำกัดแก๊ส` และจะถูกจ่ายให้กับผู้ขุดที่ขุด TX ของคุณลงในบล็อค ยิ่งราคาแก๊สสูง = ธุรกรรมก็จะสำเร็จเร็วขึ้น แต่ค่าธรรมเนียมก็จะแพงขึ้นเช่นกัน ค่าเริ่มต้นคือ `41 GWEI`',
-GAS_LIMIT_Desc              : 'จำนวนจำกัดแก๊ส คือปริมาณของแก๊สที่จะส่งไปกับธุรกรรม (TX) ของคุณ `ค่าธรรมเนียม TX = ราคาแก๊ส * จำนวนจำกัดแก๊ส และจะถูกจ่ายให้กับผู้ขุดที่ขุด TX ของคุณลงในบล็อค การเพิ่มจำนวนนี้จะไม่ทำให้ TX ของคุณถูกขุดสำเร็จไวขึ้น การส่ง ETH = `21000` หากส่ง Token = ~`200000`',
+GAS_LIMIT_Desc              : 'จำนวนจำกัดแก๊ส คือปริมาณของแก๊สที่จะส่งไปกับธุรกรรม (TX) ของคุณ `ค่าธรรมเนียม TX = ราคาแก๊ส * จำนวนจำกัดแก๊ส` และจะถูกจ่ายให้กับผู้ขุดที่ขุด TX ของคุณลงในบล็อค การเพิ่มจำนวนนี้จะไม่ทำให้ TX ของคุณถูกขุดสำเร็จไวขึ้น การส่ง ETH = `21000` หากส่ง Token = ~`200000`',
 NONCE_Desc                  : 'ค่า nonce คือตัวเลขของธุรกรรมที่ถูกส่งไปยังที่อยู่ที่ระบุ เพื่อเป็นการยืนยันให้ธุรกรรมถูกส่งได้อย่างถูกต้องตามลำดับ และไม่ซ้ำกัน',
 TXFEE_Desc                  : 'ค่าธรรมเนียมธุรกรรม (TX) จะถูกจ่ายให้กับผู้ขุดที่ขุด TX ของคุณลงในบล็อค มีค่าเท่ากับ `จำนวนจำกัดแก๊ส` * `ราคาแก๊ส` [คุณสามารถแปลง GWEI -> ETH ได้ที่นี่](https://www.myetherwallet.com/helpers.html)',
 
@@ -365,6 +365,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'เปิด MyEtherWallet อีกครั้งผ่านการเชื่อมต่อที่ปลอดภัย (SSL) ',
 ADD_DigitalBitbox_0b        : 'เปิด MyEtherWallet อีกครั้งด้วย [Chrome](https://www.google.com/chrome/browser/desktop/) หรือ [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'เชื่อมต่อไปยัง Digital Bitbox ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 /* Add Wallet */
 ADD_Label_1                 : 'คุณต้องการจะทำอะไร? ',
@@ -810,7 +814,7 @@ HELP_15_Title               : '15) Why hasn\'t the account I just created show u
 HELP_15_Desc_1              : 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
 
 HELP_16_Title               : '16) How do I check the balance of my account? ',
-HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
+HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) looks like on etherscan.io ',
 
 HELP_17_Title               : '17) Why isn\'t my balance showing up when I unlock my wallet? ',
 HELP_17_Desc_1              : ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',

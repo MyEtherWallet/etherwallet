@@ -71,8 +71,14 @@ globalFuncs.errorMsgs = [
     'Please enter valid TX hash', // 36
     'Please enter valid hex string. Hex only contains: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f', // 37
     'Offer must have either price or reserve set to more than 0', // 38
-    'Bid must be more than the specified minimum' // 39
+    'Bid must be more than the specified minimum', // 39
+    'Please enter a valid private key' // 40
 ];
+
+globalFuncs.phishingWarning = [
+  'This address has been flagged: ',
+  'This address has been flagged in our Phishing list. Please make sure you are sending to the right address'
+]
 
 // These are translated in the translation files
 globalFuncs.successMsgs = [
@@ -154,7 +160,7 @@ globalFuncs.postDelay = 300;
 globalFuncs.kdf = "scrypt";
 globalFuncs.defaultTxGasLimit = 21000;
 globalFuncs.defaultTokenGasLimit = 200000;
-globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
+globalFuncs.donateAddress = "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D";
 globalFuncs.isNumeric = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -163,11 +169,7 @@ globalFuncs.urlGet = function(name) {
     if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search.toLowerCase())) return this.stripTags(decodeURIComponent(name[1]));
 };
 globalFuncs.stripTags = function(str) {
-    var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-    while (SCRIPT_REGEX.test(str)) {
-        str = str.replace(SCRIPT_REGEX, "");
-    }
-    return str;
+    return xssFilters.inHTMLData(str);
 };
 globalFuncs.checkAndRedirectHTTPS = function() {
     var host = "myetherwallet.com";

@@ -13,17 +13,47 @@ gasLimit:   300000,
 data:       '',
 msg:        ' Accord (ARD) ERC20 token sale - http://accordtoken.com'
 },{
+// Primalbase Token (PBT)
+to:         '0xF4c07b1865bC326A3c01339492Ca7538FD038Cc0',
+gasLimit:   100000,
+data:       '',
+msg:        ''
+},{
 // BTQ Token Sale
 to:         '0x16B0E62aC13a2fAeD36D18bce2356d25Ab3CfAD3',
 gasLimit:   200000,
 data:       '',
 msg:        'BTQ ICO ends February 1, 2018. btc btq is your exclusive bitcoin boutique and world\'s premier cryptocurrency lifestyle brand. https://thebtcbtq.com/btq'
 },{
+// EPX Token Sale
+to:         '0x5A8658dE344972fC8b6b6a01Cd87a64bc7420A38',
+gasLimit:   200000,
+data:       '',
+msg:        'ethPoker.io EPX token sale - https://ethPoker.io'
+},{
+// ARXT Token Sale
+to:         '0xb65E16b44A80C9c44aDdD56a5014CbA2814a82D1',
+gasLimit:   200000,
+data:       '',
+msg:        'Assistive Reality ARXT token sale - https://aronline.io'
+},{
+// STC Token Sale
+to:         '0x8d040556214125F3fE7d8B22cF17c364603A6035',
+gasLimit:   400000,
+data:       '',
+msg:        'STC Token Sale - https://dimensions.network'
+},{
 // MNT Token Sale
 to:         '0xA9877b1e05D035899131DBd1e403825166D09f92',
 gasLimit:   200000,
 data:       '',
 msg:        'MNT Token Sale - http://mnt.coinjoker.com'
+},{
+// J8T Token Sale
+to:         '0xa76ea481aebdd5703e476cfcb2315d4e014232c1',
+gasLimit:   200000,
+data:       '',
+msg:        'J8T Token Sale - https://jet8.io/token - JET8 · Democratizing influence'
 },{
 // PUC Token Sale
 to:         '0xEf6B4cE8C9Bc83744fbcdE2657b32eC18790458A',
@@ -110,7 +140,7 @@ data:       '',
 msg:        'Horizon State Token Sale. Thank you for your support. '
 },{
 // DataBrokerDAO
-to:         '0x8aec8f09a840faea966f4b0e29a497d8f5b5a6b4',
+to:         '0x439b54caf661c21e6b231d972d7eaa98f199590f',
 gasLimit:   200000,
 data:       '',
 msg:        'DataBrokerDAO. https://databrokerdao.com'
@@ -193,12 +223,13 @@ gasLimit:   200000,
 data:       '',
 msg:        'Rebellious Token'
 },{
-  // Ethereum High Token Sale
+// Ethereum High Token Sale
 to:         '0xd5E3036d5CE7eC222379D16f6ffC38C38c55BF7f',
 gasLimit:   200000,
 data:       '',
 msg:        'Ethereum High HIG is a robust and feather-light cryptocurrency designed to hedge the risk of your portfolio'
 },{
+// REAL CHAIN TOKEN!
 to:         '0x2a3Aa9ECA41E720Ed46B5A70D6C37EfA47f768Ac',
 gasLimit:   200000,
 data:       '',
@@ -223,21 +254,75 @@ gasLimit:   150000,
 data:       '',
 msg:        'TRV Ongoing Sale.'
 },{
+// TWN Token Sale
+to:         '0xdee3bfae40ac2ae9c69ebf30ecaf67a499a9dd5e',
+gasLimit:   150000,
+data:       '',
+msg:        'The World News Pre-ICO.'
+},{
 // Bitlle Token Sale (BTL)
 to:         '0x92685E93956537c25Bb75D5d47fca4266dd628B8',
 gasLimit:   200000,
 data:       '',
 msg:        'Bitlle Token. Official website https://bitlle.com'
 },{
-// EDU Token Sale (LiveEdu.tv)
+// LEDU Token Sale (LiveEdu.tv)
 to:         '0x2097175d0abb8258f2468E3487F8db776E29D076',
 gasLimit:   200000,
 data:       '',
-msg:        'LiveEdu EDU token sale. Official website: https://tokensale.liveedu.tv/'
+msg:        'LiveEdu LEDU token sale. Official website: https://tokensale.liveedu.tv/'
 },{
 // HEdpAY (Hdp.ф) Sale (hedpay.com)
 to:         '0x4F8B6cA78711207E1B281DB63e8d6EAA1ce2F63E',
 gasLimit:   230000,
 data:       '',
 msg:        'HEdpAY (Hdp.ф) sale. Official sale website: https://ibiginvestments.com/hedpay'
+},{
+// COPYTRACK (CPY) Token Sale
+to:         '0xF04436B2eDaa1B777045E1EEFc6DBA8bD2aEbAB8',
+gasLimit:   150000,
+data:       '',
+msg:        'COPYTRACK (CPY) Token Sale. Official sale website: https://copytrack.io'
+},{
+// DoBetAcceptBet (DCA) Token Sale
+to:         '0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416',
+gasLimit:   150000,
+data:       '',
+msg:        'DoBetAcceptBet (DCA) Token Sale. Official sale website: https://dobetacceptbet.com'
+},{
+// LATOKEN (LA) Token Sale
+to:         '0xE50365f5D679CB98a1dd62D6F6e58e59321BcdDf',
+gasLimit:   150000,
+data:       '',
+msg:        'LATOKEN (LA). Official sale website: https://latoken.com'
+},{
+// LALA World (LALA) Token Sale
+to:         '0xfD107B473AB90e8Fbd89872144a3DC92C40Fa8C9',
+gasLimit:   200000,
+data:       '',
+msg:        'LALA World Token (LALA) Token Sale. Official sale website: https://lalaworld.io'
+},{
+// Digital Asset Exchange Token (DAXT) Token Sale
+to:         '0x61725f3db4004afe014745b21dab1e1677cc328b',
+gasLimit:   200000,
+data:       '',
+msg:        'Digital Asset Exchange Token (DAXT) Token Sale. Official sale website: https://www.daxt.io'
+},{
+// Duty of Care (VDOC) Token sale
+to:         '0xe8DB4ceA1f7ad7Ba22F3DbbAb55A336545701d96',
+gasLimit:   200000,
+data:       '',
+msg:        ' Duty of Care VDOC token sale - https://dutyof.care/token-launch/'
+},{
+// APIS Token sale
+to:         '0x749e66e12c09E4105381e373c0E6CA0bCe573d36',
+gasLimit:   200000,
+data:       '',
+msg:        ' APIS token sale - https://apisplatform.io'
+},{
+// WhoHas (WHO) Token Sale
+to:         '0xe933c0Cd9784414d5F278C114904F5A84b396919',
+gasLimit:   200000,
+data:       '',
+msg:        'WhoHas-Token Sale. Please register through our offical website: https://whohas.io/'
 }]

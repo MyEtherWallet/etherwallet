@@ -5,35 +5,35 @@ ja.code = 'ja';
 ja.data = {
 
 GEN_Help_0                      :  'お財布をお持ちですか？', /*Already have a wallet somewhere?*/
-GEN_Help_MetaMask               :  'とでも簡単です！キーはフィッシングサイトではなく、メタマスク(Metamask)に残っています。すぐ試してください！', /*So easy! Keys stay in MetaMask, not on a phishing site! Try it today.*/
+GEN_Help_MetaMask               :  'とっても簡単です！キーはフィッシングサイトではなく、メタマスク(Metamask)に残っています。すぐ試してください！', /*So easy! Keys stay in MetaMask, not on a phishing site! Try it today.*/
 
-GEN_Warning_1                   :  '**これは絶対に失くさないでください！**　なくした場合には二度と戻ってきません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
-GEN_Warning_2                   :  '**他人と共有しないでください**　悪意のあるサイトでこのファイルを使うと、あなたの資産を盗られてしまいます。', /***Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.*/
-GEN_Warning_3                   :  '**バックアップを作成してください！**　いつの日か、億万単位の大金になるものと心得て安全を確保してください。', /***Make a backup!** Secure it like the millions of dollars it may one day be worth.*/
+GEN_Warning_1                   :  '**絶対に忘れないようにしてください！**　失くしてしまうと、回復できません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
+GEN_Warning_2                   :  '**他人と共有しないでください**　悪意のあるサイトでこのファイルを使うと、あなたのお金が盗まれます。', /***Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.*/
+GEN_Warning_3                   :  '**バックアップを作成してください！**　ゆくゆくは、数億円の大金になるものと心得て安全性を確保してください。', /***Make a backup!** Secure it like the millions of dollars it may one day be worth.*/
 
 GAS_Price_1                     : '普通',　/*Not So Fast*/
 GAS_Price_2                     : '迅速', /*Fast*/
-GAS_Price_3                     : '超迅速', /*Fast AF*/
+GAS_Price_3                     : '超速', /*Fast AF*/
 
 CONTRACT_Helper_1               :  'マルチシグのアドレスに変えてください', /*Please change the address to your own Multisig Contract Address.*/
-CONTRACT_Warning_1              :  'まもなく契約が送出されます。', /*You are about to **deploy a contract**.*/
+CONTRACT_Warning_1              :  'まもなく契約が展開されます。', /*You are about to **deploy a contract**.*/
 CONTRACT_Warning_2              :  '次のネットワークに展開されます：', /*It will be deployed on the following network:*/
 CONTRACT_Warning_3              :  'まもなく契約上の機能が実行されます。', /*You are about to **execute a function on contract**.*/
 
-SEND_Helper_Contract            :  'ほとんどの場合、0のままにしてください。', /*In most cases you should leave this as 0.*/
+SEND_Helper_Contract            :  'ほとんどの場合、0.のままにしておきます。', /*In most cases you should leave this as 0.*/
 SEND_ViewOnly                   :  '自分のアドレスを指定するだけでは送信できません。お財布を解錠する必要があります。', /*You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.*/
 SEND_LoadTokens                 :  'トークン読込', /*Load Tokens*/
 SEND_CustomAddrMsg              :  '対応するメッセージ', /*A message regarding*/
 
-SWAP_Warning_1                  :  '警告！交換に必要な資金が足りません。', /*Warning! You do not have enough funds to complete this swap.*/
+SWAP_Warning_1                  :  '警告！交換するためにに必要な金額が不足しています。', /*Warning! You do not have enough funds to complete this swap.*/
 SWAP_Warning_2                  :  '資金を追加するか、別のお財布をお使いください。',　/*Please add more funds to your wallet or access a different wallet.*/
 
-X_Advanced                      :  '熟練者限定。', /*Advanced Users Only.*/
+X_Advanced                      :  '熟練者向け。', /*Advanced Users Only.*/
 X_HelpfulLinks                  :  '役立つリンクとよくある問答集', /*Helpful Links & FAQs*/
 X_HelpfulLinks_1                :  'お財布の操作方法', /*How to Access your Wallet*/
 X_HelpfulLinks_2                :  '秘密鍵を紛失してしまいした', /*I lost my private key*/
 X_HelpfulLinks_3                :  '秘密鍵が別のアドレスを解錠しました', /*My private key opens a different address*/
-X_HelpfulLinks_4                :  'MyEtherWalletから、または宛へ移管中', /*Migrating to/from MyEtherWallet*/
+X_HelpfulLinks_4                :  'MyEtherWalletから、またはそれに向けて移管中', /*Migrating to/from MyEtherWallet*/
 X_Network                       :  'ノード', // aka "node" or "chain" - used in the dropdown in header  /*Network*/
 X_Network_Custom                :  'カスタムネットワークやノードを追加', /*Add Custom Network / Node*/
 
@@ -211,6 +211,9 @@ ONBOARD_resume                  :  '前回スライドを最後までお読み�
 ADD_DigitalBitbox_0a        : 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
 ADD_DigitalBitbox_0b        : 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
 ADD_DigitalBitbox_scan      : 'DigitalBitboxに接続する ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 ADD_Label_1                 : 'ご希望の操作方法をお選びください ',
 ADD_Label_2                 : 'ニックネームの作成： ',
 ADD_Label_3                 : 'お財布が暗号化されています。パスワードを入力してください： ',
@@ -572,6 +575,7 @@ WARN_Send_Link              : '自分のアドレス、リンク、ガス、デ�
 x_CancelReplaceTx           : '処理を中断、あるいは置換',
 x_CancelTx                  : '処理を中断',
 x_DigitalBitbox             : 'Digital Bitbox ',
+x_Secalot                   : 'Secalot ',
 x_PasswordDesc              : 'このパスワードで秘密鍵を**暗号化**します。新しい鍵を作るための元種(seed)ではありません。**このパスワードと(暗号化された)秘密鍵の二つを使って、お財布を解錠します**',
 x_ReadMore                  : 'もっと読む',
 x_ReplaceTx                 : '処理を置き換える',
@@ -758,7 +762,7 @@ HELP_14_Desc_1              : 'While the mouse moving thing is clever and we und
 HELP_15_Title               : '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan) ',
 HELP_15_Desc_1              : 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
 HELP_16_Title               : '16) How do I check the balance of my account? ',
-HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
+HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) looks like on etherscan.io ',
 HELP_17_Title               : '17) Why isn\'t my balance showing up when I unlock my wallet? ',
 HELP_17_Desc_1              : 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',
 HELP_18_Title               : '18) Where is my geth wallet file? ',

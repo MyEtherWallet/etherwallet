@@ -67,7 +67,18 @@
              value="digitalBitbox"/>
       Digital Bitbox
     </label>
-
+    
+    <!-- Secalot -->
+    <label aria-flowto="aria5"
+           class="radio"
+           ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'">
+      <input aria-flowto="aria5"
+             type="radio"
+             aria-label="Secalot hardware wallet"
+             ng-model="walletType"
+             value="secalot"/>
+      Secalot
+    </label>    
 
     <!-- Keystore / JSON File -->
     <label aria-flowto="aria6"
@@ -427,6 +438,51 @@
       </div>
     </div>
     <!-- / Digital Bitbox-->
+    
+    
+    <!--  Secalot-->
+    <div id="selectedTypeSecalot" ng-if="walletType=='secalot'">
+      <h4>
+        Secalot Hardware Wallet
+      </h4>
+      <h5>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 79.536 79.536"><path fill="#5dba5a" d="M39.769 0C17.8 0 0 17.8 0 39.768c0 21.965 17.8 39.768 39.769 39.768 21.965 0 39.768-17.803 39.768-39.768C79.536 17.8 61.733 0 39.769 0zm-5.627 58.513L15.397 39.768l7.498-7.498 11.247 11.247 22.497-22.493 7.498 7.498-29.995 29.991z"/></svg>
+        This is a recommended way to access your wallet.
+      </h5>
+      <div class="form-group">
+        A hardware wallet is a small USB device that allows you to access your wallet quickly, safely &amp; easily. It is more secure because your private key <u>never leaves the hardware wallet</u>. It protects you from phishing, malware, and more.
+      </div>
+      <ul>
+        <li class="u__protip">
+          <a href="https://www.secalot.com/documentation/ethereum-wallet/"
+             target="_blank"
+             rel="noopener noreferrer">
+               How to use Secalot with MyEtherWallet
+          </a>
+        </li>
+        <li class="u__protip">
+          <a href="https://secalot.com/?ref=mew"
+             target="_blank"
+             rel="noopener noreferrer">
+                Don't have a Secalot? Get one now.
+          </a>
+        </li>
+      </ul>
+      <input class="form-control"
+             aria-label="Enter your Secalot Ethereum wallet PIN-code"
+             aria-describedby="selectedTypeSecalot"
+             type="password"
+             placeholder="Secalot Ethereum wallet PIN-code"
+             spellcheck="false"
+             value=""
+             ng-model="HDWallet.secalotSecret" />
+      <div class="form-group">
+        <a tabindex="0" role="button" class="btn btn-primary" ng-click="scanSecalot()" translate="ADD_Secalot_scan">
+          Connect your Secalot
+        </a>
+      </div>
+    </div>
+    <!-- / Secalot-->
 
 
     <!-- Keystore -->

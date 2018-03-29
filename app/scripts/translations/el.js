@@ -561,6 +561,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'Re-open MyEtherWallet on a secure (SSL) connection ',
 ADD_DigitalBitbox_0b        : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 /* Error Messages */
 ERROR_0                     : 'Παρακαλούμε εισαγάγετε έγκυρο ποσό. ',
@@ -829,7 +833,7 @@ HELP_15_Title               : '15) Γιατί δεν έχει εμφανιστε
 HELP_15_Desc_1              : 'Ένας λογαριασμός εμφανίζεται σε έναν εξερευνητή blockchain μόνο όταν ο λογαριασμός έχει δραστηριότητα&mdash;για παράδειγμα, αφού μεταφέρετε κάποιο ποσό Αιθέρα σε αυτόν. ',
 
 HELP_16_Title               : '16) Πώς ελέγχω το υπόλοιπο του λογαριασμού μου; ',
-HELP_16_Desc_1              : 'Μπορείτε να χρησιμοποιήσετε έναν εξερευνητή blockchain όπως το [etherscan.io](https://etherscan.io/). Επικολλήστε τη διεύθυνσή σας στη γραμμή αναζήτησης και θα ανασύρει τη διεύθυνση και το ιστορικό συναλλαγών σας. Για παράδειγμα, δείτε πώς φαίνεται ο [λογαριασμός μας για δωρέες](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) στο etherscan.io ',
+HELP_16_Desc_1              : 'Μπορείτε να χρησιμοποιήσετε έναν εξερευνητή blockchain όπως το [etherscan.io](https://etherscan.io/). Επικολλήστε τη διεύθυνσή σας στη γραμμή αναζήτησης και θα ανασύρει τη διεύθυνση και το ιστορικό συναλλαγών σας. Για παράδειγμα, δείτε πώς φαίνεται ο [λογαριασμός μας για δωρέες](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) στο etherscan.io ',
 
 HELP_17_Title               : '17) Γιατί δεν εμφανίζεται το υπόλοιπό μου όταν ξεκλειδώνω το πορτοφόλι μου; ',
 HELP_17_Desc_1              : 'Αυτό πιθανότατα οφείλεται στο γεγονός ότι βρίσκεστε πίσω από κάποιο τείχος προστασίας. Το API που χρησιμοποιούμε για να πάρουμε το υπόλοιπο και να μετατρέψουμε το εν λόγω υπόλοιπο συχνά εμποδίζεται από τείχη προστασίας για διάφορους λόγους. Θα εξακολουθείτε να είστε σε θέση να αποστείλετε συναλλαγές, απλά πρέπει να χρησιμοποιήσετε μια διαφορετική μέθοδο για να δείτε το εν λόγω υπόλοιπο, όπως το etherscan.io ',

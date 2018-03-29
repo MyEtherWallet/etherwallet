@@ -1,0 +1,24 @@
+@@include( '../includes/header.tpl', { "site": "mew" } )
+<section class="container" style="height: 60%; text-align: center;">
+  <h1>You've been redirected to safety!</h1>
+  <div id="phishingMsg">
+  </div>
+</section>
+<script>
+(function() {
+	const url = globalFuncs.stripTags(window.location.search.replace("?phishing-address=", ""));
+	const body = document.getElementById("phishingMsg");
+	const fragment = document.createDocumentFragment();
+	const newP1 = document.createElement("p");
+	const newP2 = document.createElement("p");
+	newP1.innerHTML = `</br></br></br></br></br>
+    The url ${url} has been flagged as a supicious site by the community.
+  `;
+  newP2.textContent =`
+  Please refrain from going to this site for the mean time.`
+  fragment.appendChild(newP1);
+  fragment.appendChild(newP2);
+	body.appendChild(fragment);
+})();
+</script>
+@@include( '../includes/footer.tpl', { "site": "mew" } )

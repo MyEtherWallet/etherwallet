@@ -211,6 +211,9 @@ ONBOARD_resume                  :  'It looks like you didn\'t finish reading thr
 ADD_DigitalBitbox_0a            :  'Re-open MyEtherWallet on a secure (SSL) connection',
 ADD_DigitalBitbox_0b            :  'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
 ADD_DigitalBitbox_scan          :  'Connect your Digital Bitbox',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 ADD_Label_1                     :  'What would you like to do?',
 ADD_Label_2                     :  'Create a Nickname',
 ADD_Label_3                     :  'Your wallet is encrypted. Good! Please enter the password.',
@@ -313,6 +316,7 @@ ERROR_36                        :  '(error_37) Please enter a valid TX hash',
 ERROR_37                        :  '(error_38) Please enter valid hex string. Hex only contains: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f',
 ERROR_38                        :  '(error_39) Offer must have either price or reserve set to more than 0',
 ERROR_39                        :  '(error_40) Bid must be more than the specified minimum',
+ERROR_40                        :  '(error_41) Please enter a valid private key',
 
 GETH_Balance                    :  '(geth-01) Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
 GETH_Cheap                      :  '(geth-02) Gas price too low for acceptance. Try raising the gas price to 21 GWEI via the dropdown in top-right.',
@@ -577,6 +581,7 @@ x_CancelReplaceTx               :  'Cancel or Replace Transaction',
 x_CancelTx                      :  'Cancel Transaction',
 x_CSV                           :  'CSV file (unencrypted)',
 x_DigitalBitbox                 :  'Digital Bitbox',
+x_Secalot                       : 'Secalot ',
 x_Download                      :  'Download',
 x_Json                          :  'JSON File (unencrypted)',
 x_JsonDesc                      :  'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
@@ -659,7 +664,7 @@ HELP_14_Desc_1                  :  'While the mouse moving thing is clever and w
 HELP_14_Title                   :  '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
 HELP_15_Desc_1                  :  'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
 HELP_15_Title                   :  '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
-HELP_16_Desc_1                  :  'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+HELP_16_Desc_1                  :  'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) looks like on etherscan.io',
 HELP_16_Title                   :  '16) How do I check the balance of my account?',
 HELP_17_Desc_1                  :  'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
 HELP_17_Title                   :  '17) Why isn\'t my balance showing up when I unlock my wallet?',
@@ -799,6 +804,12 @@ HELP_SecCX_Desc_6               :  'If we were to encrypt these items, you would
 HELP_SecCX_Title                :  'Security - MyEtherWallet CX',
 HELP_Warning                    :  'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
 
+PHISHING_Warning_1              :  'This address has been flagged: ',
+PHISHING_Warning_2              :  'This address has been flagged in our Phishing list. Please make sure you are sending to the right address',
+APPLE_Mob_Notice_Head           :  "It seems like you're using an IPhone or an IPad.",
+APPLE_Mob_Notice_Body_1         :  "Just letting you know that generating wallets isn't supported in these devices because of Apple's storage restrictions.",
+APPLE_Mob_Notice_Body_2         :  'Please use the actual website on a laptop or computer.',
+APPLE_Mob_Notice_Understand     :  'I understand.'
 };
 
 module.exports = en;

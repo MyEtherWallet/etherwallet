@@ -1,4 +1,0 @@
-This is a Brave Payments publisher verification file.
-
-Domain: myetherwallet.com
-Token: 4730ad37f424ccf590e933948fe4d02275b773e8e392b2770d690c17cb0ce664

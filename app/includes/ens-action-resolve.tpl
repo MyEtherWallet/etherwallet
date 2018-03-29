@@ -19,7 +19,7 @@
 
       <h5> Enter the address you would like this name to resolve to: </h5>
 
-      <input ng-model="newResolvedAddress" class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'" />
+      <input ng-model="newResolvedAddress" class="form-control" placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'" />
 
     </div>
 

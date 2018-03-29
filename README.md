@@ -8,6 +8,23 @@
 - chrome-extension-vX.X.X.X.zip is the chrome extension package
 - source code is the full source for developers to get started with (although cloning or forking the mercury branch is probably a better choice)
 
+### Live verify files
+Check gh-pages files against live website at https://www.myetherwallet.com
+
+| File Name| Status|
+|---|---|
+| index.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/index.html&remoteFile=https://www.myetherwallet.com/index.html)| 
+| embedded.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/embedded.html&remoteFile=https://www.myetherwallet.com/embedded.html)|  
+| helpers.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/helpers.html&remoteFile=https://www.myetherwallet.com/helpers.html)|
+| signmsg.html |![signmsg.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/signmsg.html&remoteFile=https://www.myetherwallet.com/signmsg.html)|
+| bin/startMEW.js |![startMEW.js](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/bin/startMEW.js&remoteFile=https://www.myetherwallet.com/bin/startMEW.js)|
+| css/etherwallet-master.min.css |![etherwallet-master.min.css](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/css/etherwallet-master.min.css&remoteFile=https://www.myetherwallet.com/css/etherwallet-master.min.css)|
+| fonts/Lato-Bold.woff |![Lato-Bold.woff](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/fonts/Lato-Bold.woff&remoteFile=https://www.myetherwallet.com/fonts/Lato-Bold.woff)|
+| fonts/Lato-Light.woff |![Lato-Bold.woff](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/fonts/Lato-Light.woff&remoteFile=https://www.myetherwallet.com/fonts/Lato-Light.woff)|
+| fonts/Lato-Regular.woff |![Lato-Regular.woff](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/fonts/Lato-Regular.woff&remoteFile=https://www.myetherwallet.com/fonts/Lato-Regular.woff)|
+| js/etherwallet-master.js |![etherwallet-master.js](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/js/etherwallet-master.js&remoteFile=https://www.myetherwallet.com/js/etherwallet-master.js)|
+| js/etherwallet-static.min.js |![etherwallet-static.min.js](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/js/etherwallet-static.min.js&remoteFile=https://www.myetherwallet.com/js/etherwallet-static.min.js)|
+| js/jquery-1.12.3.min.js |![jquery-1.12.3.min.js](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/js/jquery-1.12.3.min.js&remoteFile=https://www.myetherwallet.com/js/jquery-1.12.3.min.js)|
 
 ### MEW Around the Web
 
@@ -29,8 +46,8 @@
 - [kvhnuke (founder) reddit: https://www.reddit.com/user/kvhnuke/](https://www.reddit.com/user/kvhnuke/)
 - [jordan (cmo) reddit: https://www.reddit.com/user/trogdortb001](https://www.reddit.com/user/trogdortb001)
 - [myetherwallet reddit user: https://www.reddit.com/user/myetherwallet](https://www.reddit.com/user/myetherwallet)
--  MEW ETH Donation Address: 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 (mewtopia.eth)
--  MEW BTC Donation Address: 1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6
+-  MEW ETH Donation Address: 0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D (mewtopia.eth)
+-  MEW BTC Donation Address: 1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9
 
 
 ### `mercury` is the development branch. gh-pages contains only the smaller dist folder only and is served to MyEtherWallet.com
@@ -59,8 +76,8 @@
     - tokenSymbol=[ARC | ICN | MKR | ....]
     - gasLimit=[number] OR gas=[number]
     - data=[hex data]
-    - Example 1: https://www.myetherwallet.com/?to=0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8&value=1&tokenSymbol=REP&gaslimit=50000#send-transaction
-    - Example 2: https://www.myetherwallet.com/?to=0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8&value=1&gaslimit=23000&data=0x5468616e6b20796f752c204d455720322e30#send-transaction
+    - Example 1: https://www.myetherwallet.com/?to=0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D&value=1&tokenSymbol=REP&gaslimit=50000#send-transaction
+    - Example 2: https://www.myetherwallet.com/?to=0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D&value=1&gaslimit=23000&data=0x5468616e6b20796f752c204d455720322e30#send-transaction
 
 
 

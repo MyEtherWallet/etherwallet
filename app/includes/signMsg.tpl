@@ -70,7 +70,7 @@
     <textarea class="form-control"
               ng-model="verifyMsg.signedMsg"
               rows="8"
-              placeholder='{"address":"0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8","msg":"asdfasdfasdf","sig":"0x4771d78f13ba8abf608457f12471f427ca8f2fb046c1acb3f5969eefdfe452a10c9154136449f595a654b44b3b0163e86dd099beaca83bfd52d64c21da2221bb1c","version":"mew_v2"}'>
+              placeholder='{"address": "0xdecaf9cd2367cdbb726e904cd6397edfcae6068d","msg": "MEW IS AWESOME","sig": "0xe26ce7ae8b04a20dbdd32de82bf16c4b7a367312341eef6761208bcf8bc518021b8ec354eae8af54ad8190bef6bf8337eacafe3ce9710fe9c7f28596f1daaf631b","version": "2"}'>
     </textarea>
 
     <a class="btn btn-info btn-block"

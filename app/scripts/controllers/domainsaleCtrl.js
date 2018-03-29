@@ -1,6 +1,6 @@
 'use strict';
 var domainsaleCtrl = function($scope, $sce, walletService) {
-    $scope.referrer = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
+    $scope.referrer = "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D";
     $scope.ajaxReq = ajaxReq;
     $scope.hideDomainSaleInfoPanel = false;
     walletService.wallet = null;

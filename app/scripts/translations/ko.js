@@ -366,6 +366,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'MyEtherWallet을 보안 연결(SSL)로 다시 연결해주세요. ',
 ADD_DigitalBitbox_0b        : 'MyEtherWallet을 [Chrome](https://www.google.com/chrome/browser/desktop/) 또는 [Opera](https://www.opera.com/) 브라우저로 다시 열어주세요. ',
 ADD_DigitalBitbox_scan      : 'Digital Bitbox 에 연결하기 ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 /* Add Wallet */
 ADD_Label_1                 : '어떤 걸 진행하시겠습니까? ',
@@ -810,7 +814,7 @@ HELP_15_Title               : '15) 방금 만든 계정이 블록체인 탐색�
 HELP_15_Desc_1              : '계좌는 거래 활동이 있을 경우에만 블록체인 탐색기에 표시됩니다. 예를 들어, 이더리움을 계좌로 이동시키면 계좌가 활성화됩니다. ',
 
 HELP_16_Title               : '16) 내 계좌의 잔액을 어떻게 확인하나요? ',
-HELP_16_Desc_1              : '[etherscan.io] (https://etherscan.io/) 와 같은 블록체인 탐색기를 사용할 수 있습니다. 주소를 검색 창에 붙여넣으면 주소와 거래 내역이 표시됩니다. 예를 들어, 우리의 [기부 계정]은 (https://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) 과 같습니다. ',
+HELP_16_Desc_1              : '[etherscan.io] (https://etherscan.io/) 와 같은 블록체인 탐색기를 사용할 수 있습니다. 주소를 검색 창에 붙여넣으면 주소와 거래 내역이 표시됩니다. 예를 들어, 우리의 [기부 계정]은 (https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) 과 같습니다. ',
 
 HELP_17_Title               : '17) 내 지갑에서 잔액이 표시되지 않는 이유는 뭔가요? ',
 HELP_17_Desc_1              : '그 이유는 방화벽 때문입니다. 우리가 잔액 정보를 얻고 잔액 정보를 변환하는 데 사용하는 API는 어떤 이유로 든 방화벽에 의해 차단되는 경우가 많습니다. 사용자는 계속해서 트랜잭션을 보낼 수 있습니다. 당신은 단지 잔액을 확인하기 위해 etherscan.io 블록체인 탐색 사이트와 같은 다른 방법을 사용해야 될 수 있습니다. ',
