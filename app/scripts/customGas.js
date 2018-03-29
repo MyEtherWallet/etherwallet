@@ -319,4 +319,10 @@ to:         '0x749e66e12c09E4105381e373c0E6CA0bCe573d36',
 gasLimit:   200000,
 data:       '',
 msg:        ' APIS token sale - https://apisplatform.io'
+},{
+// WhoHas (WHO) Token Sale
+to:         '0xe933c0Cd9784414d5F278C114904F5A84b396919',
+gasLimit:   200000,
+data:       '',
+msg:        'WhoHas-Token Sale. Please register through our offical website: https://whohas.io/'
 }]
