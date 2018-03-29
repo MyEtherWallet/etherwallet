@@ -13,6 +13,12 @@ gasLimit:   300000,
 data:       '',
 msg:        ' Accord (ARD) ERC20 token sale - http://accordtoken.com'
 },{
+// Primalbase Token (PBT)
+to:         '0xF4c07b1865bC326A3c01339492Ca7538FD038Cc0',
+gasLimit:   100000,
+data:       '',
+msg:        ''
+},{
 // BTQ Token Sale
 to:         '0x16B0E62aC13a2fAeD36D18bce2356d25Ab3CfAD3',
 gasLimit:   200000,
