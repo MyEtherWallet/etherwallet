@@ -150,6 +150,12 @@
     "type": "default"
   },
   {
+    "address": "0x4c0fbe1bb46612915e7967d2c3213cd4d87257ad",
+    "symbol": "APIS",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x1a7a8bd9106f2b8d977e08582dc7d24c723ab0db",
     "symbol": "APPC",
     "decimal": 18,
