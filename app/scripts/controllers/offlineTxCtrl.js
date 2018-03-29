@@ -80,6 +80,11 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
             });
         }
     }
+    $scope.$watch('gasPriceDef', function(newValue, oldValue) {
+        if(newValue == "WEI" && oldValue == "GWEI") $scope.gasPriceDec = etherUnits.toWei($scope.gasPriceDec, 'gwei');
+        else if(newValue == "GWEI" && oldValue == "WEI") $scope.gasPriceDec = etherUnits.toGwei($scope.gasPriceDec,'wei');
+        else $scope.gasPriceDec = 0;
+    });
     $scope.$watch('tx', function() {
         $scope.showRaw = false;
 
