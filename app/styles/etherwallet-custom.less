@@ -107,6 +107,32 @@ textarea {
   margin-right: @space-sm;
 }
 
+.transaction-modal{
+
+  tbody{
+    tr{
+      td:nth-child(1){
+        width: 30%;
+      }
+      td:nth-child(2){
+        width: 70%;
+      }
+    }
+  }
+
+  .text-width-limit{
+    display: grid;
+    grid-auto-rows: 1fr;
+    
+    p{
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
 // helpers
 .wrap {
   word-wrap: break-word;
@@ -438,6 +464,45 @@ label small {
   }
 }
 
+.ens-tab {
+  a.isActive {
+    color: @text-color;
+    font-weight: 400;
+  }
+
+  .btn-primary-buy-button{
+    width: 200px;
+  }
+
+
+  .btn-red {
+    
+    background-color: #84023d;
+    border-color: #84023d;
+    position: relative;
+    width: 200px;
+    .na{
+
+      background-color: red;
+      border-radius: 300px;
+
+      padding: 5px 8px;
+      font-weight: 900;
+    }
+  }
+
+  .btn-red:hover {
+    background-color: #84023d;
+    border-color: #84023d;
+    position: relative;
+  }
+  
+
+  .pad-bot {
+    padding-bottom: 5px;
+  }
+}
+
 .dropdown-gas {
   padding-bottom: 1rem;
   @media screen and (max-width: 900px) {
@@ -525,6 +590,7 @@ label small {
 @brand-poa: #4568bb;
 @brand-tomo: #6a488d;
 @brand-ella: #046111;
+@brand-etsc: #673ab7;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -568,6 +634,9 @@ label small {
   li:nth-child(16) {
     border-left: 2px solid @brand-ella;
   }
+  li:nth-child(17) {
+    border-left: 2px solid @brand-etsc;
+  }
   li:last-child {
     border-left: 2px solid @gray-light;
   }
@@ -577,7 +646,8 @@ label small {
   li:nth-child(12),
   li:nth-child(13),
   li:nth-child(14),
-  li:nth-child(15) {
+  li:nth-child(15),
+  li:nth-child(16) {
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -669,4 +739,9 @@ header.ELLA {
   & + .container .alert-info             { background-color:@brand-ella;           }
 }
 
-
+header.ETSC {
+  .nav-container                         { border-top: 0.25rem solid @brand-etsc;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-etsc;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-etsc;      }
+  & + .container .alert-info             { background-color:@brand-etsc;           }
+}

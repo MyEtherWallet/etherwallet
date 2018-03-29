@@ -8,6 +8,23 @@
 - chrome-extension-vX.X.X.X.zip is the chrome extension package
 - source code is the full source for developers to get started with (although cloning or forking the mercury branch is probably a better choice)
 
+### Live verify files
+Check gh-pages files against live website at https://www.myetherwallet.com
+
+| File Name| Status|
+|---|---|
+| index.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/index.html&remoteFile=https://www.myetherwallet.com/index.html)| 
+| embedded.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/embedded.html&remoteFile=https://www.myetherwallet.com/embedded.html)|  
+| helpers.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/helpers.html&remoteFile=https://www.myetherwallet.com/helpers.html)|
+| signmsg.html |![signmsg.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/signmsg.html&remoteFile=https://www.myetherwallet.com/signmsg.html)|
+| bin/startMEW.js |![startMEW.js](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/bin/startMEW.js&remoteFile=https://www.myetherwallet.com/bin/startMEW.js)|
+| css/etherwallet-master.min.css |![etherwallet-master.min.css](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/css/etherwallet-master.min.css&remoteFile=https://www.myetherwallet.com/css/etherwallet-master.min.css)|
+| fonts/Lato-Bold.woff |![Lato-Bold.woff](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/fonts/Lato-Bold.woff&remoteFile=https://www.myetherwallet.com/fonts/Lato-Bold.woff)|
+| fonts/Lato-Light.woff |![Lato-Bold.woff](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/fonts/Lato-Light.woff&remoteFile=https://www.myetherwallet.com/fonts/Lato-Light.woff)|
+| fonts/Lato-Regular.woff |![Lato-Regular.woff](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/fonts/Lato-Regular.woff&remoteFile=https://www.myetherwallet.com/fonts/Lato-Regular.woff)|
+| js/etherwallet-master.js |![etherwallet-master.js](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/js/etherwallet-master.js&remoteFile=https://www.myetherwallet.com/js/etherwallet-master.js)|
+| js/etherwallet-static.min.js |![etherwallet-static.min.js](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/js/etherwallet-static.min.js&remoteFile=https://www.myetherwallet.com/js/etherwallet-static.min.js)|
+| js/jquery-1.12.3.min.js |![jquery-1.12.3.min.js](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/js/jquery-1.12.3.min.js&remoteFile=https://www.myetherwallet.com/js/jquery-1.12.3.min.js)|
 
 ### MEW Around the Web
 

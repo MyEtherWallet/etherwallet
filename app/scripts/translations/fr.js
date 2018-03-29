@@ -509,6 +509,10 @@ x_DigitalBitbox             : 'Digital Bitbox',
 ADD_DigitalBitbox_0a        : 'Rouvrir MyEtherWallet sur une connexion sécurisée (SSL)',
 ADD_DigitalBitbox_0b        : 'Rouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
 ADD_DigitalBitbox_scan      : 'Se connecter au Digital Bitbox',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 
 /* Chrome Extension */

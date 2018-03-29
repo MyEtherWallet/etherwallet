@@ -1,127 +1,106 @@
 <main class="tab-pane ens-tab active" ng-if="globalService.currentTab==globalService.tabs.ens.id" ng-controller='ensCtrl' ng-cloak>
-
-  <div class="block">
-
       <!-- Title -->
+  <div class="block text-center">
+    <h1>
+      <a ng-class="{'isActive': visibility=='ens'}"
+         ng-click="setVisibility('ens')">
+          Register Domain
+      </a>
+      or
+      <a ng-class="{'isActive': visibility=='subdomain'}"
+         ng-click="setVisibility('subdomain')">
+          Register Subdomain
+      </a>
+    </h1>
+  </div>
+  <!-- / Title -->
+  <div ng-if="visibility=='ens'">
+    @@if (site === 'mew' ) { @@include( './ens-domain.tpl', { "site": "mew" } ) }
+    @@if (site === 'cx'  ) { @@include( './ens-domain.tpl', { "site": "cx"  } ) }
+  </div>
+  <div ng-if="visibility=='subdomain'">
+    <div class="block">
+      <!-- ENS Title -->
       <article class="cont-md">
-        <h1 class="text-center" translate="NAV_ENS">
-          ENS
+        <h1 class="text-center">
+          Register Sub Domain
         </h1>
         <p>
-          The
-          <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener noreferrer">
-            Ethereum Name Service
-          </a>
-          is a distributed, open, and extensible naming system based on the Ethereum blockchain.
-          Once you have a name, you can tell your friends to send ETH to <code>mewtopia.eth</code> instead of <code>0x7cB57B5A97eAbe942.....</code>.
+          
         </p>
       </article>
-      <!-- / Title -->
+      <!-- / ENS Title -->
 
       <br />
 
       <!-- IF ENS CHAIN: Check Status of Name -->
-      <article class="row" ng-show="showENS()">
+      <article class="row" ng-show="showSubDomain()">
         <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
           <div class="input-group">
             <input class="form-control"
                    type="text"
-                   placeholder="mewtopia"
-                   ng-model="objENS.name"
-                   ng-keyup="$event.keyCode==13 && checkName()"
-                   ng-change="nameOnChange()"
-                   ng-disabled="objENS.nameReadOnly"
-                   ng-class="Validator.isValidENSName(objENS.name) && objENS.name.indexOf('.') == -1 ? 'is-valid' : 'is-invalid'"/>
-            <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
+                   placeholder="mew"
+                   ng-model="objSub.name"
+                   ng-keyup="$event.keyCode==13"
+                   ng-change=""
+                   ng-disabled="objSub.inputDisabled"
+                   ng-class="Validator.isValidSubName(objSub.name) && objSub.name.indexOf('.') == -1 ? 'is-valid' : 'is-invalid'"/>
+                   <div class="input-group-btn"><button ng-click="checkSubName()" class="btn btn-primary">Check sub domain</button></div>
           </div>
-          <button class="btn btn-primary" ng-click="checkName()">
-            Check ENS Name
-          </button>
         </section>
       </article>
       <!-- / IF ENS CHAIN: Check Status of Name -->
-
-  </div>
-
-
   <!-- IF NOT ENS CHAIN -->
-  <div ng-hide="showENS()" class="alert alert-danger text-center">
+  <div ng-hide="showSubDomain()" class="alert alert-danger text-center">
     <p>
-      The ENS is only available on the ETH and Ropsten (Testnet) chains. You are currently on the {{ajaxReq.type}} chain.
+      The Sub domain registration is only available on the ETH chain. You are currently on the {{ajaxReq.type}} chain.
       <br />
-      Please use the node switcher in the upper right corner to select "ETH" or "Ropsten".
+      Please use the node switcher in the upper right corner to select "ETH".
     </p>
   </div>
   <!-- / IF NOT ENS CHAIN -->
+  </div>
+    <div>
+    <div class="block text-center" ng-show="objSub.showNames" >
+    <!-- Show Registerble names -->
+      <article class="row">
+        <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+          <div>
+            <div class="input-group pad-bot" ng-repeat="data in objSub.validNames track by $index" > 
+            <input class="form-control" type="text" value="{{data.fullName}}" ng-disabled="true"/>
+            <div class="input-group-btn"><button ng-show="data.available" ng-click="registerSubName($index)" class="btn btn-primary btn-primary-buy-button">Buy ({{data.EthVal}} ETH)
+            </button>
+            <button ng-show="!data.available" class="btn btn-primary btn-red" disabled><span class="na">X</span>
+            </button></br>
+          </div>
+          </div>
+          </div>
+        </section>
+      </article>
+            </div>
+      <!-- / Show Registerble names -->
+  </div>
 
-  <!-- General Information Panel -->
-  @@if (site === 'mew' ) { @@include( './ens-general-information.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './ens-general-information.tpl', { "site": "cx"  } ) }
-
-
-  <!-- .notAvailable or .forbidden -->
-  @@if (site === 'mew' ) { @@include( './ens-status-notavailable.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './ens-status-notavailable.tpl', { "site": "cx"  } ) }
-
-  <!-- .open or .auction -->
-  @@if (site === 'mew' ) { @@include( './ens-status-available.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './ens-status-available.tpl', { "site": "cx"  } ) }
-
-  <!-- .reveal -->
-  @@if (site === 'mew' ) { @@include( './ens-status-reveal.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './ens-status-reveal.tpl', { "site": "cx"  } ) }
-
-  <!-- .owned (finalize) -->
-  @@if (site === 'mew' ) { @@include( './ens-status-owned.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './ens-status-owned.tpl', { "site": "cx"  } ) }
-
-  <!-- Unlock Directive: Everything but notAvailable & forbidden -->
-  <article class="row" ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.owned || objENS.status==ensModes.reveal)">
+  <article class="row" ng-show="objSub.showBuy">
     <section class="clearfix collapse-container">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-        <h4>
-          <span ng-show="objENS.status==ensModes.open">
-            Do you want {{objENS.name}}.eth? Unlock your Wallet to Start an Auction
-          </span>
-          <span ng-show="objENS.status==ensModes.auction">
-            Do you want {{objENS.name}}.eth? Unlock your Wallet to Place a Bid
-          </span>
-          <span ng-show="objENS.status==ensModes.reveal">
-            Did you bid on {{objENS.name}}.eth? You must reveal your bid now.
-          </span>
-          <span ng-show="objENS.status==ensModes.owned && objENS.owner!==objENS.deedOwner">
-            Is that your address? Finalize the auction to claim your new name.
-          </span>
-          <span ng-show="objENS.status==ensModes.owned && objENS.owner==objENS.deedOwner">
-            Is that your address? It is ready to set up a resolver.
-          </span>
-
-        </h4>
+        <h5 traslate="SWAP_unlock">Unlock your wallet to buy {{objSub.buy.fullName}} for {{objSub.buy.EthVal}} ETH</h5>
       </div>
       <div ng-show="!wd">
           @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
           @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
       </div>
     </section>
+    <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+      @@if (site === 'mew' ) { @@include( './sendTx-content.tpl', { "site": "mew" } ) }
+      @@if (site === 'cx'  ) { @@include( './sendTx-content.tpl', { "site": "cx"  } ) }
+
+      @@if (site === 'mew' ) { @@include( './sendTx-modal.tpl',   { "site": "mew" } ) }
+      @@if (site === 'cx'  ) { @@include( './sendTx-modal.tpl',   { "site": "cx"  } ) }
+    </section>
   </article>
-  <!-- / Unlock Directive: Everything but notAvailable / forbidden -->
 
-
-  @@if (site === 'mew' ) { @@include( './ens-action-primary.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './ens-action-primary.tpl', { "site": "cx"  } ) }
-
-
-  @@if (site === 'mew' ) { @@include( './ens-action-finalize.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './ens-action-finalize.tpl', { "site": "cx"  } ) }
-
-  <!-- .resolve (resolve) -->
-  @@if (site === 'mew' ) { @@include( './ens-action-resolve.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './ens-action-resolve.tpl', { "site": "cx"  } ) }
-
-
-  @@if (site === 'mew' ) { @@include( './ens-modal.tpl', { "site": "mew" } ) }
-  @@if (site === 'cx'  ) { @@include( './ens-modal.tpl', { "site": "cx"  } ) }
-
+  </div>
 
 </main>

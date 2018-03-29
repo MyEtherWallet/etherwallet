@@ -1,4 +1,7 @@
 language: node_js
+cache:
+  directories:
+  - node_modules
 sudo: required
 dist: trusty
 node_js: '7'
@@ -11,8 +14,14 @@ before_script: npm install -g gulp
 script:
 - gulp prep
 before_deploy:
+- openssl aes-256-cbc -K $encrypted_85fecf66b314_key -iv $encrypted_85fecf66b314_iv -in mew.gpg.enc -out mew.gpg -d
 - mkdir deploy
+- gpg --allow-secret-key-import --import mew.gpg
 - gulp travisZip
+- |
+  for f in deploy/*; do
+    gpg --output $f.sig --detach-sig $f
+  done
 deploy:
   provider: releases
   api_key:

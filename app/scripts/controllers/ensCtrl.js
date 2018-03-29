@@ -3,8 +3,6 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
     $scope.hideEnsInfoPanel = false;
     walletService.wallet = null;
-    $scope.ensConfirmModalModal = new Modal(document.getElementById('ensConfirmModal'));
-    $scope.ensFinalizeModal = new Modal(document.getElementById('ensFinalizeConfirm'));
     $scope.Validator = Validator;
     $scope.wd = false;
     $scope.haveNotAlreadyCheckedLength = true;
@@ -13,6 +11,15 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.ensModes = ens.modes;
     $scope.minNameLength = 7;
     $scope.objDomainSale = {};
+    $scope.visibility = 'ens'
+    $scope.objSub = {
+        name: "",
+        inputDisabled: false,
+        validNames: [],
+        showNames: false,
+        showBuy: false,
+        buy: {}
+    }
     $scope.objENS = {
         bidValue: 0.01,
         dValue: 0.01,
@@ -29,6 +36,8 @@ var ensCtrl = function($scope, $sce, walletService) {
         timeRemainingReveal: null,
         txSent: false
     };
+    $scope.objENSClone = JSON.parse(JSON.stringify($scope.objENS));
+    $scope.objSubClone = JSON.parse(JSON.stringify($scope.objSub));
     $scope.gasLimitDefaults = {
         startAuction: '200000',
         newBid: '500000',
@@ -43,8 +52,35 @@ var ensCtrl = function($scope, $sce, walletService) {
         value: 0,
         gasPrice: null
     };
+    var resetToDefault = function() {
+        $scope.objENS = JSON.parse(JSON.stringify($scope.objENSClone));
+        $scope.objSub = JSON.parse(JSON.stringify($scope.objSubClone));
+        $scope.wallet = null;
+        walletService.wallet = null;
+        $scope.wd = false;
+    }
+    $scope.setVisibility = function(tab) {
+        $scope.visibility = tab
+    }
+    $scope.showSubDomain = function() {
+        return nodes.domainsaleNodeTypes.indexOf(ajaxReq.type) > -1;
+    }
     $scope.showENS = function() {
         return nodes.ensNodeTypes.indexOf(ajaxReq.type) > -1;
+    }
+    $scope.$watch('visibility', function(newValue, oldValue) {
+        resetToDefault()
+    });
+    var setSubDomainTx = function() {
+        if ($scope.wallet != null) {
+            $scope.parentTxConfig = {
+                to: $scope.objSub.buy.registrar,
+                value: $scope.objSub.buy.EthVal,
+                sendMode: 'ether',
+                data: ENS.getSubDomainBuyData($scope.objSub.buy.domain, $scope.objSub.buy.subdomain, $scope.wallet.getAddressString()),
+                readOnly: true
+            }
+        }
     }
     $scope.$watch(function() {
         if (walletService.wallet == null) return null;
@@ -56,6 +92,9 @@ var ensCtrl = function($scope, $sce, walletService) {
         $scope.objENS.nameReadOnly = true;
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
+        if ($scope.visibility == "subdomain") {
+            setSubDomainTx()
+        }
     });
     $scope.getCurrentTime = function() {
         return new Date().toString();
@@ -91,12 +130,46 @@ var ensCtrl = function($scope, $sce, walletService) {
         $scope.objENS.timeRemaining = null;
         clearInterval($scope.objENS.timer);
     }
+    $scope.checkSubName = function() {
+        $scope.objSub.name = ens.normalise($scope.objSub.name)
+        if ($scope.haveNotAlreadyCheckedLength && ($scope.objSub.name.length == 128 || $scope.objSub.name.length == 132 || $scope.objSub.name.length == 64 || $scope.objSub.name.length == 66)) {
+            $scope.notifier.danger("That looks an awful lot like a private key. Are you sure you would like to check if this name is available on the ENS network? If so, click `Check`. If it is your private key, click refresh & try again.");
+            $scope.haveNotAlreadyCheckedLength = false;
+        } else if ($scope.Validator.isValidSubName($scope.objSub.name) && $scope.objSub.name.indexOf('.') == -1) {
+            $scope.objSub.inputDisabled = true;
+            ENS.getValidDomains($scope.objSub.name).then((data) => {
+                var tld = data.tld;
+                var names = data.names;
+                names.forEach((name) => {
+                    $scope.objSub.validNames.push({
+                        available: name.data[0] != "",
+                        EthVal: etherUnits.toEther(name.data[1].toString(), 'wei'),
+                        weiBN: name.data[1],
+                        fullName: $scope.objSub.name + "." + name.domain.name + "." + tld,
+                        domain: name.domain,
+                        subdomain: $scope.objSub.name,
+                        registrar: name.domain.registrar
+                    })
+                })
+                $scope.objSub.showNames = true;
+                updateScope();
+            })
+        }
+    }
+    $scope.registerSubName = function(idx) {
+        $scope.objSub.buy = $scope.objSub.validNames[idx];
+        $scope.objSub.showBuy = true;
+        $scope.objSub.showNames = false;
+        setSubDomainTx();
+    }
     $scope.checkName = function() {
         // checks if it's the same length as a PK and if so, warns them.
         // If they confirm they can set haveNotAlreadyCheckedLength to true and carry on
-        if ( $scope.haveNotAlreadyCheckedLength && ($scope.objENS.name.length == 128 || $scope.objENS.name.length == 132 || $scope.objENS.name.length == 64 || $scope.objENS.name.length == 66) ) {
-          $scope.notifier.danger( "That looks an awful lot like a private key. Are you sure you would like to check if this name is available on the ENS network? If so, click `Check`. If it is your private key, click refresh & try again." );
-          $scope.haveNotAlreadyCheckedLength = false;
+        $scope.ensConfirmModalModal = new Modal(document.getElementById('ensConfirmModal'));
+        $scope.ensFinalizeModal = new Modal(document.getElementById('ensFinalizeConfirm'));
+        if ($scope.haveNotAlreadyCheckedLength && ($scope.objENS.name.length == 128 || $scope.objENS.name.length == 132 || $scope.objENS.name.length == 64 || $scope.objENS.name.length == 66)) {
+            $scope.notifier.danger("That looks an awful lot like a private key. Are you sure you would like to check if this name is available on the ENS network? If so, click `Check`. If it is your private key, click refresh & try again.");
+            $scope.haveNotAlreadyCheckedLength = false;
         } else if ($scope.Validator.isValidENSName($scope.objENS.name) && $scope.objENS.name.indexOf('.') == -1) {
             $scope.objENS.name = ens.normalise($scope.objENS.name);
             $scope.objENS.namehash = ens.getNameHash($scope.objENS.name + '.eth');
