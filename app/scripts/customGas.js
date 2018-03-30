@@ -314,6 +314,18 @@ gasLimit:   200000,
 data:       '',
 msg:        ' Duty of Care VDOC token sale - https://dutyof.care/token-launch/'
 },{
+// GANA (GANA) Pre ICO
+to:         '0xf51397513C3516effeEF0e0f7332E05816135d01',
+gasLimit:   200000,
+data:       '',
+msg:        'GANA Pre ICO - Learning health with Cannabis - Official site https://ganacoin.io'
+},{
+// GANA (GANA) Public ICO
+to:         '0xCe2f65261858BDfC4Ac65BB166919b8D35A4C82f',
+gasLimit:   200000,
+data:       '',
+msg:        'GANA Public ICO - Learning health with Cannabis - Official site https://ganacoin.io'
+},{
 // APIS Token sale
 to:         '0x749e66e12c09E4105381e373c0E6CA0bCe573d36',
 gasLimit:   200000,
