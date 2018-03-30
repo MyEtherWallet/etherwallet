@@ -2015,6 +2015,12 @@
     "type": "default"
   },
   {
+    "address": "0x17f8aFB63DfcDcC90ebE6e84F060Cc306A98257D",
+    "symbol": "NBAI",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x9e46a38f5daabe8683e10793b06749eef7d733d1",
     "symbol": "NCT",
     "decimal": 18,
