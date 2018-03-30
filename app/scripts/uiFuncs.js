@@ -104,6 +104,32 @@ uiFuncs.signTxDigitalBitbox = function(eTx, rawTx, txData, callback) {
     var app = new DigitalBitboxEth(txData.hwTransport, '');
     app.signTransaction(txData.path, eTx, localCallback);
 }
+uiFuncs.signTxSecalot = function(eTx, rawTx, txData, callback) {
+
+    var localCallback = function(result, error) {
+        if (typeof error != "undefined") {
+            error = error.errorCode ? u2f.getErrorByCode(error.errorCode) : error;
+            if (callback !== undefined) callback({
+                isError: true,
+                error: error
+            });
+            return;
+        }
+        uiFuncs.notifier.info("The transaction was signed but not sent. Click the blue 'Send Transaction' button to continue.");
+        rawTx.v = ethFuncs.sanitizeHex(result['v']);
+        rawTx.r = ethFuncs.sanitizeHex(result['r']);
+        rawTx.s = ethFuncs.sanitizeHex(result['s']);
+
+        var eTx_ = new ethUtil.Tx(rawTx);
+        rawTx.rawTx = JSON.stringify(rawTx);
+        rawTx.signedTx = ethFuncs.sanitizeHex(eTx_.serialize().toString('hex'));
+        rawTx.isError = false;
+        if (callback !== undefined) callback(rawTx);
+    }
+    uiFuncs.notifier.info("Tap a touch button on your device to confirm signing.");
+    var app = new SecalotEth(txData.hwTransport);
+    app.signTransaction(txData.path, eTx, localCallback);
+}
 uiFuncs.trezorUnlockCallback = function(txData, callback) {
     TrezorConnect.open(function(error) {
         if (error) {
@@ -172,6 +198,8 @@ uiFuncs.generateTx = function(txData, callback) {
               callback(rawTx)
             } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "digitalBitbox")) {
                 uiFuncs.signTxDigitalBitbox(eTx, rawTx, txData, callback);
+            } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "secalot")) {
+                uiFuncs.signTxSecalot(eTx, rawTx, txData, callback);                
             } else {
                 eTx.sign(new Buffer(txData.privKey, 'hex'));
                 rawTx.rawTx = JSON.stringify(rawTx);

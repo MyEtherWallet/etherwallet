@@ -13,11 +13,29 @@ gasLimit:   300000,
 data:       '',
 msg:        ' Accord (ARD) ERC20 token sale - http://accordtoken.com'
 },{
+// Primalbase Token (PBT)
+to:         '0xF4c07b1865bC326A3c01339492Ca7538FD038Cc0',
+gasLimit:   100000,
+data:       '',
+msg:        ''
+},{
 // BTQ Token Sale
 to:         '0x16B0E62aC13a2fAeD36D18bce2356d25Ab3CfAD3',
 gasLimit:   200000,
 data:       '',
 msg:        'BTQ ICO ends February 1, 2018. btc btq is your exclusive bitcoin boutique and world\'s premier cryptocurrency lifestyle brand. https://thebtcbtq.com/btq'
+},{
+// EPX Token Sale
+to:         '0x5A8658dE344972fC8b6b6a01Cd87a64bc7420A38',
+gasLimit:   200000,
+data:       '',
+msg:        'ethPoker.io EPX token sale - https://ethPoker.io'
+},{
+// ARXT Token Sale
+to:         '0xb65E16b44A80C9c44aDdD56a5014CbA2814a82D1',
+gasLimit:   200000,
+data:       '',
+msg:        'Assistive Reality ARXT token sale - https://aronline.io'
 },{
 // STC Token Sale
 to:         '0x8d040556214125F3fE7d8B22cF17c364603A6035',
@@ -284,6 +302,12 @@ gasLimit:   200000,
 data:       '',
 msg:        'LALA World Token (LALA) Token Sale. Official sale website: https://lalaworld.io'
 },{
+// Digital Asset Exchange Token (DAXT) Token Sale
+to:         '0x61725f3db4004afe014745b21dab1e1677cc328b',
+gasLimit:   200000,
+data:       '',
+msg:        'Digital Asset Exchange Token (DAXT) Token Sale. Official sale website: https://www.daxt.io'
+},{
 // Duty of Care (VDOC) Token sale
 to:         '0xe8DB4ceA1f7ad7Ba22F3DbbAb55A336545701d96',
 gasLimit:   200000,
@@ -301,4 +325,16 @@ to:         '0xCe2f65261858BDfC4Ac65BB166919b8D35A4C82f',
 gasLimit:   200000,
 data:       '',
 msg:        'GANA Public ICO - Learning health with Cannabis - Official site https://ganacoin.io'
+},{
+// APIS Token sale
+to:         '0x749e66e12c09E4105381e373c0E6CA0bCe573d36',
+gasLimit:   200000,
+data:       '',
+msg:        ' APIS token sale - https://apisplatform.io'
+},{
+// WhoHas (WHO) Token Sale
+to:         '0xe933c0Cd9784414d5F278C114904F5A84b396919',
+gasLimit:   200000,
+data:       '',
+msg:        'WhoHas-Token Sale. Please register through our offical website: https://whohas.io/'
 }]

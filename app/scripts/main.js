@@ -59,7 +59,18 @@ window.domainsale            = domainsale;
 var translate                = require('./translations/translate.js');
 if (IS_CX) {
   var cxFuncs                = require('./cxFuncs');
+  var punycode               = require('punycode');
+  var similarity             = require('similarity');
+  var levenshtein            = require('levenshtein');
+  var uniMap                 = require('unicode/category/Ll');
+  var homoglyphs             = require('./homoglyphs.json');
+  window.cxHelpers           = {};
   window.cxFuncs             = cxFuncs;
+  window.cxHelpers['punycode'] = punycode;
+  window.cxHelpers['uniMap'] = uniMap;
+  window.cxHelpers['homoglyphs'] = homoglyphs;
+  window.cxHelpers['similarity'] = similarity;
+  window.cxHelpers['levenshtein'] = levenshtein;
 } else {
     var u2f                  = require('./staticJS/u2f-api');
     var ledger3              = require('./staticJS/ledger3');
@@ -67,12 +78,16 @@ if (IS_CX) {
     var trezorConnect        = require('./staticJS/trezorConnect');
     var digitalBitboxUsb     = require('./staticJS/digitalBitboxUsb');
     var digitalBitboxEth     = require('./staticJS/digitalBitboxEth');
+    var secalotUsb           = require('./staticJS/secalotUsb');
+    var secalotEth           = require('./staticJS/secalotEth');
     window.u2f               = u2f;
     window.Ledger3           = ledger3;
     window.ledgerEth         = ledgerEth;
     window.TrezorConnect     = trezorConnect.TrezorConnect;
     window.DigitalBitboxUsb  = digitalBitboxUsb;
     window.DigitalBitboxEth  = digitalBitboxEth;
+    window.SecalotUsb        = secalotUsb;
+    window.SecalotEth        = secalotEth;
 }
 var CustomGasMessages        = require('./customGas.js')
 window.CustomGasMessages     = CustomGasMessages;
@@ -152,8 +167,8 @@ app.controller('walletBalanceCtrl', ['$scope', '$sce', '$rootScope', walletBalan
 app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 if (IS_CX) {
   app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
-  app.controller('myWalletsCtrl', ['$scope', '$sce','walletService', myWalletsCtrl]);
+  app.controller('myWalletsCtrl', ['$scope', '$sce', '$timeout', 'walletService', myWalletsCtrl]);
   app.controller('mainPopCtrl', ['$scope', '$sce', mainPopCtrl]);
-  app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
+  app.controller('quickSendCtrl', ['$scope', '$sce', 'darkList', quickSendCtrl]);
   app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
 }

@@ -386,6 +386,10 @@ x_DigitalBitbox             : 'Digital Bitbox ',
 ADD_DigitalBitbox_0a        : 'Åpne MyEtherWallet på nytt på en sikker (SSL) forbindelse. ',
 ADD_DigitalBitbox_0b        : 'Åpne MyEtherWallet på nytt med [Chrome](https://www.google.com/chrome/browser/desktop/) eller [Opera](https://www.opera.com/) ',
 ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
+x_Secalot                   : 'Secalot ',
+ADD_Secalot_0a              : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Secalot_0b              : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Secalot_scan            : 'Connect your Secalot ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Hvis du vil opprette flere lommebøker, kan du gjøre det her ',

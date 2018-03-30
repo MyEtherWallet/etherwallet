@@ -13,7 +13,11 @@
                 "version": "1.0",
                 "registrar": "0x0b07463b30b302a98407d3E3dF85EBC073B0DBd1"
             }, {
-                "name": "wantsome",
+                "name": "extravagant",
+                "version": "1.0",
+                "registrar": "0x0b07463b30b302a98407d3E3dF85EBC073B0DBd1"
+            }, {
+                "name": "sendmecrypto",
                 "version": "1.0",
                 "registrar": "0x0b07463b30b302a98407d3E3dF85EBC073B0DBd1"
             }, {
