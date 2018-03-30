@@ -48,7 +48,10 @@ etherUnits.toEther = function(number, unit) {
 	var returnValue = new BigNumber(this.toWei(number, unit)).div(this.getValueOfUnit('ether'));
 	return returnValue.toString(10);
 };
-
+etherUnits.toGwei = function(number, unit) {
+	var returnValue = new BigNumber(this.toWei(number, unit)).div(this.getValueOfUnit('gwei'));
+	return returnValue.toString(10);
+};
 etherUnits.toWei = function(number, unit) {
 	var returnValue = new BigNumber(String(number)).times(this.getValueOfUnit(unit));
 	return returnValue.toString(10);
