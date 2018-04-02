@@ -912,6 +912,12 @@
     "type": "default"
   },
   {
+    "address": "0x7cF271966F36343Bf0150F25E5364f7961c58201",
+    "symbol": "DEPO",
+    "decimal": 0,
+    "type": "default"
+  },
+  {
     "address": "0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A",
     "symbol": "DGD",
     "decimal": 9,
