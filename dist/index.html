@@ -47,7 +47,7 @@
 "@context": "http://schema.org",
 "@type" : "Organization",
 "name" : "MyEtherWallet",
-"legalName" : "MyEtherWallet LLC",
+"legalName" : "MyEtherWallet Inc",
 "url" : "https://www.myetherwallet.com/",
 "contactPoint" : [{
   "@type" : "ContactPoint",
@@ -98,13 +98,13 @@
     
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.21.03</p>
+        <p class="small visible-xs">3.21.04</p>
       </a>
     
     
     <div class="tagline">
 
-    <span class="hidden-xs">3.21.03</span>
+    <span class="hidden-xs">3.21.04</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -2377,7 +2377,17 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
                ng-disabled="checkTxReadOnly"
                ng-class="Validator.isPositiveNumber(gasPriceDec) ? 'is-valid' : 'is-invalid'" />
         <div class="input-group-btn">
-          <button style="min-width: 170px" class="btn btn-default"> WEI </button>
+          <span class="dropdown dropdown-gprice" ng-cloak>
+            <a tabindex="0" style="min-width: 170px"  aria-haspopup="true" aria-expanded="false" aria-label="gas price" class="dropdown-toggle btn btn-default" ng-click="gpDropdown = !gpDropdown">
+              {{ gasPriceDef }}
+              <i class="caret"></i>
+            </a>
+            <ul class="dropdown-menu" ng-show="gpDropdown">
+              <li><a ng-class="{true:'active'}[gasPriceDef=='WEI']" ng-click="changePrice('WEI')"> WEI          </a></li>
+              <li><a ng-class="{true:'active'}[gasPriceDef=='GWEI']" ng-click="changePrice('GWEI')"> GWEI         </a></li>
+            </ul>
+          </span>
+
         </div>
       </div>
     </section>
@@ -6819,7 +6829,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       </p>
 
       <p>
-        &copy; 2018 MyEtherWallet, LLC
+        &copy; 2018 MyEtherWallet, Inc
       </p>
 
     </section>
@@ -6986,7 +6996,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
         <p class="small"><strong> Translations of MyEtherWallet: </strong> The community has done an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
 
-        <p class="small"><strong>MIT License</strong> Copyright &copy; 2015-2017 MyEtherWallet LLC</p>
+        <p class="small"><strong>MIT License</strong> Copyright &copy; 2015-2017 MyEtherWallet INC</p>
 
         <p class="small">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 
@@ -7333,7 +7343,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
                   Always check the URL: `https://www.myetherwallet.com`.
                 </li>
                 <li translate="ONBOARD_secure_1_content__4">
-                  Always make sure the URL bar has `MYETHERWALLET LLC` in green.
+                  Always make sure the URL bar has `MYETHERWALLET Inc` in green.
                 </li>
                 <li translate="ONBOARD_secure_1_content__5">
                   Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.

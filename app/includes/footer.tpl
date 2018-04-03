@@ -40,7 +40,7 @@
       </p>
 
       <p>
-        &copy; 2018 MyEtherWallet, LLC
+        &copy; 2018 MyEtherWallet, Inc
       </p>
 
     </section>
