@@ -2531,6 +2531,12 @@
     "type": "default"
   },
   {
+    "address": "0xA40106134c5bF4c41411554e6db99B95A15ed9d8",
+    "symbol": "ROCK",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xc9de4b7f0c3d991e967158e4d4bfa4b51ec0b114",
     "symbol": "ROK",
     "decimal": 18,
@@ -3085,6 +3091,12 @@
   {
     "address": "0x519475b31653e46d20cd09f9fdcf3b12bdacb4f5",
     "symbol": "VIU",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xc3bc9eb71f75ec439a6b6c8e8b746fcf5b62f703",
+    "symbol": "VOC",
     "decimal": 18,
     "type": "default"
   },
