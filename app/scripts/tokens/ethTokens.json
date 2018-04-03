@@ -1170,6 +1170,12 @@
     "type": "default"
   },
   {
+    "address": "0xdd74a7a3769fa72561b3a69e65968f49748c690c",
+    "symbol": "ETCH",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x6927C69fb4daf2043fbB1Cb7b86c5661416bea29",
     "symbol": "ETR",
     "decimal": 18,
