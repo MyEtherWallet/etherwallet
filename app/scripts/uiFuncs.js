@@ -159,7 +159,7 @@ uiFuncs.generateTx = function(txData, callback) {
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
                 data: ethFuncs.sanitizeHex(txData.data)
             }
-            if (ajaxReq.eip155) rawTx.chainId = ethFuncs.sanitizeHex(new BigNumber(ajaxReq.chainId).toString(16));
+            if (ajaxReq.eip155) rawTx.chainId = ajaxReq.chainId;
             rawTx.data = rawTx.data == '' ? '0x' : rawTx.data;
             var eTx = new ethUtil.Tx(rawTx);
             if ((typeof txData.hwType != "undefined") && (txData.hwType == "ledger")) {
@@ -192,6 +192,7 @@ uiFuncs.generateTx = function(txData, callback) {
                 // for web3, we dont actually sign it here
                 // instead we put the final params in the "signedTx" field and
                 // wait for the confirmation dialogue / sendTx method
+                if (ajaxReq.eip155) rawTx.chainId = ethFuncs.sanitizeHex(new BigNumber(ajaxReq.chainId).toString(16)); //hex version for MM
                 var txParams = Object.assign({
                     from: txData.from
                 }, rawTx)
