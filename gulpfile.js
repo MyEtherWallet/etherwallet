@@ -347,7 +347,7 @@ gulp.task('commit', ['getVersion'], function() {
 gulp.task('commitV', ['getVersion'], function() {
     return gulp.src('*.js', { read: false })
         .pipe(shell([
-            'git commit -m " ' + versionMsg + ' "'
+            'git commit --allow-empty -m " ' + versionMsg + ' "'
         ]))
         .pipe(notify(onSuccess('Commit w ' + versionMsg)))
 });
