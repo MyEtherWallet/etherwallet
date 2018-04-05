@@ -68,7 +68,7 @@ var myWalletsCtrl = function($scope, $sce, $timeout, walletService) {
 
 	angular.element(function() {
 		angular.element($scope.sideBarTokens).bind("scroll", function(e) {
-			if (e.target.scrollTop === e.target.scrollHeight - e.target.offsetHeight) {
+			if(e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
 				scrollContent();
 				$scope.$apply();
 			}
