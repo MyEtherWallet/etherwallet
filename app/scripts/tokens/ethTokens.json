@@ -2807,6 +2807,12 @@
     "type": "default"
   },
   {
+    "address": "0x20F7A3DdF244dc9299975b4Da1C39F8D5D75f05A",
+    "symbol": "SPN",
+    "decimal": 6,
+    "type": "default"
+  },
+  {
     "address": "0x68d57c9a1C35f63E2c83eE8e49A64e9d70528D25",
     "symbol": "SRN",
     "decimal": 18,
