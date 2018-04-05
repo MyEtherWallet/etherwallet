@@ -1340,7 +1340,7 @@
   {
     "address": "0x12fCd6463E66974cF7bBC24FFC4d40d6bE458283",
     "symbol": "GBX",
-    "decimal": 18,
+    "decimal": 8,
     "type": "default"
   },
   {
