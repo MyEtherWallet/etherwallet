@@ -3113,6 +3113,12 @@
     "type": "default"
   },
   {
+    "address": "0x23b75Bc7AaF28e2d6628C3f424B3882F8f072a3c",
+    "symbol": "VIT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x519475b31653e46d20cd09f9fdcf3b12bdacb4f5",
     "symbol": "VIU",
     "decimal": 18,
