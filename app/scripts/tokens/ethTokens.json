@@ -1464,6 +1464,12 @@
     "type": "default"
   },
   {
+    "address": "0x88ac94d5d175130347fc95e109d77ac09dbf5ab7",
+    "symbol": "HKY",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xcbCC0F036ED4788F63FC0fEE32873d6A7487b908",
     "symbol": "HMQ",
     "decimal": 8,
