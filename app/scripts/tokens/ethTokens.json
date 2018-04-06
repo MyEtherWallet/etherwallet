@@ -3376,5 +3376,11 @@
     "symbol": "onG",
     "decimal": 18,
     "type": "default"
+  },
+  {
+    "address": "0x6f7a4bac3315b5082f793161a22e26666d22717f",
+    "symbol": "YEED",
+    "decimal": 18,
+    "type": "default"
   }
 ]
