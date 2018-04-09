@@ -318,6 +318,12 @@
     "type": "default"
   },
   {
+    "address": "0x6aeb95f06cda84ca345c2de0f3b7f96923a44f4c",
+    "symbol": "BERRY",
+    "decimal": 14,
+    "type": "default"
+  },
+  {
     "address": "0x8aA33A7899FCC8eA5fBe6A608A109c3893A1B8b2",
     "symbol": "BET",
     "decimal": 18,
@@ -1320,12 +1326,6 @@
     "type": "default"
   },
   {
-    "address": "0x6754e21b9EAa053c62d7854dD6561ae451B0cBCf",
-    "symbol": "GANA",
-    "decimal": 18,
-    "type": "default"
-  },
-  {
     "address": "0x708876f486e448ee89eb332bfbc8e593553058b9",
     "symbol": "GAVEL",
     "decimal": 18,
@@ -1341,6 +1341,12 @@
     "address": "0x12fCd6463E66974cF7bBC24FFC4d40d6bE458283",
     "symbol": "GBX",
     "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0xdb0F69306FF8F949f258E83f6b87ee5D052d0b23",
+    "symbol": "GCP",
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -2036,6 +2042,12 @@
     "address": "0xa645264C5603E96c3b0B078cdab68733794B0A71",
     "symbol": "MYST",
     "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0x588047365df5ba589f923604aac23d673555c623",
+    "symbol": "NAVI",
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -2954,6 +2966,12 @@
     "address": "0xa7f976C360ebBeD4465c2855684D1AAE5271eFa9",
     "symbol": "TFL",
     "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0x3883f5e181fccaf8410fa61e12b59bad963fb645",
+    "symbol": "THETA",
+    "decimal": 18,
     "type": "default"
   },
   {
