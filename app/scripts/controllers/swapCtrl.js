@@ -12,7 +12,9 @@ var swapCtrl = function($scope, $sce, walletService) {
         $scope.bity.refreshRates();
     }, 30000);
     $scope.priceTicker = { ETHBTC: 1, ETHREP: 1, BTCREP: 1, BTCETH: 1, REPBTC: 1, REPETH: 1 };
-    $scope.availableCoins = ["ETH", "BTC", "REP"];
+    $scope.availableCoins = ["ETH", "BTC", "REP", "OMG", "KNC", "POWR", "GIFT",
+      "MANA", "REQ", "BAT", "EOS", "SNT", "ELF", "BQX", "SALT", "APPC",
+      "RDN", "ENG", "RCN", "ZIL", "LINK", "ADX", "AST"];
     var initValues = function() {
         $scope.showStage1 = true;
         $scope.showStage2 = $scope.showStage3Eth = $scope.showStage3Btc = false;
