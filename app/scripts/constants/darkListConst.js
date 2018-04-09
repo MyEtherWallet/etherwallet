@@ -1,6 +1,181 @@
 const darklist = function() {
 	return [
 		{
+			address: "0x3c3b85b2ae785a8cc16c3d4df12cb27c6983dff5",
+			comment: "Fake ICO support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x35ad1cb9a39de486cebcce3cf51661fd6c848193",
+			comment: "Fake Photochain support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x15f4a5d5bbc071fc20bd60b9b7d81aaa8a1142ab",
+			comment: "Fake Betrium admin",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xa2a6ceadcb7db611f618ebabfe6de5763953b7c7",
+			comment: "Fake Adsigma support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xe4faeef4002c200d9d4f1d381ccb5fb679d1c437",
+			comment: "Fake Starflow admin",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x68a91eba9c82b475091077e16357bb2dded479f4",
+			comment: "Fake StasyQ admin",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x64c5971dd27ff063ee4bc5e4c231febd9fc228cd",
+			comment: "Fake Omnitude support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xd8b21816d4c25b2e5d60e544ba094a9d14c30d4f",
+			comment: "Fake ICO support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x484aa220812a5ed3d1162686bc8592eb39276348",
+			comment: "Fake PlayHall admin",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x3810bd434103f1d0618b909ba14e4d2d707d79f7",
+			comment: "Fake PlayHall support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x6834d3096793d0731348f1581ae1b20c9b79e26a",
+			comment: "Fake PlayHall support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x0dac7a548551dd2e0f7293005f14f9261d7e0196",
+			comment: "Fake PlayHall support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x55c4dfc965b911afee18a7d2d94a245b867395b6",
+			comment: "Fake ICO support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x0e04298d9eaffaf538fe04b4cd525b6d1b64c3ca",
+			comment: "Fake Selfllery admin",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xb5879bf4a37c6ed9d86a6f2d8aab7939b21687cd",
+			comment: "Fake PlayHall admin",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x4e556877e96fdf3bef67c81ef72e20ab29a9aebf",
+			comment: "FAKE Telegram giveaway",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xc8ce1c3ac9549d479a90a6a89155b9b94e54d9ba",
+			comment: "FAKE Telegram giveaway",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xe344e4b209e8eabaa2a6ddd1b0aa120b7599af25",
+			comment: "FAKE Telegram giveaway",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x0a4392f623faf54de72cbf6f567e1a7808251cd3",
+			comment: "Fake PlayHall support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xfb990112f51931a2834fcf574a860b7419ecd76f",
+			comment: "Fake Origami Network and Crypto Cashback Rebate support",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x86d38dbde80fe6a947565967f41cf958cc271548",
+			comment: "Fake Topia admin",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xa46311dc4d3bc52b66d45e74682042bb143a9aa3",
+			comment: "Fake Selfllery admin",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x18ec1d727320cbed7c0c63cd655ade997b292c5e",
+			comment: "Fake Selfllery admin",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xdf967ff95cd5ff35a27786dbd906fbb9ded116af",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x300d4fbdb7ef38488eb9338982686e04ba426715",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x15a99893dc47bfae5b06e9b4c8941aaca60f8af5",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x8c38a4e5104a2925d9e23d5f269afd1c2e09b8f9",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x43f030a549f780d1af59a782eaadce4dec7ba183",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x2903e9f1d81fac8ccc313b5b496f2db7db6750b6",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x72b59c7ff61130f4923e2da6af27d562dd64191c",
+			comment: "Fake Amazix, Selfllery and Swapy suppor",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x5bc989f38ec9b913b0fbd8b702858214d428a1bd",
+			comment: "Fake admin in Mosaic ICO and others",
+			date: "2018-04-08"
+		},
+		{
+			address: "0xdb21509547c82b69e714bf3a761e6d64f0f91cd0",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x101c55c14bbde713d4c718b67256133bac8126c6",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x56f0e244ea07e894170731285daf8cf4864e368e",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
+			address: "0x5e0f56a3e977318b69303c12369b2a797dfa2b0b",
+			comment: "Fake admin in Selfllery ICO",
+			date: "2018-04-08"
+		},
+		{
 			address: "0xD0cC2B24980CBCCA47EF755Da88B220a82291407",
 			comment: "",
 			date: "2018-03-12"
@@ -1393,7 +1568,8 @@ const darklist = function() {
 		},
 		{
 			address: "0xdefb014b9e2f3bd81cdb084821f99b681cfca695",
-			comment: "Fake news site publishing ICOs with fake contribution addresses",
+			comment:
+				"Fake news site publishing ICOs with fake contribution addresses",
 			date: "2018-03-12"
 		},
 		{
@@ -2754,7 +2930,8 @@ const darklist = function() {
 		},
 		{
 			address: "0xaff9e40f9b245b15a1d1bb45516ca213e682fa81",
-			comment: "Fake centra tech crowdsale site, paid google ad - centra.credit",
+			comment:
+				"Fake centra tech crowdsale site, paid google ad - centra.credit",
 			date: "2017-09-19"
 		},
 		{
@@ -3192,6 +3369,6 @@ const darklist = function() {
 			date: "2017-09-05"
 		}
 	];
-}
+};
 
 module.exports = darklist;
