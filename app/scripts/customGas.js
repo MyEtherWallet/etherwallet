@@ -325,4 +325,10 @@ to:         '0xe933c0Cd9784414d5F278C114904F5A84b396919',
 gasLimit:   200000,
 data:       '',
 msg:        'WhoHas-Token Sale. Please register through our offical website: https://whohas.io/'
+},{
+// WHEN (￦) Token Sale
+to:         '0xf4fe95603881d0e07954fd7605e0e9a916e42c44',
+gasLimit:   200000,
+data:       '',
+msg:        'WHEN Token Sale. Join the future of person-to-person micro-contracts using the blockchain.: https://interface.whenhub.com/'
 }]
