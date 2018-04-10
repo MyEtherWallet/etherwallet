@@ -5,16 +5,29 @@ var swapCtrl = function($scope, $sce, walletService) {
     $scope.showedMinMaxError = false;
     $scope.Validator = Validator;
     $scope.bity = new bity();
+    $scope.kyber = new kyber();
     $scope.bity.refreshRates(function() {
         $scope.setOrderCoin(true, "ETH");
     });
+
+
+    // $scope.demoKyber = function(){
+    //     $scope.kyber.getExpectedRate("ETH", "OMG", 1, function(result){
+    //         console.log(result);
+    //     } )
+    // };
+
+
     setInterval(function() {
         $scope.bity.refreshRates();
     }, 30000);
     $scope.priceTicker = { ETHBTC: 1, ETHREP: 1, BTCREP: 1, BTCETH: 1, REPBTC: 1, REPETH: 1 };
-    $scope.availableCoins = ["ETH", "BTC", "REP", "OMG", "KNC", "POWR", "GIFT",
-      "MANA", "REQ", "BAT", "EOS", "SNT", "ELF", "BQX", "SALT", "APPC",
-      "RDN", "ENG", "RCN", "ZIL", "LINK", "ADX", "AST"];
+    $scope.availableCoins = ["ETH", "BTC", "REP"];
+    $scope.availableTokens = ["OMG", "KNC", "POWR", "GIFT",
+        "MANA", "REQ", "BAT", "EOS", "SNT", "ELF", "BQX", "SALT", "APPC",
+        "RDN", "ENG", "RCN", "ZIL", "LINK", "ADX", "AST"];
+    $scope.availableOptions = [];
+
     var initValues = function() {
         $scope.showStage1 = true;
         $scope.showStage2 = $scope.showStage3Eth = $scope.showStage3Btc = false;
@@ -30,6 +43,8 @@ var swapCtrl = function($scope, $sce, walletService) {
             swapPair: ''
         }
     }
+
+
     $scope.verifyMinMaxValues = function() {
         if($scope.swapOrder.toVal=='' || $scope.swapOrder.fromVal == '' || $scope.swapOrder.toVal=='0' || $scope.swapOrder.fromVal == '0' || $scope.showedMinMaxError ) return false;
         var errors = {
@@ -51,19 +66,24 @@ var swapCtrl = function($scope, $sce, walletService) {
         else if (vResult == errors.priceNotLoaded) return false;
         else if (vResult == errors.lessThanMin || vResult == errors.greaterThanMax) {
             if (!isStorageOrderExists()) {
-              uiFuncs.notifier.danger((globalFuncs.errorMsgs[27] + bity.max + " BTC, " + (bity.max / $scope.bity.curRate['ETHBTC']).toFixed(3) + " ETH, or " + (bity.max / $scope.bity.curRate['REPBTC']).toFixed(3) + " REP"), 2500);
-              $scope.showedMinMaxError = true;
+                uiFuncs.notifier.danger((globalFuncs.errorMsgs[27] + bity.max + " BTC, " + (bity.max / $scope.bity.curRate['ETHBTC']).toFixed(3) + " ETH, or " + (bity.max / $scope.bity.curRate['REPBTC']).toFixed(3) + " REP"), 2500);
+                $scope.showedMinMaxError = true;
             }
             return false;
         }
     }
+
+    // $scope.selectableOption = 0;
     $scope.setOrderCoin = function(isFrom, coin) {
-        if (isFrom) $scope.swapOrder.fromCoin = coin;
-        else $scope.swapOrder.toCoin = coin;
+        if (isFrom){
+            $scope.swapOrder.fromCoin = coin;
+        } else {
+            $scope.swapOrder.toCoin = coin;
+        }
         if ($scope.swapOrder.fromCoin == $scope.swapOrder.toCoin)
-            for (var i in $scope.availableCoins)
-                if ($scope.availableCoins[i] != $scope.swapOrder.fromCoin) {
-                    $scope.swapOrder.toCoin = $scope.availableCoins[i];
+            for (var i in $scope.availableOptions)
+                if ($scope.availableOptions[i] != $scope.swapOrder.fromCoin) {
+                    $scope.swapOrder.toCoin = $scope.availableOptions[i];
                     break;
                 }
         $scope.swapOrder.swapRate = $scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin];
@@ -71,6 +91,7 @@ var swapCtrl = function($scope, $sce, walletService) {
         $scope.updateEstimate(isFrom);
         $scope.dropdownFrom = $scope.dropdownTo = false;
     }
+
     $scope.updateEstimate = function(isFrom) {
         if (isFrom) $scope.swapOrder.toVal = parseFloat(($scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin] * $scope.swapOrder.fromVal).toFixed(bity.decimals));
         else $scope.swapOrder.fromVal = parseFloat(($scope.swapOrder.toVal / $scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin]).toFixed(bity.decimals));
