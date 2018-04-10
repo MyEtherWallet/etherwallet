@@ -3191,6 +3191,12 @@
     "type": "default"
   },
   {
+    "address": "0xf4fe95603881d0e07954fd7605e0e9a916e42c44",
+    "symbol": "WHEN",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xe933c0Cd9784414d5F278C114904F5A84b396919",
     "symbol": "WHO",
     "decimal": 18,
