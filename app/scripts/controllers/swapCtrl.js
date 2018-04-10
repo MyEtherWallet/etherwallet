@@ -26,7 +26,7 @@ var swapCtrl = function($scope, $sce, walletService) {
     $scope.availableTokens = ["OMG", "KNC", "POWR", "GIFT",
         "MANA", "REQ", "BAT", "EOS", "SNT", "ELF", "BQX", "SALT", "APPC",
         "RDN", "ENG", "RCN", "ZIL", "LINK", "ADX", "AST"];
-    $scope.availableOptions = [];
+    $scope.availableOptions = [...$scope.availableCoins, ...$scope.availableTokens];
 
     var initValues = function() {
         $scope.showStage1 = true;

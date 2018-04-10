@@ -56,7 +56,7 @@
   <span class="dropdown">
     <a class="btn btn-default dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{swapOrder.fromCoin}}<i class="caret"></i></a>
     <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownFrom">
-      <li ng-repeat="coin in availableCoins track by $index" ng-show="coin != 'REP'">
+      <li ng-repeat="coin in availableOptions track by $index" ng-show="coin != 'REP'">
         <a ng-class="{true:'active'}[coin == swapOrder.fromCoin]" ng-click="setOrderCoin(true, coin)"> {{coin}} </a>
       </li>
     </ul>
@@ -75,7 +75,7 @@
   <div class="dropdown">
     <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownTo = !dropdownTo">{{swapOrder.toCoin}}<i class="caret"></i></a>
     <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownTo">
-      <li ng-repeat="coin in availableCoins track by $index" ng-show="coin != swapOrder.fromCoin">
+      <li ng-repeat="coin in availableOptions track by $index" ng-show="coin != swapOrder.fromCoin">
         <a ng-class="{true:'active'}[coin == swapOrder.toCoin]" ng-click="setOrderCoin(false, coin)"> {{coin}} </a>
       </li>
     </ul>
