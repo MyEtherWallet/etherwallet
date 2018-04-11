@@ -14,3 +14,4 @@ _ens/
 *.zip
 cert.pem
 key.pem
+/scraps/
