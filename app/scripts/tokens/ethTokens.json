@@ -252,6 +252,12 @@
     "type": "default"
   },
   {
+    "address": "0xcd4b4b0f3284a33ac49c67961ec6e111708318cf",
+    "symbol": "AX1",
+    "decimal": 5,
+    "type": "default"
+  },
+  {
     "address": "0x9af2c6B1A28D3d6BC084bd267F70e90d49741D5B",
     "symbol": "AXP",
     "decimal": 8,
@@ -1494,8 +1500,14 @@
     "type": "default"
   },
   {
+		"address": "0x6c6ee5e31d828de241282b9606c8e98ea48526e2",
+		"symbol": "HOT (HoloToken)",
+		"decimal": 18,
+    "type": "default"
+	},
+  {
 		"address": "0x9af839687f6c94542ac5ece2e317daae355493a1",
-		"symbol": "HOT",
+		"symbol": "HOT (Hydro Protocol)",
 		"decimal": 18,
     "type": "default"
 	},
@@ -1825,6 +1837,12 @@
   {
     "address": "0x9c23d67aea7b95d80942e3836bcdf7e708a747c2",
     "symbol": "LOCI",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xC64500DD7B0f1794807e67802F8Abbf5F8Ffb054",
+    "symbol": "LOCUS",
     "decimal": 18,
     "type": "default"
   },
