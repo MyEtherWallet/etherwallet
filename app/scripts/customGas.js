@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// AX1 Mining token
+to:         '0x5de9f32b2665bb2cdc23bfb51b03e2a2985ecc87',
+gasLimit:   324741,
+data:       '',
+msg:        'You must have registered at https://ax1.io and followed the instructions to purchase tokens here.'
+},{
 // Accord (ARD) Token sale
 to:         '0x75aa7b0d02532f3833b66c7f0ad35376d373ddf8',
 gasLimit:   300000,
