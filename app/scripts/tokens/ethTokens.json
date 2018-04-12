@@ -726,6 +726,12 @@
     "type": "default"
   },
   {
+    "address": "0x0c91b015aba6f7b4738dcd36e7410138b29adc29",
+    "symbol": "COIL",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x65292eeadf1426cd2df1c4793a3d7519f253913b",
     "symbol": "COSS",
     "decimal": 18,
