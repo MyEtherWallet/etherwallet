@@ -216,7 +216,7 @@
 
 <nav role="navigation" aria-label="main navigation" class="container nav-container overflowing">
   <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
-  <div class="nav-scroll" id="mainNav">
+  <div class="nav-scroll">
     <ul class="nav-inner">
       @@if (site === 'mew' ) {
       <li ng-repeat="tab in tabNames track by $index" \

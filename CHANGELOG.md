@@ -1,3 +1,8 @@
+### Release v3.21.07
+
+#### Fixes
+- Fix contest page mobile issue [Commit](https://github.com/kvhnuke/etherwallet/commit/c5bf76718770939972419e134315cef1ea2c8ae5)
+
 ### Release v3.21.06
 
 #### New

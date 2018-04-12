@@ -755,10 +755,27 @@ header.ETSC {
   padding: 0 !important;
   text-align: center;
   ol {
+    padding: 0 10em;
     text-align: left !important;
 
     li {
       list-style-position: inside;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .contest-container {
+    ol {
+      padding: 0 5em !important;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .contest-container {
+    ol {
+      padding: 0 20px !important;
     }
   }
 }
