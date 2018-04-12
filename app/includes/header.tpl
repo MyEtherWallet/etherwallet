@@ -257,10 +257,3 @@
 @@if (site === 'cx'  ) { @@include( './header-node-modal.tpl', { "site": "cx"  } ) }
 
 </header>
-
-<script>
-  let nav = document.getElementById('mainNav');
-  if(window.location.pathname !== '/') {
-    nav.style.display = 'none';
-  }
-</script>
