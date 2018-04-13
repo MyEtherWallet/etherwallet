@@ -2,7 +2,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-
+        <div class="on-boarding-close">
+          <img class="editor-icons" src="images/icon-x.svg" title="Close" ng-click="onboardModal.close()"/>
+        </div>
         <article class="onboarding__msg" ng-show="onboardMsg" translate="ONBOARD_resume">
           It looks like you didn't finish reading through these slides last time. ProTip: Finish reading through the slides 😉
         </article>
