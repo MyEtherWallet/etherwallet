@@ -175,7 +175,6 @@ var signMsgCtrl = function($scope, $sce, walletService) {
     var getTrezorHash = function(msg) {
         return ethUtil.sha3(Buffer.concat([ethUtil.toBuffer("\u0019Ethereum Signed Message:\n"), getTrezorLenBuf(msg.length), ethUtil.toBuffer(msg)]))
     }
-    ethUtil.Buffer = Buffer
     $scope.verifySignedMessage = function() {
         try {
             var json = JSON.parse($scope.verifyMsg.signedMsg)
