@@ -280,8 +280,8 @@ nodes.nodeList = {
         'type': nodes.nodeTypes.CLO,
         'eip155': true,
         'chainId': 820,
-        'tokenList': require('./tokens/etcTokens.json'),
-        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'tokenList': require('./tokens/cloTokens.json'),
+        'abiList': require('./abiDefinitions/cloAbi.json'),
         'service': 'Callisto.network',
         'lib': new nodes.customNode('https://clo-geth.0xinfra.com/', '')
     },
@@ -292,8 +292,8 @@ nodes.nodeList = {
         'type': nodes.nodeTypes.CLOT,
         'eip155': true,
         'chainId': 7919,
-        'tokenList': require('./tokens/etcTokens.json'),
-        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'tokenList': require('./tokens/cloTokens.json'),
+        'abiList': require('./abiDefinitions/cloAbi.json'),
         'service': 'Callisto.network',
         'lib': new nodes.customNode('https://clo-testnet3.0xinfra.com/', '')
     }
