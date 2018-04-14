@@ -18,6 +18,8 @@ nodes.nodeTypes = {
     ELLA: "ELLA",
     ETSC: "ETSC",
     EGEM: "EGEM",
+    CLO: "CLO",
+    CLOT: "Testnet CLO",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -270,6 +272,30 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'egem.io',
         'lib': new nodes.customNode('https://jsonrpc.egem.io/custom', '')
+    },
+    'clo_mainnet': {
+        'name': 'CLO',
+        'blockExplorerTX': 'https://explorer.callisto.network/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.callisto.network/addr/[[address]]',
+        'type': nodes.nodeTypes.CLO,
+        'eip155': true,
+        'chainId': 820,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'service': 'Callisto.network',
+        'lib': new nodes.customNode('https://clo-geth.0xinfra.com/', '')
+    },
+    'clo_testnet3': {
+        'name': 'CLO Testnet 3.0',
+        'blockExplorerTX': 'https://explorer.callisto.network/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.callisto.network/addr/[[address]]',
+        'type': nodes.nodeTypes.CLOT,
+        'eip155': true,
+        'chainId': 7919,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'service': 'Callisto.network',
+        'lib': new nodes.customNode('https://clo-testnet3.0xinfra.com/', '')
     }
 };
 
