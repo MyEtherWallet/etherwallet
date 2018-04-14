@@ -1,10 +1,11 @@
 ### Release v3.21.07
+### New
+- Add COIL token to defaults [#1764](https://github.com/kvhnuke/etherwallet/pull/1764)
+- Add "x" to on boarding modal for more explicit closing [#1768](https://github.com/kvhnuke/etherwallet/pull/1768)
 
 #### Fixes
 - Fix regex checking on save local token [#1767](https://github.com/kvhnuke/etherwallet/pull/1767)
 - Fix contest page mobile issue [Commit](https://github.com/kvhnuke/etherwallet/commit/c5bf76718770939972419e134315cef1ea2c8ae5)
-- Add COIL token to defaults [#1764](https://github.com/kvhnuke/etherwallet/pull/1764)
-- Add "x" to on boarding modal for more explicit closing [#1768](https://github.com/kvhnuke/etherwallet/pull/1768)
 
 ### Release v3.21.06
 
