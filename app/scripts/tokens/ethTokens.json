@@ -3005,6 +3005,12 @@
     "type": "default"
   },
   {
+    "address": "0xfe7B915A0bAA0E79f85c5553266513F7C1c03Ed0",
+    "symbol": "THUG",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x6531f133e6DeeBe7F2dcE5A0441aA7ef330B4e53",
     "symbol": "TIME",
     "decimal": 8,
