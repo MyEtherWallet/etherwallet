@@ -1,5 +1,14 @@
+### Release v3.21.08
+#### New
+- Add DTT and MIT [#1773](https://github.com/kvhnuke/etherwallet/pull/1773)
+- Add THUG token [#1771](https://github.com/kvhnuke/etherwallet/pull/1771)
+- Add MAN token [#1769](https://github.com/kvhnuke/etherwallet/pull/1769)
+- Add DTx token [#1765](https://github.com/kvhnuke/etherwallet/pull/1765)
+
+#### Fixes
+- Catch typos [#1772](https://github.com/kvhnuke/etherwallet/pull/1772)
 ### Release v3.21.07
-### New
+#### New
 - Add COIL token to defaults [#1764](https://github.com/kvhnuke/etherwallet/pull/1764)
 - Add "x" to on boarding modal for more explicit closing [#1768](https://github.com/kvhnuke/etherwallet/pull/1768)
 
@@ -8,7 +17,6 @@
 - Fix contest page mobile issue [Commit](https://github.com/kvhnuke/etherwallet/commit/c5bf76718770939972419e134315cef1ea2c8ae5)
 
 ### Release v3.21.06
-
 #### New
 - Add AX1, HOT (HoloToken), and LOCUS token [Commit](https://github.com/kvhnuke/etherwallet/commit/e5ec38c71d94fcc3fd438719acf37ee9fdb2c439)
 - Add AX1 gas limit [https://github.com/kvhnuke/etherwallet/pull/1758]
