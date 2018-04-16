@@ -287,8 +287,8 @@ nodes.nodeList = {
     },
     'clo_testnet3': {
         'name': 'CLO Testnet 3.0',
-        'blockExplorerTX': 'https://explorer.callisto.network/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://explorer.callisto.network/addr/[[address]]',
+        'blockExplorerTX': 'https://explorer-testnet.callisto.network/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer-testnet.callisto.network/addr/[[address]]',
         'type': nodes.nodeTypes.CLOT,
         'eip155': true,
         'chainId': 7919,
