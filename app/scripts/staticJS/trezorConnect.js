@@ -265,7 +265,7 @@ function TrezorConnect() {
         }, requiredFirmware), callback);
     };
 
-    // new implementation with ethereum at beginnig
+    // new implementation with ethereum at beginning
     this.ethereumSignTx = function() {
         this.signEthereumTx.apply(this, arguments);
     }
@@ -378,7 +378,7 @@ function TrezorConnect() {
     /**
       * Sign a message
       *
-      * @param {string|array} path  
+      * @param {string|array} path
       * @param {string} message to sign (ascii)
       * @param {string|function(SignMessageResult)} callback
       * @param {?string} opt_coin - (optional) name of coin (default Bitcoin)
@@ -608,7 +608,7 @@ function TrezorConnect() {
       * Display address on device
       *
       * @param {array} address
-      * @param {string} coin 
+      * @param {string} coin
       * @param {boolean} segwit
       * @param {?(string|array<number>)} requiredFirmware
       *
