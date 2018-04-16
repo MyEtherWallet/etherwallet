@@ -1997,10 +1997,13 @@
 
 
     <!-- Swap Page -->
-<main class="tab-pane swap-tab active" ng-if="globalService.currentTab==globalService.tabs.swap.id" ng-controller='swapCtrl' ng-cloak>
+<main class="tab-pane swap-tab active" ng-if="globalService.currentTab==globalService.tabs.swap.id"
+      ng-controller='swapCtrl' ng-cloak>
 
-  
-   <!-- Swap Rates Panel -->
+    <div ng-if="isKyberSwap">KYBER</div><!-- todo remove dev item -->
+
+    
+     <!-- Swap Rates Panel -->
 <article class="swap-rates" ng-show="showStage1">
 
   <!-- Title -->
@@ -2052,7 +2055,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(true)"
          ng-model="swapOrder.fromVal"
-         ng-click="showedMinMaxError = false"
+         ng-click="resetErrorShownStates()"
          ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <span class="dropdown">
@@ -2071,7 +2074,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(false)"
          ng-model="swapOrder.toVal"
-         ng-click="showedMinMaxError = false"
+         ng-click="resetErrorShownStates()"
          ng-class="Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <div class="dropdown">
@@ -2093,17 +2096,1304 @@
 <!-- / Swap Init Panel -->
  
 
-  
-  
+    <div ng-if="!isKyberSwap">
+        
+         <!-- Swap Start 2 -->
+<article class="swap-start" ng-show="showStage2">
 
-  
-  
 
-<button ng-click="demoKyber()">DEMO</button>
-  <section class="bity-contact text-center">
-    <p><a class="btn-warning btn-sm" href="mailto:mew@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A" target="_blank" rel="noopener noreferrer"> Issue with your Swap? Contact support</a></p>
-    <p ng-click="swapIssue = !swapIssue"><small>Click here if link doesn't work</small></p>
-    <textarea class="form-control input-sm" rows="9" ng-show="swapIssue" style="max-width: 35rem;margin: auto;">To: mew@bity.com, support@myetherwallet.com
+  <!-- Title -->
+  <section class="row">
+    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer">
+      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
+    </a></div>
+  </section>
+  <!-- Title -->
+
+
+  <!-- Info Row -->
+  <section class="order-info-wrap row">
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
+      <p translate="SWAP_send_amt"> Amount to send </p>
+    </div>
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.toVal}} {{swapOrder.toCoin}} </h4>
+      <p translate="SWAP_rec_amt"> Amount to receive </p>
+    </div>
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.swapRate}} {{swapOrder.swapPair}} </h4>
+      <p translate="SWAP_your_rate"> Your rate </p>
+    </div>
+  </section>
+  <!-- / Info Row -->
+
+
+  <!-- Your Address -->
+  <section class='swap-address block'>
+    <section class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
+        <div class="form-group" ng-show="swapOrder.toCoin!='BTC'">
+          <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" var-name="swapOrder.toAddress"></address-field>
+        </div>
+        <input class="form-control"
+                ng-show="swapOrder.toCoin=='BTC'"
+                type="text"
+                placeholder="1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9"
+                ng-model="swapOrder.toAddress"
+                ng-class="Validator.isValidBTCAddress(swapOrder.toAddress) ? 'is-valid' : 'is-invalid'"/>
+      </div>
+    </section>
+    <!-- /Your Address -->
+    <!-- CTA -->
+    <section class="row text-center">
+      <a ng-click="openOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+    </section>
+    <!-- / CTA -->
+  </section>
+
+
+</article>
+<!-- / Swap Start 2 -->
+
+
+<!--
+
+ &lt;!&ndash;Swap Start Kyber 2 &ndash;&gt;
+<article class="swap-start" ng-show="showStage2Kyber">
+
+
+   Title
+  <section class="row">
+    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer">
+      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
+    </a></div>
+  </section>
+   Title
+
+
+   Info Row
+  <section class="order-info-wrap row">
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
+      <p translate="SWAP_send_amt"> Amount to send </p>
+    </div>
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.toVal}} {{swapOrder.toCoin}} </h4>
+      <p translate="SWAP_rec_amt"> Amount to receive </p>
+    </div>
+    <div class="col-sm-4 order-info">
+      <h4> {{1/swapOrder.swapRate}} {{swapOrder.swapPair}} </h4>
+      <p translate="SWAP_your_rate"> Your rate </p>
+    </div>
+  </section>
+   / Info Row
+
+
+   Your Address
+  <section class='swap-address block'>
+    <section class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>(ETH)</strong></label>
+        <div class="form-group" >
+          <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" var-name="swapOrder.toAddress"></address-field>
+        </div>
+        <input class="form-control"
+               ng-show="swapOrder.toCoin=='BTC'"
+               type="text"
+               placeholder="1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9"
+               ng-model="swapOrder.toAddress"
+               ng-class="Validator.isValidBTCAddress(swapOrder.toAddress) ? 'is-valid' : 'is-invalid'"/>
+      </div>
+    </section>
+     /Your Address
+     CTA
+    <section class="row text-center">
+      <a ng-click="openOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+    </section>
+     / CTA
+  </section>
+
+
+</article>
+ &lt;!&ndash;/ Swap Start Kyber 2 ->
+-->
+ 
+
+        
+         <article ng-if="!isKyberSwap">
+    <article class="swap-order" ng-show="showStage3Btc || showStage3Eth">
+
+
+        <!-- Title -->
+        <section class="row text-center">
+            <div class="col-xs-3 text-left"><a class="btn btn-danger btn-xs" ng-click="newSwap()"> Start New Swap </a>
+            </div>
+            <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
+            <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank"
+                                     rel="noopener noreferrer">
+                <img class="pull-right" src="images/logo-bity.svg" width="100" height="38"/>
+            </a></div>
+        </section>
+
+        <!-- Order Info -->
+        <section class="row order-info-wrap">
+            <div class="col-sm-3 order-info">
+                <h4>{{orderResult.reference}}</h4>
+                <p translate="SWAP_ref_num">Your reference number</p>
+            </div>
+            <div class="col-sm-3 order-info">
+                <h4>{{orderResult.progress.timeRemaining}}</h4>
+                <p ng-show="orderResult.progress.showTimeRem" translate="SWAP_time">Time remaining to send</p>
+                <p translate="SWAP_elapsed" ng-show="!orderResult.progress.showTimeRem">Time elapsed since sent</p>
+            </div>
+            <div class="col-sm-3 order-info">
+                <h4>{{orderResult.output.amount}} {{orderResult.output.currency}}</h4>
+                <p translate="SWAP_rec_amt">Amount to receive</p>
+            </div>
+            <div class="col-sm-3 order-info">
+                <h4>{{swapOrder.swapRate}} {{swapOrder.swapPair}}</h4>
+                <p translate="SWAP_your_rate">Your rate</p>
+            </div>
+        </section>
+
+
+        <!-- Swap Progress -->
+        <section class="row swap-progress">
+            <div class="sep"></div>
+            <div class="progress-item {{orderResult.progress.bar[0]}}">
+                <div class="progress-circle"><i>1</i></div>
+                <p translate="SWAP_progress_1">Order Initiated</p>
+            </div>
+            <div class="progress-item {{orderResult.progress.bar[1]}}">
+                <div class="progress-circle"><i>2</i></div>
+                <p><span translate="SWAP_progress_2">Waiting for your </span> {{orderResult.input.currency}}...</p>
+            </div>
+            <div class="progress-item {{orderResult.progress.bar[2]}}">
+                <div class="progress-circle"><i>3</i></div>
+                <p>{{orderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
+            </div>
+            <div class="progress-item {{orderResult.progress.bar[3]}}">
+                <div class="progress-circle"><i>4</i></div>
+                <p>
+                    <span translate="SWAP_progress_4">Sending your </span> {{orderResult.output.currency}} <br/>
+                    <small ng-show="orderResult.input.currency=='ETH'"> Waiting for 10 confirmations...</small>
+                    <small ng-show="orderResult.input.currency=='BTC'"> Waiting for 1 confirmation...</small>
+                </p>
+            </div>
+            <div class="progress-item {{orderResult.progress.bar[4]}}">
+                <div class="progress-circle"><i>5</i></div>
+                <p translate="SWAP_progress_5">Order Complete</p>
+            </div>
+        </section>
+
+
+        <!-- Swap CTA -->
+        <section class="row text-center" ng-show="orderResult.progress.status=='OPEN'">
+            <h1>
+                <span translate="SWAP_order_CTA">      Please send                                                 </span>
+                <strong> {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
+                <span translate="SENDModal_Content_2"> to address                                                  </span><br/>
+                <strong class="mono text-primary"> {{orderResult.payment_address}} </strong>
+            </h1>
+        </section>
+
+
+        <!-- Swap CTA ETH -->
+        <article class="row" ng-show="showStage3Eth && orderResult.progress.status=='OPEN'">
+
+            <section class="clearfix collapse-container">
+                <div class="text-center" ng-click="wd = !wd">
+                    <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+                    <h5 traslate="SWAP_unlock">Unlock your wallet to send ETH or Tokens directly from this page.</h5>
+                </div>
+                <div ng-show="!wd">
+                    
+                    
+                    <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
+                    
+                </div>
+            </section>
+
+            <div class="alert alert-danger" ng-show="ajaxReq.type!=='ETH'">
+                <strong>Warning! You are not connected to an ETH node.</strong> <br/>
+                Please use the node switcher in the top-right corner to switch to an ETH node. We <strong>do
+                not</strong> support swapping ETC or Testnet ETH.
+            </div>
+
+            <section class="row" ng-show="wallet!=null " ng-controller='sendTxCtrl'>
+                
+                 <!-- Content -->
+<div class="col-sm-8">
+
+
+  <!-- If unlocked with address only -->
+  <article class="block" ng-show="wallet.type=='addressOnly'">
+    <div class="row form-group">
+      <h4 translate="SEND_ViewOnly">
+        You cannot send with only your address. You must use one of the other options to unlock your wallet in order to send.
+      </h4>
+      <h5 translate="X_HelpfulLinks">
+        Helpful Links &amp; FAQs
+      </h5>
+      <ul>
+        <li class="u__protip">
+          <a href="https://myetherwallet.github.io/knowledge-base/getting-started/accessing-your-new-eth-wallet.html"
+             target="_blank"
+             rel="noopener noreferrer"
+             translate="X_HelpfulLinks_1">
+                How to Access your Wallet
+          </a>
+        </li>
+        <li class="u__protip">
+          <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/lost-eth-private-key.html"
+             target="_blank"
+             rel="noopener noreferrer"
+             translate="X_HelpfulLinks_2">
+                I lost my private key
+          </a>
+        </li>
+        <li class="u__protip">
+          <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/accessing-different-address-same-private-key-ether.html"
+             target="_blank"
+             rel="noopener noreferrer"
+             translate="X_HelpfulLinks_3">
+                My private key opens a different address
+          </a>
+        </li>
+        <li class="u__protip">
+          <a href="https://myetherwallet.github.io/knowledge-base/migration/"
+             target="_blank"
+             rel="noopener noreferrer"
+             translate="X_HelpfulLinks_4">
+                Migrating to/from MyEtherWallet
+          </a>
+        </li>
+      </ul>
+    </div>
+  </article>
+
+
+
+  <!-- If unlocked with PK -->
+  <article class="block" ng-hide="wallet.type=='addressOnly'">
+
+
+    <!-- To Address -->
+    <div class="row form-group">
+      <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" var-name="tx.to"></address-field>
+    </div>
+
+
+    <!-- Amount to Send -->
+    <section class="row form-group">
+
+      <div class="col-sm-11">
+        <label translate="SEND_amount">
+          Amount to Send:
+        </label>
+      </div>
+
+      <div class="col-sm-11">
+
+        <div class="input-group">
+
+          <input type="text"
+                 class="form-control"
+                 placeholder="{{ 'SEND_amount_short' | translate }}"
+                 ng-model="tx.value"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+
+          <div class="input-group-btn">
+
+            <a style="min-width: 170px"
+               class="btn btn-default dropdown-toggle"
+               class="dropdown-toggle"
+               ng-click="dropdownAmount = !dropdownAmount"
+               ng-class="dropdownEnabled ? '' : 'disabled'">
+                <strong>
+                  {{unitReadable}}
+                  <i class="caret"></i>
+                </strong>
+            </a>
+
+            <!-- Amount to Send - Dropdown -->
+            <ul class="dropdown-menu dropdown-menu-right"
+                ng-show="dropdownAmount && !tx.readOnly">
+              <li>
+                <a ng-class="{true:'active'}[tx.sendMode=='ether']"
+                   ng-click="setSendMode('ether')">
+                     {{ajaxReq.type}}
+                </a>
+              </li>
+              <li ng-repeat="token in wallet.tokenObjs track by $index"
+                  ng-show="token.balance!=0 &&
+                           token.balance!='loading' &&
+                           token.balance!='Click to Load' &&
+                           token.balance.trim()!='Not a valid ERC-20 token' ||
+                           token.type!=='default'" >
+                  <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]"
+                     ng-click="setSendMode('token', $index, token.getSymbol())" >
+                      {{token.getSymbol()}}
+                  </a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Amount to Send - Load Token Balances
+      <a class="col-sm-1 send__load-tokens"
+         title="Load Token Balances"
+         ng-click="wallet.setTokens(); globalService.tokensLoaded=true"
+         ng-hide="globalService.tokensLoaded">
+          <img src="images/icon-load-tokens.svg" width="16" height="16" />
+          <p translate="SEND_LoadTokens">
+            Load Tokens
+          </p>
+      </a>
+      -->
+
+      <!-- Amount to Send - Transfer Entire Balance -->
+      <p class="col-xs-12" ng-hide="tx.readOnly">
+        <a ng-click="transferAllBalance()">
+          <span class="strong" translate="SEND_TransferTotal">
+            Send Entire Balance
+          </span>
+        </a>
+      </p>
+
+    </section>
+
+
+
+
+    <!-- Gas Limit -->
+    <section class="row form-group">
+      <div class="col-sm-11 clearfix">
+        <a class="account-help-icon"
+           href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+        </a>
+        <label translate="TRANS_gas">
+          Gas Limit:
+        </label>
+        <input type="text"
+               class="form-control"
+               placeholder="21000"
+               ng-model="tx.gasLimit"
+               ng-change="gasLimitChanged=true"
+               ng-disabled="tx.readOnly || checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+      </div>
+    </section>
+
+    <!-- Advanced Option Panel -->
+    <a ng-click="showAdvance=true"
+       ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id || tx.data != ""'>
+      <p class="strong" translate="TRANS_advanced">
+        + Advanced: Add Data
+      </p>
+    </a>
+
+
+
+    <div ng-show="showAdvance || checkTxPage">
+
+      <!-- Data -->
+      <section class="row form-group">
+        <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
+          <span class="account-help-icon">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">
+              This is optional.
+            </p>
+          </span>
+
+          <label translate="TRANS_data"> Data: </label>
+
+          <input type="text"
+                 class="form-control"
+                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
+                 ng-model="tx.data"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+
+        </div>
+      </section>
+
+
+      <!-- Nonce -->
+      <section class="row form-group" ng-show="checkTxPage">
+        <div class="col-sm-11 clearfix">
+
+          <a class="account-help-icon"
+             href="https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html"
+             target="_blank"
+             rel="noopener noreferrer">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="NONCE_Desc"></p>
+          </a>
+
+          <label translate="OFFLINE_Step2_Label_5">
+            Nonce
+          </label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="2"
+                 ng-model="tx.nonce"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
+
+        </div>
+      </section>
+
+
+      <!-- Gas Price -->
+      <section class="row form-group" ng-show="checkTxPage">
+        <div class="col-sm-11 clearfix">
+          <a class="account-help-icon"
+             href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
+             target="_blank"
+             rel="noopener noreferrer">
+                <img src="images/icon-help.svg" class="help-icon" />
+                <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
+          </a>
+
+          <label translate="OFFLINE_Step2_Label_3">
+            Gas Price:
+          </label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="50"
+                 ng-model="tx.gasPrice"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+
+        </div>
+      </section>
+
+    </div>
+    <!-- / Advanced Option Panel -->
+
+
+
+
+
+    <div class="clearfix form-group">
+      <div class="well" ng-show="wallet!=null && customGasMsg!=''">
+        <p>
+          <span translate="SEND_CustomAddrMsg">
+            A message regarding
+          </span>
+          {{tx.to}}
+          <br />
+          <strong>
+            {{customGasMsg}}
+          </strong>
+        </p>
+      </div>
+    </div>
+
+
+
+    <div class="row form-group">
+      <div class="col-xs-12 clearfix">
+        <a class="btn btn-info btn-block"
+           ng-click="generateTx()"
+           translate="SEND_generate">
+              Generate Transaction
+        </a>
+      </div>
+    </div>
+
+    <div class="row form-group" ng-show="rootScopeShowRawTx">
+
+      <div class="col-sm-6">
+        <label translate="SEND_raw">
+          Raw Transaction
+        </label>
+        <textarea class="form-control" rows="4" readonly>{{rawTx}}</textarea>
+      </div>
+
+      <div class="col-sm-6">
+        <label translate="SEND_signed">
+          Signed Transaction
+        </label>
+        <textarea class="form-control" rows="4" readonly>{{signedTx}}</textarea>
+      </div>
+
+    </div>
+
+    <div class="clearfix form-group" ng-show="rootScopeShowRawTx">
+      <a class="btn btn-primary btn-block col-sm-11"
+         data-toggle="modal"
+         data-target="#sendTransaction"
+         translate="SEND_trans"
+         ng-click="parseSignedTx( signedTx )">
+             Send Transaction
+      </a>
+    </div>
+
+
+  </article>
+
+</div>
+<!-- / Content -->
+
+
+
+
+
+<!-- Sidebar -->
+<section class="col-sm-4">
+
+  <div class="block block--danger"
+       ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
+
+    <h5 translate="SWAP_Warning_1">
+      Warning! You do not have enough funds to complete this swap.
+    </h5>
+
+    <p translate="SWAP_Warning_2">
+      Please add more funds to your wallet or access a different wallet.
+    </p>
+
+  </div>
+
+  <wallet-balance-drtv></wallet-balance-drtv>
+
+  <div ng-show="checkTxPage"
+       ng-click="checkTxReadOnly=!checkTxReadOnly"
+       class="small text-right text-gray-lighter">
+        <small translate="X_Advanced">
+          Advanced Users Only.
+        </small>
+  </div>
+
+</section>
+<!-- / Sidebar -->
+ 
+
+                
+                 <article class="modal fade" id="sendTransaction" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
+
+        <h2 class="modal-title text-center">
+          <span translate="SENDModal_Content_1">You are about to send</span>...
+        </h2>
+
+        <table class="table text-center">
+          <tbody>
+            <tr>
+              <td>
+                <div class="addressIdenticon med"
+                     title="Address Indenticon"
+                     blockie-address="{{wallet.getAddressString()}}"
+                     watch-var="wallet.getAddressString()">
+                </div>
+                <p>
+                  <strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">
+                    {{wallet.getChecksumAddressString()}}
+                  </strong>
+                </p>
+              </td>
+              <td ng-show="tx.sendMode=='ether'" class="mono">
+                ->
+                <br />
+                <h4 class="text-danger">
+                  {{tx.value}} {{unitReadable}}
+                </h4>
+              </td>
+              <td ng-show="tx.sendMode!=='ether'" class="mono">
+                ->
+                <br />
+                <h4 class="text-primary">
+                  {{tx.value}} {{unitReadable}}
+                </h4>
+              </td>
+              <td ng-show="tx.sendMode=='ether'">
+                <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+                <p>
+                  <strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">
+                    {{tx.to}}
+                  </strong>
+                </p>
+              </td>
+              <td ng-show="tx.sendMode!=='ether'">
+                <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+                <p>
+                  <strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">
+                    {{tokenTx.to}}
+                  </strong>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br />
+
+        <table class="table small table-condensed table-hover transaction-modal">
+          <tbody>
+            <tr>
+              <td class="small text-right">To Address:</td>
+              <td class="small text-left mono">{{parsedSignedTx.to}}
+                <br />
+                <em><small>If sending tokens, this should be the token contract address.</small></em>
+              </td>
+            </tr>
+            <tr>
+              <td class="small text-right">From Address:</td>
+              <td class="small text-left mono">{{parsedSignedTx.from}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Amount to Send:</td>
+              <td class="small text-left mono">{{parsedSignedTx.value}} ETH</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Account Balance:</td>
+              <td class="small text-left mono">{{parsedSignedTx.balance}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Coin:</td>
+              <td class="small text-left mono">{{unitReadable}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Network:</td>
+              <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Gas Limit:</td>
+              <td class="small text-left mono">{{parsedSignedTx.gasLimit}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Gas Price:</td>
+              <td class="small text-left mono">{{parsedSignedTx.gasPrice.gwei}} GWEI <small>({{parsedSignedTx.gasPrice.eth}} ETH)</small>
+              </td>
+            </tr>
+            <tr>
+              <td class="small text-right">Max TX Fee:</td>
+              <td class="small text-left mono"> {{parsedSignedTx.txFee.eth}} ETH <small>({{parsedSignedTx.txFee.gwei}} GWEI)</small></td>
+            </tr>
+            <tr>
+              <td class="small text-right">Nonce:</td>
+              <td class="small text-left mono">{{parsedSignedTx.nonce}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Data:</td>
+              <td class="small text-left mono text-width-limit"><p>{{parsedSignedTx.data}}</p></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <h4 class="text-center">
+          <span translate="SENDModal_Content_1">You are about to send</span>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
+          <span translate="SENDModal_Content_2">to address</span>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.to}}.</strong>
+          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.to}}</strong>
+        </h4>
+        <p translate="SENDModal_Content_3">
+          Are you sure you want to do this?
+        </p>
+        <br />
+        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+          No, get me out of here!
+        </button>
+        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+          Yes, I am sure! Make transaction.
+        </button>
+      </div>
+
+      <p class="small text-center" style="padding: 0px 5px;">
+        <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank" ref="noopener noreferrer">
+          The network is a bit overloaded. If you're having issues with TXs, please read me.
+        </a>
+      </p>
+
+
+
+    </section>
+  </section>
+</article>
+ 
+            </section>
+        </article>
+        <!-- / Swap CTA ETH -->
+
+
+        <!-- Swap CTA BTC -->
+        <section class="row block swap-address text-center"
+                 ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
+            <label translate="x_Address"> Your Address </label>
+            <div class="qr-code"
+                 qr-code="{{'bitcoin:'+orderResult.payment_address+'?amount='+orderResult.input.amount}}"
+                 watch-var="orderResult"></div>
+            <br/>
+            <p class="text-danger">
+                Orders that take too long will have to be processed manually &amp; and may delay the amount of time it
+                takes to receive your coins.
+                <br/>
+                <a href="https://shapeshift.io/#/btcfee" target="_blank" rel="noopener noreferrer">Please use the
+                    recommended TX fees seen here.</a>
+            </p>
+
+        </section>
+
+
+    </article>
+
+</article>
+ 
+    </div>
+
+    <div ng-if="isKyberSwap">
+        
+         <!-- Swap Start Kyber 2 -->
+<article ng-if="isKyberSwap">
+    {{showStage2Kyber}}
+    {{showStage3Kyber}}
+    <!-- Swap Kyber 2 -->
+    <article class="swap-start" ng-show="showStage2Kyber">
+        <div>KYBER</div>
+
+        <!-- Title -->
+        <section class="row">
+            <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
+            <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank"
+                                     rel="noopener noreferrer">
+                <img class="pull-right" src="images/logo-bity.svg" width="100" height="38"/>
+            </a></div>
+        </section>
+        <!-- Title -->
+
+
+        <!-- Info Row -->
+        <section class="order-info-wrap row">
+            <div class="col-sm-4 order-info">
+                <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
+                <p translate="SWAP_send_amt"> Amount to send </p>
+            </div>
+            <div class="col-sm-4 order-info">
+                <h4> {{swapOrder.toVal}} {{swapOrder.toCoin}} </h4>
+                <p translate="SWAP_rec_amt"> Amount to receive </p>
+            </div>
+            <div class="col-sm-4 order-info">
+                <h4> {{swapOrder.swapRate}} {{swapOrder.swapPair}} </h4>
+                <p translate="SWAP_your_rate"> Your rate </p>
+            </div>
+        </section>
+        <!-- / Info Row -->
+
+        <!-- Your Address -->
+        <section class='swap-address block'>
+            <section class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                    <!--<label><span translate="SWAP_rec_add">Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>-->
+                    <label><span>Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>
+                    <!-- todo remove dev item -->
+                    <!--<div class="form-group" ng-show="swapOrder.toCoin!='BTC'">-->
+                    <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
+                                   var-name="swapOrder.toAddress"></address-field>
+                </div>
+            </section>
+            <!-- /Your Address -->
+            <!-- CTA -->
+            <section class="row text-center">
+                <a ng-click="startKyber()" class="btn btn-primary btn-lg"><span
+                    translate="SWAP_start_CTA"> Start Swap </span></a>
+            </section>
+            <!-- / CTA -->
+        </section>
+
+
+    </article>
+    <!-- / Swap Kyber 2 -->
+    <!----------------------------------------------------------------------------------------------------------------->
+    <!-- Swap Kyber 3-->
+    <article class="swap-order" ng-show="showStage3Kyber">
+        <div>KYBER</div>
+
+        <!-- Title -->
+        <section class="row text-center">
+            <div class="col-xs-3 text-left"><a class="btn btn-danger btn-xs" ng-click="newSwap()"> Start New Swap </a>
+            </div>
+            <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
+            <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank"
+                                     rel="noopener noreferrer">
+                <img class="pull-right" src="images/logo-bity.svg" width="100" height="38"/>
+            </a></div>
+        </section>
+
+        <!-- Order Info -->
+        <section class="row order-info-wrap">
+            <div class="col-sm-3 order-info">
+                <h4>{{orderResult.reference}}</h4>
+                <p translate="SWAP_ref_num">Your reference number</p>
+            </div>
+            <div class="col-sm-3 order-info">
+                <h4>{{orderResult.progress.timeRemaining}}</h4>
+                <p ng-show="orderResult.progress.showTimeRem" translate="SWAP_time">Time remaining to send</p>
+                <p translate="SWAP_elapsed" ng-show="!orderResult.progress.showTimeRem">Time elapsed since sent</p>
+            </div>
+            <div class="col-sm-3 order-info">
+                <h4>{{orderResult.output.amount}} {{orderResult.output.currency}}</h4>
+                <p translate="SWAP_rec_amt">Amount to receive</p>
+            </div>
+            <div class="col-sm-3 order-info">
+                <h4>{{swapOrder.swapRate}} {{swapOrder.swapPair}}</h4>
+                <p translate="SWAP_your_rate">Your rate</p>
+            </div>
+        </section>
+
+
+        <!-- Swap Progress -->
+        <section class="row swap-progress">
+            <div class="sep"></div>
+            <div class="progress-item {{orderResult.progress.bar[0]}}">
+                <div class="progress-circle"><i>1</i></div>
+                <p translate="SWAP_progress_1">Order Initiated</p>
+            </div>
+            <div class="progress-item {{orderResult.progress.bar[1]}}">
+                <div class="progress-circle"><i>2</i></div>
+                <p><span translate="SWAP_progress_2">Waiting for your </span> {{orderResult.input.currency}}...</p>
+            </div>
+            <div class="progress-item {{orderResult.progress.bar[2]}}">
+                <div class="progress-circle"><i>3</i></div>
+                <p>{{orderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
+            </div>
+            <div class="progress-item {{orderResult.progress.bar[3]}}">
+                <div class="progress-circle"><i>4</i></div>
+                <p>
+                    <span translate="SWAP_progress_4">Sending your </span> {{orderResult.output.currency}} <br/>
+                    <small ng-show="orderResult.input.currency=='ETH'"> Waiting for 10 confirmations...</small>
+                    <small ng-show="orderResult.input.currency=='BTC'"> Waiting for 1 confirmation...</small>
+                </p>
+            </div>
+            <div class="progress-item {{orderResult.progress.bar[4]}}">
+                <div class="progress-circle"><i>5</i></div>
+                <p translate="SWAP_progress_5">Order Complete</p>
+            </div>
+        </section>
+
+
+        <!-- Swap CTA -->
+        <section class="row text-center" ng-show="orderResult.progress.status=='OPEN'">
+            <h1>
+                <span
+                    translate="SWAP_order_CTA">      Please send                                                 </span>
+                <strong> {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
+                <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
+                <!--<strong class="mono text-primary"> {{orderResult.payment_address}} </strong>-->
+            </h1>
+        </section>
+
+        <section class="row text-center" ng-show="orderResult.progress.status=='APPROVE_TOKENS'">
+            <h1>
+                <span
+                    translate="SWAP_order_CTA">      Please Approve Tokens to Swap                                           </span>
+                <strong> {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
+                <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
+                <!--<strong class="mono text-primary"> {{orderResult.payment_address}} </strong>-->
+            </h1>
+        </section>
+
+
+        <!-- Swap CTA ETH -->
+        <article class="row">
+
+            <section class="clearfix collapse-container">
+                <div class="text-center" ng-click="wd = !wd">
+                    <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+                    <h5 traslate="SWAP_unlock">Unlock your wallet to send ETH or Tokens directly from this page.</h5>
+                </div>
+                <div ng-show="!wd">
+                    
+                    
+                    <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
+                    
+                </div>
+            </section>
+
+<!--            <div class="alert alert-danger" ng-show="ajaxReq.type!=='ETH'">
+                <strong>Warning! You are not connected to an ETH node.</strong> <br/>
+                Please use the node switcher in the top-right corner to switch to an ETH node. We <strong>do
+                not</strong> support swapping ETC or Testnet ETH.
+            </div>-->
+
+
+            <!--<-->
+            <section class="row" ng-show="wallet!=null " ng-controller='sendTxCtrl'>
+                <div ng-show=" orderResult.progress.status=='APPROVE_TOKENS'">
+                    <button ng-click="approveTokenKyber(wallet)">AUTHORIZE TOKENS FOR SWAP</button>
+                </div>
+
+                <!--<button ng-click="checkForTokenApproveKyber(wallet.getAddressString())">AUTHORIZE TOKENS FOR SWAP</button>-->
+                <div
+                    ng-show="wallet!=null && (orderResult.progress.status=='OPEN_ETH' || orderResult.progress.status=='TOKENS_APPROVED')">
+                    <button ng-click="sendKyberModal()">DO SWAP</button>
+                    <!--<button ng-click="openKyberOrder()">DO SWAP</button>-->
+
+                </div>
+                
+                
+
+                
+                <!--todo implement (custom swap modal) with content comming from swapCtrl -->
+                 <article class="modal fade" id="sendTransaction" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
+
+        <h2 class="modal-title text-center">
+          <span translate="SENDModal_Content_1">You are about to send</span>...
+        </h2>
+
+        <table class="table text-center">
+          <tbody>
+            <tr>
+              <td>
+                <div class="addressIdenticon med"
+                     title="Address Indenticon"
+                     blockie-address="{{wallet.getAddressString()}}"
+                     watch-var="wallet.getAddressString()">
+                </div>
+                <p>
+                  <strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">
+                    {{wallet.getChecksumAddressString()}}
+                  </strong>
+                </p>
+              </td>
+              <td ng-show="tx.sendMode=='ether'" class="mono">
+                ->
+                <br />
+                <h4 class="text-danger">
+                  {{tx.value}} {{unitReadable}}
+                </h4>
+              </td>
+              <td ng-show="tx.sendMode!=='ether'" class="mono">
+                ->
+                <br />
+                <h4 class="text-primary">
+                  {{tx.value}} {{unitReadable}}
+                </h4>
+              </td>
+              <td ng-show="tx.sendMode=='ether'">
+                <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+                <p>
+                  <strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">
+                    {{tx.to}}
+                  </strong>
+                </p>
+              </td>
+              <td ng-show="tx.sendMode!=='ether'">
+                <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+                <p>
+                  <strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">
+                    {{tokenTx.to}}
+                  </strong>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br />
+
+        <table class="table small table-condensed table-hover transaction-modal">
+          <tbody>
+            <tr>
+              <td class="small text-right">To Address:</td>
+              <td class="small text-left mono">{{parsedSignedTx.to}}
+                <br />
+                <em><small>If sending tokens, this should be the token contract address.</small></em>
+              </td>
+            </tr>
+            <tr>
+              <td class="small text-right">From Address:</td>
+              <td class="small text-left mono">{{parsedSignedTx.from}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Amount to Send:</td>
+              <td class="small text-left mono">{{parsedSignedTx.value}} ETH</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Account Balance:</td>
+              <td class="small text-left mono">{{parsedSignedTx.balance}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Coin:</td>
+              <td class="small text-left mono">{{unitReadable}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Network:</td>
+              <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Gas Limit:</td>
+              <td class="small text-left mono">{{parsedSignedTx.gasLimit}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Gas Price:</td>
+              <td class="small text-left mono">{{parsedSignedTx.gasPrice.gwei}} GWEI <small>({{parsedSignedTx.gasPrice.eth}} ETH)</small>
+              </td>
+            </tr>
+            <tr>
+              <td class="small text-right">Max TX Fee:</td>
+              <td class="small text-left mono"> {{parsedSignedTx.txFee.eth}} ETH <small>({{parsedSignedTx.txFee.gwei}} GWEI)</small></td>
+            </tr>
+            <tr>
+              <td class="small text-right">Nonce:</td>
+              <td class="small text-left mono">{{parsedSignedTx.nonce}}</td>
+            </tr>
+            <tr>
+              <td class="small text-right">Data:</td>
+              <td class="small text-left mono text-width-limit"><p>{{parsedSignedTx.data}}</p></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <h4 class="text-center">
+          <span translate="SENDModal_Content_1">You are about to send</span>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
+          <span translate="SENDModal_Content_2">to address</span>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.to}}.</strong>
+          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.to}}</strong>
+        </h4>
+        <p translate="SENDModal_Content_3">
+          Are you sure you want to do this?
+        </p>
+        <br />
+        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+          No, get me out of here!
+        </button>
+        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+          Yes, I am sure! Make transaction.
+        </button>
+      </div>
+
+      <p class="small text-center" style="padding: 0px 5px;">
+        <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank" ref="noopener noreferrer">
+          The network is a bit overloaded. If you're having issues with TXs, please read me.
+        </a>
+      </p>
+
+
+
+    </section>
+  </section>
+</article>
+ 
+
+                
+                <!--todo implement (custom swap modal) with content comming from swapCtrl -->
+                 <article class="modal fade" id="kyberTransaction" tabindex="-1">
+    <section class="modal-dialog">
+        <section class="modal-content">
+
+            <div class="modal-body">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
+
+                <h2 class="modal-title text-center">
+                    <!--<span translate="SENDModal_Content_1">You are about to authorize</span>...-->
+                    <span>You are about to send</span>...
+                </h2>
+
+                <table class="table text-center">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="addressIdenticon med"
+                                 title="Address Indenticon"
+                                 blockie-address="{{wallet.getAddressString()}}"
+                                 watch-var="wallet.getAddressString()">
+                            </div>
+                            <p>
+                                <strong ng-show="kyberRawTxData.sendMode=='ether'" class="send-modal__addr">
+                                    {{wallet.getChecksumAddressString()}}
+                                </strong>
+                            </p>
+                        </td>
+                        <td ng-show="kyberRawTxData.sendMode=='ether'" class="mono">
+                            ->
+                            <br />
+                            <h4 class="text-danger">
+                                {{kyberRawTxData.value}} {{unitReadable}}
+                            </h4>
+                        </td>
+                        <td ng-show="kyberRawTxData.sendMode!=='ether'" class="mono">
+                            ->
+                            <br />
+                            <h4 class="text-primary">
+                                {{kyberRawTxData.value}} {{unitReadable}}
+                            </h4>
+                        </td>
+                        <td ng-show="kyberRawTxData.sendMode=='ether'">
+                            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{kyberRawTxData.to}}" watch-var="tx.to"></div>
+                            <p>
+                                <strong ng-show="kyberRawTxData.sendMode=='ether'" class="send-modal__addr">
+                                    {{kyberRawTxData.to}} ({{swapOrder.fromCoin}})
+                                </strong>
+                            </p>
+
+                        </td>
+                        <td ng-show="kyberRawTxData.sendMode!=='ether'">
+                            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+                            <p>
+                                <strong ng-show="kyberRawTxData.sendMode=='ether'" class="send-modal__addr">
+                                    {{tokenTx.to}} ({{swapOrder.fromCoin}})
+                                </strong>
+                            </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br />
+
+                <table class="table small table-condensed table-hover transaction-modal">
+                    <tbody>
+                    <tr>
+                        <td class="small text-right">To Address:</td>
+                        <td class="small text-left mono">{{parsedSignedKyberTx.to}}
+                            <br />
+                            <em><small>If sending tokens, this should be the token contract address.</small></em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">From Address:</td>
+                        <td class="small text-left mono">{{parsedSignedKyberTx.from}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">Amount to Send:</td>
+                        <td class="small text-left mono">{{parsedSignedKyberTx.value}} ETH</td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">Account Balance:</td>
+                        <td class="small text-left mono">{{parsedSignedKyberTx.balance}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">Coin:</td>
+                        <td class="small text-left mono">{{unitReadable}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">Network:</td>
+                        <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">Gas Limit:</td>
+                        <td class="small text-left mono">{{parsedSignedKyberTx.gasLimit}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">Gas Price:</td>
+                        <td class="small text-left mono">{{parsedSignedKyberTx.gasPrice.gwei}} GWEI <small>({{parsedSignedKyberTx.gasPrice.eth}} ETH)</small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">Max TX Fee:</td>
+                        <td class="small text-left mono"> {{parsedSignedKyberTx.txFee.eth}} ETH <small>({{parsedSignedKyberTx.txFee.gwei}} GWEI)</small></td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">Nonce:</td>
+                        <td class="small text-left mono">{{parsedSignedKyberTx.nonce}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">Data:</td>
+                        <td class="small text-left mono text-width-limit"><p>{{parsedSignedKyberTx.data}}</p></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <h4 class="text-center">
+                    <!--<span translate="SENDModal_Content_1">You are about to send</span>-->
+                    <span translate="SENDModal_Content_1">You are about to send</span>
+                    <strong ng-show="tx.sendMode=='ether'" class="mono">{{kyberRawTxData.value}} {{unitReadable}}</strong>
+                    <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
+                    <!--<span translate="SENDModal_Content_2">to address</span>-->
+                    <span translate="SENDModal_Content_2">to address</span>
+                    <strong ng-show="tx.sendMode=='ether'" class="mono">{{kyberRawTxData.to}}.</strong>
+                    <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.to}}</strong>
+                </h4>
+                <p translate="SENDModal_Content_3">
+                    Are you sure you want to do this?
+                </p>
+                <br />
+                <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+                    No, get me out of here!
+                </button>
+                <button class="btn btn-primary" ng-click="sendKyberTransaction()" translate="SENDModal_Yes">
+                    Yes, I am sure! Make transaction.
+                </button>
+            </div>
+
+            <p class="small text-center" style="padding: 0px 5px;">
+                <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank" ref="noopener noreferrer">
+                    The network is a bit overloaded. If you're having issues with TXs, please read me.
+                </a>
+            </p>
+
+
+
+        </section>
+    </section>
+</article>
+ 
+
+            </section>
+            <!--</div>-->
+        </article>
+        <!-- / Swap CTA ETH -->
+
+
+
+
+    </article>
+
+    <!-- / Swap Kyber 3-->
+
+</article> 
+    </div>
+
+    <!--<button ng-click="demoKyber()">DEMO</button> &lt;!&ndash; todo remove dev item &ndash;&gt;-->
+    <section class="bity-contact text-center">
+        <p><a class="btn-warning btn-sm"
+              href="mailto:mew@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A"
+              target="_blank" rel="noopener noreferrer"> Issue with your Swap? Contact support</a></p>
+        <p ng-click="swapIssue = !swapIssue">
+            <small>Click here if link doesn't work</small>
+        </p>
+        <textarea class="form-control input-sm" rows="9" ng-show="swapIssue" style="max-width: 35rem;margin: auto;">To: mew@bity.com, support@myetherwallet.com
 Subject: {{orderResult.reference}} - Issue regarding my Swap via MEW
 Message:
 REF ID#: {{orderResult.reference}}
@@ -2112,7 +3402,7 @@ Amount to receive: {{orderResult.output.amount}} {{orderResult.output.currency}}
 Payment Address: {{orderResult.payment_address}}
 Receiving Address: {{swapOrder.toAddress}}
 Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
-  </section>
+    </section>
 
 </main>
 <!-- / Swap Page -->

@@ -186,7 +186,10 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         ethFuncs.estimateGas(estObj, function(data) {
 
             if (!data.error) {
-                if (data.data == '-1') $scope.notifier.danger(globalFuncs.errorMsgs[21]);
+                if (data.data == '-1') {
+                    console.log("sendTxCtrl:190 ERROR");
+                    $scope.notifier.danger(globalFuncs.errorMsgs[21]);
+                }
                 $scope.tx.gasLimit = data.data;
             } else $scope.notifier.danger(data.msg);
         });
@@ -203,6 +206,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
 
     $scope.generateTx = function() {
         if (!$scope.Validator.isValidAddress($scope.tx.to)) {
+            console.log("sendTxCtrl:209"); //todo remove dev item
             $scope.notifier.danger(globalFuncs.errorMsgs[5]);
             return;
         }
@@ -219,6 +223,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         if ($scope.tx.sendMode == 'token') {
             // if the amount of tokens you are trying to send > tokens you have, throw error
             if (!isEnough($scope.tx.value, $scope.wallet.tokenObjs[$scope.tokenTx.id].balance)) {
+                console.log("sendTxCtrl:226 : " ); //todo remove dev item
                 $scope.notifier.danger(globalFuncs.errorMsgs[0]);
                 return;
             }
@@ -233,6 +238,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
                 $rootScope.rootScopeShowRawTx = true;
             } else {
                 $rootScope.rootScopeShowRawTx = false;
+                console.log("sendTxCtrl:241"); //todo remove dev item
                 $scope.notifier.danger(rawTx.error);
             }
             if (!$scope.$$phase) $scope.$apply();
@@ -254,6 +260,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
                 $scope.wallet.setBalance(applyScope);
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
             } else {
+                console.log("sendTxCtrl:263"); //todo remove dev item
                 $scope.notifier.danger(resp.error);
             }
         });
@@ -267,6 +274,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
                     $scope.tx.value = resp.value;
                 } else {
                     $rootScope.rootScopeShowRawTx = false;
+                    console.log("sendTxCtrl:277"); //todo remove dev item
                     $scope.notifier.danger(resp.error);
                 }
             });

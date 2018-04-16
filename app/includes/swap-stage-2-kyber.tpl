@@ -1,4 +1,4 @@
-<!-- Swap Start 2 -->
+<!-- Swap Start Kyber 2 -->
 <article class="swap-start" ng-show="showStage2Kyber">
 
 
@@ -23,7 +23,7 @@
       <p translate="SWAP_rec_amt"> Amount to receive </p>
     </div>
     <div class="col-sm-4 order-info">
-      <h4> {{swapOrder.swapRate}} {{swapOrder.swapPair}} </h4>
+      <h4> {{1/swapOrder.swapRate}} {{swapOrder.swapPair}} </h4>
       <p translate="SWAP_your_rate"> Your rate </p>
     </div>
   </section>
@@ -34,16 +34,16 @@
   <section class='swap-address block'>
     <section class="row">
       <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-        <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
-        <div class="form-group" ng-show="swapOrder.toCoin!='BTC'">
+        <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>(ETH)</strong></label>
+        <div class="form-group" >
           <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" var-name="swapOrder.toAddress"></address-field>
         </div>
-        <input class="form-control"
-                ng-show="swapOrder.toCoin=='BTC'"
-                type="text"
-                placeholder="1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9"
-                ng-model="swapOrder.toAddress"
-                ng-class="Validator.isValidBTCAddress(swapOrder.toAddress) ? 'is-valid' : 'is-invalid'"/>
+        <!--        <input class="form-control"
+                       ng-show="swapOrder.toCoin=='BTC'"
+                       type="text"
+                       placeholder="1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9"
+                       ng-model="swapOrder.toAddress"
+                       ng-class="Validator.isValidBTCAddress(swapOrder.toAddress) ? 'is-valid' : 'is-invalid'"/>-->
       </div>
     </section>
     <!-- /Your Address -->
@@ -56,4 +56,4 @@
 
 
 </article>
-<!-- / Swap Start 2 -->
+<!-- / Swap Start Kyber 2 -->
