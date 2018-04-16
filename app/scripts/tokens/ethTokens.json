@@ -1050,6 +1050,12 @@
 		"type": "default"
 	},
 	{
+    "address": "0x82fdedfB7635441aA5A92791D001fA7388da8025",
+    "symbol": "DTx",
+    "decimal": 18,
+    "type": "default"
+  },
+	{
 		"address": "0x765f0c16d1ddc279295c1a7c24b0883f62d33f75",
 		"symbol": "DTX",
 		"decimal": 18,
