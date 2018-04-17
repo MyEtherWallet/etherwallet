@@ -1,5 +1,7 @@
 ### Release v3.21.08
 #### New
+- Add NAC, MUX, SMT (Social Media Market) tokens [#1775](https://github.com/kvhnuke/etherwallet/pull/1775)
+- Add VIEW token [#1774](https://github.com/kvhnuke/etherwallet/pull/1774)
 - Add DTT and MIT [#1773](https://github.com/kvhnuke/etherwallet/pull/1773)
 - Add THUG token [#1771](https://github.com/kvhnuke/etherwallet/pull/1771)
 - Add MAN token [#1769](https://github.com/kvhnuke/etherwallet/pull/1769)
@@ -7,6 +9,7 @@
 
 #### Fixes
 - Catch typos [#1772](https://github.com/kvhnuke/etherwallet/pull/1772)
+
 ### Release v3.21.07
 #### New
 - Add COIL token to defaults [#1764](https://github.com/kvhnuke/etherwallet/pull/1764)

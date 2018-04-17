@@ -2076,6 +2076,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x515669d308f887fd83a471c7764f5d084886d34d",
+		"symbol": "MUXE",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x6425c6be902d692ae2db752b3c268afadb099d3b",
 		"symbol": "MWAT",
 		"decimal": 18,
@@ -2091,6 +2097,12 @@
 		"address": "0xa645264C5603E96c3b0B078cdab68733794B0A71",
 		"symbol": "MYST",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0x8d80de8A78198396329dfA769aD54d24bF90E7aa",
+		"symbol": "NAC",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -2793,6 +2805,12 @@
 		"address": "0x2dcfaac11c9eebd8c6c42103fe9e2a6ad237af27",
 		"symbol": "SMT (Smart Node)",
 		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x78Eb8DC641077F049f910659b6d580E80dC4d237",
+		"symbol": "SMT (Social Media Market)",
+		"decimal": 8,
 		"type": "default"
 	},
 	{
