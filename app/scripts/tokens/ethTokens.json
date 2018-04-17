@@ -3228,6 +3228,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x922ac473a3cc241fd3a0049ed14536452d58d73c",
+		"symbol": "VLD",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xc3bc9eb71f75ec439a6b6c8e8b746fcf5b62f703",
 		"symbol": "VOC",
 		"decimal": 18,
