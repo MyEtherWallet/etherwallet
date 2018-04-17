@@ -3192,6 +3192,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xf03f8d65bafa598611c3495124093c56e8f638f0",
+		"symbol": "VIEW",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x23b75Bc7AaF28e2d6628C3f424B3882F8f072a3c",
 		"symbol": "VIT",
 		"decimal": 18,
