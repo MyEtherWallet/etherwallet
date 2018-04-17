@@ -8,7 +8,7 @@
 
                 <h2 class="modal-title text-center">
                     <!--<span translate="SENDModal_Content_1">You are about to authorize</span>...-->
-                    <span>You are about to send</span>...
+                    <span>You are about to send</span>... <!-- todo: add translate -->
                 </h2>
 
                 <table class="table text-center">

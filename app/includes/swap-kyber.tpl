@@ -1,17 +1,17 @@
 <!-- Swap Start Kyber 2 -->
 <article ng-if="isKyberSwap">
-    {{showStage2Kyber}}
-    {{showStage3Kyber}}
+    <!--{{showStage2Kyber}}-->
+    <!--{{showStage3Kyber}}-->
     <!-- Swap Kyber 2 -->
     <article class="swap-start" ng-show="showStage2Kyber">
-        <div>KYBER</div>
+
 
         <!-- Title -->
         <section class="row">
             <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
-            <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank"
+            <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
                                      rel="noopener noreferrer">
-                <img class="pull-right" src="images/logo-bity.svg" width="100" height="38"/>
+                <img class="pull-right" src="images/logo-kyber-beta.svg" width="100" height="38"/>
             </a></div>
         </section>
         <!-- Title -->
@@ -48,9 +48,12 @@
             </section>
             <!-- /Your Address -->
             <!-- CTA -->
-            <section class="row text-center">
+            <section class="row text-center" ng-if="!kyberReturnToStart">
                 <a ng-click="startKyber()" class="btn btn-primary btn-lg"><span
                     translate="SWAP_start_CTA"> Start Swap </span></a>
+            </section>
+            <section class="row text-center" ng-if="kyberReturnToStart">
+                <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a><!-- todo: add translate -->
             </section>
             <!-- / CTA -->
         </section>
@@ -139,8 +142,7 @@
 
         <section class="row text-center" ng-show="orderResult.progress.status=='APPROVE_TOKENS'">
             <h1>
-                <span
-                    translate="SWAP_order_CTA">      Please Approve Tokens to Swap                                           </span>
+                <span>      Please Approve Tokens to Swap                                           </span><!-- todo: add translate -->
                 <strong> {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
                 <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
                 <!--<strong class="mono text-primary"> {{orderResult.payment_address}} </strong>-->
@@ -176,13 +178,13 @@
             <!--<-->
             <section class="row" ng-show="wallet!=null " ng-controller='sendTxCtrl'>
                 <div ng-show=" orderResult.progress.status=='APPROVE_TOKENS'">
-                    <button ng-click="approveTokenKyber(wallet)">AUTHORIZE TOKENS FOR SWAP</button>
+                    <button ng-click="approveTokenKyber(wallet)">AUTHORIZE TOKENS FOR SWAP</button><!-- todo: add translate -->
                 </div>
 
                 <!--<button ng-click="checkForTokenApproveKyber(wallet.getAddressString())">AUTHORIZE TOKENS FOR SWAP</button>-->
                 <div
                     ng-show="wallet!=null && (orderResult.progress.status=='OPEN_ETH' || orderResult.progress.status=='TOKENS_APPROVED')">
-                    <button ng-click="sendKyberModal()">DO SWAP</button>
+                    <button ng-click="sendKyberModal()">DO SWAP</button><!-- todo: add translate -->
                     <!--<button ng-click="openKyberOrder()">DO SWAP</button>-->
 
                 </div>

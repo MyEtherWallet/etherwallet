@@ -1,0 +1,14 @@
+{
+  "ETH": {
+    "configFile":  "EthConfig.json",
+    "tokenabisFile": "EthTokenABIs.json",
+    "networkabiFile": "KyberNetworkABI.json",
+    "reserveabiFile": "KyberReserveABI.json"
+  },
+  "ROPSTEN":{
+    "configFile": "RopConfig.json",
+    "tokenabisFile": "RopTokenABIs.json",
+    "networkabiFile": "KyberNetworkABI.json",
+    "reserveabiFile": "KyberReserveABI.json"
+  }
+}

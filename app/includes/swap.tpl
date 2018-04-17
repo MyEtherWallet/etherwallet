@@ -2,8 +2,6 @@
 <main class="tab-pane swap-tab active" ng-if="globalService.currentTab==globalService.tabs.swap.id"
       ng-controller='swapCtrl' ng-cloak>
 
-    <div ng-if="isKyberSwap">KYBER</div><!-- todo remove dev item -->
-
     @@if (site === 'mew' ) { @@include( '../includes/swap-stage-1.tpl', { "site": "mew" } ) }
     @@if (site === 'cx' ) { @@include( '../includes/swap-stage-1.tpl', { "site": "cx" } ) }
 
@@ -19,8 +17,7 @@
         @@if (site === 'mew' ) { @@include( '../includes/swap-kyber.tpl', { "site": "mew" } ) }
         @@if (site === 'cx' ) { @@include( '../includes/swap-kyber.tpl', { "site": "cx" } ) }
     </div>
-
-    <!--<button ng-click="demoKyber()">DEMO</button> &lt;!&ndash; todo remove dev item &ndash;&gt;-->
+<button ng-click="demoKyber()">DEMO</button>
     <section class="bity-contact text-center">
         <p><a class="btn-warning btn-sm"
               href="mailto:mew@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A"
