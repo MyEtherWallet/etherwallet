@@ -420,6 +420,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xDF347911910b6c9A4286bA8E2EE5ea4a39eB2134",
+		"symbol": "BOB",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xCc34366E3842cA1BD36c1f324d15257960fCC801",
 		"symbol": "BON",
 		"decimal": 18,
