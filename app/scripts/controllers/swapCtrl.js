@@ -164,7 +164,15 @@ var swapCtrl = function ($scope, $sce, walletService) {
             }
         } else {
             // check if the selected coin is a token. If it is exclude invalid options from the opposing side.
-            if ($scope.availableTokens.indexOf(coin) >= 0) {
+            if ($scope.availableTokens.indexOf(coin) >= 0 && $scope.swapOrder.fromCoin == "ETH") {
+/*                $scope.toExclude.push("BTC");
+                $scope.toExclude.push("REP");*/
+                // check if an invalid option already exists on the opposing side. If it does replace with a valid option.
+                // (i.e. if from BTC, then replace the token in the toCoin slot)
+                if ($scope.swapOrder.fromCoin === "BTC") {
+                    $scope.swapOrder.toCoin = "ETH";
+                }
+            } else if ($scope.availableTokens.indexOf(coin) >= 0) {
                 $scope.toExclude.push("BTC");
                 $scope.toExclude.push("REP");
                 // check if an invalid option already exists on the opposing side. If it does replace with a valid option.
@@ -172,7 +180,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 if ($scope.swapOrder.fromCoin === "BTC") {
                     $scope.swapOrder.toCoin = "ETH";
                 }
-
             }
             // set the selected coin as excluded from the opposing side
             $scope.fromExclude = [coin];
@@ -212,8 +219,13 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
 
     $scope.updateBityEstimate = function (isFrom) {
-        if (isFrom) $scope.swapOrder.toVal = parseFloat(($scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin] * $scope.swapOrder.fromVal).toFixed(bity.decimals));
-        else $scope.swapOrder.fromVal = parseFloat(($scope.swapOrder.toVal / $scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin]).toFixed(bity.decimals));
+        if (isFrom){
+            $scope.swapOrder.toVal = parseFloat(($scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin] * $scope.swapOrder.fromVal).toFixed(bity.decimals));
+        }
+        else {
+            $scope.swapOrder.toVal = parseFloat(($scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin] * $scope.swapOrder.fromVal).toFixed(bity.decimals));
+            $scope.swapOrder.fromVal = parseFloat(($scope.swapOrder.toVal / $scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin]).toFixed(bity.decimals));
+        }
         $scope.swapOrder.isFrom = isFrom;
     };
 
@@ -371,7 +383,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     ////////////////////////// KYBER //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //=========================================================================================================================================================
 
-    let kyberStatusIndicatorsList = ["READY", "OPEN_ETH", "SEND_ETH", "APPROVE_TOKENS", "AWAITING_TOKEN_APPROVAL", "TOKENS_APPROVED", "OPEN_TOKEN", "TRANSMITTED", "CONFIRMED"];
+    let kyberStatusIndicatorsList = ["READY", "OPEN_ETH", "SEND_ETH", "APPROVE_TOKENS", "AWAITING_TOKEN_APPROVAL", "TOKENS_APPROVED", "OPEN_TOKEN", "PREPARE_TOKEN_TX", "TRANSMITTED", "CONFIRMED"];
     // todo use or remove
     $scope.kyberStatusIndicators = {
         eth: {},
@@ -451,15 +463,29 @@ var swapCtrl = function ($scope, $sce, walletService) {
         }
     };
 
+    // $scope.updateKyberEstimate = function (isFrom) {
+    //     if (isFrom) $scope.swapOrder.toVal = parseFloat(($scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)] * $scope.swapOrder.fromVal).toFixed(bity.decimals));
+    //     else $scope.swapOrder.fromVal = parseFloat(($scope.swapOrder.toVal / $scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)]).toFixed(bity.decimals));
+    //     if ($scope.swapOrder.fromVal == Infinity) {
+    //         $scope.swapOrder.fromVal = "";
+    //     }
+    //     $scope.swapOrder.isFrom = isFrom;
+    // };
+
     $scope.updateKyberEstimate = function (isFrom) {
-        if (isFrom) $scope.swapOrder.toVal = parseFloat(($scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)] * $scope.swapOrder.fromVal).toFixed(bity.decimals));
-        else $scope.swapOrder.fromVal = parseFloat(($scope.swapOrder.toVal / $scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)]).toFixed(bity.decimals));
+        console.log($scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)]); //todo remove dev item
+        if (isFrom){
+            $scope.swapOrder.toVal = parseFloat(($scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)] * $scope.swapOrder.fromVal).toFixed(bity.decimals));
+        }
+        else {
+            $scope.swapOrder.toVal = parseFloat(($scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)] * $scope.swapOrder.fromVal).toFixed(bity.decimals));
+            $scope.swapOrder.fromVal = parseFloat(($scope.swapOrder.toVal / $scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)]).toFixed(bity.decimals));
+        }
         if ($scope.swapOrder.fromVal == Infinity) {
             $scope.swapOrder.fromVal = "";
         }
         $scope.swapOrder.isFrom = isFrom;
     };
-
 
     $scope.setKyberFinalPrices = function () {
         $scope.showedMinMaxError = false;
@@ -646,7 +672,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
         // console.log($scope.wallet); //todo remove dev item
         var txData = uiFuncs.getTxData($scope);
         txData.nonce = txData.gasPrice = null;
-        $scope.generateKyberTransaction(txData);
+        $scope.generateKyberTransaction(txData, "TOKEN_APPROVE_SIGNED_TX");
     }
 
 
@@ -665,12 +691,80 @@ var swapCtrl = function ($scope, $sce, walletService) {
         console.log($scope.tx); //todo remove dev item
         var txData = uiFuncs.getTxData($scope);
         txData.nonce = txData.gasPrice = null;
-        $scope.generateKyberTransaction(txData);
+        $scope.generateKyberTransaction(txData, "TOKEN_SIGNED");
     };
 
 
     // CENTRALIZATION OF OPERATIONAL PATHS
-    $scope.generateKyberTransaction = function (txData) {
+    $scope.generateKyberTransaction = function (txData, stage) {
+        uiFuncs.generateTx(txData, function (rawTx) {
+            if (!rawTx.isError) {
+                console.log(rawTx); //todo remove dev item
+                $scope.parseKyberSignedTx(rawTx.signedTx);
+                $scope.kyberRawTxData = rawTx;
+                $scope.generatedTx = rawTx.signedTx;
+                let switchKey = stage != undefined ? stage : $scope.orderResult.progress.status;
+                switch (switchKey) {
+                    case "TOKEN_APPROVE_SIGNED_TX":
+                        $scope.kyberTransaction.tokenApproveSignedTx = rawTx.signedTx;
+                        console.log($scope.kyberTransaction); //todo remove dev item
+                        console.log("$scope.generatedTx", $scope.generatedTx); //todo remove dev item
+                        // $scope.setKyberStatus("PREPARE_TOKEN_TX");
+                        //PREPARE_TOKEN_TX
+                        $scope.openKyberTokenOrder();
+                        // $scope.sendKyberTransaction();
+                        break;
+                    case "TOKEN_SIGNED":
+                        $scope.kyberTransaction.tokenSignedTx = rawTx.signedTx;
+                        $scope.parseKyberSignedTx(rawTx.signedTx);
+                        $scope.generatedTx = rawTx.signedTx;
+                        console.log($scope.kyberTransaction); //todo remove dev item
+                        console.log("$scope.generatedTx", $scope.generatedTx); //todo remove dev item
+                        // $scope.setKyberStatus("PREPARE_TOKEN_TX");
+                        $scope.setKyberStatus("PREPARE_TOKEN_TX");
+                        $scope.sendKyberModal();
+                        break;
+                    case "APPROVE_TOKENS":
+                        $scope.kyberTransaction.tokenApproveSignedTx = rawTx.signedTx;
+                        console.log($scope.kyberTransaction); //todo remove dev item
+                        console.log("$scope.generatedTx", $scope.generatedTx); //todo remove dev item
+                        // $scope.setKyberStatus("PREPARE_TOKEN_TX");
+                        //PREPARE_TOKEN_TX
+                        $scope.openKyberTokenOrder();
+                        // $scope.sendKyberTransaction();
+                        break;
+                    case "SEND_ETH":
+                        $scope.kyberTransaction.ethSignedTx = rawTx.signedTx;
+                        $scope.parseKyberSignedTx(rawTx.signedTx);
+                        $scope.generatedTx = rawTx.signedTx;
+                        console.log($scope.kyberTransaction); //todo remove dev item
+                        $scope.kyberModal.open();
+                        break;
+                    case "TOKENS_APPROVED":
+                        // $scope.kyberTransaction.tokenSignedTx = rawTx.signedTx;
+                        // $scope.parseKyberSignedTx(rawTx.signedTx);
+                        // $scope.generatedTx = rawTx.signedTx;
+                        // console.log($scope.kyberTransaction); //todo remove dev item
+                        // console.log("$scope.generatedTx", $scope.generatedTx); //todo remove dev item
+                        break;
+                    case "PREPARE_TOKEN_TX":
+                        $scope.kyberTransaction.tokenSignedTx = rawTx.signedTx;
+                        $scope.parseKyberSignedTx(rawTx.signedTx);
+                        $scope.generatedTx = rawTx.signedTx;
+                        console.log($scope.kyberTransaction); //todo remove dev item
+                        console.log("$scope.generatedTx", $scope.generatedTx); //todo remove dev item
+                        // $scope.setKyberStatus("PREPARE_TOKEN_TX");
+                        $scope.sendKyberModal();
+                        break;
+                }
+            } else {
+                console.error(rawTx.error); //todo remove dev item
+                $scope.notifier.danger(rawTx.error);
+            }
+            if (!$scope.$$phase) $scope.$apply();
+        });
+    }
+/*    $scope.generateKyberTransaction = function (txData) {
         uiFuncs.generateTx(txData, function (rawTx) {
             if (!rawTx.isError) {
                 console.log(rawTx); //todo remove dev item
@@ -682,7 +776,10 @@ var swapCtrl = function ($scope, $sce, walletService) {
                         $scope.kyberTransaction.tokenApproveSignedTx = rawTx.signedTx;
                         console.log($scope.kyberTransaction); //todo remove dev item
                         console.log("$scope.generatedTx", $scope.generatedTx); //todo remove dev item
-                        $scope.sendKyberTransaction();
+                        $scope.setKyberStatus("PREPARE_TOKEN_TX");
+                        //PREPARE_TOKEN_TX
+                        $scope.openKyberTokenOrder();
+                        // $scope.sendKyberTransaction();
                         break;
                     case "SEND_ETH":
                         $scope.kyberTransaction.ethSignedTx = rawTx.signedTx;
@@ -698,6 +795,15 @@ var swapCtrl = function ($scope, $sce, walletService) {
                         console.log($scope.kyberTransaction); //todo remove dev item
                         console.log("$scope.generatedTx", $scope.generatedTx); //todo remove dev item
                         break;
+                    case "PREPARE_TOKEN_TX":
+                        $scope.kyberTransaction.tokenSignedTx = rawTx.signedTx;
+                        $scope.parseKyberSignedTx(rawTx.signedTx);
+                        $scope.generatedTx = rawTx.signedTx;
+                        console.log($scope.kyberTransaction); //todo remove dev item
+                        console.log("$scope.generatedTx", $scope.generatedTx); //todo remove dev item
+                        // $scope.setKyberStatus("PREPARE_TOKEN_TX");
+                        $scope.sendKyberModal();
+                        break;
                 }
             } else {
                 console.error(rawTx.error); //todo remove dev item
@@ -705,7 +811,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
             }
             if (!$scope.$$phase) $scope.$apply();
         });
-    };
+    };*/
 
     $scope.sendKyberModal = function () {
         switch ($scope.orderResult.progress.status) {
@@ -718,6 +824,12 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 break;
             case "TOKENS_APPROVED":
                 $scope.openKyberTokenOrder();
+                $scope.kyberModal.open();
+                break;
+            case "PREPARE_TOKEN_TX":
+                console.log("PREPARE_TOKEN_TX"); //todo remove dev item
+                $scope.parseKyberSignedTx($scope.kyberTransaction.tokenSignedTx);
+                $scope.setKyberStatus("APPROVE_TOKENS");
                 $scope.kyberModal.open();
                 break;
         }
@@ -736,9 +848,15 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 $scope.sendKyberTx($scope.kyberTransaction.ethSignedTx);
                 $scope.kyberModal.close();
                 break;
+            // case "AWAITING_TOKEN_APPROVAL":
+            //     // $scope.setKyberStatus("AWAITING_TOKEN_APPROVAL");
+            //     console.log("$scope.kyberTransaction", $scope.kyberTransaction); //todo remove dev item
+            //     $scope.sendKyberTx($scope.kyberTransaction.tokenApproveSignedTx);
+            //     break;
             case "TOKENS_APPROVED":
                 console.log("$scope.kyberTransaction", $scope.kyberTransaction); //todo remove dev item
                 $scope.sendKyberTx($scope.kyberTransaction.tokenSignedTx);
+                $scope.orderResult.progress.bar = getProgressBarArr(5, 5);
                 $scope.kyberModal.close();
                 break;
         }
@@ -806,7 +924,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
                             console.log("APPROVAL CONFIRMED"); //todo remove dev item
                             clearInterval(progressCheck);
                             clearInterval(timeRem);
-                            $scope.openKyberTokenOrder();
+                            $scope.sendKyberTransaction();
+                            // $scope.openKyberTokenOrder();
                         } else if ($scope.orderResult.progress.status = "OPEN_ETH") {
                             clearInterval(progressCheck);
                             clearInterval(timeRem);

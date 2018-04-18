@@ -64,7 +64,7 @@ kyberFuncs.max = 3;
 
 kyberFuncs.kyberUnavailablePhrasing = function (fromCoin, toCoin) {
     let _pair = kyberFuncs.toPairKey(fromCoin, toCoin);
-    return `The pair ${_pair} is temporarily unavailable`;
+    return `The pair ${_pair} is currently unavailable`;
 };
 
 kyberFuncs.prototype.buildPairList = function (tokens) {

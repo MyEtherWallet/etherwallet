@@ -11,7 +11,7 @@
             <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
             <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
                                      rel="noopener noreferrer">
-                <img class="pull-right" src="images/logo-kyber-beta.svg" width="100" height="38"/>
+                <img class="pull-right" src="images/kyber-logo.png" width="100" height="38"/>
             </a></div>
         </section>
         <!-- Title -->
@@ -53,7 +53,8 @@
                     translate="SWAP_start_CTA"> Start Swap </span></a>
             </section>
             <section class="row text-center" ng-if="kyberReturnToStart">
-                <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a><!-- todo: add translate -->
+                <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a>
+                <!-- todo: add translate -->
             </section>
             <!-- / CTA -->
         </section>
@@ -71,28 +72,28 @@
             <div class="col-xs-3 text-left"><a class="btn btn-danger btn-xs" ng-click="newSwap()"> Start New Swap </a>
             </div>
             <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
-            <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank"
+            <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
                                      rel="noopener noreferrer">
-                <img class="pull-right" src="images/logo-bity.svg" width="100" height="38"/>
+                <img class="pull-right" src="images/kyber-logo.png" width="100" height="38"/>
             </a></div>
         </section>
 
         <!-- Order Info -->
         <section class="row order-info-wrap">
-            <div class="col-sm-3 order-info">
-                <h4>{{orderResult.reference}}</h4>
-                <p translate="SWAP_ref_num">Your reference number</p>
-            </div>
-            <div class="col-sm-3 order-info">
-                <h4>{{orderResult.progress.timeRemaining}}</h4>
-                <p ng-show="orderResult.progress.showTimeRem" translate="SWAP_time">Time remaining to send</p>
-                <p translate="SWAP_elapsed" ng-show="!orderResult.progress.showTimeRem">Time elapsed since sent</p>
-            </div>
-            <div class="col-sm-3 order-info">
+            <!--            <div class="col-sm-3 order-info">
+                            <h4>{{orderResult.reference}}</h4>
+                            <p translate="SWAP_ref_num">Your reference number</p>
+                        </div>
+                        <div class="col-sm-3 order-info">
+                            <h4>{{orderResult.progress.timeRemaining}}</h4>
+                            <p ng-show="orderResult.progress.showTimeRem" translate="SWAP_time">Time remaining to send</p>
+                            <p translate="SWAP_elapsed" ng-show="!orderResult.progress.showTimeRem">Time elapsed since sent</p>
+                        </div>-->
+            <div class="col-sm-6 order-info">
                 <h4>{{orderResult.output.amount}} {{orderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
-            <div class="col-sm-3 order-info">
+            <div class="col-sm-6 order-info">
                 <h4>{{swapOrder.swapRate}} {{swapOrder.swapPair}}</h4>
                 <p translate="SWAP_your_rate">Your rate</p>
             </div>
@@ -142,14 +143,15 @@
 
         <section class="row text-center" ng-show="orderResult.progress.status=='APPROVE_TOKENS'">
             <h1>
-                <span>      Please Approve Tokens to Swap                                           </span><!-- todo: add translate -->
+                <span>      Please Approve Tokens to Swap                                           </span>
+                <!-- todo: add translate -->
                 <strong> {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
                 <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
                 <!--<strong class="mono text-primary"> {{orderResult.payment_address}} </strong>-->
             </h1>
         </section>
 
-
+        {{orderResult.progress.status}}
         <!-- Swap CTA ETH -->
         <article class="row">
 
@@ -168,17 +170,21 @@
                 </div>
             </section>
 
-<!--            <div class="alert alert-danger" ng-show="ajaxReq.type!=='ETH'">
-                <strong>Warning! You are not connected to an ETH node.</strong> <br/>
-                Please use the node switcher in the top-right corner to switch to an ETH node. We <strong>do
-                not</strong> support swapping ETC or Testnet ETH.
-            </div>-->
+            <!--            <div class="alert alert-danger" ng-show="ajaxReq.type!=='ETH'">
+                            <strong>Warning! You are not connected to an ETH node.</strong> <br/>
+                            Please use the node switcher in the top-right corner to switch to an ETH node. We <strong>do
+                            not</strong> support swapping ETC or Testnet ETH.
+                        </div>-->
 
 
             <!--<-->
             <section class="row" ng-show="wallet!=null " ng-controller='sendTxCtrl'>
+<!--                                <div ng-show=" orderResult.progress.status=='APPROVE_TOKENS'">
+                                    <button ng-click="approveTokenKyber(wallet)">AUTHORIZE TOKENS FOR SWAP</button>&lt;!&ndash; todo: add translate &ndash;&gt;
+                                </div>-->
                 <div ng-show=" orderResult.progress.status=='APPROVE_TOKENS'">
-                    <button ng-click="approveTokenKyber(wallet)">AUTHORIZE TOKENS FOR SWAP</button><!-- todo: add translate -->
+                    <button ng-click="approveTokenKyber(wallet)">AUTHORIZE TOKENS FOR SWAP</button>
+                    <!-- todo: add translate -->
                 </div>
 
                 <!--<button ng-click="checkForTokenApproveKyber(wallet.getAddressString())">AUTHORIZE TOKENS FOR SWAP</button>-->
@@ -203,8 +209,6 @@
             <!--</div>-->
         </article>
         <!-- / Swap CTA ETH -->
-
-
 
 
     </article>
