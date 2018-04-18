@@ -1,6 +1,6 @@
 ### Release v3.21.08
 #### New
-- Add SSH token
+- Add SSH token [#1779](https://github.com/kvhnuke/etherwallet/pull/1779)
 - Add eosDAC, HAV and eUSD tokens [#1778](https://github.com/kvhnuke/etherwallet/pull/1778)
 - Add VLD token [#1777](https://github.com/kvhnuke/etherwallet/pull/1777)
 - Add BOB token [#1776](https://github.com/kvhnuke/etherwallet/pull/1776)
