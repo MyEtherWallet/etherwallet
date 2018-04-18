@@ -1476,6 +1476,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xf244176246168f24e3187f7288edbca29267739b",
+		"symbol": "HAV",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xffe8196bc259e8dedc544d935786aa4709ec3e64",
 		"symbol": "HDG",
 		"decimal": 18,
@@ -3490,6 +3496,18 @@
 		"address": "0xb53a96bcbdd9cf78dff20bab6c2be7baec8f00f8",
 		"symbol": "eGAS",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0x7e9e431a0b8c4d532c745b1043c7fa29a48d4fba",
+		"symbol": "eosDAC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x523630976eB6147621B5c31c781eBe2Ec2a806E0",
+		"symbol": "eUSD",
+		"decimal": 18,
 		"type": "default"
 	},
 	{

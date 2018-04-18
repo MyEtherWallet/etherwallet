@@ -1,5 +1,8 @@
 ### Release v3.21.08
 #### New
+- Add eosDAC, HAV and eUSD tokens [#1778](https://github.com/kvhnuke/etherwallet/pull/1778)
+- Add VLD token [#1777](https://github.com/kvhnuke/etherwallet/pull/1777)
+- Add BOB token [#1776](https://github.com/kvhnuke/etherwallet/pull/1776)
 - Add NAC, MUX, SMT (Social Media Market) tokens [#1775](https://github.com/kvhnuke/etherwallet/pull/1775)
 - Add VIEW token [#1774](https://github.com/kvhnuke/etherwallet/pull/1774)
 - Add DTT and MIT [#1773](https://github.com/kvhnuke/etherwallet/pull/1773)
