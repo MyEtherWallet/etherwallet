@@ -74,7 +74,7 @@
             <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
             <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
                                      rel="noopener noreferrer">
-                <img class="pull-right" src="images/logo-kyber.svg" width="100" height="38"/>
+                <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
             </a></div>
         </section>
 
@@ -184,16 +184,23 @@
                                 </div>-->
                 <div ng-show=" orderResult.progress.status=='APPROVE_TOKENS'">
                     <button ng-click="approveTokenKyber(wallet)">AUTHORIZE TOKENS FOR SWAP</button>
-                    <!-- todo: add translate -->
+                    <!-- todo: add translate --><!-- This function begins the entire sequence. prior to this nothing beyond the entered information and wallet have been added/created -->
                 </div>
 
                 <!--<button ng-click="checkForTokenApproveKyber(wallet.getAddressString())">AUTHORIZE TOKENS FOR SWAP</button>-->
-                <div
+<!--                <div
                     ng-show="wallet!=null && (orderResult.progress.status=='OPEN_ETH' || orderResult.progress.status=='TOKENS_APPROVED')">
-                    <button ng-click="sendKyberModal()">DO SWAP</button><!-- todo: add translate -->
+                    <button ng-click="sendKyberModal()">DO SWAP</button>&lt;!&ndash; todo: add translate &ndash;&gt;
+                </div>-->
+
+                <div
+                        ng-show="wallet!=null && orderResult.progress.status=='OPEN_ETH'">
+                    <button ng-click="openKyberEthOrder()">DO SWAP</button><!-- todo: add translate -->
                     <!--<button ng-click="openKyberOrder()">DO SWAP</button>-->
 
                 </div>
+
+                <!--openKyberEthOrder-->
                 <!--@@if (site === 'mew' ) { @@include( './sendTx-content.tpl', { "site": "mew" } ) }-->
                 <!--@@if (site === 'cx' ) { @@include( './sendTx-content.tpl', { "site": "cx" } ) }-->
 

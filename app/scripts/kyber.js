@@ -1,6 +1,5 @@
 const mainKyberNetworkABI = require('./kyberConfig/KyberNetworkABI.json');
 const KyberReserveABI = require('./kyberConfig/KyberReserveABI.json');
-const mockRates = require("./kyberConfig/mockRates.json"); //todo remove dev item
 //todo convert from callbacks to async (or promise)
 const kyberFuncs = function () {
     var _this = this;
@@ -178,34 +177,18 @@ kyberFuncs.prototype.ethCall = function (funcABI, inputArray) {
 kyberFuncs.prototype.refreshRates = function () {
     var _this = this;
 
-    //todo clean after dev
-    if(ajaxReq.type != nodes.nodeTypes.ETH){
-        _this.MockRates(); //todo remove dev item
-    } else {
-        let keys = Object.keys(_this.kyberRates);
-        keys.forEach(function (_key) {
-            let pairContents = kyberFuncs.fromPairKey(_key);
-            let fromToken = pairContents[0];
-            let toToken = pairContents[1];
-            _this.findBestRate(fromToken, toToken, 1, (_results) => {
-                console.log(_key, _results.data);
-                _this.kyberRates[_key] = etherUnits.toEther(_results.data.bestRate, "wei");
-            })
-        });
-        _this.priceLoaded = true;
-    }
-
-};
-
-kyberFuncs.prototype.MockRates = function () {
-    var _this = this;
     let keys = Object.keys(_this.kyberRates);
     keys.forEach(function (_key) {
         let pairContents = kyberFuncs.fromPairKey(_key);
-        let _results = mockRates[_key];
-        _this.kyberRates[_key] = etherUnits.toEther(_results.bestRate, "wei");
+        let fromToken = pairContents[0];
+        let toToken = pairContents[1];
+        _this.findBestRate(fromToken, toToken, 1, (_results) => {
+            // console.log(_key, _results.data);
+            _this.kyberRates[_key] = etherUnits.toEther(_results.data.bestRate, "wei");
+        })
     });
     _this.priceLoaded = true;
+
 };
 
 
