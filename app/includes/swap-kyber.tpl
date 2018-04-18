@@ -11,7 +11,7 @@
             <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
             <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
                                      rel="noopener noreferrer">
-                <img class="pull-right" src="images/kyber-logo.png" width="100" height="38"/>
+                <img class="pull-right" src="images/logo-kyber.svg" width="100" height="38"/>
             </a></div>
         </section>
         <!-- Title -->
@@ -74,7 +74,7 @@
             <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
             <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
                                      rel="noopener noreferrer">
-                <img class="pull-right" src="images/kyber-logo.png" width="100" height="38"/>
+                <img class="pull-right" src="images/logo-kyber.svg" width="100" height="38"/>
             </a></div>
         </section>
 
