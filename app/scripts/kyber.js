@@ -37,11 +37,14 @@ const kyberFuncs = function () {
 
     }
 };
-
+kyberFuncs.defaultValues = {
+    gasLimit: 0
+};
 kyberFuncs.priceLoaded = false;
 kyberFuncs.currRates = {};
 kyberFuncs.maxGasPrice = 50000000000; // 50 Gwei
-kyberFuncs.ETH_TOKEN_ADDRESS = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+kyberFuncs.ETH_TOKEN_ADDRESS = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"; //todo: this is redundant (look to remove)
+kyberFuncs.mainTokens = [];
 kyberFuncs.networks = {
     ETH: require('./kyberConfig/EthConfig.json'),
     ROPSTEN: require('./kyberConfig/RopConfig.json'),
@@ -54,14 +57,6 @@ kyberFuncs.networkTokenABIs = {
     NULL: {}
 };
 
-kyberFuncs.mainTokens = [];
-
-/*
-kyberFuncs.min = 0.01; // there is a min I'm fairly sure (like
-kyberFuncs.max = 3;
-*/
-
-
 kyberFuncs.kyberUnavailablePhrasing = function (fromCoin, toCoin) {
     let _pair = kyberFuncs.toPairKey(fromCoin, toCoin);
     return `The pair ${_pair} is currently unavailable`;
@@ -72,7 +67,7 @@ kyberFuncs.prototype.buildPairList = function (tokens) {
     tokens.forEach((_token) => {
         tokens.forEach((_token2) => {
             if (_token !== _token2) {
-                forRates[_token + "/" + _token2] = 1
+                forRates[_token + "/" + _token2] = -1
             }
         });
     });
@@ -99,8 +94,12 @@ kyberFuncs.prototype.setCurrentNetwork = function (_network) {
     _this.mainTokens = Object.keys(_network.tokens);
     _this.kyberRates = this.buildPairList(_this.mainTokens);
     _this.KyberNetworkAddress = _network.network; // replace with resolution using ENS for mainnet
-
 };
+
+kyberFuncs.prototype.setDefaultValues = function(_network){
+    var _this = this;
+    kyberFuncs.defaultValues.maxGasPrice = _network["max gas price"] ? _network["max gas price"] : 50000000000;// 50 Gwei
+}
 
 kyberFuncs.prototype.setCurrentTokenABIs = function (_tokenABIs) {
     var _this = this;

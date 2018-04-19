@@ -21,38 +21,40 @@
                                  watch-var="wallet.getAddressString()">
                             </div>
                             <p>
-                                <strong ng-show="kyberRawTxData.sendMode=='ether'" class="send-modal__addr">
+                                <strong ng-show="tokenApproveTxHash.sendMode=='ether'" class="send-modal__addr">
                                     {{wallet.getChecksumAddressString()}}
                                 </strong>
                             </p>
                         </td>
-                        <td ng-show="kyberRawTxData.sendMode=='ether'" class="mono">
+                        <td ng-show="tokenApproveTxHash.sendMode=='ether'" class="mono">
                             ->
-                            <br />
+                            <br/>
                             <h4 class="text-danger">
-                                {{kyberRawTxData.value}} {{unitReadable}}
+                                {{tokenApproveTxHash.value}} {{unitReadable}}
                             </h4>
                         </td>
-                        <td ng-show="kyberRawTxData.sendMode!=='ether'" class="mono">
+                        <td ng-show="tokenApproveTxHash.sendMode!=='ether'" class="mono">
                             ->
-                            <br />
+                            <br/>
                             <h4 class="text-primary">
-                                {{kyberRawTxData.value}} {{unitReadable}}
+                                {{tokenApproveTxHash.value}} {{unitReadable}}
                             </h4>
                         </td>
-                        <td ng-show="kyberRawTxData.sendMode=='ether'">
-                            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{kyberRawTxData.to}}" watch-var="tx.to"></div>
+                        <td ng-show="tokenApproveTxHash.sendMode=='ether'">
+                            <div class="addressIdenticon med" title="Address Indenticon"
+                                 blockie-address="{{swapOrder.toAddress}}" watch-var="tx.to"></div>
                             <p>
-                                <strong ng-show="kyberRawTxData.sendMode=='ether'" class="send-modal__addr">
-                                    {{kyberRawTxData.to}} ({{swapOrder.fromCoin}})
+                                <strong ng-show="tokenApproveTxHash.sendMode=='ether'" class="send-modal__addr">
+                                    {{tokenApproveTxHash.to}} ({{swapOrder.fromCoin}})
                                 </strong>
                             </p>
 
                         </td>
-                        <td ng-show="kyberRawTxData.sendMode!=='ether'">
-                            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+                        <td ng-show="tokenApproveTxHash.sendMode!=='ether'">
+                            <div class="addressIdenticon med" title="Address Indenticon"
+                                 blockie-address="{{swapOrder.toAddress}}" watch-var="tokenTx.to"></div>
                             <p>
-                                <strong ng-show="kyberRawTxData.sendMode=='ether'" class="send-modal__addr">
+                                <strong ng-show="tokenApproveTxHash.sendMode=='ether'" class="send-modal__addr">
                                     {{tokenTx.to}} ({{swapOrder.fromCoin}})
                                 </strong>
                             </p>
@@ -61,25 +63,30 @@
                     </tbody>
                 </table>
 
-                <br />
+                <br/>
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="!kyberEthToToken">
                     <tbody>
-                    <tr> <td></td><td class="text-center">Token Swap Transaction</td> </tr>
-                    <tr> <td>Summary: </td> </tr>
+                    <tr>
+                        <td></td>
+                        <td class="text-center">Token Swap Transaction</td>
+                    </tr>
+                    <tr>
+                        <td>Summary:</td>
+                    </tr>
                     <!--<tr>-->
-                        <!--<td class="small text-right">To Address:</td>-->
-                        <!--<td class="small text-left mono">{{parsedKyberTx.to}}-->
-                            <!--<br />-->
-                            <!--<em><small>Kyber Network Address.</small></em>-->
-                        <!--</td>-->
+                    <!--<td class="small text-right">To Address:</td>-->
+                    <!--<td class="small text-left mono">{{parsedKyberTx.to}}-->
+                    <!--<br />-->
+                    <!--<em><small>Kyber Network Address.</small></em>-->
+                    <!--</td>-->
                     <!--</tr>-->
                     <tr>
                         <td class="small text-right">{{swapOrder.toCoin}} Deposit Address:</td>
                         <td class="small text-left mono">{{swapOrder.toAddress}}</td>
                     </tr>
                     <!--<tr>-->
-                        <!--<td class="small text-right">From Address:</td>-->
-                        <!--<td class="small text-left mono">{{parsedKyberTx.from}}</td>-->
+                    <!--<td class="small text-right">From Address:</td>-->
+                    <!--<td class="small text-left mono">{{parsedKyberTx.from}}</td>-->
                     <!--</tr>-->
                     <tr>
                         <td class="small text-right">From:</td>
@@ -89,18 +96,18 @@
                         <td class="small text-right">To:</td>
                         <td class="small text-left mono">{{swapOrder.toVal}} {{swapOrder.toCoin}}</td>
                     </tr>
-<!--                    <tr>
-                        <td class="small text-right">Account Balance:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.balance}}</td>
-                    </tr>-->
-<!--                    <tr>
-                        <td class="small text-right">Approximate Resulting Balance:</td>
-                        <td class="small text-left mono">{{parsedTx.approximateFinalBalance}}</td>
-                    </tr>-->
-<!--                    <tr>
-                        <td class="small text-right">Token:</td>
-                        <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
-                    </tr>-->
+                    <!--                    <tr>
+                                            <td class="small text-right">Account Balance:</td>
+                                            <td class="small text-left mono">{{parsedKyberTx.balance}}</td>
+                                        </tr>-->
+                    <!--                    <tr>
+                                            <td class="small text-right">Approximate Resulting Balance:</td>
+                                            <td class="small text-left mono">{{parsedTx.approximateFinalBalance}}</td>
+                                        </tr>-->
+                    <!--                    <tr>
+                                            <td class="small text-right">Token:</td>
+                                            <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
+                                        </tr>-->
                     <tr>
                         <td class="small text-right">Network:</td>
                         <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
@@ -111,127 +118,158 @@
                     </tr>
                     <tr>
                         <td class="small text-right">Avg. Gas Price:</td>
-                        <td class="small text-left mono">{{parsedTx.avgGasPrice.gwei}} GWEI <small>({{parsedTx.avgGasPrice.eth}} ETH)</small><!-- todo: get eth value to display as a decimal not as an exponent-->
+                        <td class="small text-left mono">{{parsedTx.avgGasPrice.gwei}} GWEI
+                            <small>({{parsedTx.avgGasPrice.eth}} ETH)</small>
+                            <!-- todo: get eth value to display as a decimal not as an exponent-->
                         </td>
                     </tr>
                     <tr>
                         <td class="small text-right">Max Combined TX Fee:</td>
-                        <td class="small text-left mono"> {{parsedTx.totalTxFee.eth}} ETH <small>({{parsedTx.totalTxFee.gwei}} GWEI)</small></td>
+                        <td class="small text-left mono"> {{parsedTx.totalTxFee.eth}} ETH
+                            <small>({{parsedTx.totalTxFee.gwei}} GWEI)</small>
+                        </td>
                     </tr>
                     <tr>
                         <td class="small text-right">Final Nonce:</td>
                         <td class="small text-left mono">{{parsedKyberTx.nonce}}</td>
                     </tr>
-                    <!----------------------------------------------------------------->
-                    <tr> <td class="text-left">Token Swap Transaction <br><small>via Kyber Network</small></td> </tr>
-                    <tr>
-                        <td class="small text-right">To Address:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.to}}
-                            <br />
-                            <em><small>Kyber Network Address.</small></em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">From Address:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.from}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Amount to Send:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.value}} ETH</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Account Balance:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.balance}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Token:</td>
-                        <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Network:</td>
-                        <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Gas Limit:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.gasLimit}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Gas Price:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.gasPrice.gwei}} GWEI <small>({{parsedKyberTx.gasPrice.eth}} ETH)</small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Max TX Fee:</td>
-                        <td class="small text-left mono"> {{parsedKyberTx.txFee.eth}} ETH <small>({{parsedKyberTx.txFee.gwei}} GWEI)</small></td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Nonce:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.nonce}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Data:</td>
-                        <td class="small text-left mono text-width-limit"><p>{{parsedKyberTx.data}}</p></td>
-                    </tr>
-                    <!----------------------------------------------------------------->
-                    <tr> <td> Token Approval Transaction</td> </tr>
-                    <tr>
-                        <td class="small text-right">Token contract address:</td>
-                        <td class="small text-left mono">{{parsedKyberTokenTx.to}}
-                            <br />
-                            <!--<em><small>The token contract address.</small></em>-->
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">From Address:</td>
-                        <td class="small text-left mono">{{parsedKyberTokenTx.from}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Amount to Send:</td>
-                        <td class="small text-left mono">{{parsedKyberTokenTx.value}} ETH</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Account Balance:</td>
-                        <td class="small text-left mono">{{parsedKyberTokenTx.balance}}</td>
-                    </tr>
-<!--                    <tr>
-                        <td class="small text-right">Coin:</td>
-                        <td class="small text-left mono">{{unitReadable}}</td>
-                    </tr>-->
-                    <tr>
-                        <td class="small text-right">Network:</td>
-                        <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Gas Limit:</td>
-                        <td class="small text-left mono">{{parsedKyberTokenTx.gasLimit}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Gas Price:</td>
-                        <td class="small text-left mono">{{parsedKyberTokenTx.gasPrice.gwei}} GWEI <small>({{parsedKyberTokenTx.gasPrice.eth}} ETH)</small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Max TX Fee:</td>
-                        <td class="small text-left mono"> {{parsedKyberTokenTx.txFee.eth}} ETH <small>({{parsedKyberTokenTx.txFee.gwei}} GWEI)</small></td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Nonce:</td>
-                        <td class="small text-left mono">{{parsedKyberTokenTx.nonce}}</td>
-                    </tr>
-                    <tr>
-                        <td class="small text-right">Data:</td>
-                        <td class="small text-left mono text-width-limit"><p>{{parsedKyberTokenTx.data}}</p></td>
-                    </tr>
                     </tbody>
                 </table>
+                <section class="clearfix collapse-container">
+                    <div class="text-center" ng-click="adv = !adv">
+                        <a class="collapse-button"><span ng-show="adv">+</span><span ng-show="!adv">-</span></a>
+                        <h5>Advanced</h5>
+                    </div>
+                    <table class="table small table-condensed table-hover transaction-modal" >
+                        <tbody >
+
+                        <!----------------------------------------------------------------->
+                        <tr>
+                            <td class="text-left">Token Swap Transaction <br>
+                                <small>via Kyber Network</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">To Address:</td>
+                            <td class="small text-left mono">{{parsedKyberTx.to}}
+                                <br/>
+                                <em>
+                                    <small>Kyber Network Address.</small>
+                                </em>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">From Address:</td>
+                            <td class="small text-left mono">{{parsedKyberTx.from}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Amount to Send:</td>
+                            <td class="small text-left mono">{{parsedKyberTx.value}} ETH</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Account Balance:</td>
+                            <td class="small text-left mono">{{parsedKyberTx.balance}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Token:</td>
+                            <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Network:</td>
+                            <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Gas Limit:</td>
+                            <td class="small text-left mono">{{parsedKyberTx.gasLimit}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Gas Price:</td>
+                            <td class="small text-left mono">{{parsedKyberTx.gasPrice.gwei}} GWEI
+                                <small>({{parsedKyberTx.gasPrice.eth}} ETH)</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Max TX Fee:</td>
+                            <td class="small text-left mono"> {{parsedKyberTx.txFee.eth}} ETH
+                                <small>({{parsedKyberTx.txFee.gwei}} GWEI)</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Nonce:</td>
+                            <td class="small text-left mono">{{parsedKyberTx.nonce}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Data:</td>
+                            <td class="small text-left mono text-width-limit"><p>{{parsedKyberTx.data}}</p></td>
+                        </tr>
+                        <!----------------------------------------------------------------->
+                        <tr>
+                            <td> Token Approval Transaction</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Token contract address:</td>
+                            <td class="small text-left mono">{{parsedKyberTokenTx.to}}
+                                <br/>
+                                <!--<em><small>The token contract address.</small></em>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">From Address:</td>
+                            <td class="small text-left mono">{{parsedKyberTokenTx.from}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Amount to Send:</td>
+                            <td class="small text-left mono">{{parsedKyberTokenTx.value}} ETH</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Account Balance:</td>
+                            <td class="small text-left mono">{{parsedKyberTokenTx.balance}}</td>
+                        </tr>
+                        <!--                    <tr>
+                                                <td class="small text-right">Coin:</td>
+                                                <td class="small text-left mono">{{unitReadable}}</td>
+                                            </tr>-->
+                        <tr>
+                            <td class="small text-right">Network:</td>
+                            <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Gas Limit:</td>
+                            <td class="small text-left mono">{{parsedKyberTokenTx.gasLimit}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Gas Price:</td>
+                            <td class="small text-left mono">{{parsedKyberTokenTx.gasPrice.gwei}} GWEI
+                                <small>({{parsedKyberTokenTx.gasPrice.eth}} ETH)</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Max TX Fee:</td>
+                            <td class="small text-left mono"> {{parsedKyberTokenTx.txFee.eth}} ETH
+                                <small>({{parsedKyberTokenTx.txFee.gwei}} GWEI)</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Nonce:</td>
+                            <td class="small text-left mono">{{parsedKyberTokenTx.nonce}}</td>
+                        </tr>
+                        <tr>
+                            <td class="small text-right">Data:</td>
+                            <td class="small text-left mono text-width-limit"><p>{{parsedKyberTokenTx.data}}</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
                 <!-- Eth To Token Swap Kyber Modal-->
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="kyberEthToToken">
                     <tbody>
                     <tr>
                         <td class="small text-right">To Address:</td>
                         <td class="small text-left mono">{{parsedKyberTx.to}}
-                            <br />
-                            <em><small>If sending tokens, this should be the token contract address.</small></em>
+                            <br/>
+                            <em>
+                                <small>If sending tokens, this should be the token contract address.</small>
+                            </em>
                         </td>
                     </tr>
                     <tr>
@@ -260,12 +298,15 @@
                     </tr>
                     <tr>
                         <td class="small text-right">Gas Price:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.gasPrice.gwei}} GWEI <small>({{parsedKyberTx.gasPrice.eth}} ETH)</small>
+                        <td class="small text-left mono">{{parsedKyberTx.gasPrice.gwei}} GWEI
+                            <small>({{parsedKyberTx.gasPrice.eth}} ETH)</small>
                         </td>
                     </tr>
                     <tr>
                         <td class="small text-right">Max TX Fee:</td>
-                        <td class="small text-left mono"> {{parsedKyberTx.txFee.eth}} ETH <small>({{parsedKyberTx.txFee.gwei}} GWEI)</small></td>
+                        <td class="small text-left mono"> {{parsedKyberTx.txFee.eth}} ETH
+                            <small>({{parsedKyberTx.txFee.gwei}} GWEI)</small>
+                        </td>
                     </tr>
                     <tr>
                         <td class="small text-right">Nonce:</td>
@@ -284,7 +325,8 @@
                 <h4 class="text-center">
                     <!--<span translate="SENDModal_Content_1">You are about to send</span>-->
                     <span translate="SENDModal_Content_1">You are about to send</span>
-                    <strong ng-show="tx.sendMode=='ether'" class="mono">{{kyberRawTxData.value}} {{unitReadable}}</strong>
+                    <strong ng-show="tx.sendMode=='ether'" class="mono">{{kyberRawTxData.value}}
+                        {{unitReadable}}</strong>
                     <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
                     <!--<span translate="SENDModal_Content_2">to address</span>-->
                     <span translate="SENDModal_Content_2">to address</span>
@@ -294,7 +336,7 @@
                 <p translate="SENDModal_Content_3">
                     Are you sure you want to do this?
                 </p>
-                <br />
+                <br/>
                 <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
                     No, get me out of here!
                 </button>
@@ -304,11 +346,11 @@
             </div>
 
             <p class="small text-center" style="padding: 0px 5px;">
-                <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank" ref="noopener noreferrer">
+                <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html"
+                   target="_blank" ref="noopener noreferrer">
                     The network is a bit overloaded. If you're having issues with TXs, please read me.
                 </a>
             </p>
-
 
 
         </section>

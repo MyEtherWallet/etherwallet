@@ -39,7 +39,7 @@
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12">
                     <!--<label><span translate="SWAP_rec_add">Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>-->
                     <label><span>Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>
-                    <!-- todo remove dev item -->
+                    <!-- todo should I just wait for the wallet unlock and not ask for an address first.  then if wallet uplock calculation proves false at send tx.  present option to return to start???-->
                     <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
                                    var-name="swapOrder.toAddress"></address-field>
                 </div>
@@ -79,7 +79,7 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4>{{orderResult.output.amount}} {{orderResult.output.currency}}</h4>
+                <h4>{{kyberOrderResult.output.amount}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
@@ -92,27 +92,27 @@
         <!-- Swap Progress -->
         <section class="row swap-progress">
             <div class="sep"></div>
-            <div class="progress-item {{orderResult.progress.bar[0]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[0]}}">
                 <div class="progress-circle"><i>1</i></div>
                 <p translate="SWAP_progress_1">Order Initiated</p>
             </div>
-            <div class="progress-item {{orderResult.progress.bar[1]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[1]}}">
                 <div class="progress-circle"><i>2</i></div>
-                <p><span translate="SWAP_progress_2">Waiting for your </span> {{orderResult.input.currency}}...</p>
+                <p><span translate="SWAP_progress_2">Waiting for your </span> {{kyberOrderResult.input.currency}}...</p>
             </div>
-            <div class="progress-item {{orderResult.progress.bar[2]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[2]}}">
                 <div class="progress-circle"><i>3</i></div>
-                <p>{{orderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
+                <p>{{kyberOrderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
             </div>
-            <div class="progress-item {{orderResult.progress.bar[3]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
                 <div class="progress-circle"><i>4</i></div>
                 <p>
-                    <span translate="SWAP_progress_4">Sending your </span> {{orderResult.output.currency}} <br/>
-                    <small ng-show="orderResult.input.currency=='ETH'"> Waiting for 10 confirmations...</small>
-                    <small ng-show="orderResult.input.currency=='BTC'"> Waiting for 1 confirmation...</small>
+                    <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>
+                    <small ng-show="kyberOrderResult.input.currency=='ETH'"> Waiting for 10 confirmations...</small>
+                    <small ng-show="kyberOrderResult.input.currency=='BTC'"> Waiting for 1 confirmation...</small>
                 </p>
             </div>
-            <div class="progress-item {{orderResult.progress.bar[4]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[4]}}">
                 <div class="progress-circle"><i>5</i></div>
                 <p translate="SWAP_progress_5">Order Complete</p>
             </div>
@@ -120,24 +120,24 @@
 
 
         <!-- Swap CTA -->
-        <section class="row text-center" ng-show="orderResult.progress.status=='OPEN'">
+        <section class="row text-center" ng-show="kyberOrderResult.progress.status=='OPEN'">
             <h1>
                 <span
                     translate="SWAP_order_CTA">      Please send                                                 </span>
-                <strong> {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
+                <strong> {{kyberOrderResult.input.amount}} {{kyberOrderResult.input.currency}} </strong>
                 <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
-                <!--<strong class="mono text-primary"> {{orderResult.payment_address}} </strong>-->
+                <!--<strong class="mono text-primary"> {{kyberOrderResult.payment_address}} </strong>-->
             </h1>
 
         </section>
 
-        <section class="row text-center" ng-show="orderResult.progress.status=='APPROVE_TOKENS'">
+        <section class="row text-center" ng-show="kyberOrderResult.progress.status=='APPROVE_TOKENS'">
             <h1>
                 <span>      You are about to Swap                                           </span>
                 <!-- todo: add translate -->
-                <strong> {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
+                <strong> {{kyberOrderResult.input.amount}} {{kyberOrderResult.input.currency}} </strong>
                 <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
-                <!--<strong class="mono text-primary"> {{orderResult.payment_address}} </strong>-->
+                <!--<strong class="mono text-primary"> {{kyberOrderResult.payment_address}} </strong>-->
             </h1>
         </section>
 
@@ -167,13 +167,18 @@
 
             <section class="row" ng-show="wallet!=null " ng-controller='sendTxCtrl'>
                 <h5 class="row text-center">Wallet Unlocked!</h5>
-                <section class="row text-center" ng-show="wallet!=null && orderResult.progress.status=='APPROVE_TOKENS'">
+
+                <section class="row text-center" ng-show="wallet!=null">
+                    <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+                </section>
+
+<!--                <section class="row text-center" ng-show="wallet!=null && kyberOrderResult.progress.status=='APPROVE_TOKENS'">
                     <a ng-click="approveTokenKyber(wallet)" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
                 </section>
 
-                <section class="row text-center" ng-show="wallet!=null && orderResult.progress.status=='OPEN_ETH'">
-                    <a ng-click="openKyberOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
-                </section>
+                <section class="row text-center" ng-show="wallet!=null && kyberOrderResult.progress.status=='OPEN_ETH'">
+                    <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+                </section>-->
 
                 @@if (site === 'mew' ) { @@include( './sendTx-modal.tpl', { "site": "mew" } ) }
                 <!--todo implement (custom swap modal) with content comming from swapCtrl -->
