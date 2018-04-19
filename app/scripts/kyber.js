@@ -18,7 +18,8 @@ const kyberFuncs = function () {
                 for (let i in kyberFuncs.networkTokenABIs.ETH[key]) {
                     this.tokenABIs[key][kyberFuncs.networkTokenABIs.ETH[key][i].name] = kyberFuncs.networkTokenABIs.ETH[key][i];
                 }
-            };
+            }
+            ;
             break;
         case nodes.nodeTypes.Ropsten:
             this.nodeType = "ROPSTEN";
@@ -50,7 +51,7 @@ kyberFuncs.networks = {
     ROPSTEN: require('./kyberConfig/RopConfig.json'),
     NULL: {}
 };
-
+// TODO: fix breaking when not ETH or ROPSTEN
 kyberFuncs.networkTokenABIs = {
     ETH: require("./kyberConfig/EthTokenABIs.json"),
     ROPSTEN: require('./kyberConfig/RopTokenABIs.json'),
@@ -96,7 +97,7 @@ kyberFuncs.prototype.setCurrentNetwork = function (_network) {
     _this.KyberNetworkAddress = _network.network; // replace with resolution using ENS for mainnet
 };
 
-kyberFuncs.prototype.setDefaultValues = function(_network){
+kyberFuncs.prototype.setDefaultValues = function (_network) {
     var _this = this;
     kyberFuncs.defaultValues.maxGasPrice = _network["max gas price"] ? _network["max gas price"] : 50000000000;// 50 Gwei
 }
@@ -298,39 +299,33 @@ kyberFuncs.prototype.checkUserCap = function (_userAddress, swapValue /* In ETH 
         let nineFivePct = data.data.times(0.95);
         let nineFivePctUserCap = etherUnits.toEther(nineFivePct, "wei");
         if (nineFivePct.gt(numberAsBN)) {
-            callback({error: false,
-                data: {
-                    isFrom: isFrom,
-                    userCap: nineFivePctUserCap,
-                    originalValue: swapValue,
-                    result: nineFivePct.gt(numberAsBN)
-                }
-            });
+            callback(
+                {
+                    error: false,
+                    data: {
+                        isFrom: isFrom,
+                        userCap: nineFivePctUserCap,
+                        originalValue: swapValue,
+                        result: nineFivePct.gt(numberAsBN)
+                    }
+                });
         } else {
-            callback({error: true,
-                data: {
-                    isFrom: isFrom,
-                    userCap: nineFivePctUserCap,
-                    originalValue: swapValue,
-                    result: nineFivePct.gt(numberAsBN)
-                }
-            });
+            callback(
+                {
+                    error: true,
+                    data: {
+                        isFrom: isFrom,
+                        userCap: nineFivePctUserCap,
+                        originalValue: swapValue,
+                        result: nineFivePct.gt(numberAsBN)
+                    }
+                });
         }
     })
 };
 
 kyberFuncs.prototype.kyberNetworkState = async function (callback) {
     var _this = this;
-    // returns bool
-    // var funcABI = _this.nodeType == "ETH" ? _this.kyberNetworkABI.enabled : {
-    //     "constant": true,
-    //     "inputs": [],
-    //     "name": "enable",
-    //     "outputs": [{"name": "", "type": "bool"}],
-    //     "payable": false,
-    //     "stateMutability": "view",
-    //     "type": "function"
-    // };
     var funcABI = _this.kyberNetworkABI.enabled;
     ajaxReq.getEthCall({
         to: _this.currentNetwork.network,
@@ -341,29 +336,8 @@ kyberFuncs.prototype.kyberNetworkState = async function (callback) {
             var outTypes = funcABI.outputs.map(function (i) {
                 return i.type;
             });
-// console.log(data); //todo remove dev item
-            // data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
             data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
             console.log("kyberNetworkState", data.data);
-            callback(data);
-        }
-    });
-};
-
-kyberFuncs.prototype.kyberNetworkStateRop = async function (callback) {
-    var _this = this;
-    // returns bool
-    var funcABI = _this.kyberNetworkABI.enabled;
-    ajaxReq.getEthCall({
-        to: _this.currentNetwork.network,
-        data: _this.getDataString(funcABI, [""])
-    }, function (data) {
-        if (data.error) callback(data);
-        else {
-            var outTypes = funcABI.outputs.map(function (i) {
-                return i.type;
-            });
-            data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
             callback(data);
         }
     });

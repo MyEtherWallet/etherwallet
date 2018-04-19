@@ -46,6 +46,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     setInterval(function () {
         $scope.bity.refreshRates();
         $scope.kyber.refreshRates();
+        $scope.checkKyberNetwork();
     }, 30000);
     $scope.priceTicker = {ETHBTC: 1, ETHREP: 1, BTCREP: 1, BTCETH: 1, REPBTC: 1, REPETH: 1};
 
@@ -654,12 +655,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     /* Kyber ETH [ETH -> Token]*/
     $scope.startKyberEthSwap = function () {
         $scope.kyberEthToToken = true;
-        $scope.kyberOrderResult.progress = {
-            bar: getProgressBarArr(1, 5),
-            weiValue: etherUnits.toEther($scope.swapOrder.fromVal, "wei"),
-            pendingStatusReq: false,
-            checkDelay: 1000
-        };
+        $scope.kyberOrderResult.progress = $scope.buildKyberOrderRequestProgress();
         $scope.setKyberStatus($scope.kyberStatus.eth.prepare);//OPEN_ETH
         if (!$scope.$$phase) $scope.$apply();
     };
@@ -678,12 +674,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     /* Kyber TOKEN [Token -> (ETH or Token)]*/
     $scope.startKyberTokenSwap = function () {
-        $scope.kyberOrderResult.progress = {
-            bar: getProgressBarArr(1, 5),
-            weiValue: etherUnits.toEther($scope.swapOrder.fromVal, "wei"),
-            pendingStatusReq: false,
-            checkDelay: 1000
-        };
+        $scope.kyberOrderResult.progress = $scope.buildKyberOrderRequestProgress();
         $scope.setKyberStatus($scope.kyberStatus.token.prepare);
         if (!$scope.$$phase) $scope.$apply();
     };
@@ -722,6 +713,15 @@ var swapCtrl = function ($scope, $sce, walletService) {
             value: value ? value : 0,
             sendMode: "ether",
             gasPrice: null
+        };
+    };
+
+    $scope.buildKyberOrderRequestProgress = function(){
+        return {
+            bar: getProgressBarArr(1, 5),
+            weiValue: etherUnits.toEther($scope.swapOrder.fromVal, "wei"),
+            pendingStatusReq: false,
+            checkDelay: 1000
         };
     };
 
@@ -785,13 +785,11 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.sendKyberTx = function (signedTx) {
         uiFuncs.sendTx(signedTx, function (resp) {
             if (!resp.isError) {
-                var emailLink = '<a class="strong" href="#" target="_blank" rel="noopener noreferrer">Confused? Email Us.</a>'; // email link
+
                 let notCustomNode = $scope.ajaxReq.type != nodes.nodeTypes.Custom;
                 switch ($scope.kyberOrderResult.progress.status) {
                     case "TOKENS_APPROVED":
-                        var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='strong' href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank' rel='noopener'> View your transaction </a>" : '';
-                        $scope.sendTxStatus += globalFuncs.successMsgs[2] + "<p>" + resp.data + "</p><p>" + bExStr + "</p><p>" + emailLink + "</p>";
-                        $scope.notifier.success($scope.sendTxStatus);
+                        $scope.displayTxHash(resp);
                         $scope.kyberTransaction.tokenTxHash = notCustomNode ? resp.data : "";
                         $scope.kyberOrderResult.progress.bar = getProgressBarArr(5, 5);
                         $scope.showStage4Kyber = true;
@@ -801,9 +799,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                         $scope.checkForTokenApproveKyber($scope.wallet.getAddressString());
                         break;
                     case "SEND_ETH":
-                        var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='strong' href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank' rel='noopener'> View your transaction </a>" : '';
-                        $scope.sendTxStatus += globalFuncs.successMsgs[2] + "<p>" + resp.data + "</p><p>" + bExStr + "</p><p>" + emailLink + "</p>";
-                        $scope.notifier.success($scope.sendTxStatus);
+                        $scope.displayTxHash(resp);
                         break;
                 }
             } else {
@@ -842,6 +838,13 @@ var swapCtrl = function ($scope, $sce, walletService) {
     };
 
     /* MISC./UTIL */
+
+    $scope.displayTxHash = function(resp){
+        var emailLink = '<a class="strong" href="#" target="_blank" rel="noopener noreferrer">Confused? Email Us.</a>'; // email link
+        var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='strong' href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank' rel='noopener'> View your transaction </a>" : '';
+        $scope.sendTxStatus += globalFuncs.successMsgs[2] + "<p>" + resp.data + "</p><p>" + bExStr + "</p><p>" + emailLink + "</p>";
+        $scope.notifier.success($scope.sendTxStatus);
+    };
 
     $scope.displayKyberUserCapError = function (isFrom, originalValue, userCap) {
         let message;
