@@ -1986,6 +1986,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x6710c63432a2de02954fc0f851db07146a6c0312",
+		"symbol": "MFG",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x40395044ac3c0c57051906da938b54bd6557f212",
 		"symbol": "MGO",
 		"decimal": 8,
