@@ -1,5 +1,6 @@
 ### Release v3.21.08
 #### New
+- Add MFG token [#1782](https://github.com/kvhnuke/etherwallet/pull/1782)
 - Add GIF Gas [#1781](https://github.com/kvhnuke/etherwallet/pull/1781)
 - Add GIF token [#1780](https://github.com/kvhnuke/etherwallet/pull/1780)
 - Add SSH token [#1779](https://github.com/kvhnuke/etherwallet/pull/1779)
