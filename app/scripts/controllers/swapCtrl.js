@@ -499,18 +499,22 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     $scope.setKyberFinalPrices = function () {
         $scope.showedMinMaxError = false;
-
-        if (!$scope.$$phase) $scope.$apply();
-        try {
-            if (!$scope.Validator.isPositiveNumber($scope.swapOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.swapOrder.toVal)) throw globalFuncs.errorMsgs[0];
-            else if (!$scope.verifyMinMaxValues()) throw globalFuncs.errorMsgs[27];
-            $scope.updateKyberEstimate($scope.swapOrder.isFrom);
-            $scope.showStage1 = false;
-            $scope.prepareKyber();
-        } catch (e) {
-            console.log(e);
-            $scope.notifier.danger(e);
+        if ($scope.validKyberPair()) {
+            if (!$scope.$$phase) $scope.$apply();
+            try {
+                if (!$scope.Validator.isPositiveNumber($scope.swapOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.swapOrder.toVal)) throw globalFuncs.errorMsgs[0];
+                else if (!$scope.verifyMinMaxValues()) throw globalFuncs.errorMsgs[27];
+                $scope.updateKyberEstimate($scope.swapOrder.isFrom);
+                $scope.showStage1 = false;
+                $scope.prepareKyber();
+            } catch (e) {
+                console.log(e);
+                $scope.notifier.danger(e);
+            }
+        } else {
+            console.error("NOT A SWAPPABLE KYBER NETWORK PAIR")
         }
+
     };
 
     /* ------------------------------------- MAIN SWAP PAGE FUNCTIONALITY TIE-INs  (END) ------------------------------------- */
@@ -547,6 +551,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     /* KYBER SPECIFIC (tx related) */
     $scope.prepareKyber = function () {
         $scope.showStage2Kyber = true;
+        // TODO: truncate the displayed rate to the same decimal places as the toVal (~.output.amount)
         $scope.orderResult = {
             validFor: 6000,
             timestamp_created: new Date().getTime(),
@@ -554,6 +559,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 // status: "READY"
             },
             input: {
+                amount: $scope.swapOrder.fromVal,
                 currency: $scope.swapOrder.fromCoin
             },
             output: {
@@ -577,6 +583,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.startKyber = function () {
         console.log("start kyber"); //todo remove dev item
         // check user cap
+        $scope.wd = false;
         $scope.checkUserCap($scope.swapOrder.toAddress, function (result) {
             if (!result.error) {
                 $scope.showStage2Kyber = false;
@@ -599,10 +606,19 @@ var swapCtrl = function ($scope, $sce, walletService) {
             }
 
         });
+
+    };
+
+    $scope.validKyberPair = function () {
+        let hasEth = ($scope.swapOrder.fromCoin == "ETH" || $scope.swapOrder.toCoin == "ETH");
+        let notBTC = ($scope.swapOrder.fromCoin !== "BTC" || $scope.swapOrder.toCoin !== "BTC");
+        let notREP = ($scope.swapOrder.fromCoin !== "REP" || $scope.swapOrder.toCoin !== "REP");
+        return (hasEth && notBTC && notREP);
     };
 
 
     $scope.openKyberOrder = function () {
+
         if ($scope.availableTokens.indexOf($scope.swapOrder.fromCoin) >= 0) {
             $scope.openKyberTokenOrder();
         } else {
@@ -720,14 +736,14 @@ var swapCtrl = function ($scope, $sce, walletService) {
                         break;
                     case "APPROVE_TOKENS": //$scope.kyberStatus.token.prepare (~equivalent)
                         $scope.kyberTransaction.tokenTx = rawTx;
-                        $scope.parseKyberSignedTx(rawTx.signedTx);
+                        // $scope.parseKyberSignedTx(rawTx.signedTx);
                         $scope.setKyberStatus($scope.kyberStatus.token.prepare); //APPROVE_TOKENS
                         $scope.sendKyberModal();
                         break;
                     case "OPEN_ETH": //$scope.kyberStatus.eth.prepare
                         $scope.kyberTransaction.ethTx = rawTx;
                         $scope.setKyberStatus($scope.kyberStatus.eth.send); //SEND_ETH
-                        $scope.parseKyberSignedTx($scope.kyberTransaction.ethTx.signedTx);
+                        // $scope.parseKyberSignedTx($scope.kyberTransaction.ethTx.signedTx);
                         console.log($scope.kyberTransaction); //todo remove dev item
                         $scope.sendKyberModal();
                         break;
@@ -743,7 +759,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.sendKyberModal = function () {
         switch ($scope.orderResult.progress.status) {
             case "APPROVE_TOKENS":
-                $scope.parseKyberSignedTx($scope.kyberTransaction.tokenApproveTx.signedTx);
                 $scope.parseKyberSignedTx($scope.kyberTransaction.tokenTx.signedTx);
                 $scope.kyberModal.open();
                 break;
@@ -896,6 +911,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
         parsedKyberTx.txFee.eth = etherUnits.toEther(parseInt(parsedKyberTx.txFee.wei), 'wei').toString()
         parsedKyberTx.nonce = (txData.nonce == '0x' || txData.nonce == '' || txData.nonce == null) ? '0' : new BigNumber(ethFuncs.sanitizeHex(txData.nonce.toString('hex'))).toString()
         parsedKyberTx.data = (txData.data == '0x' || txData.data == '' || txData.data == null) ? '(none)' : ethFuncs.sanitizeHex(txData.data.toString('hex'))
+        console.log("parsedKyberTx.gasLimit", parsedKyberTx.gasLimit); //todo remove dev item
         return parsedKyberTx;
     };
 
@@ -903,11 +919,11 @@ var swapCtrl = function ($scope, $sce, walletService) {
         $scope.parsedKyberTx = $scope.parseKyberSignedTransaction(signedTx);
 
 
-        if(!$scope.kyberEthToToken){
+        if (!$scope.kyberEthToToken) {
             $scope.parsedKyberTokenTx = $scope.parseKyberSignedTransaction($scope.kyberTransaction.tokenApproveTx.signedTx);
 
 
-            $scope.parsedTx ={};
+            $scope.parsedTx = {};
             $scope.parsedTx.totalTxFee = {};
             $scope.parsedTx.totalTxFee.wei = new BigNumber($scope.parsedKyberTx.txFee.wei).plus(new BigNumber($scope.parsedKyberTokenTx.txFee.wei));
             $scope.parsedTx.totalTxFee.gwei = new BigNumber($scope.parsedKyberTx.txFee.gwei).plus(new BigNumber($scope.parsedKyberTokenTx.txFee.gwei));
@@ -917,77 +933,17 @@ var swapCtrl = function ($scope, $sce, walletService) {
             $scope.parsedTx.avgGasPrice.gwei = new BigNumber($scope.parsedKyberTx.gasPrice.gwei).plus(new BigNumber($scope.parsedKyberTokenTx.gasPrice.gwei)).div(2);
             $scope.parsedTx.avgGasPrice.eth = new BigNumber($scope.parsedKyberTx.gasPrice.eth).plus(new BigNumber($scope.parsedKyberTokenTx.gasPrice.eth)).div(2);
             $scope.parsedTx.totalGasLimit = new BigNumber($scope.parsedKyberTokenTx.gasLimit).plus(new BigNumber($scope.parsedKyberTx.gasLimit));
+
+            if ($scope.swapOrder.fromCoin == "ETH") {
+                $scope.parsedTx.approximateFinalBalance = new BigNumber($scope.parsedKyberTx.balance).minus(new BigNumber($scope.parsedTx.totalTxFee.eth)).minus(new BigNumber($scope.swapOrder.toVal));
+            } else if ($scope.swapOrder.toCoin == "ETH") {
+                $scope.parsedTx.approximateFinalBalance = new BigNumber($scope.parsedKyberTx.balance).minus(new BigNumber($scope.parsedTx.totalTxFee.eth)).plus(new BigNumber($scope.swapOrder.fromVal));
+            } else {
+                $scope.parsedTx.approximateFinalBalance = new BigNumber($scope.parsedKyberTx.balance).minus(new BigNumber($scope.parsedTx.totalTxFee.eth));
+            }
+
         }
     };
-
-    // $scope.parseKyberSignedTx = function (signedTx) {
-    //     var txData = {}
-    //     var isJSON = false;
-    //     $scope.parsedKyberTx = {}
-    //     if (Validator.isJSON(signedTx)) {
-    //         txData = new ethUtil.Tx(JSON.parse(signedTx));
-    //         isJSON = true;
-    //     } else {
-    //         if (signedTx.slice(0, 2) == "0x") signedTx = signedTx.slice(2, signedTx.length)
-    //         txData = new ethUtil.Tx(signedTx)
-    //     }
-    //     $scope.parsedKyberTx.gasPrice = {}
-    //     $scope.parsedKyberTx.txFee = {}
-    //     $scope.parsedKyberTx.balance = $scope.wallet.getBalance()
-    //     $scope.parsedKyberTx.from = isJSON ? $scope.wallet.getChecksumAddressString() : ethFuncs.sanitizeHex(ethUtil.toChecksumAddress(txData.from.toString('hex')))
-    //     $scope.parsedKyberTx.to = ethFuncs.sanitizeHex(ethUtil.toChecksumAddress(txData.to.toString('hex')))
-    //     $scope.parsedKyberTx.value = (txData.value == '0x' || txData.value == '' || txData.value == null) ? '0' : etherUnits.toEther(new BigNumber(ethFuncs.sanitizeHex(txData.value.toString('hex'))).toString(), 'wei')
-    //     $scope.parsedKyberTx.gasLimit = new BigNumber(ethFuncs.sanitizeHex(txData.gasLimit.toString('hex'))).toString()
-    //     $scope.parsedKyberTx.gasPrice.wei = new BigNumber(ethFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).toString()
-    //     $scope.parsedKyberTx.gasPrice.gwei = new BigNumber(ethFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).div(etherUnits.getValueOfUnit('gwei')).toString()
-    //     $scope.parsedKyberTx.gasPrice.eth = etherUnits.toEther(new BigNumber(ethFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).toString(), 'wei')
-    //     $scope.parsedKyberTx.txFee.wei = new BigNumber(parseInt($scope.parsedKyberTx.gasLimit)).times(new BigNumber(parseInt($scope.parsedKyberTx.gasPrice.wei)))
-    //     $scope.parsedKyberTx.txFee.gwei = new BigNumber($scope.parsedKyberTx.txFee.wei).div(etherUnits.getValueOfUnit('gwei')).toString()
-    //     $scope.parsedKyberTx.txFee.eth = etherUnits.toEther(parseInt($scope.parsedKyberTx.txFee.wei), 'wei').toString()
-    //     $scope.parsedKyberTx.nonce = (txData.nonce == '0x' || txData.nonce == '' || txData.nonce == null) ? '0' : new BigNumber(ethFuncs.sanitizeHex(txData.nonce.toString('hex'))).toString()
-    //     $scope.parsedKyberTx.data = (txData.data == '0x' || txData.data == '' || txData.data == null) ? '(none)' : ethFuncs.sanitizeHex(txData.data.toString('hex'))
-    //
-    //     if(!$scope.kyberEthToToken){
-    //         var tokenSigned = $scope.kyberTransaction.tokenApproveTx.signedTx.slice(0);
-    //         var tokenTxData = {}
-    //         var tokenIsJSON = false;
-    //         $scope.parsedKyberTokenTx = {}
-    //         if (Validator.isJSON($scope.kyberTransaction.tokenApproveTx.signedTx)) {
-    //             tokenTxData = new ethUtil.Tx(JSON.parse(tokenSigned));
-    //             tokenIsJSON = true;
-    //         } else {
-    //             if (tokenSigned.slice(0, 2) == "0x") tokenSigned = tokenSigned.slice(2, tokenSigned.length)
-    //             tokenTxData = new ethUtil.Tx(tokenSigned)
-    //         }
-    //         $scope.parsedKyberTokenTx.gasPrice = {}
-    //         $scope.parsedKyberTokenTx.txFee = {}
-    //         $scope.parsedKyberTokenTx.balance = $scope.wallet.getBalance()
-    //         $scope.parsedKyberTokenTx.from = tokenIsJSON ? $scope.wallet.getChecksumAddressString() : ethFuncs.sanitizeHex(ethUtil.toChecksumAddress(tokenTxData.from.toString('hex')))
-    //         $scope.parsedKyberTokenTx.to = ethFuncs.sanitizeHex(ethUtil.toChecksumAddress(tokenTxData.to.toString('hex')))
-    //         $scope.parsedKyberTokenTx.value = (tokenTxData.value == '0x' || tokenTxData.value == '' || tokenTxData.value == null) ? '0' : etherUnits.toEther(new BigNumber(ethFuncs.sanitizeHex(tokenTxData.value.toString('hex'))).toString(), 'wei')
-    //         $scope.parsedKyberTokenTx.gasLimit = new BigNumber(ethFuncs.sanitizeHex(tokenTxData.gasLimit.toString('hex'))).toString()
-    //         $scope.parsedKyberTokenTx.gasPrice.wei = new BigNumber(ethFuncs.sanitizeHex(tokenTxData.gasPrice.toString('hex'))).toString()
-    //         $scope.parsedKyberTokenTx.gasPrice.gwei = new BigNumber(ethFuncs.sanitizeHex(tokenTxData.gasPrice.toString('hex'))).div(etherUnits.getValueOfUnit('gwei')).toString()
-    //         $scope.parsedKyberTokenTx.gasPrice.eth = etherUnits.toEther(new BigNumber(ethFuncs.sanitizeHex(tokenTxData.gasPrice.toString('hex'))).toString(), 'wei')
-    //         $scope.parsedKyberTokenTx.txFee.wei = new BigNumber(parseInt($scope.parsedKyberTokenTx.gasLimit)).times(new BigNumber(parseInt($scope.parsedKyberTokenTx.gasPrice.wei)))
-    //         $scope.parsedKyberTokenTx.txFee.gwei = new BigNumber($scope.parsedKyberTokenTx.txFee.wei).div(etherUnits.getValueOfUnit('gwei')).toString()
-    //         $scope.parsedKyberTokenTx.txFee.eth = etherUnits.toEther(parseInt($scope.parsedKyberTokenTx.txFee.wei), 'wei').toString()
-    //         $scope.parsedKyberTokenTx.nonce = (tokenTxData.nonce == '0x' || tokenTxData.nonce == '' || tokenTxData.nonce == null) ? '0' : new BigNumber(ethFuncs.sanitizeHex(tokenTxData.nonce.toString('hex'))).toString()
-    //         $scope.parsedKyberTokenTx.data = (tokenTxData.data == '0x' || tokenTxData.data == '' || tokenTxData.data == null) ? '(none)' : ethFuncs.sanitizeHex(tokenTxData.data.toString('hex'))
-    //
-    //
-    //         $scope.parsedTx ={};
-    //         $scope.parsedTx.totalTxFee = {};
-    //         $scope.parsedTx.totalTxFee.wei = $scope.parsedKyberTx.txFee.wei + $scope.parsedKyberTokenTx.txFee.wei;
-    //         $scope.parsedTx.totalTxFee.gwei = $scope.parsedKyberTx.txFee.gwei + $scope.parsedKyberTokenTx.txFee.gwei;
-    //         $scope.parsedTx.totalTxFee.eth = $scope.parsedKyberTx.txFee.eth + $scope.parsedKyberTokenTx.txFee.eth;
-    //         $scope.parsedTx.avgGasPrice = {};
-    //         $scope.parsedTx.avgGasPrice.wei = ($scope.parsedKyberTx.gasPrice.wei + $scope.parsedKyberTokenTx.gasPrice.wei)/2;
-    //         $scope.parsedTx.avgGasPrice.gwei = ($scope.parsedKyberTx.gasPrice.gwei + $scope.parsedKyberTokenTx.gasPrice.gwei)/2;
-    //         $scope.parsedTx.avgGasPrice.eth = ($scope.parsedKyberTx.gasPrice.eth + $scope.parsedKyberTokenTx.gasPrice.eth)/2;
-    //         $scope.parsedTx.totalGasLimit = $scope.parsedKyberTokenTx.gasLimit + $scope.parsedKyberTx.gasLimit;
-    //     }
-    // }
 
 
     var applyScope = function () {
@@ -1003,28 +959,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
         $scope.wd = true;
         $scope.wallet.setBalance(applyScope);
         $scope.wallet.setTokens();
-        // if ($scope.parentTxConfig) {
-        //     var setTxObj = function () {
-        //         $scope.addressDrtv.ensAddressField = $scope.parentTxConfig.to;
-        //         $scope.tx.value = $scope.parentTxConfig.value;
-        //         $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'ether';
-        //         $scope.tx.tokensymbol = $scope.parentTxConfig.tokensymbol ? $scope.parentTxConfig.tokensymbol : '';
-        //         $scope.tx.gasPrice = $scope.parentTxConfig.gasPrice ? $scope.parentTxConfig.gasPrice : null;
-        //         $scope.tx.nonce = $scope.parentTxConfig.nonce ? $scope.parentTxConfig.nonce : null;
-        //         $scope.tx.data = $scope.parentTxConfig.data ? $scope.parentTxConfig.data : $scope.tx.data;
-        //         $scope.tx.readOnly = $scope.addressDrtv.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
-        //         if ($scope.parentTxConfig.gasLimit) {
-        //             $scope.tx.gasLimit = $scope.parentTxConfig.gasLimit;
-        //             $scope.gasLimitChanged = true;
-        //         }
-        //     }
-        //     console.log($scope.wallet); //todo remove dev item
-        //     $scope.$watch('parentTxConfig', function () {
-        //         setTxObj();
-        //     }, true);
-        // }
-        // $scope.setTokenSendMode();
-        // defaultInit();
     });
     ///////////////////////////////////////////////////////////////////////////////////////////
 

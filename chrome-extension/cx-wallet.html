@@ -2869,8 +2869,7 @@
         
          <!-- Swap Start Kyber 2 -->
 <article ng-if="isKyberSwap">
-    <!--{{showStage2Kyber}}-->
-    <!--{{showStage3Kyber}}-->
+
     <!-- Swap Kyber 2 -->
     <article class="swap-start" ng-show="showStage2Kyber">
 
@@ -2910,13 +2909,13 @@
                     <!--<label><span translate="SWAP_rec_add">Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>-->
                     <label><span>Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>
                     <!-- todo remove dev item -->
-                    <!--<div class="form-group" ng-show="swapOrder.toCoin!='BTC'">-->
                     <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
                                    var-name="swapOrder.toAddress"></address-field>
                 </div>
             </section>
             <!-- /Your Address -->
             <!-- CTA -->
+
             <section class="row text-center" ng-if="!kyberReturnToStart">
                 <a ng-click="startKyber()" class="btn btn-primary btn-lg"><span
                     translate="SWAP_start_CTA"> Start Swap </span></a>
@@ -2934,7 +2933,6 @@
     <!----------------------------------------------------------------------------------------------------------------->
     <!-- Swap Kyber 3-->
     <article class="swap-order" ng-show="showStage3Kyber">
-        <div>KYBER</div>
 
         <!-- Title -->
         <section class="row text-center">
@@ -2949,15 +2947,6 @@
 
         <!-- Order Info -->
         <section class="row order-info-wrap">
-            <!--            <div class="col-sm-3 order-info">
-                            <h4>{{orderResult.reference}}</h4>
-                            <p translate="SWAP_ref_num">Your reference number</p>
-                        </div>
-                        <div class="col-sm-3 order-info">
-                            <h4>{{orderResult.progress.timeRemaining}}</h4>
-                            <p ng-show="orderResult.progress.showTimeRem" translate="SWAP_time">Time remaining to send</p>
-                            <p translate="SWAP_elapsed" ng-show="!orderResult.progress.showTimeRem">Time elapsed since sent</p>
-                        </div>-->
             <div class="col-sm-6 order-info">
                 <h4>{{orderResult.output.amount}} {{orderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
@@ -3008,11 +2997,12 @@
                 <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
                 <!--<strong class="mono text-primary"> {{orderResult.payment_address}} </strong>-->
             </h1>
+
         </section>
 
         <section class="row text-center" ng-show="orderResult.progress.status=='APPROVE_TOKENS'">
             <h1>
-                <span>      Please Approve Tokens to Swap                                           </span>
+                <span>      You are about to Swap                                           </span>
                 <!-- todo: add translate -->
                 <strong> {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
                 <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
@@ -3020,14 +3010,14 @@
             </h1>
         </section>
 
-        {{orderResult.progress.status}}
         <!-- Swap CTA ETH -->
         <article class="row">
 
             <section class="clearfix collapse-container">
                 <div class="text-center" ng-click="wd = !wd">
                     <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-                    <h5 traslate="SWAP_unlock">Unlock your wallet to send ETH or Tokens directly from this page.</h5>
+                    <!--<h5 traslate="SWAP_unlock">Unlock your wallet to send ETH or Tokens directly from this page.</h5>-->
+                    <h5 >Unlock your wallet to proceed.</h5>
                 </div>
                 <div ng-show="!wd">
                     
@@ -3036,40 +3026,21 @@
                     
                 </div>
             </section>
+            <div class="alert alert-danger" ng-show="ajaxReq.type!=='ETH' && ajaxReq.type!=='ROPSTEN ETH'">
+                <strong>Warning! You are not connected to an ETH node.</strong> <br/>
+                Please use the node switcher in the top-right corner to switch to an ETH node. We <strong>do
+                not</strong> support swapping ETC or Testnet ETH.
+            </div>
 
-            <!--            <div class="alert alert-danger" ng-show="ajaxReq.type!=='ETH'">
-                            <strong>Warning! You are not connected to an ETH node.</strong> <br/>
-                            Please use the node switcher in the top-right corner to switch to an ETH node. We <strong>do
-                            not</strong> support swapping ETC or Testnet ETH.
-                        </div>-->
-
-
-            <!--<-->
             <section class="row" ng-show="wallet!=null " ng-controller='sendTxCtrl'>
-<!--                                <div ng-show=" orderResult.progress.status=='APPROVE_TOKENS'">
-                                    <button ng-click="approveTokenKyber(wallet)">AUTHORIZE TOKENS FOR SWAP</button>&lt;!&ndash; todo: add translate &ndash;&gt;
-                                </div>-->
-                <div ng-show=" orderResult.progress.status=='APPROVE_TOKENS'">
-                    <button ng-click="approveTokenKyber(wallet)">AUTHORIZE TOKENS FOR SWAP</button>
-                    <!-- todo: add translate --><!-- This function begins the entire sequence. prior to this nothing beyond the entered information and wallet have been added/created -->
-                </div>
+                <h5 class="row text-center">Wallet Unlocked!</h5>
+                <section class="row text-center" ng-show="wallet!=null && orderResult.progress.status=='APPROVE_TOKENS'">
+                    <a ng-click="approveTokenKyber(wallet)" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+                </section>
 
-                <!--<button ng-click="checkForTokenApproveKyber(wallet.getAddressString())">AUTHORIZE TOKENS FOR SWAP</button>-->
-<!--                <div
-                    ng-show="wallet!=null && (orderResult.progress.status=='OPEN_ETH' || orderResult.progress.status=='TOKENS_APPROVED')">
-                    <button ng-click="sendKyberModal()">DO SWAP</button>&lt;!&ndash; todo: add translate &ndash;&gt;
-                </div>-->
-
-                <div
-                        ng-show="wallet!=null && orderResult.progress.status=='OPEN_ETH'">
-                    <button ng-click="openKyberEthOrder()">DO SWAP</button><!-- todo: add translate -->
-                    <!--<button ng-click="openKyberOrder()">DO SWAP</button>-->
-
-                </div>
-
-                <!--openKyberEthOrder-->
-                
-                
+                <section class="row text-center" ng-show="wallet!=null && orderResult.progress.status=='OPEN_ETH'">
+                    <a ng-click="openKyberOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+                </section>
 
                 
                 <!--todo implement (custom swap modal) with content comming from swapCtrl -->
@@ -3293,57 +3264,66 @@
                 <br />
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="!kyberEthToToken">
                     <tbody>
-                    <tr> Token Swap Transaction </tr>
+                    <tr> <td></td><td class="text-center">Token Swap Transaction</td> </tr>
+                    <tr> <td>Summary: </td> </tr>
+                    <!--<tr>-->
+                        <!--<td class="small text-right">To Address:</td>-->
+                        <!--<td class="small text-left mono">{{parsedKyberTx.to}}-->
+                            <!--<br />-->
+                            <!--<em><small>Kyber Network Address.</small></em>-->
+                        <!--</td>-->
+                    <!--</tr>-->
                     <tr>
-                        <td class="small text-right">To Address:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.to}}
-                            <br />
-                            <em><small>Kyber Network Address.</small></em>
-                        </td>
+                        <td class="small text-right">{{swapOrder.toCoin}} Deposit Address:</td>
+                        <td class="small text-left mono">{{swapOrder.toAddress}}</td>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<td class="small text-right">From Address:</td>-->
+                        <!--<td class="small text-left mono">{{parsedKyberTx.from}}</td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <td class="small text-right">From:</td>
+                        <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
                     </tr>
                     <tr>
-                        <td class="small text-right">From Address:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.from}}</td>
+                        <td class="small text-right">To:</td>
+                        <td class="small text-left mono">{{swapOrder.toVal}} {{swapOrder.toCoin}}</td>
                     </tr>
-                    <tr>
-                        <td class="small text-right">Amount to Send:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.value}} ETH</td>
-                    </tr>
-                    <tr>
+<!--                    <tr>
                         <td class="small text-right">Account Balance:</td>
                         <td class="small text-left mono">{{parsedKyberTx.balance}}</td>
-                    </tr>
-                    <tr>
+                    </tr>-->
+<!--                    <tr>
+                        <td class="small text-right">Approximate Resulting Balance:</td>
+                        <td class="small text-left mono">{{parsedTx.approximateFinalBalance}}</td>
+                    </tr>-->
+<!--                    <tr>
                         <td class="small text-right">Token:</td>
                         <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td class="small text-right">Network:</td>
                         <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
                     </tr>
                     <tr>
-                        <td class="small text-right">Total Gas Limit:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.gasLimit}}</td>
+                        <td class="small text-right">Combined Gas Limit:</td>
+                        <td class="small text-left mono">{{parsedTx.totalGasLimit}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Avg. Gas Price:</td>
-                        <td class="small text-left mono">{{parsedTx.avgGasPrice.gwei}} GWEI <small>({{parsedTx.avgGasPrice.eth}} ETH)</small>
+                        <td class="small text-left mono">{{parsedTx.avgGasPrice.gwei}} GWEI <small>({{parsedTx.avgGasPrice.eth}} ETH)</small><!-- todo: get eth value to display as a decimal not as an exponent-->
                         </td>
                     </tr>
                     <tr>
-                        <td class="small text-right">Max Total TX Fee:</td>
+                        <td class="small text-right">Max Combined TX Fee:</td>
                         <td class="small text-left mono"> {{parsedTx.totalTxFee.eth}} ETH <small>({{parsedTx.totalTxFee.gwei}} GWEI)</small></td>
                     </tr>
                     <tr>
                         <td class="small text-right">Final Nonce:</td>
                         <td class="small text-left mono">{{parsedKyberTx.nonce}}</td>
                     </tr>
-                    <tr>
-                        <td class="small text-right">Data:</td>
-                        <td class="small text-left mono text-width-limit"><p>{{parsedKyberTx.data}}</p></td>
-                    </tr>
                     <!----------------------------------------------------------------->
-                    <tr> Token Swap Transaction </tr>
+                    <tr> <td class="text-left">Token Swap Transaction <br><small>via Kyber Network</small></td> </tr>
                     <tr>
                         <td class="small text-right">To Address:</td>
                         <td class="small text-left mono">{{parsedKyberTx.to}}
@@ -3393,7 +3373,7 @@
                         <td class="small text-left mono text-width-limit"><p>{{parsedKyberTx.data}}</p></td>
                     </tr>
                     <!----------------------------------------------------------------->
-                    <tr> <td>Approving Tokens for Swap Transaction</td> </tr>
+                    <tr> <td> Token Approval Transaction</td> </tr>
                     <tr>
                         <td class="small text-right">Token contract address:</td>
                         <td class="small text-left mono">{{parsedKyberTokenTx.to}}
@@ -3444,6 +3424,7 @@
                     </tr>
                     </tbody>
                 </table>
+                <!-- Eth To Token Swap Kyber Modal-->
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="kyberEthToToken">
                     <tbody>
                     <tr>
@@ -3547,7 +3528,7 @@
 
 </article> 
     </div>
-<button ng-click="demoKyber()">DEMO</button>
+
     <section class="bity-contact text-center">
         <p><a class="btn-warning btn-sm"
               href="mailto:mew@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A"

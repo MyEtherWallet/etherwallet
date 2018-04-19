@@ -64,57 +64,66 @@
                 <br />
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="!kyberEthToToken">
                     <tbody>
-                    <tr> Token Swap Transaction </tr>
+                    <tr> <td></td><td class="text-center">Token Swap Transaction</td> </tr>
+                    <tr> <td>Summary: </td> </tr>
+                    <!--<tr>-->
+                        <!--<td class="small text-right">To Address:</td>-->
+                        <!--<td class="small text-left mono">{{parsedKyberTx.to}}-->
+                            <!--<br />-->
+                            <!--<em><small>Kyber Network Address.</small></em>-->
+                        <!--</td>-->
+                    <!--</tr>-->
                     <tr>
-                        <td class="small text-right">To Address:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.to}}
-                            <br />
-                            <em><small>Kyber Network Address.</small></em>
-                        </td>
+                        <td class="small text-right">{{swapOrder.toCoin}} Deposit Address:</td>
+                        <td class="small text-left mono">{{swapOrder.toAddress}}</td>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<td class="small text-right">From Address:</td>-->
+                        <!--<td class="small text-left mono">{{parsedKyberTx.from}}</td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <td class="small text-right">From:</td>
+                        <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
                     </tr>
                     <tr>
-                        <td class="small text-right">From Address:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.from}}</td>
+                        <td class="small text-right">To:</td>
+                        <td class="small text-left mono">{{swapOrder.toVal}} {{swapOrder.toCoin}}</td>
                     </tr>
-                    <tr>
-                        <td class="small text-right">Amount to Send:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.value}} ETH</td>
-                    </tr>
-                    <tr>
+<!--                    <tr>
                         <td class="small text-right">Account Balance:</td>
                         <td class="small text-left mono">{{parsedKyberTx.balance}}</td>
-                    </tr>
-                    <tr>
+                    </tr>-->
+<!--                    <tr>
+                        <td class="small text-right">Approximate Resulting Balance:</td>
+                        <td class="small text-left mono">{{parsedTx.approximateFinalBalance}}</td>
+                    </tr>-->
+<!--                    <tr>
                         <td class="small text-right">Token:</td>
                         <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td class="small text-right">Network:</td>
                         <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
                     </tr>
                     <tr>
-                        <td class="small text-right">Total Gas Limit:</td>
-                        <td class="small text-left mono">{{parsedKyberTx.gasLimit}}</td>
+                        <td class="small text-right">Combined Gas Limit:</td>
+                        <td class="small text-left mono">{{parsedTx.totalGasLimit}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Avg. Gas Price:</td>
-                        <td class="small text-left mono">{{parsedTx.avgGasPrice.gwei}} GWEI <small>({{parsedTx.avgGasPrice.eth}} ETH)</small>
+                        <td class="small text-left mono">{{parsedTx.avgGasPrice.gwei}} GWEI <small>({{parsedTx.avgGasPrice.eth}} ETH)</small><!-- todo: get eth value to display as a decimal not as an exponent-->
                         </td>
                     </tr>
                     <tr>
-                        <td class="small text-right">Max Total TX Fee:</td>
+                        <td class="small text-right">Max Combined TX Fee:</td>
                         <td class="small text-left mono"> {{parsedTx.totalTxFee.eth}} ETH <small>({{parsedTx.totalTxFee.gwei}} GWEI)</small></td>
                     </tr>
                     <tr>
                         <td class="small text-right">Final Nonce:</td>
                         <td class="small text-left mono">{{parsedKyberTx.nonce}}</td>
                     </tr>
-                    <tr>
-                        <td class="small text-right">Data:</td>
-                        <td class="small text-left mono text-width-limit"><p>{{parsedKyberTx.data}}</p></td>
-                    </tr>
                     <!----------------------------------------------------------------->
-                    <tr> Token Swap Transaction </tr>
+                    <tr> <td class="text-left">Token Swap Transaction <br><small>via Kyber Network</small></td> </tr>
                     <tr>
                         <td class="small text-right">To Address:</td>
                         <td class="small text-left mono">{{parsedKyberTx.to}}
@@ -164,7 +173,7 @@
                         <td class="small text-left mono text-width-limit"><p>{{parsedKyberTx.data}}</p></td>
                     </tr>
                     <!----------------------------------------------------------------->
-                    <tr> <td>Approving Tokens for Swap Transaction</td> </tr>
+                    <tr> <td> Token Approval Transaction</td> </tr>
                     <tr>
                         <td class="small text-right">Token contract address:</td>
                         <td class="small text-left mono">{{parsedKyberTokenTx.to}}
@@ -215,6 +224,7 @@
                     </tr>
                     </tbody>
                 </table>
+                <!-- Eth To Token Swap Kyber Modal-->
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="kyberEthToToken">
                     <tbody>
                     <tr>
