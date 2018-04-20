@@ -468,6 +468,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x558ec3152e2eb2174905cd19aea4e34a23de9ad6",
+		"symbol": "BRD",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xf26ef5e0545384b7dcc0f297f2674189586830df",
 		"symbol": "BSDC",
 		"decimal": 18,
