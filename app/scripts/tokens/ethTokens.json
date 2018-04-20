@@ -36,6 +36,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x0e8d6b471e332f140e7d9dbb99e5e3822f728da6",
+		"symbol": "ABYSS",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x13f1b7fdfbe1fc66676d56483e21b1ecb40b58e2",
 		"symbol": "ACC",
 		"decimal": 18,
@@ -1286,6 +1292,12 @@
 	{
 		"address": "0x3a1Bda28AdB5B0a812a7CF10A1950c920F79BcD3",
 		"symbol": "FLP",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x9aeFBE0b3C3ba9Eab262CB9856E8157AB7648e09",
+		"symbol": "FLR",
 		"decimal": 18,
 		"type": "default"
 	},
