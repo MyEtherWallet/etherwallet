@@ -1,5 +1,9 @@
 ### Release v3.21.08
 #### New
+- Add BRD token [#1787](https://github.com/kvhnuke/etherwallet/pull/1787)
+- Adds FLR and ABYSS tokens [#1786](https://github.com/kvhnuke/etherwallet/pull/1786)
+- Add new Peculium ABI [#1784](https://github.com/kvhnuke/etherwallet/pull/1784)
+- Add SyncFab ABI [#1783](https://github.com/kvhnuke/etherwallet/pull/1783)
 - Add MFG token [#1782](https://github.com/kvhnuke/etherwallet/pull/1782)
 - Add GIF Gas [#1781](https://github.com/kvhnuke/etherwallet/pull/1781)
 - Add GIF token [#1780](https://github.com/kvhnuke/etherwallet/pull/1780)
@@ -15,6 +19,7 @@
 - Add DTx token [#1765](https://github.com/kvhnuke/etherwallet/pull/1765)
 
 #### Fixes
+- Update old peculium token [#1784](https://github.com/kvhnuke/etherwallet/pull/1784)
 - Catch typos [#1772](https://github.com/kvhnuke/etherwallet/pull/1772)
 
 ### Release v3.21.07
