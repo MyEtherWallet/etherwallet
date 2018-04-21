@@ -51,7 +51,6 @@ kyberFuncs.networks = {
     ROPSTEN: require('./kyberConfig/RopConfig.json'),
     NULL: {}
 };
-// TODO: fix breaking when not ETH or ROPSTEN
 kyberFuncs.networkTokenABIs = {
     ETH: require("./kyberConfig/EthTokenABIs.json"),
     ROPSTEN: require('./kyberConfig/RopTokenABIs.json'),
@@ -90,7 +89,7 @@ kyberFuncs.BnToNumber = function (bn) {
 kyberFuncs.prototype.setCurrentNetwork = function (_network) {
     var _this = this;
     if(_network){
-        console.log(_network.tokens);//todo remove dev item
+
         _this.currentNetwork = _network;
         _this.tokenDetails = _network.tokens;
         _this.mainTokens = Object.keys(_network.tokens);
@@ -235,7 +234,7 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
             var outTypes = funcABI.outputs.map(function (i) {
                 return i.type;
             });
-            console.log(data); //todo remove dev item
+
             data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
             callback(data);
         }
@@ -299,7 +298,7 @@ kyberFuncs.prototype.getUserCapInWei = function (address, callback) {
             var outTypes = funcABI.outputs.map(function (i) {
                 return i.type;
             });
-            console.log(data); //todo remove dev item
+
             data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
             callback(data);
         }
@@ -309,9 +308,9 @@ kyberFuncs.prototype.getUserCapInWei = function (address, callback) {
 kyberFuncs.prototype.checkUserCap = function (_userAddress, swapValue /* In ETH */, isFrom, callback) {
     var _this = this;
     let weiValue = etherUnits.toWei(swapValue, "ether");
-    console.log("weiValue", weiValue); //todo remove dev item
+
     _this.getUserCapInWei(_userAddress, function (data) {
-        console.log(data); //todo remove dev item
+
         let numberAsBN = new BigNumber(weiValue);
         let nineFivePct = data.data.times(0.95);
         let nineFivePctUserCap = etherUnits.toEther(nineFivePct, "wei");
@@ -387,21 +386,21 @@ kyberFuncs.prototype.trade = function (srcToken, srcAmount, destToken, destAddre
 
 kyberFuncs.prototype.approveKyber = function (srcToken, value) {
     var _this = this;
-    console.log(_this.tokenABIs); //todo remove dev item
-    console.log(srcToken, value); //todo remove dev item
+
+
     var funcABI = _this.tokenABIs[srcToken].approve;
     var srcTokenAddress = _this.getTokenAddress(srcToken);
     var weiValue = etherUnits.toWei(value, "ether");
-    console.log(srcTokenAddress);//todo remove dev item
+
     return _this.getDataString(funcABI, [_this.KyberNetworkAddress, weiValue]);
 };
 
 kyberFuncs.prototype.allowance = function (srcToken, userAddress, callback) {
     var _this = this;
     var funcABI = _this.tokenABIs[srcToken].allowance;
-    console.log(funcABI); //todo remove dev item
+
     var srcTokenAddress = _this.getTokenAddress(srcToken);
-    console.log(srcTokenAddress, srcToken, userAddress, _this.KyberNetworkAddress);//todo remove dev item
+
     ajaxReq.getEthCall({
         to: srcTokenAddress,
         data: _this.getDataString(funcABI, [userAddress, _this.KyberNetworkAddress])
@@ -411,7 +410,7 @@ kyberFuncs.prototype.allowance = function (srcToken, userAddress, callback) {
             var outTypes = funcABI.outputs.map(function (i) {
                 return i.type;
             });
-            console.log(data);//todo remove dev item
+
             data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
 
             callback(data);
@@ -421,7 +420,7 @@ kyberFuncs.prototype.allowance = function (srcToken, userAddress, callback) {
 
 kyberFuncs.prototype.getTradeData = function (swapOrder) {
     var _this = this;
-    console.log(swapOrder);//todo remove dev item
+
     var funcABI = _this.kyberNetworkABI.trade;
     var srcTokenAddress = _this.getTokenAddress(swapOrder.fromCoin);
     var destTokenAddress = _this.getTokenAddress(swapOrder.toCoin);

@@ -21,43 +21,44 @@
                                  watch-var="wallet.getAddressString()">
                             </div>
                             <p>
-                                <strong ng-show="tokenApproveTxHash.sendMode=='ether'" class="send-modal__addr">
+                                <strong class="send-modal__addr">
                                     {{wallet.getChecksumAddressString()}}
                                 </strong>
                             </p>
                         </td>
-                        <td ng-show="tokenApproveTxHash.sendMode=='ether'" class="mono">
+                        <td ng-show="!kyberEthToToken" class="mono">
                             ->
                             <br/>
                             <h4 class="text-danger">
-                                {{tokenApproveTxHash.value}} {{unitReadable}}
+                                {{swapOrder.fromVal}} {{swapOrder.fromCoin}}
                             </h4>
                         </td>
-                        <td ng-show="tokenApproveTxHash.sendMode!=='ether'" class="mono">
+                        <td ng-show="kyberEthToToken" class="mono">
                             ->
                             <br/>
                             <h4 class="text-primary">
-                                {{tokenApproveTxHash.value}} {{unitReadable}}
+                                {{parsedKyberTx.value}} {{unitReadable}}
                             </h4>
                         </td>
-                        <td ng-show="tokenApproveTxHash.sendMode=='ether'">
+
+                        <td ng-show="!kyberEthToToken">
                             <div class="addressIdenticon med" title="Address Indenticon"
-                                 blockie-address="{{swapOrder.toAddress}}" watch-var="tx.to"></div>
+                                 blockie-address="{{parsedKyberTx.to}}" watch-var="parsedKyberTx.to"></div>
                             <p>
-                                <strong ng-show="tokenApproveTxHash.sendMode=='ether'" class="send-modal__addr">
-                                    {{tokenApproveTxHash.to}} ({{swapOrder.fromCoin}})
+                                <strong class="send-modal__addr">
+                                    {{parsedKyberTx.to}}<br/> (Kyber Network)
+                                </strong>
+                            </p>
+                        </td>
+                        <td ng-show="kyberEthToToken">
+                            <div class="addressIdenticon med" title="Address Indenticon"
+                                 blockie-address="{{parsedKyberTx.to}}" watch-var="parsedKyberTx.to"></div>
+                            <p>
+                                <strong class="send-modal__addr">
+                                    {{parsedKyberTx.to}}<br/> (Kyber Network)
                                 </strong>
                             </p>
 
-                        </td>
-                        <td ng-show="tokenApproveTxHash.sendMode!=='ether'">
-                            <div class="addressIdenticon med" title="Address Indenticon"
-                                 blockie-address="{{swapOrder.toAddress}}" watch-var="tokenTx.to"></div>
-                            <p>
-                                <strong ng-show="tokenApproveTxHash.sendMode=='ether'" class="send-modal__addr">
-                                    {{tokenTx.to}} ({{swapOrder.fromCoin}})
-                                </strong>
-                            </p>
                         </td>
                     </tr>
                     </tbody>
@@ -69,46 +70,30 @@
                     <tbody>
                     <tr>
                         <td></td>
-                        <td class="text-center">Token Swap Transaction</td>
+                        <td class="text-justifyr">Token Swap Transaction</td>
                     </tr>
                     <tr>
                         <td>Summary:</td>
                     </tr>
-                    <!--<tr>-->
-                    <!--<td class="small text-right">To Address:</td>-->
-                    <!--<td class="small text-left mono">{{parsedKyberTx.to}}-->
-                    <!--<br />-->
-                    <!--<em><small>Kyber Network Address.</small></em>-->
-                    <!--</td>-->
-                    <!--</tr>-->
+                    <tr>
+                    <td class="small text-right">To Address:</td>
+                    <td class="small text-left mono">{{parsedKyberTx.to}}
+                    <br />
+                    <em><small>Kyber Network.</small></em>
+                    </td>
+                    </tr>
                     <tr>
                         <td class="small text-right">{{swapOrder.toCoin}} Deposit Address:</td>
                         <td class="small text-left mono">{{swapOrder.toAddress}}</td>
                     </tr>
-                    <!--<tr>-->
-                    <!--<td class="small text-right">From Address:</td>-->
-                    <!--<td class="small text-left mono">{{parsedKyberTx.from}}</td>-->
-                    <!--</tr>-->
                     <tr>
-                        <td class="small text-right">From:</td>
+                        <td class="small text-right">Swapping:</td>
                         <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
                     </tr>
                     <tr>
-                        <td class="small text-right">To:</td>
+                        <td class="small text-right">For:</td>
                         <td class="small text-left mono">{{swapOrder.toVal}} {{swapOrder.toCoin}}</td>
                     </tr>
-                    <!--                    <tr>
-                                            <td class="small text-right">Account Balance:</td>
-                                            <td class="small text-left mono">{{parsedKyberTx.balance}}</td>
-                                        </tr>-->
-                    <!--                    <tr>
-                                            <td class="small text-right">Approximate Resulting Balance:</td>
-                                            <td class="small text-left mono">{{parsedTx.approximateFinalBalance}}</td>
-                                        </tr>-->
-                    <!--                    <tr>
-                                            <td class="small text-right">Token:</td>
-                                            <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
-                                        </tr>-->
                     <tr>
                         <td class="small text-right">Network:</td>
                         <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
@@ -177,6 +162,10 @@
                             <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
                         </tr>
                         <tr>
+                            <td class="small text-right">Token Qty:</td>
+                            <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
+                        </tr>
+                        <tr>
                             <td class="small text-right">Network:</td>
                             <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
                         </tr>
@@ -209,10 +198,10 @@
                             <td> Token Approval Transaction</td>
                         </tr>
                         <tr>
-                            <td class="small text-right">Token contract address:</td>
+                            <td class="small text-right">To Address:</td>
                             <td class="small text-left mono">{{parsedKyberTokenTx.to}}
                                 <br/>
-                                <!--<em><small>The token contract address.</small></em>-->
+                                <em><small>The token ({{swapOrder.fromCoin}}) contract address.</small></em>
                             </td>
                         </tr>
                         <tr>
@@ -227,10 +216,6 @@
                             <td class="small text-right">Account Balance:</td>
                             <td class="small text-left mono">{{parsedKyberTokenTx.balance}}</td>
                         </tr>
-                        <!--                    <tr>
-                                                <td class="small text-right">Coin:</td>
-                                                <td class="small text-left mono">{{unitReadable}}</td>
-                                            </tr>-->
                         <tr>
                             <td class="small text-right">Network:</td>
                             <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
@@ -326,17 +311,31 @@
                 <!-- / KYBER ETH TRANSACTION -->
             </div>
 
-            <div class="modal-footer">
+            <div class="modal-footer" ng-if="kyberEthToToken">
                 <h4 class="text-center">
-                    <!--<span translate="SENDModal_Content_1">You are about to send</span>-->
                     <span translate="SENDModal_Content_1">You are about to send</span>
-                    <strong ng-show="tx.sendMode=='ether'" class="mono">{{kyberRawTxData.value}}
-                        {{unitReadable}}</strong>
-                    <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
-                    <!--<span translate="SENDModal_Content_2">to address</span>-->
+                    <strong class="mono">{{parsedKyberTx.value}} {{unitReadable}}</strong>
                     <span translate="SENDModal_Content_2">to address</span>
-                    <strong ng-show="tx.sendMode=='ether'" class="mono">{{kyberRawTxData.to}}.</strong>
-                    <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.to}}</strong>
+                    <strong class="mono">{{parsedKyberTx.to}}.</strong>
+                </h4>
+                <p translate="SENDModal_Content_3">
+                    Are you sure you want to do this?
+                </p>
+                <br/>
+                <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+                    No, get me out of here!
+                </button>
+                <button class="btn btn-primary" ng-click="sendKyberTransaction()" translate="SENDModal_Yes">
+                    Yes, I am sure! Make transaction.
+                </button>
+            </div>
+
+            <div class="modal-footer" ng-if="!kyberEthToToken">
+                <h4 class="text-center">
+                    <span translate="SENDModal_Content_1">You are about to send</span>
+                    <strong class="mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</strong>
+                    <span translate="SENDModal_Content_2">to address</span>
+                    <strong  class="mono">{{parsedKyberTx.to}}.</strong>
                 </h4>
                 <p translate="SENDModal_Content_3">
                     Are you sure you want to do this?

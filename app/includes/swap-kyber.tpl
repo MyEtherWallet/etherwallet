@@ -19,15 +19,15 @@
         <!-- Info Row -->
         <section class="order-info-wrap row">
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
+                <h4> {{swapOrder.fromVal  | number: 6}} {{swapOrder.fromCoin}} </h4>
                 <p translate="SWAP_send_amt"> Amount to send </p>
             </div>
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.toVal}} {{swapOrder.toCoin}} </h4>
+                <h4> {{swapOrder.toVal  | number: 6}} {{swapOrder.toCoin}} </h4>
                 <p translate="SWAP_rec_amt"> Amount to receive </p>
             </div>
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.swapRate}} {{swapOrder.swapPair | number: 6}} </h4>
+                <h4> {{swapOrder.swapRate  | number: 6}} {{swapOrder.swapPair}} </h4>
                 <p translate="SWAP_your_rate"> Your rate </p>
             </div>
         </section>
@@ -36,9 +36,19 @@
         <!-- Your Address -->
         <section class='swap-address block'>
             <section class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-                    <!--<label><span translate="SWAP_rec_add">Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>-->
-                    <label><span>Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>
+                <div class="col-sm-2 text-center">
+                    <em>
+                        <small>Powered By</small>
+                    </em>
+                    <a class="link" href="https://home.kyber.network/" target="_blank"
+                       rel="noopener noreferrer">
+                        <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
+                    </a>
+                </div>
+
+
+                <div class="col-sm-8 col-xs-12">
+                    <label><span translate="SWAP_rec_add">Your Receiving Address </span> <strong>({{swapOrder.toCoin}})</strong></label>
                     <!-- todo should I just wait for the wallet unlock and not ask for an address first.  then if wallet uplock calculation proves false at send tx.  present option to return to start???-->
                     <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
                                    var-name="swapOrder.toAddress"></address-field>
@@ -51,16 +61,14 @@
                 <a ng-click="startKyber()" class="btn btn-primary btn-lg"><span
                     translate="SWAP_start_CTA"> Start Swap </span></a>
             </section>
-            <section class="row text-center" ng-if="kyberReturnToStart">
-                <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a>
-                <!-- todo: add translate -->
-            </section>
+
             <!-- / CTA -->
         </section>
 
 
     </article>
     <!-- / Swap Kyber 2 -->
+
     <!----------------------------------------------------------------------------------------------------------------->
     <!-- Swap Kyber 3-->
     <article class="swap-order" ng-show="showStage3Kyber">
@@ -79,11 +87,11 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4>{{kyberOrderResult.output.amount}} {{kyberOrderResult.output.currency}}</h4>
+                <h4>{{kyberOrderResult.output.amount  | number: 6}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
-                <h4>{{swapOrder.swapRate}} {{swapOrder.swapPair | number: 6}}</h4>
+                <h4>{{swapOrder.swapRate  | number: 6}} {{swapOrder.swapPair}}</h4>
                 <p translate="SWAP_your_rate">Your rate</p>
             </div>
         </section>
@@ -104,7 +112,7 @@
                 <div class="progress-circle"><i>3</i></div>
                 <p>{{kyberOrderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}" ng-if="!kyberEthToToken">
+            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
                 <div class="progress-circle"><i>4</i></div>
                 <p>
                     <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>
@@ -168,12 +176,14 @@
             <section class="row" ng-show="wallet!=null " ng-controller='sendTxCtrl'>
                 <h5 class="row text-center">Wallet Unlocked!</h5>
 
-                <section class="row text-center" ng-show="wallet!=null">
-                    <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+                <section class="row text-center" ng-if="kyberReturnToStart">
+                    <h5 class="text-warning">The swap value of  {{swapOrder.fromVal}} {{swapOrder.fromCoin}} is Greater than your current {{swapOrder.fromCoin}} Balance of {{userTokenBalanceChecked}} {{swapOrder.fromCoin}}</h5>
+                    <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a>
+                    <!-- todo: add translate -->
                 </section>
-
-<!--                <section class="row text-center" ng-show="wallet!=null && kyberOrderResult.progress.status=='APPROVE_TOKENS'">
-                    <a ng-click="approveTokenKyber(wallet)" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+                <section class="row text-center" ng-show="wallet!=null && !kyberReturnToStart && balanceOk">
+                    <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span
+                            translate="SWAP_start_CTA"> Start Swap </span></a>
                 </section>
 
                 <section class="row text-center" ng-show="wallet!=null && kyberOrderResult.progress.status=='OPEN_ETH'">

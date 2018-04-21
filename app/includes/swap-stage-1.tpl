@@ -9,7 +9,7 @@
 
   <!-- Colored Columns -->
   <section class="row order-panel">
-    <div class="col-sm-6 order-info">
+    <div class="col-sm-4 order-info">
       <p class="mono">
         <input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/>
         <span>ETH = {{bity.curRate.ETHBTC*priceTicker.ETHBTC | number: 6}} BTC</span>
@@ -19,7 +19,18 @@
         <span>ETH = {{bity.curRate.ETHREP*priceTicker.ETHREP | number: 6}} REP</span>
       </p>
     </div>
-    <div class="col-sm-6 order-info">
+    <div class="col-sm-4 order-info">
+        <div class="row">
+            <div class="col-sm-6">
+                <a class="link bity-logo pull-left" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
+            </div>
+            <div class="col-sm-6">
+                <a class="link bity-logo pull-right" href="https://home.kyber.network/" target="_blank" rel="noopener noreferrer"><img src="images/logo-kyber.svg" width="200" height="111" /></a>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 order-info">
       <p class="mono">
         <input class="form-control input-sm" ng-model="priceTicker.BTCETH"/>
         <span>BTC = {{bity.curRate.BTCETH*priceTicker.BTCETH | number: 6}} ETH</span>
@@ -29,8 +40,7 @@
         <span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span>
       </p>
     </div>
-    <a class="link bity-logo" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
-      <a class="link bity-logo" href="https://home.kyber.network/" target="_blank" rel="noopener noreferrer"><img src="images/logo-kyber.svg" width="200" height="111" /></a>
+
   </section>
 
   <!-- / Colored Columns -->
@@ -44,7 +54,6 @@
 <article class="swap-panel block clearfix" ng-show="showStage1">
 
   <h1 translate="SWAP_init_1"> I want to swap my </h1>
-  {{swapOrder}}
   <br />
 
   <input class="form-control"

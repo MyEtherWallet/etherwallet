@@ -236,7 +236,6 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
                 $rootScope.rootScopeShowRawTx = true;
             } else {
                 $rootScope.rootScopeShowRawTx = false;
-                console.log("sendTxCtrl:241"); //todo remove dev item
                 $scope.notifier.danger(rawTx.error);
             }
             if (!$scope.$$phase) $scope.$apply();
@@ -258,7 +257,6 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
                 $scope.wallet.setBalance(applyScope);
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
             } else {
-                console.log("sendTxCtrl:263"); //todo remove dev item
                 $scope.notifier.danger(resp.error);
             }
         });
@@ -272,7 +270,6 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
                     $scope.tx.value = resp.value;
                 } else {
                     $rootScope.rootScopeShowRawTx = false;
-                    console.log("sendTxCtrl:277"); //todo remove dev item
                     $scope.notifier.danger(resp.error);
                 }
             });
