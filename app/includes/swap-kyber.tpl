@@ -27,7 +27,7 @@
                 <p translate="SWAP_rec_amt"> Amount to receive </p>
             </div>
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.swapRate}} {{swapOrder.swapPair}} </h4>
+                <h4> {{swapOrder.swapRate}} {{swapOrder.swapPair | number: 6}} </h4>
                 <p translate="SWAP_your_rate"> Your rate </p>
             </div>
         </section>
@@ -83,7 +83,7 @@
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
-                <h4>{{swapOrder.swapRate}} {{swapOrder.swapPair}}</h4>
+                <h4>{{swapOrder.swapRate}} {{swapOrder.swapPair | number: 6}}</h4>
                 <p translate="SWAP_your_rate">Your rate</p>
             </div>
         </section>
