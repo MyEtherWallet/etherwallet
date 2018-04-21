@@ -271,7 +271,8 @@
                         <td class="small text-left mono">{{parsedKyberTx.to}}
                             <br/>
                             <em>
-                                <small>If sending tokens, this should be the token contract address.</small>
+
+                                <small>Kyber Network Address.</small>
                             </em>
                         </td>
                     </tr>

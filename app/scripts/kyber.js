@@ -89,12 +89,14 @@ kyberFuncs.BnToNumber = function (bn) {
 
 kyberFuncs.prototype.setCurrentNetwork = function (_network) {
     var _this = this;
-    console.log(_network.tokens);//todo remove dev item
-    _this.currentNetwork = _network;
-    _this.tokenDetails = _network.tokens;
-    _this.mainTokens = Object.keys(_network.tokens);
-    _this.kyberRates = this.buildPairList(_this.mainTokens);
-    _this.KyberNetworkAddress = _network.network; // replace with resolution using ENS for mainnet
+    if(_network){
+        console.log(_network.tokens);//todo remove dev item
+        _this.currentNetwork = _network;
+        _this.tokenDetails = _network.tokens;
+        _this.mainTokens = Object.keys(_network.tokens);
+        _this.kyberRates = this.buildPairList(_this.mainTokens);
+        _this.KyberNetworkAddress = _network.network; // replace with resolution using ENS for mainnet
+    }
 };
 
 kyberFuncs.prototype.setDefaultValues = function (_network) {
