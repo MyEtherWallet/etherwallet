@@ -68,7 +68,7 @@ kyberFuncs.prototype.buildPairList = function (tokens) {
     tokens.forEach((_token) => {
         tokens.forEach((_token2) => {
             if (_token !== _token2) {
-                forRates[_token + "/" + _token2] = -1
+                forRates[_token + "/" + _token2] = 0
             }
         });
     });
@@ -239,6 +239,21 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
         }
     });
 };
+
+
+kyberFuncs.prototype.getGas = function(){
+   let reqObj = { "id": ajaxReq.getRandomID(), "jsonrpc": "2.0", "method": "eth_gasPrice", "params": [] };
+    ajaxReq.rawPost(reqObj, function(data) {
+        let asNum = ethFuncs.hexToDecimal(data.result);
+        console.log("getGas", asNum);
+        // for (var i in data) {
+        //     if (data[i].error) {
+        //         callback({error: true, msg: data[i].error.message, data: ''});
+        //         return;
+        //     }
+        // }
+    })
+}
 
 /*ERC20 src, ERC20 dest, uint srcQty*/
 kyberFuncs.prototype.getExpectedRate = function (srcToken, destToken, srcQty, callback) {

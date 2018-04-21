@@ -1386,7 +1386,7 @@
 
     <!-- Swap Page -->
 <main class="tab-pane swap-tab active" ng-if="globalService.currentTab==globalService.tabs.swap.id"
-      ng-controller='swapCtrl' ng-cloak>
+      ng-controller="swapCtrl" ng-cloak>
 
      <!-- Swap Rates Panel -->
 <article class="swap-rates" ng-show="showStage1">
@@ -1421,6 +1421,184 @@
     </div>
     <a class="link bity-logo" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
   </section>
+    <!-- Kyber Token Rates -->
+    <a ng-click="kybTok = !kybTok"><h5><span ng-show="kybTok">+</span><span ng-show="!kybTok">-</span> Tokens</h5></a>
+<!--    <div class="row text-center" ng-click="kybTok = !kybTok">
+        <a class="collapse-button "><span ng-show="kybTok">+</span><span ng-show="!kybTok">-</span> <h5>Tokens</h5></a>
+        &lt;!&ndash;<h5 traslate="SWAP_unlock">Unlock your wallet to send ETH or Tokens directly from this page.</h5>&ndash;&gt;
+
+    </div>-->
+  <section class="row order-panel" ng-show="!kybTok">
+    <div class="col-sm-6 order-info">
+        <!-- from Token-->
+     <p class="mono" ng-show="kyberPriceTicker['OMG/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['OMG/ETH']"/>
+        <span>OMG = {{kyber.kyberRates['OMG/ETH']*kyberPriceTicker['OMG/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['KNC/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['KNC/ETH']"/>
+        <span>KNC = {{kyber.kyberRates['KNC/ETH']*kyberPriceTicker['KNC/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['EOS/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['EOS/ETH']"/>
+        <span>EOS = {{kyber.kyberRates['EOS/ETH']*kyberPriceTicker['EOS/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['SNT/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['SNT/ETH']"/>
+        <span>SNT = {{kyber.kyberRates['SNT/ETH']*kyberPriceTicker['SNT/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ELF/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ELF/ETH']"/>
+        <span>ELF = {{kyber.kyberRates['ELF/ETH']*kyberPriceTicker['ELF/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['POWR/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['POWR/ETH']"/>
+        <span>POWR = {{kyber.kyberRates['POWR/ETH']*kyberPriceTicker['POWR/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['MANA/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['MANA/ETH']"/>
+        <span>MANA = {{kyber.kyberRates['MANA/ETH']*kyberPriceTicker['MANA/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['BAT/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['BAT/ETH']"/>
+        <span>BAT = {{kyber.kyberRates['BAT/ETH']*kyberPriceTicker['BAT/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['REQ/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['REQ/ETH']"/>
+        <span>REQ = {{kyber.kyberRates['REQ/ETH']*kyberPriceTicker['REQ/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['GTO/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['GTO/ETH']"/>
+        <span>GTO = {{kyber.kyberRates['GTO/ETH']*kyberPriceTicker['GTO/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['RDN/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['RDN/ETH']"/>
+        <span>RDN = {{kyber.kyberRates['RDN/ETH']*kyberPriceTicker['RDN/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['APPC/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['APPC/ETH']"/>
+        <span>APPC = {{kyber.kyberRates['APPC/ETH']*kyberPriceTicker['APPC/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ENG/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ENG/ETH']"/>
+        <span>ENG = {{kyber.kyberRates['ENG/ETH']*kyberPriceTicker['ENG/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['SALT/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['SALT/ETH']"/>
+        <span>SALT = {{kyber.kyberRates['SALT/ETH']*kyberPriceTicker['SALT/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['BQX/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['BQX/ETH']"/>
+        <span>BQX = {{kyber.kyberRates['BQX/ETH']*kyberPriceTicker['BQX/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ADX/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ADX/ETH']"/>
+        <span>ADX = {{kyber.kyberRates['ADX/ETH']*kyberPriceTicker['ADX/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['AST/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['AST/ETH']"/>
+        <span>AST = {{kyber.kyberRates['AST/ETH']*kyberPriceTicker['AST/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['RCN/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['RCN/ETH']"/>
+        <span>RCN = {{kyber.kyberRates['RCN/ETH']*kyberPriceTicker['RCN/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ZIL/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ZIL/ETH']"/>
+        <span>ZIL = {{kyber.kyberRates['ZIL/ETH']*kyberPriceTicker['ZIL/ETH'] | number: 6}} ETH</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['LINK/ETH']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['LINK/ETH']"/>
+        <span>LINK = {{kyber.kyberRates['LINK/ETH']*kyberPriceTicker['LINK/ETH'] | number: 6}} ETH</span>
+      </p>
+    </div>
+      <!-- to ETH -->
+    <div class="col-sm-6 order-info">
+     <p class="mono" ng-show="kyberPriceTicker['ETH/OMG']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/OMG']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/OMG']*kyberPriceTicker['ETH/OMG'] | number: 6}} OMG</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/KNC']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/KNC']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/KNC']*kyberPriceTicker['ETH/KNC'] | number: 6}} KNC</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/EOS']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/EOS']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/EOS']*kyberPriceTicker['ETH/EOS'] | number: 6}} EOS</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/SNT']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/SNT']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/SNT']*kyberPriceTicker['ETH/SNT'] | number: 6}} SNT</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/ELF']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/ELF']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/ELF']*kyberPriceTicker['ETH/ELF'] | number: 6}} ELF</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/POWR']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/POWR']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/POWR']*kyberPriceTicker['ETH/POWR'] | number: 6}} POWR</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/MANA']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/MANA']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/MANA']*kyberPriceTicker['ETH/MANA'] | number: 6}} MANA</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/BAT']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/BAT']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/BAT']*kyberPriceTicker['ETH/BAT'] | number: 6}} BAT</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/REQ']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/REQ']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/REQ']*kyberPriceTicker['ETH/REQ'] | number: 6}} REQ</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/GTO']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/GTO']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/GTO']*kyberPriceTicker['ETH/GTO'] | number: 6}} GTO</span>
+      </p>
+      <!---->
+     <p class="mono" ng-show="kyberPriceTicker['ETH/RDN']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/RDN']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/RDN']*kyberPriceTicker['ETH/RDN'] | number: 6}} RDN</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/APPC']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/APPC']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/APPC']*kyberPriceTicker['ETH/APPC'] | number: 6}} APPC</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/ENG']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/ENG']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/ENG']*kyberPriceTicker['ETH/ENG'] | number: 6}} ENG</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/SALT']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/SALT']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/SALT']*kyberPriceTicker['ETH/SALT'] | number: 6}} SALT</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/BQX']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/BQX']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/BQX']*kyberPriceTicker['ETH/BQX'] | number: 6}} BQX</span>
+      </p>
+      <p class="mono" ng-show="kyberPriceTicker['ETH/ADX']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/ADX']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/ADX']*kyberPriceTicker['ETH/ADX'] | number: 6}} ADX</span>
+      </p>
+      <p class="mono" ng-show="kyberPriceTicker['ETH/AST']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/AST']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/AST']*kyberPriceTicker['ETH/AST'] | number: 6}} AST</span>
+      </p>
+      <p class="mono" ng-show="kyberPriceTicker['ETH/RCN']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/RCN']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/RCN']*kyberPriceTicker['ETH/RCN'] | number: 6}} RCN</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/ZIL']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/ZIL']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/ZIL']*kyberPriceTicker['ETH/ZIL'] | number: 6}} ZIL</span>
+      </p>
+     <p class="mono" ng-show="kyberPriceTicker['ETH/LINK']">
+        <input class="form-control input-sm" ng-model="kyberPriceTicker['ETH/LINK']"/>
+        <span>ETH = {{kyber.kyberRates['ETH/LINK']*kyberPriceTicker['ETH/LINK'] | number: 6}} LINK</span>
+      </p>
+    </div>
+    <a class="link bity-logo" href="https://home.kyber.network/" target="_blank" rel="noopener noreferrer"><img src="images/logo-kyber.svg" width="200" height="111" /></a>
+  </section>
+  <!-- / Kyber Token Rates -->
   <!-- / Colored Columns -->
 
 </article>
@@ -1543,69 +1721,6 @@
 </article>
 <!-- / Swap Start 2 -->
 
-
-<!--
-
- &lt;!&ndash;Swap Start Kyber 2 &ndash;&gt;
-<article class="swap-start" ng-show="showStage2Kyber">
-
-
-   Title
-  <section class="row">
-    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
-    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer">
-      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
-    </a></div>
-  </section>
-   Title
-
-
-   Info Row
-  <section class="order-info-wrap row">
-    <div class="col-sm-4 order-info">
-      <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
-      <p translate="SWAP_send_amt"> Amount to send </p>
-    </div>
-    <div class="col-sm-4 order-info">
-      <h4> {{swapOrder.toVal}} {{swapOrder.toCoin}} </h4>
-      <p translate="SWAP_rec_amt"> Amount to receive </p>
-    </div>
-    <div class="col-sm-4 order-info">
-      <h4> {{1/swapOrder.swapRate}} {{swapOrder.swapPair}} </h4>
-      <p translate="SWAP_your_rate"> Your rate </p>
-    </div>
-  </section>
-   / Info Row
-
-
-   Your Address
-  <section class='swap-address block'>
-    <section class="row">
-      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-        <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>(ETH)</strong></label>
-        <div class="form-group" >
-          <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" var-name="swapOrder.toAddress"></address-field>
-        </div>
-        <input class="form-control"
-               ng-show="swapOrder.toCoin=='BTC'"
-               type="text"
-               placeholder="1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9"
-               ng-model="swapOrder.toAddress"
-               ng-class="Validator.isValidBTCAddress(swapOrder.toAddress) ? 'is-valid' : 'is-invalid'"/>
-      </div>
-    </section>
-     /Your Address
-     CTA
-    <section class="row text-center">
-      <a ng-click="openOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
-    </section>
-     / CTA
-  </section>
-
-
-</article>
- &lt;!&ndash;/ Swap Start Kyber 2 ->
--->
  
         
 
@@ -2264,10 +2379,10 @@
         <!-- Title -->
         <section class="row">
             <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
-            <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
-                                     rel="noopener noreferrer">
-                <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
-            </a></div>
+            <!--            <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
+                                                 rel="noopener noreferrer">
+                            <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
+                        </a></div>-->
         </section>
         <!-- Title -->
 
@@ -2288,11 +2403,23 @@
             </div>
         </section>
         <!-- / Info Row -->
-
+        <!--<div class="row">-->
+        <!--<div class="col-sm-10">-->
         <!-- Your Address -->
-        <section class='swap-address block'>
+        <section class="swap-address block">
             <section class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                <div class="col-sm-2 text-center">
+                    <em>
+                        <small>Powered By</small>
+                    </em>
+                    <a class="link" href="https://home.kyber.network/" target="_blank"
+                       rel="noopener noreferrer">
+                        <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
+                    </a>
+                </div>
+
+
+                <div class="col-sm-8 col-xs-12">
                     <!--<label><span translate="SWAP_rec_add">Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>-->
                     <label><span>Your Address To Send The </span> <strong>({{swapOrder.toCoin}})</strong></label>
                     <!-- todo should I just wait for the wallet unlock and not ask for an address first.  then if wallet uplock calculation proves false at send tx.  present option to return to start???-->
@@ -2304,8 +2431,9 @@
             <!-- CTA -->
 
             <section class="row text-center" ng-if="!kyberReturnToStart">
+
                 <a ng-click="startKyber()" class="btn btn-primary btn-lg"><span
-                    translate="SWAP_start_CTA"> Start Swap </span></a>
+                        translate="SWAP_start_CTA"> Start Swap </span></a>
             </section>
             <section class="row text-center" ng-if="kyberReturnToStart">
                 <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a>
@@ -2313,6 +2441,7 @@
             </section>
             <!-- / CTA -->
         </section>
+
 
 
     </article>
@@ -2324,12 +2453,13 @@
         <!-- Title -->
         <section class="row text-center">
             <div class="col-xs-3 text-left"><a class="btn btn-danger btn-xs" ng-click="newSwap()"> Start New Swap </a>
+                <!-- todo: fix issues where new BigNumber() is not a number in sendTxCtrl: $scope.hasEnoughBalance function-->
             </div>
             <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
-            <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
-                                     rel="noopener noreferrer">
-                <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
-            </a></div>
+            <!--            <div class="col-xs-3"><a class="link" href="https://home.kyber.network/" target="_blank"
+                                                 rel="noopener noreferrer">
+                            <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
+                        </a></div>-->
         </section>
 
         <!-- Order Info -->
@@ -2344,7 +2474,6 @@
             </div>
         </section>
 
-
         <!-- Swap Progress -->
         <section class="row swap-progress">
             <div class="sep"></div>
@@ -2354,7 +2483,8 @@
             </div>
             <div class="progress-item {{kyberOrderResult.progress.bar[1]}}">
                 <div class="progress-circle"><i>2</i></div>
-                <p><span translate="SWAP_progress_2">Waiting for your </span> {{kyberOrderResult.input.currency}}...</p>
+                <p><span translate="SWAP_progress_2">Waiting for your </span>
+                    {{kyberOrderResult.input.currency}}...</p>
             </div>
             <div class="progress-item {{kyberOrderResult.progress.bar[2]}}">
                 <div class="progress-circle"><i>3</i></div>
@@ -2363,9 +2493,12 @@
             <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
                 <div class="progress-circle"><i>4</i></div>
                 <p>
-                    <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>
-                    <small ng-show="kyberOrderResult.input.currency=='ETH'"> Waiting for 10 confirmations...</small>
-                    <small ng-show="kyberOrderResult.input.currency=='BTC'"> Waiting for 1 confirmation...</small>
+                    <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}}
+                    <br/>
+                    <small ng-show="kyberOrderResult.input.currency=='ETH'"> Waiting for 10 confirmations...
+                    </small>
+                    <small ng-show="kyberOrderResult.input.currency=='BTC'"> Waiting for 1 confirmation...
+                    </small>
                 </p>
             </div>
             <div class="progress-item {{kyberOrderResult.progress.bar[4]}}">
@@ -2375,28 +2508,40 @@
         </section>
 
 
-        <!-- Swap CTA -->
-        <section class="row text-center" ng-show="kyberOrderResult.progress.status=='OPEN'">
-            <h1>
+        <div class="row">
+            <div class="col-sm-1 text-center">
+                <div class="row">
+                    <em>
+                        <small>Powered By</small>
+                    </em>
+                    <a class="link clearfix" href="https://home.kyber.network/" target="_blank"
+                       rel="noopener noreferrer">
+                        <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-sm-11">
+                <!-- Swap CTA -->
+                <section class="row text-center" ng-show="kyberOrderResult.progress.status=='OPEN_ETH'">
+                    <h1>
                 <span
-                    translate="SWAP_order_CTA">      Please send                                                 </span>
-                <strong> {{kyberOrderResult.input.amount}} {{kyberOrderResult.input.currency}} </strong>
-                <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
-                <!--<strong class="mono text-primary"> {{kyberOrderResult.payment_address}} </strong>-->
-            </h1>
+                        translate="SWAP_order_CTA">      Please send                                                 </span>
+                        <strong> {{kyberOrderResult.input.amount}} {{kyberOrderResult.input.currency}} </strong>
+                    </h1>
 
-        </section>
+                </section>
 
-        <section class="row text-center" ng-show="kyberOrderResult.progress.status=='APPROVE_TOKENS'">
-            <h1>
-                <span>      You are about to Swap                                           </span>
-                <!-- todo: add translate -->
-                <strong> {{kyberOrderResult.input.amount}} {{kyberOrderResult.input.currency}} </strong>
-                <!--<span translate="SENDModal_Content_2"> to address                                                  </span><br/>-->
-                <!--<strong class="mono text-primary"> {{kyberOrderResult.payment_address}} </strong>-->
-            </h1>
-        </section>
-
+                <section class="row text-center"
+                         ng-show="kyberOrderResult.progress.status=='GENERATE_SWAP_TRANSACTION'">
+                    <h1>
+                        <span>      You are about to Swap                                           </span>
+                        <!-- todo: add translate -->
+                        <strong> {{kyberOrderResult.input.amount}} {{kyberOrderResult.input.currency}} </strong>
+                    </h1>
+                </section>
+            </div>
+        </div>
         <!-- Swap CTA ETH -->
         <article class="row">
 
@@ -2404,7 +2549,7 @@
                 <div class="text-center" ng-click="wd = !wd">
                     <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
                     <!--<h5 traslate="SWAP_unlock">Unlock your wallet to send ETH or Tokens directly from this page.</h5>-->
-                    <h5 >Unlock your wallet to proceed.</h5>
+                    <h5>Unlock your wallet to proceed.</h5>
                 </div>
                 <div ng-show="!wd">
                     
@@ -2416,176 +2561,21 @@
             <div class="alert alert-danger" ng-show="ajaxReq.type!=='ETH' && ajaxReq.type!=='ROPSTEN ETH'">
                 <strong>Warning! You are not connected to an ETH node.</strong> <br/>
                 Please use the node switcher in the top-right corner to switch to an ETH node. We <strong>do
-                not</strong> support swapping ETC or Testnet ETH.
+                                                                                                          not</strong>
+                support swapping ETC or Testnet ETH.
             </div>
 
-            <section class="row" ng-show="wallet!=null " ng-controller='sendTxCtrl'>
+            <section class="row" ng-show="wallet!=null " ng-controller="sendTxCtrl">
                 <h5 class="row text-center">Wallet Unlocked!</h5>
 
                 <section class="row text-center" ng-show="wallet!=null">
-                    <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+                    <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span
+                            translate="SWAP_start_CTA"> Start Swap </span></a>
                 </section>
 
-<!--                <section class="row text-center" ng-show="wallet!=null && kyberOrderResult.progress.status=='APPROVE_TOKENS'">
-                    <a ng-click="approveTokenKyber(wallet)" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
-                </section>
 
-                <section class="row text-center" ng-show="wallet!=null && kyberOrderResult.progress.status=='OPEN_ETH'">
-                    <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
-                </section>-->
-
-                 <article class="modal fade" id="sendTransaction" tabindex="-1">
-  <section class="modal-dialog">
-    <section class="modal-content">
-
-      <div class="modal-body">
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
-
-        <h2 class="modal-title text-center">
-          <span translate="SENDModal_Content_1">You are about to send</span>...
-        </h2>
-
-        <table class="table text-center">
-          <tbody>
-            <tr>
-              <td>
-                <div class="addressIdenticon med"
-                     title="Address Indenticon"
-                     blockie-address="{{wallet.getAddressString()}}"
-                     watch-var="wallet.getAddressString()">
-                </div>
-                <p>
-                  <strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">
-                    {{wallet.getChecksumAddressString()}}
-                  </strong>
-                </p>
-              </td>
-              <td ng-show="tx.sendMode=='ether'" class="mono">
-                ->
-                <br />
-                <h4 class="text-danger">
-                  {{tx.value}} {{unitReadable}}
-                </h4>
-              </td>
-              <td ng-show="tx.sendMode!=='ether'" class="mono">
-                ->
-                <br />
-                <h4 class="text-primary">
-                  {{tx.value}} {{unitReadable}}
-                </h4>
-              </td>
-              <td ng-show="tx.sendMode=='ether'">
-                <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-                <p>
-                  <strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">
-                    {{tx.to}}
-                  </strong>
-                </p>
-              </td>
-              <td ng-show="tx.sendMode!=='ether'">
-                <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
-                <p>
-                  <strong ng-show="tx.sendMode=='ether'" class="send-modal__addr">
-                    {{tokenTx.to}}
-                  </strong>
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <br />
-
-        <table class="table small table-condensed table-hover transaction-modal">
-          <tbody>
-            <tr>
-              <td class="small text-right">To Address:</td>
-              <td class="small text-left mono">{{parsedSignedTx.to}}
-                <br />
-                <em><small>If sending tokens, this should be the token contract address.</small></em>
-              </td>
-            </tr>
-            <tr>
-              <td class="small text-right">From Address:</td>
-              <td class="small text-left mono">{{parsedSignedTx.from}}</td>
-            </tr>
-            <tr>
-              <td class="small text-right">Amount to Send:</td>
-              <td class="small text-left mono">{{parsedSignedTx.value}} ETH</td>
-            </tr>
-            <tr>
-              <td class="small text-right">Account Balance:</td>
-              <td class="small text-left mono">{{parsedSignedTx.balance}}</td>
-            </tr>
-            <tr>
-              <td class="small text-right">Coin:</td>
-              <td class="small text-left mono">{{unitReadable}}</td>
-            </tr>
-            <tr>
-              <td class="small text-right">Network:</td>
-              <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
-            </tr>
-            <tr>
-              <td class="small text-right">Gas Limit:</td>
-              <td class="small text-left mono">{{parsedSignedTx.gasLimit}}</td>
-            </tr>
-            <tr>
-              <td class="small text-right">Gas Price:</td>
-              <td class="small text-left mono">{{parsedSignedTx.gasPrice.gwei}} GWEI <small>({{parsedSignedTx.gasPrice.eth}} ETH)</small>
-              </td>
-            </tr>
-            <tr>
-              <td class="small text-right">Max TX Fee:</td>
-              <td class="small text-left mono"> {{parsedSignedTx.txFee.eth}} ETH <small>({{parsedSignedTx.txFee.gwei}} GWEI)</small></td>
-            </tr>
-            <tr>
-              <td class="small text-right">Nonce:</td>
-              <td class="small text-left mono">{{parsedSignedTx.nonce}}</td>
-            </tr>
-            <tr>
-              <td class="small text-right">Data:</td>
-              <td class="small text-left mono text-width-limit"><p>{{parsedSignedTx.data}}</p></td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-      <div class="modal-footer">
-        <h4 class="text-center">
-          <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
-          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
-          <span translate="SENDModal_Content_2">to address</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.to}}.</strong>
-          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.to}}</strong>
-        </h4>
-        <p translate="SENDModal_Content_3">
-          Are you sure you want to do this?
-        </p>
-        <br />
-        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
-          No, get me out of here!
-        </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
-          Yes, I am sure! Make transaction.
-        </button>
-      </div>
-
-      <p class="small text-center" style="padding: 0px 5px;">
-        <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank" ref="noopener noreferrer">
-          The network is a bit overloaded. If you're having issues with TXs, please read me.
-        </a>
-      </p>
-
-
-
-    </section>
-  </section>
-</article>
- 
-                <!--todo implement (custom swap modal) with content comming from swapCtrl -->
+                <!-- Included Because sendTxCtrl.js looks for it via querySelector and throws if it is not present (and destroys the layout in the process)-->
+                <div id="sendTransaction"></div>
                 
 
                  <article class="modal fade" id="kyberTransaction" tabindex="-1">
@@ -2654,6 +2644,7 @@
                 </table>
 
                 <br/>
+                <!-- KYBER TOKEN TRANSACTION -->
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="!kyberEthToToken">
                     <tbody>
                     <tr>
@@ -2725,12 +2716,13 @@
                     </tr>
                     </tbody>
                 </table>
-                <section class="clearfix collapse-container">
+
+                <section class="clearfix collapse-container" ng-if="!kyberEthToToken">
                     <div class="text-center" ng-click="adv = !adv">
                         <a class="collapse-button"><span ng-show="adv">+</span><span ng-show="!adv">-</span></a>
                         <h5>Advanced</h5>
                     </div>
-                    <table class="table small table-condensed table-hover transaction-modal" >
+                    <table class="table small table-condensed table-hover transaction-modal" ng-show="adv">
                         <tbody >
 
                         <!----------------------------------------------------------------->
@@ -2850,7 +2842,8 @@
                         </tbody>
                     </table>
                 </section>
-                <!-- Eth To Token Swap Kyber Modal-->
+                <!-- / KYBER TOKEN TRANSACTION -->
+                <!-- KYBER ETH TRANSACTION -->
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="kyberEthToToken">
                     <tbody>
                     <tr>
@@ -2858,7 +2851,7 @@
                         <td class="small text-left mono">{{parsedKyberTx.to}}
                             <br/>
                             <em>
-                                <small>If sending tokens, this should be the token contract address.</small>
+                                <small>Kyber Network Address.</small>
                             </em>
                         </td>
                     </tr>
@@ -2909,6 +2902,7 @@
 
                     </tbody>
                 </table>
+                <!-- / KYBER ETH TRANSACTION -->
             </div>
 
             <div class="modal-footer">
@@ -2960,26 +2954,162 @@
 
     <!-- / Swap Kyber 3-->
 
+    <!----------------------------------------------------------------------------------------------------------------->
+    <!-- Swap Kyber 4-->
+    <article class="swap-order" ng-show="showStage4Kyber">
+
+        <!-- Title -->
+        <section class="row text-center">
+            <div class="col-xs-3 text-left"><a class="btn btn-danger btn-xs" ng-click="newSwap()"> Start New Swap </a>
+                <!-- todo: fix issues where new BigNumber() is not a number in sendTxCtrl: $scope.hasEnoughBalance function-->
+            </div>
+            <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
+
+        </section>
+
+        <!-- Order Info -->
+        <section class="row order-info-wrap">
+            <div class="col-sm-6 order-info">
+                <h4>{{kyberOrderResult.output.amount}} {{kyberOrderResult.output.currency}}</h4>
+                <p translate="SWAP_rec_amt">Amount to receive</p>
+            </div>
+            <div class="col-sm-6 order-info">
+                <h4>{{swapOrder.swapRate}} {{swapOrder.swapPair}}</h4>
+                <p translate="SWAP_your_rate">Your rate</p>
+            </div>
+        </section>
+
+
+        <!-- Swap Progress -->
+        <section class="row swap-progress">
+            <div class="sep"></div>
+            <div class="progress-item {{kyberOrderResult.progress.bar[0]}}">
+                <div class="progress-circle"><i>1</i></div>
+                <p translate="SWAP_progress_1">Order Initiated</p>
+            </div>
+            <div class="progress-item {{kyberOrderResult.progress.bar[1]}}">
+                <div class="progress-circle"><i>2</i></div>
+                <p><span translate="SWAP_progress_2">Waiting for your </span> {{kyberOrderResult.input.currency}}...</p>
+            </div>
+            <div class="progress-item {{kyberOrderResult.progress.bar[2]}}">
+                <div class="progress-circle"><i>3</i></div>
+                <p>{{kyberOrderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
+            </div>
+            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
+                <div class="progress-circle"><i>4</i></div>
+                <p>
+                    <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>
+                    <small ng-show="kyberOrderResult.input.currency=='ETH'"> Waiting for 10 confirmations...</small>
+                    <small ng-show="kyberOrderResult.input.currency=='BTC'"> Waiting for 1 confirmation...</small>
+                </p>
+            </div>
+            <div class="progress-item {{kyberOrderResult.progress.bar[4]}}">
+                <div class="progress-circle"><i>5</i></div>
+                <p translate="SWAP_progress_5">Order Complete</p>
+            </div>
+        </section>
+
+        <article class="row">
+            <div class="col-sm-2 text-center">
+                <em>
+                    <small>Powered By</small>
+                </em>
+                <a class="link" href="https://home.kyber.network/" target="_blank"
+                   rel="noopener noreferrer">
+                    <img class="pull-right" src="images/logo-kyber.svg" width="400" height="222"/>
+                </a>
+            </div>
+            <div class="col-sm-10 text-justify">
+                <div class="row">
+                    <section class="col-sm-6">
+                        <div class="col-sm-12">
+                            <h3>Transaction Summary:</h3>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4>{{kyberOrderResult.input.amount}} {{kyberOrderResult.input.currency}}</h4>
+                            <p >Amount sent</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4>{{kyberOrderResult.output.amount}} {{kyberOrderResult.output.currency}}</h4>
+                            <p translate="SWAP_rec_amt">Amount to receive</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4>{{swapOrder.swapRate}} {{swapOrder.swapPair}}</h4>
+                            <p translate="SWAP_your_rate">Your rate</p>
+                        </div>
+                        <hr>
+                        <div class="col-sm-12">
+                            <h5>Transaction Hash(es)</h5>
+                        </div>
+                        <div class="col-sm-12">
+                            <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
+                                View
+                                your
+                                transaction
+                                <h5>{{kyberTransaction.tokenTxHash}}</h5>
+                            </a>
+                        </div>
+                        <div class="col-sm-12">
+                            <a class="strong" ng-href="{{kyberTransaction.tokenApproveTxLink}}" target="_blank" rel="noopener">
+                                View
+                                your
+                                transaction
+                                <h5>{{kyberTransaction.tokenApproveTxHash}}</h5>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+
+            </div>
+
+        </article>
+
+
+    </article>
+
+    <!-- / Swap Kyber 4-->
 </article> 
         
     </div>
 
-    <section class="bity-contact text-center">
+    <section class="bity-contact text-center" ng-if="!isKyberSwap">
         <p><a class="btn-warning btn-sm"
               href="mailto:mew@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A"
               target="_blank" rel="noopener noreferrer"> Issue with your Swap? Contact support</a></p>
         <p ng-click="swapIssue = !swapIssue">
             <small>Click here if link doesn't work</small>
         </p>
-        <textarea class="form-control input-sm" rows="9" ng-show="swapIssue" style="max-width: 35rem;margin: auto;">To: mew@bity.com, support@myetherwallet.com
-Subject: {{orderResult.reference}} - Issue regarding my Swap via MEW
-Message:
-REF ID#: {{orderResult.reference}}
-Amount to send: {{orderResult.input.amount}} {{orderResult.input.currency}}
-Amount to receive: {{orderResult.output.amount}} {{orderResult.output.currency}}
-Payment Address: {{orderResult.payment_address}}
-Receiving Address: {{swapOrder.toAddress}}
-Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
+        <textarea class="form-control input-sm" rows="9" ng-show="swapIssue" style="max-width: 35rem;margin: auto;">
+            To: mew@bity.com, support@myetherwallet.com
+            Subject: {{orderResult.reference}} - Issue regarding my Swap via MEW
+            Message:
+            REF ID#: {{orderResult.reference}}
+            Amount to send: {{orderResult.input.amount}} {{orderResult.input.currency}}
+            Amount to receive: {{orderResult.output.amount}} {{orderResult.output.currency}}
+            Payment Address: {{orderResult.payment_address}}
+            Receiving Address: {{swapOrder.toAddress}}
+            Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}
+        </textarea>
+    </section>
+
+    <section class="bity-contact text-center" ng-if="isKyberSwap">
+        <p><a class="btn-warning btn-sm"
+              href="mailto:support@myetherwallet.com?Subject={{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash}}%20Issue%20regarding%20my%20Kyber%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash + '%20%20ApproveTxHash%3A%20' + kyberTransaction.tokenApproveTxHash}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A"
+              target="_blank" rel="noopener noreferrer"> Issue with your Swap? Contact support</a></p>
+        <p ng-click="swapIssue = !swapIssue">
+            <small>Click here if link doesn't work</small>
+        </p>
+        <textarea class="form-control input-sm" rows="9" ng-show="swapIssue" style="max-width: 35rem;margin: auto;">
+            To: support@myetherwallet.com
+            Subject: Issue regarding my Kyber Swap via MEW - {{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash}}
+            Message:
+            TxHash(s): {{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash + " ApproveTxHash: " + kyberTransaction.tokenApproveTxHash}}
+            Amount to send: {{swapOrder.fromVal}} {{swapOrder.fromCoin}}
+            Amount to receive: {{swapOrder.toVal}} {{swapOrder.toCoin}}
+            Receiving Address: {{swapOrder.toAddress}}
+            Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}
+        </textarea>
     </section>
 
 </main>

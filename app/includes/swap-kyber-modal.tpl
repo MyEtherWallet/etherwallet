@@ -64,6 +64,7 @@
                 </table>
 
                 <br/>
+                <!-- KYBER TOKEN TRANSACTION -->
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="!kyberEthToToken">
                     <tbody>
                     <tr>
@@ -135,12 +136,13 @@
                     </tr>
                     </tbody>
                 </table>
-                <section class="clearfix collapse-container">
+
+                <section class="clearfix collapse-container" ng-if="!kyberEthToToken">
                     <div class="text-center" ng-click="adv = !adv">
                         <a class="collapse-button"><span ng-show="adv">+</span><span ng-show="!adv">-</span></a>
                         <h5>Advanced</h5>
                     </div>
-                    <table class="table small table-condensed table-hover transaction-modal" >
+                    <table class="table small table-condensed table-hover transaction-modal" ng-show="adv">
                         <tbody >
 
                         <!----------------------------------------------------------------->
@@ -260,7 +262,8 @@
                         </tbody>
                     </table>
                 </section>
-                <!-- Eth To Token Swap Kyber Modal-->
+                <!-- / KYBER TOKEN TRANSACTION -->
+                <!-- KYBER ETH TRANSACTION -->
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="kyberEthToToken">
                     <tbody>
                     <tr>
@@ -319,6 +322,7 @@
 
                     </tbody>
                 </table>
+                <!-- / KYBER ETH TRANSACTION -->
             </div>
 
             <div class="modal-footer">
