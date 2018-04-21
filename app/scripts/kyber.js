@@ -34,22 +34,23 @@ const kyberFuncs = function () {
             break;
         default:
             _this.setCurrentNetwork(kyberFuncs.networks.NULL);
-        // _this.setCurrentTokenABIs(kyberFuncs.networkTokenABIs.NULL);
-
+            this.tokenABIs = {};
     }
 };
 kyberFuncs.defaultValues = {
-    gasLimit: 0
+    gasLimit: 0,
+    gasPrice: 5000000000, // 5 Gwei
+    maxGasPrice: 50000000000 // 50 Gwei
 };
 kyberFuncs.priceLoaded = false;
 kyberFuncs.currRates = {};
-kyberFuncs.maxGasPrice = 50000000000; // 50 Gwei
+// kyberFuncs.maxGasPrice = 50000000000; // 50 Gwei
 kyberFuncs.ETH_TOKEN_ADDRESS = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"; //todo: this is redundant (look to remove)
 kyberFuncs.mainTokens = [];
 kyberFuncs.networks = {
     ETH: require('./kyberConfig/EthConfig.json'),
     ROPSTEN: require('./kyberConfig/RopConfig.json'),
-    NULL: {}
+    NULL: require('./kyberConfig/NullConfig.json'),
 };
 kyberFuncs.networkTokenABIs = {
     ETH: require("./kyberConfig/EthTokenABIs.json"),
@@ -424,7 +425,8 @@ kyberFuncs.prototype.getTradeData = function (swapOrder) {
     var funcABI = _this.kyberNetworkABI.trade;
     var srcTokenAddress = _this.getTokenAddress(swapOrder.fromCoin);
     var destTokenAddress = _this.getTokenAddress(swapOrder.toCoin);
-    let walletId = 0; // This could change, but is not a user input value (as far as I can tell)
+    // let walletId = 0; // This could change, but is not a user input value (as far as I can tell)
+    let walletId = "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D";
     let minConversionRate = 1; // 1-> Market Rate, but we could also set this as the quoted rate
     let srcAmount = etherUnits.toWei(swapOrder.fromVal, "ether");
     let maxDestAmount = 2 ** 200; //100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; // Really big number (like a googol)
