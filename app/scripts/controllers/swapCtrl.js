@@ -783,6 +783,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 $scope.sendKyberTx($scope.kyberTransaction.tokenTx.signedTx);
                 break;
             case "SEND_ETH":
+                $scope.showStage4Kyber = true;
+                $scope.showStage3Kyber = false;
                 $scope.sendKyberTx($scope.kyberTransaction.ethTx.signedTx);
                 $scope.kyberModal.close();
                 break;
@@ -813,7 +815,9 @@ var swapCtrl = function ($scope, $sce, walletService) {
                         console.log("$scope.kyberTransaction.tokenApproveTxHash", $scope.kyberTransaction.tokenApproveTxHash);
                         break;
                     case "SEND_ETH":
+                        $scope.kyberTransaction.ethTxHash = notCustomNode ? resp.data : "";
                         $scope.kyberTransaction.ethTxLink = $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data);
+                        $scope.kyberOrderResult.progress.bar = getProgressBarArr(5, 5);
                         $scope.displayTxHash(resp, $scope.kyberTransaction.ethTxLink);
                         break;
                     default:
@@ -882,7 +886,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     $scope.displayTxHash = function(resp, txHashInject){
         var emailLink = '<a class="strong" href="#" target="_blank" rel="noopener noreferrer">Confused? Email Us.</a>'; // email link
-        var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='strong' href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank' rel='noopener'> View your transaction </a>" : '';
+        // let txHashInject = $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data);
+        var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? `<a class="strong" href="${txHashInject}" target="_blank" rel="noopener"> View your transaction </a>` : "";
         $scope.sendTxStatus += globalFuncs.successMsgs[2] + "<p>" + resp.data + "</p><p>" + bExStr + "</p><p>" + emailLink + "</p>";
         $scope.notifier.success($scope.sendTxStatus);
     };

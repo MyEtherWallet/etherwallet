@@ -96,15 +96,15 @@
                 <div class="progress-circle"><i>1</i></div>
                 <p translate="SWAP_progress_1">Order Initiated</p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[1]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[1]}}" ng-if="!kyberEthToToken">
                 <div class="progress-circle"><i>2</i></div>
                 <p><span translate="SWAP_progress_2">Waiting for your </span> {{kyberOrderResult.input.currency}}...</p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[2]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[2]}}" ng-if="!kyberEthToToken">
                 <div class="progress-circle"><i>3</i></div>
                 <p>{{kyberOrderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}" ng-if="!kyberEthToToken">
                 <div class="progress-circle"><i>4</i></div>
                 <p>
                     <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>

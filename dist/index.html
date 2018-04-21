@@ -2481,24 +2481,20 @@
                 <div class="progress-circle"><i>1</i></div>
                 <p translate="SWAP_progress_1">Order Initiated</p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[1]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[1]}}" ng-if="!kyberEthToToken">
                 <div class="progress-circle"><i>2</i></div>
                 <p><span translate="SWAP_progress_2">Waiting for your </span>
                     {{kyberOrderResult.input.currency}}...</p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[2]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[2]}}" ng-if="!kyberEthToToken">
                 <div class="progress-circle"><i>3</i></div>
                 <p>{{kyberOrderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}" ng-if="!kyberEthToToken">
                 <div class="progress-circle"><i>4</i></div>
                 <p>
                     <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}}
                     <br/>
-                    <small ng-show="kyberOrderResult.input.currency=='ETH'"> Waiting for 10 confirmations...
-                    </small>
-                    <small ng-show="kyberOrderResult.input.currency=='BTC'"> Waiting for 1 confirmation...
-                    </small>
                 </p>
             </div>
             <div class="progress-item {{kyberOrderResult.progress.bar[4]}}">
@@ -2851,6 +2847,7 @@
                         <td class="small text-left mono">{{parsedKyberTx.to}}
                             <br/>
                             <em>
+
                                 <small>Kyber Network Address.</small>
                             </em>
                         </td>
@@ -2987,20 +2984,18 @@
                 <div class="progress-circle"><i>1</i></div>
                 <p translate="SWAP_progress_1">Order Initiated</p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[1]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[1]}}" ng-if="!kyberEthToToken">
                 <div class="progress-circle"><i>2</i></div>
                 <p><span translate="SWAP_progress_2">Waiting for your </span> {{kyberOrderResult.input.currency}}...</p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[2]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[2]}}" ng-if="!kyberEthToToken">
                 <div class="progress-circle"><i>3</i></div>
                 <p>{{kyberOrderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
+            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}" ng-if="!kyberEthToToken">
                 <div class="progress-circle"><i>4</i></div>
                 <p>
                     <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>
-                    <small ng-show="kyberOrderResult.input.currency=='ETH'"> Waiting for 10 confirmations...</small>
-                    <small ng-show="kyberOrderResult.input.currency=='BTC'"> Waiting for 1 confirmation...</small>
                 </p>
             </div>
             <div class="progress-item {{kyberOrderResult.progress.bar[4]}}">
@@ -3041,7 +3036,7 @@
                         <div class="col-sm-12">
                             <h5>Transaction Hash(es)</h5>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" ng-if="!kyberEthToToken">
                             <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
                                 View
                                 your
@@ -3049,12 +3044,20 @@
                                 <h5>{{kyberTransaction.tokenTxHash}}</h5>
                             </a>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" ng-if="!kyberEthToToken">
                             <a class="strong" ng-href="{{kyberTransaction.tokenApproveTxLink}}" target="_blank" rel="noopener">
                                 View
                                 your
                                 transaction
                                 <h5>{{kyberTransaction.tokenApproveTxHash}}</h5>
+                            </a>
+                        </div>
+                        <div class="col-sm-12" ng-if="kyberEthToToken">
+                            <a class="strong" ng-href="{{kyberTransaction.ethTxLink}}" target="_blank" rel="noopener">
+                                View
+                                your
+                                transaction
+                                <h5>{{kyberTransaction.ethTxHash}}</h5>
                             </a>
                         </div>
                     </section>
