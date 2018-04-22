@@ -186,7 +186,7 @@ kyberFuncs.prototype.refreshRates = function () {
         let toToken = pairContents[1];
         _this.getExpectedRate(fromToken, toToken, 1, (_results) => {
             //
-            _this.kyberRates[_key] = etherUnits.toEther(_results.data.slippageRate, "wei");
+            _this.kyberRates[_key] = _this.convertToTokenBase(_results.data.slippageRate, "ETH");
         })
     });
     _this.priceLoaded = true;
@@ -194,34 +194,45 @@ kyberFuncs.prototype.refreshRates = function () {
 
 // For tokens with less than 18 decimals convert the raw balance to use 18 decimals for comparison (i.e. the values are converted to eth like decimals) [temporary]
 // Todo: convert all conversion points to use convertToTokenWei or convertToTokenBase
-kyberFuncs.prototype.convertToEighteenDecimal = function(_token, _value){
+kyberFuncs.prototype.convertToEighteenDecimal = function (_token, _value) {
     var _this = this;
     let decimal = _this.tokenDetails[_token].decimals;
-    if(decimal < 18){
+    if (decimal < 18) {
         return new BigNumber(_value).times(new BigNumber(10).pow(18 - decimal)).toString();
     } else {
         return _value;
     }
 };
 
-kyberFuncs.prototype.convertToTokenWei = function(_token, _value){
+kyberFuncs.prototype.convertToTokenWei = function (_value, _token) {
     var _this = this;
+    // console.log("convertToTokenWei _value, _token", _value, _token); //todo remove dev item
+    if (_value == "" || _value == undefined) {
+        _value = 0;
+    }
     let decimal = _this.tokenDetails[_token].decimals;
-    if(decimal < 18){
-        return new BigNumber(_value).times(new BigNumber(10).pow(decimal)).toString();
+    if (decimal < 18) {
+        return new BigNumber(String(_value)).times(new BigNumber(10).pow(decimal)).toString();
     } else {
         return etherUnits.toWei(_value, "ether");
     }
+
 };
 
-kyberFuncs.prototype.convertToTokenBase = function(_token, _value){
+kyberFuncs.prototype.convertToTokenBase = function (_value, _token) {
     var _this = this;
+    // console.log("convertToTokenBase _value, _token", _value, _token); //todo remove dev item
+    // if(_value != ""){
     let decimal = _this.tokenDetails[_token].decimals;
-    if(decimal < 18){
-        return new BigNumber(_value).div(new BigNumber(10).pow(decimal)).toString();
+    if (decimal < 18) {
+        let numnum = new BigNumber(String(_value)).div(new BigNumber(10).pow(decimal)).toNumber();
+        console.log(numnum); //todo remove dev item
+        return numnum;
     } else {
-        return etherUnits.toEther(_results.data.slippageRate, "wei");
+        return etherUnits.toEther(_value, "wei");
     }
+    // }
+
 };
 
 kyberFuncs.prototype.getRate = async function (srcToken, destToken, srcQty, callback) {
@@ -265,11 +276,7 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
             var outTypes = funcABI.outputs.map(function (i) {
                 return i.type;
             });
-
-            let raw = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
-            let toEighteen = _this.convertToEighteenDecimal(_token, raw);
-            console.log("toEighteen",toEighteen); //todo remove dev item
-            data.data = toEighteen;
+            data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
             callback(data);
         }
     });
@@ -291,15 +298,17 @@ kyberFuncs.prototype.getGas = function () {
 }
 
 /*ERC20 src, ERC20 dest, uint srcQty*/
-kyberFuncs.prototype.getExpectedRate = function (srcToken, destToken, srcQty, callback) {
+// rate/10**18between 1 eth and 1 token base
+kyberFuncs.prototype.getExpectedRate = function (srcToken, destToken, srcQty /* In ETH or Whole Token*/, callback) {
     var _this = this;
     // returns int
     var srcTokenAddress = _this.getTokenAddress(srcToken);
     var destTokenAddress = _this.getTokenAddress(destToken);
+    var valueInWei = _this.convertToTokenWei(srcQty, srcToken);
     var funcABI = this.kyberNetworkABI.getExpectedRate;
     ajaxReq.getEthCall({
         to: _this.currentNetwork.network,
-        data: _this.getDataString(funcABI, [srcTokenAddress, destTokenAddress, srcQty])
+        data: _this.getDataString(funcABI, [srcTokenAddress, destTokenAddress, valueInWei])
     }, function (data) {
         if (data.error) callback(data);
         else {
@@ -311,8 +320,6 @@ kyberFuncs.prototype.getExpectedRate = function (srcToken, destToken, srcQty, ca
                 "expectedRate": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber(),
                 "slippageRate": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[1].toNumber()
             };
-            // data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
-
             callback(data);
         }
     });
@@ -339,9 +346,9 @@ kyberFuncs.prototype.getUserCapInWei = function (address, callback) {
     });
 };
 
-kyberFuncs.prototype.checkUserCap = function (_userAddress, swapValue /* In ETH */, isFrom, callback) {
+kyberFuncs.prototype.checkUserCap = function (_userAddress, swapValue /* In ETH (base value)*/, isFrom, callback) {
     var _this = this;
-    let weiValue = etherUnits.toWei(swapValue, "ether");
+    let weiValue = _this.convertToTokenWei(swapValue, "ETH");
 
     _this.getUserCapInWei(_userAddress, function (data) {
 
@@ -395,7 +402,7 @@ kyberFuncs.prototype.kyberNetworkState = async function (callback) {
 
 
 // 100000000000000000 wei -> .1 Eth
-kyberFuncs.prototype.trade = function (srcToken, srcAmount, destToken, destAddress, callback) {
+/*kyberFuncs.prototype.trade = function (srcToken, srcAmount, destToken, destAddress, callback) {
     var _this = this;
     var funcABI = _this.kyberNetworkABI.trade;
     var srcTokenAddress = _this.getTokenAddress(srcToken);
@@ -416,16 +423,14 @@ kyberFuncs.prototype.trade = function (srcToken, srcAmount, destToken, destAddre
             callback(data);
         }
     });
-};
+};*/
 
 kyberFuncs.prototype.approveKyber = function (srcToken, value) {
     var _this = this;
-
-
     var funcABI = _this.tokenABIs[srcToken].approve;
     var srcTokenAddress = _this.getTokenAddress(srcToken);
     // var weiValue = etherUnits.toWei(value, "ether");
-    var weiValue = _this.convertToTokenWei(srcToken, value);
+    var weiValue = _this.convertToTokenWei(value, srcToken);
 
     return _this.getDataString(funcABI, [_this.KyberNetworkAddress, weiValue]);
 };
@@ -455,14 +460,14 @@ kyberFuncs.prototype.allowance = function (srcToken, userAddress, callback) {
 
 kyberFuncs.prototype.getTradeData = function (swapOrder, minRate) {
     var _this = this;
-console.log("swapOrder", swapOrder); //todo remove dev item
+    console.log("swapOrder", swapOrder); //todo remove dev item
     var funcABI = _this.kyberNetworkABI.trade;
     var srcTokenAddress = _this.getTokenAddress(swapOrder.fromCoin);
     var destTokenAddress = _this.getTokenAddress(swapOrder.toCoin);
     // let walletId = 0; // This could change, but is not a user input value (as far as I can tell)
     let walletId = "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D";
     let minConversionRate = minRate ? minRate : 1; // Uses slippagePrice with fallback to MarketRate.  1 => Market Rate, but we could also set this as the quoted rate
-    let srcAmount = _this.convertToTokenWei(swapOrder.fromCoin, swapOrder.fromVal);//etherUnits.toWei(swapOrder.fromVal, "ether");
+    let srcAmount = _this.convertToTokenWei(swapOrder.fromVal, swapOrder.fromCoin);//etherUnits.toWei(swapOrder.fromVal, "ether");
     let maxDestAmount = 2 ** 200; //100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; // Really big number (like a googol)
     console.log("srcAmount", srcAmount); //todo remove dev item
     if (swapOrder.toAddress) {
