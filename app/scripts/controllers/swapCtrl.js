@@ -248,7 +248,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.setFinalPrices = function () {
         $scope.showedMinMaxError = false;
         if ($scope.isKyberSwap) {
-            if ($scope.canSetKyberFinal) $scope.setKyberFinalPrices();
+            $scope.setKyberFinalPrices();
+            // if ($scope.canSetKyberFinal) $scope.setKyberFinalPrices();
         } else {
             try {
                 if (!$scope.Validator.isPositiveNumber($scope.swapOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.swapOrder.toVal)) throw globalFuncs.errorMsgs[0];
@@ -541,16 +542,17 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 $scope.displayKyberErrorMessage("commas");
             }
 
+
             if (isFrom) {
+                let toDecimalsToUse = $scope.kyber.tokenDetails[$scope.swapOrder.toCoin].decimals < bity.decimals ? $scope.kyber.tokenDetails[$scope.swapOrder.toCoin].decimals  : bity.decimals;
                 let _toVal = $scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)] * $scope.swapOrder.fromVal;
-                $scope.swapOrder.toVal = parseFloat((_toVal).toFixed(bity.decimals));
+                $scope.swapOrder.toVal = parseFloat((_toVal).toFixed(toDecimalsToUse));
             }
             else {
+                let fromDecimalsToUse = $scope.kyber.tokenDetails[$scope.swapOrder.fromCoin].decimals < bity.decimals ? $scope.kyber.tokenDetails[$scope.swapOrder.fromCoin].decimals  : bity.decimals;
                 let _fromVal = $scope.swapOrder.toVal / $scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)];
-                $scope.swapOrder.fromVal = parseFloat((_fromVal).toFixed(bity.decimals));
+                $scope.swapOrder.fromVal = parseFloat((_fromVal).toFixed(fromDecimalsToUse));
             }
-            console.log("$scope.swapOrder.fromVal", $scope.swapOrder.fromVal); //todo remove dev item
-            console.log("$scope.swapOrder.toVal", $scope.swapOrder.toVal); //todo remove dev item
 
             if ($scope.swapOrder.fromVal == Infinity) {
                 $scope.swapOrder.fromVal = "";
@@ -562,7 +564,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     // called in setFinalPrices if selected pair is a kyber network pair
     $scope.setKyberFinalPrices = function () {
-        $scope.canSetKyberFinal = false; // on situation where network is slow. prevent multiple clicks
+        // $scope.canSetKyberFinal = false; // on situation where network is slow. prevent multiple clicks
         $scope.showedMinMaxError = false;
         if ($scope.validKyberPair()) {
             if (!$scope.$$phase) $scope.$apply();
@@ -571,7 +573,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 else if (!$scope.verifyMinMaxValues()) throw "Invalid Value Present";
 
                 $scope.updateFinalKyberEstimate($scope.swapOrder.isFrom, function () {
-                    $scope.canSetKyberFinal = true;
+                    // $scope.canSetKyberFinal = true;
                     if ($scope.swapOrder.finalRate > 0) {
                         $scope.showStage1 = false;
                         $scope.swapOrder.swapRate = $scope.swapOrder.finalRate;
@@ -585,6 +587,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 if (e == "Invalid Value Present") {
                     $scope.displayKyberErrorMessage("tryCatch", {e: "$scope.displayKyberErrorMessage(\"tryCatch\", {e: e});"});
                 }
+                // $scope.canSetKyberFinal = true;
                 $scope.displayKyberErrorMessage("tryCatch", {e: e});
             }
         } else {
@@ -600,13 +603,14 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 let finalRate = $scope.kyber.convertToTokenBase(_rates.data.slippageRate, "ETH");
                 // todo: provide message and option to return if the rate value for the specified qty is 0.
                 // todo: or just provide the message and don't 'route' to the next page (I like this better)
-                console.log("updateFinalKyberEstimate", finalRate, _rates);
                 $scope.swapOrder.finalRate = finalRate;
                 if (isFrom) {
+                    let toDecimalsToUse = $scope.kyber.tokenDetails[$scope.swapOrder.toCoin].decimals < bity.decimals ? $scope.kyber.tokenDetails[$scope.swapOrder.toCoin].decimals  : bity.decimals;
                     let _toVal = finalRate * $scope.swapOrder.fromVal;
                     $scope.swapOrder.toVal = parseFloat((_toVal).toFixed(bity.decimals));
                 }
                 else {
+                    let fromDecimalsToUse = $scope.kyber.tokenDetails[$scope.swapOrder.fromCoin].decimals < bity.decimals ? $scope.kyber.tokenDetails[$scope.swapOrder.fromCoin].decimals  : bity.decimals;
                     let _fromVal = $scope.swapOrder.toVal / finalRate;
                     $scope.swapOrder.fromVal = parseFloat((_fromVal).toFixed(bity.decimals));
                 }
@@ -663,12 +667,12 @@ var swapCtrl = function ($scope, $sce, walletService) {
     // $scope.checkUserTokenBalance = function (_FromValue, _token, _userAddress, callback) {
     $scope.checkUserTokenBalance = function (_userAddress) {
         if (!$scope.userBalanceChecked) {
-            console.log("checkUserTokenBalance"); //todo remove dev item
+
             $scope.userBalanceChecked = true;
             $scope.kyber.getBalance($scope.swapOrder.fromCoin, _userAddress, function (_result) {
-                console.log(_result); //todo remove dev item
+
                 let userTokenBalance = new BigNumber($scope.kyber.convertToTokenBase(_result.data, $scope.swapOrder.fromCoin));
-                console.log("userTokenBalance", userTokenBalance); //todo remove dev item
+
                 let enoughTokens = userTokenBalance.gte($scope.swapOrder.fromVal);
                 if (enoughTokens) {
                     $scope.balanceOk = true;
@@ -712,7 +716,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
     };
 
 
-    /* Kyber ETH & TOKEN */
+    /* ----------- Kyber ETH & TOKEN ----------- */
+
     // Setup the kyber transaction at the point where the user enters the destAddress (enter address stage)
     $scope.startKyber = function () {
         try {
@@ -779,7 +784,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
         }
     };
 
-    /* Kyber ETH [ETH -> Token]*/
+    /* ----------- Kyber ETH [ETH -> Token] ----------- */
 
     // Initiate ETH to Token Swap flow
     $scope.openKyberEthOrder = function () {
@@ -968,7 +973,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                     $scope.kyber.allowance($scope.swapOrder.fromCoin, address, function (data) {
                         if (data.error) $scope.notifier.danger(data.msg);
                         else {
-                            console.log("polling"); //todo remove dev item
+
                             data = data.data;
                             if (data >= checkValue) {
                                 orderResult.progress.bar = getProgressBarArr(3, 5);
@@ -977,7 +982,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                                 $scope.sendKyberTransaction();
                             } else {
                                 let processingTime = parseInt((new Date().getTime() - new Date(orderResult.startTime).getTime()) / 1000);
-                                console.log(processingTime);
+
                                 if (processingTime > 3600) {
                                     orderResult.progress.timeMessage = " Confirmation of Token Authorization is proceeding slowly. Check the transaction status";
                                 } else if (processingTime > 10800) {
@@ -985,7 +990,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                                 } else if (processingTime > 28800) {
                                     orderResult.progress.timeMessage = " Token Authorization appears to have an error. Please check the transaction authorized the correct value [Instructions].  Additionally, you may wish to contact Support at support@myetherwallet.com ";
                                 }
-                                console.log("checkForTokenApproveKyber ELSE"); //todo remove dev item
+
                                 // $scope.notifier.danger(globalFuncs.errorMsgs[5]); //todo Replace with a accurate descriptive error
                             }
                             if (!$scope.$$phase) $scope.$apply();
@@ -999,12 +1004,12 @@ var swapCtrl = function ($scope, $sce, walletService) {
         }
     };
 
-    /* MISC./UTIL */
+    /* ---------------------------------------- MISC./UTIL  --------------------------------------------------------- */
 
     // Build a $scope.tx object with supplied parameters
     $scope.buildTransactionObject = function (data, to, value, gasPrice) {
         return {
-            gasLimit: '500000',
+            gasLimit: kyber.defaultValues.gasLimit,
             data: data,
             to: to,
             unit: "ether",
@@ -1129,7 +1134,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
         parsedKyberTx.gasPrice.eth = etherUnits.toEther(new BigNumber(ethFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).toString(), 'wei')
         parsedKyberTx.txFee.wei = new BigNumber(parseInt(parsedKyberTx.gasLimit)).times(new BigNumber(parseInt(parsedKyberTx.gasPrice.wei)))
         parsedKyberTx.txFee.gwei = new BigNumber(parsedKyberTx.txFee.wei).div(etherUnits.getValueOfUnit('gwei')).toString()
-        parsedKyberTx.txFee.eth = $scope.kyber.convertToTokenBase(parseInt(parsedKyberTx.txFee.wei), 'wei').toString()
+        parsedKyberTx.txFee.eth = etherUnits.toEther(parseInt(parsedKyberTx.txFee.wei), 'wei').toString()
         parsedKyberTx.nonce = (txData.nonce == '0x' || txData.nonce == '' || txData.nonce == null) ? '0' : new BigNumber(ethFuncs.sanitizeHex(txData.nonce.toString('hex'))).toString()
         parsedKyberTx.data = (txData.data == '0x' || txData.data == '' || txData.data == null) ? '(none)' : ethFuncs.sanitizeHex(txData.data.toString('hex'))
         return parsedKyberTx;

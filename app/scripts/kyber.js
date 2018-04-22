@@ -38,7 +38,7 @@ const kyberFuncs = function () {
     }
 };
 kyberFuncs.defaultValues = {
-    gasLimit: 0,
+    gasLimit: 300000,
     gasPrice: 2000000000, // 2 Gwei
     maxGasPrice: 30000000000 // 30 Gwei
 };
@@ -226,7 +226,7 @@ kyberFuncs.prototype.convertToTokenBase = function (_value, _token) {
     let decimal = _this.tokenDetails[_token].decimals;
     if (decimal < 18) {
         let numnum = new BigNumber(String(_value)).div(new BigNumber(10).pow(decimal)).toNumber();
-        console.log(numnum); //todo remove dev item
+
         return numnum;
     } else {
         return etherUnits.toEther(_value, "wei");
@@ -460,7 +460,7 @@ kyberFuncs.prototype.allowance = function (srcToken, userAddress, callback) {
 
 kyberFuncs.prototype.getTradeData = function (swapOrder, minRate) {
     var _this = this;
-    console.log("swapOrder", swapOrder); //todo remove dev item
+
     var funcABI = _this.kyberNetworkABI.trade;
     var srcTokenAddress = _this.getTokenAddress(swapOrder.fromCoin);
     var destTokenAddress = _this.getTokenAddress(swapOrder.toCoin);
@@ -469,7 +469,7 @@ kyberFuncs.prototype.getTradeData = function (swapOrder, minRate) {
     let minConversionRate = minRate ? minRate : 1; // Uses slippagePrice with fallback to MarketRate.  1 => Market Rate, but we could also set this as the quoted rate
     let srcAmount = _this.convertToTokenWei(swapOrder.fromVal, swapOrder.fromCoin);//etherUnits.toWei(swapOrder.fromVal, "ether");
     let maxDestAmount = 2 ** 200; //100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; // Really big number (like a googol)
-    console.log("srcAmount", srcAmount); //todo remove dev item
+
     if (swapOrder.toAddress) {
         return _this.getDataString(funcABI, [srcTokenAddress, srcAmount, destTokenAddress, swapOrder.toAddress, maxDestAmount, minConversionRate, walletId])
     } else {
