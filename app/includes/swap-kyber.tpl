@@ -182,8 +182,12 @@
             </div>
 
             <section class="row" ng-show="wallet!=null " ng-controller="sendTxCtrl">
-                <h5 class="row text-center">Wallet Unlocked!</h5>  <!-- todo: add translate -->
+                <h5 class="row text-center">
+                    Wallet Unlocked!
+                </h5>  <!-- todo: add translate -->
 
+                       kyberReturnToStart: {{kyberReturnToStart}}<br>
+                       balanceOk: {{balanceOk}}
                 <section class="row text-center" ng-if="kyberReturnToStart">
                     <h5 class="text-warning">The swap value of {{swapOrder.fromVal}} {{swapOrder.fromCoin}} is Greater
                                              than your current {{swapOrder.fromCoin}} Balance of
@@ -197,14 +201,14 @@
                 </section>
 
 
-                                                                   <!-- Included Because sendTxCtrl.js looks for it via querySelector and throws if it is not present (and destroys the layout in the process)-->
+                       <!-- Included Because sendTxCtrl.js looks for it via querySelector and throws if it is not present (and destroys the layout in the process)-->
                 <div id="sendTransaction"></div>
 
-                                                                   @@if (site === 'mew' ) { @@include(
-                                                                   './swap-kyber-modal.tpl', { "site": "mew" } ) }
-                                                                   <!--todo implement (custom swap modal) with content comming from swapCtrl -->
-                                                                   @@if (site === 'cx' ) { @@include(
-                                                                   './swap-kyber-modal.tpl', { "site": "cx" } ) }
+                       @@if (site === 'mew' ) { @@include(
+                       './swap-kyber-modal.tpl', { "site": "mew" } ) }
+                       <!--todo implement (custom swap modal) with content comming from swapCtrl -->
+                       @@if (site === 'cx' ) { @@include(
+                       './swap-kyber-modal.tpl', { "site": "cx" } ) }
 
             </section>
             <!--</div>-->
@@ -314,7 +318,7 @@
                         </div>
                         <div class="col-sm-12" ng-if="!kyberEthToToken">
                             <h6>{{orderResult.progress.timeMessage}}</h6>
-                         <span>
+                            <span>
                                 View your token authorization transaction:
                          </span>
                             <a class="strong" ng-href="{{kyberTransaction.tokenApproveTxLink}}" target="_blank"
