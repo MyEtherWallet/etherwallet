@@ -293,7 +293,7 @@
 
 
   <h1>
-    Convert Decimal to Hexidecimal and Hex to Decimal
+    Convert Decimal to Hexadecimal and Hex to Decimal
   </h1>
   <div class="form-group">
     <label>

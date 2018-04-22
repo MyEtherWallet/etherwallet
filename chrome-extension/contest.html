@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mewApp">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>MyEtherWallet.com</title>
+<meta property="og:title" content="MyEtherWallet.com: Your Key to Ethereum">
+<meta property="og:site_name" content="MyEtherWallet.com: Your Key to Ethereum">
+<meta name="twitter:title" content="MyEtherWallet.com: Your Key to Ethereum">
+<meta name="apple-mobile-web-app-title" content="MyEtherWallet.com: Your Key to Ethereum">
+<link href="https://www.myetherwallet.com" rel="canonical">
+<meta content="https://www.myetherwallet.com" property="og:url">
+<meta content="https://www.myetherwallet.com" name="twitter:url">
+<link rel="stylesheet" href="css/etherwallet-master.min.css">
+<script type="text/javascript" src="js/etherwallet-static.min.js"></script>
+<script type="text/javascript" src="js/etherwallet-master.js"></script>
+<meta name="description" content="MyEtherWallet (MEW) is a free, open-source, client-side interface for generating Ethereum wallets & more. Interact with the Ethereum blockchain easily & securely.">
+<meta property="og:description"  content="Free, open-source, client-side Ethereum wallet. Enabling you to interact with the blockchain easily & securely.">
+<meta name="twitter:description" content="Free, open-source, client-side Ethereum wallet. Enabling you to interact with the blockchain easily & securely.">
+<meta name="robots" content="index,follow">
+<meta name="googlebot" content="index,follow">
+<meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
+<link href="images/fav/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="images/fav/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+<link href="images/fav/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
+<link href="images/fav/manifest.json" rel="manifest">
+<link href="images/fav/safari-pinned-tab.svg" rel="mask-icon" color="#2f99b0">
+<link href="images/fav/favicon.ico" rel="shortcut icon">
+<meta name="apple-mobile-web-app-title" content="MyEtherWallet &middot; Your Key to Ethereum">
+<meta name="application-name" content="MyEtherWallet">
+<meta name="msapplication-config" content="images/fav/browserconfig.xml">
+<meta name="theme-color" content="#1d6986">
+<meta name="apple-mobile-web-app-status-bar-style" content="#1d6986">
+<meta property="og:url" content="https://www.myetherwallet.com" />
+<meta property="og:title" content="MyEtherWallet.com  &middot; Your Key to Ethereum" />
+<meta property="og:type" content="website">
+<meta property="og:image" content="/images/myetherwallet-logo-banner.png" />
+<meta property="og:image" content="/images/myetherwallet-logo.png" />
+<meta property="og:image" content="/images/myetherwallet-logo-square.png" />
+<meta property="og:image" content="/images/myetherwallet-banner-fun.jpg" />
+<meta name="twitter:image" content="/images/myetherwallet-logo-twitter.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@MyEtherWallet">
+<meta name="twitter:creator" content="@MyEtherWallet">
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type" : "Organization",
+"name" : "MyEtherWallet",
+"legalName" : "MyEtherWallet Inc",
+"url" : "https://www.myetherwallet.com/",
+"contactPoint" : [{
+  "@type" : "ContactPoint",
+  "email" : "support@myetherwallet.com",
+  "url"   : "https://myetherwallet.com",
+  "contactType" : "customer service"
+}],
+"logo" : "https://www.myetherwallet.com/images/myetherwallet-logo.png",
+"description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely.",
+"sameAs" : [
+  "https://www.myetherwallet.com/",
+  "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
+  "https://www.facebook.com/MyEtherWallet/",
+  "https://twitter.com/myetherwallet",
+  "https://medium.com/@myetherwallet",
+  "https://myetherwallet.github.io/knowledge-base/",
+  "https://github.com/kvhnuke/etherwallet",
+  "https://github.com/MyEtherWallet",
+  "https://kvhnuke.github.io/etherwallet/","https://myetherwallet.slack.com/"
+]
+}
+</script>
+</head>
+<body>
+
+<header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
+
+
+  <div class="small announcement annoucement-danger">
+    <div class="container">
+      DON'T GET PHISHED, please! 🎣 Thank you! 🤗
+      <br />
+      1. BOOKMARK <a href="https://www.myetherwallet.com"> MYETHERWALLET.COM </a>
+      <span class="hidden-xs">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        2. INSTALL <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a>
+        or
+        <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>
+        or
+        <a href="https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige" target="_blank" rel="noopener noreferrer">Cryptonite</a>
+      </span>
+    </div>
+  </div>
+
+
+<section class="bg-gradient header-branding">
+  <section class="container">
+    
+      <a class="brand" href="/" aria-label="Go to homepage">
+        <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
+        <p class="small visible-xs">3.21.07</p>
+      </a>
+    
+    
+    <div class="tagline">
+
+    <span class="hidden-xs">3.21.07</span>
+
+    <span class="dropdown dropdown-lang" ng-cloak>
+      <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
+      <ul class="dropdown-menu" ng-show="dropdown">
+        <li><a ng-class="{true:'active'}[curLang=='Català']"          ng-click="changeLanguage('ca','Català'         )"> Català          </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Deutsch']"         ng-click="changeLanguage('de','Deutsch'        )"> Deutsch         </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']"        ng-click="changeLanguage('el','Ελληνικά'       )"> Ελληνικά        </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='English']"         ng-click="changeLanguage('en','English'        )"> English         </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Español']"         ng-click="changeLanguage('es','Español'        )"> Español         </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Farsi']"           ng-click="changeLanguage('fa','Farsi'          )"> Farsi           </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Suomi']"           ng-click="changeLanguage('fi','Suomi'          )"> Suomi           </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Français']"        ng-click="changeLanguage('fr','Français'       )"> Français        </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Magyar']"          ng-click="changeLanguage('hu','Magyar'         )"> Magyar          </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Haitian Creole']"  ng-click="changeLanguage('ht','Haitian Creole' )"> Haitian Creole  </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Indonesian']"      ng-click="changeLanguage('id','Indonesian'     )"> Bahasa Indonesia</a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Italiano']"        ng-click="changeLanguage('it','Italiano'       )"> Italiano        </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='日本語']"           ng-click="changeLanguage('ja','日本語'          )"> 日本語          </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='한국어']"            ng-click="changeLanguage('ko','한국어'          )"> 한국어           </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Nederlands']"      ng-click="changeLanguage('nl','Nederlands'     )"> Nederlands      </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Norsk Bokmål']"    ng-click="changeLanguage('no','Norsk Bokmål'   )"> Norsk Bokmål    </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Polski']"          ng-click="changeLanguage('pl','Polski'         )"> Polski          </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Português']"       ng-click="changeLanguage('pt','Português'      )"> Português       </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Русский']"         ng-click="changeLanguage('ru','Русский'        )"> Русский         </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='ภาษาไทย']"         ng-click="changeLanguage('th','ภาษาไทย'        )"> ภาษาไทย         </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Türkçe']"          ng-click="changeLanguage('tr','Türkçe'         )"> Türkçe          </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='Tiếng Việt']"      ng-click="changeLanguage('vi','Tiếng Việt'     )"> Tiếng Việt      </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='简体中文']"         ng-click="changeLanguage('zhcn','简体中文'      )"> 简体中文         </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='繁體中文']"         ng-click="changeLanguage('zhtw','繁體中文'      )"> 繁體中文         </a></li>
+        <li role="separator" class="divider"></li>
+        <li><a data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></li>
+      </ul>
+    </span>
+
+    <span class="dropdown dropdown-gas" ng-cloak>
+      <a tabindex="0" aria-haspopup="true" aria-label="adjust gas price" class="dropdown-toggle  btn btn-white" ng-click="dropdownGasPrice = !dropdownGasPrice">
+        <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
+          {{gas.value}} Gwei
+          <i class="caret"></i>
+      </a>
+      <ul class="dropdown-menu" ng-show="dropdownGasPrice">
+        <div class="header--gas">
+          <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
+          {{gas.value}} Gwei
+          <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" step="{{gas.step}}" ng-change="gasChanged()"/>
+          <p class="small col-xs-4 text-left"> <!--translate="GAS_Price_1"-->
+            Really, really slow
+          </p>
+          <p class="small col-xs-4 text-center"> <!--translate="GAS_Price_2"-->
+            Maybe Fast?
+          </p>
+          <p class="small col-xs-4 text-right"> <!--translate="GAS_Price_3"-->
+            Fast
+          </p>
+          <br />
+          <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
+          <a class="small"
+             translate="x_ReadMore"
+             href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
+             target="_blank"
+             rel="noopener noreferrer"></a>
+        </div>
+      </ul>
+      <p class="dropdown-gas__msg"
+         ng-show="gasPriceMsg"
+         ng-hide="ajaxReq.type!='ETH'">
+        The network is really full right now. Check
+        <a href="https://ethgasstation.info/"
+           target="_blank" rel="noopener noreferrer">Eth Gas Station</a>
+        for gas price to use.
+      </p>
+    </span>
+
+    <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
+    <span class="dropdown dropdown-node" ng-cloak>
+      <a tabindex="0"
+         aria-haspopup="true"
+         aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}"
+         class="dropdown-toggle  btn btn-white"
+         ng-click="dropdownNode = !dropdownNode">
+           <span translate="X_Network">Network:</span>
+           {{curNode.name}}
+           <small>({{curNode.service}})</small>
+           <i class="caret"></i>
+      </a>
+      <ul class="dropdown-menu" ng-show="dropdownNode">
+        <li ng-repeat="(key, value) in nodeList">
+          <a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
+            {{value.name}}
+            <small> ({{value.service}}) </small>
+            <img ng-show="value.service=='Custom'" src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+          </a>
+        </li>
+        <li>
+          <a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;" translate="X_Network_Custom">
+            Add Custom Network / Node
+          </a>
+        </li>
+      </ul>
+    </span>
+
+    </div>
+  </section>
+</section>
+
+<nav role="navigation" aria-label="main navigation" class="container nav-container overflowing">
+  <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
+  <div class="nav-scroll">
+    <ul class="nav-inner">
+      
+      <li ng-repeat="tab in tabNames track by $index" \
+          class="nav-item {{tab.name}}" \
+          ng-class="{active: $index==gService.currentTab}"
+          ng-show="tab.mew"
+          ng-click="tabClick($index)">
+            <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a>
+      </li>
+      
+      
+      <li class="nav-item help">
+        <a href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer">
+          <span translate="NAV_Help">
+            Help
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <a aria-hidden="true"
+     ng-show="showRightArrow"
+     class="nav-arrow-right"
+     ng-click="scrollRight(100);"
+     ng-mouseover="scrollHoverIn(false,2);"
+     ng-mouseleave="scrollHoverOut()">&#187;</a>
+</nav>
+
+ <article class="modal fade" id="customNodeModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
+
+        <h2 class="modal-title text-info" translate="NODE_Title"> Set Up Your Custom Node </h2>
+
+        <p class="small"><a href="https://myetherwallet.github.io/knowledge-base/networks/run-your-own-node-with-myetherwallet.html" target="_blank" rel="noopener noreferrer"> Instructions can be found here </a></p>
+
+        <div ng-show="browserProtocol=='https:'" class="alert alert-danger small" translate="NODE_Warning">
+          Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to your local node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
+        </div>
+
+        <section class="row">
+          <div class="clearfix col-xs-12">
+            <label translate="NODE_Name">Node Name</label>
+            <input class="form-control"
+                   type="text"
+                   placeholder="My ETH Node"
+                   ng-model="customNode.name"
+                   ng-class="Validator.isAlphaNumericSpace(customNode.name) ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-9">
+            <label>URL</label>
+            <input class="form-control" type="text" placeholder="http://127.0.0.1" ng-model="customNode.url" ng-class="checkNodeUrl(customNode.url) ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-3">
+            <label class="NODE_Port">Port</label>
+            <input class="form-control" type="text" placeholder="8545" ng-model="customNode.port" ng-class="Validator.isPositiveNumber(customNode.port) || customNode.port=='' ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-12">
+            <label><input type="checkbox" ng-model="customNode.httpBasicAuth" ng-true-value="{user:'',password:''}" ng-false-value="null" value="false"> HTTP Basic access authentication </label>
+          </div>
+
+          <div class="clearfix col-xs-6" ng-show="customNode.httpBasicAuth">
+            <label>User</label>
+            <input class="form-control" type="text" ng-model="customNode.httpBasicAuth.user" ng-class="customNode.httpBasicAuth &amp;&amp; customNode.httpBasicAuth.user.length > 0 ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-6" ng-show="customNode.httpBasicAuth">
+            <label>Password</label>
+            <input class="form-control" type="password" ng-model="customNode.httpBasicAuth.password" ng-class="customNode.httpBasicAuth &amp;&amp; customNode.httpBasicAuth.password.length > 0 ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-12 radio">
+            <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="kov"> Kovan </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="rin"> Rinkeby </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="cus"> Custom </label>
+            <label><input type="checkbox" ng-model="customNode.eip155" value="true"> Supports EIP-155 </label>
+          </div>
+
+          <div class="clearfix col-sm-6 col-sm-offset-6" ng-show="customNode.eip155">
+            <label>Chain ID</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId" ng-class="Validator.isPositiveNumber(customNode.chainId) ? 'is-valid' : 'is-invalid'">
+          </div>
+        </section>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" translate="x_Cancel">
+          Cancel
+        </button>
+        <button class="btn btn-primary" ng-click="saveCustomNode()" translate="NODE_CTA">
+          Save &amp; Use Custom Node
+        </button>
+      </div>
+
+
+    </section>
+  </section>
+</article>
+ 
+
+
+</header>
+
+<section class="container contest-container">
+  <h2>MEW 100K Followers Contest Official Rules</h2>
+  <p>NO PURCHASE IS NECESSARY TO ENTER OR WIN. A PURCHASE DOES NOT INCREASE THE CHANCES OF WINNING.</p>
+  <ol type="1" class="contest-content">
+    <li>
+      Eligibility: This Campaign is open only to those
+     who sign up at the who complete
+      the contest requirements and who send an email containing the name, email,
+      telephone, city and country of residence, along with a link to their video
+      or blog post to <a href="mailto:contests@myetherwallet.com">contests@myetherwallet.com</a>
+       and who are 21 years or older
+      as of the date of entry.The Campaign is only open to legal residents of to
+      all countries, and is void where prohibited by law. Employees of MyEtherWallet
+      Inc, its affiliates, subsidiaries, advertising and promotion agencies, and suppliers,
+      (collectively the “Employees”), and immediate family members and/or those
+      living in the same household of Employees are not eligible to participate
+      in the Campaign. The Campaign is subject to all applicable federal, state,
+      and local laws and regulations. Void where prohibited.
+    </li>
+    <li>
+      Agreement to Rules: By participating, the Contestant (“You”) agree to be
+      fully unconditionally bound by these Rules, and You represent and warrant
+      that You meet the eligibility requirements. In addition, You agree to
+      accept the decisions of MyEtherWallet, Inc as final and binding as it
+      relates to the content of this Campaign.
+    </li>
+    <li>
+      Campaign Period: Entries will be accepted online starting on April 12 at
+      12:01am PDT  and ending 7 days after the 100,000 Twitter follower threshold
+      has been reached. The final date will be announced on Twitter with all
+      entries being required to be received no later than 11:59pm PDT on the
+      date specified.
+    </li>
+    <li>
+      How to Enter: The Campaign must be entered by submitting an email
+      containing the name, email, telephone, city and country of residence,
+      along with a link to their video or blog post to <a href="mailto:contests@myetherwallet.com">contests@myetherwallet.com</a> .
+      The entry must fulfill all Campaign requirements, as specified, to be
+      eligible to win a prize. Entries that are incomplete or do not adhere to
+      the rules or specifications may be disqualified at the sole discretion of
+      MyEtherWallet Inc. Optional verbiage to include: You may enter only once.
+      You must provide the information requested. You may not enter more times
+      than indicated by using multiple email addresses, identities, or devices
+      in an attempt to circumvent the rules. If you use fraudulent methods or
+      otherwise attempt to circumvent the rules, your submission may be removed
+      from eligibility at the sole discretion of MyEtherWallet Inc.
+    </li>
+    <li>
+      Prizes: The Winner(s) of the Campaign (the “Winner”) will receive First,
+      Second & Third Prize: Macbook Pro, or MS Surface Pro + top 25 prizes
+      (approx $2600 value);Top 25:Ledger Hardware wallet w/MEW Gear Pack;
+      Next 25: MEW Premium Gear Pack; Bottom 25: Standard MEW Gear Pack.
+      Actual/appraised value may differ at time of prize award. The specifics
+      of the prize shall be solely determined by MyEtherWallet Inc.  No cash or
+      other prize substitution shall be permitted except at MyEtherWallet Inc’s
+      discretion. The prize is non-transferable. Any and all prize-related
+      expenses, including without limitation any and all federal, state, and/or
+      local taxes, shall be the sole responsibility of Winner. No substitution
+      of prize or transfer/assignment of prize to others or request for the cash
+      equivalent by Winner is permitted. Acceptance of prize constitutes permission
+      for MyEtherWallet, Inc to use Winner’s name, likeness, and entry for
+      purposes of advertising and trade without further compensation, unless prohibited by law.
+    </li>
+    <li>
+      Odds: The odds of winning depend on the number of eligible entries received.
+    </li>
+    <li>
+      Winner Selection and Notification: Winner will be selected by judges
+      chosen at the discretion of MyEtherWallet Inc. Winners will be judged
+      based on merit in the areas of educational content, clarity, entertainment
+      value, and formal elements. Winner will be notified by email within five
+      (5) days following selection of Winner. MyEtherWallet, Inc shall have no
+      liability for Winner’s failure to receive notices due to spam, junk e-mail
+      or other security settings or for Winner’s provision of incorrect or
+      otherwise non-functioning contact information. If Winner cannot be
+      contacted, is ineligible, fails to claim the prize within 5 days  from the
+      time award notification was sent, or fails to timely return a completed
+      and executed declaration and release as required, the prize may be forfeited
+      and an alternate Winner selected. Receipt by Winner of the prize offered in
+      this Campaign is conditioned upon compliance with any and all federal, state,
+      and local laws and regulations. ANY VIOLATION OF THESE OFFICIAL RULES BY WINNER
+      (AT MYETHERWALLET’S  SOLE DISCRETION) WILL RESULT IN WINNER’S DISQUALIFICATION AS
+      WINNER OF THE CAMPAIGN, AND ALL PRIVILEGES AS WINNER WILL BE IMMEDIATELY TERMINATED.
+    </li>
+    <li>
+      Rights Granted by You: By entering this content (e.g., photo, video, text, etc.),
+      You understand and agree that MyEtherWallet, Inc , anyone acting on behalf of
+     MyEtherWallet, Inc, andMyEtherWallet, Inc’s  licensees, successors, and assigns,
+      shall have the right, where permitted by law, to print, publish, broadcast,
+      distribute, and use in any media now known or hereafter developed, in perpetuity
+      and throughout the World, without limitation, your entry, name, portrait,
+      picture, voice, likeness, image, statements about the Campaign, and biographical
+      information for news, publicity, information, trade, advertising, public relations,
+      and promotional purposes. without any further compensation, notice, review,
+      or consent. Optional verbiage for Contests: By entering this content, You
+      represent and warrant that your entry is an original work of authorship,
+      and does not violate any third party’s proprietary or intellectual property
+      rights. If your entry infringes upon the intellectual property right of
+      another, You will be disqualified at the sole discretion of MyEtherWallet,
+      Inc . If the content of your entry is claimed to constitute infringement of
+      any proprietary or intellectual proprietary rights of any third party, you
+      shall, at your sole expense, defend or settle against such claims. You shall
+      indemnify, defend, and hold harmless MyEtherWallet, Inc from and against any
+      suit, proceeding, claims, liability, loss, damage, costs or expense, which
+     MyEtherWallet, Inc  may incur, suffer, or be required to pay arising out of
+      such infringement or suspected infringement of any third party’s right.
+    </li>
+    <li>
+      Terms & Conditions: MyEtherWallet, Inc reserves the right, in its sole
+      discretion, to cancel, terminate, modify or suspend the Campaign should
+      virus, bug, non-authorized human intervention, fraud, or other cause beyond
+     MyEtherWallet’s  control corrupt or affect the administration, security,
+      fairness, or proper conduct of the Campaign. In such case, MyEtherWallet, Inc
+      may select the Winner from all eligible entries received prior to and/or
+      after (if appropriate) the action taken by MyEtherWallet, Inc.MyEtherWallet, Inc
+      reserves the right, in its sole discretion, to disqualify any individual who
+      tampers or attempts to tamper with the entry process or the operation of the
+      Campaign or website or violates these Terms & Conditions.MyEtherWallet, Inc has
+      the right, in its sole discretion, to maintain the integrity of the Campaign, to
+      void votes for any reason, including, but not limited to: multiple entries from
+      the same user from different IP addresses; multiple entries from the same
+      computer in excess of that allowed by Campaign rules; or the use of bots,
+      macros, scripts, or other technical means for entering. Any attempt by an
+      entrant to deliberately damage any website or undermine the legitimate
+      operation of the Campaign may be a violation of criminal and civil laws.
+      Should such attempt be made,MyEtherWallet, Inc reserves the right to seek
+      damages to the fullest extent permitted by law.
+    </li>
+    <li>
+      Limitation of Liability: By entering, You agree to release and hold
+      harmless MyEtherWallet, Inc and its subsidiaries, affiliates,
+      advertising and promotion agencies, partners, representatives,
+      agents, successors, assigns, employees, officers, and directors from any
+      liability, illness, injury, death, loss, litigation, claim, or damage that
+      may occur, directly or indirectly, whether caused by negligence or not,
+      from: (i) such entrant’s participation in the Campaign and/or his/her
+      acceptance, possession, use, or misuse of any prize or any portion thereof;
+      (ii) technical failures of any kind, including but not limited to the
+      malfunction of any computer, cable, network, hardware, or software, or
+      other mechanical equipment; (iii) the unavailability or inaccessibility
+      of any transmissions, telephone, or Internet service; (iv) unauthorized
+      human intervention in any part of the entry process or the Promotion; (v)
+      electronic or human error in the administration of the Promotion or the
+      processing of entries.
+    </li>
+    <li>
+      Disputes: THIS Campaign IS GOVERNED BY THE LAWS OF the United States of
+      America  AND the State of California,
+      WITHOUT RESPECT TO CONFLICT OF LAW  DOCTRINES. As a condition of participating in this Campaign, participant
+      agrees that any and all disputes that cannot be resolved between the parties,
+      and causes of action arising out of or connected with this Campaign, shall
+      be resolved individually, without resort to any form of class action,
+      exclusively before a court located in the State of California having
+      jurisdiction. Further, in any such dispute, under no circumstances shall
+      participant be permitted to obtain awards for, and hereby waives all rights
+      to, punitive, incidental, or consequential damages, including reasonable
+      attorney’s fees, other than participant’s actual out-of-pocket expenses
+      (i.e. costs associated with entering this Campaign). Participant further
+      waives all rights to have damages multiplied or increased.
+    </li>
+    <li>
+      Privacy Policy: Personal information of entrants will only be used for the
+      purposes of identifying and contacting the winners, as well as used as
+      necessary for the awarding of prizes. Personal information will not be
+      distributed to third parties, except as necessary to fulfill these
+      objectives. MyEtherWallet, Inc may use this information to contact
+      entrants concerning other opportunities for content creation. Entrants may
+      opt out of being contacted for purposes other than of the contest by
+      sending a request in writing to <a href="mailto:contests@myetherwallet.com">contests@myetherwallet.com</a>.
+    </li>
+    <li>
+       Winners List: To obtain a copy of the Winner’s name or a copy of these
+       Official Rules, mail your request along with a stamped, self-addressed
+       envelope to:MyEtherWallet, Inc 724 S. Spring St.,STE 1104, Los Angeles,
+       CA 90014. Requests must be received no later than June 30, 2018, 5:00pm PDT
+    </li>
+    <li>
+      Sponsor: The Sponsor of the Campaign is MyEtherWallet, Inc
+      724 S. Spring St.,STE 1104, Los Angeles, CA 90014.
+    </li>
+    <li>
+      Social Media:The Campaign hosted by MyEtherWallet, Inc is in no way
+      sponsored, endorsed, administered by, or associated with Twitter,
+      Facebook, Medium, or any other social media service employed for the
+      purposes of promoting or distributing information concerning this contest.
+    </li>
+    <li>
+      By submitting an entry, You, the Entrant, have affirmatively reviewed,
+      accepted, and agreed to all of the Official Rules.
+    </li>
+  </ol>
+</section>
+<section class="pre-footer">
+  <div class="container">
+    <p>
+      MyEtherWallet.com does not hold your keys for you. We cannot access accounts, recover keys, reset passwords, nor reverse transactions. Protect your keys &amp; always check that you are on correct URL.
+      <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal">
+        You are responsible for your security.
+      </a>
+    </p>
+  </div>
+</section>
+
+<footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
+
+  <article class="block__wrap" style="max-width: 1780px; margin: auto;">
+
+    <section class="footer--left">
+
+      <a href="/"><img src="images/logo-myetherwallet.svg" height="45px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
+
+      <p>
+        <span translate="FOOTER_1">
+          Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( myetherwallet.com ) before unlocking your wallet.
+        </span>
+      </p>
+
+      <p>
+        <a aria-label="knowledge base" href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Knowledge Base
+        </a>
+      </p>
+
+      <p>
+        <a data-target="#disclaimerModal" data-toggle="modal" target="_blank" rel="noopener noreferrer" role="link" tabindex="0"  translate="FOOTER_4">
+          Disclaimer
+        </a>
+      </p>
+
+      <p ng-show="showBlocks">
+        Latest Block#: {{currentBlockNumber}}
+      </p>
+
+      <p>
+        &copy; 2018 MyEtherWallet, Inc
+      </p>
+
+    </section>
+
+    <section class="footer--cent">
+        <h5> <i aria-hidden="true">👫</i> You can support us by supporting our blockchain-family.</h5>
+        <p>Consider using our affiliate links to...</p>
+        <div class="footer__pill-wrap">
+          <a class="footer__pill"  aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer">Swap ETH/BTC/EUR/CHF via Bity.com</a>
+        </div>
+        <p> Buy a... </p>
+        <div class="footer__pill-wrap">
+          <a class="footer__pill" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Ledger Wallet</a>
+          <a class="footer__pill" href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">TREZOR</a>
+          <a class="footer__pill" href="https://digitalbitbox.com/?ref=mew" target="_blank" rel="noopener">Digital Bitbox</a>
+          <a class="footer__pill" href="https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site" target="_blank" rel="noopener">ether.card</a>
+        </div>
+
+        <h5><i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
+        <p>
+          ETH:
+          <span class="mono wrap">
+            mewtopia.eth
+            <a title="See this address on the blockchain explorer" href="https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" class="ext-etheraddresslookup-link" target="_blank">
+              0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D
+            </a>
+          </span>
+          </p>
+        <p>
+          BTC:
+          <span class="mono wrap">
+            <a title="See this address on the blockchain explorer" href="https://blockchain.info/address/1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9" class="ext-etheraddresslookup-link" target="_blank">
+            1DECAF2uSpFTP4L1fAHR8GCLrPqdwdLse9
+          </a>
+          </span>
+        </p>
+        <!--
+        <p>MYD: <span class="mono wrap">mewsupport.eth <small>0xf7e983781609012307f2514f63D526D83D24F466</small></span></p>
+        -->
+        <h5 ng-hide="curLang=='en'">
+          <i>🏅</i>
+          <span translate="Translator_Desc"> Thank you to our translators </span>
+        </h5>
+        <p ng-hide="curLang=='en'">
+          <span translate="TranslatorName_1"></span>
+          <span translate="TranslatorName_2"></span>
+          <span translate="TranslatorName_3"></span>
+          <span translate="TranslatorName_4"></span>
+          <span translate="TranslatorName_5"></span>
+        </p>
+
+    </section>
+
+    <section class="footer--righ">
+      <p>
+        <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          MyEtherWallet.com
+        </a>
+      </p>
+      <p>
+        <a aria-label="myetherwallet team" href="https://team.myetherwallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          MyEtherWallet Team
+        </a>
+      </p>
+      <p>
+        <a aria-label="support email" href="mailto:support@myetherwallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Email support: support@myetherwallet.com
+        </a>
+      </p>
+      <p>
+        <a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Unit Converters &amp; ENS Debugging
+        </a>
+      </p>
+
+      <p>
+        <a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Sign Message
+        </a>
+      </p>
+
+      <p>
+        <a aria-label="website via github URL" href="https://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          kvhnuke.github.io/etherwallet
+        </a>
+      </p>
+
+      <p>
+        <a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Github: Current Site &amp; CX
+        </a>
+      </p>
+
+      <p>
+        <a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Github: Latest Release
+        </a>
+      </p>
+
+      <p>
+        <a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          MyEtherWallet Chrome Extension
+        </a>
+      </p>
+
+      <p>
+        <a aria-label="Anti-Phishing chrome extension" href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          EAL "Don't Get Phish'd" Chrome Extension
+        </a>
+      </p>
+
+      <p>
+        <a href="https://instagram.com/myetherwallet" aria-label="instagram" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <svg width="24" height="24" class="footer__icon" aria-labelledby="instagram icon" role="img" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#ffffff" d="M1152 896q0-106-75-181t-181-75-181 75-75 181 75 181 181 75 181-75 75-181zm138 0q0 164-115 279t-279 115-279-115-115-279 115-279 279-115 279 115 115 279zm108-410q0 38-27 65t-65 27-65-27-27-65 27-65 65-27 65 27 27 65zm-502-220q-7 0-76.5-.5t-105.5 0-96.5 3-103 10-71.5 18.5q-50 20-88 58t-58 88q-11 29-18.5 71.5t-10 103-3 96.5 0 105.5.5 76.5-.5 76.5 0 105.5 3 96.5 10 103 18.5 71.5q20 50 58 88t88 58q29 11 71.5 18.5t103 10 96.5 3 105.5 0 76.5-.5 76.5.5 105.5 0 96.5-3 103-10 71.5-18.5q50-20 88-58t58-88q11-29 18.5-71.5t10-103 3-96.5 0-105.5-.5-76.5.5-76.5 0-105.5-3-96.5-10-103-18.5-71.5q-20-50-58-88t-88-58q-29-11-71.5-18.5t-103-10-96.5-3-105.5 0-76.5.5zm768 630q0 229-5 317-10 208-124 322t-322 124q-88 5-317 5t-317-5q-208-10-322-124t-124-322q-5-88-5-317t5-317q10-208 124-322t322-124q88-5 317-5t317 5q208 10 322 124t124 322q5 88 5 317z"/>
+          </svg>
+        </a>
+        <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <svg width="24" height="24" class="footer__icon" aria-labelledby="reddit icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.204 14.049c-.06.276-.091.56-.091.847 0 3.443 4.402 6.249 9.814 6.249 5.41 0 9.812-2.804 9.812-6.249 0-.274-.029-.546-.082-.809l-.015-.032c-.021-.055-.029-.11-.029-.165-.302-1.175-1.117-2.241-2.296-3.103-.045-.016-.088-.039-.126-.07-.026-.02-.045-.042-.067-.064-1.792-1.234-4.356-2.008-7.196-2.008-2.815 0-5.354.759-7.146 1.971-.014.018-.029.033-.049.049-.039.033-.084.06-.13.075-1.206.862-2.042 1.937-2.354 3.123 0 .058-.014.114-.037.171l-.008.015zm9.773 5.441c-1.794 0-3.057-.389-3.863-1.197-.173-.174-.173-.457 0-.632.176-.165.46-.165.635 0 .63.629 1.685.943 3.228.943 1.542 0 2.591-.3 3.219-.929.165-.164.45-.164.629 0 .165.18.165.465 0 .645-.809.808-2.065 1.198-3.862 1.198l.014-.028zm-3.606-7.573c-.914 0-1.677.765-1.677 1.677 0 .91.763 1.65 1.677 1.65s1.651-.74 1.651-1.65c0-.912-.739-1.677-1.651-1.677zm7.233 0c-.914 0-1.678.765-1.678 1.677 0 .91.764 1.65 1.678 1.65s1.651-.74 1.651-1.65c0-.912-.739-1.677-1.651-1.677zm4.548-1.595c1.037.833 1.8 1.821 2.189 2.904.45-.336.719-.864.719-1.449 0-1.002-.815-1.816-1.818-1.816-.399 0-.778.129-1.09.363v-.002zM2.711 9.963c-1.003 0-1.817.816-1.817 1.818 0 .543.239 1.048.644 1.389.401-1.079 1.172-2.053 2.213-2.876-.302-.21-.663-.329-1.039-.329v-.002zm9.217 12.079c-5.906 0-10.709-3.205-10.709-7.142 0-.275.023-.544.068-.809C.494 13.598 0 12.729 0 11.777c0-1.496 1.227-2.713 2.725-2.713.674 0 1.303.246 1.797.682 1.856-1.191 4.357-1.941 7.112-1.992l1.812-5.524.404.095s.016 0 .016.002l4.223.993c.344-.798 1.138-1.36 2.065-1.36 1.229 0 2.231 1.004 2.231 2.234 0 1.232-1.003 2.234-2.231 2.234s-2.23-1.004-2.23-2.23l-3.851-.912-1.467 4.477c2.65.105 5.047.854 6.844 2.021.494-.464 1.144-.719 1.833-.719 1.498 0 2.718 1.213 2.718 2.711 0 .987-.54 1.886-1.378 2.365.029.255.059.494.059.749-.015 3.938-4.806 7.143-10.72 7.143l-.034.009zm8.179-19.187c-.74 0-1.34.599-1.34 1.338 0 .738.6 1.34 1.34 1.34.732 0 1.33-.6 1.33-1.334 0-.733-.598-1.332-1.347-1.332l.017-.012z" fill="#ffffff" /></svg>
+        </a>
+        <a aria-label="twitter" title="twitter" href="https://twitter.com/myetherwallet" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <svg width="24" height="24" class="footer__icon" aria-labelledby="twitter icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z" fill="#ffffff" /></svg>
+        </a>
+        <a aria-label="facebook" title="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <svg width="24" height="24" class="footer__icon" aria-labelledby="facebook icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0" fill="#ffffff" /></svg>
+        </a>
+        <a aria-label="medium" title="medium" href="https://medium.com/@myetherwallet" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <svg width="24" height="24" class="footer__icon" aria-labelledby="medium icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.45 2.67l5.38 11.74H13c.86-1.93 1.6-3.91 2.4-5.87s1.6-3.9 2.35-5.86h5.66a3.67 3.67 0 0 1-.24.35c-.42.47-.83 1-1.28 1.41a1.61 1.61 0 0 0-.48 1.23v13a1.08 1.08 0 0 0 .38.86c.44.39.86.8 1.28 1.21l.41.42h-8.77a2.81 2.81 0 0 1 .26-.33c.41-.39.82-.79 1.25-1.16a1.22 1.22 0 0 0 .44-1V9.33c0-.44 0-.88.07-1.31V7.3h-.13c-.08.16-.18.31-.24.48l-5.3 13c-.07.18-.16.35-.25.52h-.12L4.23 7.16h-.14V16.42a1.93 1.93 0 0 0 .43 1.26c.77 1 1.52 2 2.28 3 .1.13.18.27.32.46H.5c.1-.17.17-.29.25-.39.79-1.05 1.59-2.11 2.39-3.15a1.81 1.81 0 0 0 .4-1.17v-10a1.51 1.51 0 0 0-.33-1C2.57 4.67 2 3.85 1.34 3c-.07-.1-.13-.21-.23-.36z" fill="#ffffff" /></svg>
+        </a>
+        <a aria-label="linkedin" title="linkedin" href="https://www.linkedin.com/company/myetherwallet" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <svg width="24" height="24" class="footer__icon" aria-labelledby="linkedin icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#ffffff" /></svg>
+        </a>
+        <a aria-label="github" title="github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <svg width="24" height="24" class="footer__icon" aria-labelledby="github icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="#ffffff" /></svg>
+        </a>
+        <a aria-label="support email" title="support email" href="mailto:support@myetherwallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <svg width="24" height="24" class="footer__icon" aria-labelledby="github icon" role="img" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M1664 1504v-768q-32 36-69 66-268 206-426 338-51 43-83 67t-86.5 48.5-102.5 24.5h-2q-48 0-102.5-24.5t-86.5-48.5-83-67q-158-132-426-338-37-30-69-66v768q0 13 9.5 22.5t22.5 9.5h1472q13 0 22.5-9.5t9.5-22.5zm0-1051v-24.5l-.5-13-3-12.5-5.5-9-9-7.5-14-2.5h-1472q-13 0-22.5 9.5t-9.5 22.5q0 168 147 284 193 152 401 317 6 5 35 29.5t46 37.5 44.5 31.5 50.5 27.5 43 9h2q20 0 43-9t50.5-27.5 44.5-31.5 46-37.5 35-29.5q208-165 401-317 54-43 100.5-115.5t46.5-131.5zm128-37v1088q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-1088q0-66 47-113t113-47h1472q66 0 113 47t47 113z"/></svg>
+        </a>
+      </p>
+
+    </section>
+
+  </article>
+
+</div>
+
+
+</footer>
+
+ <article class="modal fade" id="disclaimerModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
+
+        <h2 class="modal-title text-info" translate="FOOTER_4">Disclaimer</h2>
+
+        <p class="small"><strong>Be safe &amp; secure:</strong> <a href="https://myetherwallet.github.io/knowledge-base/security/securing-your-ethereum.html" target="_blank" rel="noopener noreferrer"> We highly recommend that you read our guide on How to Prevent Loss &amp; Theft for some recommendations on how to be proactive about your security.</a></p>
+
+        <p class="small"><strong>Always backup your keys: </strong> MyEtherWallet.com &amp; MyEtherWallet CX are not "web wallets". You do not create an account or give us your funds to hold onto. No data leaves your computer / your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</p>
+
+        <p class="small"><strong>We are not responsible for any loss: </strong> Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development. While we have thoroughly tested &amp; tens of thousands of wallets have been successfully created by people all over the globe, there is always the possibility something unexpected happens that causes your funds to be lost. Please do not invest more than you are willing to lose, and please be careful.</p>
+
+        <p class="small"><strong> Translations of MyEtherWallet: </strong> The community has done an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
+
+        <p class="small"><strong>MIT License</strong> Copyright &copy; 2015-2017 MyEtherWallet INC</p>
+
+        <p class="small">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+        <p class="small">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+        <p class="small"><strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</strong></p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Okay</button>
+      </div>
+
+    </section>
+  </section>
+</article>
+ 
+
+
+ <article class="modal fade" id="onboardingModal" tabindex="-1" ng-controller='onboardingCtrl'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="on-boarding-close">
+          <img class="editor-icons" src="images/icon-x.svg" title="Close" ng-click="onboardModal.close()"/>
+        </div>
+        <article class="onboarding__msg" ng-show="onboardMsg" translate="ONBOARD_resume">
+          It looks like you didn't finish reading through these slides last time. ProTip: Finish reading through the slides 😉
+        </article>
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==1">
+          <h3 class="onboarding__title">
+            <span translate="ONBOARD_welcome_title">
+              Welcome to MyEtherWallet.com
+            </span>
+            <br />
+            <small translate="ONBOARD_welcome_content__3">
+              We know this click-through shit is annoying. We are sorry.
+            </small>
+          </h3>
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-7 onboarding__content">
+              <p class="alert-danger--outline">
+                <span translate="ONBOARD_welcome_content__1">
+                  Please take some time to understand this for your own safety. 🙏
+                </span>
+                <span translate="ONBOARD_welcome_content__2">
+                  Your funds will be stolen if you do not head these warnings.
+                </span>
+              </p>
+              <p class="alert-danger--outline" translate="ONBOARD_welcome_content__8">
+                We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.
+              </p>
+              <h5 translate="ONBOARD_welcome_content__4">
+                What is MEW?
+              </h5>
+              <ul>
+                <li translate="ONBOARD_welcome_content__5">
+                  MyEtherWallet is a free, open-source, client-side interface.
+                </li>
+                <li translate="ONBOARD_welcome_content__6">
+                  We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.
+                </li>
+                <li translate="ONBOARD_welcome_content__7">
+                  **You** and **only you** are responsible for your security.
+                </li>
+
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-5 onboarding__image">
+              <img src="./images/onboarding_icon-01.svg" width="100%" height="auto" />
+            </div>
+          </section>
+          <div class="onboarding__buttons text-center">
+            <a ng-click="setOnboardStatus(2)" class="btn btn-primary">
+              <span translate="ONBOARD_bank_title">
+                MyEtherWallet is not a Bank
+              </span>
+            </a>
+          </div>
+        </article>
+
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==2">
+          <h3 class="onboarding__title" translate="ONBOARD_bank_title">
+            MyEtherWallet is not a Bank
+          </h3>
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
+              <img src="./images/onboarding_icon-02.svg" width="100%" height="auto" />
+            </div>
+            <div class="col-xs-12 col-sm-8 onboarding__content">
+              <ul>
+                <li translate="ONBOARD_bank_content__1">
+                  When you open an account with a bank or exchange, they create an account for you in their system.
+                </li>
+                <li translate="ONBOARD_bank_content__2">
+                  They keep track of your personal information, account passwords, balances, transactions and ultimately your money.
+                </li>
+                <li translate="ONBOARD_bank_content__3">
+                  They charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.
+                </li>
+                <li translate="ONBOARD_bank_content__4">
+                  You can write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.
+                </li>
+                <li translate="ONBOARD_bank_content__5">
+                  You have an account *with the bank* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.
+                </li>
+              </ul>
+            </div>
+          </section>
+          <div class="onboarding__buttons">
+            <a ng-click="setOnboardStatus(1)" class="btn btn-default">
+              <span translate="ONBOARD_welcome_title__alt">
+                Introduction
+              </span>
+            </a>
+            <a ng-click="setOnboardStatus(3)" class="btn btn-primary">
+              <span translate="ONBOARD_interface_title">
+                MyEtherWallet is an Interface
+              </span>
+            </a>
+          </div>
+        </article>
+
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==3">
+          <h3 class="onboarding__title" translate="ONBOARD_interface_title">
+            MyEtherWallet is an Interface
+          </h3>
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
+              <img src="./images/onboarding_icon-03.svg" width="100%" height="auto" />
+            </div>
+            <div class="col-xs-12 col-sm-8 onboarding__content">
+              <ul>
+                <li translate="ONBOARD_interface_content__1">
+                  When you create an account here, you are generating an cryptographic set of numbers: your private key and your public key (address).
+                </li>
+                <li translate="ONBOARD_interface_content__2">
+                  The handling of your keys happens entirely on your computer, inside your browser.
+                </li>
+                <li translate="ONBOARD_interface_content__3">
+                  We never transmit, receive or store your private key, password, or other account information.
+                </li>
+                <li translate="ONBOARD_interface_content__4">
+                  We do not charge a transaction fee.
+                </li>
+                <li translate="ONBOARD_interface_content__5">
+                  You are just using our **interface** to interact **directly with the blockchain**.
+                </li>
+                <li translate="ONBOARD_interface_content__6">
+                  If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍
+                </li>
+                <li translate="ONBOARD_interface_content__7">
+                  If you send your *private key* to someone, they now have full control of your account. 👎
+                </li>
+              </ul>
+            </div>
+          </section>
+          <div class="onboarding__buttons">
+            <a ng-click="setOnboardStatus(2)" class="btn btn-default">
+              <span translate="ONBOARD_bank_title__alt">
+                MEW isn't a Bank
+              </span>
+            </a>
+            <a ng-click="setOnboardStatus(4)" class="btn btn-primary">
+              <span translate="ONBOARD_blockchain_title__alt">
+                WTF is a Blockchain?
+              </span>
+            </a>
+          </div>
+          <p ng-click="setOnboardStatus(5)" class="text-right small" style="cursor:pointer">
+            <span translate="ONBOARD_blockchain_skip">
+              I already know what a blockchain is...
+            </span>
+          </p>
+        </article>
+
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==4">
+          <h3 class="onboarding__title" translate="ONBOARD_blockchain_title">
+            Wait, WTF is a Blockchain?
+          </h3>
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
+              <ul>
+                <li translate="ONBOARD_blockchain_content__1">
+                  The blockchain is like a huge, global, decentralized spreadsheet.
+                </li>
+                <li translate="ONBOARD_blockchain_content__2">
+                  It keeps track of who sent how many coins to whom, and what the balance of every account is.
+                </li>
+                <li translate="ONBOARD_blockchain_content__3">
+                  It is stored and maintained by thousands of people (miners) across the globe who have special computers.
+                </li>
+                <li translate="ONBOARD_blockchain_content__4">
+                  It is made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.
+                </li>
+                <li translate="ONBOARD_blockchain_content__5">
+                  When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.
+                </li>
+                <li translate="ONBOARD_blockchain_content__6">
+                   Again: <strong>we are not a bank</strong>.
+                </li>
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 onboarding__image">
+              <img src="./images/onboarding_icon-04.svg" width="100%" height="auto" />
+            </div>
+          </section>
+          <div class="onboarding__buttons">
+            <a ng-click="setOnboardStatus(3)" class="btn btn-default">
+              <span translate="ONBOARD_interface_title__alt">
+                MEW is an Interface
+              </span>
+            </a>
+            <a ng-click="setOnboardStatus(5)" class="btn btn-primary">
+              <span translate="ONBOARD_why_title__alt">
+                But...why does this matter?
+              </span>
+            </a>
+          </div>
+        </article>
+
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==5">
+          <h3 class="onboarding__title" translate="ONBOARD_why_title">
+            Why are you making me read all this?
+          </h3>
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
+              <img src="./images/onboarding_icon-05.svg" width="100%" height="auto" />
+            </div>
+            <div class="col-xs-12 col-sm-8 onboarding__content">
+              <h5 translate="ONBOARD_why_content__1">
+                Because we need you to understand that we **cannot**...
+              </h5>
+              <ul>
+                <li class="text-danger" translate="ONBOARD_why_content__2">
+                  Access your account or send your funds for you.
+                </li>
+                <li class="text-danger" translate="ONBOARD_why_content__3">
+                  Recover or change your private key.
+                </li>
+                <li class="text-danger" translate="ONBOARD_why_content__4">
+                  Recover or reset your password.
+                </li>
+                <li class="text-danger" translate="ONBOARD_why_content__5">
+                  Reverse, cancel, or refund transactions.
+                </li>
+                <li class="text-danger" translate="ONBOARD_why_content__6">
+                  Freeze accounts.
+                </li>
+              </ul>
+              <h5 translate="ONBOARD_why_content__7">
+                **You** and **only you** are responsible for your security.
+              </h5>
+              <ul>
+                <li translate="ONBOARD_why_content__8">
+                   Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.
+                </li>
+                <li translate="ONBOARD_why_content__9">
+                  If lose your private key or password, no one can recover it.
+                </li>
+                <li translate="ONBOARD_why_content__10">
+                  If you enter your private key on a phishing website, you will have **all your funds taken**.
+                </li>
+              </ul>
+            </div>
+          </section>
+          <div class="onboarding__buttons">
+            <a ng-click="setOnboardStatus(4)" class="btn btn-default">
+              <span translate="ONBOARD_blockchain_title__alt">
+                WTF is a Blockchain?
+              </span>
+            </a>
+            <a ng-click="setOnboardStatus(6)" class="btn btn-primary">
+              <span translate="ONBOARD_point_title__alt">
+                What's the Point of MEW then?
+              </span>
+            </a>
+          </div>
+        </article>
+
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==6">
+          <h3 class="onboarding__title" translate="ONBOARD_whymew_title">
+            If MyEtherWallet can't do those things, what's the point?
+          </h3>
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-4 onboarding__image">
+              <img src="./images/onboarding_icon-06.svg" width="100%" height="auto" />
+            </div>
+            <div class="col-xs-12 col-sm-8 onboarding__content">
+              <ul>
+                <li translate="ONBOARD_whymew_content__1">
+                  Because that is the point of decentralization and the blockchain.
+                </li>
+                <li translate="ONBOARD_whymew_content__2">
+                  You don't have to rely on your bank, government, or anyone else when you want to move your funds.
+                </li>
+                <li translate="ONBOARD_whymew_content__3">
+                  You don't have to rely on the security of an exchange or bank to keep your funds safe.
+                </li>
+                <li translate="ONBOARD_whymew_content__4">
+                  If you don't find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉
+                </li>
+                <li translate="ONBOARD_whymew_content__5">
+                  If you don't like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames &amp; passwords.
+                </li>
+                <li translate="ONBOARD_whymew_content__6">
+                  If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.
+                </li>
+              </ul>
+            </div>
+          </section>
+          <div class="onboarding__buttons">
+            <a ng-click="setOnboardStatus(5)" class="btn btn-default">
+              <span translate="ONBOARD_why_title__alt">
+                But...why?
+              </span>
+            </a>
+            <a ng-click="setOnboardStatus(7)" class="btn btn-primary">
+              <span translate="ONBOARD_secure_title">
+                How To Protect Yourself &amp; Your Funds
+              </span>
+            </a>
+          </div>
+        </article>
+
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==7">
+          <h3 class="onboarding__title" translate="ONBOARD_secure_1_title">
+            How To Protect Yourself from Phishers
+          </h3>
+          <p translate="ONBOARD_secure_1_content__1">
+            Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.
+          </p>
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
+              <ul>
+                <li translate="ONBOARD_secure_1_content__2">
+                  Install [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige) or the [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) to block malicious websites.
+                </li>
+                <li translate="ONBOARD_secure_1_content__3">
+                  Always check the URL: `https://www.myetherwallet.com`.
+                </li>
+                <li translate="ONBOARD_secure_1_content__4">
+                  Always make sure the URL bar has `MYETHERWALLET Inc` in green.
+                </li>
+                <li translate="ONBOARD_secure_1_content__5">
+                  Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.
+                </li>
+                <li translate="ONBOARD_secure_1_content__6">
+                 Always navigate directly to a site before you enter information. Do not enter information after clicking a link from a message or email.
+                </li>
+                <li translate="ONBOARD_secure_1_content__7">
+                  [Install an AdBlocker](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) and do not click ads on your search engine (e.g. Google).
+                </li>
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 onboarding__image">
+              <img src="./images/onboarding_icon-07.svg" width="100%" height="auto" />
+            </div>
+          </section>
+          <div class="onboarding__buttons">
+            <a ng-click="setOnboardStatus(6)" class="btn btn-default">
+              <span translate="ONBOARD_point_title__alt_2">
+                What's the point?
+              </span>
+            </a>
+            <a ng-click="setOnboardStatus(8)" class="btn btn-primary">
+              <span translate="ONBOARD_secure_2_title">
+                How To Protect Yourself from Scams
+              </span>
+            </a>
+          </div>
+        </article>
+
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==8">
+          <h3 class="onboarding__title" translate="ONBOARD_secure_2_title">
+            How To Protect Yourself from Scams
+          </h3>
+          <p class="text-center" translate="ONBOARD_secure_2_content__1">
+            People will try to get you to give them money in return for nothing.
+          </p>
+          <br />
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-8 onboarding__content">
+              <ul>
+                <li translate="ONBOARD_secure_2_content__2">
+                  If it is too good to be true, it probably is.
+                </li>
+                <li translate="ONBOARD_secure_2_content__3">
+                  Research before sending money to someone or some project. Look for information on a variety of websites and forums. Be wary.
+                </li>
+                <li translate="ONBOARD_secure_2_content__4">
+                  Ask questions when you don't understand something or it doesn't seem right.
+                </li>
+                <li translate="ONBOARD_secure_2_content__5">
+                  Don't let fear, FUD, or FOMO win over common sense. If something is very urgent, ask yourself 'why?'. It may be to create FOMO or prevent you from doing research.
+                </li>
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 onboarding__image">
+              <img src="./images/onboarding_icon-08.svg" width="100%" height="auto" />
+            </div>
+          </section>
+          <div class="onboarding__buttons">
+            <a ng-click="setOnboardStatus(7)" class="btn btn-default">
+              <span translate="ONBOARD_secure_3_title__alt">
+                Phuck Phishers
+              </span>
+            </a>
+            <a ng-click="setOnboardStatus(9)" class="btn btn-primary">
+              <span translate="ONBOARD_secure_3_title">
+                How To Protect Yourself from Loss
+              </span>
+            </a>
+          </div>
+        </article>
+
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==9">
+          <h3 class="onboarding__title" translate="ONBOARD_secure_3_title">
+            How To Protect Yourself from Loss
+          </h3>
+          <p class="text-center" translate="ONBOARD_secure_3_content__1">
+            If you lose your private key or password, it is gone forever. Don't lose it.
+          </p>
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-7">
+              <ul>
+                <li translate="ONBOARD_secure_3_content__2">
+                  Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.
+                </li>
+                <li translate="ONBOARD_secure_3_content__3">
+                  Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.
+                </li>
+                <li translate="ONBOARD_secure_3_content__4">
+                  Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.
+                </li>
+                <li translate="ONBOARD_secure_3_content__5">
+                  If you have more than 1-week's worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It's worth it. I promise.
+                </li>
+                
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 onboarding__image">
+              <img src="./images/onboarding_icon-09.svg" width="100%" height="auto" />
+            </div>
+          </section>
+          <h5 class="text-center" translate="ONBOARD_secure_3_content__6">
+            [Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)
+          </h5>
+          <div class="onboarding__buttons">
+            <a ng-click="setOnboardStatus(8)" class="btn btn-default">
+              <span translate="ONBOARD_secure_2_title__alt_2">
+                Screw Scams
+              </span>
+            </a>
+            <a ng-click="setOnboardStatus(10)" class="btn btn-primary">
+              <span translate="ONBOARD_final_title__alt">
+                One more click &amp; you're done! 🤘
+              </span>
+            </a>
+          </div>
+        </article>
+
+
+        <article class="onboarding__modal" ng-show="showOnboardSlide==10">
+          <h3 class="onboarding__title" translate="ONBOARD_final_title">
+            Alright, I'm done lecturing you!
+          </h3>
+          <p class="text-center" translate="ONBOARD_final_subtitle">
+            Sorry for being like this. Onwards!
+          </p>
+          <br />
+          <section class="row row--flex">
+            <div class="col-xs-12 col-sm-4 col-xs-12 col-sm-offset-1">
+              <img src="./images/onboarding_icon-10.svg" width="100%" height="auto" />
+            </div>
+            <div class="col-xs-12 col-sm-7">
+              <ul>
+                <li>
+                  <a href="https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html"
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__2">
+                      Get a hardware wallet
+                  </a>
+                </li>
+                <li>
+                  <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html"
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__3">
+                    How to Set up MEW + MetaMask
+                  </a>
+                </li>
+                <li>
+                  <a href="https://myetherwallet.github.io/knowledge-base/offline/running-myetherwallet-locally.html"
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__4">
+                    How to Run MEW Offline / Locally
+                  </a>
+                </li>
+                <li>
+                  <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-ledger-hardware-wallet.html"
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__5">
+                    How to Send via Ledger hardware wallet
+                  </a>
+                </li>
+                <li>
+                  <a href="https://myetherwallet.github.io/knowledge-base/hardware-wallets/trezor-sending-to-trezor-device.html"
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__6">
+                    How to Send via TREZOR hardware wallet
+                  </a>
+                </li>
+                <li>
+                  <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html"
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__7">
+                       How to Send via MetaMask
+                  </a>
+                </li>
+                <li>
+                  <a href="https://myetherwallet.github.io/knowledge-base/"
+                     target="_blank" rel="noopener noreferrer" class="strong" translate="ONBOARD_final_content__8">
+                       Learn More or Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a ng-click="onboardModal.close();globalService.currentTab=globalService.tabs.sendTransaction.id"
+                     class="strong">
+                     <span translate="ONBOARD_final_content__9">
+                       OMG, please just let me send FFS.
+                     </span>
+                  </a>
+                </li>
+              </ul>
+
+              <div class="onboarding__buttons">
+                <a ng-click="onboardModal.close()" class="btn btn-primary col-sm-5 col-sm-offset-7">
+                  <span>
+                    Done &nbsp;
+                  </span>
+                </a>
+              </div>
+            </div>
+          </section>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</article>
+ 
+
+
+
+</main>
+</body>
+</html>
+

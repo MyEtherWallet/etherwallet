@@ -192,6 +192,10 @@ globalFuncs.getRandomBytes = function(num) {
     return ethUtil.crypto.randomBytes(num);
 };
 
+globalFuncs.isAlphaNumericOrSpec = function(value) {
+  return !/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/.test(value);
+}
+
 function getFromLS(key, errorMsg) {
     var localStorageItemString = globalFuncs.localStorage.getItem(key);
     if (!localStorageItemString && errorMsg) {
@@ -302,7 +306,7 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
     try {
         if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) {throw globalFuncs.errorMsgs[5]}
         else if (!globalFuncs.isNumeric(localToken.decimals) || parseFloat(localToken.decimals) < 0) {throw globalFuncs.errorMsgs[7]}
-        else if (!globalFuncs.isAlphaNumeric(localToken.symbol) || localToken.symbol == "") {throw globalFuncs.errorMsgs[19]}
+        else if (globalFuncs.isAlphaNumericOrSpec(localToken.symbol) || localToken.symbol === "") {throw globalFuncs.errorMsgs[19]}
         var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
 
         // catch if TOKEN SYMBOL is already in storedTokens
@@ -341,9 +345,10 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
         });
 
     } catch (e) {
+        const newE = e.message ? e.message : e;
         callback({
             error: true,
-            msg: e.message
+            msg: newE
         });
     }
 };

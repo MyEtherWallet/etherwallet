@@ -7,6 +7,18 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// GIFcoin (GIF) Token sale
+to:         '0xFcD862985628b254061F7A918035B80340D045d3',
+gasLimit:   200000,
+data:       '',
+msg:        'GIFcoin (GIF) token sale - https://gifcoin.io - save your ETH wallet after purchase on the website to gain access to investors hub.'
+},{
+// AX1 Mining token
+to:         '0x5de9f32b2665bb2cdc23bfb51b03e2a2985ecc87',
+gasLimit:   324741,
+data:       '',
+msg:        'You must have registered at https://ax1.io and followed the instructions to purchase tokens here.'
+},{
 // Accord (ARD) Token sale
 to:         '0x75aa7b0d02532f3833b66c7f0ad35376d373ddf8',
 gasLimit:   300000,
@@ -324,5 +336,11 @@ msg:        ' APIS token sale - https://apisplatform.io'
 to:         '0xe933c0Cd9784414d5F278C114904F5A84b396919',
 gasLimit:   200000,
 data:       '',
-msg:        'WhoHas-Token Sale. Please register through our offical website: https://whohas.io/'
+msg:        'WhoHas-Token Sale. Please register through our official website: https://whohas.io/'
+},{
+// WHEN (￦) Token Sale
+to:         '0xf4fe95603881d0e07954fd7605e0e9a916e42c44',
+gasLimit:   200000,
+data:       '',
+msg:        'WHEN Token Sale. Join the future of person-to-person micro-contracts using the blockchain.: https://interface.whenhub.com/'
 }]

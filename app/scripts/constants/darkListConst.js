@@ -1363,7 +1363,7 @@ const darklist = function() {
 		},
 		{
 			address: "0xbb53be0690ae7256833099a1f01125eb33445692",
-			comment: "Fake EtherDelta Andriod app, phishing for private keys",
+			comment: "Fake EtherDelta Android app, phishing for private keys",
 			date: "2018-03-12"
 		},
 		{

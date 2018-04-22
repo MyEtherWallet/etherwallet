@@ -98,18 +98,18 @@
     @@if (site === 'mew' ) {
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.21.05</p>
+        <p class="small visible-xs">3.21.07</p>
       </a>
     }
     @@if (site === 'cx'  ) {
       <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">
         <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.21.05</p>
+        <p class="small visible-xs">3.21.07</p>
       </a>
     }
     <div class="tagline">
 
-    <span class="hidden-xs">3.21.05</span>
+    <span class="hidden-xs">3.21.07</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -214,7 +214,7 @@
   </section>
 </section>
 
-<nav role="navigation" aria-label="main navigation" class="container nav-container overflowing" >
+<nav role="navigation" aria-label="main navigation" class="container nav-container overflowing">
   <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
   <div class="nav-scroll">
     <ul class="nav-inner">

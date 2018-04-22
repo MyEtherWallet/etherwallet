@@ -1,6 +1,6 @@
 {
   "name": "MyEtherWallet",
-  "version": "3.21.05",
+  "version": "3.21.07",
   "manifest_version": 2,
   "description": "MyEtherWallet Chrome Extension",
   "homepage_url": "https://www.myetherwallet.com/",
