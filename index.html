@@ -2222,15 +2222,15 @@
         <!-- Info Row -->
         <section class="order-info-wrap row">
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.fromVal  | number: 6}} {{swapOrder.fromCoin}} </h4>
+                <h4> {{swapOrder.fromVal | number: 6}} {{swapOrder.fromCoin}} </h4>
                 <p translate="SWAP_send_amt"> Amount to send </p>
             </div>
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.toVal  | number: 6}} {{swapOrder.toCoin}} </h4>
+                <h4> {{swapOrder.toVal | number: 6}} {{swapOrder.toCoin}} </h4>
                 <p translate="SWAP_rec_amt"> Amount to receive </p>
             </div>
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.swapRate  | number: 6}} {{swapOrder.swapPair}} </h4>
+                <h4> {{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}} </h4>
                 <p translate="SWAP_your_rate"> Your rate </p>
             </div>
         </section>
@@ -2251,7 +2251,8 @@
 
 
                 <div class="col-sm-8 col-xs-12">
-                    <label><span translate="SWAP_rec_add">Your Receiving Address </span> <strong>({{swapOrder.toCoin}})</strong></label>
+                    <label><span translate="SWAP_rec_add">Your Receiving Address </span>
+                        <strong>({{swapOrder.toCoin}})</strong></label>
                     <!-- todo should I just wait for the wallet unlock and not ask for an address first.  then if wallet uplock calculation proves false at send tx.  present option to return to start???-->
                     <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
                                    var-name="swapOrder.toAddress"></address-field>
@@ -2268,7 +2269,6 @@
 
             <!-- / CTA -->
         </section>
-
 
 
     </article>
@@ -2289,11 +2289,11 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4>{{kyberOrderResult.output.amount  | number: 6}} {{kyberOrderResult.output.currency}}</h4>
+                <h4>{{kyberOrderResult.output.amount | number: 6}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
-                <h4>{{swapOrder.swapRate  | number: 6}} {{swapOrder.swapPair}}</h4>
+                <h4>{{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}}</h4>
                 <p translate="SWAP_your_rate">Your rate</p>
             </div>
         </section>
@@ -2323,7 +2323,8 @@
             </div>
             <div class="progress-item {{kyberOrderResult.progress.bar[4]}}">
                 <div class="progress-circle"><i>5</i></div>
-                <p translate="SWAP_progress_5">Order Complete</p>
+                <!--<p translate="SWAP_progress_5">Order Complete</p>-->
+                <p>Order Broadcast to Blockchain</p>
             </div>
         </section>
 
@@ -2388,7 +2389,9 @@
                 <h5 class="row text-center">Wallet Unlocked!</h5>  <!-- todo: add translate -->
 
                 <section class="row text-center" ng-if="kyberReturnToStart">
-                    <h5 class="text-warning">The swap value of  {{swapOrder.fromVal}} {{swapOrder.fromCoin}} is Greater than your current {{swapOrder.fromCoin}} Balance of {{userTokenBalanceChecked}} {{swapOrder.fromCoin}}</h5>
+                    <h5 class="text-warning">The swap value of {{swapOrder.fromVal}} {{swapOrder.fromCoin}} is Greater
+                                             than your current {{swapOrder.fromCoin}} Balance of
+                                             {{userTokenBalanceChecked}} {{swapOrder.fromCoin}}</h5>
                     <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a>
                     <!-- todo: add translate -->
                 </section>
@@ -2398,10 +2401,10 @@
                 </section>
 
 
-                <!-- Included Because sendTxCtrl.js looks for it via querySelector and throws if it is not present (and destroys the layout in the process)-->
+                                                                   <!-- Included Because sendTxCtrl.js looks for it via querySelector and throws if it is not present (and destroys the layout in the process)-->
                 <div id="sendTransaction"></div>
 
-                 <article class="modal fade" id="kyberTransaction" tabindex="-1">
+                                                                    <article class="modal fade" id="kyberTransaction" tabindex="-1">
     <section class="modal-dialog">
         <section class="modal-content">
 
@@ -2764,8 +2767,8 @@
     </section>
 </article>
  
-                <!--todo implement (custom swap modal) with content comming from swapCtrl -->
-                
+                                                                   <!--todo implement (custom swap modal) with content comming from swapCtrl -->
+                                                                   
 
             </section>
             <!--</div>-->
@@ -2793,7 +2796,7 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4>{{kyberOrderResult.output.amount  | number: 6}} {{kyberOrderResult.output.currency}}</h4>
+                <h4>{{kyberOrderResult.output.amount | number: 6}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
@@ -2818,7 +2821,7 @@
                 <div class="progress-circle"><i>3</i></div>
                 <p>{{kyberOrderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
             </div>
-            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}" >
+            <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
                 <div class="progress-circle"><i>4</i></div>
                 <p>
                     <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>
@@ -2848,44 +2851,48 @@
                         </div>
                         <div class="col-sm-12">
                             <h4>{{kyberOrderResult.input.amount}} {{kyberOrderResult.input.currency}}</h4>
-                            <p >Amount sent</p>
+                            <p>Amount sent</p>
                         </div>
                         <div class="col-sm-12">
                             <h4>{{kyberOrderResult.output.amount}} {{kyberOrderResult.output.currency}}</h4>
                             <p translate="SWAP_rec_amt">Amount to receive</p>
                         </div>
                         <div class="col-sm-12">
-                            <h4>{{swapOrder.swapRate  | number: 6}} {{swapOrder.swapPair}}</h4>
+                            <h4>{{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}}</h4>
                             <p translate="SWAP_your_rate">Your rate</p>
                         </div>
                         <hr>
                         <div class="col-sm-12">
-                            <h5>Transaction Hash(es)</h5>
+                            <h5>Transaction Hash(es):</h5>
                         </div>
                         <div class="col-sm-12" ng-if="!kyberEthToToken">
+                            <!--                            <div ng-show="kyberOrderResult.progress.status=='TOKENS_APPROVED'">
+
+                                                        </div>-->
+                            <span>
+                                View your swap transaction:
+                            </span>
                             <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
-                                View
-                                your
-                                swap
-                                transaction
                                 <h5>{{kyberTransaction.tokenTxHash}}</h5>
                             </a>
                         </div>
                         <div class="col-sm-12" ng-if="!kyberEthToToken">
-                            <a class="strong" ng-href="{{kyberTransaction.tokenApproveTxLink}}" target="_blank" rel="noopener">
-                                View
-                                your
-                                token
-                                authorization
-                                transaction
+                            <h6>{{orderResult.progress.timeMessage}}</h6>
+                         <span>
+                                View your token authorization transaction:
+                         </span>
+                            <a class="strong" ng-href="{{kyberTransaction.tokenApproveTxLink}}" target="_blank"
+                               rel="noopener">
+
                                 <h5>{{kyberTransaction.tokenApproveTxHash}}</h5>
                             </a>
                         </div>
                         <div class="col-sm-12" ng-if="kyberEthToToken">
+                          <span>
+                              View your swap transaction:
+                          </span>
                             <a class="strong" ng-href="{{kyberTransaction.ethTxLink}}" target="_blank" rel="noopener">
-                                View
-                                your
-                                transaction
+
                                 <h5>{{kyberTransaction.ethTxHash}}</h5>
                             </a>
                         </div>
