@@ -321,7 +321,8 @@
                             <span>
                                 Track your swap transaction:
                             </span>
-                            <h6 ng-if="!kyberTransaction.tokenTxHash">Waiting for token authorization <span ng-repeat="tick in indicatorhacked track by $index">. </span></h6>
+                            <span ng-if="!kyberTransaction.tokenTxHash" class="text-info">Waiting for token authorization <span ng-repeat="tick in indicatorhacked track by $index">. </span></span>
+                            <span  ng-if="!kyberTransaction.tokenTxHash" class="text-danger"> Do Not Navigate Away or Close Your Browser</span>
                             <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
                                 <h5>{{kyberTransaction.tokenTxHash}}</h5>
                             </a>
