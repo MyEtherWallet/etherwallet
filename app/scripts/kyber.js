@@ -298,6 +298,7 @@ kyberFuncs.prototype.checkUserCap = function (_userAddress, swapValue /* In ETH 
     let weiValue = _this.convertToTokenWei(swapValue, "ETH");
 
     _this.getUserCapInWei(_userAddress, function (data) {
+        console.log(data); //todo remove dev item
         let numberAsBN = new BigNumber(weiValue);
         let nineFivePct = data.data.times(0.95);
         let nineFivePctUserCap = etherUnits.toEther(nineFivePct, "wei");

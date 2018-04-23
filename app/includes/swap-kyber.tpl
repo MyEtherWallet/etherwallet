@@ -20,7 +20,7 @@
                 <p translate="SWAP_send_amt"> Amount to send </p>
             </div>
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.toVal | number: 6}} {{swapOrder.toCoin}} </h4>
+                <h4> {{swapOrder.toVal | number: receiveDecimals}} {{swapOrder.toCoin}} </h4>
                 <p translate="SWAP_rec_amt"> Amount to receive </p>
             </div>
             <div class="col-sm-4 order-info">
@@ -54,12 +54,16 @@
             </section>
             <!-- /Your Address -->
             <!-- CTA -->
-
-            <section class="row text-center" ng-if="!kyberReturnToStart">
+            <section class="row text-center" ng-if="swapOrder.toAddress">
 
                 <a ng-click="startKyber()" class="btn btn-primary btn-lg"><span
                         translate="SWAP_start_CTA"> Start Swap </span></a>
             </section>
+<!--            <section class="row text-center" ng-if="!kyberReturnToStart">
+
+                <a ng-click="startKyber()" class="btn btn-primary btn-lg"><span
+                        translate="SWAP_start_CTA"> Start Swap </span></a>
+            </section>-->
 
             <!-- / CTA -->
         </section>
@@ -83,7 +87,7 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4>{{kyberOrderResult.output.amount | number: 6}} {{kyberOrderResult.output.currency}}</h4>
+                <h4>{{kyberOrderResult.output.amount | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
@@ -186,8 +190,6 @@
                     Wallet Unlocked!
                 </h5>  <!-- todo: add translate -->
 
-                       kyberReturnToStart: {{kyberReturnToStart}}<br>
-                       balanceOk: {{balanceOk}}
                 <section class="row text-center" ng-if="kyberReturnToStart">
                     <h5 class="text-warning">The swap value of {{swapOrder.fromVal}} {{swapOrder.fromCoin}} is Greater
                                              than your current {{swapOrder.fromCoin}} Balance of
@@ -195,7 +197,7 @@
                     <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a>
                     <!-- todo: add translate -->
                 </section>
-                <section class="row text-center" ng-show="wallet!=null && !kyberReturnToStart && balanceOk">
+                <section class="row text-center" ng-show="wallet!=null && balanceOk">
                     <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span
                             translate="SWAP_start_CTA"> Start Swap </span></a>
                 </section>
@@ -236,7 +238,7 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4>{{kyberOrderResult.output.amount | number: 6}} {{kyberOrderResult.output.currency}}</h4>
+                <h4>{{kyberOrderResult.output.amount | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
@@ -269,7 +271,8 @@
             </div>
             <div class="progress-item {{kyberOrderResult.progress.bar[4]}}">
                 <div class="progress-circle"><i>5</i></div>
-                <p translate="SWAP_progress_5">Order Complete</p>
+                <!--<p translate="SWAP_progress_5">Order Complete</p>-->
+                <p>Order Broadcast to Blockchain</p>
             </div>
         </section>
 
@@ -294,7 +297,7 @@
                             <p>Amount sent</p>
                         </div>
                         <div class="col-sm-12">
-                            <h4>{{kyberOrderResult.output.amount | number: 6}} {{kyberOrderResult.output.currency}}</h4>
+                            <h4>{{kyberOrderResult.output.amount | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                             <p translate="SWAP_rec_amt">Amount to receive</p>
                         </div>
                         <div class="col-sm-12">
