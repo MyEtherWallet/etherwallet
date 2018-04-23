@@ -197,6 +197,11 @@
                     <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a>
                     <!-- todo: add translate -->
                 </section>
+                <section class="row text-center" ng-show="wallet!=null && !balanceOk">
+                    <br/>
+                    <h6 ng-show="!kyberReturnToStart"> Processing</h6>
+                <span ng-show="!kyberReturnToStart"> <span ng-repeat="tick in indicatorhacked track by $index">. </span></span>
+                </section>
                 <section class="row text-center" ng-show="wallet!=null && balanceOk">
                     <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span
                             translate="SWAP_start_CTA"> Start Swap </span></a>
@@ -266,7 +271,8 @@
             <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
                 <div class="progress-circle"><i>4</i></div>
                 <p>
-                    <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>
+                    <!--<span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>-->
+                    <span >Broadcasting your </span> {{kyberOrderResult.output.currency}} <span> order</span><br/>
                 </p>
             </div>
             <div class="progress-item {{kyberOrderResult.progress.bar[4]}}">
@@ -313,8 +319,9 @@
 
                                                         </div>-->
                             <span>
-                                View your swap transaction:
+                                Track your swap transaction:
                             </span>
+                            <h6 ng-if="!kyberTransaction.tokenTxHash">Waiting for token authorization <span ng-repeat="tick in indicatorhacked track by $index">. </span></h6>
                             <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
                                 <h5>{{kyberTransaction.tokenTxHash}}</h5>
                             </a>
@@ -332,7 +339,7 @@
                         </div>
                         <div class="col-sm-12" ng-if="kyberEthToToken">
                           <span>
-                              View your swap transaction:
+                              Track your swap transaction:
                           </span>
                             <a class="strong" ng-href="{{kyberTransaction.ethTxLink}}" target="_blank" rel="noopener">
 
@@ -344,9 +351,15 @@
 
 
             </div>
-
         </article>
-
+<!--        <div class="row text-center">
+            <span> Common Questions: </span><br/>
+            <a href="https://myetherwallet.github.io/knowledge-base/faq/eth-or-tokens-not-showing-on-exchange.html" target="_blank"
+               rel="noopener noreferrer"> ETH or Tokens haven't shown up </a><br/>
+            <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank"
+               rel="noopener noreferrer"> Transactions are Not Showing Up or Pending Forever </a><br/>
+            <span> Still need help: </span>
+        </div>-->
 
     </article>
 

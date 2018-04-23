@@ -59,7 +59,7 @@ kyberFuncs.networkTokenABIs = {
 
 kyberFuncs.kyberUnavailablePhrasing = function (fromCoin, toCoin) {
     let _pair = kyberFuncs.toPairKey(fromCoin, toCoin);
-    return `The pair ${_pair} is currently unavailable`;
+    return `The pair ${_pair} is temporarily unavailable`;
 };
 
 kyberFuncs.prototype.buildPairList = function (tokens) {
@@ -149,8 +149,8 @@ kyberFuncs.prototype.findBestRate = function (srcToken, destToken, srcQty, callb
             });
 
             data.data = {
-                "bestReserve": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber(),
-                "bestRate": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[1].toNumber()
+                "bestReserve": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toString(),  // NOTE: was toNumber()
+                "bestRate": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[1].toString() // NOTE: was toNumber()
             };
             callback(data);
         }
@@ -215,7 +215,7 @@ kyberFuncs.prototype.convertToTokenBase = function (_value, _token) {
     }
     let decimal = _this.tokenDetails[_token].decimals;
     if (decimal < 18) {
-        let numnum = new BigNumber(String(_value)).div(new BigNumber(10).pow(decimal)).toNumber();
+        let numnum = new BigNumber(String(_value)).div(new BigNumber(10).pow(decimal)).toString();// NOTE: was toNumber()
 
         return numnum;
     } else {
@@ -238,7 +238,12 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
             var outTypes = funcABI.outputs.map(function (i) {
                 return i.type;
             });
-            data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
+
+            console.log(ethFuncs.hexToDecimal(data.data)); //todo remove dev item
+            console.log(data.data);
+            // was returning a number rounded, thus
+            // data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
+            data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toString();
             callback(data);
         }
     });
@@ -264,8 +269,8 @@ kyberFuncs.prototype.getExpectedRate = function (srcToken, destToken, srcQty /* 
             });
 
             data.data = {
-                "expectedRate": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber(),
-                "slippageRate": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[1].toNumber()
+                "expectedRate": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toString(), // NOTE: was toNumber()
+                "slippageRate": ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[1].toString() // NOTE: was  toNumber()
             };
             callback(data);
         }
@@ -301,7 +306,7 @@ kyberFuncs.prototype.checkUserCap = function (_userAddress, swapValue /* In ETH 
         console.log(data); //todo remove dev item
         let numberAsBN = new BigNumber(weiValue);
         let nineFivePct = data.data.times(0.95);
-        let nineFivePctUserCap = etherUnits.toEther(nineFivePct, "wei");
+        let nineFivePctUserCap = _this.convertToTokenWei(nineFivePct, "ETH");
         if (nineFivePct.gt(numberAsBN)) {
             callback(
                 {
@@ -371,7 +376,7 @@ kyberFuncs.prototype.allowance = function (srcToken, userAddress, callback) {
                 return i.type;
             });
 
-            data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
+            data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toString(); // NOTE: was toNumber()
 
             callback(data);
         }
