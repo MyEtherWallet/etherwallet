@@ -118,151 +118,60 @@ var swapCtrl = function ($scope, $sce, walletService) {
     // todo: devise a Cleaner method
 
     $scope.setOrderCoin = function (isFrom, coin) {
-        let doAssignment = true;
         $scope.kyberSwapRateDisplay();
         let bityOptions = ["ETH", "BTC", "REP"];
+        let kyberOptions = $scope.availableTokens;
+        let isBity = (_coin) => {
+            return bityOptions.indexOf(_coin) > -1;
+        }
         if (isFrom) {
-
-            // BTC selected as fromCoin
-            if (coin === "BTC") {
-                $scope.availableToOptions = [...bityOptions];
-                if ($scope.swapOrder.fromCoin == "ETH") {
-                    $scope.availableFromOptions = [...bityOptions, ...$scope.availableTokens];
+            $scope.availableToOptions = []
+            if (isBity(coin)) {
+                bityOptions.forEach((_item) => {
+                    if (_item != coin) $scope.availableToOptions.push(_item)
+                })
+                if (coin == "ETH") {
+                    kyberOptions.forEach((_item) => {
+                        $scope.availableToOptions.push(_item)
+                    })
                 }
-
-                // ETH selected as fromCoin
-            } else if (coin === "ETH") {
-                if ($scope.swapOrder.toCoin == "ETH" && ($scope.swapOrder.fromCoin != "REP" && $scope.swapOrder.toCoin != "REP")) {
-                    $scope.swapOrder.toCoin = $scope.swapOrder.fromCoin.slice();
-                    $scope.swapOrder.fromCoin = "ETH";
-                    // to prevent mis-interpretation reset the values when swapping to and from
-                    $scope.swapOrder.fromVal = 0;
-                    $scope.swapOrder.toVal = 0;
-                    if ($scope.availableTokens.indexOf($scope.swapOrder.toCoin) >= 0) {
-                        $scope.availableFromOptions = ["ETH"];
-                    } else if ($scope.swapOrder.toCoin == "BTC") {
-                        $scope.availableFromOptions = ["BTC", "ETH"];
-                    }
-
-                    doAssignment = false;
-                }
-
-                $scope.availableToOptions = [...bityOptions, ...$scope.availableTokens];
-
-                // A Token selected as fromCoin
-            } else if ($scope.availableTokens.indexOf(coin) >= 0) {
-                $scope.availableToOptions = ["ETH"];
-                if ($scope.swapOrder.toCoin != "ETH") {
-                    $scope.swapOrder.toCoin = "ETH";
-                }
-                if ($scope.swapOrder.fromCoin == coin) {
-                    $scope.swapOrder.toCoin = $scope.swapOrder.fromCoin.slice();
-                    $scope.swapOrder.fromCoin = "ETH";
-                    // to prevent mis-interpretation reset the values when swapping to and from
-                    $scope.swapOrder.fromVal = 0;
-                    $scope.swapOrder.toVal = 0;
-                    $scope.availableFromOptions = ["ETH"];
-                    $scope.availableToOptions = [...bityOptions, ...$scope.availableTokens];
-                    doAssignment = false;
+            } else {
+                $scope.availableToOptions = ["ETH"]
+            }
+            $scope.swapOrder.fromCoin = coin;
+        } else {
+            $scope.availableFromOptions = []
+            if (isBity(coin)) {
+                if (coin == "ETH") {
+                    bityOptions.forEach((_item) => {
+                        if (_item != coin && _item != "REP") $scope.availableFromOptions.push(_item)
+                    })
+                    kyberOptions.forEach((_item) => {
+                        $scope.availableFromOptions.push(_item)
+                    })
                 } else {
-                    if ($scope.swapOrder.fromCoin == "ETH") {
-                        $scope.availableToOptions = [...bityOptions, ...$scope.availableTokens];
-                    }
-
+                    bityOptions.forEach((_item) => {
+                        if (_item != coin && _item != "REP") $scope.availableFromOptions.push(_item)
+                    })
                 }
-            }
-            if (doAssignment) $scope.swapOrder.fromCoin = coin;
-
-            if ($scope.swapOrder.fromCoin == "ETH") {
-                $scope.availableToOptions = [...bityOptions, ...$scope.availableTokens];
-            }
-
-        } else { // Set coin and options when a to coin is selected
-
-            // BTC selected as toCoin
-            if (coin === "BTC") {
-                if ($scope.swapOrder.fromCoin == "BTC" && $scope.swapOrder.toCoin == "ETH") {
-                    $scope.swapOrder.fromCoin = "ETH";
-                    $scope.swapOrder.toCoin = "BTC";
-                    // to prevent mis-interpretation reset the values when swapping to and from
-                    $scope.swapOrder.fromVal = 0;
-                    $scope.swapOrder.toVal = 0;
-                    $scope.availableToOptions = [...bityOptions, ...$scope.availableTokens];
-                    $scope.availableFromOptions = ["BTC", "ETH"];
-                    doAssignment = false;
-                } else if ($scope.swapOrder.fromCoin == "ETH" && $scope.swapOrder.toCoin == "BTC") {
-                    $scope.swapOrder.fromCoin = "BTC";
-                    $scope.swapOrder.toCoin = "ETH";
-                    // to prevent mis-interpretation reset the values when swapping to and from
-                    $scope.swapOrder.fromVal = 0;
-                    $scope.swapOrder.toVal = 0;
-                    $scope.availableFromOptions = [...bityOptions, ...$scope.availableTokens];
-                    $scope.availableToOptions = [...bityOptions];
-                    doAssignment = false;
-                }
-
-                if ($scope.availableTokens.indexOf($scope.swapOrder.fromCoin) >= 0) {
-                    $scope.swapOrder.fromCoin = "ETH";
-                    $scope.availableToOptions = [...bityOptions, ...$scope.availableTokens];
-                }
-                $scope.availableFromOptions = ["BTC", "ETH"];
-                console.log("toCoin -> BTC", coin); //todo remove dev item
-                // ETH selected as toCoin
-            } else if (coin === "ETH") {
-                if ($scope.swapOrder.fromCoin == "ETH" && ($scope.swapOrder.fromCoin != "REP" && $scope.swapOrder.toCoin != "REP")) {
-                    $scope.swapOrder.fromCoin = $scope.swapOrder.toCoin.slice();
-                    $scope.swapOrder.toCoin = "ETH";
-                    // to prevent mis-interpretation reset the values when swapping to and from
-                    $scope.swapOrder.fromVal = 0;
-                    $scope.swapOrder.toVal = 0;
-                    // $scope.availableToOptions = ["ETH"];
-
-                    if ($scope.availableTokens.indexOf($scope.swapOrder.fromCoin) >= 0) {
-                        $scope.availableToOptions = ["ETH"];
-                    } else if ($scope.swapOrder.fromCoin == "BTC") {
-                        $scope.availableToOptions = [...bityOptions];
-                    }
-
-                    doAssignment = false;
-                }
-                $scope.availableFromOptions = [...bityOptions, ...$scope.availableTokens];
-
-                // REP selected as toCoin
-            } else if (coin === "REP") {
-                $scope.availableFromOptions = ["BTC", "ETH"];
-
-                // A Token selected as toCoin
-            } else if ($scope.availableTokens.indexOf(coin) >= 0) {
-                $scope.availableFromOptions = ["ETH"];
-                if ($scope.swapOrder.fromCoin !== "ETH") {
-                    $scope.swapOrder.fromCoin = "ETH";
-                }
-
-                if ($scope.swapOrder.toCoin == coin) {
-                    $scope.swapOrder.fromCoin = $scope.swapOrder.toCoin.slice();
-                    $scope.swapOrder.toCoin = "ETH";
-                    // to prevent mis-interpretation reset the values when swapping to and from
-                    $scope.swapOrder.fromVal = 0;
-                    $scope.swapOrder.toVal = 0;
-                    $scope.availableToOptions = ["ETH"];
-                    $scope.availableFromOptions = [...bityOptions, ...$scope.availableTokens];
-                    doAssignment = false;
+            } else {
+                if($scope.swapOrder.fromCoin == "ETH"){
+                    console.log(coin); //todo remove dev item
+                    bityOptions.forEach((_item) => {
+                        if (_item != coin) $scope.availableToOptions.push(_item)
+                    })
+                    kyberOptions.forEach((_item) => {
+                        $scope.availableToOptions.push(_item)
+                    })
                 } else {
-                    if ($scope.swapOrder.toCoin == "ETH") {
-                        $scope.availableFromOptions = [...bityOptions, ...$scope.availableTokens];
-                    }
+                    $scope.availableToOptions = ["ETH"]
                 }
-
             }
-
-            if (doAssignment) $scope.swapOrder.toCoin = coin;
-
-            if ($scope.swapOrder.toCoin == "ETH") {
-                $scope.availableFromOptions = [...bityOptions, ...$scope.availableTokens];
-            }
+            $scope.swapOrder.toCoin = coin;
         }
 
-        if (bityOptions.indexOf($scope.swapOrder.toCoin) > -1 && bityOptions.indexOf($scope.swapOrder.fromCoin) > -1) {
+
+        if (isBity($scope.swapOrder.toCoin) && isBity($scope.swapOrder.fromCoin)) {
             if ($scope.swapOrder.fromCoin == $scope.swapOrder.toCoin)
                 for (var i in bityOptions)
                     if (bityOptions[i] != $scope.swapOrder.fromCoin) {
@@ -273,6 +182,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
         } else {
             $scope.setKyberOrderCoin(isFrom);
         }
+
+
     };
 
     $scope.setBityOrderCoin = function (isFrom) {
