@@ -1,5 +1,11 @@
+### Release v3.21.09
+### New
+- Add ENG, GTO, CTG tokens [#1790](https://github.com/kvhnuke/etherwallet/pull/1790)
+- Add Nebula AI token contract [#1789](https://github.com/kvhnuke/etherwallet/pull/1789)
+
 ### Release v3.21.08
 #### New
+- Add kyber integration [#1757](https://github.com/kvhnuke/etherwallet/pull/1757) [#1788](https://github.com/kvhnuke/etherwallet/pull/1788)
 - Add BRD token [#1787](https://github.com/kvhnuke/etherwallet/pull/1787)
 - Adds FLR and ABYSS tokens [#1786](https://github.com/kvhnuke/etherwallet/pull/1786)
 - Add new Peculium ABI [#1784](https://github.com/kvhnuke/etherwallet/pull/1784)
