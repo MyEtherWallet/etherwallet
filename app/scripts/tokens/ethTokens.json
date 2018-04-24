@@ -810,6 +810,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xc87c5dd86a3d567ff28701886fb0745aaa898da4",
+		"symbol": "CTG",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xbf4cfd7d1edeeea5f6600827411b41a21eb08abd",
 		"symbol": "CTL",
 		"decimal": 2,
@@ -1182,6 +1188,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xf0ee6b27b759c9893ce4f094b49ad28fd15a23e4",
+		"symbol": "ENG",
+		"decimal": 8,
+		"type": "default"
+	},
+	{
 		"address": "0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c",
 		"symbol": "ENJ",
 		"decimal": 18,
@@ -1461,6 +1473,12 @@
 		"address": "0x025abad9e518516fdaafbdcdb9701b37fb7ef0fa",
 		"symbol": "GTKT",
 		"decimal": 0,
+		"type": "default"
+	},
+	{
+		"address": "0xc5bbae50781be1669306b9e001eff57a2957b09d",
+		"symbol": "GTO",
+		"decimal": 5,
 		"type": "default"
 	},
 	{
