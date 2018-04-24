@@ -200,7 +200,7 @@
                 <section class="row text-center" ng-show="wallet!=null && !balanceOk">
                     <br/>
                     <h6 ng-show="!kyberReturnToStart"> Processing</h6>
-                <span ng-show="!kyberReturnToStart"> <span ng-repeat="tick in indicatorhacked track by $index">. </span></span>
+                <span ng-show="!kyberReturnToStart"> <span ng-repeat="tick in indicatorhacked track by $index">{{tick}}</span></span>
                 </section>
                 <section class="row text-center" ng-show="wallet!=null && balanceOk">
                     <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span
@@ -321,8 +321,11 @@
                             <span>
                                 Track your swap transaction:
                             </span>
-                            <span ng-if="!kyberTransaction.tokenTxHash" class="text-info">Waiting for token authorization <span ng-repeat="tick in indicatorhacked track by $index">. </span></span>
-                            <span  ng-if="!kyberTransaction.tokenTxHash" class="text-danger"> Do Not Navigate Away or Close Your Browser</span>
+                            <div ng-if="!kyberTransaction.tokenTxHash">
+                                <br>
+                                <span  class="text-info">Waiting for token authorization <span ng-repeat="tick in indicatorhacked track by $index">{{tick}}</span></span><br>
+                                <span  class="text-danger"> Do Not Navigate Away or Close Your Browser</span>
+                            </div>
                             <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
                                 <h5>{{kyberTransaction.tokenTxHash}}</h5>
                             </a>

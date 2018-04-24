@@ -2107,7 +2107,7 @@
 <!-- / Swap Init Panel -->
  
 
-    <div ng-if="!isKyberSwap">
+    <div ng-show="!isKyberSwap">
         
          <!-- Swap Start 2 -->
 <article class="swap-start" ng-show="showStage2">
@@ -3017,7 +3017,7 @@
                 <section class="row text-center" ng-show="wallet!=null && !balanceOk">
                     <br/>
                     <h6 ng-show="!kyberReturnToStart"> Processing</h6>
-                <span ng-show="!kyberReturnToStart"> <span ng-repeat="tick in indicatorhacked track by $index">. </span></span>
+                <span ng-show="!kyberReturnToStart"> <span ng-repeat="tick in indicatorhacked track by $index">{{tick}}</span></span>
                 </section>
                 <section class="row text-center" ng-show="wallet!=null && balanceOk">
                     <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span
@@ -3305,9 +3305,17 @@
                         <td class="small text-right">Account Balance:</td>
                         <td class="small text-left mono">{{parsedKyberTx.balance}}</td>
                     </tr>
-                    <tr>
+<!--                    <tr>
                         <td class="small text-right">Coin:</td>
                         <td class="small text-left mono">{{unitReadable}}</td>
+                    </tr>-->
+                    <tr>
+                        <td class="small text-right">Swapping:</td>
+                        <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">For:</td>
+                        <td class="small text-left mono">{{swapOrder.toVal}} {{swapOrder.toCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Network:</td>
@@ -3498,8 +3506,11 @@
                             <span>
                                 Track your swap transaction:
                             </span>
-                            <span ng-if="!kyberTransaction.tokenTxHash" class="text-info">Waiting for token authorization <span ng-repeat="tick in indicatorhacked track by $index">. </span></span>
-                            <span  ng-if="!kyberTransaction.tokenTxHash" class="text-danger"> Do Not Navigate Away or Close Your Browser</span>
+                            <div ng-if="!kyberTransaction.tokenTxHash">
+                                <br>
+                                <span  class="text-info">Waiting for token authorization <span ng-repeat="tick in indicatorhacked track by $index">{{tick}}</span></span><br>
+                                <span  class="text-danger"> Do Not Navigate Away or Close Your Browser</span>
+                            </div>
                             <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
                                 <h5>{{kyberTransaction.tokenTxHash}}</h5>
                             </a>

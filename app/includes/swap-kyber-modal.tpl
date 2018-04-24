@@ -273,9 +273,17 @@
                         <td class="small text-right">Account Balance:</td>
                         <td class="small text-left mono">{{parsedKyberTx.balance}}</td>
                     </tr>
-                    <tr>
+<!--                    <tr>
                         <td class="small text-right">Coin:</td>
                         <td class="small text-left mono">{{unitReadable}}</td>
+                    </tr>-->
+                    <tr>
+                        <td class="small text-right">Swapping:</td>
+                        <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small text-right">For:</td>
+                        <td class="small text-left mono">{{swapOrder.toVal}} {{swapOrder.toCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Network:</td>

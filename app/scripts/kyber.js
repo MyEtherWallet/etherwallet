@@ -239,7 +239,7 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
                 return i.type;
             });
 
-            console.log(ethFuncs.hexToDecimal(data.data)); //todo remove dev item
+            // console.log(ethFuncs.hexToDecimal(data.data)); //todo remove dev item
             console.log(data.data);
             // was returning a number rounded, thus
             // data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
@@ -303,7 +303,7 @@ kyberFuncs.prototype.checkUserCap = function (_userAddress, swapValue /* In ETH 
     let weiValue = _this.convertToTokenWei(swapValue, "ETH");
 
     _this.getUserCapInWei(_userAddress, function (data) {
-        console.log(data); //todo remove dev item
+        // console.log(data); //todo remove dev item
         let numberAsBN = new BigNumber(weiValue);
         let nineFivePct = data.data.times(0.95);
         let nineFivePctUserCap = _this.convertToTokenWei(nineFivePct, "ETH");
