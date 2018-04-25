@@ -2142,6 +2142,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x8a77e40936bbc27e80e9a3f526368c967869c86d",
+		"symbol": "MVP",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x6425c6be902d692ae2db752b3c268afadb099d3b",
 		"symbol": "MWAT",
 		"decimal": 18,
@@ -2784,8 +2790,14 @@
 		"type": "default"
 	},
 	{
+		"address": "0x37427576324fE1f3625c9102674772d7CF71377d",
+		"symbol": "SGT (SelfieYo Gold Token)",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xd248B0D48E44aaF9c49aea0312be7E13a6dc1468",
-		"symbol": "SGT",
+		"symbol": "SGT (StatusGenesis)",
 		"decimal": 1,
 		"type": "default"
 	},
