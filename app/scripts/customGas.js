@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// Merculet (MVP) Token sale
+to:         '0x8a77e40936bbc27e80e9a3f526368c967869c86d',
+gasLimit:   210000,
+data:       '',
+msg:        'Merculet (MVP) token sale - You must have registered at https://merculet.io and followed the instructions to purchase tokens here.'
+},{
 // GIFcoin (GIF) Token sale
 to:         '0xFcD862985628b254061F7A918035B80340D045d3',
 gasLimit:   200000,
