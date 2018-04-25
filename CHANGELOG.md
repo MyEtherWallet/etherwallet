@@ -1,5 +1,6 @@
 ### Release v3.21.09
 ### New
+- Add MVP and SGT tokens [#1797](https://github.com/kvhnuke/etherwallet/pull/1797)
 - Add manual gas limit for MVP token [#1794](https://github.com/kvhnuke/etherwallet/pull/1794)
 - Add ENG, GTO, CTG tokens [#1790](https://github.com/kvhnuke/etherwallet/pull/1790)
 - Add Nebula AI token contract [#1789](https://github.com/kvhnuke/etherwallet/pull/1789)
