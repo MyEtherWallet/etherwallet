@@ -1,6 +1,6 @@
 ### Release v3.21.09
 ### New
-- Add FANX and DTH tokens [#1801](https://github.com/kvhnuke/etherwallet/pull/1801)
+- Add FANX and DTH tokens [Commit](https://github.com/kvhnuke/etherwallet/commit/718455e74790e7b36ef9bc7df710c3e2b07454cd)
 - Add Dether token [#1800](https://github.com/kvhnuke/etherwallet/pull/1800)
 - Add MVP and SGT tokens [#1797](https://github.com/kvhnuke/etherwallet/pull/1797)
 - Add manual gas limit for MVP token [#1794](https://github.com/kvhnuke/etherwallet/pull/1794)
