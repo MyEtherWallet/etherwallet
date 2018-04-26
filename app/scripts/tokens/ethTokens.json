@@ -1062,6 +1062,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5adc961D6AC3f7062D2eA45FEFB8D8167d44b190",
+		"symbol": "DTH",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xd234bf2410a0009df9c3c63b610c09738f18ccd7",
 		"symbol": "DTR",
 		"decimal": 8,
@@ -1287,6 +1293,12 @@
 		"address": "0x190e569bE071F40c704e15825F285481CB74B6cC",
 		"symbol": "FAM",
 		"decimal": 12,
+		"type": "default"
+	},
+	{
+		"address": "0x7f6715c3fc4740a02f70de85b9fd50ac6001fed9",
+		"symbol": "FANX",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
