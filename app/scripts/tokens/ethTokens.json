@@ -1362,6 +1362,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x2AEC18c5500f21359CE1BEA5Dc1777344dF4C0Dc",
+		"symbol": "FTT",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x2023DCf7c438c8C8C0B0F28dBaE15520B4f3Ee20",
 		"symbol": "FTR",
 		"decimal": 18,
@@ -1860,6 +1866,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x123ab195dd38b1b40510d467a6a359b201af056f",
+		"symbol": "LGO",
+		"decimal": 8,
+		"type": "default"
+	},
+	{
 		"address": "0x2eb86e8fc520e0f6bb5d9af08f924fe70558ab89",
 		"symbol": "LGR",
 		"decimal": 8,
@@ -1950,6 +1962,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5dbe296f97b23c4a6aa6183d73e574d02ba5c719",
+		"symbol": "LUC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xFB12e3CcA983B9f59D90912Fd17F8D745A8B2953",
 		"symbol": "LUCK",
 		"decimal": 0,
@@ -1988,6 +2006,12 @@
 	{
 		"address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
 		"symbol": "MANA",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xfdcc07Ab60660de533b5Ad26e1457b565a9D59Bd",
+		"symbol": "MART",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -2310,6 +2334,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xe9dE1C630753A15d7021Cc563429c21d4887506F",
+		"symbol": "OPEN",
+		"decimal": 8,
+		"type": "default"
+	},
+	{
 		"address": "0x4355fC160f74328f9b383dF2EC589bB3dFd82Ba0",
 		"symbol": "OPT",
 		"decimal": 18,
@@ -2577,6 +2607,12 @@
 		"address": "0xc14830e53aa344e8c14603a91229a0b925b0b262",
 		"symbol": "PXT",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0x618e75ac90b12c6049ba3b27f5d5f8651b0037f6",
+		"symbol": "QASH",
+		"decimal": 6,
 		"type": "default"
 	},
 	{
@@ -2994,6 +3030,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xbbFF862d906E348E9946Bfb2132ecB157Da3D4b4",
+		"symbol": "SS (Sharder)",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x6e2050CBFB3eD8A4d39b64cC9f47E711a03a5a89",
 		"symbol": "SSH",
 		"decimal": 18,
@@ -3357,6 +3399,12 @@
 		"address": "0x74951B677de32D596EE851A233336926e6A2cd09",
 		"symbol": "WBA",
 		"decimal": 7,
+		"type": "default"
+	},
+	{
+		"address": "0x8f936fe0faf0604c9c0ef2406bde0a65365515d6",
+		"symbol": "WCN",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
