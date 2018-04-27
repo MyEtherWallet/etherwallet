@@ -17,6 +17,7 @@ nodes.nodeTypes = {
     TOMO: "TOMO",
     ELLA: "ELLA",
     ETSC: "ETSC",
+    EGEM: "EGEM",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
