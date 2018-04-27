@@ -47,7 +47,7 @@
     <!-- TREZOR -->
     <label class="radio"
            aria-flowto="aria4"
-           ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'||ajaxReq.type=='RSK'||ajaxReq.type=='POA'||ajaxReq.type=='TOMO'||ajaxReq.type=='ELLA'">
+           ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'||ajaxReq.type=='RSK'||ajaxReq.type=='POA'||ajaxReq.type=='TOMO'||ajaxReq.type=='ELLA'||ajaxReq.type=='EGEM'">
       <input aria-flowto="aria4"
              type="radio"
              aria-label="Trezor Hardware Wallet"
@@ -769,7 +769,7 @@
           </h4>
 
           <p class="alert alert-danger"
-             ng-hide="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'||ajaxReq.type=='ELLA'">
+             ng-hide="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'||ajaxReq.type=='UBQ'||ajaxReq.type=='ELLA'||ajaxReq.type=='EGEM'">
                 We do not know the correct path for this network.
                 <a href="https://github.com/kvhnuke/etherwallet/issues"
                    target="_blank"
@@ -904,6 +904,20 @@
                 <span ng-bind="HDWallet.hwEllaismPath"></span>
                 <p class="small">
                   Network: Ellaism
+                </p>
+              </label>
+            </div>
+
+            <div class="col-sm-4">
+              <label class="radio small">
+                <input aria-describedby="Path: TREZOR (EGEM) {{HDWallet.hwEtherGemPath}}"
+                       ng-change="onHDDPathChange()"
+                       ng-model="HDWallet.dPath"
+                       type="radio"
+                      value="{{HDWallet.hwEtherGemPath}}"/>
+                <span ng-bind="HDWallet.hwEtherGemPath"></span>
+                <p class="small">
+                  Network: EtherGem
                 </p>
               </label>
             </div>
