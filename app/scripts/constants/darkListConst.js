@@ -36,11 +36,6 @@ const darklist = function() {
 			date: "2018-04-08"
 		},
 		{
-			address: "0xd8b21816d4c25b2e5d60e544ba094a9d14c30d4f",
-			comment: "Fake ICO support",
-			date: "2018-04-08"
-		},
-		{
 			address: "0x484aa220812a5ed3d1162686bc8592eb39276348",
 			comment: "Fake PlayHall admin",
 			date: "2018-04-08"
