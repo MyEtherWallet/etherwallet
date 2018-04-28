@@ -1696,7 +1696,13 @@
 		"symbol": "IND",
 		"decimal": 18,
 		"type": "default"
-	},
+  },
+  {
+    "address": "0x48e5413b73add2434e47504E2a22d14940dBFe78",
+    "symbol": "INRM",
+    "decimal": 3,
+    "type": "default"
+  },
 	{
 		"address": "0x5b2e4a700dfbc560061e957edec8f6eeeb74a320",
 		"symbol": "INS",
