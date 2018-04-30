@@ -1,5 +1,6 @@
 ### Release v3.21.09
 ### New
+- Add ZMN token [#1814](https://github.com/kvhnuke/etherwallet/pull/1814)
 - Add XGG and DCA tokens [#1813](https://github.com/kvhnuke/etherwallet/pull/1813)
 - Update changelog, add Proxy and eProxy abi, add umka token to default [#1812](https://github.com/kvhnuke/etherwallet/pull/1812)
 - Add USDM token [#1811](https://github.com/kvhnuke/etherwallet/pull/1811)
