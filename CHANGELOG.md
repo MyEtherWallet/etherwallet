@@ -1,5 +1,6 @@
 ### Release v3.21.09
 ### New
+- Update changelog, add Proxy and eProxy abi, add umka token to default [#1812](https://github.com/kvhnuke/etherwallet/pull/1812)
 - Add USDM token [#1811](https://github.com/kvhnuke/etherwallet/pull/1811)
 - Add INRM token [#1809](https://github.com/kvhnuke/etherwallet/pull/1809)
 - Remove an address from darklist, Add FTT, LGO, LUC, OPEN, QASH, WCN, MART, and SS tokens [#1803](https://github.com/kvhnuke/etherwallet/pull/1803)
