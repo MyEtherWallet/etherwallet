@@ -3677,5 +3677,11 @@
 		"symbol": "YEED",
 		"decimal": 18,
 		"type": "default"
+	},
+	{
+		"address": "0x554ffc77f4251a9fb3c0e3590a6a205f8d4e067d",
+		"symbol": "ZMN",
+		"decimal": 18,
+		"type": "default"
 	}
 ]
