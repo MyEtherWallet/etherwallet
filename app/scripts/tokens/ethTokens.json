@@ -1014,6 +1014,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416",
+		"symbol": "DoBETacceptBET(DCA)",
+		"decimals": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x76974c7b79dc8a6a109fd71fd7ceb9e40eff5382",
 		"symbol": "DOW",
 		"decimal": 18,
@@ -1696,13 +1702,13 @@
 		"symbol": "IND",
 		"decimal": 18,
 		"type": "default"
-  },
-  {
-    "address": "0x48e5413b73add2434e47504E2a22d14940dBFe78",
-    "symbol": "INRM",
-    "decimal": 3,
-    "type": "default"
-  },
+	},
+	{
+		"address": "0x48e5413b73add2434e47504E2a22d14940dBFe78",
+		"symbol": "INRM",
+		"decimal": 3,
+		"type": "default"
+	},
 	{
 		"address": "0x5b2e4a700dfbc560061e957edec8f6eeeb74a320",
 		"symbol": "INS",
@@ -3537,6 +3543,12 @@
 		"address": "0x4d829f8c92a6691c56300d020c9e0db984cfe2ba",
 		"symbol": "XCC",
 		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xf6b6aa0ef0f5edc2c1c5d925477f97eaf66303e7",
+		"symbol": "XGG",
+		"decimal": 8,
 		"type": "default"
 	},
 	{
