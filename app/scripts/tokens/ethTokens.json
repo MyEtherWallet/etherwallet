@@ -3270,6 +3270,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xD760ADdFb24D9C01Fe4Bfea7475C5e3636684058",
+		"symbol": "USDM",
+		"decimal": 2,
+		"type": "default"
+	},
+	{
 		"address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
 		"symbol": "USDT",
 		"decimal": 6,
