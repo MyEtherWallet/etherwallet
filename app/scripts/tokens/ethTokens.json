@@ -3270,6 +3270,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x105d97ef2e723f1cfb24519bc6ff15a6d091a3f1",
+		"symbol": "UMKA",
+		"decimal": 4,
+		"type": "default"
+	},
+	{
 		"address": "0xd01db73e047855efb414e6202098c4be4cd2423b",
 		"symbol": "UQC",
 		"decimal": 18,
