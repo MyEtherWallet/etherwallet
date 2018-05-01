@@ -20,6 +20,7 @@ nodes.nodeTypes = {
     EGEM: "EGEM",
     CLO: "CLO",
     CLOT: "Testnet CLO",
+    EAST: "EAST",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -296,6 +297,19 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/cloAbi.json'),
         'service': 'Callisto.network',
         'lib': new nodes.customNode('https://clo-testnet3.0xinfra.com/', '')
+    },
+    'east': {
+        'name': 'EAST',
+        'blockExplorerTX': 'https://explorer.easthub.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.easthub.io/addr/[[address]]',
+        'type': nodes.nodeTypes.EAST,
+        'eip155': true,
+        'chainId': 7,
+        'tokenList': require('./tokens/eastTokens.json'),
+        'abiList': require('./abiDefinitions/eastAbi.json'),
+        'estimateGas': true,
+        'service': 'easthub.io',
+        'lib': new nodes.customNode('https://node.easthub.io', '')
     }
 };
 
