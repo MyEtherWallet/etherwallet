@@ -1,6 +1,6 @@
 <!-- Swap Start Kyber 2 -->
 <article ng-if="isKyberSwap">
-{{$scope.kyberOrderResult.progress.status}}
+
     <!-- Swap Kyber 2 -->
     <article class="swap-start" ng-show="showStage2Kyber">
 
@@ -228,9 +228,7 @@
             <!--</div>-->
         </article>
         <!-- / Swap CTA ETH -->
-     <!--   <div ng-repeat="(key, entry) in kyberTransaction track by key">
-            {{key}}:  {{entry}}
-        </div>-->
+
 
     </article>
 

@@ -15,11 +15,11 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.fromExclude = [];
 
     // Currently Not Really Used (kept for usage in a future feature)
-    $scope.showInFromList = function (coin) {
+    $scope.showInFromList =function(coin) {
         if (coin == 'REP') return false;
         return true;
         // if ($scope.fromExclude.indexOf(coin) > -1) return false;
-        // else return true;
+        // else returntrue;
     };
 
     // Currently Not Really Used (kept for usage in a future feature)
@@ -30,8 +30,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     };
 
-
-    setInterval(function () {
+    setInterval(function() {
         $scope.bity.refreshRates();
         // $scope.kyber.refreshRates();
         //$scope.checkKyberNetwork();
@@ -50,7 +49,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.availableOptions = [...$scope.availableCoins, ...$scope.availableTokens];
 
     var initValues = function () {
-        removeUserNavigationWarning();
         $scope.bity.refreshRates(function () {
             $scope.setOrderCoin(true, "ETH");
         });
@@ -86,7 +84,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
         if ($scope.showedKyberPairAvailableError) $scope.showedKyberPairAvailableError = false
     };
 
-
     $scope.verifyMinMaxValues = function () {
         if ($scope.checkIfKyber()) {
             return $scope.verifyKyberMinMaxValues();
@@ -95,8 +92,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
         }
     };
 
-    $scope.verifyBityMinMaxValues = function () {
-        if ($scope.swapOrder.toVal == '' || $scope.swapOrder.fromVal == '' || $scope.swapOrder.toVal == '0' || $scope.swapOrder.fromVal == '0' || $scope.showedMinMaxError) return false;
+    $scope.verifyBityMinMaxValues =function() {
+        if($scope.swapOrder.toVal=='' || $scope.swapOrder.fromVal == '' || $scope.swapOrder.toVal=='0' || $scope.swapOrder.fromVal == '0' || $scope.showedMinMaxError ) return false;
         var errors = {
             priceNotLoaded: 0,
             lessThanMin: 1,
@@ -123,9 +120,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
         }
     };
     // todo: devise a Cleaner method
-
-    $scope.setOrderCoin = function (isFrom, coin) {
-        $scope.kyberSwapRateDisplay();
+    $scope.setOrderCoin = function(isFrom, coin) {$scope.kyberSwapRateDisplay();
         let bityOptions = ["ETH", "BTC", "REP"];
         let kyberOptions = $scope.availableTokens;
         let isBity = (_coin) => {
@@ -145,9 +140,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
             } else {
                 $scope.availableToOptions = ["ETH"]
                 $scope.swapOrder.toCoin = "ETH";
-            }
-            $scope.swapOrder.fromCoin = coin;
-        } else {
+            }$scope.swapOrder.fromCoin = coin;
+        }else {
             $scope.availableFromOptions = []
             if (isBity(coin)) {
                 if (coin == "ETH") {
@@ -174,19 +168,16 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 } else {
                     $scope.availableToOptions = ["ETH"]
                 }
-            }
-            $scope.swapOrder.toCoin = coin;
+            }$scope.swapOrder.toCoin = coin;
         }
 
 
-        if (isBity($scope.swapOrder.toCoin) && isBity($scope.swapOrder.fromCoin)) {
-            if ($scope.swapOrder.fromCoin == $scope.swapOrder.toCoin)
-                for (var i in bityOptions)
-                    if (bityOptions[i] != $scope.swapOrder.fromCoin) {
-                        $scope.swapOrder.toCoin = bityOptions[i];
-                        break;
-                    }
-            $scope.setBityOrderCoin(isFrom);
+        if (isBity($scope.swapOrder.toCoin) && isBity($scope.swapOrder.fromCoin)) {if ($scope.swapOrder.fromCoin == $scope.swapOrder.toCoin)
+            for (var i in bityOptions)
+                if (bityOptions[i] != $scope.swapOrder.fromCoin) {
+                    $scope.swapOrder.toCoin = bityOptions[i];
+                    break;
+                }$scope.setBityOrderCoin(isFrom);
         } else {
             $scope.setKyberOrderCoin(isFrom);
         }
@@ -200,10 +191,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
         $scope.updateBityEstimate(isFrom);
         $scope.dropdownFrom = $scope.dropdownTo = false;
     };
-
-
-    $scope.updateEstimate = function (isFrom) {
-        if ($scope.checkIfKyber()) {
+    $scope.updateEstimate = function(isFrom) {if ($scope.checkIfKyber()) {
             $scope.updateKyberEstimate(isFrom);
         } else {
             $scope.updateBityEstimate(isFrom);
@@ -345,7 +333,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 readOnly: true
             }
             // console.log(document.getElementById('sendTransaction')); //todo remove dev item
-            // new Modal(document.getElementById('sendTransaction'));
+            //new Modal(document.getElementById('sendTransaction'));
             $scope.showStage3Eth = true;
         }
     }

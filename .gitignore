@@ -16,3 +16,4 @@ cert.pem
 key.pem
 .idea/
 
+/scraps/

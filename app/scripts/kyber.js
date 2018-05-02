@@ -1,7 +1,7 @@
 const mainKyberNetworkABI = require('./kyberConfig/KyberNetworkABI.json');
 const KyberReserveABI = require('./kyberConfig/KyberReserveABI.json');
 //todo convert from callbacks to async (or promise)
-const kyberFuncs = function () {
+const kyberFuncs = function() {
     var _this = this;
     this.kyberNetworkABI = {};
     for (let i in mainKyberNetworkABI) this.kyberNetworkABI[mainKyberNetworkABI[i].name] = mainKyberNetworkABI[i];
@@ -18,8 +18,7 @@ const kyberFuncs = function () {
                 for (let i in kyberFuncs.networkTokenABIs.ETH[key]) {
                     this.tokenABIs[key][kyberFuncs.networkTokenABIs.ETH[key][i].name] = kyberFuncs.networkTokenABIs.ETH[key][i];
                 }
-            }
-            ;
+            };
             break;
         case nodes.nodeTypes.Ropsten:
             this.nodeType = "ROPSTEN";
@@ -57,12 +56,12 @@ kyberFuncs.networkTokenABIs = {
     NULL: {}
 };
 
-kyberFuncs.kyberUnavailablePhrasing = function (fromCoin, toCoin) {
+kyberFuncs.kyberUnavailablePhrasing = function(fromCoin, toCoin) {
     let _pair = kyberFuncs.toPairKey(fromCoin, toCoin);
     return `The pair ${_pair} is temporarily unavailable`;
 };
 
-kyberFuncs.prototype.buildPairList = function (tokens) {
+kyberFuncs.prototype.buildPairList = function(tokens) {
     let forRates = {};
     tokens.forEach((_token) => {
         tokens.forEach((_token2) => {
@@ -78,15 +77,15 @@ kyberFuncs.toPairKey = function (_from, _to) {
     return _from + "/" + _to;
 };
 
-kyberFuncs.fromPairKey = function (_pairKey) {
+kyberFuncs.fromPairKey = function(_pairKey) {
     return _pairKey.split("/");
 };
 
-kyberFuncs.BnToNumber = function (bn) {
+kyberFuncs.BnToNumber = function(bn) {
     return bn.toNumber();
 }
 
-kyberFuncs.prototype.setCurrentNetwork = function (_network) {
+kyberFuncs.prototype.setCurrentNetwork = function(_network) {
     var _this = this;
     if (_network) {
 
@@ -98,12 +97,12 @@ kyberFuncs.prototype.setCurrentNetwork = function (_network) {
     }
 };
 
-kyberFuncs.prototype.setDefaultValues = function (_network) {
+kyberFuncs.prototype.setDefaultValues = function(_network) {
     var _this = this;
     // kyberFuncs.defaultValues.maxGasPrice = _network["max gas price"] ? _network["max gas price"] : 50000000000;// 50 Gwei
 }
 
-kyberFuncs.prototype.setCurrentTokenABIs = function (_tokenABIs) {
+kyberFuncs.prototype.setCurrentTokenABIs = function(_tokenABIs) {
     var _this = this;
     _this.tokenABIs = _tokenABIs;
 };
@@ -113,7 +112,7 @@ kyberFuncs.prototype.getKyberNetworkAddress = function () {
     return _this.currentNetwork.network;
 };
 
-kyberFuncs.prototype.getTokenAddress = function (_token) {
+kyberFuncs.prototype.getTokenAddress = function(_token) {
     var _this = this;
     return _this.tokenDetails[_token].address;
 };
@@ -186,11 +185,11 @@ kyberFuncs.prototype.setKyberRate = function (_from, _to) {
     })
 };
 
-kyberFuncs.prototype.refreshRates = function () {
+kyberFuncs.prototype.refreshRates = function() {
     var _this = this;
 
     let keys = Object.keys(_this.kyberRates);
-    keys.forEach(function (_key) {
+    keys.forEach(function(_key) {
         let pairContents = kyberFuncs.fromPairKey(_key);
         let fromToken = pairContents[0];
         let toToken = pairContents[1];
@@ -243,10 +242,10 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
     ajaxReq.getEthCall({
         to: _this.currentNetwork.network,
         data: _this.getDataString(funcABI, [_tokenAddress, userAddress])
-    }, function (data) {
+    }, function(data) {
         if (data.error) callback(data);
         else {
-            var outTypes = funcABI.outputs.map(function (i) {
+            var outTypes = funcABI.outputs.map(function(i) {
                 return i.type;
             });
 
@@ -262,7 +261,7 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
 
 /*ERC20 src, ERC20 dest, uint srcQty*/
 // rate/10**18between 1 eth and 1 token base
-kyberFuncs.prototype.getExpectedRate = function (srcToken, destToken, srcQty /* In ETH or Whole Token*/, callback) {
+kyberFuncs.prototype.getExpectedRate = function(srcToken, destToken, srcQty /* In ETH or Whole Token*/ , callback) {
     var _this = this;
     // returns int
     var srcTokenAddress = _this.getTokenAddress(srcToken);
@@ -309,11 +308,11 @@ kyberFuncs.prototype.getUserCapInWei = function (address, callback) {
     });
 };
 
-kyberFuncs.prototype.checkUserCap = function (_userAddress, swapValue /* In ETH or Whole Token*/, isFrom, callback) {
+kyberFuncs.prototype.checkUserCap = function(_userAddress, swapValue /* In ETH or Whole Token*/ , isFrom, callback) {
     var _this = this;
     let weiValue = _this.convertToTokenWei(swapValue, "ETH");
 
-    _this.getUserCapInWei(_userAddress, function (data) {
+    _this.getUserCapInWei(_userAddress, function(data) {
         // console.log(data); //todo remove dev item
         let numberAsBN = new BigNumber(weiValue);
         let nineFivePct = data.data.times(0.95);
