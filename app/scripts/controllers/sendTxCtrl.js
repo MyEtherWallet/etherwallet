@@ -186,7 +186,10 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         ethFuncs.estimateGas(estObj, function(data) {
 
             if (!data.error) {
-                if (data.data == '-1') $scope.notifier.danger(globalFuncs.errorMsgs[21]);
+                if (data.data == '-1') {
+                    console.log("sendTxCtrl:190 ERROR");
+                    $scope.notifier.danger(globalFuncs.errorMsgs[21]);
+                }
                 $scope.tx.gasLimit = data.data;
             } else $scope.notifier.danger(data.msg);
         });

@@ -17,6 +17,7 @@ nodes.nodeTypes = {
     TOMO: "TOMO",
     ELLA: "ELLA",
     ETSC: "ETSC",
+    EGEM: "EGEM",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -256,6 +257,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'gazua.tv',
         'lib': new nodes.customNode('https://node.ethereumsocial.kr', '')
+    },
+    'egem': {
+        'name': 'EGEM',
+        'blockExplorerTX': 'https://explorer.egem.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.egem.io/addr/[[address]]',
+        'type': nodes.nodeTypes.EGEM,
+        'eip155': true,
+        'chainId': 1987,
+        'tokenList': require('./tokens/egemTokens.json'),
+        'abiList': require('./abiDefinitions/egemAbi.json'),
+        'estimateGas': true,
+        'service': 'egem.io',
+        'lib': new nodes.customNode('https://jsonrpc.egem.io/custom', '')
     }
 };
 

@@ -185,6 +185,8 @@ var signMsgCtrl = function($scope, $sce, walletService) {
             if (json.version == '3') {
                 if (json.signer == 'trezor') {
                     hash = getTrezorHash(json.msg)
+                } else if(json.signer=='ledger') {
+                    hash = ethUtil.hashPersonalMessage(Buffer.from(json.msg))
                 }
             } else if (json.version == '1') {
                 hash = ethUtil.sha3(json.msg)
