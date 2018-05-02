@@ -1,6 +1,11 @@
 const darklist = function() {
 	return [
 		{
+			"address": "0x4114FB8B1879f61b18f7d2E623569a847a03e15A",
+			"comment": "Fake 'Atonomis' presale",
+			"date": "2018-04-27",
+		},
+		{
 			address: "0x3c3b85b2ae785a8cc16c3d4df12cb27c6983dff5",
 			comment: "Fake ICO support",
 			date: "2018-04-08"
