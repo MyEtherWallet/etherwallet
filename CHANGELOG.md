@@ -2,6 +2,7 @@
 ### New
 - Update darklist [#1824](https://github.com/kvhnuke/etherwallet/pull/1824)
 - Update PRPS and DUBI tokens [#1823](https://github.com/kvhnuke/etherwallet/pull/1823)
+- Adds EAST node [#1817](https://github.com/kvhnuke/etherwallet/pull/1817)
 - Adds CLO node [#1770](https://github.com/kvhnuke/etherwallet/pull/1770)
 - Add fake Atomis to darklist [#1822](https://github.com/kvhnuke/etherwallet/pull/1822)
 - Add translations [#1820](https://github.com/kvhnuke/etherwallet/pull/1820)
