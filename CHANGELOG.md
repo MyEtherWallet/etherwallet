@@ -1,5 +1,6 @@
 ### Release v3.21.09
 ### New
+- Update contest page [#1825](https://github.com/kvhnuke/etherwallet/pull/1825)
 - Update darklist [#1824](https://github.com/kvhnuke/etherwallet/pull/1824)
 - Update PRPS and DUBI tokens [#1823](https://github.com/kvhnuke/etherwallet/pull/1823)
 - Adds EAST node [#1817](https://github.com/kvhnuke/etherwallet/pull/1817)
