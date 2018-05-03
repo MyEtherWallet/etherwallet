@@ -1,5 +1,7 @@
 ### Release v3.21.09
 ### New
+- Update PRPS and DUBI tokens [#1820](https://github.com/kvhnuke/etherwallet/pull/1820)
+- Adds CLO node [#1770](https://github.com/kvhnuke/etherwallet/pull/1770)
 - Add fake Atomis to darklist [#1822](https://github.com/kvhnuke/etherwallet/pull/1822)
 - Add ZMN token [#1814](https://github.com/kvhnuke/etherwallet/pull/1814)
 - Add XGG and DCA tokens [#1813](https://github.com/kvhnuke/etherwallet/pull/1813)
