@@ -21,6 +21,7 @@ nodes.nodeTypes = {
     MUSIC: "MUSIC",
     GO: "GO",
     EOSC: "EOSC",
+    ESN: "ESN",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -337,6 +338,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'eos-classic.io',
         'lib': new nodes.customNode('https://node.eos-classic.io', '')
+    },
+    'esn': {
+        'name': 'ESN',
+        'blockExplorerTX': 'https://ethersocial.net/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://ethersocial.net/addr/[[address]]',
+        'type': nodes.nodeTypes.ESN,
+        'eip155': true,
+        'chainId': 31102,
+        'tokenList': require('./tokens/esnTokens.json'),
+        'abiList': require('./abiDefinitions/esnAbi.json'),
+        'estimateGas': true,
+        'service': 'ethersocial.org',
+        'lib': new nodes.customNode('https://api.esn.gonspool.com', '')
     }
 };
 
