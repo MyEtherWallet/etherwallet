@@ -2,6 +2,9 @@
 ### Update
 - Update OPEN token [#1827](https://github.com/kvhnuke/etherwallet/pull/1827)
 
+### New
+- Add Kyber support email [#1829](https://github.com/kvhnuke/etherwallet/pull/1829)
+
 ### Release v3.21.09
 ### Update
 - Updates on Kyber integration [#1818](https://github.com/kvhnuke/etherwallet/pull/1818)
