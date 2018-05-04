@@ -1,6 +1,6 @@
 ### Release v3.21.10
 ### New
-- Update OPEN token []()
+- Update OPEN token [#1827](https://github.com/kvhnuke/etherwallet/pull/1827)
 
 ### Release v3.21.09
 ### New
