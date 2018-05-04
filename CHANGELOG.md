@@ -8,7 +8,7 @@
 - Update contest page [#1825](https://github.com/kvhnuke/etherwallet/pull/1825)
 - Update darklist [#1824](https://github.com/kvhnuke/etherwallet/pull/1824)
 - Update PRPS and DUBI tokens [#1823](https://github.com/kvhnuke/etherwallet/pull/1823)
-- Update changelog, add Proxy and eProxy abi, add umka token to default [#1812]
+- Update changelog, add Proxy and eProxy abi, add umka token to default [#1812](https://github.com/kvhnuke/etherwallet/pull/1812)
 - Remove an address from darklist, Add FTT, LGO, LUC, OPEN, QASH, WCN, MART, and SS tokens [#1803](https://github.com/kvhnuke/etherwallet/pull/1803)
 
 ### New
@@ -18,7 +18,6 @@
 - Add translations [#1820](https://github.com/kvhnuke/etherwallet/pull/1820)
 - Add ZMN token [#1814](https://github.com/kvhnuke/etherwallet/pull/1814)
 - Add XGG and DCA tokens [#1813](https://github.com/kvhnuke/etherwallet/pull/1813)
-(https://github.com/kvhnuke/etherwallet/pull/1812)
 - Add USDM token [#1811](https://github.com/kvhnuke/etherwallet/pull/1811)
 - Add INRM token [#1809](https://github.com/kvhnuke/etherwallet/pull/1809)
 - Integration for EtherGem [#1807](https://github.com/kvhnuke/etherwallet/pull/1807)
