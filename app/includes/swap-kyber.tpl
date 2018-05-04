@@ -112,11 +112,18 @@
                 <div class="progress-circle"><i>3</i></div>
                 <p>{{kyberOrderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
             </div>
+            <!--<div class="progress-item {{kyberOrderResult.progress.bar[3]}}">-->
+                <!--<div class="progress-circle"><i>4</i></div>-->
+                <!--<p>-->
+                    <!--<span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}}-->
+                    <!--<br/>-->
+                <!--</p>-->
+            <!--</div>-->
             <div class="progress-item {{kyberOrderResult.progress.bar[3]}}">
                 <div class="progress-circle"><i>4</i></div>
                 <p>
-                    <span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}}
-                    <br/>
+                    <!--<span translate="SWAP_progress_4">Sending your </span> {{kyberOrderResult.output.currency}} <br/>-->
+                    <span >Broadcasting your </span> {{kyberOrderResult.output.currency}} <span> order</span><br/>
                 </p>
             </div>
             <div class="progress-item {{kyberOrderResult.progress.bar[4]}}">
@@ -314,33 +321,53 @@
                         <div class="col-sm-12">
                             <h5>Transaction Hash(es):</h5>
                         </div>
-                        <div class="col-sm-12" ng-if="!kyberEthToToken">
-                            <!--                            <div ng-show="kyberOrderResult.progress.status=='TOKENS_APPROVED'">
 
-                                                        </div>-->
+                        <!-- Token to ETH -->
+                        <div class="col-sm-12" ng-if="!kyberEthToToken">
                             <span>
                                 Track your swap transaction:
                             </span>
                             <div ng-if="!kyberTransaction.tokenTxHash">
                                 <br>
-                                <span  class="text-info">Waiting for token authorization <span ng-repeat="tick in indicatorhacked track by $index">{{tick}}</span></span><br>
-                                <span  class="text-danger"> Do Not Navigate Away or Close Your Browser</span>
+                                <span  class="text-info"><em><small>Your Swap Waiting for token authorization</small></em> <span ng-repeat="tick in indicatorhacked track by $index">{{tick}}</span></span><br>
+                                <span class="text-danger"><br> Do Not Navigate Away or Close Your Browser</span>
+
                             </div>
                             <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
                                 <h5>{{kyberTransaction.tokenTxHash}}</h5>
                             </a>
                         </div>
+
                         <div class="col-sm-12" ng-if="!kyberEthToToken">
-                            <h6>{{orderResult.progress.timeMessage}}</h6>
                             <span>
-                                View your token authorization transaction:
+                                Track your token authorization transaction:
                          </span>
+                            <!--{{kyberTransaction.tokenNeedsReset}}-->
+                            <div ng-if="!kyberTransaction.tokenResetTxHash && kyberTransaction.tokenResetTx">
+                                <br>
+                                <span  class="text-info"><em><small>Preparing Token State for Token Authorization</small></em> <span ng-repeat="tick in indicatorTokenReset track by $index">{{tick}}</span></span><br>
+                            </div>
+                            <br ng-if="!kyberTransaction.tokenApproveTxLink">
                             <a class="strong" ng-href="{{kyberTransaction.tokenApproveTxLink}}" target="_blank"
                                rel="noopener">
 
                                 <h5>{{kyberTransaction.tokenApproveTxHash}}</h5>
                             </a>
                         </div>
+                        <!-- / Token to ETH -->
+
+                        <!-- Token to ETH ( with reset token allowance) -->
+                        <div class="col-sm-12" ng-if="kyberTransaction.tokenResetTx">
+                            <span>
+                                Track your token approval reset transaction:
+                            </span>
+                            <a class="strong" ng-href="{{kyberTransaction.tokenResetTxLink}}" target="_blank" rel="noopener">
+                                <h5>{{kyberTransaction.tokenResetTxHash}}</h5>
+                            </a>
+                        </div>
+                        <!-- / Token to ETH ( with reset token allowance) -->
+
+                        <!-- ETH to Token-->
                         <div class="col-sm-12" ng-if="kyberEthToToken">
                           <span>
                               Track your swap transaction:
@@ -350,8 +377,13 @@
                                 <h5>{{kyberTransaction.ethTxHash}}</h5>
                             </a>
                         </div>
+                        <!-- / ETH to Token-->
+
                     </section>
                 </div>
+                <!--<div ng-repeat="(key, entry) in kyberTransaction track by key">
+                    {{key}}:  {{entry}}
+                </div>-->
 
 
             </div>

@@ -124,7 +124,7 @@
 
                 <section class="clearfix collapse-container" ng-if="!kyberEthToToken">
                     <div class="text-center" ng-click="adv = !adv">
-                        <a class="collapse-button"><span ng-show="adv">+</span><span ng-show="!adv">-</span></a>
+                        <a class="collapse-button"><span ng-show="!adv">+</span><span ng-show="adv">-</span></a>
                         <h5>Advanced</h5>
                     </div>
                     <table class="table small table-condensed table-hover transaction-modal" ng-show="adv">
@@ -243,6 +243,62 @@
                         <tr>
                             <td class="small text-right">Data:</td>
                             <td class="small text-left mono text-width-limit"><p>{{parsedKyberTokenTx.data}}</p></td>
+                        </tr>
+                        <!----------------------------------------------------------------->
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td> Token Approval Reset Transaction<br>
+                            <em><small>Why? The swap will fail to execute <wbr> if token approval is not reset to 0.</small></em></td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">To Address:</td>
+                            <td class="small text-left mono">{{parsedKyberResetTokenTx.to}}
+                                <br/>
+                                <em><small>The token ({{swapOrder.fromCoin}}) contract address.</small></em>
+                            </td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">From Address:</td>
+                            <td class="small text-left mono">{{parsedKyberResetTokenTx.from}}</td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">Amount to Send:</td>
+                            <td class="small text-left mono">0 ETH</td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">Current Approve Value:</td>
+                            <td class="small text-left mono">{{kyberTransaction.currentTokenApprovalValue}} {{swapOrder.fromCoin}}</td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">Account Balance:</td>
+                            <td class="small text-left mono">{{parsedKyberResetTokenTx.balance}}</td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">Network:</td>
+                            <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">Gas Limit:</td>
+                            <td class="small text-left mono">{{parsedKyberResetTokenTx.gasLimit}}</td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">Gas Price:</td>
+                            <td class="small text-left mono">{{parsedKyberResetTokenTx.gasPrice.gwei}} GWEI
+                                <small>({{parsedKyberResetTokenTx.gasPrice.eth}} ETH)</small>
+                            </td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">Max TX Fee:</td>
+                            <td class="small text-left mono"> {{parsedKyberTokenTx.txFee.eth}} ETH
+                                <small>({{parsedKyberResetTokenTx.txFee.gwei}} GWEI)</small>
+                            </td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">Nonce:</td>
+                            <td class="small text-left mono">{{parsedKyberResetTokenTx.nonce}}</td>
+                        </tr>
+                        <tr ng-show="kyberTransaction.tokenNeedsReset">
+                            <td class="small text-right">Data:</td>
+                            <td class="small text-left mono text-width-limit"><p>{{parsedKyberResetTokenTx.data}}</p></td>
                         </tr>
                         </tbody>
                     </table>

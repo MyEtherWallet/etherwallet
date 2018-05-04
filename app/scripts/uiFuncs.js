@@ -304,6 +304,7 @@ uiFuncs.notifier = {
     },
     danger: function(msg, duration = 7000) {
         msg = msg.message ? msg.message : msg;
+        console.log(msg); //todo remove dev item
         // Danger messages can be translated based on the type of node
         msg = globalFuncs.getEthNodeMsg(msg);
         this.addAlert("danger", msg, duration);
