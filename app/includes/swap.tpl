@@ -40,13 +40,13 @@
 
     <section class="bity-contact text-center" ng-if="isKyberSwap">
         <p><a class="btn-warning btn-sm"
-              href="mailto:support@myetherwallet.com?Subject={{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash}}%20Issue%20regarding%20my%20Kyber%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash + '%20%20ApproveTxHash%3A%20' + kyberTransaction.tokenApproveTxHash}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A"
+              href="mailto:support@myetherwallet.com,support@kyber.network?Subject={{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash}}%20Issue%20regarding%20my%20Kyber%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash + '%20%20ApproveTxHash%3A%20' + kyberTransaction.tokenApproveTxHash}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A"
               target="_blank" rel="noopener noreferrer"> Issue with your Swap? Contact support</a></p>
         <p ng-click="swapIssue = !swapIssue">
             <small>Click here if link doesn't work</small>
         </p>
         <textarea class="form-control input-sm" rows="9" ng-show="swapIssue" style="max-width: 35rem;margin: auto;">
-            To: support@myetherwallet.com
+            To: support@myetherwallet.com, support@kyber.network
             Subject: Issue regarding my Kyber Swap via MEW - {{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash}}
             Message:
             TxHash(s): {{kyberTransaction.ethTxHash ? kyberTransaction.ethTxHash : kyberTransaction.tokenTxHash + " ApproveTxHash: " + kyberTransaction.tokenApproveTxHash}}
@@ -59,7 +59,3 @@
 
 </main>
 <!-- / Swap Page -->
-
-
-
-
