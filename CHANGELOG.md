@@ -1,24 +1,27 @@
 ### Release v3.21.10
-### New
+### Update
 - Update OPEN token [#1827](https://github.com/kvhnuke/etherwallet/pull/1827)
 
 ### Release v3.21.09
-### New
+### Update
 - Updates on Kyber integration [#1818](https://github.com/kvhnuke/etherwallet/pull/1818)
 - Update contest page [#1825](https://github.com/kvhnuke/etherwallet/pull/1825)
 - Update darklist [#1824](https://github.com/kvhnuke/etherwallet/pull/1824)
 - Update PRPS and DUBI tokens [#1823](https://github.com/kvhnuke/etherwallet/pull/1823)
+- Update changelog, add Proxy and eProxy abi, add umka token to default [#1812]
+- Remove an address from darklist, Add FTT, LGO, LUC, OPEN, QASH, WCN, MART, and SS tokens [#1803](https://github.com/kvhnuke/etherwallet/pull/1803)
+
+### New
 - Adds EAST node [#1817](https://github.com/kvhnuke/etherwallet/pull/1817)
 - Adds CLO node [#1770](https://github.com/kvhnuke/etherwallet/pull/1770)
 - Add fake Atomis to darklist [#1822](https://github.com/kvhnuke/etherwallet/pull/1822)
 - Add translations [#1820](https://github.com/kvhnuke/etherwallet/pull/1820)
 - Add ZMN token [#1814](https://github.com/kvhnuke/etherwallet/pull/1814)
 - Add XGG and DCA tokens [#1813](https://github.com/kvhnuke/etherwallet/pull/1813)
-- Update changelog, add Proxy and eProxy abi, add umka token to default [#1812](https://github.com/kvhnuke/etherwallet/pull/1812)
+(https://github.com/kvhnuke/etherwallet/pull/1812)
 - Add USDM token [#1811](https://github.com/kvhnuke/etherwallet/pull/1811)
 - Add INRM token [#1809](https://github.com/kvhnuke/etherwallet/pull/1809)
 - Integration for EtherGem [#1807](https://github.com/kvhnuke/etherwallet/pull/1807)
-- Remove an address from darklist, Add FTT, LGO, LUC, OPEN, QASH, WCN, MART, and SS tokens [#1803](https://github.com/kvhnuke/etherwallet/pull/1803)
 - Add FANX and DTH tokens [Commit](https://github.com/kvhnuke/etherwallet/commit/718455e74790e7b36ef9bc7df710c3e2b07454cd)
 - Add Dether token [#1800](https://github.com/kvhnuke/etherwallet/pull/1800)
 - Add MVP and SGT tokens [#1797](https://github.com/kvhnuke/etherwallet/pull/1797)
