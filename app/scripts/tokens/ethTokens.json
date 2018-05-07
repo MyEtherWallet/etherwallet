@@ -18,6 +18,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x9fC0583220eB44fAeE9e2dc1E63F39204DDD9090",
+		"symbol": "2DC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xaEc98A708810414878c3BCDF46Aad31dEd4a4557",
 		"symbol": "300",
 		"decimal": 18,
@@ -1446,6 +1452,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x8a854288a5976036a725879164ca3e91d30c6a1b",
+		"symbol": "GET",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xFcD862985628b254061F7A918035B80340D045d3",
 		"symbol": "GIF",
 		"decimal": 18,
@@ -1794,6 +1806,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xDDe12a12A6f67156e0DA672be05c374e1B0a3e57",
+		"symbol": "JOY",
+		"decimal": 6,
+		"type": "default"
+	},
+	{
 		"address": "0x0D6DD9f68d24EC1d5fE2174f3EC8DAB52B52BaF5",
 		"symbol": "KC",
 		"decimal": 18,
@@ -2127,6 +2145,12 @@
 		"address": "0x957c30aB0426e0C93CD8241E2c60392d08c6aC8e",
 		"symbol": "MOD",
 		"decimal": 0,
+		"type": "default"
+	},
+	{
+		"address": "0x82125AFe01819Dff1535D0D6276d57045291B6c0",
+		"symbol": "MRL",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -3036,12 +3060,6 @@
 		"type": "default"
 	},
 	{
-		"address": "0xB15fE5a123e647ba594CEa7A1E648646f95EB4AA",
-		"symbol": "SS",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
 		"address": "0xbbFF862d906E348E9946Bfb2132ecB157Da3D4b4",
 		"symbol": "SS (Sharder)",
 		"decimal": 18,
@@ -3423,12 +3441,6 @@
 		"address": "0x74951B677de32D596EE851A233336926e6A2cd09",
 		"symbol": "WBA",
 		"decimal": 7,
-		"type": "default"
-	},
-	{
-		"address": "0x8f936fe0faf0604c9c0ef2406bde0a65365515d6",
-		"symbol": "WCN",
-		"decimal": 18,
 		"type": "default"
 	},
 	{
