@@ -1,5 +1,7 @@
 ### Release v3.21.10
 ### Update
+- Update japanese translations [#1831](https://github.com/kvhnuke/etherwallet/pull/1831)
+- Update spanish translations [#1830](https://github.com/kvhnuke/etherwallet/pull/1830)
 - Update OPEN token [#1827](https://github.com/kvhnuke/etherwallet/pull/1827)
 
 ### New
@@ -11,6 +13,7 @@
 - Update contest page [#1825](https://github.com/kvhnuke/etherwallet/pull/1825)
 - Update darklist [#1824](https://github.com/kvhnuke/etherwallet/pull/1824)
 - Update PRPS and DUBI tokens [#1823](https://github.com/kvhnuke/etherwallet/pull/1823)
+- Update spanish translations [#1820](https://github.com/kvhnuke/etherwallet/pull/1820)
 - Update changelog, add Proxy and eProxy abi, add umka token to default [#1812](https://github.com/kvhnuke/etherwallet/pull/1812)
 - Remove an address from darklist, Add FTT, LGO, LUC, OPEN, QASH, WCN, MART, and SS tokens [#1803](https://github.com/kvhnuke/etherwallet/pull/1803)
 
@@ -18,7 +21,6 @@
 - Adds EAST node [#1817](https://github.com/kvhnuke/etherwallet/pull/1817)
 - Adds CLO node [#1770](https://github.com/kvhnuke/etherwallet/pull/1770)
 - Add fake Atomis to darklist [#1822](https://github.com/kvhnuke/etherwallet/pull/1822)
-- Add translations [#1820](https://github.com/kvhnuke/etherwallet/pull/1820)
 - Add ZMN token [#1814](https://github.com/kvhnuke/etherwallet/pull/1814)
 - Add XGG and DCA tokens [#1813](https://github.com/kvhnuke/etherwallet/pull/1813)
 - Add USDM token [#1811](https://github.com/kvhnuke/etherwallet/pull/1811)
