@@ -1,10 +1,12 @@
 ### Release v3.21.10
 ### Update
+- Remove WCN and SS tokens [#1832](https://github.com/kvhnuke/etherwallet/pull/1832)
 - Update japanese translations [#1831](https://github.com/kvhnuke/etherwallet/pull/1831)
 - Update spanish translations [#1830](https://github.com/kvhnuke/etherwallet/pull/1830)
 - Update OPEN token [#1827](https://github.com/kvhnuke/etherwallet/pull/1827)
 
 ### New
+- Add JOY, MRL, 2DC and GET token [#1832](https://github.com/kvhnuke/etherwallet/pull/1832)
 - Add Kyber support email [#1829](https://github.com/kvhnuke/etherwallet/pull/1829)
 
 ### Release v3.21.09
