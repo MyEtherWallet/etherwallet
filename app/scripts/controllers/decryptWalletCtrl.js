@@ -93,9 +93,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.CLO:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwCallistoPath;
                     break;
-                case nodes.nodeTypes.CLOT:
-                    $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
-                    break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
             }
@@ -124,9 +121,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.CLO:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwCallistoPath;
-                    break;
-                case nodes.nodeTypes.CLOT:
-                    $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
                     break;
                 default:
                   $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
