@@ -88,11 +88,11 @@
                     </tr>
                     <tr>
                         <td class="small text-right">Swapping:</td>
-                        <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
+                        <td class="small text-left mono">{{swapOrder.fromVal}}  {{swapOrder.fromCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">For:</td>
-                        <td class="small text-left mono">{{swapOrder.toVal}} {{swapOrder.toCoin}}</td>
+                        <td class="small text-left mono"><!--{{swapOrder.toVal}}--> {{swapOrder.fromVal * swapOrder.swapRate}} {{swapOrder.toCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Network:</td>
@@ -339,7 +339,7 @@
                     </tr>
                     <tr>
                         <td class="small text-right">For:</td>
-                        <td class="small text-left mono">{{swapOrder.toVal}} {{swapOrder.toCoin}}</td>
+                        <td class="small text-left mono"><!--{{swapOrder.toVal}}--> {{swapOrder.fromVal * swapOrder.swapRate}} {{swapOrder.toCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Network:</td>

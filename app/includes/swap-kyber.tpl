@@ -20,7 +20,8 @@
                 <p translate="SWAP_send_amt"> Amount to send </p>
             </div>
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.toVal | number: receiveDecimals}} {{swapOrder.toCoin}} </h4>
+
+                <h4> <!--{{swapOrder.toVal | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{swapOrder.toCoin}} </h4>
                 <p translate="SWAP_rec_amt"> Amount to receive </p>
             </div>
             <div class="col-sm-4 order-info">
@@ -87,7 +88,7 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4>{{kyberOrderResult.output.amount | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
+                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
@@ -250,7 +251,7 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4>{{kyberOrderResult.output.amount | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
+                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
@@ -310,7 +311,7 @@
                             <p>Amount sent</p>
                         </div>
                         <div class="col-sm-12">
-                            <h4>{{kyberOrderResult.output.amount | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
+                            <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                             <p translate="SWAP_rec_amt">Amount to receive</p>
                         </div>
                         <div class="col-sm-12">

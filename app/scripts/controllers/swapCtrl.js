@@ -593,6 +593,8 @@ var swapCtrl = function($scope, $sce, walletService) {
                 // todo: provide message and option to return if the rate value for the specified qty is 0.
                 // todo: or just provide the message and don't 'route' to the next page (I like this better)
                 $scope.swapOrder.finalRate = finalRate;
+                // $scope.swapOrder.swapRate = finalRate;
+                console.log("final rate", $scope.swapOrder.finalRate); //todo remove dev item
                 if (isFrom) {
                     $scope.receiveDecimals = $scope.kyber.tokenDetails[$scope.swapOrder.toCoin].decimals < bity.decimals ? $scope.kyber.tokenDetails[$scope.swapOrder.toCoin].decimals : bity.decimals;
                     let _toVal = finalRate * $scope.swapOrder.fromVal;
@@ -853,7 +855,7 @@ var swapCtrl = function($scope, $sce, walletService) {
     $scope.openKyberEthOrder = function() {
         try {
             $scope.addressString = $scope.walletKyber.getAddressString();
-            $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.swapOrder, $scope.swapOrder.swapRate), $scope.kyber.getKyberNetworkAddress(), $scope.swapOrder.fromVal);
+            $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.swapOrder, $scope.swapOrder.finalRate), $scope.kyber.getKyberNetworkAddress(), $scope.swapOrder.fromVal);
             var txData = uiFuncs.getTxData($scope);
             txData.nonce = txData.gasPrice = null;
 
@@ -904,7 +906,7 @@ var swapCtrl = function($scope, $sce, walletService) {
     // Build the Swap transaction to send to the Kyber Network Contract to execute the swap
     $scope.openKyberTokenOrder = function(nonce, gasPrice) {
         try {
-            $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.swapOrder, $scope.swapOrder.swapRate), $scope.kyber.getKyberNetworkAddress());
+            $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.swapOrder, $scope.swapOrder.finalRate), $scope.kyber.getKyberNetworkAddress());
             var txData = uiFuncs.getTxData($scope);
             if (nonce) {
                 let newNonce = parseInt(ethFuncs.hexToDecimal(nonce));
