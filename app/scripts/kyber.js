@@ -177,7 +177,7 @@ kyberFuncs.prototype.setKyberRate = function (_from, _to) {
     var _this = this;
     return new Promise((resolve, reject) => {
         _this.getExpectedRate(_from, _to, 1, (_results) => {
-             let _returnedRate = _this.convertToTokenBase(_results.data.slippageRate, "ETH");
+             let _returnedRate = _this.convertToTokenBase(_results.data.expectedRate, "ETH");
             _this.kyberRates[kyber.toPairKey(_from, _to)] = _returnedRate;
             _this.priceLoaded = true;
             resolve(_returnedRate);
@@ -195,7 +195,7 @@ kyberFuncs.prototype.refreshRates = function() {
         let toToken = pairContents[1];
         _this.getExpectedRate(fromToken, toToken, 1, (_results) => {
             //
-            _this.kyberRates[_key] = _this.convertToTokenBase(_results.data.slippageRate, "ETH");
+            _this.kyberRates[_key] = _this.convertToTokenBase(_results.data.expectedRate, "ETH");
         })
     });
     _this.priceLoaded = true;
