@@ -8,6 +8,7 @@
 - Update japanese translations [#1831](https://github.com/kvhnuke/etherwallet/pull/1831)
 - Update spanish translations [#1830](https://github.com/kvhnuke/etherwallet/pull/1830)
 - Update OPEN token [#1827](https://github.com/kvhnuke/etherwallet/pull/1827)
+- Update Kyber integration [#1839](https://github.com/kvhnuke/etherwallet/pull/1839)
 
 ### New
 - Add KRL, QBX, and GROW tokens [#1834](https://github.com/kvhnuke/etherwallet/pull/1834)
