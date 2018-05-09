@@ -150,6 +150,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x38c87aa89b2b8cd9b95b736e1fa7b612ea972169",
+		"symbol": "AMO",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x84936cF7630AA3e27Dd9AfF968b140d5AEE49F5a",
 		"symbol": "AMTC",
 		"decimal": 8,
@@ -1478,6 +1484,12 @@
 	{
 		"address": "0x24083bb30072643c3bb90b44b7285860a755e687",
 		"symbol": "GELD",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x543Ff227F64Aa17eA132Bf9886cAb5DB55DCAddf",
+		"symbol": "GEN",
 		"decimal": 18,
 		"type": "default"
 	},

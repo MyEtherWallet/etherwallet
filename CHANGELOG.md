@@ -1,5 +1,7 @@
 ### Release v3.21.10
 ### Update
+- Add GEN and AMO tokens [#1838](https://github.com/kvhnuke/etherwallet/pull/1838)
+- Update license [#1837](https://github.com/kvhnuke/etherwallet/pull/1837)
 - Sort alphabetically [#1834](https://github.com/kvhnuke/etherwallet/pull/1834)
 - Formatting update [#1833](https://github.com/kvhnuke/etherwallet/pull/1833)
 - Remove WCN and SS tokens [#1832](https://github.com/kvhnuke/etherwallet/pull/1832)
