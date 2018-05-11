@@ -2958,11 +2958,6 @@ const darklist = function() {
 			date: "2017-09-18"
 		},
 		{
-			address: "0x86Fa049857E0209aa7D9e616F7eb3b3B78ECfdb0",
-			comment: "EOS Scam Address?",
-			date: "2017-09-16"
-		},
-		{
 			address: "0x7098c7113c2ecaf48baad07e598c74c2689a5795",
 			comment: "Scam (GNT, DNT, etc)",
 			date: "2017-09-16"
