@@ -1,3 +1,10 @@
+### Release v3.21.11
+### Update
+- Remove EOS token from darklist
+- Update LEMO token to 18 decimals
+### New
+- Add TDH, STQ, XFS, MTC, CARE, and IOST tokens
+
 ### Release v3.21.10
 ### Update
 - Add GEN and AMO tokens [#1838](https://github.com/kvhnuke/etherwallet/pull/1838)
