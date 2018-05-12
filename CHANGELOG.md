@@ -1,3 +1,10 @@
+### Release v3.21.11
+### Update
+- Remove EOS token from darklist[#1843](https://github.com/kvhnuke/etherwallet/pull/1843)
+- Update LEMO token to 18 decimals[#1843](https://github.com/kvhnuke/etherwallet/pull/1843)
+### New
+- Add TDH, STQ, XFS, MTC, CARE, and IOST tokens[#1843](https://github.com/kvhnuke/etherwallet/pull/1843)
+
 ### Release v3.21.10
 ### Update
 - Add GEN and AMO tokens [#1838](https://github.com/kvhnuke/etherwallet/pull/1838)
@@ -8,6 +15,7 @@
 - Update japanese translations [#1831](https://github.com/kvhnuke/etherwallet/pull/1831)
 - Update spanish translations [#1830](https://github.com/kvhnuke/etherwallet/pull/1830)
 - Update OPEN token [#1827](https://github.com/kvhnuke/etherwallet/pull/1827)
+- Update Kyber integration [#1839](https://github.com/kvhnuke/etherwallet/pull/1839)
 
 ### New
 - Add KRL, QBX, and GROW tokens [#1834](https://github.com/kvhnuke/etherwallet/pull/1834)
