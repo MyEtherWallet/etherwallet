@@ -950,8 +950,9 @@ var swapCtrl = function($scope, $sce, walletService) {
     // generate the transaction object based on the specific flow stage
     $scope.generateKyberTransaction = function(txData, stage) {
         try {
+            // console.log("generateKyberTransaction"); //todo remove dev item
             uiFuncs.generateTx(txData, function(rawTx) {
-                console.log($scope.kyberOrderResult.progress.status); //todo remove dev item
+                // console.log("generateTx", $scope.kyberOrderResult.progress.status); //todo remove dev item
                 if (!rawTx.isError) {
                     switch (stage) {
                         case "RESET_TOKEN_APPROVAL":
@@ -1070,6 +1071,7 @@ var swapCtrl = function($scope, $sce, walletService) {
     $scope.sendKyberTx = function(signedTx) {
         try {
             uiFuncs.sendTx(signedTx, function(resp) {
+                console.log("uiFuncs.sendTx"); //todo remove dev item
                 if (!resp.isError) {
                     let notCustomNode = $scope.ajaxReq.type != nodes.nodeTypes.Custom;
                     switch ($scope.kyberOrderResult.progress.status) {

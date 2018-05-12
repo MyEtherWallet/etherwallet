@@ -1794,6 +1794,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xfa1a856cfa3409cfa145fa4e20eb270df3eb21ab",
+		"symbol": "IOST",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x64CdF819d3E75Ac8eC217B3496d7cE167Be42e80",
 		"symbol": "IPL",
 		"decimal": 18,

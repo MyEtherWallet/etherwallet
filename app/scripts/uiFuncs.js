@@ -193,7 +193,8 @@ uiFuncs.generateTx = function(txData, callback) {
                 // instead we put the final params in the "signedTx" field and
                 // wait for the confirmation dialogue / sendTx method
                 var txParams = Object.assign({
-                    from: txData.from
+                    from: txData.from,
+                    gas: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)) // MetaMask and Web3 v1.0 use 'gas' not 'gasLimit'
                 }, rawTx)
                 rawTx.rawTx = JSON.stringify(rawTx);
                 rawTx.signedTx = JSON.stringify(txParams);
