@@ -270,7 +270,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/etscTokens.json'),
         'abiList': require('./abiDefinitions/etscAbi.json'),
         'estimateGas': true,
-        'service': 'gazua.tv',
+        'service': 'ethereumsocial.kr',
         'lib': new nodes.customNode('https://node.ethereumsocial.kr', '')
     },
     'egem': {
