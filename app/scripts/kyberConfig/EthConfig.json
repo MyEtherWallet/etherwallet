@@ -3,215 +3,137 @@
     "OMG": {
       "name": "OmiseGO",
       "decimals": 18,
-      "address": "0xd26114cd6EE289AccF82350c8d8487fedB8A0C07",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "439794468212403470336",
-      "maxTotalImbalance": "722362414038872621056",
-      "internal use": true
+      "address": "0xd26114cd6EE289AccF82350c8d8487fedB8A0C07"
     },
     "KNC": {
       "name": "KyberNetwork",
       "decimals": 18,
-      "address": "0xdd974D5C2e2928deA5F71b9825b8b646686BD200",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "3475912029567568052224",
-      "maxTotalImbalance": "5709185508564730380288",
-      "internal use": true
+      "address": "0xdd974D5C2e2928deA5F71b9825b8b646686BD200"
     },
     "EOS": {
       "name": "Eos",
       "decimals": 18,
-      "address": "0x86Fa049857E0209aa7D9e616F7eb3b3B78ECfdb0",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "938890140546807627776",
-      "maxTotalImbalance": "1542127055848131526656",
-      "internal use": true
+      "address": "0x86Fa049857E0209aa7D9e616F7eb3b3B78ECfdb0"
     },
     "SNT": {
       "name": "STATUS",
       "decimals": 18,
-      "address": "0x744d70fdbe2ba4cf95131626614a1763df805b9e",
-      "minimalRecordResolution": "10000000000000000",
-      "maxPerBlockImbalance": "43262133595415336976384",
-      "maxTotalImbalance": "52109239915677776609280",
-      "internal use": true
+      "address": "0x744d70fdbe2ba4cf95131626614a1763df805b9e"
     },
     "ELF": {
       "name": "AELF",
       "decimals": 18,
-      "address": "0xbf2179859fc6d5bee9bf9158632dc51678a4100e",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "5906192156691986907136",
-      "maxTotalImbalance": "7114008452735498715136",
-      "internal use": true
+      "address": "0xbf2179859fc6d5bee9bf9158632dc51678a4100e"
     },
     "POWR": {
       "name": "Power Ledger",
       "decimals": 6,
-      "address": "0x595832f8fc6bf59c85c527fec3740a1b7a361269",
-      "minimalRecordResolution": "1000",
-      "maxPerBlockImbalance": "7989613502",
-      "maxTotalImbalance": "7989613502",
-      "internal use": true
+      "address": "0x595832f8fc6bf59c85c527fec3740a1b7a361269"
     },
     "MANA": {
       "name": "MANA",
       "decimals": 18,
-      "address": "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "46289152908501773713408",
-      "maxTotalImbalance": "46289152908501773713408",
-      "internal use": true
+      "address": "0x0f5d2fb29fb7d3cfee444a200298f468908cc942"
     },
     "BAT": {
       "name": "Basic Attention Token",
       "decimals": 18,
-      "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "13641944431813013274624",
-      "maxTotalImbalance": "13641944431813013274624",
-      "internal use": true
+      "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef"
     },
     "REQ": {
       "name": "Request",
       "decimals": 18,
-      "address": "0x8f8221afbb33998d8584a2b05749ba73c37a938a",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "27470469074054960644096",
-      "maxTotalImbalance": "33088179999699195920384",
-      "internal use": true
+      "address": "0x8f8221afbb33998d8584a2b05749ba73c37a938a"
     },
     "GTO": {
       "name": "Gifto",
       "decimals": 5,
-      "address": "0xc5bbae50781be1669306b9e001eff57a2957b09d",
-      "minimalRecordResolution": "10",
-      "maxPerBlockImbalance": "1200696404",
-      "maxTotalImbalance": "1200696404",
-      "internal use": true
+      "address": "0xc5bbae50781be1669306b9e001eff57a2957b09d"
     },
     "RDN": {
       "name": "Raiden",
       "decimals": 18,
-      "address": "0x255aa6df07540cb5d3d297f0d0d4d84cb52bc8e6",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "2392730983766020325376",
-      "maxTotalImbalance": "2882044469946171260928",
-      "internal use": true
+      "address": "0x255aa6df07540cb5d3d297f0d0d4d84cb52bc8e6"
     },
     "APPC": {
       "name": "AppCoins",
       "decimals": 18,
-      "address": "0x1a7a8bd9106f2b8d977e08582dc7d24c723ab0db",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "10010270788085346205696",
-      "maxTotalImbalance": "12057371164248796823552",
-      "internal use": true
+      "address": "0x1a7a8bd9106f2b8d977e08582dc7d24c723ab0db"
     },
     "ENG": {
       "name": "Enigma",
       "decimals": 8,
-      "address": "0xf0ee6b27b759c9893ce4f094b49ad28fd15a23e4",
-      "minimalRecordResolution": "10000",
-      "maxPerBlockImbalance": "288970915691",
-      "maxTotalImbalance": "348065467950",
-      "internal use": true
+      "address": "0xf0ee6b27b759c9893ce4f094b49ad28fd15a23e4"
     },
     "SALT": {
       "name": "Salt",
       "decimals": 8,
-      "address": "0x4156d3342d5c385a87d264f90653733592000581",
-      "minimalRecordResolution": "10000",
-      "maxPerBlockImbalance": "123819203326",
-      "maxTotalImbalance": "123819203326",
-      "internal use": true
+      "address": "0x4156d3342d5c385a87d264f90653733592000581"
     },
     "BQX": {
       "name": "Ethos",
       "decimals": 8,
-      "address": "0x5Af2Be193a6ABCa9c8817001F45744777Db30756",
-      "minimalRecordResolution": "10000",
-      "maxPerBlockImbalance": "127620338002",
-      "maxTotalImbalance": "127620338002",
-      "internal use": true
+      "address": "0x5Af2Be193a6ABCa9c8817001F45744777Db30756"
     },
     "ADX": {
       "name": "AdEx",
       "decimals": 4,
-      "address": "0x4470BB87d77b963A013DB939BE332f927f2b992e",
-      "minimalRecordResolution": "10",
-      "maxPerBlockImbalance": "1925452883",
-      "maxTotalImbalance": "1925452883",
-      "internal use": false
+      "address": "0x4470BB87d77b963A013DB939BE332f927f2b992e"
     },
     "AST": {
       "name": "AirSwap",
       "decimals": 4,
-      "address": "0x27054b13b1b798b345b591a4d22e6562d47ea75a",
-      "minimalRecordResolution": "10",
-      "maxPerBlockImbalance": "1925452883",
-      "maxTotalImbalance": "1925452883",
-      "internal use": true
+      "address": "0x27054b13b1b798b345b591a4d22e6562d47ea75a"
     },
     "RCN": {
       "name": "Ripio Credit Network",
       "decimals": 18,
-      "address": "0xf970b8e36e23f7fc3fd752eea86f8be8d83375a6",
-      "minimalRecordResolution": "10",
-      "maxPerBlockImbalance": "1925452883",
-      "maxTotalImbalance": "1925452883",
-      "internal use": false
+      "address": "0xf970b8e36e23f7fc3fd752eea86f8be8d83375a6"
     },
     "DAI": {
       "name": "DAI",
       "decimals": 18,
-      "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
-      "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "2711997842670896021504",
-      "maxTotalImbalance": "3833713935933528080384",
-      "internal use": false
+      "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
     },
     "MOT": {
       "name": "Olympus Labs",
       "decimals": 18,
-      "address": "0x263c618480dbe35c300d8d5ecda19bbb986acaed",
-      "internal use": false
+      "address": "0x263c618480dbe35c300d8d5ecda19bbb986acaed"
     },
     "ZIL": {
       "name": "Zilliqa",
       "decimals": 12,
-      "address": "0x05f4a42e251f2d52b8ed15e9fedaacfcef1fad27",
-      "minimalRecordResolution": "10",
-      "maxPerBlockImbalance": "1925452883",
-      "maxTotalImbalance": "1925452883",
-      "internal use": true
+      "address": "0x05f4a42e251f2d52b8ed15e9fedaacfcef1fad27"
     },
     "LINK": {
       "name": "Chain Link",
       "decimals": 18,
-      "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
-      "minimalRecordResolution": "10",
-      "maxPerBlockImbalance": "1925452883",
-      "maxTotalImbalance": "1925452883",
-      "internal use": true
+      "address": "0x514910771af9ca656af840dff83e8264ecf986ca"
     },
     "IOST": {
       "name": "IOStoken",
       "decimals": 18,
-      "address": "0xfa1a856cfa3409cfa145fa4e20eb270df3eb21ab",
-      "internal use": false
+      "address": "0xfa1a856cfa3409cfa145fa4e20eb270df3eb21ab"
     },
     "STORM": {
       "name": "Storm",
       "decimals": 18,
-      "address": "0xd0a4b8946cb52f0661273bfbc6fd0e0c75fc6433",
-      "internal use": false
+      "address": "0xd0a4b8946cb52f0661273bfbc6fd0e0c75fc6433"
+    },
+    "DGX": {
+      "name": "Digix Gold",
+      "decimals": 9,
+      "address": "0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf"
+    },
+    "ABT": {
+      "name": "ArcBlock",
+      "decimals": 18,
+      "address": "0xb98d4c97425d9908e66e53a6fdf673acca0be986"
     },
     "ETH": {
       "name": "Ethereum",
       "decimals": 18,
-      "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      "internal use": true
+      "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
     }
   },
   "max gas price": "50000000000",
