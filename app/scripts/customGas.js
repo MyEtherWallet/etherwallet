@@ -349,4 +349,10 @@ to:         '0xf4fe95603881d0e07954fd7605e0e9a916e42c44',
 gasLimit:   200000,
 data:       '',
 msg:        'WHEN Token Sale. Join the future of person-to-person micro-contracts using the blockchain.: https://interface.whenhub.com/'
+},{
+// GANA (GANA) Token Sale
+to:         '0xFc543bA94943DA77236D38D1CBE6Bd9C7B945dfC',
+gasLimit:   250000,
+data:       '',
+msg:        'GANA Token Sale. Green And Nature Association. - https://ganacoin.io/'
 }]
