@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// Ethernet.Cash (ENC) Token sale
+to:         '0x039f5050de4908f9b5ddf40a4f3aa3f329086387',
+gasLimit:   299686,
+data:       '',
+msg:        'Ethernet.Cash (ENC) token sale - https://ethernet.cash get up to 50% bonus and 50% for your referral.'
+},{
 // Merculet (MVP) Token sale
 to:         '0x8a77e40936bbc27e80e9a3f526368c967869c86d',
 gasLimit:   210000,
