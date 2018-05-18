@@ -355,4 +355,10 @@ to:         '0x1543d0F83489e82A1344DF6827B23d541F235A50',
 gasLimit:   200000,
 data:       '',
 msg:        'AIgatha (ATH) Token Sale. Official sale website: https://aigatha.com'
+},{
+// GANA (GANA) Token Sale
+to:         '0xFc543bA94943DA77236D38D1CBE6Bd9C7B945dfC',
+gasLimit:   250000,
+data:       '',
+msg:        'GANA Token Sale. Green And Nature Association. - https://ganacoin.io/'
 }]
