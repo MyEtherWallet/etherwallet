@@ -414,6 +414,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5732046A883704404F284Ce41FfADd5b007FD668",
+		"symbol": "BLZ",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xdf6ef343350780bf8c3410bf062e0c015b1dd671",
 		"symbol": "BMC",
 		"decimal": 8,
@@ -974,12 +980,6 @@
 	{
 		"address": "0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416",
 		"symbol": "DCA",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
-		"address": "0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416",
-		"symbol": "DCA (doBETacceptBET)",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -1848,12 +1848,6 @@
 		"type": "default"
 	},
 	{
-		"address": "0xfa1a856cfa3409cfa145fa4e20eb270df3eb21ab",
-		"symbol": "IOST",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
 		"address": "0x64CdF819d3E75Ac8eC217B3496d7cE167Be42e80",
 		"symbol": "IPL",
 		"decimal": 18,
@@ -2006,6 +2000,12 @@
 	{
 		"address": "0xB5AE848EdB296C21259b7467331467d2647eEcDf",
 		"symbol": "LEMO",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x80fB784B7eD66730e8b1DBd9820aFD29931aab03",
+		"symbol": "LEND",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -2378,6 +2378,12 @@
 	{
 		"address": "0x17f8aFB63DfcDcC90ebE6e84F060Cc306A98257D",
 		"symbol": "NBAI",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x809826cceab68c387726af962713b64cb5cb3cca",
+		"symbol": "NCASH",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -3680,6 +3686,12 @@
 	{
 		"address": "0x71e8d74ff1c923e369d0e70dfb09866629c4dd35",
 		"symbol": "WRK",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xb7cb1c96db6b22b0d3d9536e0108d062bd488f74",
+		"symbol": "WTC",
 		"decimal": 18,
 		"type": "default"
 	},
