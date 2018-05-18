@@ -21,6 +21,7 @@ nodes.nodeTypes = {
     CLO: "CLO",
     CLOT: "Testnet CLO",
     EAST: "EAST",
+    X888: "X88",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -310,6 +311,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'easthub.io',
         'lib': new nodes.customNode('https://node.easthub.io', '')
+        +    },
+     'x888': {
+        'name': 'X888',
+        'blockExplorerTX': 'https://myetherwallet.com/?[[txHash]]#check-tx-status',
+        'blockExplorerAddr': 'https://myetherwallet.com/?[[address]]#view-wallet-info',
+        'type': nodes.nodeTypes.X888,
+        'eip155': true,
+        'chainId': 888,
+        'tokenList': require('./tokens/x888Tokens.json'),
+        'abiList': require('./abiDefinitions/x888Abi.json'),
+        'estimateGas': true,
+        'service': 'eightereum',
+        'lib': new nodes.customNode('https://eightereum.x888.io', '')
     }
 };
 
