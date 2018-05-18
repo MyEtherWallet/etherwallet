@@ -1145,8 +1145,14 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     // Build a $scope.tx object with supplied parameters
     $scope.buildTransactionObject = function (data, to, value, gasPrice) {
+        let gasLimit;
+        if(($scope.swapOrder.fromCoin === "DGX" || $scope.swapOrder.toCoin === "DGX") && to === $scope.kyber.KyberNetworkAddress){
+          gasLimit = 650000
+        } else {
+            gasLimit = kyber.defaultValues.gasLimit
+        }
         return {
-            gasLimit: kyber.defaultValues.gasLimit,
+            gasLimit: gasLimit,
             data: data,
             to: to,
             unit: "ether",
