@@ -1,4 +1,6 @@
 ### Release v3.21.11
+### Fixes
+- Metamask fix for Kyber [#1844](https://github.com/kvhnuke/etherwallet/pull/1844)
 ### Update
 - Remove EOS token from darklist[#1843](https://github.com/kvhnuke/etherwallet/pull/1843)
 - Update LEMO token to 18 decimals[#1843](https://github.com/kvhnuke/etherwallet/pull/1843)
