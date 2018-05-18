@@ -311,7 +311,7 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'easthub.io',
         'lib': new nodes.customNode('https://node.easthub.io', '')
-        +    },
+     },
      'x888': {
         'name': 'X888',
         'blockExplorerTX': 'https://myetherwallet.com/?[[txHash]]#check-tx-status',
