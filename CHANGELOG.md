@@ -1,6 +1,6 @@
 ### Release v3.21.12
 ### New
-- Add Bkrx, COV, ENC, ADL, ATH, CO2Bit, QRG, and GANA to Eth tokens default. Add PPD and KC to rinkeby token defaults. Add PPD abi. []()
+- Add Bkrx, COV, ENC, ADL, ATH, CO2Bit, QRG, and GANA to Eth tokens default. Add PPD and KC to rinkeby token defaults. Add PPD abi. [#1856](https://github.com/kvhnuke/etherwallet/pull/1856)
 ### Release v3.21.11
 ### Fixes
 - Metamask fix for Kyber [#1844](https://github.com/kvhnuke/etherwallet/pull/1844)
