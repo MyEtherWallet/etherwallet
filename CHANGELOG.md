@@ -1,5 +1,11 @@
 ### Release v3.21.12
 ### New
+- Add x888 Node [#1855](https://github.com/kvhnuke/etherwallet/pull/1855)
+- Add GANA custom gas [#1852](https://github.com/kvhnuke/etherwallet/pull/1852)
+- Add AIgathaToken custom gas [#1849](https://github.com/kvhnuke/etherwallet/pull/1849)
+- Add AIgathaToken abi [#1848](https://github.com/kvhnuke/etherwallet/pull/1848)
+- Add ENC Abi [#1846](https://github.com/kvhnuke/etherwallet/pull/1846)
+- Add ENC custom gas [#1845](https://github.com/kvhnuke/etherwallet/pull/1845)
 - Add Bkrx, COV, ENC, ADL, ATH, CO2Bit, QRG, and GANA to Eth tokens default. Add PPD and KC to rinkeby token defaults. Add PPD abi. [#1856](https://github.com/kvhnuke/etherwallet/pull/1856)
 ### Update
 - Removed duplicate entries for IOST and DCA. Added BLZ, LEND, NCASH, and WTC. [#1853](https://github.com/kvhnuke/etherwallet/pull/1853)  
