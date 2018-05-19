@@ -1,5 +1,8 @@
 ### Release v3.21.12
+### Fixes
+- Ensure to address is empty when setting final kyber swap values [#1858](https://github.com/kvhnuke/etherwallet/pull/1858)
 ### New
+- Disable email obfuscation [#1857](https://github.com/kvhnuke/etherwallet/pull/1857)
 - Add x888 Node [#1855](https://github.com/kvhnuke/etherwallet/pull/1855)
 - Add GANA custom gas [#1852](https://github.com/kvhnuke/etherwallet/pull/1852)
 - Add AIgathaToken custom gas [#1849](https://github.com/kvhnuke/etherwallet/pull/1849)
