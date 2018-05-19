@@ -21,6 +21,7 @@ nodes.nodeTypes = {
     CLO: "CLO",
     EAST: "EAST",
     X888: "X88",
+    MUSIC: "MUSIC",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -323,7 +324,20 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'eightereum',
         'lib': new nodes.customNode('https://eightereum.x888.io', '')
-    }
+    },
+    'music': {
+       'name': 'MUSIC',
+       'blockExplorerTX': 'https://explorer.musicoin.org/tx/[[txHash]]',
+       'blockExplorerAddr': 'https://explorer.musicoin.org/account/[[address]]',
+       'type': nodes.nodeTypes.MUSIC,
+       'eip155': true,
+       'chainId': 7762959,
+       'tokenList': require('./tokens/musicTokens.json'),
+       'abiList': require('./abiDefinitions/musicAbi.json'),
+       'estimateGas': true,
+       'service': 'musicoin.org',
+       'lib': new nodes.customNode('https://mcdnode.trustfarm.io/api', '')
+   }
 };
 
 
