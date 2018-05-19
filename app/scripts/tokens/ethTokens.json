@@ -60,6 +60,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x660e71483785f66133548b10f6926dc332b06e61",
+		"symbol": "ADL",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x8810C63470d38639954c6B41AaC545848C46484a",
 		"symbol": "ADI",
 		"decimal": 18,
@@ -235,7 +241,13 @@
 	},
 	{
 		"address": "0x17052d51E954592C1046320c2371AbaB6C73Ef10",
-		"symbol": "ATH",
+		"symbol": "ATH (Athenian Warrior Token)",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x1543d0F83489e82A1344DF6827B23d541F235A50",
+		"symbol": "ATH (AIgatha Token)",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -372,6 +384,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x3cf9e0c385a5abec9fd2a71790aa344c4e8e3570",
+		"symbol": "BKRx",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x45245bc59219eeaaf6cd3f382e078a461ff9de7b",
 		"symbol": "BKX",
 		"decimal": 18,
@@ -392,6 +410,12 @@
 	{
 		"address": "0xE5a7c12972f3bbFe70ed29521C8949b8Af6a0970",
 		"symbol": "BLX (Iconomi)",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x5732046A883704404F284Ce41FfADd5b007FD668",
+		"symbol": "BLZ",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -750,6 +774,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x574b36bced443338875d171cc377e691f7d4f887",
+		"symbol": "CO2Bit",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xb2f7eb1f2c37645be61d73953035360e768d81e6",
 		"symbol": "COB",
 		"decimal": 18,
@@ -776,6 +806,12 @@
 	{
 		"address": "0x65292eeadf1426cd2df1c4793a3d7519f253913b",
 		"symbol": "COSS",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xE2FB6529EF566a080e6d23dE0bd351311087D567",
+		"symbol": "COV",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -944,12 +980,6 @@
 	{
 		"address": "0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416",
 		"symbol": "DCA",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
-		"address": "0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416",
-		"symbol": "DCA (doBETacceptBET)",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -1236,6 +1266,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x039f5050de4908f9b5ddf40a4f3aa3f329086387",
+		"symbol": "ENC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xf0ee6b27b759c9893ce4f094b49ad28fd15a23e4",
 		"symbol": "ENG",
 		"decimal": 8,
@@ -1455,6 +1491,12 @@
 		"address": "0xf67451dc8421f0e0afeb52faa8101034ed081ed9",
 		"symbol": "GAM",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0xc0EA6306F6360FE7dCAB65D16Bf1a3AF92C79Aa2",
+		"symbol": "GANA",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -1806,12 +1848,6 @@
 		"type": "default"
 	},
 	{
-		"address": "0xfa1a856cfa3409cfa145fa4e20eb270df3eb21ab",
-		"symbol": "IOST",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
 		"address": "0x64CdF819d3E75Ac8eC217B3496d7cE167Be42e80",
 		"symbol": "IPL",
 		"decimal": 18,
@@ -1964,6 +2000,12 @@
 	{
 		"address": "0xB5AE848EdB296C21259b7467331467d2647eEcDf",
 		"symbol": "LEMO",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x80fB784B7eD66730e8b1DBd9820aFD29931aab03",
+		"symbol": "LEND",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -2336,6 +2378,12 @@
 	{
 		"address": "0x17f8aFB63DfcDcC90ebE6e84F060Cc306A98257D",
 		"symbol": "NBAI",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x809826cceab68c387726af962713b64cb5cb3cca",
+		"symbol": "NCASH",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -2757,6 +2805,12 @@
 		"address": "0x697beac28B09E122C4332D163985e8a73121b97F",
 		"symbol": "QRL",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0xFFAA5ffc455d9131f8A2713A741fD1960330508B",
+		"symbol": "QRG",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -3632,6 +3686,12 @@
 	{
 		"address": "0x71e8d74ff1c923e369d0e70dfb09866629c4dd35",
 		"symbol": "WRK",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xb7cb1c96db6b22b0d3d9536e0108d062bd488f74",
+		"symbol": "WTC",
 		"decimal": 18,
 		"type": "default"
 	},

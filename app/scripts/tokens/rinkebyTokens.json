@@ -1,16 +1,32 @@
-[{
-"address":"0xA52832A0B3EBfAeF629B1a44A922F46c90445108",
-"symbol":"☼ PLASMA",
-"decimal":6,
-"type":"default"
-},{
-"address": "0xe27826eE778B6F78a49a686dA7D64f6E7b084a4f",
-"symbol": "BHNT",
-"decimal": 0,
-"type": "default"
-},{
-"address": "0x0A057a87CE9C56D7e336B417c79cf30E8d27860B",
-"symbol": "WALL",
-"decimal": 15,
-"type": "default"
-}]
+[
+	{
+		"address": "0xA52832A0B3EBfAeF629B1a44A922F46c90445108",
+		"symbol": "☼ PLASMA",
+		"decimal": 6,
+		"type": "default"
+	},
+	{
+		"address": "0xe27826eE778B6F78a49a686dA7D64f6E7b084a4f",
+		"symbol": "BHNT",
+		"decimal": 0,
+		"type": "default"
+	},
+  {
+		"address": "0x275a5b346599b56917e7b1c9de019dcf9ead861a",
+		"symbol": "KC",
+		"decimal": 18,
+		"type": "default"
+	},
+  {
+		"address": "0x12fE174C097F6B3e876B3b060C9061F4B9dEBB80",
+		"symbol": "PPD",
+		"decimals": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x0A057a87CE9C56D7e336B417c79cf30E8d27860B",
+		"symbol": "WALL",
+		"decimal": 15,
+		"type": "default"
+	}
+]
