@@ -30,7 +30,7 @@
                             ->
                             <br/>
                             <h4 class="text-danger">
-                                {{swapOrder.fromVal}} {{swapOrder.fromCoin}}
+                                {{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}}
                             </h4>
                         </td>
                         <td ng-show="kyberEthToToken" class="mono">
@@ -83,16 +83,16 @@
                     </td>
                     </tr>
                     <tr>
-                        <td class="small text-right">{{swapOrder.toCoin}} Deposit Address:</td>
-                        <td class="small text-left mono">{{swapOrder.toAddress}}</td>
+                        <td class="small text-right">{{kyberSwapOrder.toCoin}} Deposit Address:</td>
+                        <td class="small text-left mono">{{kyberSwapOrder.toAddress}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Swapping:</td>
-                        <td class="small text-left mono">{{swapOrder.fromVal}}  {{swapOrder.fromCoin}}</td>
+                        <td class="small text-left mono">{{kyberSwapOrder.fromVal}}  {{kyberSwapOrder.fromCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">For:</td>
-                        <td class="small text-left mono"><!--{{swapOrder.toVal}}--> {{swapOrder.fromVal * swapOrder.swapRate}} {{swapOrder.toCoin}}</td>
+                        <td class="small text-left mono"><!--{{kyberSwapOrder.toVal}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate}} {{kyberSwapOrder.toCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Network:</td>
@@ -159,11 +159,11 @@
                         </tr>
                         <tr>
                             <td class="small text-right">Token:</td>
-                            <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
+                            <td class="small text-left mono">{{kyberSwapOrder.fromCoin}}</td>
                         </tr>
                         <tr>
                             <td class="small text-right">Token Qty:</td>
-                            <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
+                            <td class="small text-left mono">{{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}}</td>
                         </tr>
                         <tr>
                             <td class="small text-right">Network:</td>
@@ -201,7 +201,7 @@
                             <td class="small text-right">To Address:</td>
                             <td class="small text-left mono">{{parsedKyberTokenTx.to}}
                                 <br/>
-                                <em><small>The token ({{swapOrder.fromCoin}}) contract address.</small></em>
+                                <em><small>The token ({{kyberSwapOrder.fromCoin}}) contract address.</small></em>
                             </td>
                         </tr>
                         <tr>
@@ -253,7 +253,7 @@
                             <td class="small text-right">To Address:</td>
                             <td class="small text-left mono">{{parsedKyberResetTokenTx.to}}
                                 <br/>
-                                <em><small>The token ({{swapOrder.fromCoin}}) contract address.</small></em>
+                                <em><small>The token ({{kyberSwapOrder.fromCoin}}) contract address.</small></em>
                             </td>
                         </tr>
                         <tr ng-show="kyberTransaction.tokenNeedsReset">
@@ -266,7 +266,7 @@
                         </tr>
                         <tr ng-show="kyberTransaction.tokenNeedsReset">
                             <td class="small text-right">Current Approve Value:</td>
-                            <td class="small text-left mono">{{kyberTransaction.currentTokenApprovalValue}} {{swapOrder.fromCoin}}</td>
+                            <td class="small text-left mono">{{kyberTransaction.currentTokenApprovalValue}} {{kyberSwapOrder.fromCoin}}</td>
                         </tr>
                         <tr ng-show="kyberTransaction.tokenNeedsReset">
                             <td class="small text-right">Account Balance:</td>
@@ -335,11 +335,11 @@
                     </tr>-->
                     <tr>
                         <td class="small text-right">Swapping:</td>
-                        <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
+                        <td class="small text-left mono">{{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">For:</td>
-                        <td class="small text-left mono"><!--{{swapOrder.toVal}}--> {{swapOrder.fromVal * swapOrder.swapRate}} {{swapOrder.toCoin}}</td>
+                        <td class="small text-left mono"><!--{{kyberSwapOrder.toVal}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate}} {{kyberSwapOrder.toCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Network:</td>
@@ -397,7 +397,7 @@
             <div class="modal-footer" ng-if="!kyberEthToToken">
                 <h4 class="text-center">
                     <span translate="SENDModal_Content_1">You are about to send</span>
-                    <strong class="mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</strong>
+                    <strong class="mono">{{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}}</strong>
                     <span translate="SENDModal_Content_2">to address</span>
                     <strong  class="mono">{{parsedKyberTx.to}}.</strong>
                 </h4>
@@ -405,6 +405,7 @@
                     Are you sure you want to do this?
                 </p>
                 <br/>
+
                 <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
                     No, get me out of here!
                 </button>

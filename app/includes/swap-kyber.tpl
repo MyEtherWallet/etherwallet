@@ -16,16 +16,16 @@
         <!-- Info Row -->
         <section class="order-info-wrap row">
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
+                <h4> {{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}} </h4>
                 <p translate="SWAP_send_amt"> Amount to send </p>
             </div>
             <div class="col-sm-4 order-info">
 
-                <h4> <!--{{swapOrder.toVal | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{swapOrder.toCoin}} </h4>
+                <h4> <!--{{kyberSwapOrder.toVal | number: receiveDecimals}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate | number: receiveDecimals}} {{kyberSwapOrder.toCoin}} </h4>
                 <p translate="SWAP_rec_amt"> Amount to receive </p>
             </div>
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}} </h4>
+                <h4> {{kyberSwapOrder.swapRate | number: 6}} {{kyberSwapOrder.swapPair}} </h4>
                 <p translate="SWAP_your_rate"> Your rate </p>
             </div>
         </section>
@@ -47,15 +47,15 @@
 
                 <div class="col-sm-8 col-xs-12">
                     <label><span translate="SWAP_rec_add">Your Receiving Address </span>
-                        <strong>({{swapOrder.toCoin}})</strong></label>
+                        <strong>({{kyberSwapOrder.toCoin}})</strong></label>
                     <!-- todo should I just wait for the wallet unlock and not ask for an address first.  then if wallet uplock calculation proves false at send tx.  present option to return to start???-->
                     <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
-                                   var-name="swapOrder.toAddress"></address-field>
+                                   var-name="kyberSwapOrder.toAddress"></address-field>
                 </div>
             </section>
             <!-- /Your Address -->
             <!-- CTA -->
-            <section class="row text-center" ng-if="swapOrder.toAddress">
+            <section class="row text-center" ng-if="kyberSwapOrder.toAddress">
 
                 <a ng-click="startKyber()" class="btn btn-primary btn-lg"><span
                         translate="SWAP_start_CTA"> Start Swap </span></a>
@@ -88,11 +88,11 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
+                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
-                <h4>{{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}}</h4>
+                <h4>{{kyberSwapOrder.swapRate | number: 6}} {{kyberSwapOrder.swapPair}}</h4>
                 <p translate="SWAP_your_rate">Your rate</p>
             </div>
         </section>
@@ -199,9 +199,9 @@
                 </h5>  <!-- todo: add translate -->
 
                 <section class="row text-center" ng-if="kyberReturnToStart">
-                    <h5 class="text-warning">The swap value of {{swapOrder.fromVal}} {{swapOrder.fromCoin}} is Greater
-                                             than your current {{swapOrder.fromCoin}} Balance of
-                                             {{userTokenBalanceChecked}} {{swapOrder.fromCoin}}</h5>
+                    <h5 class="text-warning">The swap value of {{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}} is Greater
+                                             than your current {{kyberSwapOrder.fromCoin}} Balance of
+                                             {{userTokenBalanceChecked}} {{kyberSwapOrder.fromCoin}}</h5>
                     <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a>
                     <!-- todo: add translate -->
                 </section>
@@ -213,7 +213,15 @@
                 <section class="row text-center" ng-show="wallet!=null && balanceOk">
                     <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span
                             translate="SWAP_start_CTA"> Start Swap </span></a>
+
+<!--{{kyberSwapOrder.toAddress}}-->
+                    <!--{{wallet.getAddressString()}}-->
+                    <div ng-if="kyberSwapOrder.toAddress.toLowerCase() != wallet.getAddressString().toLowerCase() ">
+                        <h4 style="color: red">WAIT! The Address you are sending to is not the wallet address you unlocked. <br> If this is not what you intended please review your receiving address.</h4>
+                        <a ng-click="returnToSetDestinationAddress()" class="btn btn-primary btn-lg"><span> Return to Set Receiving Address </span></a>
+                    </div>
                 </section>
+
 
 
                        <!-- Included Because sendTxCtrl.js looks for it via querySelector and throws if it is not present (and destroys the layout in the process)-->
@@ -251,11 +259,11 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
+                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
-                <h4>{{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}}</h4>
+                <h4>{{kyberSwapOrder.swapRate | number: 6}} {{kyberSwapOrder.swapPair}}</h4>
                 <p translate="SWAP_your_rate">Your rate</p>
             </div>
         </section>
@@ -311,11 +319,11 @@
                             <p>Amount sent</p>
                         </div>
                         <div class="col-sm-12">
-                            <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
+                            <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                             <p translate="SWAP_rec_amt">Amount to receive</p>
                         </div>
                         <div class="col-sm-12">
-                            <h4>{{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}}</h4>
+                            <h4>{{kyberSwapOrder.swapRate | number: 6}} {{kyberSwapOrder.swapPair}}</h4>
                             <p translate="SWAP_your_rate">Your rate</p>
                         </div>
                         <hr>

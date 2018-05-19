@@ -2222,16 +2222,16 @@
         <!-- Info Row -->
         <section class="order-info-wrap row">
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
+                <h4> {{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}} </h4>
                 <p translate="SWAP_send_amt"> Amount to send </p>
             </div>
             <div class="col-sm-4 order-info">
 
-                <h4> <!--{{swapOrder.toVal | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{swapOrder.toCoin}} </h4>
+                <h4> <!--{{kyberSwapOrder.toVal | number: receiveDecimals}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate | number: receiveDecimals}} {{kyberSwapOrder.toCoin}} </h4>
                 <p translate="SWAP_rec_amt"> Amount to receive </p>
             </div>
             <div class="col-sm-4 order-info">
-                <h4> {{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}} </h4>
+                <h4> {{kyberSwapOrder.swapRate | number: 6}} {{kyberSwapOrder.swapPair}} </h4>
                 <p translate="SWAP_your_rate"> Your rate </p>
             </div>
         </section>
@@ -2253,15 +2253,15 @@
 
                 <div class="col-sm-8 col-xs-12">
                     <label><span translate="SWAP_rec_add">Your Receiving Address </span>
-                        <strong>({{swapOrder.toCoin}})</strong></label>
+                        <strong>({{kyberSwapOrder.toCoin}})</strong></label>
                     <!-- todo should I just wait for the wallet unlock and not ask for an address first.  then if wallet uplock calculation proves false at send tx.  present option to return to start???-->
                     <address-field placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
-                                   var-name="swapOrder.toAddress"></address-field>
+                                   var-name="kyberSwapOrder.toAddress"></address-field>
                 </div>
             </section>
             <!-- /Your Address -->
             <!-- CTA -->
-            <section class="row text-center" ng-if="swapOrder.toAddress">
+            <section class="row text-center" ng-if="kyberSwapOrder.toAddress">
 
                 <a ng-click="startKyber()" class="btn btn-primary btn-lg"><span
                         translate="SWAP_start_CTA"> Start Swap </span></a>
@@ -2294,11 +2294,11 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
+                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
-                <h4>{{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}}</h4>
+                <h4>{{kyberSwapOrder.swapRate | number: 6}} {{kyberSwapOrder.swapPair}}</h4>
                 <p translate="SWAP_your_rate">Your rate</p>
             </div>
         </section>
@@ -2403,9 +2403,9 @@
                 </h5>  <!-- todo: add translate -->
 
                 <section class="row text-center" ng-if="kyberReturnToStart">
-                    <h5 class="text-warning">The swap value of {{swapOrder.fromVal}} {{swapOrder.fromCoin}} is Greater
-                                             than your current {{swapOrder.fromCoin}} Balance of
-                                             {{userTokenBalanceChecked}} {{swapOrder.fromCoin}}</h5>
+                    <h5 class="text-warning">The swap value of {{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}} is Greater
+                                             than your current {{kyberSwapOrder.fromCoin}} Balance of
+                                             {{userTokenBalanceChecked}} {{kyberSwapOrder.fromCoin}}</h5>
                     <a ng-click="returnToStart()" class="btn btn-primary btn-lg"><span> Return to Swap Selector </span></a>
                     <!-- todo: add translate -->
                 </section>
@@ -2417,7 +2417,15 @@
                 <section class="row text-center" ng-show="wallet!=null && balanceOk">
                     <a ng-click="openKyberOrder(wallet)" class="btn btn-primary btn-lg"><span
                             translate="SWAP_start_CTA"> Start Swap </span></a>
+
+<!--{{kyberSwapOrder.toAddress}}-->
+                    <!--{{wallet.getAddressString()}}-->
+                    <div ng-if="kyberSwapOrder.toAddress.toLowerCase() != wallet.getAddressString().toLowerCase() ">
+                        <h4 style="color: red">WAIT! The Address you are sending to is not the wallet address you unlocked. <br> If this is not what you intended please review your receiving address.</h4>
+                        <a ng-click="returnToSetDestinationAddress()" class="btn btn-primary btn-lg"><span> Return to Set Receiving Address </span></a>
+                    </div>
                 </section>
+
 
 
                        <!-- Included Because sendTxCtrl.js looks for it via querySelector and throws if it is not present (and destroys the layout in the process)-->
@@ -2455,7 +2463,7 @@
                             ->
                             <br/>
                             <h4 class="text-danger">
-                                {{swapOrder.fromVal}} {{swapOrder.fromCoin}}
+                                {{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}}
                             </h4>
                         </td>
                         <td ng-show="kyberEthToToken" class="mono">
@@ -2508,16 +2516,16 @@
                     </td>
                     </tr>
                     <tr>
-                        <td class="small text-right">{{swapOrder.toCoin}} Deposit Address:</td>
-                        <td class="small text-left mono">{{swapOrder.toAddress}}</td>
+                        <td class="small text-right">{{kyberSwapOrder.toCoin}} Deposit Address:</td>
+                        <td class="small text-left mono">{{kyberSwapOrder.toAddress}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Swapping:</td>
-                        <td class="small text-left mono">{{swapOrder.fromVal}}  {{swapOrder.fromCoin}}</td>
+                        <td class="small text-left mono">{{kyberSwapOrder.fromVal}}  {{kyberSwapOrder.fromCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">For:</td>
-                        <td class="small text-left mono"><!--{{swapOrder.toVal}}--> {{swapOrder.fromVal * swapOrder.swapRate}} {{swapOrder.toCoin}}</td>
+                        <td class="small text-left mono"><!--{{kyberSwapOrder.toVal}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate}} {{kyberSwapOrder.toCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Network:</td>
@@ -2584,11 +2592,11 @@
                         </tr>
                         <tr>
                             <td class="small text-right">Token:</td>
-                            <td class="small text-left mono">{{swapOrder.fromCoin}}</td>
+                            <td class="small text-left mono">{{kyberSwapOrder.fromCoin}}</td>
                         </tr>
                         <tr>
                             <td class="small text-right">Token Qty:</td>
-                            <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
+                            <td class="small text-left mono">{{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}}</td>
                         </tr>
                         <tr>
                             <td class="small text-right">Network:</td>
@@ -2626,7 +2634,7 @@
                             <td class="small text-right">To Address:</td>
                             <td class="small text-left mono">{{parsedKyberTokenTx.to}}
                                 <br/>
-                                <em><small>The token ({{swapOrder.fromCoin}}) contract address.</small></em>
+                                <em><small>The token ({{kyberSwapOrder.fromCoin}}) contract address.</small></em>
                             </td>
                         </tr>
                         <tr>
@@ -2678,7 +2686,7 @@
                             <td class="small text-right">To Address:</td>
                             <td class="small text-left mono">{{parsedKyberResetTokenTx.to}}
                                 <br/>
-                                <em><small>The token ({{swapOrder.fromCoin}}) contract address.</small></em>
+                                <em><small>The token ({{kyberSwapOrder.fromCoin}}) contract address.</small></em>
                             </td>
                         </tr>
                         <tr ng-show="kyberTransaction.tokenNeedsReset">
@@ -2691,7 +2699,7 @@
                         </tr>
                         <tr ng-show="kyberTransaction.tokenNeedsReset">
                             <td class="small text-right">Current Approve Value:</td>
-                            <td class="small text-left mono">{{kyberTransaction.currentTokenApprovalValue}} {{swapOrder.fromCoin}}</td>
+                            <td class="small text-left mono">{{kyberTransaction.currentTokenApprovalValue}} {{kyberSwapOrder.fromCoin}}</td>
                         </tr>
                         <tr ng-show="kyberTransaction.tokenNeedsReset">
                             <td class="small text-right">Account Balance:</td>
@@ -2760,11 +2768,11 @@
                     </tr>-->
                     <tr>
                         <td class="small text-right">Swapping:</td>
-                        <td class="small text-left mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</td>
+                        <td class="small text-left mono">{{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">For:</td>
-                        <td class="small text-left mono"><!--{{swapOrder.toVal}}--> {{swapOrder.fromVal * swapOrder.swapRate}} {{swapOrder.toCoin}}</td>
+                        <td class="small text-left mono"><!--{{kyberSwapOrder.toVal}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate}} {{kyberSwapOrder.toCoin}}</td>
                     </tr>
                     <tr>
                         <td class="small text-right">Network:</td>
@@ -2822,7 +2830,7 @@
             <div class="modal-footer" ng-if="!kyberEthToToken">
                 <h4 class="text-center">
                     <span translate="SENDModal_Content_1">You are about to send</span>
-                    <strong class="mono">{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</strong>
+                    <strong class="mono">{{kyberSwapOrder.fromVal}} {{kyberSwapOrder.fromCoin}}</strong>
                     <span translate="SENDModal_Content_2">to address</span>
                     <strong  class="mono">{{parsedKyberTx.to}}.</strong>
                 </h4>
@@ -2830,6 +2838,7 @@
                     Are you sure you want to do this?
                 </p>
                 <br/>
+
                 <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
                     No, get me out of here!
                 </button>
@@ -2879,11 +2888,11 @@
         <!-- Order Info -->
         <section class="row order-info-wrap">
             <div class="col-sm-6 order-info">
-                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
+                <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                 <p translate="SWAP_rec_amt">Amount to receive</p>
             </div>
             <div class="col-sm-6 order-info">
-                <h4>{{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}}</h4>
+                <h4>{{kyberSwapOrder.swapRate | number: 6}} {{kyberSwapOrder.swapPair}}</h4>
                 <p translate="SWAP_your_rate">Your rate</p>
             </div>
         </section>
@@ -2939,11 +2948,11 @@
                             <p>Amount sent</p>
                         </div>
                         <div class="col-sm-12">
-                            <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{swapOrder.fromVal * swapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
+                            <h4><!--{{kyberOrderResult.output.amount | number: receiveDecimals}}--> {{kyberSwapOrder.fromVal * kyberSwapOrder.swapRate | number: receiveDecimals}} {{kyberOrderResult.output.currency}}</h4>
                             <p translate="SWAP_rec_amt">Amount to receive</p>
                         </div>
                         <div class="col-sm-12">
-                            <h4>{{swapOrder.swapRate | number: 6}} {{swapOrder.swapPair}}</h4>
+                            <h4>{{kyberSwapOrder.swapRate | number: 6}} {{kyberSwapOrder.swapPair}}</h4>
                             <p translate="SWAP_your_rate">Your rate</p>
                         </div>
                         <hr>

@@ -7,7 +7,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.bity = new bity();
     $scope.kyber = new kyber();
     $scope.kyberNetworkEnabled = true;
-    // /$scope.kyber.refreshRates();
+    $scope.orderRetrievedFromStorage = false;
     $scope.isKyberSwap = false;
 
     $scope.bityOptions = ["ETH", "REP", "BTC"];
@@ -78,7 +78,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     };
 
-
+ /** kyberSwapOrder **/
     $scope.resetErrorShownStates = function () {
         $scope.showedMinMaxError = false;
         if ($scope.showedKyberPairAvailableError) $scope.showedKyberPairAvailableError = false
@@ -86,6 +86,23 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     $scope.verifyMinMaxValues = function () {
         if ($scope.checkIfKyber()) {
+          // // $scope.swapOrder.toAddress = ''
+          // if($scope.orderRetrievedFromStorage){
+          //   $scope.kyberSwapOrder = {
+          //     fromCoin: $scope.swapOrder.fromCoin,
+          //     toCoin: $scope.swapOrder.toCoin,
+          //     isFrom: true,
+          //     fromVal: $scope.swapOrder.toVal,
+          //     toVal: $scope.swapOrder.toAddress,
+          //     toAddress: '',
+          //     swapRate: '',
+          //     swapPair: ''
+          //   };
+          //   /*{
+          //       $scope.swapOrder
+          //   }*/
+          // }
+
             return $scope.verifyKyberMinMaxValues();
         } else {
             return $scope.verifyBityMinMaxValues();
@@ -215,6 +232,16 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.setFinalPrices = function () {
         $scope.showedMinMaxError = false;
         if ($scope.checkIfKyber()) {
+          $scope.kyberSwapOrder = {
+            fromCoin: $scope.swapOrder.fromCoin,
+            toCoin: $scope.swapOrder.toCoin,
+            isFrom: true,
+            fromVal: $scope.swapOrder.fromVal,
+            toVal: $scope.swapOrder.toVal,
+            toAddress: '',
+            swapRate: $scope.swapOrder.swapRate,
+            swapPair: $scope.swapOrder.swapPair
+          };
             $scope.setKyberFinalPrices();
             // if ($scope.canSetKyberFinal) $scope.setKyberFinalPrices();
         } else {
@@ -248,6 +275,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     // Only Bity orders are stored in local storage
     var setOrderFromStorage = function () {
+        $scope.orderRetrievedFromStorage = true;
         var order = JSON.parse(globalFuncs.localStorage.getItem(lStorageKey, null));
         $scope.orderResult = order;
         $scope.swapOrder = order.swapOrder;
@@ -438,6 +466,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
         $scope.kyberOrderResult = {
             validFor: 6000,
             timestamp_created: new Date().getTime(),
+            // destinationAddress: '',
+            // sourceAddress: '',
             progress: {
                 status: "READY"
             },
@@ -475,8 +505,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
             return false;
         }
         // console.log($scope.kyber.kyberRates); //todo remove dev item
-        // if ($scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)] == 0 ||
-        //     $scope.kyber.kyberRates[kyber.toPairKey($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)] == "0") {
+        // if ($scope.kyber.kyberRates[kyber.toPairKey($scope.kyberSwapOrder.fromCoin, $scope.kyberSwapOrder.toCoin)] == 0 ||
+        //     $scope.kyber.kyberRates[kyber.toPairKey($scope.kyberSwapOrder.fromCoin, $scope.kyberSwapOrder.toCoin)] == "0") {
         //     $scope.displayKyberErrorMessage("unAvailable");
         //     return false;
         // } else {
@@ -560,9 +590,9 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
                 $scope.updateFinalKyberEstimate($scope.swapOrder.isFrom, function () {
                     // $scope.canSetKyberFinal = true;
-                    if ($scope.swapOrder.finalRate > 0 && $scope.swapOrder.swapRate > 0) {
+                    if ($scope.kyberSwapOrder.finalRate > 0 && $scope.kyberSwapOrder.swapRate > 0) {
                         $scope.showStage1 = false;
-                        // $scope.swapOrder.swapRate = $scope.swapOrder.finalRate;
+                        // $scope.kyberSwapOrder.swapRate = $scope.kyberSwapOrder.finalRate;
                         $scope.prepareKyber();
                     } else {
                         $scope.displayKyberErrorMessage("zeroRate");
@@ -593,7 +623,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 let finalRate = $scope.kyber.convertToTokenBase(_rates.data.slippageRate, "ETH");
                 // todo: provide message and option to return if the rate value for the specified qty is 0.
                 // todo: or just provide the message and don't 'route' to the next page (I like this better)
-                $scope.swapOrder.finalRate = finalRate;
+                $scope.kyberSwapOrder.finalRate = finalRate;
                 // $scope.swapOrder.swapRate = finalRate;
                 // console.log("final rate", $scope.swapOrder.finalRate); //todo remove dev item
                 if (isFrom) {
@@ -639,11 +669,24 @@ var swapCtrl = function ($scope, $sce, walletService) {
         $scope.balanceOk = false;
         $scope.checkTokenBalance = false;
         $scope.kyberReturnToStart = false;
-    };
+    }
+
+    // If the destination address does not match the unlocked wallet address allow the user to return to check they entered the correct address.
+  $scope.returnToSetDestinationAddress = function () {
+    $scope.showStage1 = false;
+    $scope.showStage2Kyber = true;
+    $scope.showStage3Kyber = false;
+    $scope.showStage4Kyber = false;
+    $scope.checkTokenBalance = false;
+    $scope.updateEstimate(true);
+    $scope.balanceOk = false;
+    $scope.checkTokenBalance = false;
+    $scope.kyberReturnToStart = false;
+  };
 
     var checkForPriorTokenApproval = function (_address, callback) {
-        if ($scope.swapOrder.fromCoin === "ETH") return callback(false);
-        $scope.kyber.allowance($scope.swapOrder.fromCoin, _address, function (data) {
+        if ($scope.kyberSwapOrder.fromCoin === "ETH") return callback(false);
+        $scope.kyber.allowance($scope.kyberSwapOrder.fromCoin, _address, function (data) {
             if (data.error) $scope.notifier.danger(data.msg);
             else {
                 // console.log("auth value", data); //todo remove dev item
@@ -651,7 +694,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 // data = data.data;
                 if (data.data > 0) {
 
-                    $scope.kyberTransaction.currentTokenApprovalValue = $scope.kyber.convertToTokenBase(data.data, $scope.swapOrder.fromCoin);
+                    $scope.kyberTransaction.currentTokenApprovalValue = $scope.kyber.convertToTokenBase(data.data, $scope.kyberSwapOrder.fromCoin);
                     // console.log("auth value exists", data); //todo remove dev item
                     callback(true);
                 } else {
@@ -669,11 +712,11 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     var checkUserCap = function (_userAddress, callback) {
         let swapValue, isFrom;
-        if ($scope.swapOrder.fromCoin == "ETH") {
-            swapValue = $scope.swapOrder.fromVal;
+        if ($scope.kyberSwapOrder.fromCoin == "ETH") {
+            swapValue = $scope.kyberSwapOrder.fromVal;
             isFrom = true;
-        } else if ($scope.swapOrder.toCoin == "ETH") {
-            swapValue = $scope.swapOrder.toVal;
+        } else if ($scope.kyberSwapOrder.toCoin == "ETH") {
+            swapValue = $scope.kyberSwapOrder.toVal;
             isFrom = false;
         } else {
             callback({
@@ -695,7 +738,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
         try {
 
             if ($scope.checkTokenBalance) {
-                // console.log("checkIfUserCanDo 2", $s/cope.checkTokenBalance); //todo remove dev item
                 $scope.indicatorhacked = [];
                 var makeIndicator = setInterval(function () {
                     $scope.indicatorhacked.push(".");
@@ -703,12 +745,11 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 }, 100);
                 $scope.checkTokenBalance = false;
                 checkUserCap(_userAddress, function (result) {
-                    // console.log("checkIfUserCanDo result", result); //todo remove dev item
                     if (!result.error) {
-                        $scope.kyber.getBalance($scope.swapOrder.fromCoin, _userAddress, function (_result) {
+                        $scope.kyber.getBalance($scope.kyberSwapOrder.fromCoin, _userAddress, function (_result) {
                             // console.log(_result); //todo remove dev item
-                            let userTokenBalance = new BigNumber($scope.kyber.convertToTokenBase(_result.data, $scope.swapOrder.fromCoin));
-                            let enoughTokens = userTokenBalance.gte($scope.swapOrder.fromVal);
+                            let userTokenBalance = new BigNumber($scope.kyber.convertToTokenBase(_result.data, $scope.kyberSwapOrder.fromCoin));
+                            let enoughTokens = userTokenBalance.gte($scope.kyberSwapOrder.fromVal);
                             // console.log(userTokenBalance); //todo remove dev item
                             if (enoughTokens) {
                                 checkForPriorTokenApproval($scope.walletKyber.getAddressString(), (_data) => {
@@ -771,6 +812,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
         //     alert("warning warning");
         //     return "Leaving the page before your swap completes may cause your swap to fail."
         // })
+
         try {
             $scope.showStage2Kyber = true;
             $scope.kyberOrderResult.input = {
@@ -792,7 +834,15 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     // Setup the kyber transaction at the point where the user enters the destAddress (enter address stage)
     $scope.startKyber = function () {
+
+      // if($scope.orderRetrievedFromStorage){
+      //
+      //   /*{
+      //       $scope.swapOrder
+      //   }*/
+      // }
         try {
+            // $scope.kyberSwapOrder.destinationAddress =
             // console.log("startKyber 1", walletService.wallet); //todo remove dev item
             // Enable checking if user can proceed
             $scope.checkTokenBalance = true;
@@ -803,7 +853,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 $scope.checkIfUserCanDo(walletService.wallet.getAddressString());
             }
             $scope.kyberModal = new Modal(document.getElementById('kyberTransaction'));
-            if ($scope.availableTokens.indexOf($scope.swapOrder.fromCoin) >= 0) {
+            if ($scope.availableTokens.indexOf($scope.kyberSwapOrder.fromCoin) >= 0) {
                 // console.log("startKyber 2"); //todo remove dev item
 
                 $scope.showStage2Kyber = false;
@@ -856,9 +906,10 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.openKyberEthOrder = function () {
         try {
             $scope.addressString = $scope.walletKyber.getAddressString();
-            $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.swapOrder, $scope.swapOrder.finalRate), $scope.kyber.getKyberNetworkAddress(), $scope.swapOrder.fromVal);
+            $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.kyberSwapOrder, $scope.kyberSwapOrder.finalRate), $scope.kyber.getKyberNetworkAddress(), $scope.kyberSwapOrder.fromVal);
             var txData = uiFuncs.getTxData($scope);
-            txData.nonce = txData.gasPrice = null;
+          // console.log("openKyberEthOrder", txData); // todo remove dev item
+          txData.nonce = txData.gasPrice = null;
 
             $scope.generateKyberTransaction(txData, "OPEN_ETH");
         } catch (e) {
@@ -872,11 +923,13 @@ var swapCtrl = function ($scope, $sce, walletService) {
     // Build the Approve transaction to send to the Token Contract of the 'from' Token
 
     $scope.checkForResetApproveTokenKyber = function () {
+        // console.log($scope.kyberSwapOrder); // todo remove dev item
         try {
             if ($scope.kyberTransaction.tokenNeedsReset) {
-                $scope.tx = $scope.buildTransactionObject($scope.kyber.approveKyber($scope.swapOrder.fromCoin, 0), $scope.kyber.getTokenAddress($scope.swapOrder.fromCoin));
+                $scope.tx = $scope.buildTransactionObject($scope.kyber.approveKyber($scope.kyberSwapOrder.fromCoin, 0), $scope.kyber.getTokenAddress($scope.kyberSwapOrder.fromCoin));
                 var txData = uiFuncs.getTxData($scope);
-                txData.nonce = txData.gasPrice = null;
+              // console.log("checkForResetApproveTokenKyber", txData); // todo remove dev item
+              txData.nonce = txData.gasPrice = null;
                 $scope.generateKyberTransaction(txData, $scope.kyberStatus.token.resetApprove);
             } else {
                 $scope.approveTokenKyber();
@@ -888,9 +941,9 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
     $scope.approveTokenKyber = function (nonce, gasPrice) {
         try {
-            $scope.tx = $scope.buildTransactionObject($scope.kyber.approveKyber($scope.swapOrder.fromCoin, $scope.swapOrder.fromVal), $scope.kyber.getTokenAddress($scope.swapOrder.fromCoin));
+            $scope.tx = $scope.buildTransactionObject($scope.kyber.approveKyber($scope.kyberSwapOrder.fromCoin, $scope.kyberSwapOrder.fromVal), $scope.kyber.getTokenAddress($scope.kyberSwapOrder.fromCoin));
             var txData = uiFuncs.getTxData($scope);
-
+          // console.log("approveTokenKyber", txData); // todo remove dev item
             if (nonce && gasPrice) {
                 let newNonce = parseInt(ethFuncs.hexToDecimal(nonce));
                 txData.nonce = "0x" + ethFuncs.decimalToHex(newNonce + 1);
@@ -906,9 +959,10 @@ var swapCtrl = function ($scope, $sce, walletService) {
     // Build the Swap transaction to send to the Kyber Network Contract to execute the swap
     $scope.openKyberTokenOrder = function (nonce, gasPrice) {
         try {
-            $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.swapOrder, $scope.swapOrder.finalRate), $scope.kyber.getKyberNetworkAddress());
-            var txData = uiFuncs.getTxData($scope);
-            if (nonce) {
+            $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.kyberSwapOrder, $scope.kyberSwapOrder.finalRate), $scope.kyber.getKyberNetworkAddress());
+          var txData = uiFuncs.getTxData($scope);
+          // console.log("openKyberTokenOrder", txData); // todo remove dev item
+          if (nonce) {
                 let newNonce = parseInt(ethFuncs.hexToDecimal(nonce));
                 txData.nonce = "0x" + ethFuncs.decimalToHex(newNonce + 1);
                 txData.gasPrice = gasPrice;
@@ -1146,7 +1200,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     // Build a $scope.tx object with supplied parameters
     $scope.buildTransactionObject = function (data, to, value, gasPrice) {
         let gasLimit;
-        if(($scope.swapOrder.fromCoin === "DGX" || $scope.swapOrder.toCoin === "DGX") && to === $scope.kyber.KyberNetworkAddress){
+        if(($scope.kyberSwapOrder.fromCoin === "DGX" || $scope.kyberSwapOrder.toCoin === "DGX") && to === $scope.kyber.KyberNetworkAddress){
           gasLimit = 650000
         } else {
             gasLimit = kyber.defaultValues.gasLimit
@@ -1166,7 +1220,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.buildKyberOrderResultProgress = function () {
         return {
             bar: getProgressBarArr(1, 5),
-            weiValue: $scope.kyber.convertToTokenBase($scope.swapOrder.fromVal, "ETH"),
+            weiValue: $scope.kyber.convertToTokenBase($scope.kyberSwapOrder.fromVal, "ETH"),
             pendingStatusReq: false,
             checkDelay: 1000,
             startTime: ""
@@ -1254,15 +1308,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
                 $scope.parsedTx.avgGasPrice.eth = new BigNumber($scope.parsedKyberTx.gasPrice.eth).plus(new BigNumber($scope.parsedKyberTokenTx.gasPrice.eth)).div(2);
                 $scope.parsedTx.totalGasLimit = new BigNumber($scope.parsedKyberTokenTx.gasLimit).plus(new BigNumber($scope.parsedKyberTx.gasLimit));
             }
-
-
-            // if ($scope.swapOrder.fromCoin == "ETH") {
-            //     $scope.parsedTx.approximateFinalBalance = new BigNumber($scope.parsedKyberTx.balance).minus(new BigNumber($scope.parsedTx.totalTxFee.eth)).minus(new BigNumber($scope.swapOrder.toVal));
-            // } else if ($scope.swapOrder.toCoin == "ETH") {
-            //     $scope.parsedTx.approximateFinalBalance = new BigNumber($scope.parsedKyberTx.balance).minus(new BigNumber($scope.parsedTx.totalTxFee.eth)).plus(new BigNumber($scope.swapOrder.fromVal));
-            // } else {
-            //     $scope.parsedTx.approximateFinalBalance = new BigNumber($scope.parsedKyberTx.balance).minus(new BigNumber($scope.parsedTx.totalTxFee.eth));
-            // }
         }
     };
 
