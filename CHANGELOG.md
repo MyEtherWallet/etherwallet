@@ -12,6 +12,7 @@
 - Add ENC custom gas [#1845](https://github.com/kvhnuke/etherwallet/pull/1845)
 - Add Bkrx, COV, ENC, ADL, ATH, CO2Bit, QRG, and GANA to Eth tokens default. Add PPD and KC to rinkeby token defaults. Add PPD abi. [#1856](https://github.com/kvhnuke/etherwallet/pull/1856)
 ### Update
+- Update custom networks [#1850](https://github.com/kvhnuke/etherwallet/pull/1850)
 - Removed duplicate entries for IOST and DCA. Added BLZ, LEND, NCASH, and WTC. [#1853](https://github.com/kvhnuke/etherwallet/pull/1853)  
 
 ### Release v3.21.11
