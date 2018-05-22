@@ -2,6 +2,7 @@
 ### Fixes
 - Ensure to address is empty when setting final kyber swap values [#1858](https://github.com/kvhnuke/etherwallet/pull/1858)
 ### New
+- Add PAT and CPEX tokens. [#1862](https://github.com/kvhnuke/etherwallet/pull/1862)
 - Add Hodl wallet on the footer. [commit](https://github.com/kvhnuke/etherwallet/commit/2442bbe56a8f955512f84e227c09bdbe4742c09c)
 - Disable email obfuscation [#1857](https://github.com/kvhnuke/etherwallet/pull/1857)
 - Add x888 Node [#1855](https://github.com/kvhnuke/etherwallet/pull/1855)
