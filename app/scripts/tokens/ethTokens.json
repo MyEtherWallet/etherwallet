@@ -697,8 +697,14 @@
 	},
 	{
 		"address": "0x6fFF3806Bbac52A20e0d79BC538d527f6a22c96b",
-		"symbol": "CDX",
+		"symbol": "CDX (Network)",
 		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x2cb101d7da0ebaa57d3f2fef46d7ffb7bb64592b",
+		"symbol": "CDX (Carbon Dollar X)",
+		"decimal": 0,
 		"type": "default"
 	},
 	{
@@ -3594,7 +3600,7 @@
 		"type": "default"
 	},
 	{
-		"address": "0xeDBaF3c5100302dCddA53269322f3730b1F0416d",
+		"address": "0x92e78dae1315067a8819efd6dca432de9dcde2e9",
 		"symbol": "VRS",
 		"decimal": 5,
 		"type": "default"
