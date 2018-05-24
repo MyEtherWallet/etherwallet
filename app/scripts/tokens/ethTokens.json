@@ -714,6 +714,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x6956983f8b3ce173b4ab84361aa0ad52f38d936f",
+		"symbol": "CFTY",
+		"decimal": 8,
+		"type": "default"
+	},
+	{
 		"address": "0xba9d4199fab4f26efe3551d490e3821486f135ba",
 		"symbol": "CHSB",
 		"decimal": 8,
