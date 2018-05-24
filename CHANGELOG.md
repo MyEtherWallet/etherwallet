@@ -2,7 +2,7 @@
 ### Fixes
 - Ensure to address is empty when setting final kyber swap values [#1858](https://github.com/kvhnuke/etherwallet/pull/1858)
 ### New
-- Add CFTY token to defaults [#1864](https://github.com/kvhnuke/etherwallet/pull/1864)
+- Add CFTY token to defaults [#1865](https://github.com/kvhnuke/etherwallet/pull/1865)
 - Add CDX (Carbon Dollar X) token to defaults [#1863](https://github.com/kvhnuke/etherwallet/pull/1863)
 - Add PAT and CPEX tokens. [#1862](https://github.com/kvhnuke/etherwallet/pull/1862)
 - Add Hodl wallet on the footer. [commit](https://github.com/kvhnuke/etherwallet/commit/2442bbe56a8f955512f84e227c09bdbe4742c09c)
