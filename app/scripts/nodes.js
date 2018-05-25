@@ -19,9 +19,9 @@ nodes.nodeTypes = {
     ETSC: "ETSC",
     EGEM: "EGEM",
     CLO: "CLO",
-    CLOT: "Testnet CLO",
     EAST: "EAST",
     X888: "X88",
+    MUSIC: "MUSIC",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -99,6 +99,18 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/etcAbi.json'),
         'service': 'Ethereum Commonwealth',
         'lib': new nodes.customNode('https://etc-geth.0xinfra.com', '')
+    },
+    'etc_chainkorea': {
+        'name': 'ETC',
+        'blockExplorerTX': 'https://classicexplorer.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://classicexplorer.org/addr/[[address]]',
+        'type': nodes.nodeTypes.ETC,
+        'eip155': true,
+        'chainId': 61,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'service': 'Chainkorea',
+        'lib': new nodes.customNode('https://node.classicexplorer.org', '')
     },
     'etc_epool': {
         'name': 'ETC',
@@ -259,7 +271,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/etscTokens.json'),
         'abiList': require('./abiDefinitions/etscAbi.json'),
         'estimateGas': true,
-        'service': 'gazua.tv',
+        'service': 'ethereumsocial.kr',
         'lib': new nodes.customNode('https://node.ethereumsocial.kr', '')
     },
     'egem': {
@@ -275,7 +287,7 @@ nodes.nodeList = {
         'service': 'egem.io',
         'lib': new nodes.customNode('https://jsonrpc.egem.io/custom', '')
     },
-    'clo_mainnet': {
+    'clo': {
         'name': 'CLO',
         'blockExplorerTX': 'https://explorer.callisto.network/tx/[[txHash]]',
         'blockExplorerAddr': 'https://explorer.callisto.network/addr/[[address]]',
@@ -286,18 +298,6 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/cloAbi.json'),
         'service': 'Callisto.network',
         'lib': new nodes.customNode('https://clo-geth.0xinfra.com/', '')
-    },
-    'clo_testnet3': {
-        'name': 'CLO Testnet 3.0',
-        'blockExplorerTX': 'https://explorer-testnet.callisto.network/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://explorer-testnet.callisto.network/addr/[[address]]',
-        'type': nodes.nodeTypes.CLOT,
-        'eip155': true,
-        'chainId': 7919,
-        'tokenList': require('./tokens/cloTokens.json'),
-        'abiList': require('./abiDefinitions/cloAbi.json'),
-        'service': 'Callisto.network',
-        'lib': new nodes.customNode('https://clo-testnet3.0xinfra.com/', '')
     },
     'east': {
         'name': 'EAST',
@@ -311,8 +311,8 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'easthub.io',
         'lib': new nodes.customNode('https://node.easthub.io', '')
-     },
-     'x888': {
+    },
+    'x888': {
         'name': 'X888',
         'blockExplorerTX': 'https://myetherwallet.com/?[[txHash]]#check-tx-status',
         'blockExplorerAddr': 'https://myetherwallet.com/?[[address]]#view-wallet-info',
@@ -324,6 +324,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'eightereum',
         'lib': new nodes.customNode('https://eightereum.x888.io', '')
+    },
+    'music': {
+        'name': 'MUSIC',
+        'blockExplorerTX': 'https://explorer.musicoin.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.musicoin.org/account/[[address]]',
+        'type': nodes.nodeTypes.MUSIC,
+        'eip155': true,
+        'chainId': 7762959,
+        'tokenList': require('./tokens/musicTokens.json'),
+        'abiList': require('./abiDefinitions/musicAbi.json'),
+        'estimateGas': true,
+        'service': 'musicoin.org',
+        'lib': new nodes.customNode('https://mcdnode.trustfarm.io/api', '')
     }
 };
 

@@ -1,5 +1,13 @@
 ### Release v3.21.12
+### Fixes
+- Ensure to address is empty when setting final kyber swap values [#1858](https://github.com/kvhnuke/etherwallet/pull/1858)
 ### New
+- Readd Music Node [#1859](https://github.com/kvhnuke/etherwallet/pull/1859)
+- Add CFTY token to defaults [#1865](https://github.com/kvhnuke/etherwallet/pull/1865)
+- Add CDX (Carbon Dollar X) token to defaults [#1863](https://github.com/kvhnuke/etherwallet/pull/1863)
+- Add PAT and CPEX tokens. [#1862](https://github.com/kvhnuke/etherwallet/pull/1862)
+- Add Hodl wallet on the footer. [commit](https://github.com/kvhnuke/etherwallet/commit/2442bbe56a8f955512f84e227c09bdbe4742c09c)
+- Disable email obfuscation [#1857](https://github.com/kvhnuke/etherwallet/pull/1857)
 - Add x888 Node [#1855](https://github.com/kvhnuke/etherwallet/pull/1855)
 - Add GANA custom gas [#1852](https://github.com/kvhnuke/etherwallet/pull/1852)
 - Add AIgathaToken custom gas [#1849](https://github.com/kvhnuke/etherwallet/pull/1849)
@@ -8,6 +16,8 @@
 - Add ENC custom gas [#1845](https://github.com/kvhnuke/etherwallet/pull/1845)
 - Add Bkrx, COV, ENC, ADL, ATH, CO2Bit, QRG, and GANA to Eth tokens default. Add PPD and KC to rinkeby token defaults. Add PPD abi. [#1856](https://github.com/kvhnuke/etherwallet/pull/1856)
 ### Update
+- Update VRS token [#1863](https://github.com/kvhnuke/etherwallet/pull/1863)
+- Update custom networks [#1850](https://github.com/kvhnuke/etherwallet/pull/1850)
 - Removed duplicate entries for IOST and DCA. Added BLZ, LEND, NCASH, and WTC. [#1853](https://github.com/kvhnuke/etherwallet/pull/1853)  
 
 ### Release v3.21.11

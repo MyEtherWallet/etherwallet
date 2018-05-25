@@ -585,12 +585,16 @@ label small {
 @brand-test: #adc101;
 @brand-rsk: #ff794f;
 @brand-exp: #673ab7;
-@brand-music: #b37aff;
 @brand-ubq: #00ad85;
 @brand-poa: #4568bb;
 @brand-tomo: #6a488d;
 @brand-ella: #046111;
 @brand-etsc: #4295d1;
+@brand-egem: #0e97c0;
+@brand-clo: #009241;
+@brand-east: #0e97c0;
+@brand-x888: #ff9;
+@brand-music: #fece00;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -609,46 +613,67 @@ label small {
     border-left: 2px solid @brand-eth;
   }
   li:nth-child(5),
-  li:nth-child(6) {
+  li:nth-child(6),
+  li:nth-child(7) {
     border-left: 2px solid @brand-etc;
   }
-  li:nth-child(7),
   li:nth-child(8),
   li:nth-child(9),
   li:nth-child(10),
   li:nth-child(11),
-  li:nth-child(12) {
+  li:nth-child(12),
+  li:nth-child(13) {
     border-left: 2px solid @brand-test;
   }
-  li:nth-child(13) {
+  li:nth-child(14) {
     border-left: 2px solid @brand-exp;
   }
-  li:nth-child(14) {
+  li:nth-child(15) {
     border-left: 2px solid @brand-ubq;
   }
-  li:nth-child(15) {
+  li:nth-child(16) {
     border-left: 2px solid @brand-poa;
   }
-  li:nth-child(16) {
+  li:nth-child(17) {
     border-left: 2px solid @brand-tomo;
   }
-  li:nth-child(17) {
+  li:nth-child(18) {
     border-left: 2px solid @brand-ella;
   }
-  li:nth-child(18) {
+  li:nth-child(19) {
     border-left: 2px solid @brand-etsc;
+  }
+  li:nth-child(20) {
+    border-left: 2px solid @brand-egem;
+  }
+  li:nth-child(21) {
+    border-left: 2px solid @brand-clo;
+  }
+  li:nth-child(21) {
+    border-left: 2px solid @brand-east;
+  }
+  li:nth-child(22) {
+    border-left: 2px solid @brand-x888;
+  }
+  li:nth-child(23) {
+    border-left: 2px solid @brand-music;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
   }
   li:nth-child(4),
-  li:nth-child(6),
-  li:nth-child(12),
+  li:nth-child(7),
   li:nth-child(13),
   li:nth-child(14),
   li:nth-child(15),
   li:nth-child(16),
-  li:nth-child(17) {
+  li:nth-child(17),
+  li:nth-child(18),
+  li:nth-child(19),
+  li:nth-child(20),
+  li:nth-child(21),
+  li:nth-child(22),
+  li:nth-child(23) {
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -747,6 +772,41 @@ header.ETSC {
   & + .container .alert-info             { background-color:@brand-etsc;           }
 }
 
+header.EGEM {
+  .nav-container                         { border-top: 0.25rem solid @brand-egem;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-egem;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-egem;      }
+  & + .container .alert-info             { background-color:@brand-egem;           }
+}
+
+header.CLO {
+  .nav-container                         { border-top: 0.25rem solid @brand-clo;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-clo;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-clo;      }
+  & + .container .alert-info             { background-color:@brand-clo;           }
+}
+
+header.EAST {
+  .nav-container                         { border-top: 0.25rem solid @brand-east;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-east;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-east;      }
+  & + .container .alert-info             { background-color:@brand-east;           }
+}
+
+header.X888 {
+  .nav-container                         { border-top: 0.25rem solid @brand-x888;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-x888;  }
+  & + .container .modal-content          { border: 0.25rem solid @brand-x888;      }
+  & + .container .alert-info             { background-color:@brand-x888;           }
+}
+
+header.MUSIC {
+  .nav-container                         { border-top: 0.25rem solid @brand-music; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-music; }
+  & + .container .modal-content          { border: 0.25rem solid @brand-music;     }
+  & + .container .alert-info             { background-color:@brand-music;          }
+}
+
 .contest-container {
   align-content: center;
   display: flex;
@@ -787,5 +847,17 @@ header.ETSC {
 
   img {
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer__pill-custom-wrap {
+    display: flex;
+    flex-wrap: wrap;
+
+    a {
+      flex: auto;
+      max-width: 115px;
+    }
   }
 }
