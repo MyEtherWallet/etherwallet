@@ -67,6 +67,7 @@
                 <br/>
                 <!-- KYBER TOKEN TRANSACTION -->
                 <table class="table small table-condensed table-hover transaction-modal" ng-if="!kyberEthToToken">
+                    <!--  SUMMARY -->
                     <tbody>
                     <tr>
                         <td></td>
@@ -130,7 +131,8 @@
                     <table class="table small table-condensed table-hover transaction-modal" ng-show="adv">
                         <tbody >
 
-                        <!----------------------------------------------------------------->
+                        <!---------------------- ADVANCED --------------------------------->
+                        <!-- TOKEN SWAP TRANSACTION DETAILS -->
                         <tr>
                             <td class="text-left">Token Swap Transaction <br>
                                 <small>via Kyber Network</small>
@@ -176,7 +178,7 @@
                         <tr>
                             <td class="small text-right">Gas Price:</td>
                             <td class="small text-left mono">{{parsedKyberTx.gasPrice.gwei}} GWEI
-                                <small>({{parsedKyberTx.gasPrice.eth}} ETH)</small>
+                                <small>({{parsedKyberTx.gasPrice.eth}} ETH) <span ng-if="kyberTransaction.kyberMaxGas">| Note: Kyber Network Gas Price Max is 50 GWEI</span></small>
                             </td>
                         </tr>
                         <tr>
@@ -193,7 +195,7 @@
                             <td class="small text-right">Data:</td>
                             <td class="small text-left mono text-width-limit"><p>{{parsedKyberTx.data}}</p></td>
                         </tr>
-                        <!----------------------------------------------------------------->
+                        <!-- TOKEN APPROVAL TRANSACTION DETAILS -->
                         <tr>
                             <td> Token Approval Transaction</td>
                         </tr>
@@ -244,7 +246,7 @@
                             <td class="small text-right">Data:</td>
                             <td class="small text-left mono text-width-limit"><p>{{parsedKyberTokenTx.data}}</p></td>
                         </tr>
-                        <!----------------------------------------------------------------->
+                        <!-- TOKEN RESET APPROVAL VALUE TRANSACTION DETAILS -->
                         <tr ng-show="kyberTransaction.tokenNeedsReset">
                             <td> Token Approval Reset Transaction<br>
                             <em><small>Why? The swap will fail to execute <wbr> if token approval is not reset to 0.</small></em></td>
@@ -352,7 +354,7 @@
                     <tr>
                         <td class="small text-right">Gas Price:</td>
                         <td class="small text-left mono">{{parsedKyberTx.gasPrice.gwei}} GWEI
-                            <small>({{parsedKyberTx.gasPrice.eth}} ETH)</small>
+                            <small>({{parsedKyberTx.gasPrice.eth}} ETH) <span ng-if="kyberTransaction.kyberMaxGas">| Note: Kyber Network Gas Price Max is 50 GWEI</span></small>
                         </td>
                     </tr>
                     <tr>
