@@ -68,7 +68,7 @@ DOMAIN_offer_15                 :  'You can cancel your domain sale, which will 
 
 ENS_Bid_Title                   :  'Place a Bid',
 ENS_Finalize                    :  'Finalize',
-ENS_Finalize_content            :  'Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.',
+ENS_Finalize_content            :  'Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will be refunded all but 0.01 ETH. Any non-winners will also be refunded.',
 ENS_Finalize_content_1          :  'You are about to finalize the auction & claim the name:',
 ENS_Helper_1                    :  'What is the process like?',
 ENS_Helper_10                   :  '**If you do not reveal your bid, you will not be refunded.**',
@@ -77,7 +77,7 @@ ENS_Helper_12                   :  'You will unlock your account, enter the <u>B
 ENS_Helper_13                   :  'In the event that two parties bid exactly the same amount, the first bid revealed will win.',
 ENS_Helper_14                   :  '4) Finalize the Auction',
 ENS_Helper_15                   :  'Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.',
-ENS_Helper_16                   :  'The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH.',
+ENS_Helper_16                   :  'The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will be refunded all but 0.01 ETH.',
 ENS_Helper_17                   :  'More Information',
 ENS_Helper_18                   :  'The auction for this registrar is a blind auction, and is described in',
 ENS_Helper_19                   :  'Basically, no one can see *anything* during the auction.',

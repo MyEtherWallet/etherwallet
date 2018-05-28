@@ -70,7 +70,7 @@
         Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.
       </li>
       <li translate="ENS_Helper_16">
-        The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH.
+        The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will be refunded all but 0.01 ETH.
       </li>
     </ul>
 
