@@ -13,10 +13,10 @@
     </h6>
     <ul ng-show="ensPrep">
       <li translate="ENS_Helper_3">
-        Decide which account you wish to own the name & ensure you have multiple backups of that account.
+        Decide which account you wish to own the name & ensure that you have multiple backups of that account.
       </li>
       <li translate="ENS_Helper_4">
-        Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.
+        Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that the account has enough to cover your bid + 0.01 ETH for gas.
       </li>
     </ul>
 
