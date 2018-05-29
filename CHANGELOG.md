@@ -4,7 +4,7 @@
 - Fix network tab css [#1870](https://github.com/kvhnuke/etherwallet/pull/1870)
 
 ### New
-- Add EGT, WYS, IOTX, BTCL, GZR and FYX tokens []()
+- Add EGT, WYS, IOTX, BTCL, GZR and FYX tokens [#1874](https://github.com/kvhnuke/etherwallet/pull/1874)
 - Add OS.University EDU tokens to MEW [#1871](https://github.com/kvhnuke/etherwallet/pull/1871)
 
 ### Release v3.21.12
