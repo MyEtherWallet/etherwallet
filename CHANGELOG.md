@@ -1,3 +1,11 @@
+### Release v3.21.13
+### Update
+- Minor grammatical fixes [#1873](https://github.com/kvhnuke/etherwallet/pull/1873)
+- Fix network tab css [#1870](https://github.com/kvhnuke/etherwallet/pull/1870)
+
+### New
+- Add OS.University EDU tokens to MEW [#1871](https://github.com/kvhnuke/etherwallet/pull/1871)
+
 ### Release v3.21.12
 ### Fixes
 - Ensure to address is empty when setting final kyber swap values [#1858](https://github.com/kvhnuke/etherwallet/pull/1858)
