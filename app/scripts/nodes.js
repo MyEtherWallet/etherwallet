@@ -22,6 +22,7 @@ nodes.nodeTypes = {
     EAST: "EAST",
     X888: "X88",
     MUSIC: "MUSIC",
+    YAP: "YAP",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -337,6 +338,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'musicoin.org',
         'lib': new nodes.customNode('https://mcdnode.trustfarm.io/api', '')
+    },
+    'yap': {
+        'name': 'YAP',
+        'blockExplorerTX': 'https://explorer.yapstone.pro/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.yapstone.pro/addr/[[address]]',
+        'type': nodes.nodeTypes.YAP,
+        'eip155': true,
+        'chainId': 528,
+        'tokenList': require('./tokens/yapTokens.json'),
+        'abiList': require('./abiDefinitions/yapAbi.json'),
+        'estimateGas': true,
+        'service': 'yapstone.pro',
+        'lib': new nodes.customNode('https://node.yapstone.pro', '')
     }
 };
 
