@@ -1,12 +1,12 @@
 ### Release v3.21.13
 ### Update
-- Update UMKA token address []()
+- Update UMKA token address [#1880](https://github.com/kvhnuke/etherwallet/pull/1880)
 - Minor grammatical fixes [#1873](https://github.com/kvhnuke/etherwallet/pull/1873)
 - Update CLO explorer address [#1872](https://github.com/kvhnuke/etherwallet/pull/1872)
 - Fix network tab css [#1870](https://github.com/kvhnuke/etherwallet/pull/1870)
 
 ### New
-- Add COIN token []()
+- Add COIN token [#1880](https://github.com/kvhnuke/etherwallet/pull/1880)
 - YAP Node [#1876](https://github.com/kvhnuke/etherwallet/pull/1876)
 - Add EGT, WYS, IOTX, BTCL, GZR and FYX tokens [#1874](https://github.com/kvhnuke/etherwallet/pull/1874)
 - Add OS.University EDU tokens to MEW [#1871](https://github.com/kvhnuke/etherwallet/pull/1871)
