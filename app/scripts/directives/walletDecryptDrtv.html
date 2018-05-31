@@ -807,7 +807,9 @@
                   Ledger (ETH)
                 </p>
               </label>
+            </div>
 
+            <div class="col-sm-4">
               <label class="radio small">
                 <input aria-describedby="Path: Ledger (ETC) {{HDWallet.ledgerClassicPath}}"
                        ng-change="onHDDPathChange()"
@@ -849,9 +851,6 @@
               </label>
             </div>
 
-          </section>
-
-          <section class="row">
             <div class="col-sm-4">
               <label class="radio small">
                 <input aria-describedby="Path: TREZOR - TESTNET - {{HDWallet.trezorTestnetPath}}"
@@ -935,51 +934,49 @@
                 </p>
               </label>
             </div>
-          </section>
 
-          <div class="col-sm-4">
-            <label class="radio small">
-              <input aria-describedby="Path: TREZOR (ETSC) {{HDWallet.hwSocialPath}}"
-                     ng-change="onHDDPathChange()"
-                     ng-model="HDWallet.dPath"
-                     type="radio"
-                    value="{{HDWallet.hwSocialPath}}"/>
-              <span ng-bind="HDWallet.hwSocialPath"></span>
-              <p class="small">
-                Network: Ethereum Social
-              </p>
-            </label>
-          </div>
+            <div class="col-sm-4">
+              <label class="radio small">
+                <input aria-describedby="Path: TREZOR (ETSC) {{HDWallet.hwSocialPath}}"
+                       ng-change="onHDDPathChange()"
+                       ng-model="HDWallet.dPath"
+                       type="radio"
+                      value="{{HDWallet.hwSocialPath}}"/>
+                <span ng-bind="HDWallet.hwSocialPath"></span>
+                <p class="small">
+                  Network: Ethereum Social
+                </p>
+              </label>
+            </div>
 
-          <div class="col-sm-4">
-            <label class="radio small">
-              <input aria-describedby="Path: TREZOR (MUSIC) {{HDWallet.hwMusicoinPath}}"
-                     ng-change="onHDDPathChange()"
-                     ng-model="HDWallet.dPath"
-                     type="radio"
-                    value="{{HDWallet.hwMusicoinPath}}"/>
-              <span ng-bind="HDWallet.hwMusicoinPath"></span>
-              <p class="small">
-                Network: Musicoin
-              </p>
-            </label>
-          </div>
+            <div class="col-sm-4">
+              <label class="radio small">
+                <input aria-describedby="Path: TREZOR (MUSIC) {{HDWallet.hwMusicoinPath}}"
+                       ng-change="onHDDPathChange()"
+                       ng-model="HDWallet.dPath"
+                       type="radio"
+                      value="{{HDWallet.hwMusicoinPath}}"/>
+                <span ng-bind="HDWallet.hwMusicoinPath"></span>
+                <p class="small">
+                  Network: Musicoin
+                </p>
+              </label>
+            </div>
 
-          <div class="col-sm-4">
-            <label class="radio small">
-              <input aria-describedby="Path: TREZOR (YAP) {{HDWallet.hwYapstonePath}}"
-                     ng-change="onHDDPathChange()"
-                     ng-model="HDWallet.dPath"
-                     type="radio"
-                    value="{{HDWallet.hwYapstonePath}}"/>
-              <span ng-bind="HDWallet.hwYapstonePath"></span>
-              <p class="small">
-                Network: Yapstone
-              </p>
-            </label>
-          </div>
+            <div class="col-sm-4">
+              <label class="radio small">
+                <input aria-describedby="Path: TREZOR (YAP) {{HDWallet.hwYapstonePath}}"
+                       ng-change="onHDDPathChange()"
+                       ng-model="HDWallet.dPath"
+                       type="radio"
+                      value="{{HDWallet.hwYapstonePath}}"/>
+                <span ng-bind="HDWallet.hwYapstonePath"></span>
+                <p class="small">
+                  Network: Yapstone
+                </p>
+              </label>
+            </div>
 
-          <section class="row">
             <div class="col-sm-4">
               <label class="radio small">
                 <p class="small"><strong>
