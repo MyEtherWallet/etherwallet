@@ -612,6 +612,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xd42debE4eDc92Bd5a3FBb4243e1ecCf6d63A4A5d",
+		"symbol": "C8",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x7d4b8Cce0591C9044a22ee543533b72E976E36C3",
 		"symbol": "CAG",
 		"decimal": 18,
