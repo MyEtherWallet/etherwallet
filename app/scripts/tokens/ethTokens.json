@@ -822,6 +822,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5e8f855966d638135a968861e80dda722291b06d",
+		"symbol": "COIN",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x65292eeadf1426cd2df1c4793a3d7519f253913b",
 		"symbol": "COSS",
 		"decimal": 18,
@@ -3516,7 +3522,7 @@
 		"type": "default"
 	},
 	{
-		"address": "0x105d97ef2e723f1cfb24519bc6ff15a6d091a3f1",
+		"address": "0x8e5afc69f6227a3ad75ed346c8723bc62ce97123",
 		"symbol": "UMKA",
 		"decimal": 4,
 		"type": "default"
