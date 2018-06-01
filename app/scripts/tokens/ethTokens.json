@@ -2580,6 +2580,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xff56Cc6b1E6dEd347aA0B7676C85AB0B3D08B0FA",
+		"symbol": "ORBS",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x2C4e8f2D746113d0696cE89B35F0d8bF88E0AEcA",
 		"symbol": "OST",
 		"decimal": 18,
