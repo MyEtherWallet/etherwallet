@@ -1,6 +1,6 @@
 ### Release v3.21.13
 ### Update
-- Update VEN to VET []()
+- Update VEN to VET [#1885](https://github.com/kvhnuke/etherwallet/pull/1885)
 - Update UMKA token address [#1880](https://github.com/kvhnuke/etherwallet/pull/1880)
 - [Network] linting css & walletDecryptDrtv.html [#1878](https://github.com/kvhnuke/etherwallet/pull/1880)
 - Minor grammatical fixes [#1873](https://github.com/kvhnuke/etherwallet/pull/1873)
