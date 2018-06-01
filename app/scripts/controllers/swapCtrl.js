@@ -6,6 +6,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
   $scope.Validator = Validator;
   $scope.bity = new bity();
   $scope.kyber = new kyber();
+
   $scope.kyberNetworkEnabled = true;
   $scope.orderRetrievedFromStorage = false;
   $scope.isKyberSwap = false;
@@ -49,6 +50,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
   $scope.availableOptions = [...$scope.availableCoins, ...$scope.availableTokens];
 
   var initValues = function () {
+
     $scope.bity.refreshRates(function () {
       $scope.setOrderCoin(true, "ETH");
     });
@@ -1014,17 +1016,10 @@ var swapCtrl = function ($scope, $sce, walletService) {
           $scope.kyberTransaction.kyberMaxGas = true;
           txData.kyberGasPrice = "0xba43b7400"
         }
-        console.log("gasPrice", val); // todo remove dev item
-        console.log("txData 11", txData); // todo remove dev item
+        // console.log("gasPrice", val); // todo remove dev item
+        // console.log("txData 11", txData); // todo remove dev item
       }
 
-      // if(txData.gasPrice){
-      //   let gp = new BigNumber(ethFuncs.sanitizeHex(txData.gasPrice))
-      //
-      //   if(gp.gte(50000000000)){
-      //     txData.gasPrice = "0xba43b7400"
-      //   }
-      // }
       txData.kyber = true;
       uiFuncs.generateTx(txData, function (rawTx) {
         if (!rawTx.isError) {
