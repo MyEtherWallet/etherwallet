@@ -635,6 +635,12 @@
 		"decimal": 8,
 		"type": "default"
 	},
+  {
+		"address": "0x1ed2B1eaEd8e968bc36EB90a914660A71827A5E9",
+		"symbol": "CARD",
+		"decimal": 0,
+		"type": "default"
+  },
 	{
 		"address": "0xbf18f246b9301f231e9561b35a3879769bb46375",
 		"symbol": "CARE",
