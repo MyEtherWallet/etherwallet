@@ -264,6 +264,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x97AEB5066E1A590e868b511457BEb6FE99d329F5",
+		"symbol": "ATMI",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x887834d3b8d450b6bab109c252df3da286d73ce4",
 		"symbol": "ATT",
 		"decimal": 18,
