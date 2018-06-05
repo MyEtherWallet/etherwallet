@@ -1,6 +1,76 @@
 const darklist = function() {
 	return [
 		{
+			address: "0x181c71726f12ce2514e8b93019eb22645a79f966",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-05-14"
+		},
+		{
+			address: "0x2056d2e97cc9ad78cf527b382495a8b9704ce011",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-06-02"
+		},
+		{
+			address: "0x259EFb559a5D9ed64ccF44Bd5188b325DC4738c8",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-05-28"
+		},
+		{
+			address: "0x42A777E0F24390E7ed461a7AF325526e53ac57d9",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-05-29"
+		},
+		{
+			address: "0x4e790c545478029d20816a7212c46adde058d63e",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-05-31"
+		},
+		{
+			address: "0x5D840DB230c397AcC22ab28053d1a1fF7f14583E",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-06-01"
+		},
+		{
+			address: "0x6cF481C7090D88CA6F1Fa3C9FFD0911Ef5359808",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-05-29"
+		},
+		{
+			address: "0x73bb594368ddB778972C6f30b41437C897419C37",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-05-29"
+		},
+		{
+			address: "0x7613a475b7fE61775f579Bc148300C8171EcCaE9",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-05-31"
+		},
+		{
+			address: "0xBC83D48Dd0cd9c3F47Bab6436DeFeB334B563f4C",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-05-26"
+		},
+		{
+			address: "0xbca6294a6c80ee0f20173547b8d85d4948a0cb39",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-06-02"
+		},
+		{
+			address: "0xbeEbe66b6A511dD2acCBfF7F258554dbe97f1294",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-06-01"
+		},
+		{
+			address: "0xea7380369af53598a55b4622909cd9633e0ae7fa",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-05-30"
+		},
+		{
+			address: "0xfE9B7DB8d9D57E9ad9341bCf51B110Ba5d27b48B",
+			comment: "Fake Whalesburg ICO support",
+			date: "2018-06-02"
+		},
+		{
 			address: "0x08389B19ad52f0d983609ab785b3a43A0E90355F",
 			comment:
 				"Scam address for various fake twitter accounts and fake giveaways",

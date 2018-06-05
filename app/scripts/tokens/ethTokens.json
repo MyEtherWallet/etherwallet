@@ -1962,7 +1962,7 @@
 		"type": "default"
 	},
 	{
-		"address": "0x0Aaf561eFF5BD9c8F911616933F84166A17cfE0C",
+		"address": "0x884e3902C4d5cFA86de4aCE7A96AA91EbC25C0Ff",
 		"symbol": "JBX",
 		"decimal": 0,
 		"type": "default"
@@ -2313,6 +2313,12 @@
 		"address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
 		"symbol": "MKR",
 		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x7939882b54fcf0bcae6b53dec39ad6e806176442",
+		"symbol": "MKT",
+		"decimal": 8,
 		"type": "default"
 	},
 	{
