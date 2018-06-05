@@ -93,9 +93,22 @@ kyberFuncs.prototype.setCurrentNetwork = function(_network) {
         _this.tokenDetails = _network.tokens;
         _this.mainTokens = Object.keys(_network.tokens);
         _this.kyberRates = this.buildPairList(_this.mainTokens);
-        _this.KyberNetworkAddress = _network.network; // replace with resolution using ENS for mainnet
+        if(this.nodeType === "ETH"){
+            _this.getMainNetAddress();
+        } else {
+          _this.KyberNetworkAddress = _network.network;
+        }
     }
 };
+
+kyberFuncs.prototype.getMainNetAddress = function(){
+  var _this = this;
+  let ens = new window.ens();
+  ens.getAddress("kybernetwork.eth", function(data){
+    console.log(data); // todo remove dev item
+    _this.KyberNetworkAddress = data.data;
+  })
+}
 
 kyberFuncs.prototype.setDefaultValues = function(_network) {
     var _this = this;

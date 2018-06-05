@@ -6,6 +6,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
   $scope.Validator = Validator;
   $scope.bity = new bity();
   $scope.kyber = new kyber();
+
   $scope.kyberNetworkEnabled = true;
   $scope.orderRetrievedFromStorage = false;
   $scope.isKyberSwap = false;
@@ -49,6 +50,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
   $scope.availableOptions = [...$scope.availableCoins, ...$scope.availableTokens];
 
   var initValues = function () {
+
     $scope.bity.refreshRates(function () {
       $scope.setOrderCoin(true, "ETH");
     });
@@ -451,6 +453,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
       ethTxLink: null,
       tokenNeedsReset: false,
       currentTokenApprovalValue: 0,
+      kyberMaxGas: false,
       tokenResetTx: null,
       tokenResetTxRaw: null,
       tokenResetTxHash: null,
@@ -908,9 +911,10 @@ var swapCtrl = function ($scope, $sce, walletService) {
     try {
       $scope.addressString = $scope.walletKyber.getAddressString();
       $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.kyberSwapOrder, $scope.kyberSwapOrder.finalRate), $scope.kyber.getKyberNetworkAddress(), $scope.kyberSwapOrder.fromVal);
+      console.log($scope); // todo remove dev item
       var txData = uiFuncs.getTxData($scope);
       // console.log("openKyberEthOrder", txData); // todo remove dev item
-      txData.nonce = txData.gasPrice = null;
+      txData.nonce = txData.gasprice = null;
 
       $scope.generateKyberTransaction(txData, "OPEN_ETH");
     } catch (e) {
@@ -1005,6 +1009,18 @@ var swapCtrl = function ($scope, $sce, walletService) {
   // generate the transaction object based on the specific flow stage
   $scope.generateKyberTransaction = function (txData, stage) {
     try {
+      if(stage === "GENERATE_SWAP_TRANSACTION" || stage === "OPEN_ETH"){
+        let val = globalFuncs.localStorage.getItem("gasPrice")
+        let gp = new BigNumber(val)
+        if(gp.gte(50)){
+          $scope.kyberTransaction.kyberMaxGas = true;
+          txData.kyberGasPrice = "0xba43b7400"
+        }
+        // console.log("gasPrice", val); // todo remove dev item
+        // console.log("txData 11", txData); // todo remove dev item
+      }
+
+      txData.kyber = true;
       uiFuncs.generateTx(txData, function (rawTx) {
         if (!rawTx.isError) {
           switch (stage) {
@@ -1060,6 +1076,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
   // Trigger the opening of the modal for user review and authorization to proceed
   $scope.sendKyberModal = function () {
+    // console.log($scope.kyberTransaction); // todo remove dev item
     // console.log($scope.kyberOrderResult.progress.status); //todo remove dev item
     try {
       switch ($scope.kyberOrderResult.progress.status) {
@@ -1206,6 +1223,16 @@ var swapCtrl = function ($scope, $sce, walletService) {
     } else {
       gasLimit = kyber.defaultValues.gasLimit
     }
+    // if(gasPrice){
+    //   let gp = new BigNumber(ethFuncs.sanitizeHex(gasPrice))
+    //   if(gp.gte(50000000000)){
+    //     gasPrice= "0xba43b7400"
+    //     console.log("2", gp.toNumber()); // todo remove dev item
+    //   }
+    // }
+    console.log("gasPrice", gasPrice); // todo remove dev item
+
+
     return {
       gasLimit: gasLimit,
       data: data,
@@ -1284,7 +1311,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
       if ($scope.kyberTransaction.tokenNeedsReset) {
         $scope.parsedKyberResetTokenTx = $scope.parseKyberSignedTransaction($scope.kyberTransaction.tokenResetTx.signedTx);
 
-        // Calculate Combined Values
+        // Calculate Combined Values (three transaction case)
         $scope.parsedTx = {};
         $scope.parsedTx.totalTxFee = {};
         $scope.parsedTx.totalTxFee.wei = new BigNumber($scope.parsedKyberTx.txFee.wei).plus(new BigNumber($scope.parsedKyberTokenTx.txFee.wei)).plus(new BigNumber($scope.parsedKyberResetTokenTx.txFee.wei));
@@ -1297,7 +1324,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
         $scope.parsedTx.totalGasLimit = new BigNumber($scope.parsedKyberTokenTx.gasLimit).plus(new BigNumber($scope.parsedKyberTx.gasLimit)).plus(new BigNumber($scope.parsedKyberResetTokenTx.gasLimit));
       } else {
 
-        // Calculate Combined Values
+        // Calculate Combined Values (two transaction case)
         $scope.parsedTx = {};
         $scope.parsedTx.totalTxFee = {};
         $scope.parsedTx.totalTxFee.wei = new BigNumber($scope.parsedKyberTx.txFee.wei).plus(new BigNumber($scope.parsedKyberTokenTx.txFee.wei));
