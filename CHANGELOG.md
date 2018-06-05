@@ -8,6 +8,8 @@
 - Fix network tab css [#1870](https://github.com/kvhnuke/etherwallet/pull/1870)
 
 ### New
+- Update darklist, Update JBX token, and add MKT token. [#1889](https://github.com/kvhnuke/etherwallet/pull/1889)
+- Add ATMI token [#1888](https://github.com/kvhnuke/etherwallet/pull/1888)
 - Add CARD token [#1884](https://github.com/kvhnuke/etherwallet/pull/1884)
 - Add ORBS token [#1883](https://github.com/kvhnuke/etherwallet/pull/1883)
 - Add C8 token [#1881](https://github.com/kvhnuke/etherwallet/pull/1881)
