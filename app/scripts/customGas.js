@@ -367,4 +367,10 @@ to:         '0xFc543bA94943DA77236D38D1CBE6Bd9C7B945dfC',
 gasLimit:   250000,
 data:       '',
 msg:        'GANA Token Sale. Green And Nature Association. - https://ganacoin.io/'
+},{
+// OS.University (EDU) Token Sale
+to:         '0x94d313feaee495466a23d97c87690ae33c0f0af6',
+gasLimit:   200000,
+data:       '',
+msg:        'EDU Token Sale by OS.University - https://os.university/'
 }]
