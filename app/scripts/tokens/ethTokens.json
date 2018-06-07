@@ -744,6 +744,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xb056c38f6b7dc4064367403e26424cd2c60655e1",
+		"symbol": "CEEK",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x12FEF5e57bF45873Cd9B62E9DBd7BFb99e32D73e",
 		"symbol": "CFI",
 		"decimal": 18,
@@ -3686,7 +3692,7 @@
 	{
 		"address": "0x92e78dae1315067a8819efd6dca432de9dcde2e9",
 		"symbol": "VRS",
-		"decimal": 5,
+		"decimal": 6,
 		"type": "default"
 	},
 	{
