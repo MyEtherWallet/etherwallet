@@ -23,6 +23,7 @@ nodes.nodeTypes = {
     X888: "X88",
     MUSIC: "MUSIC",
     YAP: "YAP",
+    GO: "GO",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -351,6 +352,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'yapstone.pro',
         'lib': new nodes.customNode('https://node.yapstone.pro', '')
+    },
+    'go': {
+        'name': 'GO',
+        'blockExplorerTX': 'https://explorer.gochain.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.gochain.io/addr/[[address]]',
+        'type': nodes.nodeTypes.GO,
+        'eip155': true,
+        'chainId': 60,
+        'tokenList': require('./tokens/goTokens.json'),
+        'abiList': require('./abiDefinitions/goAbi.json'),
+        'estimateGas': true,
+        'service': 'gochain.io',
+        'lib': new nodes.customNode('https://rpc.gochain.io', '')
     }
 };
 
