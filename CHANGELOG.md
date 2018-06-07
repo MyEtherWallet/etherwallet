@@ -1,6 +1,6 @@
 ### Release v3.21.13
 ### Update
-- Update VRS token decimal []()
+- Update VRS token decimal [#1894](https://github.com/kvhnuke/etherwallet/pull/1894)
 - Update VEN to VET [#1885](https://github.com/kvhnuke/etherwallet/pull/1885)
 - Update UMKA token address [#1880](https://github.com/kvhnuke/etherwallet/pull/1880)
 - [Network] linting css & walletDecryptDrtv.html [#1878](https://github.com/kvhnuke/etherwallet/pull/1880)
@@ -9,7 +9,7 @@
 - Fix network tab css [#1870](https://github.com/kvhnuke/etherwallet/pull/1870)
 
 ### New
-- Add CEEK token []()
+- Add CEEK token [#1894](https://github.com/kvhnuke/etherwallet/pull/1894)
 - Update changelog, add 0xBTC token [#1892](https://github.com/kvhnuke/etherwallet/pull/1892)
 - Add NANJCOIN abi [#1890](https://github.com/kvhnuke/etherwallet/pull/1890)
 - Ensure kyber tx gas price is 50 gwei or less. [#1869](https://github.com/kvhnuke/etherwallet/pull/1869)
