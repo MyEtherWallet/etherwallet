@@ -9,6 +9,7 @@
 - Fix network tab css [#1870](https://github.com/kvhnuke/etherwallet/pull/1870)
 
 ### New
+- Add UUU token. [#1895](https://github.com/kvhnuke/etherwallet/pull/1895)
 - Warn when MetaMask is locked [#1886](https://github.com/kvhnuke/etherwallet/pull/1886)
 - Add CEEK token [#1894](https://github.com/kvhnuke/etherwallet/pull/1894)
 - Update changelog, add 0xBTC token [#1892](https://github.com/kvhnuke/etherwallet/pull/1892)
