@@ -3606,6 +3606,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x3543638eD4a9006E4840B105944271Bcea15605D",
+		"symbol": "UUU",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x82BD526bDB718C6d4DD2291Ed013A5186cAE2DCa",
 		"symbol": "VDOC",
 		"decimal": 18,
