@@ -1,3 +1,7 @@
+### Release v3.21.14
+### New
+- Add WORK token [#1901](https://github.com/kvhnuke/etherwallet/pull/1901)
+
 ### Release v3.21.13
 ### Update
 - Update HAV token [#1899](https://github.com/kvhnuke/etherwallet/pull/1899)

@@ -3816,6 +3816,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xd18e454d844eb0009d32e07a0cde89e18d64cfb4",
+		"symbol": "WORK",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x62087245087125d3db5b9a3d713d78e7bbc31e54",
 		"symbol": "WPC",
 		"decimal": 18,
