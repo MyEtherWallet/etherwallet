@@ -37,6 +37,12 @@ gasLimit:   300000,
 data:       '',
 msg:        ' Accord (ARD) ERC20 token sale - http://accordtoken.com'
 },{
+// DAV Token Sale
+to:         '0xBE2530028229198D2c383F2D3FB9f40EBf24dEed',
+gasLimit:   300000,
+data:       '',
+msg:        'DAV Token Sale - Must register on https://dav.network/ first to participate'
+},{
 // Primalbase Token (PBT)
 to:         '0xF4c07b1865bC326A3c01339492Ca7538FD038Cc0',
 gasLimit:   100000,
