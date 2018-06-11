@@ -379,4 +379,10 @@ to:         '0x94d313feaee495466a23d97c87690ae33c0f0af6',
 gasLimit:   200000,
 data:       '',
 msg:        'EDU Token Sale by OS.University - https://os.university/'
+  // Brickblock (BBK) Token sale
+to:         '0x4a6058666cf1057eac3cd3a5a614620547559fc9',
+gasLimit:   210000,
+data:       '',
+msg:        'Brickblock (BBK) Token Sale. Official sale website:https://www.brickblock.io'
+},
 }]
