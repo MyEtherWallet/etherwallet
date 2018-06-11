@@ -324,6 +324,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x4a6058666cf1057eaC3CD3A5a614620547559fc9",
+		"symbol": "BBK",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x7367a68039d4704f30bfbf6d948020c3b07dfc59",
 		"symbol": "BCBC",
 		"decimal": 18,
@@ -1044,6 +1050,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xd82Df0ABD3f51425Eb15ef7580fDA55727875f14",
+		"symbol": "DAV",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416",
 		"symbol": "DCA",
 		"decimal": 18,
@@ -1734,7 +1746,7 @@
 		"type": "default"
 	},
 	{
-		"address": "0xf244176246168f24e3187f7288edbca29267739b",
+		"address": "0xC011A72400E58ecD99Ee497CF89E3775d4bd732F",
 		"symbol": "HAV",
 		"decimal": 18,
 		"type": "default"
@@ -1821,6 +1833,12 @@
 		"address": "0xC0Eb85285d83217CD7c891702bcbC0FC401E2D9D",
 		"symbol": "HVN",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0xC1E2097d788d33701BA3Cc2773BF67155ec93FC4",
+		"symbol": "IAD",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -2544,6 +2562,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x57Ab1E02fEE23774580C119740129eAC7081e9D3",
+		"symbol": "nUSD",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
 		"symbol": "NxC",
 		"decimal": 3,
@@ -2966,6 +2990,12 @@
 	{
 		"address": "0x5f53f7a8075614b699baad0bc2c899f4bad8fbbf",
 		"symbol": "REBL",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x76960dccd5a1fe799f7c29be9f19ceb4627aeb2f",
+		"symbol": "RED",
 		"decimal": 18,
 		"type": "default"
 	},

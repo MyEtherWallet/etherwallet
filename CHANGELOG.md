@@ -1,5 +1,6 @@
 ### Release v3.21.13
 ### Update
+- Update HAV token []()
 - Update VRS token decimal [#1894](https://github.com/kvhnuke/etherwallet/pull/1894)
 - Update VEN to VET [#1885](https://github.com/kvhnuke/etherwallet/pull/1885)
 - Update UMKA token address [#1880](https://github.com/kvhnuke/etherwallet/pull/1880)
@@ -9,6 +10,7 @@
 - Fix network tab css [#1870](https://github.com/kvhnuke/etherwallet/pull/1870)
 
 ### New
+- Add nUSD, BBK, DAV, RED and IAD tokens []()
 - Add UUU token. [#1895](https://github.com/kvhnuke/etherwallet/pull/1895)
 - Warn when MetaMask is locked [#1886](https://github.com/kvhnuke/etherwallet/pull/1886)
 - Add CEEK token [#1894](https://github.com/kvhnuke/etherwallet/pull/1894)
