@@ -11,6 +11,7 @@
 
 ### New
 - Add nUSD, BBK, DAV, RED and IAD tokens [#1899](https://github.com/kvhnuke/etherwallet/pull/1899)
+- Custom Gas for DAV token [#1897](https://github.com/kvhnuke/etherwallet/pull/1897)
 - Add UUU token. [#1895](https://github.com/kvhnuke/etherwallet/pull/1895)
 - Warn when MetaMask is locked [#1886](https://github.com/kvhnuke/etherwallet/pull/1886)
 - Add CEEK token [#1894](https://github.com/kvhnuke/etherwallet/pull/1894)
