@@ -1,5 +1,6 @@
 ### Release v3.21.14
 ### New
+- Add OJX, and BTT in eth list. Add CTGA to rin. [#1904](https://github.com/kvhnuke/etherwallet/pull/1904)
 - Add WORK token [#1902](https://github.com/kvhnuke/etherwallet/pull/1902)
 
 ### Release v3.21.13

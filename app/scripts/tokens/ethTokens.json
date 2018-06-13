@@ -613,8 +613,14 @@
 	},
 	{
 		"address": "0x080aa07e2c7185150d7e4da98838a8d2feac3dfc",
-		"symbol": "BTT",
+		"symbol": "BTT (Bitether)",
 		"decimal": 0,
+		"type": "default"
+	},
+	{
+		"address": "0xFA456Cf55250A839088b27EE32A424d7DAcB54Ff",
+		"symbol": "BTT (Blocktrade)",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -2600,6 +2606,12 @@
 	{
 		"address": "0x6f539a9456a5bcb6334a1a41207c3788f5825207",
 		"symbol": "OHNI",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xbeef546ac8a4e0a80dc1e2d696968ef54138f1d4",
+		"symbol": "OJX",
 		"decimal": 18,
 		"type": "default"
 	},

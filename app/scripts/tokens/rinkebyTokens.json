@@ -11,6 +11,12 @@
 		"decimal": 0,
 		"type": "default"
 	},
+	{
+		"symbol": "CTGA",
+		"address": "0x8b65d4b7ee3fffa986c577f0f4b70a21bae3dd54",
+		"decimals": 18,
+		"type": "default"
+	},
   {
 		"address": "0x275a5b346599b56917e7b1c9de019dcf9ead861a",
 		"symbol": "KC",
