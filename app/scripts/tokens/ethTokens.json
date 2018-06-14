@@ -2592,6 +2592,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5e888B83B7287EED4fB7DA7b7d0A0D4c735d94b3",
+		"symbol": "OAK",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x701C244b988a513c945973dEFA05de933b23Fe1D",
 		"symbol": "OAX",
 		"decimal": 18,
@@ -2972,6 +2978,12 @@
 	{
 		"address": "0x9a642d6b3368ddc662CA244bAdf32cDA716005BC",
 		"symbol": "QTUM",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x45edb535942a8c84d9f4b5d37e1b25f91ea4804c",
+		"symbol": "RAO",
 		"decimal": 18,
 		"type": "default"
 	},
