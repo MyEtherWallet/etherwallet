@@ -1,5 +1,8 @@
 ### Release v3.21.14
 ### New
+- OAK custom Gas [#1907](https://github.com/kvhnuke/etherwallet/pull/1907)
+- OAK abi [#1908](https://github.com/kvhnuke/etherwallet/pull/1908)
+- Fix branding style [#1906](https://github.com/kvhnuke/etherwallet/pull/1906)
 - Add OJX, and BTT in eth list. Add CTGA to rin. [#1905](https://github.com/kvhnuke/etherwallet/pull/1905)
 - Add GoChain Node [#1904](https://github.com/kvhnuke/etherwallet/pull/1904)
 - Add WORK token [#1902](https://github.com/kvhnuke/etherwallet/pull/1902)
