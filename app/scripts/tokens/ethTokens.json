@@ -1,5 +1,11 @@
 [
 	{
+		"address": "0x4E84E9e5fb0A972628Cf4568c403167EF1D40431",
+		"symbol": "$FFC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xa024e8057eec474a9b2356833707dd0579e26ef3",
 		"symbol": "$FYX",
 		"decimal": 18,
