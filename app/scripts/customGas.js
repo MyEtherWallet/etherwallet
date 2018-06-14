@@ -379,4 +379,10 @@ to:         '0x94d313feaee495466a23d97c87690ae33c0f0af6',
 gasLimit:   200000,
 data:       '',
 msg:        'EDU Token Sale by OS.University - https://os.university/'
+},{
+// Acorn Collective (OAK) Token Sale
+to:         '0x25Beb989d3ef4E6e0fEF8220944bb74E2AA6ff45',
+gasLimit:   150000,
+data:       '',
+msg:        'OAK Token Sale by The Acorn Collective - https://aco.ai/'
 }]
