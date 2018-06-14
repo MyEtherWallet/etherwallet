@@ -597,6 +597,7 @@ label small {
 @brand-music: #fece00;
 @brand-yap: #0e97c0;
 @brand-go: #27223d;
+@brand-eosc: #926565;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -666,6 +667,9 @@ label small {
   li:nth-child(26) {
     border-left: 2px solid @brand-go;
   }
+  li:nth-child(27) {
+    border-left: 2px solid @brand-eosc;
+  }
   li:last-child {
     border-left: 2px solid @gray-light;
   }
@@ -684,7 +688,8 @@ label small {
   li:nth-child(23),
   li:nth-child(24),
   li:nth-child(25),
-  li:nth-child(26), {
+  li:nth-child(26),
+  li:nth-child(27), {
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -830,6 +835,13 @@ header.GO {
   & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-go;  }
   & + .container .modal-content          { border: 0.25rem solid @brand-go;      }
   & + .container .alert-info             { background-color:@brand-go;           }
+}
+
+header.EOSC {
+  .header-branding                       { border-top: 0.25rem solid @brand-eosc; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-eosc; }
+  & + .container .modal-content          { border: 0.25rem solid @brand-eosc;     }
+  & + .container .alert-info             { background-color:@brand-eosc;          }
 }
 
 .contest-container {
