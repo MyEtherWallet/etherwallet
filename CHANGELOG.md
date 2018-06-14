@@ -1,5 +1,6 @@
 ### Release v3.21.14
 ### New
+- Update EOS classic style [#1911](https://github.com/kvhnuke/etherwallet/pull/1911)
 - Add EOS classic node [#1903](https://github.com/kvhnuke/etherwallet/pull/1903)
 - Add $FFC token [#1910](https://github.com/kvhnuke/etherwallet/pull/1910)
 - Add OAK and RAO tokens [#1909](https://github.com/kvhnuke/etherwallet/pull/1909)
