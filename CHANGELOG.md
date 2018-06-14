@@ -1,5 +1,6 @@
 ### Release v3.21.14
 ### New
+- Add $FFC token [#1910](https://github.com/kvhnuke/etherwallet/pull/1910)
 - Add OAK and RAO tokens [#1909](https://github.com/kvhnuke/etherwallet/pull/1909)
 - BBK abi [#1901](https://github.com/kvhnuke/etherwallet/pull/1901)
 - OAK custom Gas [#1907](https://github.com/kvhnuke/etherwallet/pull/1907)
