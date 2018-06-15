@@ -792,6 +792,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xb1c1cb8c7c1992dba24e628bf7d38e71dad46aeb",
+		"symbol": "CLB",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x3dc9a42fa7afe57be03c58fd7f4411b1e466c508",
 		"symbol": "CLL",
 		"decimal": 18,
