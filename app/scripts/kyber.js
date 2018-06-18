@@ -105,7 +105,7 @@ kyberFuncs.prototype.getMainNetAddress = function(){
   var _this = this;
   let ens = new window.ens();
   ens.getAddress("kybernetwork.eth", function(data){
-    console.log(data.data); // todo remove dev item
+    console.log(data); // todo remove dev item
     _this.KyberNetworkAddress = data.data;
   })
 }

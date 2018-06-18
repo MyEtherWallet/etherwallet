@@ -1,5 +1,22 @@
+### Release v3.21.14
+### New
+- Add CLB token [#1912](https://github.com/kvhnuke/etherwallet/pull/1912)
+- Update EOS classic style [#1911](https://github.com/kvhnuke/etherwallet/pull/1911)
+- Add EOS classic node [#1903](https://github.com/kvhnuke/etherwallet/pull/1903)
+- Add $FFC token [#1910](https://github.com/kvhnuke/etherwallet/pull/1910)
+- Add OAK and RAO tokens [#1909](https://github.com/kvhnuke/etherwallet/pull/1909)
+- BBK abi [#1901](https://github.com/kvhnuke/etherwallet/pull/1901)
+- OAK custom Gas [#1907](https://github.com/kvhnuke/etherwallet/pull/1907)
+- OAK abi [#1908](https://github.com/kvhnuke/etherwallet/pull/1908)
+- Fix branding style [#1906](https://github.com/kvhnuke/etherwallet/pull/1906)
+- Add OJX, and BTT in eth list. Add CTGA to rin. [#1905](https://github.com/kvhnuke/etherwallet/pull/1905)
+- Add GoChain Node [#1904](https://github.com/kvhnuke/etherwallet/pull/1904)
+- Add WORK token [#1902](https://github.com/kvhnuke/etherwallet/pull/1902)
+
 ### Release v3.21.13
 ### Update
+- Update HAV token [#1899](https://github.com/kvhnuke/etherwallet/pull/1899)
+- Update VRS token decimal [#1894](https://github.com/kvhnuke/etherwallet/pull/1894)
 - Update VEN to VET [#1885](https://github.com/kvhnuke/etherwallet/pull/1885)
 - Update UMKA token address [#1880](https://github.com/kvhnuke/etherwallet/pull/1880)
 - [Network] linting css & walletDecryptDrtv.html [#1878](https://github.com/kvhnuke/etherwallet/pull/1880)
@@ -8,6 +25,14 @@
 - Fix network tab css [#1870](https://github.com/kvhnuke/etherwallet/pull/1870)
 
 ### New
+- Add nUSD, BBK, DAV, RED and IAD tokens [#1899](https://github.com/kvhnuke/etherwallet/pull/1899)
+- Custom Gas for DAV token [#1897](https://github.com/kvhnuke/etherwallet/pull/1897)
+- Add UUU token. [#1895](https://github.com/kvhnuke/etherwallet/pull/1895)
+- Warn when MetaMask is locked [#1886](https://github.com/kvhnuke/etherwallet/pull/1886)
+- Add CEEK token [#1894](https://github.com/kvhnuke/etherwallet/pull/1894)
+- Update changelog, add 0xBTC token [#1892](https://github.com/kvhnuke/etherwallet/pull/1892)
+- Add NANJCOIN abi [#1890](https://github.com/kvhnuke/etherwallet/pull/1890)
+- Ensure kyber tx gas price is 50 gwei or less. [#1869](https://github.com/kvhnuke/etherwallet/pull/1869)
 - Update darklist, Update JBX token, and add MKT token. [#1889](https://github.com/kvhnuke/etherwallet/pull/1889)
 - Add ATMI token [#1888](https://github.com/kvhnuke/etherwallet/pull/1888)
 - Add CARD token [#1884](https://github.com/kvhnuke/etherwallet/pull/1884)

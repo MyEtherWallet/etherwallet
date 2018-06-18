@@ -6,7 +6,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
   $scope.Validator = Validator;
   $scope.bity = new bity();
   $scope.kyber = new kyber();
-
   $scope.kyberNetworkEnabled = true;
   $scope.orderRetrievedFromStorage = false;
   $scope.isKyberSwap = false;
@@ -50,7 +49,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
   $scope.availableOptions = [...$scope.availableCoins, ...$scope.availableTokens];
 
   var initValues = function () {
-
     $scope.bity.refreshRates(function () {
       $scope.setOrderCoin(true, "ETH");
     });
@@ -695,7 +693,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.kyber.allowance($scope.kyberSwapOrder.fromCoin, _address, function (data) {
       if (data.error) $scope.notifier.danger(data.msg);
       else {
-        console.log("auth value", data); //todo remove dev item
+        // console.log("auth value", data); //todo remove dev item
 
         // data = data.data;
         if (data.data > 0) {
@@ -786,7 +784,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
                     $scope.kyberTransaction.tokenNeedsReset = false;
                     $scope.kyberTransaction.bypassTokenApprove = true;
                   }
-
                 })
               } else {
                 clearInterval(makeIndicator);
@@ -931,7 +928,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
     try {
       $scope.addressString = $scope.walletKyber.getAddressString();
       $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.kyberSwapOrder, $scope.kyberSwapOrder.finalRate), $scope.kyber.getKyberNetworkAddress(), $scope.kyberSwapOrder.fromVal);
-      console.log($scope); // todo remove dev item
       var txData = uiFuncs.getTxData($scope);
       // console.log("openKyberEthOrder", txData); // todo remove dev item
       txData.nonce = txData.gasprice = null;
@@ -991,7 +987,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     try {
       $scope.tx = $scope.buildTransactionObject($scope.kyber.getTradeData($scope.kyberSwapOrder, $scope.kyberSwapOrder.finalRate), $scope.kyber.getKyberNetworkAddress());
       var txData = uiFuncs.getTxData($scope);
-      console.log("openKyberTokenOrder", txData); // todo remove dev item
+      // console.log("openKyberTokenOrder", txData); // todo remove dev item
       if (nonce) {
         let newNonce = parseInt(ethFuncs.hexToDecimal(nonce));
         txData.nonce = "0x" + ethFuncs.decimalToHex(newNonce + 1);
@@ -1041,8 +1037,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
           $scope.kyberTransaction.kyberMaxGas = true;
           txData.kyberGasPrice = "0xba43b7400"
         }
-        console.log("gasPrice", val); // todo remove dev item
-        console.log("txData 11", txData); // todo remove dev item
+        // console.log("gasPrice", val); // todo remove dev item
+        // console.log("txData 11", txData); // todo remove dev item
       }
 
       txData.kyber = true;
@@ -1101,8 +1097,8 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
   // Trigger the opening of the modal for user review and authorization to proceed
   $scope.sendKyberModal = function () {
-    console.log($scope.kyberTransaction); // todo remove dev item
-    console.log($scope.kyberOrderResult.progress.status); //todo remove dev item
+    // console.log($scope.kyberTransaction); // todo remove dev item
+    // console.log($scope.kyberOrderResult.progress.status); //todo remove dev item
     try {
       switch ($scope.kyberOrderResult.progress.status) {
         case "APPROVE_TOKENS":
@@ -1198,7 +1194,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
               $scope.checkForTokenResetKyber($scope.walletKyber.getAddressString());
               break;
             case "TOKENS_APPROVED":
-              console.log("TOKENS_APPROVED", $scope.kyberOrderResult.progress.status); //todo remove dev item
+              // console.log("TOKENS_APPROVED", $scope.kyberOrderResult.progress.status); //todo remove dev item
 
               $scope.kyberTransaction.tokenTxHash = notCustomNode ? resp.data : "";
               $scope.kyberTransaction.tokenTxLink = $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data);
@@ -1262,16 +1258,6 @@ var swapCtrl = function ($scope, $sce, walletService) {
     } else {
       gasLimit = kyber.defaultValues.gasLimit
     }
-    // if(gasPrice){
-    //   let gp = new BigNumber(ethFuncs.sanitizeHex(gasPrice))
-    //   if(gp.gte(50000000000)){
-    //     gasPrice= "0xba43b7400"
-    //     console.log("2", gp.toNumber()); // todo remove dev item
-    //   }
-    // }
-    console.log("gasPrice", gasPrice); // todo remove dev item
-
-
     return {
       gasLimit: gasLimit,
       data: data,
