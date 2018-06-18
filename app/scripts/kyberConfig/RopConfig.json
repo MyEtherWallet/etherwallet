@@ -1,84 +1,291 @@
 {
   "tokens": {
     "OMG": {
+      "symbol": "OMG",
       "name": "OmiseGO",
       "decimals": 18,
-      "address": "0x5b9a857e0C3F2acc5b94f6693536d3Adf5D6e6Be",
+      "address": "0x4BFBa4a8F28755Cb2061c413459EE562c6B9c51b",
       "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "775091297865175138304",
-      "maxTotalImbalance": "1096640332676811325440"
+      "maxPerBlockImbalance": "439794468212403470336",
+      "maxTotalImbalance": "722362414038872621056",
+      "rate": "0.01824780",
+      "internal use": true,
+      "listed": true
     },
     "KNC": {
+      "rate": "0.00256856",
+      "symbol": "KNC",
       "name": "KyberNetwork",
       "decimals": 18,
-      "address": "0xE5585362D0940519d87d29362115D4cc060C56B3",
+      "address": "0x4E470dc7321E84CA96FcAEDD0C8aBCebbAEB68C6",
       "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "2711997842670896021504",
-      "maxTotalImbalance": "3833713935933528080384"
+      "maxPerBlockImbalance": "3475912029567568052224",
+      "maxTotalImbalance": "5709185508564730380288",
+      "internal use": true,
+      "listed": true
     },
     "EOS": {
+      "rate": "0.00256856",
+      "symbol": "EOS",
       "name": "Eos",
       "decimals": 18,
-      "address": "0xd3c64BbA75859Eb808ACE6F2A6048ecdb2d70817",
+      "address": "0xd5b4218B950A53fF07985E2d88346925c335EAe7",
       "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "1019792725446519947264",
-      "maxTotalImbalance": "1441689429340878536704"
+      "maxPerBlockImbalance": "938890140546807627776",
+      "maxTotalImbalance": "1542127055848131526656",
+      "internal use": true,
+      "listed": true
     },
     "SNT": {
+      "rate": "0.00016614",
+      "symbol": "SNT",
       "name": "STATUS",
       "decimals": 18,
-      "address": "0xF739577d63cdA4a534B0fB92ABf8BBf6EA48d36c",
+      "address": "0xbF5d8683b9BE6C43fcA607eb2a6f2626A18837a6",
       "minimalRecordResolution": "10000000000000000",
-      "maxPerBlockImbalance": "37434287125568931495936",
-      "maxTotalImbalance": "38806865287259009056768"
+      "maxPerBlockImbalance": "43262133595415336976384",
+      "maxTotalImbalance": "52109239915677776609280",
+      "internal use": true,
+      "listed": true
     },
     "ELF": {
+      "rate": "0.00169741",
+      "symbol": "ELF",
       "name": "AELF",
       "decimals": 18,
-      "address": "0x7174FCb9C2A49c027C9746983D8262597b5EcCb1",
+      "address": "0x9Fcc27c7320703c43368cf1A4bf076402cd0D6B4",
       "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "6727090010493247553536",
-      "maxTotalImbalance": "9489286595433755312128"
+      "maxPerBlockImbalance": "5906192156691986907136",
+      "maxTotalImbalance": "7114008452735498715136",
+      "internal use": true,
+      "listed": true
     },
     "POWR": {
+      "rate": "0.00060254",
+      "symbol": "POWR",
       "name": "Power Ledger",
       "decimals": 6,
-      "address": "0x2C4EfAa21f09c3C6EEF0Edb001E9bffDE7127D3B",
+      "address": "0xa577731515303F0C0D00E236041855A5C4F114dC",
       "minimalRecordResolution": "1000",
-      "maxPerBlockImbalance": "8860273487",
-      "maxTotalImbalance": "8860273487"
+      "maxPerBlockImbalance": "7989613502",
+      "maxTotalImbalance": "7989613502",
+      "internal use": true,
+      "listed": true
     },
     "MANA": {
+      "rate": "0.00017287",
+      "symbol": "MANA",
       "name": "MANA",
       "decimals": 18,
-      "address": "0xf5E314c435B3B2EE7c14eA96fCB3307C3a3Ef608",
+      "address": "0x72fd6C7C1397040A66F33C2ecC83A0F71Ee46D5c",
       "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "54907343857240902729728",
-      "maxTotalImbalance": "54907343857240902729728"
+      "maxPerBlockImbalance": "46289152908501773713408",
+      "maxTotalImbalance": "46289152908501773713408",
+      "internal use": true,
+      "listed": true
     },
     "BAT": {
+      "rate": "0.00052290",
+      "symbol": "BAT",
       "name": "Basic Attention Token",
       "decimals": 18,
-      "address": "0x04A34c8f5101Dcc50bF4c64D1C7C124F59bb988c",
+      "address": "0xDb0040451F373949A4Be60dcd7b6B8D6E42658B6",
       "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "13480268257338322845696",
-      "maxTotalImbalance": "13480268257338322845696"
+      "maxPerBlockImbalance": "13641944431813013274624",
+      "maxTotalImbalance": "13641944431813013274624",
+      "internal use": true,
+      "listed": true
     },
     "REQ": {
+      "rate": "0.00026668",
+      "symbol": "REQ",
       "name": "Request",
       "decimals": 18,
-      "address": "0xa448cD1DB463ae738a171C483C56157d6B83B97f",
+      "address": "0xb43D10BbE7222519Da899B72bF2c7f094b6F79D7",
       "minimalRecordResolution": "1000000000000000",
-      "maxPerBlockImbalance": "32547010644498297389056",
-      "maxTotalImbalance": "33735087557886343118848"
+      "maxPerBlockImbalance": "27470469074054960644096",
+      "maxTotalImbalance": "33088179999699195920384",
+      "internal use": true,
+      "listed": true
     },
     "GTO": {
+      "rate": "0.00043496",
+      "symbol": "GTO",
       "name": "Gifto",
       "decimals": 5,
-      "address": "0x6B07b8360832c6bBf05A39D9d443A705032bDc4d",
+      "address": "0xe55c607d58c53b2B06A8E38f67F4c0FcAeEd2c31",
+      "minimalRecordResolution": "10",
+      "maxPerBlockImbalance": "1200696404",
+      "maxTotalImbalance": "1200696404",
+      "internal use": true,
+      "listed": true
+    },
+    "RDN": {
+      "rate": "0.00240783",
+      "symbol": "RDN",
+      "name": "Raiden",
+      "decimals": 18,
+      "address": "0x5422Ef695ED0B1213e2B953CFA877029637D9D26",
+      "minimalRecordResolution": "1000000000000000",
+      "maxPerBlockImbalance": "2392730983766020325376",
+      "maxTotalImbalance": "2882044469946171260928",
+      "internal use": true,
+      "listed": true
+    },
+    "APPC": {
+      "rate": "0.00064805",
+      "symbol": "APPC",
+      "name": "AppCoins",
+      "decimals": 18,
+      "address": "0x2799f05B55d56be756Ca01Af40Bf7350787F48d4",
+      "minimalRecordResolution": "1000000000000000",
+      "maxPerBlockImbalance": "10010270788085346205696",
+      "maxTotalImbalance": "12057371164248796823552",
+      "internal use": true,
+      "listed": true
+    },
+    "ENG": {
+      "rate": "0.00342873",
+      "symbol": "ENG",
+      "name": "Enigma",
+      "decimals": 8,
+      "address": "0x95cc8d8f29D0f7fcC425E8708893E759d1599c97",
+      "minimalRecordResolution": "10000",
+      "maxPerBlockImbalance": "288970915691",
+      "maxTotalImbalance": "348065467950",
+      "internal use": true,
+      "listed": true
+    },
+    "SALT": {
+      "rate": "0.00407064",
+      "symbol": "SALT",
+      "name": "Salt",
+      "decimals": 8,
+      "address": "0xB47f1A9B121BA114d5e98722a8948e274d0F4042",
+      "minimalRecordResolution": "10000",
+      "maxPerBlockImbalance": "123819203326",
+      "maxTotalImbalance": "123819203326",
+      "internal use": true,
+      "listed": true
+    },
+    "BQX": {
+      "rate": "0.00404452",
+      "symbol": "BQX",
+      "name": "Ethos",
+      "decimals": 8,
+      "address": "0x9504A86A881F63Da06302FB3639d4582022097DB",
+      "minimalRecordResolution": "10000",
+      "maxPerBlockImbalance": "127620338002",
+      "maxTotalImbalance": "127620338002",
+      "internal use": true,
+      "listed": true
+    },
+    "ADX": {
+      "rate": "0.00115628",
+      "symbol": "ADX",
+      "name": "AdEx",
+      "decimals": 4,
+      "address": "0x499990DB50b34687CDaFb2C8DaBaE4E99d6F38A7",
       "minimalRecordResolution": "10",
       "maxPerBlockImbalance": "1925452883",
-      "maxTotalImbalance": "1925452883"
+      "maxTotalImbalance": "1925452883",
+      "internal use": false,
+      "listed": true
+    },
+    "AST": {
+      "rate": "0.00051654",
+      "symbol": "AST",
+      "name": "AirSwap",
+      "decimals": 4,
+      "address": "0xeF06F410C26a0fF87b3a43927459Cce99268a2eF",
+      "minimalRecordResolution": "10",
+      "maxPerBlockImbalance": "1925452883",
+      "maxTotalImbalance": "1925452883",
+      "internal use": true,
+      "listed": true
+    },
+    "RCN": {
+      "rate": "0.00016123",
+      "symbol": "RCN",
+      "name": "Ripio Credit Network",
+      "decimals": 18,
+      "address": "0x99338aa9218C6C23AA9d8cc2f3EFaf29954ea26B",
+      "minimalRecordResolution": "10",
+      "maxPerBlockImbalance": "1925452883",
+      "maxTotalImbalance": "1925452883",
+      "internal use": false,
+      "listed": true
+    },
+    "ZIL": {
+      "rate": "0.00019786",
+      "symbol": "ZIL",
+      "name": "Zilliqa",
+      "decimals": 12,
+      "address": "0xaD78AFbbE48bA7B670fbC54c65708cbc17450167",
+      "minimalRecordResolution": "10",
+      "maxPerBlockImbalance": "1925452883",
+      "maxTotalImbalance": "1925452883",
+      "internal use": true,
+      "listed": true
+    },
+    "DAI": {
+      "rate": "0.00145128",
+      "symbol": "DAI",
+      "name": "DAI",
+      "decimals": 18,
+      "address": "0xaD6D458402F60fD3Bd25163575031ACDce07538D",
+      "minimalRecordResolution": "1000000000000000",
+      "maxPerBlockImbalance": "2711997842670896021504",
+      "maxTotalImbalance": "3833713935933528080384",
+      "internal use": false,
+      "listed": true
+    },
+    "LINK": {
+      "symbol": "LINK",
+      "rate": "0.00066331",
+      "name": "Chain Link",
+      "decimals": 18,
+      "address": "0xb4f7332ed719Eb4839f091EDDB2A3bA309739521",
+      "minimalRecordResolution": "10",
+      "maxPerBlockImbalance": "1925452883",
+      "maxTotalImbalance": "1925452883",
+      "internal use": true,
+      "listed": true
+    },
+    "IOST": {
+      "rate": "0.00007120",
+      "symbol": "IOST",
+      "name": "IOStoken",
+      "decimals": 18,
+      "address": "0x27db28a6C4ac3D82a08D490cfb746E6F02bC467C",
+      "minimalRecordResolution": "1000000000000000",
+      "maxPerBlockImbalance": "3475912029567568052224",
+      "maxTotalImbalance": "5709185508564730380288",
+      "internal use": false,
+      "listed": true
+    },
+    "STORM": {
+      "rate": "0.00006544",
+      "symbol": "STORM",
+      "name": "Storm",
+      "decimals": 18,
+      "address": "0x8FFf7De21de8ad9c510704407337542073FDC44b",
+      "minimalRecordResolution": "1000000000000000",
+      "maxPerBlockImbalance": "3475912029567568052224",
+      "maxTotalImbalance": "5709185508564730380288",
+      "internal use": false,
+      "listed": true
+    },
+    "BBO": {
+      "symbol": "BBO",
+      "name": "BigBom",
+      "decimals": 18,
+      "address": "0xa94758d328af7ef1815e73053e95b5F86588C16D",
+      "minimalRecordResolution": "1000000000000000",
+      "maxPerBlockImbalance": "439794468212403470336",
+      "maxTotalImbalance": "722362414038872621056",
+      "internal use": true,
+      "listed": true
     },
     "ETH": {
       "name": "Ethereum",
@@ -88,61 +295,72 @@
   },
   "exchanges": {
     "binance": {
-      "ETH": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "OMG": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "KNC": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "SNT": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "EOS": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "ELF": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "POWR": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "MANA": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "BAT": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "REQ": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90",
-      "GTO": "0x44d34a119ba21a42167ff8b77a88f0fc7bb2db90"
+      "OMG": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "KNC": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "EOS": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "SNT": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "ELF": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "POWR": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "MANA": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "BAT": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "REQ": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "GTO": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "RDN": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "APPC": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "ENG": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "SALT": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "BQX": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "ADX": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "AST": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "RCN": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "ZIL": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "DAI": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "LINK": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "IOST": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "STORM": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+      "ETH": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45"
     }
   },
   "permission": {
     "KyberNetwork": {
-      "admin": "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3",
+      "admin": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
       "operator": [
-        "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3"
+        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45"
       ],
       "alerter": []
     },
     "KyberReserve": {
-      "admin": "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3",
+      "admin": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
       "operator": [
-        "0x760d30979eb313a2d23c53e4fb55986183b0ffd9",
-        "0xedd15b61505180b3a0c25b193df27ef10214d851"
+        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45"
       ],
       "alerter": []
     },
     "ConversionRates": {
-      "admin": "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3",
+      "admin": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
       "operator": [
-        "0x760d30979eb313a2d23c53e4fb55986183b0ffd9",
-        "0xedd15b61505180b3a0c25b193df27ef10214d851"
+        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45"
       ],
       "alerter": []
     },
     "FeeBurner": {
-      "admin": "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3",
+      "admin": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
       "operator": [
-        "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3"
+        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45"
       ],
       "alerter": []
     },
     "WhiteList": {
-      "admin": "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3",
+      "admin": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
       "operator": [
-        "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3"
+        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45"
       ],
       "alerter": []
     },
     "ExpectedRate": {
-      "admin": "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3",
+      "admin": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
       "operator": [
-        "0x85Ff15b853df828C1a1E5bba4254600724Ba4Ca3"
+        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45"
       ],
       "alerter": []
     }
@@ -153,22 +371,26 @@
     ],
     "testers category": 9,
     "testers cap": 5000,
-    "KGT address": "0xfce10cbf5171dc12c215bbcca5dd75cbaea72506",
-    "KGT cap": 0,
-    "users": [],
+    "KGT address": "0x4BFBa4a8F28755Cb2061c413459EE562c6B9c51b",
+    "KGT cap": 5000,
+    "users": [
+      "0x943252227f9cbfa10ee85912069171813e07b5df"
+    ],
     "users category": 1,
-    "users cap": 0,
-    "default cap": 5000000
+    "users cap": 5000,
+    "default cap": 5000
   },
-  "max gas price": "90000000000",
+  "max gas price": "50000000000",
   "neg diff in bps": 20,
   "min expected rate slippage": 300,
-  "KNC wallet": "0xBC33a1F908612640F2849b56b67a4De4d179C151",
+  "KNC wallet": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
   "KNC to ETH rate": 300,
-  "valid duration block": 60,
-  "reserve": "0x0FC1CF3e7DD049F7B42e6823164A64F76fC06Be0",
-  "pricing": "0x535DE1F5a982c2a896da62790a42723A71c0c12B",
-  "network": "0x0a56d8a49E71da8d7F9C65F95063dB48A3C9560B",
-  "wrapper": "0x9de0a60F4A489e350cD8E3F249f4080858Af41d3",
-  "feeburner": "0x89B5c470559b80e541E53eF78244edD112c7C58A"
+  "tax wallet address": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+  "tax fees bps": 2000,
+  "valid duration block": 600000000,
+  "reserve": "0xEB52Ce516a8d054A574905BDc3D4a176D3a2d51a",
+  "pricing": "0xE16E257a25e287AF50C5651A4c2728b32D7e5ef7",
+  "network": "0xD19559B3121c1b071481d8813d5dBcDC5869e2e8",
+  "wrapper": "0x665d34f192F4940Da4E859fF7768c0a80ED3aE10",
+  "feeburner": "0x2879ff9129Dd69822cbb272C42e0aC9e87636901"
 }

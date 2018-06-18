@@ -40,7 +40,7 @@
                     </em>
                     <a class="link" href="https://home.kyber.network/" target="_blank"
                        rel="noopener noreferrer">
-                        <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
+                        <img class="pull-right" src="images/Kyber-Network-Main-Logo.svg" width="200" height="111"/>
                     </a>
                 </div>
 
@@ -143,7 +143,7 @@
                     </em>
                     <a class="link clearfix" href="https://home.kyber.network/" target="_blank"
                        rel="noopener noreferrer">
-                        <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
+                        <img class="pull-right" src="images/Kyber-Network-Main-Logo.svg" width="200" height="111"/>
                     </a>
                 </div>
 
@@ -305,7 +305,7 @@
                 </em>
                 <a class="link" href="https://home.kyber.network/" target="_blank"
                    rel="noopener noreferrer">
-                    <img class="pull-right" src="images/logo-kyber.svg" width="400" height="222"/>
+                    <img class="pull-right" src="images/Kyber-Network-Main-Logo.svg" width="400" height="222"/>
                 </a>
             </div>
             <div class="col-sm-10 text-justify">
@@ -332,7 +332,7 @@
                         </div>
 
                         <!-- Token to ETH -->
-                        <div class="col-sm-12" ng-if="!kyberEthToToken">
+                        <div class="col-sm-12" ng-if="!kyberEthToToken && !bypassTokenApprove">
                             <span>
                                 Track your swap transaction:
                             </span>
@@ -347,7 +347,7 @@
                             </a>
                         </div>
 
-                        <div class="col-sm-12" ng-if="!kyberEthToToken">
+                        <div class="col-sm-12" ng-if="!kyberEthToToken && !bypassTokenApprove">
                             <span>
                                 Track your token authorization transaction:
                          </span>
@@ -387,6 +387,23 @@
                             </a>
                         </div>
                         <!-- / ETH to Token-->
+
+                        <!-- Token to ETH (no approval needed)-->
+                        <div class="col-sm-12" ng-if="!kyberEthToToken && bypassTokenApprove">
+                                                        <span>
+                                Track your swap transaction:
+                            </span>
+                            <div ng-if="!kyberTransaction.tokenTxHash">
+                                <br>
+                                <!--<span  class="text-info"><em><small>Your Swap Waiting for token authorization</small></em> <span ng-repeat="tick in indicatorhacked track by $index">{{tick}}</span></span><br>-->
+                                <span class="text-danger"><br> Do Not Navigate Away or Close Your Browser</span>
+
+                            </div>
+                            <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
+                                <h5>{{kyberTransaction.tokenTxHash}}</h5>
+                            </a>
+                        </div>
+                        <!-- / Token to ETH (no approval needed)-->
 
                     </section>
                 </div>

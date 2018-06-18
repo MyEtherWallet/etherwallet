@@ -2028,7 +2028,7 @@
                 <a class="link bity-logo pull-left" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
             </div>
             <div class="col-sm-6">
-                <a class="link bity-logo pull-right" href="https://home.kyber.network/" target="_blank" rel="noopener noreferrer"><img src="images/logo-kyber.svg" width="200" height="111" /></a>
+                <a class="link bity-logo pull-right" href="https://home.kyber.network/" target="_blank" rel="noopener noreferrer"><img src="images/Kyber-Network-Main-Logo-Inverted.svg" width="200" height="111" /></a>
 
             </div>
         </div>
@@ -2859,7 +2859,7 @@
                     </em>
                     <a class="link" href="https://home.kyber.network/" target="_blank"
                        rel="noopener noreferrer">
-                        <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
+                        <img class="pull-right" src="images/Kyber-Network-Main-Logo.svg" width="200" height="111"/>
                     </a>
                 </div>
 
@@ -2962,7 +2962,7 @@
                     </em>
                     <a class="link clearfix" href="https://home.kyber.network/" target="_blank"
                        rel="noopener noreferrer">
-                        <img class="pull-right" src="images/logo-kyber.svg" width="200" height="111"/>
+                        <img class="pull-right" src="images/Kyber-Network-Main-Logo.svg" width="200" height="111"/>
                     </a>
                 </div>
 
@@ -3147,31 +3147,52 @@
                         <td class="small text-right">Network:</td>
                         <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!kyberTransaction.bypassTokenApprove">
                         <td class="small text-right">Combined Gas Limit:</td>
-                        <td class="small text-left mono">{{parsedTx.totalGasLimit}}</td>
+                        <td class="small text-left mono" >{{parsedTx.totalGasLimit}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!kyberTransaction.bypassTokenApprove">
                         <td class="small text-right">Avg. Gas Price:</td>
-                        <td class="small text-left mono">{{parsedTx.avgGasPrice.gwei}} GWEI
+                        <td class="small text-left mono" >{{parsedTx.avgGasPrice.gwei}} GWEI
                             <small>({{parsedTx.avgGasPrice.eth}} ETH)</small>
-                            <!-- todo: get eth value to display as a decimal not as an exponent-->
+                                                          <!-- todo: get eth value to display as a decimal not as an exponent-->
                         </td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!kyberTransaction.bypassTokenApprove">
                         <td class="small text-right">Max Combined TX Fee:</td>
                         <td class="small text-left mono"> {{parsedTx.totalTxFee.eth}} ETH
                             <small>({{parsedTx.totalTxFee.gwei}} GWEI)</small>
                         </td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!kyberTransaction.bypassTokenApprove">
                         <td class="small text-right">Final Nonce:</td>
+                        <td class="small text-left mono">{{parsedKyberTx.nonce}}</td>
+                    </tr>
+                    <tr ng-if="kyberTransaction.bypassTokenApprove">
+                        <td class="small text-right">Gas Limit:</td>
+                        <td class="small text-left mono" >{{parsedKyberTx.gasLimit}}</td>
+                    </tr>
+                    <tr ng-if="kyberTransaction.bypassTokenApprove">
+                        <td class="small text-right">Gas Price:</td>
+                        <td class="small text-left mono" >{{parsedKyberTx.gasPrice.gwei}} GWEI
+                            <small>({{parsedKyberTx.avgGasPrice.eth}} ETH)</small>
+                                                                                                      <!-- todo: get eth value to display as a decimal not as an exponent-->
+                        </td>
+                    </tr>
+                    <tr ng-if="kyberTransaction.bypassTokenApprove">
+                        <td class="small text-right">Max TX Fee:</td>
+                        <td class="small text-left mono"> {{parsedKyberTx.txFee.eth}} ETH
+                            <small>({{parsedKyberTx.txFee.gwei}} GWEI)</small>
+                        </td>
+                    </tr>
+                    <tr ng-if="kyberTransaction.bypassTokenApprove">
+                        <td class="small text-right">Nonce:</td>
                         <td class="small text-left mono">{{parsedKyberTx.nonce}}</td>
                     </tr>
                     </tbody>
                 </table>
 
-                <section class="clearfix collapse-container" ng-if="!kyberEthToToken">
+                <section class="clearfix collapse-container" ng-if="!kyberEthToToken && !kyberTransaction.bypassTokenApprove">
                     <div class="text-center" ng-click="adv = !adv">
                         <a class="collapse-button"><span ng-show="!adv">+</span><span ng-show="adv">-</span></a>
                         <h5>Advanced</h5>
@@ -3549,7 +3570,7 @@
                 </em>
                 <a class="link" href="https://home.kyber.network/" target="_blank"
                    rel="noopener noreferrer">
-                    <img class="pull-right" src="images/logo-kyber.svg" width="400" height="222"/>
+                    <img class="pull-right" src="images/Kyber-Network-Main-Logo.svg" width="400" height="222"/>
                 </a>
             </div>
             <div class="col-sm-10 text-justify">
@@ -3576,7 +3597,7 @@
                         </div>
 
                         <!-- Token to ETH -->
-                        <div class="col-sm-12" ng-if="!kyberEthToToken">
+                        <div class="col-sm-12" ng-if="!kyberEthToToken && !bypassTokenApprove">
                             <span>
                                 Track your swap transaction:
                             </span>
@@ -3591,7 +3612,7 @@
                             </a>
                         </div>
 
-                        <div class="col-sm-12" ng-if="!kyberEthToToken">
+                        <div class="col-sm-12" ng-if="!kyberEthToToken && !bypassTokenApprove">
                             <span>
                                 Track your token authorization transaction:
                          </span>
@@ -3631,6 +3652,23 @@
                             </a>
                         </div>
                         <!-- / ETH to Token-->
+
+                        <!-- Token to ETH (no approval needed)-->
+                        <div class="col-sm-12" ng-if="!kyberEthToToken && bypassTokenApprove">
+                                                        <span>
+                                Track your swap transaction:
+                            </span>
+                            <div ng-if="!kyberTransaction.tokenTxHash">
+                                <br>
+                                <!--<span  class="text-info"><em><small>Your Swap Waiting for token authorization</small></em> <span ng-repeat="tick in indicatorhacked track by $index">{{tick}}</span></span><br>-->
+                                <span class="text-danger"><br> Do Not Navigate Away or Close Your Browser</span>
+
+                            </div>
+                            <a class="strong" ng-href="{{kyberTransaction.tokenTxLink}}" target="_blank" rel="noopener">
+                                <h5>{{kyberTransaction.tokenTxHash}}</h5>
+                            </a>
+                        </div>
+                        <!-- / Token to ETH (no approval needed)-->
 
                     </section>
                 </div>
