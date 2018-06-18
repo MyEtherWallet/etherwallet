@@ -452,6 +452,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
       ethTxHash: null,
       ethTxLink: null,
       tokenNeedsReset: false,
+      bypassTokenApprove: false,
       currentTokenApprovalValue: 0,
       kyberMaxGas: false,
       tokenResetTx: null,
@@ -697,7 +698,12 @@ var swapCtrl = function ($scope, $sce, walletService) {
 
         // data = data.data;
         if (data.data > 0) {
+          let allocationNeeded = $scope.kyber.convertToTokenBase($scope.kyberSwapOrder.toVal, $scope.kyberSwapOrder.toCoin);
+          $scope.kyberTransaction.currentTokenApprovalValue = $scope.kyber.convertToTokenBase(data.data, $scope.kyberSwapOrder.fromCoin);
+          if($scope.kyberTransaction.currentTokenApprovalValue > allocationNeeded){
 
+
+          }
           $scope.kyberTransaction.currentTokenApprovalValue = $scope.kyber.convertToTokenBase(data.data, $scope.kyberSwapOrder.fromCoin);
           // console.log("auth value exists", data); //todo remove dev item
           callback(true);
@@ -757,16 +763,25 @@ var swapCtrl = function ($scope, $sce, walletService) {
               // console.log(userTokenBalance); //todo remove dev item
               if (enoughTokens) {
                 checkForPriorTokenApproval($scope.walletKyber.getAddressString(), (_data) => {
-                  if (_data) {
-                    $scope.balanceOk = true;
-                    $scope.kyberTransaction.tokenNeedsReset = true;
-                    clearInterval(makeIndicator);
+                  if(typeof _data === 'boolean'){
+                    if (_data) {
+                      $scope.balanceOk = true;
+                      $scope.kyberTransaction.tokenNeedsReset = true;
+
+                      clearInterval(makeIndicator);
+                    } else {
+                      // console.log("no priorApproval"); //todo remove dev item
+                      clearInterval(makeIndicator);
+                      $scope.kyberTransaction.tokenNeedsReset = false;
+                      $scope.balanceOk = true;
+                    }
                   } else {
-                    // console.log("no priorApproval"); //todo remove dev item
                     clearInterval(makeIndicator);
-                    $scope.kyberTransaction.tokenNeedsReset = false;
                     $scope.balanceOk = true;
+                    $scope.kyberTransaction.tokenNeedsReset = false;
+                    $scope.kyberTransaction.bypassTokenApprove = true;
                   }
+
                 })
               } else {
                 clearInterval(makeIndicator);
@@ -937,7 +952,12 @@ var swapCtrl = function ($scope, $sce, walletService) {
         txData.nonce = txData.gasPrice = null;
         $scope.generateKyberTransaction(txData, $scope.kyberStatus.token.resetApprove);
       } else {
-        $scope.approveTokenKyber();
+        if ($scope.kyberTransaction.bypassTokenApprove) {
+          $scope.openKyberTokenOrder();
+        } else {
+          $scope.approveTokenKyber();
+        }
+
       }
     } catch (e) {
       console.error(e);
