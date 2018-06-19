@@ -1,5 +1,6 @@
 ### Release v3.21.14
 ### New
+- Add theCyber contract [#1914](https://github.com/kvhnuke/etherwallet/pull/1914)
 - Add STABIT token and update darklist [#1916](https://github.com/kvhnuke/etherwallet/pull/1916)
 - Add CLB token [#1912](https://github.com/kvhnuke/etherwallet/pull/1912)
 - Update EOS classic style [#1911](https://github.com/kvhnuke/etherwallet/pull/1911)
@@ -13,6 +14,9 @@
 - Add OJX, and BTT in eth list. Add CTGA to rin. [#1905](https://github.com/kvhnuke/etherwallet/pull/1905)
 - Add GoChain Node [#1904](https://github.com/kvhnuke/etherwallet/pull/1904)
 - Add WORK token [#1902](https://github.com/kvhnuke/etherwallet/pull/1902)
+
+### Update
+- Update Korean translations [#1875](https://github.com/kvhnuke/etherwallet/pull/1875)
 
 ### Release v3.21.13
 ### Update
