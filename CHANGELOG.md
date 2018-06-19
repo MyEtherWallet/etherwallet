@@ -1,5 +1,6 @@
 ### Release v3.21.14
 ### New
+- Add manual gas limit for upcoming BBK token [#1900](https://github.com/kvhnuke/etherwallet/pull/1900)
 - Add theCyber contract [#1914](https://github.com/kvhnuke/etherwallet/pull/1914)
 - Add STABIT token and update darklist [#1916](https://github.com/kvhnuke/etherwallet/pull/1916)
 - Add CLB token [#1912](https://github.com/kvhnuke/etherwallet/pull/1912)
