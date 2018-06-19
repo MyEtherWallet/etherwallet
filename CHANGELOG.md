@@ -18,6 +18,7 @@
 
 ### Update
 - Update Korean translations [#1875](https://github.com/kvhnuke/etherwallet/pull/1875)
+- Update error msgs [Commit](https://github.com/kvhnuke/etherwallet/commit/b0ae1a74a023c4e9cacc7e1652c60d6f399acd54)
 - Update checksum article on the error msg [Commit](https://github.com/kvhnuke/etherwallet/commit/ea4d61d13cd767804da6c0acf28fba70b3e384aa)
 
 ### Release v3.21.13
