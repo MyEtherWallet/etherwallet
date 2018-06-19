@@ -3402,6 +3402,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x4A89cD486fA996ad50c0a63C35c78702f5422a50",
+		"symbol": "STABIT",
+		"decimal": 3,
+		"type": "default"
+	},
+	{
 		"address": "0x9a005c9a89bd72a4bd27721e7a09a3c11d2b03c4",
 		"symbol": "STAC",
 		"decimal": 18,
