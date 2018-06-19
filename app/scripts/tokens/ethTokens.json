@@ -1,5 +1,11 @@
 [
 	{
+		"address": "0x4E84E9e5fb0A972628Cf4568c403167EF1D40431",
+		"symbol": "$FFC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xa024e8057eec474a9b2356833707dd0579e26ef3",
 		"symbol": "$FYX",
 		"decimal": 18,
@@ -613,8 +619,14 @@
 	},
 	{
 		"address": "0x080aa07e2c7185150d7e4da98838a8d2feac3dfc",
-		"symbol": "BTT",
+		"symbol": "BTT (Bitether)",
 		"decimal": 0,
+		"type": "default"
+	},
+	{
+		"address": "0xFA456Cf55250A839088b27EE32A424d7DAcB54Ff",
+		"symbol": "BTT (Blocktrade)",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -777,6 +789,12 @@
 		"address": "0x06012c8cf97bead5deae237070f9587f8e7a266d",
 		"symbol": "CK",
 		"decimal": 0,
+		"type": "default"
+	},
+	{
+		"address": "0xb1c1cb8c7c1992dba24e628bf7d38e71dad46aeb",
+		"symbol": "CLB",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -2586,6 +2604,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5e888B83B7287EED4fB7DA7b7d0A0D4c735d94b3",
+		"symbol": "OAK",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x701C244b988a513c945973dEFA05de933b23Fe1D",
 		"symbol": "OAX",
 		"decimal": 18,
@@ -2600,6 +2624,12 @@
 	{
 		"address": "0x6f539a9456a5bcb6334a1a41207c3788f5825207",
 		"symbol": "OHNI",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xbeef546ac8a4e0a80dc1e2d696968ef54138f1d4",
+		"symbol": "OJX",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -2960,6 +2990,12 @@
 	{
 		"address": "0x9a642d6b3368ddc662CA244bAdf32cDA716005BC",
 		"symbol": "QTUM",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x45edb535942a8c84d9f4b5d37e1b25f91ea4804c",
+		"symbol": "RAO",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -3363,6 +3399,12 @@
 		"address": "0x6e2050CBFB3eD8A4d39b64cC9f47E711a03a5a89",
 		"symbol": "SSH",
 		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x4A89cD486fA996ad50c0a63C35c78702f5422a50",
+		"symbol": "STABIT",
+		"decimal": 3,
 		"type": "default"
 	},
 	{
@@ -3812,6 +3854,12 @@
 	{
 		"address": "0x728781E75735dc0962Df3a51d7Ef47E798A7107E",
 		"symbol": "WOLK",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xd18e454d844eb0009d32e07a0cde89e18d64cfb4",
+		"symbol": "WORK",
 		"decimal": 18,
 		"type": "default"
 	},

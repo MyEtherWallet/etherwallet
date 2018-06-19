@@ -1,3 +1,23 @@
+### Release v3.21.14
+### New
+- Add theCyber contract [#1914](https://github.com/kvhnuke/etherwallet/pull/1914)
+- Add STABIT token and update darklist [#1916](https://github.com/kvhnuke/etherwallet/pull/1916)
+- Add CLB token [#1912](https://github.com/kvhnuke/etherwallet/pull/1912)
+- Update EOS classic style [#1911](https://github.com/kvhnuke/etherwallet/pull/1911)
+- Add EOS classic node [#1903](https://github.com/kvhnuke/etherwallet/pull/1903)
+- Add $FFC token [#1910](https://github.com/kvhnuke/etherwallet/pull/1910)
+- Add OAK and RAO tokens [#1909](https://github.com/kvhnuke/etherwallet/pull/1909)
+- BBK abi [#1901](https://github.com/kvhnuke/etherwallet/pull/1901)
+- OAK custom Gas [#1907](https://github.com/kvhnuke/etherwallet/pull/1907)
+- OAK abi [#1908](https://github.com/kvhnuke/etherwallet/pull/1908)
+- Fix branding style [#1906](https://github.com/kvhnuke/etherwallet/pull/1906)
+- Add OJX, and BTT in eth list. Add CTGA to rin. [#1905](https://github.com/kvhnuke/etherwallet/pull/1905)
+- Add GoChain Node [#1904](https://github.com/kvhnuke/etherwallet/pull/1904)
+- Add WORK token [#1902](https://github.com/kvhnuke/etherwallet/pull/1902)
+
+### Update
+- Update Korean translations [#1875](https://github.com/kvhnuke/etherwallet/pull/1875)
+
 ### Release v3.21.13
 ### Update
 - Update HAV token [#1899](https://github.com/kvhnuke/etherwallet/pull/1899)
