@@ -380,6 +380,12 @@ gasLimit:   200000,
 data:       '',
 msg:        'EDU Token Sale by OS.University - https://os.university/'
 },{
+  // Brickblock (BBK) Token sale
+  to:         '0x4a6058666cf1057eac3cd3a5a614620547559fc9',
+  gasLimit:   210000,
+  data:       '',
+  msg:        'Brickblock (BBK) Token Sale. Official sale website:https://www.brickblock.io'
+},{
 // Acorn Collective (OAK) Token Sale
 to:         '0x25Beb989d3ef4E6e0fEF8220944bb74E2AA6ff45',
 gasLimit:   150000,
