@@ -3594,6 +3594,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x8eb965ee9cCFBCE76c0a06264492c0afEfc2826d",
+		"symbol": "TOOR",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xcB3F902bf97626391bF8bA87264bbC3DC13469be",
 		"symbol": "TRC",
 		"decimal": 18,
