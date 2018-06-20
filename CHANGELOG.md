@@ -1,5 +1,9 @@
 ### Release v3.21.14
 ### New
+- Add TOOR token [#1917](https://github.com/kvhnuke/etherwallet/pull/1917)
+- Add manual gas limit for upcoming BBK token [#1900](https://github.com/kvhnuke/etherwallet/pull/1900)
+- Add theCyber contract [#1914](https://github.com/kvhnuke/etherwallet/pull/1914)
+- Add STABIT token and update darklist [#1916](https://github.com/kvhnuke/etherwallet/pull/1916)
 - Add CLB token [#1912](https://github.com/kvhnuke/etherwallet/pull/1912)
 - Update EOS classic style [#1911](https://github.com/kvhnuke/etherwallet/pull/1911)
 - Add EOS classic node [#1903](https://github.com/kvhnuke/etherwallet/pull/1903)
@@ -12,6 +16,11 @@
 - Add OJX, and BTT in eth list. Add CTGA to rin. [#1905](https://github.com/kvhnuke/etherwallet/pull/1905)
 - Add GoChain Node [#1904](https://github.com/kvhnuke/etherwallet/pull/1904)
 - Add WORK token [#1902](https://github.com/kvhnuke/etherwallet/pull/1902)
+
+### Update
+- Update Korean translations [#1875](https://github.com/kvhnuke/etherwallet/pull/1875)
+- Update error msgs [Commit](https://github.com/kvhnuke/etherwallet/commit/b0ae1a74a023c4e9cacc7e1652c60d6f399acd54)
+- Update checksum article on the error msg [Commit](https://github.com/kvhnuke/etherwallet/commit/ea4d61d13cd767804da6c0acf28fba70b3e384aa)
 
 ### Release v3.21.13
 ### Update

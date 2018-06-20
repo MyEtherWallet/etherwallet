@@ -3402,6 +3402,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x4A89cD486fA996ad50c0a63C35c78702f5422a50",
+		"symbol": "STABIT",
+		"decimal": 3,
+		"type": "default"
+	},
+	{
 		"address": "0x9a005c9a89bd72a4bd27721e7a09a3c11d2b03c4",
 		"symbol": "STAC",
 		"decimal": 18,
@@ -3585,6 +3591,12 @@
 		"address": "0x08f5a9235b08173b7569f83645d2c7fb55e8ccd8",
 		"symbol": "TNT",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0x8eb965ee9cCFBCE76c0a06264492c0afEfc2826d",
+		"symbol": "TOOR",
+		"decimal": 18,
 		"type": "default"
 	},
 	{

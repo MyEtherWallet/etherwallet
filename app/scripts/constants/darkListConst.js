@@ -1,6 +1,11 @@
 const darklist = function() {
 	return [
 		{
+			"address": "0xfb6E71e0800BcCC0db8a9Cf326fe3213CA1A0EA0",
+			"comment":"Scam lottery contract that takes advantage of odd struct memory management",
+			"date": "2018-06-19"
+		},
+		{
 			address: "0x181c71726f12ce2514e8b93019eb22645a79f966",
 			comment: "Fake Whalesburg ICO support",
 			date: "2018-05-14"
