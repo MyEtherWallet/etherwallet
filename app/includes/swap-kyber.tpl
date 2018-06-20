@@ -332,7 +332,7 @@
                         </div>
 
                         <!-- Token to ETH -->
-                        <div class="col-sm-12" ng-if="!kyberEthToToken && !bypassTokenApprove">
+                        <div class="col-sm-12" ng-if="!kyberEthToToken && !kyberTransaction.bypassTokenApprove">
                             <span>
                                 Track your swap transaction:
                             </span>
@@ -347,7 +347,7 @@
                             </a>
                         </div>
 
-                        <div class="col-sm-12" ng-if="!kyberEthToToken && !bypassTokenApprove">
+                        <div class="col-sm-12" ng-if="!kyberEthToToken && !kyberTransaction.bypassTokenApprove">
                             <span>
                                 Track your token authorization transaction:
                          </span>
@@ -389,7 +389,7 @@
                         <!-- / ETH to Token-->
 
                         <!-- Token to ETH (no approval needed)-->
-                        <div class="col-sm-12" ng-if="!kyberEthToToken && bypassTokenApprove">
+                        <div class="col-sm-12" ng-if="!kyberEthToToken && kyberTransaction.bypassTokenApprove">
                                                         <span>
                                 Track your swap transaction:
                             </span>
