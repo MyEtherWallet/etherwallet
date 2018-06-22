@@ -1,5 +1,6 @@
 ### Release v3.21.14
 ### New
+- Add GSE token and darklist []()
 - Add TOOR token [#1917](https://github.com/kvhnuke/etherwallet/pull/1917)
 - Add manual gas limit for upcoming BBK token [#1900](https://github.com/kvhnuke/etherwallet/pull/1900)
 - Add theCyber contract [#1914](https://github.com/kvhnuke/etherwallet/pull/1914)
