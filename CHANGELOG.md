@@ -1,5 +1,6 @@
 ### Release v3.21.14
 ### New
+- Revert darklist update.
 - Add GSE token and darklist [#1920](https://github.com/kvhnuke/etherwallet/pull/1920)
 - Kyber network updates [#1918](https://github.com/kvhnuke/etherwallet/pull/1918)
 - Add TOOR token [#1917](https://github.com/kvhnuke/etherwallet/pull/1917)

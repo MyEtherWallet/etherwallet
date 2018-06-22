@@ -3443,36 +3443,6 @@ const darklist = function() {
 			comment:
 				"Scam address of phishing email sent to leaked Everex investor database",
 			date: "2017-09-05"
-		},
-		{
-			"address": "0xcdcf7570e27fe31ad5c6d4c8c7d78d98507d649d",
-			"comment":
-				"Scam address of impersonating EOS Classic Coin https://eos-classic.io",
-			"date": "2018-06-21"
-		},
-		{
-			"address": "0xce3ad07c9c7a5f89d39eb1449913d3feecabcf8d",
-			"comment":
-				"Scam address of impersonating EOS Classic Coin https://eos-classic.io",
-			"date": "2018-06-21"
-		},
-		{
-			"address": "0xdbfebf00f4601c176bdb61bf65f2abc9e213e065",
-			"comment":
-				"Scam address of impersonating EOS Classic Coin https://eos-classic.io",
-			"date": "2018-06-21"
-		},
-		{
-			"address": "0x1a18c7ff9369351d41db980fac5c1036b4b9e125",
-			"comment":
-				"Scam address of impersonating EOS Classic Coin https://eos-classic.io",
-			"date": "2018-06-21"
-		},
-		{
-			"address": "0x00ae2c6da8eed2c17f1b6e1b6a4e104ff12e7e5f",
-			"comment":
-				"Scam address of impersonating EOS Classic Coin https://eos-classic.io",
-			"date": "2018-06-21"
 		}
 	];
 };
