@@ -99,31 +99,52 @@
                         <td class="small text-right">Network:</td>
                         <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!kyberTransaction.bypassTokenApprove">
                         <td class="small text-right">Combined Gas Limit:</td>
-                        <td class="small text-left mono">{{parsedTx.totalGasLimit}}</td>
+                        <td class="small text-left mono" >{{parsedTx.totalGasLimit}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!kyberTransaction.bypassTokenApprove">
                         <td class="small text-right">Avg. Gas Price:</td>
-                        <td class="small text-left mono">{{parsedTx.avgGasPrice.gwei}} GWEI
+                        <td class="small text-left mono" >{{parsedTx.avgGasPrice.gwei}} GWEI
                             <small>({{parsedTx.avgGasPrice.eth}} ETH)</small>
-                            <!-- todo: get eth value to display as a decimal not as an exponent-->
+                                                          <!-- todo: get eth value to display as a decimal not as an exponent-->
                         </td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!kyberTransaction.bypassTokenApprove">
                         <td class="small text-right">Max Combined TX Fee:</td>
                         <td class="small text-left mono"> {{parsedTx.totalTxFee.eth}} ETH
                             <small>({{parsedTx.totalTxFee.gwei}} GWEI)</small>
                         </td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!kyberTransaction.bypassTokenApprove">
                         <td class="small text-right">Final Nonce:</td>
+                        <td class="small text-left mono">{{parsedKyberTx.nonce}}</td>
+                    </tr>
+                    <tr ng-if="kyberTransaction.bypassTokenApprove">
+                        <td class="small text-right">Gas Limit:</td>
+                        <td class="small text-left mono" >{{parsedKyberTx.gasLimit}}</td>
+                    </tr>
+                    <tr ng-if="kyberTransaction.bypassTokenApprove">
+                        <td class="small text-right">Gas Price:</td>
+                        <td class="small text-left mono" >{{parsedKyberTx.gasPrice.gwei}} GWEI
+                            <small>({{parsedKyberTx.avgGasPrice.eth}} ETH)</small>
+                                                                                                      <!-- todo: get eth value to display as a decimal not as an exponent-->
+                        </td>
+                    </tr>
+                    <tr ng-if="kyberTransaction.bypassTokenApprove">
+                        <td class="small text-right">Max TX Fee:</td>
+                        <td class="small text-left mono"> {{parsedKyberTx.txFee.eth}} ETH
+                            <small>({{parsedKyberTx.txFee.gwei}} GWEI)</small>
+                        </td>
+                    </tr>
+                    <tr ng-if="kyberTransaction.bypassTokenApprove">
+                        <td class="small text-right">Nonce:</td>
                         <td class="small text-left mono">{{parsedKyberTx.nonce}}</td>
                     </tr>
                     </tbody>
                 </table>
 
-                <section class="clearfix collapse-container" ng-if="!kyberEthToToken">
+                <section class="clearfix collapse-container" ng-if="!kyberEthToToken && !kyberTransaction.bypassTokenApprove">
                     <div class="text-center" ng-click="adv = !adv">
                         <a class="collapse-button"><span ng-show="!adv">+</span><span ng-show="adv">-</span></a>
                         <h5>Advanced</h5>
