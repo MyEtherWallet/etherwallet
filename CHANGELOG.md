@@ -1,6 +1,7 @@
 ### Release v3.21.14
 ### New
-- Revert darklist update.
+- Add CTGC, CET and DGS token. Updated PAT to XPAT [#1922](https://github.com/kvhnuke/etherwallet/pull/1922)
+- Revert darklist update. [Commit](https://github.com/kvhnuke/etherwallet/commit/dc9eb0d85a1f5de046bbd58a1beba086c018cc2e)
 - Add GSE token and darklist [#1920](https://github.com/kvhnuke/etherwallet/pull/1920)
 - Kyber network updates [#1918](https://github.com/kvhnuke/etherwallet/pull/1918)
 - Add TOOR token [#1917](https://github.com/kvhnuke/etherwallet/pull/1917)
