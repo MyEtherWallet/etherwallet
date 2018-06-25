@@ -227,16 +227,16 @@ nodes.nodeList = {
     },
     'poa': {
         'name': 'POA',
-        'blockExplorerTX': 'https://core-explorer.poa.network/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://core-explorer.poa.network/account/[[address]]',
+        'blockExplorerTX': 'https://poaexplorer.com/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://poaexplorer.com/address/[[address]]',
         'type': nodes.nodeTypes.POA,
         'eip155': true,
         'chainId': 99,
         'tokenList': require('./tokens/poaTokens.json'),
         'abiList': require('./abiDefinitions/poaAbi.json'),
         'estimateGas': true,
-        'service': 'core.poa.network',
-        'lib': new nodes.customNode('https://core.poa.network', '')
+        'service': 'poa.infura.io',
+        'lib': new nodes.infuraNode('https://poa.infura.io')
     },
     'tomo': {
         'name': 'TOMO',
