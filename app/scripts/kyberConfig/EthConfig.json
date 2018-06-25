@@ -10,11 +10,6 @@
       "decimals": 18,
       "address": "0xdd974D5C2e2928deA5F71b9825b8b646686BD200"
     },
-    "EOS": {
-      "name": "Eos",
-      "decimals": 18,
-      "address": "0x86Fa049857E0209aa7D9e616F7eb3b3B78ECfdb0"
-    },
     "SNT": {
       "name": "STATUS",
       "decimals": 18,
