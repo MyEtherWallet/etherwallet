@@ -672,9 +672,9 @@
 		"type": "default"
 	},
 	{
-		"address": "0x1ed2B1eaEd8e968bc36EB90a914660A71827A5E9",
+		"address": "0xB07ec2c28834B889b1CE527Ca0F19364cD38935c",
 		"symbol": "CARD",
-		"decimal": 0,
+		"decimal": 18,
 		"type": "default"
 	},
 	{
