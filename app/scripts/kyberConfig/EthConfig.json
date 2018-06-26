@@ -10,11 +10,6 @@
       "decimals": 18,
       "address": "0xdd974D5C2e2928deA5F71b9825b8b646686BD200"
     },
-    "EOS": {
-      "name": "Eos",
-      "decimals": 18,
-      "address": "0x86Fa049857E0209aa7D9e616F7eb3b3B78ECfdb0"
-    },
     "SNT": {
       "name": "STATUS",
       "decimals": 18,
@@ -63,7 +58,7 @@
     "ENG": {
       "name": "Enigma",
       "decimals": 8,
-      "address": "0xf0ee6b27b759c9893ce4f094b49ad28fd15a23e4"
+      "address": "0xf0ee6b27b759c9893ce4f094b49ad28fd15a23e4",
     },
     "SALT": {
       "name": "Salt",
@@ -75,36 +70,37 @@
       "decimals": 8,
       "address": "0x5Af2Be193a6ABCa9c8817001F45744777Db30756"
     },
+
     "ADX": {
       "name": "AdEx",
       "decimals": 4,
       "address": "0x4470BB87d77b963A013DB939BE332f927f2b992e"
     },
+
     "AST": {
       "name": "AirSwap",
       "decimals": 4,
       "address": "0x27054b13b1b798b345b591a4d22e6562d47ea75a"
     },
+
     "RCN": {
       "name": "Ripio Credit Network",
       "decimals": 18,
       "address": "0xf970b8e36e23f7fc3fd752eea86f8be8d83375a6"
     },
-    "DAI": {
-      "name": "DAI",
-      "decimals": 18,
-      "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
-    },
-    "MOT": {
-      "name": "Olympus Labs",
-      "decimals": 18,
-      "address": "0x263c618480dbe35c300d8d5ecda19bbb986acaed"
-    },
+
     "ZIL": {
       "name": "Zilliqa",
       "decimals": 12,
       "address": "0x05f4a42e251f2d52b8ed15e9fedaacfcef1fad27"
     },
+
+    "DAI": {
+      "name" : "DAI",
+      "decimals": 18,
+      "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
+    },
+
     "LINK": {
       "name": "Chain Link",
       "decimals": 18,
@@ -120,6 +116,11 @@
       "decimals": 18,
       "address": "0xd0a4b8946cb52f0661273bfbc6fd0e0c75fc6433"
     },
+    "MOT": {
+      "name": "Olympus Labs",
+      "decimals": 18,
+      "address": "0x263c618480dbe35c300d8d5ecda19bbb986acaed"
+    },
     "DGX": {
       "name": "Digix Gold",
       "decimals": 9,
@@ -130,21 +131,52 @@
       "decimals": 18,
       "address": "0xb98d4c97425d9908e66e53a6fdf673acca0be986"
     },
+    "ENJ": {
+      "name": "EnjinCoin",
+      "decimals": 18,
+      "address": "0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c"
+    },
+    "AION": {
+      "name": "Aion",
+      "decimals": 8,
+      "address": "0x4CEdA7906a5Ed2179785Cd3A40A69ee8bc99C466"
+    },
+    "AE": {
+      "name": "Aeternity",
+      "decimals": 18,
+      "address": "0x5ca9a71b1d01849c0a95490cc00559717fcf0d1d"
+    },
+    "BLZ": {
+      "name": "Bluezelle",
+      "decimals": 18,
+      "address": "0x5732046a883704404f284ce41ffadd5b007fd668"
+    },
+    "PAL": {
+      "name": "PolicyPal Network",
+      "decimals": 18,
+      "address": "0xfedae5642668f8636a11987ff386bfd215f942ee"
+    },
+    "ELEC": {
+      "name": "ElectrifyAsia",
+      "decimals": 18,
+      "address": "0xd49ff13661451313ca1553fd6954bd1d9b6e02b9"
+    },
+    "BBO": {
+      "name": "Bigbom",
+      "decimals": 18,
+      "address": "0x84f7c44b6fed1080f647e354d552595be2cc602f"
+    },
     "ETH": {
       "name": "Ethereum",
       "decimals": 18,
       "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
     }
   },
-  "max gas price": "50000000000",
-  "neg diff in bps": 20,
-  "min expected rate slippage": 300,
-  "valid duration block": 60,
   "reserve": "0x63825c174ab367968EC60f061753D3bbD36A0D8F",
   "pricing": "0x798AbDA6Cc246D0EDbA912092A2a3dBd3d11191B",
-  "pricing wrapper": "0x97b82E42a0c04bAd5E61e7cFb4806317d608D809",
+  "pricing wrapper":"0x97b82E42a0c04bAd5E61e7cFb4806317d608D809",
   "network": "0x964F35fAe36d75B1e72770e244F6595B68508CF5",
   "wrapper": "0x6172AFC8c00c46E0D07ce3AF203828198194620a",
   "feeburner": "0x07f6e905f2a1559cd9fd43cb92f8a1062a3ca706",
-  "whitelist": "0x6e106a75d369d09a9ea1dcc16da844792aa669a3"
+  "whitelist" : "0x6e106a75d369d09a9ea1dcc16da844792aa669a3"
 }
