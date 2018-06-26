@@ -582,8 +582,8 @@
 		"type": "default"
 	},
 	{
-		"address": "0xa02e3bb9cebc03952601b3724b4940e0845bebcf",
-		"symbol": "BTHR",
+		"address": "0x14C926F2290044B647e1Bf2072e67B495eff1905",
+		"symbol": "BETHER",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -1168,7 +1168,7 @@
 		"symbol": "DIP (Decentralized Insurance Protocol)",
 		"decimal": 18,
 		"type": "default"
-	},	
+	},
 	{
 		"address": "0x13f11C9905A08ca76e3e853bE63D4f0944326C72",
 		"symbol": "DIVX",
