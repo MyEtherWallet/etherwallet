@@ -1,6 +1,6 @@
 ### Release v3.21.14
 ### New
-- Add DCC and QNT tokens []()
+- Add DCC and QNT tokens [#1932](https://github.com/kvhnuke/etherwallet/pull/1932)
 - Add DCC abi [#1932](https://github.com/kvhnuke/etherwallet/pull/1932)
 - Add DCC custom gas limit [#1931](https://github.com/kvhnuke/etherwallet/pull/1931)
 - Add DIP token [#1928](https://github.com/kvhnuke/etherwallet/pull/1928)
