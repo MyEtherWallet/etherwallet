@@ -391,4 +391,10 @@ to:         '0x25Beb989d3ef4E6e0fEF8220944bb74E2AA6ff45',
 gasLimit:   150000,
 data:       '',
 msg:        'OAK Token Sale by The Acorn Collective - https://aco.ai/'
+},{
+// Distributed Credit Chain (DCC) Token Sale
+to:         '0x5f95c334f23eeab920ef753b995831a3c7138808',
+gasLimit:   210000,
+data:       '',
+msg:        'DCC Token Sale by The Distributed Credit Chain - https://dcc.finance/'
 }]
