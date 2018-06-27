@@ -1,5 +1,8 @@
 ### Release v3.21.14
 ### New
+- Add DCC and QNT tokens []()
+- Add DCC abi [#1932](https://github.com/kvhnuke/etherwallet/pull/1932)
+- Add DCC custom gas limit [#1931](https://github.com/kvhnuke/etherwallet/pull/1931)
 - Add DIP token [#1928](https://github.com/kvhnuke/etherwallet/pull/1928)
 - List up-to-date supported token from KyberNetwork [#1923](https://github.com/kvhnuke/etherwallet/pull/1923)
 - upgrade Cardstack CARD token to new address [#1927](https://github.com/kvhnuke/etherwallet/pull/1927)
