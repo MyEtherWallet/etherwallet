@@ -402,6 +402,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x14C926F2290044B647e1Bf2072e67B495eff1905",
+		"symbol": "BETHER",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x763186eb8d4856d536ed4478302971214febc6a9",
 		"symbol": "BETR",
 		"decimal": 18,
@@ -578,12 +584,6 @@
 	{
 		"address": "0xfad572db566e5234ac9fc3d570c4edc0050eaa92",
 		"symbol": "BTH",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
-		"address": "0x14C926F2290044B647e1Bf2072e67B495eff1905",
-		"symbol": "BETHER",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -1074,20 +1074,26 @@
 		"type": "default"
 	},
 	{
-		"address": "0x61725f3db4004afe014745b21dab1e1677cc328b",
-		"symbol": "DAXT",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
 		"address": "0xd82Df0ABD3f51425Eb15ef7580fDA55727875f14",
 		"symbol": "DAV",
 		"decimal": 18,
 		"type": "default"
 	},
 	{
+		"address": "0x61725f3db4004afe014745b21dab1e1677cc328b",
+		"symbol": "DAXT",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416",
 		"symbol": "DCA",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xffa93aacf49297d51e211817452839052fdfb961",
+		"symbol": "DCC",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -1266,14 +1272,14 @@
 		"type": "default"
 	},
 	{
-		"address": "0x82fdedfB7635441aA5A92791D001fA7388da8025",
-		"symbol": "DTx",
+		"address": "0x765f0c16d1ddc279295c1a7c24b0883f62d33f75",
+		"symbol": "DTX",
 		"decimal": 18,
 		"type": "default"
 	},
 	{
-		"address": "0x765f0c16d1ddc279295c1a7c24b0883f62d33f75",
-		"symbol": "DTX",
+		"address": "0x82fdedfB7635441aA5A92791D001fA7388da8025",
+		"symbol": "DTx",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -2730,12 +2736,6 @@
 		"type": "default"
 	},
 	{
-		"address": "0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82",
-		"symbol": "XPAT",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
 		"address": "0x694404595e3075a942397f466aacd462ff1a7bd0",
 		"symbol": "PATENTS",
 		"decimal": 18,
@@ -2990,6 +2990,12 @@
 	{
 		"address": "0x2467aa6b5a2351416fd4c3def8462d841feeecec",
 		"symbol": "QBX",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x4a220E6096B25EADb88358cb44068A3248254675",
+		"symbol": "QNT",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -4005,6 +4011,12 @@
 		"address": "0x572e6f318056ba0c5d47a422653113843d250691",
 		"symbol": "XNT",
 		"decimal": 0,
+		"type": "default"
+	},
+	{
+		"address": "0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82",
+		"symbol": "XPAT",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
