@@ -1,4 +1,7 @@
 ### Release v3.21.14
+### Devop
+- Remove console logs and rebuild []()
+### Release v3.21.14
 ### New
 - Add DCC and QNT tokens [#1932](https://github.com/kvhnuke/etherwallet/pull/1932)
 - Add DCC abi [#1931](https://github.com/kvhnuke/etherwallet/pull/1931)
