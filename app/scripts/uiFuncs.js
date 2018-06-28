@@ -151,7 +151,6 @@ uiFuncs.generateTx = function(txData, callback) {
     try {
         uiFuncs.isTxDataValid(txData);
         var genTxWithInfo = function(data) {
-            // console.log("genTxWithInfo", data); // todo remove dev item
             var rawTx = {
                 nonce: ethFuncs.sanitizeHex(data.nonce),
                 gasPrice: data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
@@ -163,7 +162,6 @@ uiFuncs.generateTx = function(txData, callback) {
             if(txData.kyberGasPrice){
               rawTx.gasPrice = txData.kyberGasPrice;
             }
-            console.log("rawTx to Sign", rawTx); // todo remove dev item
             if (ajaxReq.eip155) rawTx.chainId = ajaxReq.chainId;
             rawTx.data = rawTx.data == '' ? '0x' : rawTx.data;
             var eTx = new ethUtil.Tx(rawTx);
@@ -246,7 +244,6 @@ uiFuncs.generateTx = function(txData, callback) {
     }
 }
 uiFuncs.sendTx = function(signedTx, callback) {
-    console.log("signedTx", signedTx); // todo remove dev item
     // check for web3 late signed tx
     if (signedTx.slice(0, 2) !== '0x') {
         var txParams = JSON.parse(signedTx)
