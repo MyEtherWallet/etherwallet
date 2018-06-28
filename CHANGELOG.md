@@ -1,7 +1,7 @@
 ### Release v3.21.15
 ### Devop
 - Remove console logs and rebuild [#1934](https://github.com/kvhnuke/etherwallet/pull/1934)
-
+- Change myetherapi nodes to myetherwallet nodes [Commit](https://github.com/kvhnuke/etherwallet/commit/29137ae373e7408322f82bc4f2cbc13fecf8298a)
 ### Release v3.21.14
 ### New
 - Add DCC and QNT tokens [#1932](https://github.com/kvhnuke/etherwallet/pull/1932)
