@@ -52,8 +52,8 @@ nodes.nodeList = {
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),
         'abiList': require('./abiDefinitions/ethAbi.json'),
-        'service': 'myetherapi.com',
-        'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
+        'service': 'myetherwallet.com',
+        'lib': new nodes.customNode('https://api.myetherwallet.com/eth', '')
     },
     'eth_ethscan': {
         'name': 'ETH',
@@ -136,8 +136,8 @@ nodes.nodeList = {
         'chainId': 3,
         'tokenList': require('./tokens/ropstenTokens.json'),
         'abiList': require('./abiDefinitions/ropstenAbi.json'),
-        'service': 'myetherapi.com',
-        'lib': new nodes.customNode('https://api.myetherapi.com/rop', '')
+        'service': 'myetherwallet.com',
+        'lib': new nodes.customNode('https://api.myetherwallet.com/rop', '')
     },
     'rop_infura': {
         'name': 'Ropsten',
