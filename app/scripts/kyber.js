@@ -105,7 +105,6 @@ kyberFuncs.prototype.getMainNetAddress = function(){
   var _this = this;
   let ens = new window.ens();
   ens.getAddress("kybernetwork.eth", function(data){
-    console.log(data); // todo remove dev item
     _this.KyberNetworkAddress = data.data;
   })
 }
@@ -262,7 +261,6 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
                 return i.type;
             });
 
-            // console.log(ethFuncs.hexToDecimal(data.data)); //todo remove dev item
             console.log(data.data);
             // was returning a number rounded, thus
             // data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
@@ -326,7 +324,6 @@ kyberFuncs.prototype.checkUserCap = function(_userAddress, swapValue /* In ETH o
     let weiValue = _this.convertToTokenWei(swapValue, "ETH");
 
     _this.getUserCapInWei(_userAddress, function(data) {
-        // console.log(data); //todo remove dev item
         let numberAsBN = new BigNumber(weiValue);
         let nineFivePct = data.data.times(0.95);
         let nineFivePctUserCap = _this.convertToTokenWei(nineFivePct, "ETH");
@@ -419,16 +416,13 @@ kyberFuncs.prototype.allowance = function (_srcToken, userAddress, callback) {
 
 kyberFuncs.prototype.getTradeData = function (swapOrder, minRate) {
     var _this = this;
-    // console.log("minRate", minRate); //todo remove dev item
     if (minRate && minRate > 0) {
         var funcABI = _this.kyberNetworkABI.trade;
         var srcTokenAddress = _this.getTokenAddress(swapOrder.fromCoin);
         var destTokenAddress = _this.getTokenAddress(swapOrder.toCoin);
         let walletId = "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D";
         let minConversionRate = _this.convertToTokenWei(minRate, "ETH"); // Uses slippagePrice with fallback to MarketRate.  1 => Market Rate, but we could also set this as the quoted rate
-        // console.log("minConversionRate", minRate); //todo remove dev item
         let srcAmount = _this.convertToTokenWei(swapOrder.fromVal, swapOrder.fromCoin); //etherUnits.toWei(swapOrder.fromVal, "ether");
-        // console.log("srcAmount", srcAmount); //todo remove dev item
         let maxDestAmount = 2 ** 200; //100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; // Really big number (like a googol)
 
         if (swapOrder.toAddress) {
