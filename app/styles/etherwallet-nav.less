@@ -2,7 +2,7 @@
 .header-branding {
   color: white;
   padding: 0;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 960px) {
     text-align: center;
   }
   .container {
@@ -15,11 +15,12 @@
     }
   }
   .brand {
+    float: left;
+    @media screen and (max-width: 900px) {
+      float: none;
+    }
     img {
       padding: @space-xs 0;
-      @media screen and (max-width: 900px) {
-        max-width: 10rem;
-      }
     }
   }
   .tagline {
@@ -82,14 +83,8 @@
   }
   .dropdown-gas {
     display: inline-block;
-    @media screen and (max-width: 900px) {
-      margin-bottom: 1.8rem;
-    }
-    .dropdown-toggle {
-      min-width: 200px;
-    }
     .dropdown-menu{
-      min-width: 100%;
+      min-width: 200px;
       padding: .5rem;
       margin: 0;
       left: 0;
