@@ -1159,6 +1159,12 @@
 	},
 	{
 		"address": "0x55b9a11c2e8351b4Ffc7b11561148bfaC9977855",
+		"symbol": "DGX1",
+		"decimal": 9,
+		"type": "default"
+	},
+	{
+		"address": "0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf",
 		"symbol": "DGX",
 		"decimal": 9,
 		"type": "default"
