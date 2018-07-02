@@ -30,7 +30,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         hwCallistoPath:    "m/44'/820'/0'/0",      // first address: m/44'/820'/0'/0/0
         hwSocialPath:      "m/44'/1128'/0'/0",     // first address: m/44'/1128'/0'/0/0
         hwMusicoinPath:    "m/44'/184'/0'/0",      // first address: m/44'/184'/0'/0/0
-        hwYapstonePath:    "m/44'/528'/0'/0",      // first address: m/44'/528'/0'/0/0
         singularDTVPath:   "m/0'/0'/0'",           // first address: m/0'/0'/0'/0
         hwRskPath:         "m/44'/137'/0'/0",      // first address : m/44'/137'/0'/0/0
         goPath:            "m/44'/6060'/0'/0",     // first address: m/44'/6060'/0'/0/0
@@ -104,9 +103,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.MUSIC:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
                     break;
-                case nodes.nodeTypes.YAP:
-                    $scope.HDWallet.dPath = $scope.HDWallet.hwYapstonePath;
-                    break;
                 case nodes.nodeTypes.GO:
                     $scope.HDWallet.dPath = $scope.HDWallet.goPath;
                     break;
@@ -147,9 +143,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.MUSIC:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
-                    break;
-                case nodes.nodeTypes.YAP:
-                    $scope.HDWallet.dPath = $scope.HDWallet.hwYapstonePath;
                     break;
                 case nodes.nodeTypes.GO:
                     $scope.HDWallet.dPath = $scope.HDWallet.goPath;
