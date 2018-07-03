@@ -1,8 +1,15 @@
+### Release v3.21.16
+### New
+- Add FAN, RING, AKC, PLS and OMT tokens from ethereum-list []()
+### Update
+- Update DGX token [#1939](https://github.com/kvhnuke/etherwallet/pull/1939)  
+
 ### Release v3.21.15
-### Devop
-- Update DGX token [#1939](https://github.com/kvhnuke/etherwallet/pull/1939)
+### Update
 - Remove console logs and rebuild [#1934](https://github.com/kvhnuke/etherwallet/pull/1934)
-- Change myetherapi nodes to myetherwallet nodes [Commit](https://github.com/kvhnuke/etherwallet/commit/29137ae373e7408322f82bc4f2cbc13fecf8298a)
+- Change myetherapi nodes to myetherwallet nodes [Commit](https://github.com/kvhnuke/etherwallet/commit/29137ae373e7408322f82bc4f2cbc13fecf8298a)  
+
+
 ### Release v3.21.14
 ### New
 - Add DCC and QNT tokens [#1932](https://github.com/kvhnuke/etherwallet/pull/1932)
@@ -31,12 +38,12 @@
 - Fix branding style [#1906](https://github.com/kvhnuke/etherwallet/pull/1906)
 - Add OJX, and BTT in eth list. Add CTGA to rin. [#1905](https://github.com/kvhnuke/etherwallet/pull/1905)
 - Add GoChain Node [#1904](https://github.com/kvhnuke/etherwallet/pull/1904)
-- Add WORK token [#1902](https://github.com/kvhnuke/etherwallet/pull/1902)
+- Add WORK token [#1902](https://github.com/kvhnuke/etherwallet/pull/1902)  
 
 ### Update
 - Update Korean translations [#1875](https://github.com/kvhnuke/etherwallet/pull/1875)
 - Update error msgs [Commit](https://github.com/kvhnuke/etherwallet/commit/b0ae1a74a023c4e9cacc7e1652c60d6f399acd54)
-- Update checksum article on the error msg [Commit](https://github.com/kvhnuke/etherwallet/commit/ea4d61d13cd767804da6c0acf28fba70b3e384aa)
+- Update checksum article on the error msg [Commit](https://github.com/kvhnuke/etherwallet/commit/ea4d61d13cd767804da6c0acf28fba70b3e384aa)  
 
 ### Release v3.21.13
 ### Update

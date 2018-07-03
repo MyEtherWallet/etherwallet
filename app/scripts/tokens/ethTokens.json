@@ -138,6 +138,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x1ca43a170bad619322e6f54d46b57e504db663aa",
+		"symbol": "AKC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x181a63746d3adcf356cbc73ace22832ffbb1ee5a",
 		"symbol": "ALCO",
 		"decimal": 8,
@@ -1530,6 +1536,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x90162f41886c0946d09999736f1c15c8a105a421",
+		"symbol": "FAN",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x7f6715c3fc4740a02f70de85b9fd50ac6001fed9",
 		"symbol": "FANX",
 		"decimal": 18,
@@ -2688,6 +2700,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x047187e53477be70DBe8Ea5B799318f2e165052F",
+		"symbol": "OMT",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xb23be73573bc7e03db6e5dfc62405368716d28a8",
 		"symbol": "ONEK",
 		"decimal": 18,
@@ -2840,6 +2858,12 @@
 	{
 		"address": "0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
 		"symbol": "PLR",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xe43ac1714f7394173b15e7cff31a63d523ce4fb9",
+		"symbol": "PLS",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -3105,6 +3129,12 @@
 		"address": "0xd0929d411954c47438dc1d871dd6081f5c5e149c",
 		"symbol": "RFR",
 		"decimal": 4,
+		"type": "default"
+	},
+	{
+		"address": "0x86E56f3c89a14528858e58B3De48c074538BAf2c",
+		"symbol": "RING",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
