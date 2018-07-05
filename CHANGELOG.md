@@ -1,5 +1,6 @@
 ### Release v3.21.16
 ### New
+- Add OWN, PURC, FXC and MFT tokens from ethereum-list []()
 - Add FAN, RING, AKC, PLS and OMT tokens from ethereum-list [#1941](https://github.com/kvhnuke/etherwallet/pull/1941)
 ### Update
 - Update DGX token [#1939](https://github.com/kvhnuke/etherwallet/pull/1939)  
