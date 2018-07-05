@@ -1,5 +1,6 @@
 ### Release v3.21.16
 ### New
+- Add ethorse rewards abi [#1942](https://github.com/kvhnuke/etherwallet/pull/1942)
 - Add OWN, PURC, FXC and MFT tokens from ethereum-list [#1945](https://github.com/kvhnuke/etherwallet/pull/1945)
 - Add FAN, RING, AKC, PLS and OMT tokens from ethereum-list [#1941](https://github.com/kvhnuke/etherwallet/pull/1941)
 ### Update
