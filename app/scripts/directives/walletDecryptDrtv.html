@@ -277,7 +277,7 @@
     <div id="selectedTypeMewConnect"
          ng-if="walletType=='mewConnect'">
       <h4> <!-- todo re-add translation property -->
-           Mew Connect Mobile Wallet
+           Mew Connect Secure Wallet
       </h4>
       <h5>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 79.536 79.536">
@@ -323,7 +323,7 @@
                           Connect to MewConnect
                       </a>
                   </div>-->
-      <div class="form-group" ng-show="!mewConnectionStatus && canUseMewConnect">
+      <div class="form-group" ng-show="(!mewConnectionStatus || mewConnectionStatus == 3) && canUseMewConnect">
         <!-- todo re-add translation  and id properties -->
         <a class="btn btn-primary"
            ng-click="scanMewConnect()"
@@ -347,6 +347,7 @@
         <h4 ng-show="mewConnectionStatus == 1">Preparing Connection</h4>
         <h4 ng-show="mewConnectionStatus == 2">Connected</h4>
         <h4 ng-show="!canUseMewConnect">Mew Connect is not compatible with this browser [please try Chrome or see LINK for supported browsers]</h4>
+        <h4 ng-show="mewConnectionStatus == 3">Timed Out</h4>
 
       </div>
       <div ng-if="mewConnectionStatus == 1">

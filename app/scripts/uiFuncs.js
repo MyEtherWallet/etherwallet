@@ -157,13 +157,8 @@ uiFuncs.signTxMewConnect = function (eTx, rawTx, txData, callback) {
       var result = data.data;
       console.log(result); //todo remove dev item
       uiFuncs.notifier.info("The transaction was signed but not sent. Click the blue 'Send Transaction' button to continue.");
-      // rawTx.v = ethFuncs.sanitizeHex(result['v']);
-      // rawTx.r = ethFuncs.sanitizeHex(result['r']);
-      // rawTx.s = ethFuncs.sanitizeHex(result['s']);
-      // console.log("uiFuncs:194 signed response: ", data); //todo remove dev item
       var eTx_ = new ethUtil.Tx(rawTx);
       rawTx.rawTx = JSON.stringify(rawTx);
-      // rawTx.signedTx = ethFuncs.sanitizeHex(eTx_.serialize().toString('hex'));
       rawTx.signedTx = "0x" + result;
       rawTx.isError = false;
       if (callback !== undefined) callback(rawTx);
@@ -172,22 +167,6 @@ uiFuncs.signTxMewConnect = function (eTx, rawTx, txData, callback) {
 
   mewConnect.use(tcMid);
 
-  // mewConnect.use((data, next) => {
-  //     if(data.type === "signTx"){
-  //     let result = data.data;
-  //         uiFuncs.notifier.info("The transaction was signed but not sent. Click the blue 'Send Transaction' button to continue.");
-  //     // rawTx.v = ethFuncs.sanitizeHex(result['v']);
-  //     // rawTx.r = ethFuncs.sanitizeHex(result['r']);
-  //     // rawTx.s = ethFuncs.sanitizeHex(result['s']);
-  //     // console.log("uiFuncs:194 signed response: ", data); //todo remove dev item
-  //     var eTx_ = new ethUtil.Tx(rawTx);
-  //     rawTx.rawTx = JSON.stringify(rawTx);
-  //     // rawTx.signedTx = ethFuncs.sanitizeHex(eTx_.serialize().toString('hex'));
-  //         rawTx.signedTx = "0x" + result;
-  //     rawTx.isError = false;
-  //     if (callback !== undefined) callback(rawTx);
-  //     }
-  // });
   app.signTransaction(eTx, rawTx, txData);
   //================= Mew Connect (end)==============================
 };
@@ -255,9 +234,9 @@ uiFuncs.generateTx = function(txData, callback) {
                 callback(rawTx)
             } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "digitalBitbox")) {
                 uiFuncs.signTxDigitalBitbox(eTx, rawTx, txData, callback);
-            } else if (typeof txData.hwType != "undefined" && txData.hwType == "mewConnect") {
+            } /*else if (typeof txData.hwType != "undefined" && txData.hwType == "mewConnect") {
               uiFuncs.signTxMewConnect(eTx, rawTx, txData, callback);
-            } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "secalot")) {
+            }*/ else if ((typeof txData.hwType != "undefined") && (txData.hwType == "secalot")) {
                 uiFuncs.signTxSecalot(eTx, rawTx, txData, callback);
             } else {
                 eTx.sign(new Buffer(txData.privKey, 'hex'));

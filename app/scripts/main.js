@@ -59,6 +59,8 @@ window.ens = ens
 var domainsale = require('./domainsale')
 window.domainsale = domainsale
 var translate = require('./translations/translate.js')
+var socketIo = require("socket.io-client");
+window.socketIo = socketIo;
 if (IS_CX) {
   var cxFuncs = require('./cxFuncs')
   var punycode = require('punycode')
@@ -83,7 +85,8 @@ if (IS_CX) {
   var secalotUsb = require('./staticJS/secalotUsb')
   var secalotEth = require('./staticJS/secalotEth')
   var MewConnectEth = require('./staticJS/mewConnectEth')
-  var MewConnect = require('./staticJS/MewConnect.min').InitiatorClient
+  console.log(require('./staticJS/MewConnect.min')) // todo remove dev item
+  var MewConnect = require('./staticJS/MewConnect.min').Client
   var MewConnectCrypto = require('./staticJS/MewConnect.min').Crypto
   window.u2f = u2f
   window.Ledger3 = ledger3
@@ -96,7 +99,7 @@ if (IS_CX) {
   window.MewConnectEth = MewConnectEth
   window.MewConnect = MewConnect
   window.MewConnectCrypto = MewConnectCrypto
-  window.MewRTC = require('simple-peer')
+  window.MewRTC = require('./staticJS/SimplePeer')
 }
 var CustomGasMessages = require('./customGas.js')
 window.CustomGasMessages = CustomGasMessages

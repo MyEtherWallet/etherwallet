@@ -2,7 +2,6 @@
 
 class MewConnectEth{
   constructor (callback) {
-    _classCallCheck(this, MewConnectEth);
 
     this.listeners = [];
     if (callback) {
@@ -13,6 +12,7 @@ class MewConnectEth{
     this.walletCallback = null;
     // this.signalerUrl = "https://35.160.138.139:3001";
     this.signalerUrl = "https://35.160.138.139:3200"; // encrypted, version, etc. Signal Server
+    // this.signalerUrl =  "mew-mew-connect-signal.nanoapp.io" // nanobox hosted version
   }
 
   getCallback() {
@@ -102,7 +102,7 @@ class MewConnectEth{
     self.comm.sendRtcMessage("signMessage", messageHex);
   }
 
-  getBrowserRTC() {
+  static getBrowserRTC() {
     if (typeof window === 'undefined') return null;
     var wrtc = {
       RTCPeerConnection: window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection,
@@ -113,8 +113,8 @@ class MewConnectEth{
     return wrtc;
   }
 
-  checkWebRTCAvailable() {
-    var hasWebRTC = this.getBrowserRTC() == null;
+  static checkWebRTCAvailable() {
+    var hasWebRTC = MewConnectEth.getBrowserRTC() == null;
     return !hasWebRTC;
   }
 
