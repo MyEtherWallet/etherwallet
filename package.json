@@ -69,6 +69,7 @@
     "npm": "^4.5.0",
     "run-sequence": "^1.2.2",
     "sha3": "^1.2.2",
+    "simple-peer": "^9.1.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "xss-filters": "^1.2.7"
