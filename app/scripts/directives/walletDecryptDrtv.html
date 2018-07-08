@@ -158,6 +158,17 @@
            <img src="images/icon-help-2.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
     </label>
+    <label
+      class="radio"><!-- todo re-add aria-flowto="aria10" property -->
+      <input type="radio"
+             aria-label="MEW Connect"
+             ng-model="walletType"
+             value="mewConnect"/>
+                    <!--ng-change="mewConnectInitialUiState()"-->
+      <span><!-- todo re-add translation property -->
+        MEW Connect
+      </span>
+    </label>
   </section>
   <!-- / Column 1 - Select Type of Key -->
 
@@ -259,6 +270,97 @@
       </div>
     </div>
     <!-- / MetaMask -->
+
+    <!--  Mew Connect -->
+    <!-------------------------------  Mew Connect (Start) ------------------------------------------>
+    <!-- Based Off MetaMask Code (above)-->
+    <div id="selectedTypeMewConnect"
+         ng-if="walletType=='mewConnect'">
+      <h4> <!-- todo re-add translation property -->
+           Mew Connect Mobile Wallet
+      </h4>
+      <h5>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 79.536 79.536">
+          <path fill="#5dba5a"
+                d="M39.769 0C17.8 0 0 17.8 0 39.768c0 21.965 17.8 39.768 39.769 39.768 21.965 0 39.768-17.803 39.768-39.768C79.536 17.8 61.733 0 39.769 0zm-5.627 58.513L15.397 39.768l7.498-7.498 11.247 11.247 22.497-22.493 7.498 7.498-29.995 29.991z"/>
+        </svg>
+        This is a recommended way to access your wallet.
+      </h5>
+      <div class="form-group">
+        <!-- Todo description  -->
+        A description of why this is a good method to use to access your account
+      </div>
+      <ul>
+        <li class="u__protip">
+          <!-- Todo add path  -->
+          <a href="#"
+             target="_blank"
+             rel="noopener noreferrer">
+            How to use Mew Connect with MyEtherWallet
+          </a>
+        </li>
+        <li class="u__protip">
+          <!-- Todo add path  -->
+          <a href="#"
+             target="_blank"
+             rel="noopener noreferrer">
+            Don't have Mew Connect? Get it now.
+          </a>
+        </li>
+      </ul>
+      <div class="form-group"
+           ng-hide="isSSL">
+        <span class="text-danger"> <!-- todo re-add translation property -->
+            Please use MyEtherWallet on a secure (SSL / HTTPS) connection to connect.
+        </span>
+      </div>
+      <!--            <div class="form-group">
+                     &lt;!&ndash; todo re-add translation  and id properties &ndash;&gt;
+                      <a class="btn btn-primary"
+                         ng-click="scanMewConnect()"
+                         ng-show="walletType=='mewConnect'"
+                         tabindex="0" role="button">
+                          Connect to MewConnect
+                      </a>
+                  </div>-->
+      <div class="form-group" ng-show="!mewConnectionStatus && canUseMewConnect">
+        <!-- todo re-add translation  and id properties -->
+        <a class="btn btn-primary"
+           ng-click="scanMewConnect()"
+           ng-show="walletType=='mewConnect'"
+           tabindex="0" role="button">
+          Connect to MewConnect
+        </a>
+      </div>
+      <div class="form-group" ng-show="(mewConnectionStatus == 2) && canUseMewConnect">
+        <!-- todo re-add translation  and id properties -->
+        <a class="btn btn-primary"
+           ng-click="mewConnectDisconnect()"
+           ng-show="walletType=='mewConnect'"
+           tabindex="0" role="button">
+          Disconnect from MewConnect
+        </a>
+      </div>
+      <div class="form-group" >
+        <!-- todo re-add translation  and id properties -->
+        <h4 ng-show="!mewConnectionStatus && canUseMewConnect">Not Connected</h4>
+        <h4 ng-show="mewConnectionStatus == 1">Preparing Connection</h4>
+        <h4 ng-show="mewConnectionStatus == 2">Connected</h4>
+        <h4 ng-show="!canUseMewConnect">Mew Connect is not compatible with this browser [please try Chrome or see LINK for supported browsers]</h4>
+
+      </div>
+      <div ng-if="mewConnectionStatus == 1">
+        {{mewConnectCode}}
+        <div qr-code="{{mewConnectCode}}" watch-var="mewConnectCode" style="width: 200px; height: 200px"></div>
+        <!--<div qr-code="{{mewConnectCode}}" style="width: 200px; height: 200px"></div>-->
+      </div>
+      <!-- <div ng-if="showMewConnectWallet">
+           <walletBalanceDrtv></walletBalanceDrtv>
+       </div>-->
+
+    </div>
+    <!-------------------------------  Mew Connect (End) ------------------------------------------>
+    <!-- / Mew Connect -->
 
 
     <!--  Ledger-->
