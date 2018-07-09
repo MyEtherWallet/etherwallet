@@ -1,5 +1,6 @@
 ### Release v3.21.16
 ### New
+- Add ECP gas limit [#1947](https://github.com/kvhnuke/etherwallet/pull/1947)
 - Update LEMO token, Add OLT and ECP token [#1948](https://github.com/kvhnuke/etherwallet/pull/1948)
 - Add ethorse rewards abi [#1942](https://github.com/kvhnuke/etherwallet/pull/1942)
 - Add OWN, PURC, FXC and MFT tokens from ethereum-list [#1945](https://github.com/kvhnuke/etherwallet/pull/1945)
