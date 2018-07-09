@@ -1326,6 +1326,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xAEA1C18A992984831002D0cf90E291FB52d72649",
+		"symbol": "ECP",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x17F93475d2A978f527c3f7c44aBf44AdfBa60D5C",
 		"symbol": "ECO2",
 		"decimal": 2,
@@ -2184,7 +2190,7 @@
 		"type": "default"
 	},
 	{
-		"address": "0xB5AE848EdB296C21259b7467331467d2647eEcDf",
+		"address": "0x60C24407d01782C2175D32fe7C8921ed732371D1",
 		"symbol": "LEMO",
 		"decimal": 18,
 		"type": "default"
@@ -2702,6 +2708,12 @@
 	{
 		"address": "0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
 		"symbol": "OLD_MKR",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x64A60493D888728Cf42616e034a0dfEAe38EFCF0",
+		"symbol": "OLT",
 		"decimal": 18,
 		"type": "default"
 	},
