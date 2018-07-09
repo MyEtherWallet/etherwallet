@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// ECrypto Tokens (ECP) Token sale
+to:         '0xa66e012D20B9384444D89Db590C43F16f011D1DE',
+gasLimit:   210000,
+data:       '',
+msg:        'ECrypto Token (ECP) token sale - Sign Up at https://ecryptotokens.com and buy your tokens.'
+},{
 // Ethernet.Cash (ENC) Token sale
 to:         '0x039f5050de4908f9b5ddf40a4f3aa3f329086387',
 gasLimit:   299686,
