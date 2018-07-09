@@ -144,18 +144,23 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                     }
                 })
 
-                // Sign via PK
+                //================= Mew Connect (start)==============================
             } else if (typeof hwType != "undefined" && hwType == "mewConnect") {
               //TODO reset ui when rtc disconnects
               var msg = Buffer.from(thisMessage).toString("hex");
               var connectApp = new MewConnectEth();
               var mewConnect = MewConnect.get();
               connectApp.setMewConnect(mewConnect);
-              mewConnect.setMessageSignerCallback(function (data, next) {
-                $scope.signMsg.signedMsg = JSON.parse(data);
-                $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
-                // mewConnect.disconnectRTCDirect();
-              });
+                mewConnect.on('signMessage', (data) =>{
+                    $scope.signMsg.signedMsg = JSON.parse(data);
+                    $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
+                    // mewConnect.disconnectRTCDirect();
+                })
+              // mewConnect.setMessageSignerCallback(function (data, next) {
+              //   $scope.signMsg.signedMsg = JSON.parse(data);
+              //   $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
+              //   // mewConnect.disconnectRTCDirect();
+              // });
               //TODO hash message before send.  Currently sending as plain text
               connectApp.signMessage(thisMessage);
 

@@ -2,7 +2,7 @@
 require('babel-polyfill')
 require('./localStoragePolyfill')
 var IS_CX = false
-if (typeof chrome != 'undefined') IS_CX = chrome.windows === undefined ? false : true
+if (typeof chrome !== 'undefined') IS_CX = chrome.windows !== undefined
 var angular = require('angular')
 var angularTranslate = require('angular-translate')
 var angularTranslateErrorLog = require('angular-translate-handler-log')
@@ -59,8 +59,8 @@ window.ens = ens
 var domainsale = require('./domainsale')
 window.domainsale = domainsale
 var translate = require('./translations/translate.js')
-var socketIo = require("socket.io-client");
-window.socketIo = socketIo;
+var socketIo = require('./staticJS/socketIO.min') // using the npm version breaks mewConnect
+window.socketIo = socketIo
 if (IS_CX) {
   var cxFuncs = require('./cxFuncs')
   var punycode = require('punycode')
@@ -84,10 +84,11 @@ if (IS_CX) {
   var digitalBitboxEth = require('./staticJS/digitalBitboxEth')
   var secalotUsb = require('./staticJS/secalotUsb')
   var secalotEth = require('./staticJS/secalotEth')
-  var MewConnectEth = require('./staticJS/mewConnectEth')
-  console.log(require('./staticJS/MewConnect.min')) // todo remove dev item
-  var MewConnect = require('./staticJS/MewConnect.min').Client
-  var MewConnectCrypto = require('./staticJS/MewConnect.min').Crypto
+
+    require('./staticJS/adapter') // adapter to ensure a common api for webRTC
+    var MewConnectEth = require('./staticJS/mewConnectEth')
+    var MewConnect = require('./staticJS/MewConnect.min').Initiator
+    var MewConnectCrypto = require('./staticJS/MewConnect.min').Crypto
   window.u2f = u2f
   window.Ledger3 = ledger3
   window.ledgerEth = ledgerEth

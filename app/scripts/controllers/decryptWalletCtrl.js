@@ -15,26 +15,26 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     id: 0,
     hdk: null,
     dPath: '',
-    defaultDPath: 'm/44\'/60\'/0\'/0',       // first address: m/44'/60'/0'/0/0
-    alternativeDPath: 'm/44\'/60\'/0\'',         // first address: m/44'/60'/0/0
-    customDPath: 'm/44\'/60\'/1\'/0',       // first address: m/44'/60'/1'/0/0
-    ledgerPath: 'm/44\'/60\'/0\'',         // first address: m/44'/60'/0/0
+    defaultDPath: 'm/44\'/60\'/0\'/0', // first address: m/44'/60'/0'/0/0
+    alternativeDPath: 'm/44\'/60\'/0\'', // first address: m/44'/60'/0/0
+    customDPath: 'm/44\'/60\'/1\'/0', // first address: m/44'/60'/1'/0/0
+    ledgerPath: 'm/44\'/60\'/0\'', // first address: m/44'/60'/0/0
     ledgerClassicPath: 'm/44\'/60\'/160720\'/0\'', // first address: m/44'/60'/160720'/0/0
-    trezorTestnetPath: 'm/44\'/1\'/0\'/0',        // first address: m/44'/1'/0'/0/0
-    trezorClassicPath: 'm/44\'/61\'/0\'/0',       // first address: m/44'/61'/0'/0/0
-    trezorPath: 'm/44\'/60\'/0\'/0',       // first address: m/44'/60'/0'/0/0
-    hwUbqPath: 'm/44\'/108\'/0\'/0',      // first address: m/44'/40'/0'/0/0
-    hwExpansePath: 'm/44\'/40\'/0\'/0',       // first address: m/44'/40'/0'/0/0
-    hwEllaismPath: 'm/44\'/163\'/0\'/0',      // first address: m/44'/163'/0'/0/0
-    hwEtherGemPath: 'm/44\'/1987\'/0\'/0',     // first address: m/44'/1987'/0'/0/0
-    hwCallistoPath: 'm/44\'/820\'/0\'/0',      // first address: m/44'/820'/0'/0/0
-    hwSocialPath: 'm/44\'/1128\'/0\'/0',     // first address: m/44'/1128'/0'/0/0
-    hwMusicoinPath: 'm/44\'/184\'/0\'/0',      // first address: m/44'/184'/0'/0/0
-    hwYapstonePath: 'm/44\'/528\'/0\'/0',      // first address: m/44'/528'/0'/0/0
-    singularDTVPath: 'm/0\'/0\'/0\'',           // first address: m/0'/0'/0'/0
-    hwRskPath: 'm/44\'/137\'/0\'/0',      // first address : m/44'/137'/0'/0/0
-    goPath: 'm/44\'/6060\'/0\'/0',     // first address: m/44'/6060'/0'/0/0
-    hwEOSClassicPath: 'm/44\'/2018\'/0\'/0',     // first address: m/44'/2018'/0'/0/0
+    trezorTestnetPath: 'm/44\'/1\'/0\'/0', // first address: m/44'/1'/0'/0/0
+    trezorClassicPath: 'm/44\'/61\'/0\'/0', // first address: m/44'/61'/0'/0/0
+    trezorPath: 'm/44\'/60\'/0\'/0', // first address: m/44'/60'/0'/0/0
+    hwUbqPath: 'm/44\'/108\'/0\'/0', // first address: m/44'/40'/0'/0/0
+    hwExpansePath: 'm/44\'/40\'/0\'/0', // first address: m/44'/40'/0'/0/0
+    hwEllaismPath: 'm/44\'/163\'/0\'/0', // first address: m/44'/163'/0'/0/0
+    hwEtherGemPath: 'm/44\'/1987\'/0\'/0', // first address: m/44'/1987'/0'/0/0
+    hwCallistoPath: 'm/44\'/820\'/0\'/0', // first address: m/44'/820'/0'/0/0
+    hwSocialPath: 'm/44\'/1128\'/0\'/0', // first address: m/44'/1128'/0'/0/0
+    hwMusicoinPath: 'm/44\'/184\'/0\'/0', // first address: m/44'/184'/0'/0/0
+    hwYapstonePath: 'm/44\'/528\'/0\'/0', // first address: m/44'/528'/0'/0/0
+    singularDTVPath: 'm/0\'/0\'/0\'', // first address: m/0'/0'/0'/0
+    hwRskPath: 'm/44\'/137\'/0\'/0', // first address : m/44'/137'/0'/0/0
+    goPath: 'm/44\'/6060\'/0\'/0', // first address: m/44'/6060'/0'/0/0
+    hwEOSClassicPath: 'm/44\'/2018\'/0\'/0' // first address: m/44'/2018'/0'/0/0
   }
   $scope.canUseMewConnect = MewConnectEth.checkWebRTCAvailable()
   $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath
@@ -341,10 +341,9 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     walletService.wallet = null
   }
   $scope.ledgerCallback = function (result, error) {
-    if (typeof result != 'undefined') {
+    if (typeof result !== 'undefined') {
       $scope.HWWalletCreate(result['publicKey'], result['chainCode'], 'ledger', $scope.getLedgerPath())
-    }
-    else {
+    } else {
       $scope.ledgerError = true
       $scope.ledgerErrorString = error
       $scope.$apply()
@@ -361,16 +360,14 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
   }
   $scope.digitalBitboxCallback = function (result, error) {
     $scope.HDWallet.digitalBitboxSecret = ''
-    if (typeof result != 'undefined') {
+    if (typeof result !== 'undefined') {
       $scope.HWWalletCreate(result['publicKey'], result['chainCode'], 'digitalBitbox', $scope.HDWallet.dPath)
-    } else
-      $scope.notifier.danger(error)
+    } else { $scope.notifier.danger(error) }
   }
   $scope.secalotCallback = function (result, error) {
-    if (typeof result != 'undefined') {
+    if (typeof result !== 'undefined') {
       $scope.HWWalletCreate(result['publicKey'], result['chainCode'], 'secalot', $scope.HDWallet.dPath)
-    } else
-      $scope.notifier.danger(error)
+    } else { $scope.notifier.danger(error) }
   }
   $scope.scanLedger = function () {
     $scope.ledgerError = false
@@ -387,7 +384,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
   }
   $scope.scanSecalot = function () {
     $scope.secalot = new SecalotUsb()
-    if (typeof $scope.HDWallet.secalotSecret == 'undefined') {
+    if (typeof $scope.HDWallet.secalotSecret === 'undefined') {
       $scope.HDWallet.secalotSecret = ''
     }
     var app = new SecalotEth($scope.secalot, $scope.HDWallet.secalotSecret)
@@ -402,7 +399,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.5.2')
   }
 
-  //================= Mew Connect (start)==============================
+  //= ================ Mew Connect (start)==============================
   $scope.scanMewConnect = function () {
     var app = new MewConnectEth()
     console.log(MewConnect) // todo remove dev item
@@ -420,30 +417,56 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
       ethUtils: window.ethUtil
     })
 
+    MewConnect.instance = $scope.MewConnect
     $scope.$on('$destroy', function () {
-
       $scope.mewConnect.disconnectRTC()
       if (MewConnect.instance) {
         MewConnect.instance = null
-        console.log('decryptWalletCtrl:368 [destroying scope]: ', MewConnect) //todo remove dev item
+        console.log('decryptWalletCtrl:368 [destroying scope]: ', MewConnect) // todo remove dev item
       }
     })
 
-    $scope.mewConnect.use(makeWallet)
-    $scope.mewConnect.registerCodeDisplayCallback(codeDisplay)
-    $scope.mewConnect.registerRtcConnectedCallback(rtcConnected)
-    $scope.mewConnect.registerRtcClosedCallback(rtcClosed)
-    $scope.mewConnect.configureInternalMiddleware()
+    $scope.mewConnect.on('codeDisplay', codeDisplay)
+    // $scope.mewConnect.on('SocketConnectedEvent', initiateSocketButtonState)
+    // $scope.mewConnect.on('RtcInitiatedEvent', initiateRtcButtonState)
+    $scope.mewConnect.on('RtcConnectedEvent', rtcConnected)
+    // $scope.mewConnect.on('RtcDisconnectEvent', disconnectRtcButtonState)
+    $scope.mewConnect.on('RtcClosedEvent', rtcClosed)
+
+    $scope.mewConnect.on('address', makeWallet)
+
+    // $scope.mewConnect.on('signMessage', (data) => {
+    //   try {
+    //     signedMessage.textContent = data.data
+    //   } catch (e) {
+    //     console.error('signMessage RAW data:', data)
+    //   }
+    // })
+    // $scope.mewConnect.on('signTx', (data) => {
+    //   console.log('address data:', data)
+    //   try {
+    //     console.log('signTx data:', data.data)
+    //     signedMessage.textContent = data.data
+    //   } catch (e) {
+    //     console.error('signTx RAW data:', data)
+    //   }
+    // })
+
+    // $scope.mewConnect.use(makeWallet)
+    // $scope.mewConnect.registerCodeDisplayCallback(codeDisplay)
+    // $scope.mewConnect.registerRtcConnectedCallback(rtcConnected)
+    // $scope.mewConnect.registerRtcClosedCallback(rtcClosed)
+    // $scope.mewConnect.configureInternalMiddleware()
     app.setMewConnect($scope.mewConnect)
     app.signalerConnect()
 
-    $scope.connectionCodeTimeout = null;
+    $scope.connectionCodeTimeout = null
 
     function rtcConnected (data) {
-      if($scope.connectionCodeTimeout){
+      if ($scope.connectionCodeTimeout) {
         clearTimeout($scope.connectionCodeTimeout)
       }
-      $scope.connectionCodeTimeout = null;
+      $scope.connectionCodeTimeout = null
       uiFuncs.notifier.info('Connected Via Mew Connect')
       $scope.mewConnect.sendRtcMessage('address', '')
       $scope.mewConnectionStatus = 2
@@ -459,33 +482,28 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
       console.log('CODE DISPLAY', data)
       $scope.mewConnectionStatus = 1
       $scope.mewConnectCode = data
-      $scope.connectionCodeTimeout = setTimeout(() =>{
-        $scope.mewConnectionStatus = 3;
+      $scope.connectionCodeTimeout = setTimeout(() => {
+        $scope.mewConnectionStatus = 3
         $scope.$apply()
-        console.log("Timeout") // todo remove dev item
+        console.log('Timeout') // todo remove dev item
       }, 120800) // 200ms before the actual server timeout happens. (to account for transit time, ui lag, etc.)
       $scope.$apply()
     }
 
-    function makeWallet (data, next) {
-      if (data.type === 'address') {
-        console.log(MewConnect.get())
-        console.log('decryptWalletCtrl:370', data) //todo remove dev item
-        var wallet = app.createWallet(data.data)
-        $scope.notifier.info(globalFuncs.successMsgs[1])
-        $scope.wallet = wallet
-        walletService.wallet = wallet
-        $scope.$apply()
-      } else {
-        next()
-      }
+    function makeWallet (data) {
+      console.log('decryptWalletCtrl:370', data) // todo remove dev item
+      var wallet = app.createWallet(data)
+      $scope.notifier.info(globalFuncs.successMsgs[1])
+      $scope.wallet = wallet
+      walletService.wallet = wallet
+      $scope.$apply()
     }
   }
 
   $scope.mewConnectDisconnect = function () {
     $scope.mewConnect.disconnectRTC()
   }
-  //================= Mew Connect (end)==============================
+  //= ================ Mew Connect (end)==============================
 
   $scope.getLedgerPath = function () {
     return $scope.HDWallet.dPath
