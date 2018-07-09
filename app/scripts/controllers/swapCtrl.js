@@ -499,20 +499,18 @@ var swapCtrl = function ($scope, $sce, walletService) {
   };
 
   $scope.isKyberPairAvailable = async function () {
-    let _returnedRate = await $scope.kyber.setKyberRate($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin);
-    if (_returnedRate > 0) {
-      return true;
-    } else {
-      $scope.displayKyberErrorMessage("unAvailable");
-      return false;
+    try {
+      let _returnedRate = await $scope.kyber.setKyberRate($scope.swapOrder.fromCoin, $scope.swapOrder.toCoin)
+      if (_returnedRate > 0) {
+        return true
+      } else {
+        $scope.displayKyberErrorMessage('unAvailable')
+        return false;
+      }
+    } catch (e) {
+      console.error(e)
+      $scope.displayKyberErrorMessage('unAvailable')
     }
-    // if ($scope.kyber.kyberRates[kyber.toPairKey($scope.kyberSwapOrder.fromCoin, $scope.kyberSwapOrder.toCoin)] == 0 ||
-    //     $scope.kyber.kyberRates[kyber.toPairKey($scope.kyberSwapOrder.fromCoin, $scope.kyberSwapOrder.toCoin)] == "0") {
-    //     $scope.displayKyberErrorMessage("unAvailable");
-    //     return false;
-    // } else {
-    //     return true;
-    // }
   };
 
   // calculates the rate for display when a kyber pair is selected
