@@ -513,14 +513,17 @@ label small {
 .dropdown-gas__msg {
   font-size: 12px;
   font-weight:300;
-  left: -100%;
-  margin: 0;
-  position: absolute;
-  right: -100%;
+  margin: -10px auto 3px auto;
+  max-width: 113rem;
+  padding: 0 5rem;
+  text-align: right;
   white-space:normal;
+  @media screen and (max-width: 80rem) {
+    padding: 0 3%;
+  }
   @media screen and (max-width: 900px) {
-    left: -25%;
-    right: 0;
+    margin-top: 0;
+    padding: 0 1%;
   }
 
 }
