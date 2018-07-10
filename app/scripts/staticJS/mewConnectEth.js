@@ -37,7 +37,7 @@ class MewConnectEth{
 
   createWallet(data) {
     var address = data.address;
-    var pub = data.pub;
+    // var pub = data.pub;
     var wallet = void 0;
     if (address.substring(0, 2) != "0x") {
       address = "0x" + address;
@@ -56,7 +56,7 @@ class MewConnectEth{
         // type: "addressOnly",
         type: "mewConnect",
         address: address,
-        pubKey: pub,
+        // pubKey: pub,
         getAddressString: tempWallet.getAddressString,
         getChecksumAddressString: function getChecksumAddressString() {
           return ethUtil.toChecksumAddress(this.getAddressString());

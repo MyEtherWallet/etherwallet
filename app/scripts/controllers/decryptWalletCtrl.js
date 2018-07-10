@@ -417,11 +417,16 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
       ethUtils: window.ethUtil
     })
 
-    MewConnect.instance = $scope.MewConnect
+    Reflect.defineProperty(MewConnect, 'instance', {
+      value: $scope.mewConnect
+    })
+
+    // window.onunload
+
     $scope.$on('$destroy', function () {
       $scope.mewConnect.disconnectRTC()
       if (MewConnect.instance) {
-        MewConnect.instance = null
+        Reflect.deleteProperty(MewConnect, 'instance')
         console.log('decryptWalletCtrl:368 [destroying scope]: ', MewConnect) // todo remove dev item
       }
     })
@@ -430,33 +435,10 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     // $scope.mewConnect.on('SocketConnectedEvent', initiateSocketButtonState)
     // $scope.mewConnect.on('RtcInitiatedEvent', initiateRtcButtonState)
     $scope.mewConnect.on('RtcConnectedEvent', rtcConnected)
-    // $scope.mewConnect.on('RtcDisconnectEvent', disconnectRtcButtonState)
+    $scope.mewConnect.on('RtcDisconnectEvent', rtcClosed)
     $scope.mewConnect.on('RtcClosedEvent', rtcClosed)
 
     $scope.mewConnect.on('address', makeWallet)
-
-    // $scope.mewConnect.on('signMessage', (data) => {
-    //   try {
-    //     signedMessage.textContent = data.data
-    //   } catch (e) {
-    //     console.error('signMessage RAW data:', data)
-    //   }
-    // })
-    // $scope.mewConnect.on('signTx', (data) => {
-    //   console.log('address data:', data)
-    //   try {
-    //     console.log('signTx data:', data.data)
-    //     signedMessage.textContent = data.data
-    //   } catch (e) {
-    //     console.error('signTx RAW data:', data)
-    //   }
-    // })
-
-    // $scope.mewConnect.use(makeWallet)
-    // $scope.mewConnect.registerCodeDisplayCallback(codeDisplay)
-    // $scope.mewConnect.registerRtcConnectedCallback(rtcConnected)
-    // $scope.mewConnect.registerRtcClosedCallback(rtcClosed)
-    // $scope.mewConnect.configureInternalMiddleware()
     app.setMewConnect($scope.mewConnect)
     app.signalerConnect()
 

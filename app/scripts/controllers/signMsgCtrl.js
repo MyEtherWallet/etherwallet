@@ -149,13 +149,20 @@ var signMsgCtrl = function($scope, $sce, walletService) {
               //TODO reset ui when rtc disconnects
               var msg = Buffer.from(thisMessage).toString("hex");
               var connectApp = new MewConnectEth();
-              var mewConnect = MewConnect.get();
+              var mewConnect = MewConnect.instance;
               connectApp.setMewConnect(mewConnect);
                 mewConnect.on('signMessage', (data) =>{
                     $scope.signMsg.signedMsg = JSON.parse(data);
                     $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
                     // mewConnect.disconnectRTCDirect();
                 })
+                mewConnect.on('sign', (data) =>{
+                    $scope.signMsg.signedMsg = JSON.parse(data);
+                    $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
+                    // mewConnect.disconnectRTCDirect();
+                })
+
+
               // mewConnect.setMessageSignerCallback(function (data, next) {
               //   $scope.signMsg.signedMsg = JSON.parse(data);
               //   $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());

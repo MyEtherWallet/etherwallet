@@ -156,13 +156,15 @@ uiFuncs.signTxMewConnect = function (eTx, rawTx, txData, callback) {
   // uiFuncs.notifier.info("Tap a touch button on your device to confirm signing.");
 
   var app = new MewConnectEth()
-  var mewConnect = MewConnect.get()
+  var mewConnect = MewConnect.instance
+
+    console.log(mewConnect) // todo remove dev item
   app.setMewConnect(mewConnect)
   mewConnect.on('signTx', (data) => {
     var result = data
     console.log(result) // todo remove dev item
     uiFuncs.notifier.info("The transaction was signed but not sent. Click the blue 'Send Transaction' button to continue.")
-    var eTx_ = new ethUtil.Tx(rawTx)
+    // var eTx_ = new ethUtil.Tx(rawTx)
     rawTx.rawTx = JSON.stringify(rawTx)
     rawTx.signedTx = '0x' + result
     rawTx.isError = false
@@ -237,9 +239,9 @@ uiFuncs.generateTx = function (txData, callback) {
         callback(rawTx)
       } else if ((typeof txData.hwType !== 'undefined') && (txData.hwType == 'digitalBitbox')) {
         uiFuncs.signTxDigitalBitbox(eTx, rawTx, txData, callback)
-      } /* else if (typeof txData.hwType != "undefined" && txData.hwType == "mewConnect") {
+      }  else if (typeof txData.hwType != "undefined" && txData.hwType == "mewConnect") {
               uiFuncs.signTxMewConnect(eTx, rawTx, txData, callback);
-            } */ else if ((typeof txData.hwType !== 'undefined') && (txData.hwType == 'secalot')) {
+            }  else if ((typeof txData.hwType !== 'undefined') && (txData.hwType == 'secalot')) {
         uiFuncs.signTxSecalot(eTx, rawTx, txData, callback)
       } else {
         eTx.sign(new Buffer(txData.privKey, 'hex'))
