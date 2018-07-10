@@ -308,10 +308,17 @@ input[type="password"]+.eye {
     float: left;
     font-weight: 500;
     user-select: none;
-    padding: .25rem;
-    margin: .25rem -30px;
+    padding: 0;
+    margin: 5px -30px;
     font-size: 1.6rem;
-    line-height: 1.6;
+    line-height: 0.95;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #c3c3c3;
+    border-radius: 5px;
   }
 }
 
@@ -868,6 +875,12 @@ header.EOSC {
   .contest-container {
     ol {
       padding: 0 5em !important;
+    }
+  }
+
+  .collapse-container {
+    .collapse-button {
+      margin-left: -100px;
     }
   }
 }
