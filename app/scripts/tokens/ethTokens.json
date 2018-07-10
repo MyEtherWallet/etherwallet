@@ -1002,6 +1002,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x05c3617cbf1304b9260aa61ec960f115d67becea",
+		"symbol": "Cubrix",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xdA6cb58A0D0C01610a29c5A65c303e13e885887C",
 		"symbol": "cV",
 		"decimal": 18,
