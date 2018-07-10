@@ -1,3 +1,9 @@
+### Release v3.21.17
+### New
+- Add Cubrix token [#1952](https://github.com/kvhnuke/etherwallet/pull/1952)
+- Update REP token address [#1951](https://github.com/kvhnuke/etherwallet/pull/1951)
+- Add Cubrix contract abi [#1950](https://github.com/kvhnuke/etherwallet/pull/1950)
+  
 ### Release v3.21.16
 ### New
 - Add ECP gas limit [#1947](https://github.com/kvhnuke/etherwallet/pull/1947)
