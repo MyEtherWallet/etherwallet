@@ -60,6 +60,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.UBQ:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
                     break;
+                case nodes.nodeTypes.POA:
+                    $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
+                    break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
             }
