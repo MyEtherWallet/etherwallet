@@ -1,5 +1,6 @@
 ### Release v3.21.17
 ### New
+- Add Billfodl affiliate link and CFC token []()
 - Misc CSS fixes [#1935](https://github.com/kvhnuke/etherwallet/pull/1935)
 - Misc CSS fixes [#1937](https://github.com/kvhnuke/etherwallet/pull/1937)
 - Add Cubrix token [#1952](https://github.com/kvhnuke/etherwallet/pull/1952)

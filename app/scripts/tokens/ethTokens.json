@@ -780,6 +780,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5dff89a2caa4d76bc286f74d67bd718eb834da61",
+		"symbol": "CFC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x12FEF5e57bF45873Cd9B62E9DBd7BFb99e32D73e",
 		"symbol": "CFI",
 		"decimal": 18,
