@@ -176,7 +176,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                 // // if(MewConnect.instance){
                 // //     console.log("decryptWalletCtrl:363", MewConnect); //todo remove dev item
                 // // }
-                console.log("signMsgCtrl:142 : scope being destroyed"); //todo remove dev item
+                // console.log("signMsgCtrl:142 : scope being destroyed"); //todo remove dev item
               });
               //================= Mew Connect (end)==============================
 

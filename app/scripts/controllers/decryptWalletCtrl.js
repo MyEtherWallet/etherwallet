@@ -402,7 +402,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
   //= ================ Mew Connect (start)==============================
   $scope.scanMewConnect = function () {
     var app = new MewConnectEth()
-    console.log(MewConnect) // todo remove dev item
+    // console.log(MewConnect) // todo remove dev item
     // if(!MewConnect.instance){
     //
     // } else {
@@ -411,7 +411,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     //     // $scope.mewConnect = MewConnect.get();
     // }
 
-    $scope.mewConnect = MewConnect.init(null, console.log, {
+    $scope.mewConnect = MewConnect.init(null, null, {
       wrtc: MewRTC,
       io: window.socketIo,
       ethUtils: window.ethUtil
@@ -427,7 +427,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
       $scope.mewConnect.disconnectRTC()
       if (MewConnect.instance) {
         Reflect.deleteProperty(MewConnect, 'instance')
-        console.log('decryptWalletCtrl:368 [destroying scope]: ', MewConnect) // todo remove dev item
+        // console.log('decryptWalletCtrl:368 [destroying scope]: ', MewConnect) // todo remove dev item
       }
     })
 
@@ -455,25 +455,25 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     }
 
     function rtcClosed (data) {
-      console.log('closing')
+      // console.log('closing')
       $scope.mewConnectionStatus = 0
       uiFuncs.notifier.info('Disconnected')
     }
 
     function codeDisplay (data) {
-      console.log('CODE DISPLAY', data)
+      // console.log('CODE DISPLAY', data)
       $scope.mewConnectionStatus = 1
       $scope.mewConnectCode = data
       $scope.connectionCodeTimeout = setTimeout(() => {
         $scope.mewConnectionStatus = 3
         $scope.$apply()
-        console.log('Timeout') // todo remove dev item
+        // console.log('Timeout') // todo remove dev item
       }, 120800) // 200ms before the actual server timeout happens. (to account for transit time, ui lag, etc.)
       $scope.$apply()
     }
 
     function makeWallet (data) {
-      console.log('decryptWalletCtrl:370', data) // todo remove dev item
+      // console.log('decryptWalletCtrl:370', data) // todo remove dev item
       var wallet = app.createWallet(data)
       $scope.notifier.info(globalFuncs.successMsgs[1])
       $scope.wallet = wallet

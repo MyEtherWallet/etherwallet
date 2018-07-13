@@ -42,13 +42,13 @@ var walletBalanceCtrl = function($scope, $sce, $rootScope) {
            var autoTokens = globalFuncs.localStorage.getItem('autoLoadTokens')
            $scope.autoLoadTokens = autoTokens ? JSON.parse(autoTokens) : [];
 
-           console.log(token.balance)
-           console.log(token.contractAddress)
+           // console.log(token.balance)
+           // console.log(token.contractAddress)
 
           if ( parseInt(token.balance) > 0 ) {
             $scope.autoLoadTokens.push( token.contractAddress );
             globalFuncs.localStorage.setItem( 'autoLoadTokens', JSON.stringify($scope.autoLoadTokens) );
-            console.log(token)
+            // console.log(token)
           }
         });
       }

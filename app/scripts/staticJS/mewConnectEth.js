@@ -22,6 +22,7 @@ class MewConnectEth{
   }
 
   signalerConnect(url) {
+    // console.log(this.signalerUrl, url) // todo remove dev item
     if (!url) {
       this.comm.initiatorStart(this.signalerUrl);
     } else {
@@ -40,7 +41,7 @@ class MewConnectEth{
     if (address.substring(0, 2) != "0x") {
       address = "0x" + address;
     }
-    console.log("decryptWalletCtrl:334", data); //todo remove dev item
+    // console.log("decryptWalletCtrl:334", data); //todo remove dev item
     if (Validator.isValidAddress(address)) {
       var tempWallet = new Wallet();
       tempWallet.getAddressString = function () {
@@ -49,7 +50,7 @@ class MewConnectEth{
       var balance = tempWallet.setBalance(function (data) {
         return data;
       });
-      console.log(balance); //todo remove dev item
+      // console.log(balance); //todo remove dev item
       wallet = {
         // type: "addressOnly",
         type: "mewConnect",
@@ -65,20 +66,20 @@ class MewConnectEth{
         setBalance: tempWallet.setBalance,
         setTokens: tempWallet.setTokens,
         getPath: function getPath(stuff) {
-          console.log("mewConnectEth:209", "GET PATH"); //todo remove dev item
+          // console.log("mewConnectEth:209", "GET PATH"); //todo remove dev item
         },
         getHWTransport: function getHWTransport(stuff) {
-          console.log("mewConnectEth:212", "GET HARDWARE TRANSPORT"); //todo remove dev item
+          // console.log("mewConnectEth:212", "GET HARDWARE TRANSPORT"); //todo remove dev item
         },
         getHWType: function getHWType() {
-          console.log("mewConnectEth:215", "GET HARDWARE TYPE"); //todo remove dev item
+          // console.log("mewConnectEth:215", "GET HARDWARE TYPE"); //todo remove dev item
           return "mewConnect";
         }
       };
       return wallet;
     } else {
       // todo add error message (address not valid)
-      console.error("decryptWalletCtrl:355", "NOT VALID?"); //todo remove dev item
+      // console.error("decryptWalletCtrl:355", "NOT VALID?"); //todo remove dev item
       return false;
     }
   }
@@ -90,7 +91,7 @@ class MewConnectEth{
   signTransaction(eTx, rawTx, txData) {
     var self = this;
     var hashToSign = eTx.hash(false).toString('hex');
-    console.log("mewConnectEth:326", rawTx); //todo remove dev item
+    // console.log("mewConnectEth:326", rawTx); //todo remove dev item
     self.comm.sendRtcMessage("signTx", JSON.stringify(rawTx));
   }
 
