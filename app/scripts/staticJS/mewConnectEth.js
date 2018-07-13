@@ -10,9 +10,7 @@ class MewConnectEth{
       // this.callback = this.mewConnectCallback;
     }
     this.walletCallback = null;
-    // this.signalerUrl = "https://35.160.138.139:3001";
-    this.signalerUrl = "https://35.160.138.139:3200"; // encrypted, version, etc. Signal Server
-    // this.signalerUrl =  "mew-mew-connect-signal.nanoapp.io" // nanobox hosted version
+    this.signalerUrl =  "https://connect.mewapi.io" // nanobox hosted version
   }
 
   getCallback() {
