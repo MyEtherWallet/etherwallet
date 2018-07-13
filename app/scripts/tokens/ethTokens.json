@@ -1266,6 +1266,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x62d4c04644314f35868ba4c65cc27a77681de7a9",
+		"symbol": "DRVH",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x2799d90c6d44cb9aa5fbc377177f16c33e056b82",
 		"symbol": "DRP (Dripcoin)",
 		"decimal": 0,
@@ -1407,6 +1413,12 @@
 		"address": "0x44197a4c44d6a059297caf6be4f7e172bd56caaf",
 		"symbol": "ELTCOIN",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0xa95592DCFfA3C080B4B40E459c5f5692F67DB7F8",
+		"symbol": "ELY",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
