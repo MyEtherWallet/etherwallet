@@ -1,3 +1,13 @@
+### Release v3.21.17
+### New
+- Add ELY and DRVH tokens [#1955](https://github.com/kvhnuke/etherwallet/pull/1955)
+- Add Billfodl affiliate link and CFC token [#1954](https://github.com/kvhnuke/etherwallet/pull/1954)
+- Misc CSS fixes [#1935](https://github.com/kvhnuke/etherwallet/pull/1935)
+- Misc CSS fixes [#1937](https://github.com/kvhnuke/etherwallet/pull/1937)
+- Add Cubrix token [#1952](https://github.com/kvhnuke/etherwallet/pull/1952)
+- Update REP token address [#1951](https://github.com/kvhnuke/etherwallet/pull/1951)
+- Add Cubrix contract abi [#1950](https://github.com/kvhnuke/etherwallet/pull/1950)
+
 ### Release v3.21.16
 ### New
 - Add ECP gas limit [#1947](https://github.com/kvhnuke/etherwallet/pull/1947)

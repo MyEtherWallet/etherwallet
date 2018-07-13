@@ -308,10 +308,17 @@ input[type="password"]+.eye {
     float: left;
     font-weight: 500;
     user-select: none;
-    padding: .25rem;
-    margin: .25rem -30px;
+    padding: 0;
+    margin: 5px -30px;
     font-size: 1.6rem;
-    line-height: 1.6;
+    line-height: 0.95;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #c3c3c3;
+    border-radius: 5px;
   }
 }
 
@@ -513,14 +520,17 @@ label small {
 .dropdown-gas__msg {
   font-size: 12px;
   font-weight:300;
-  left: -100%;
-  margin: 0;
-  position: absolute;
-  right: -100%;
+  margin: -10px auto 3px auto;
+  max-width: 113rem;
+  padding: 0 5rem;
+  text-align: right;
   white-space:normal;
+  @media screen and (max-width: 80rem) {
+    padding: 0 3%;
+  }
   @media screen and (max-width: 900px) {
-    left: -25%;
-    right: 0;
+    margin-top: 0;
+    padding: 0 1%;
   }
 
 }
@@ -865,6 +875,12 @@ header.EOSC {
   .contest-container {
     ol {
       padding: 0 5em !important;
+    }
+  }
+
+  .collapse-container {
+    .collapse-button {
+      margin-left: -100px;
     }
   }
 }
