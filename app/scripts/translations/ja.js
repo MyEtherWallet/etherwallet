@@ -4,20 +4,20 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
-GEN_Help_0                      :  '既にお財布をお持ちですか？', /*Already have a wallet somewhere?*/
-GEN_Help_MetaMask               :  'とても簡単です！ キーはメタマスク(Metamask)に保存されます。フィッシングサイトに保存されることはありません！ すぐにお試しください。', /*So easy! Keys stay in MetaMask, not on a phishing site! Try it today.*/
+GEN_Help_0                      :  '既にお財布をお持ちですか?', /*Already have a wallet somewhere?*/
+GEN_Help_MetaMask               :  'とても簡単です! キーは MetaMask に保存されます。フィッシングサイトに保存されることはありません! すぐにお試しください。', /*So easy! Keys stay in MetaMask, not on a phishing site! Try it today.*/
 
-GEN_Warning_1                   :  '**絶対に忘れないようにしてください！**　失くしてしまうと、回復できません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
-GEN_Warning_2                   :  '**他人と共有しないでください**　悪意のあるサイトでこのファイルを使うと、あなたのお金が盗まれます。', /***Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.*/
-GEN_Warning_3                   :  '**バックアップを作成してください！**　ゆくゆくは、数億円の大金になるものと心得て安全性を確保してください。', /***Make a backup!** Secure it like the millions of dollars it may one day be worth.*/
+GEN_Warning_1                   :  '**絶対に忘れないようにしてください!** 失くしてしまうと、回復できません。', /***Do not lose it!** It cannot be recovered if you lose it.*/
+GEN_Warning_2                   :  '**他人と共有しないでください!** 悪意のあるサイトでこのファイルを使うと、あなたのお金が盗まれます。', /***Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.*/
+GEN_Warning_3                   :  '**バックアップを作成してください!** ゆくゆくは、数億円の大金になるものと心得て安全性を確保してください。', /***Make a backup!** Secure it like the millions of dollars it may one day be worth.*/
 
-GAS_Price_1                     : '普通',　/*Not So Fast*/
+GAS_Price_1                     : '普通', /*Not So Fast*/
 GAS_Price_2                     : '迅速', /*Fast*/
 GAS_Price_3                     : '超速', /*Fast AF*/
 
 CONTRACT_Helper_1               :  'マルチシグのアドレスに変えてください', /*Please change the address to your own Multisig Contract Address.*/
 CONTRACT_Warning_1              :  '**契約を展開**しようとしています。', /*You are about to **deploy a contract**.*/
-CONTRACT_Warning_2              :  '次のネットワークに展開されます：', /*It will be deployed on the following network:*/
+CONTRACT_Warning_2              :  '次のネットワークに展開されます:', /*It will be deployed on the following network:*/
 CONTRACT_Warning_3              :  '**契約上の機能を実行**しようとしています。', /*You are about to **execute a function on contract**.*/
 
 SEND_Helper_Contract            :  'ほとんどの場合、0のままにしておきます。', /*In most cases you should leave this as 0.*/
@@ -25,7 +25,7 @@ SEND_ViewOnly                   :  '自分のアドレスを指定するだけ�
 SEND_LoadTokens                 :  'トークン読込', /*Load Tokens*/
 SEND_CustomAddrMsg              :  '対応するメッセージ', /*A message regarding*/
 
-SWAP_Warning_1                  :  '警告！ 交換するためにに必要な金額が不足しています。', /*Warning! You do not have enough funds to complete this swap.*/
+SWAP_Warning_1                  :  '警告! 交換するためにに必要な金額が不足しています。', /*Warning! You do not have enough funds to complete this swap.*/
 SWAP_Warning_2                  :  '資金を追加するか、別のお財布をお使いください。',　/*Please add more funds to your wallet or access a different wallet.*/
 
 X_Advanced                      :  '熟練者向け。', /*Advanced Users Only.*/
@@ -33,7 +33,7 @@ X_HelpfulLinks                  :  '役立つリンクとよくある問答集',
 X_HelpfulLinks_1                :  'お財布の操作方法', /*How to Access your Wallet*/
 X_HelpfulLinks_2                :  '秘密鍵を紛失してしまいました', /*I lost my private key*/
 X_HelpfulLinks_3                :  '秘密鍵が別のアドレスを解錠しました', /*My private key opens a different address*/
-X_HelpfulLinks_4                :  'MyEtherWalletから、またはMyEtherWalletへ移行するには', /*Migrating to/from MyEtherWallet*/
+X_HelpfulLinks_4                :  'MyEtherWallet から、または MyEtherWallet へ移行するには', /*Migrating to/from MyEtherWallet*/
 X_Network                       :  'ノード', // aka "node" or "chain" - used in the dropdown in header  /*Network*/
 X_Network_Custom                :  'カスタムネットワークやノードを追加', /*Add Custom Network / Node*/
 
@@ -111,43 +111,43 @@ EOS_09                          :  'EOSトークンを請求する', /*Claim EOS
 EOS_10                          :  '`claimAll`を選択する', /*Select `claimAll`.*/
 
 /* Onboarding */
-ONBOARD_welcome_title           :  'いらっしゃいませ！ MyEtherWallet.com へようこそ！', /*Welcome to MyEtherWallet.com*/
+ONBOARD_welcome_title           :  'MyEtherWallet.com へようこそ!', /*Welcome to MyEtherWallet.com*/
 ONBOARD_welcome_content__1      :  'あなた自身の安全のために、以下の事項をご理解ください。🙏', /*Please take some time to understand this for your own safety. 🙏*/
 ONBOARD_welcome_content__2      :  'これらの警告をよくご覧いただきませんと、**資産が盗まれる**ことになります。', /*Your funds will be stolen if you do not heed these warnings.*/
 ONBOARD_welcome_content__3      :  'わずらわしい説明だと重々承知しております。申し訳ございません。', /*We know this click-through stuff is annoying. We are sorry.*/
-ONBOARD_welcome_content__4      :  'MEWとは何か', /*What is MEW*/
-ONBOARD_welcome_content__5      :  'MyEtherWalletは、無料で、オープンソースの、クライアントサイド・インターフェイスです。', /*MyEtherWallet is a free, open-source, client-side interface.*/
+ONBOARD_welcome_content__4      :  'MyEtherWallet とは何か', /*What is MEW*/
+ONBOARD_welcome_content__5      :  'MyEtherWallet は、無料で、オープンソースの、クライアントサイド・インターフェイスです。', /*MyEtherWallet is a free, open-source, client-side interface.*/
 ONBOARD_welcome_content__6      :  '暗号鍵と資産を自身の管理下に置きながら、ブロックチェーンを直接操作することができます。', /*We allow you to interact directly with the blockchain while remaining in full control of your keys &amp; your funds.*/
 ONBOARD_welcome_content__7      :  '**あなた**が、そして**あなただけ**が、自分のセキュリテイの全責任を負います。', /***You** and **only you** are responsible for your security.*/
 ONBOARD_welcome_content__8      :  '詐欺サイトに騙されたり、暗号鍵を失くしてしまっても、私たちは資産を取り返したりお財布を凍結したりすることはできません。', /*We cannot recover your funds or freeze your account if you visit a phishing site or lose your private key.*/
-ONBOARD_bank_title              :  'MyEtherWalletは金融機関に非ず', /*MyEtherWallet is not a Bank*/
+ONBOARD_bank_title              :  'MyEtherWallet は金融機関に非ず', /*MyEtherWallet is not a Bank*/
 ONBOARD_bank_content__1         :  '銀行や取引所などの金融機関に口座を開設すると、その金融機関がシステムの中にあなたの口座を作成します。', /*When you open an account with a bank or exchange, they create an account for you in their system.*/
 ONBOARD_bank_content__2         :  'その金融機関はあなたの個人情報や口座のパスワード、残高、取引記録、そして究極的にはあなたの財産を記録・管理します。', /*The bank keeps track of your personal information, account passwords, balances, transactions and ultimately your money.*/
 ONBOARD_bank_content__3         :  'また、カードが盗難に遭った際の払い戻しなど、口座の維持・管理に必要な手数料を徴収します。', /*The bank charge fees to manage your account and provide services, like refunding transactions when your card gets stolen.*/
 ONBOARD_bank_content__4         :  '金融機関では、小切手を切ったり、送金のためにデビッドカードをチャージしたり、オンラインで残高の確認をしたり、パスワードや盗難に遭ったカードの再発行ができます。', /*The bank allows you to write a check or charge your debit card to send money, go online to check your balance, reset your password, and get a new debit card if you lose it.*/
 ONBOARD_bank_content__5         :  'あなたの口座はその金融機関のものであり、送金額の上限や送金相手の指定、怪しい入金をどれだけの間差し止めるか、などの基準を独自に定めています。全て手数料が元になっています。', /*You have an account *with the bank or exchange* and they decide how much money you can send, where you can send it, and how long to hold on a suspicious deposit. All for a fee.*/
 ONBOARD_welcome_title__alt      :  '前書き', /*Introduction*/
-ONBOARD_interface_title         :  'MyEtherWalletは窓口である', /*MyEtherWallet is an Interface*/
-ONBOARD_interface_content__1    :  'MyEtherWalletを使って口座を開設すると、一組の暗号数列、すなわち秘密鍵と公開鍵（アドレス）が作成されます。', /*When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).*/
+ONBOARD_interface_title         :  'MyEtherWallet は窓口である', /*MyEtherWallet is an Interface*/
+ONBOARD_interface_content__1    :  'MyEtherWallet を使って口座を開設すると、一組の暗号数列、すなわち秘密鍵と公開鍵 (アドレス) が作成されます。', /*When you create an account on MyEtherWallet you are generating a cryptographic set of numbers: your private key and your public key (address).*/
 ONBOARD_interface_content__2    :  'これらの暗号鍵の操作は全て、あなたのコンピューターの、あなたのブラウザの中で行われます。', /*The handling of your keys happens entirely on your computer, inside your browser.*/
 ONBOARD_interface_content__3    :  '私たちは、秘密鍵やパスワード、その他一切の口座情報を送信・受信・保管いたしません。', /*We never transmit, receive or store your private key, password, or other account information.*/
 ONBOARD_interface_content__4    :  '私たちは取引手数料を一切いただきません。', /*We do not charge a transaction fee.*/
 ONBOARD_interface_content__5    :  'あなたは、私たちの**窓口**で**ブロックチェーンを直接**操作しています。', /*You are simply using our **interface** to interact **directly with the blockchain**.*/
-ONBOARD_interface_content__6    :  '公開鍵（アドレス）を相手に教えると、ETHやトークンを送ってもらうことができます。👍', /*If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍*/
+ONBOARD_interface_content__6    :  '公開鍵 (アドレス) を相手に教えると、ETHやトークンを送ってもらうことができます。👍', /*If you send your *public key (address)* to someone, they can send you ETH or tokens. 👍*/
 ONBOARD_interface_content__7    :  '秘密鍵が誰かの手に渡ると、受け取った相手があなたの口座を横取りしてしまいます。👎', /*If you send your *private key* to someone, they now have full control of your account. 👎*/
-ONBOARD_bank_title__alt         :  'MyEtherWalletは金融機関に非ず', /*MEW isn\'t a Bank*/
+ONBOARD_bank_title__alt         :  'MyEtherWallet は金融機関に非ず', /*MEW isn\'t a Bank*/
 ONBOARD_blockchain_title__alt   :  'そもそもブロックチェーンとは何か', /*WTF is a Blockchain?*/
 ONBOARD_blockchain_skip         :  'もう知ってるんだけど...', /*I already know what a blockchain is...*/
-ONBOARD_blockchain_title        :  'ちょっと待って、一体ブロックチェーンって何？', /*Wait, WTF is a Blockchain?*/
+ONBOARD_blockchain_title        :  'ちょっと待って、一体ブロックチェーンって何?', /*Wait, WTF is a Blockchain?*/
 ONBOARD_blockchain_content__1   :  'ブロックチェーンは、世界共通の巨大な分散型のスプレッドシートのようなものです。', /*The blockchain is like a huge, global, decentralized spreadsheet.*/
 ONBOARD_blockchain_content__2   :  '誰が誰にコインをいくら送ったとか、どの口座にいくら残っているか、などの情報を全て記録・保持しています。', /*It keeps track of who sent how many coins to whom, and what the balance of every account is.*/
-ONBOARD_blockchain_content__3   :  '世界中に何千もいる特殊なコンピューターを持った人（マイナー）によって、記録と管理が行われています。', /*It is stored and maintained by thousands of people (miners) across the globe who have special computers.*/
-ONBOARD_blockchain_content__4   :  'ブロックチェーンの中にあるブロックは全て、MyEtherWalletやMetaMask、Exodus、Mist、Geth、Parity、その他様々な場所から送られてきた個々の取引記録で構成されています。', /*The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.*/
-ONBOARD_blockchain_content__5   :  'MyEtherWalletや[etherscan.io](https://etherscan.io)で残高や取引記録を確認すると、見えるのは私たちのシステムの中身ではなく、ブロックチェーン上にあるデータです。', /*When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.*/
+ONBOARD_blockchain_content__3   :  '世界中に何千もいる特殊なコンピューターを持った人 (マイナー) によって、記録と管理が行われています。', /*It is stored and maintained by thousands of people (miners) across the globe who have special computers.*/
+ONBOARD_blockchain_content__4   :  'ブロックチェーンの中にあるブロックは全て、MyEtherWallet や MetaMask、Exodus、Mist、Geth、Parity、その他様々な場所から送られてきた個々の取引記録で構成されています。', /*The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.*/
+ONBOARD_blockchain_content__5   :  'MyEtherWallet や [etherscan.io](https://etherscan.io) で残高や取引記録を確認すると、見えるのは私たちのシステムの中身ではなく、ブロックチェーン上にあるデータです。', /*When you see your balance on MyEtherWallet.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.*/
 ONBOARD_blockchain_content__6   :  '大事なことなのでもう一度: **私たちは金融機関ではありません。**', /*Again: **we are not a bank**.*/
-ONBOARD_interface_title__alt    :  'MEWは窓口である', /*MEW is an Interface*/
-ONBOARD_why_title__alt          :  'でも... 何故それがそんなに大事なの？', /*But...why does this matter?*/
-ONBOARD_why_title               :  '何故全部読ませるの？', /*Why are you making me read all this?*/
+ONBOARD_interface_title__alt    :  'MyEtherWallet は窓口である', /*MEW is an Interface*/
+ONBOARD_why_title__alt          :  'でも... 何故それがそんなに大事なの?', /*But...why does this matter?*/
+ONBOARD_why_title               :  '何故全部読ませるの?', /*Why are you making me read all this?*/
 ONBOARD_why_content__1          :  'それは、私たちに**出来ない**事をご理解していただくためです...', /*Because we need you to understand that we **cannot**...*/
 ONBOARD_why_content__2          :  '口座にアクセスし、あなたに代わって送金することはできません。', /*Access your account or send your funds for you X.*/
 ONBOARD_why_content__3          :  '秘密鍵の復元や変更はできません。', /*Recover or change your private key.*/
@@ -155,29 +155,29 @@ ONBOARD_why_content__4          :  'パスワードの復元やリセットは�
 ONBOARD_why_content__5          :  '取引の巻き戻し・取り消し・金額変更はできません。', /*Reverse, cancel, or refund transactions.*/
 ONBOARD_why_content__6          :  '口座の凍結はできません。', /*Freeze accounts.*/
 ONBOARD_why_content__7          :  '**あなた**が、そして**あなただけ**が、自分のセキュリテイの全責任を負います。', /***You** and **only you** are responsible for your security.*/
-ONBOARD_why_content__8          :  '秘密鍵とパスワードを大事に保管してください。秘密鍵は、Mnemonic（ニーモニック）フレーズ、Keystoreファイル、UTCファイル、JSONファイル、お財布（ウォレット）ファイルとも呼ばれることがあります。', /*Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.*/
+ONBOARD_why_content__8          :  '秘密鍵とパスワードを大事に保管してください。秘密鍵は、Mnemonic (ニーモニック) フレーズ、Keystoreファイル、UTCファイル、JSONファイル、お財布 (ウォレット) ファイルとも呼ばれることがあります。', /*Be diligent to keep your private key and password safe. Your private key is sometimes called your mnemonic phrase, keystore file, UTC file, JSON file,  wallet file.*/
 ONBOARD_why_content__9          :  'もし秘密鍵やパスワードを忘れると、誰も回復させることができません。', /*If you lose your private key or password, no one can recover it.*/
 ONBOARD_why_content__10         :  'もし、あなたが秘密鍵を詐欺サイトで入力すると、**全ての資産**が盗まれてしまいます。', /*If you enter your private key on a phishing website, you will have **all your funds taken**.*/
 ONBOARD_blockchain_title__alt   :  'そもそもブロックチェーンとは何か', /*WTF is a Blockchain?*/
-ONBOARD_point_title__alt        :  'それならMEWは何ができるの？', /*What\'s the Point of MEW then?*/
-ONBOARD_whymew_title            :  'MyEtherWalletができないなら、つまりどういうこと？', /*If MyEtherWallet can\'t do those things, what\'s the point?*/
+ONBOARD_point_title__alt        :  'それなら MyEtherWallet は何ができるの?', /*What\'s the Point of MEW then?*/
+ONBOARD_whymew_title            :  'MyEtherWallet ができないなら、つまりどういうこと?', /*If MyEtherWallet can\'t do those things, what\'s the point?*/
 ONBOARD_whymew_content__1       :  'これがブロックチェーンと分散化の**肝**である、ということです。', /*Because that is the point of decentralization and the blockchain.*/
 ONBOARD_whymew_content__2       :  '自分の資産を動かすときに、金融機関・政府や他の誰かを頼る必要が全くありません。', /*You don\'t have to rely on your bank, government, or anyone else when you want to move your funds.*/
 ONBOARD_whymew_content__3       :  '自分の資産を守るために、取引所や銀行のセキュリティに頼る必要もありません。', /*You don\'t have to rely on the security of an exchange or bank to keep your funds safe.*/
-ONBOARD_whymew_content__4       :  'もし、こういった事には価値がない、と感じるのでしたら、なぜブロックチェーンや仮想通貨に価値を感じたのか、よく考えてみてください。 😉', /*If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉*/
+ONBOARD_whymew_content__4       :  'もし、こういった事には価値がない、と感じるのでしたら、なぜブロックチェーンや仮想通貨に価値を感じたのか、よく考えてみてください。😉', /*If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉*/
 ONBOARD_whymew_content__5       :  'もし、お気に召さないようでしたら、[Coinbase](https://www.coinbase.com/) や [Blockchain.info](https://blockchain.info/wallet/#/signup)をお使いください。これらは、IDとパスワードを使用する、より一般的な口座を採用しています。', /*If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.*/
-ONBOARD_whymew_content__6       :  'もし、少し不安だけれどもMEWを使いたければ、[ハードウェアウォレットを入手しましょう](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)！(英語) あなたの鍵を安全に保管してくれます。', /*If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.*/
-ONBOARD_why_title__alt          :  'でも... どうして？', /*But...why?*/
+ONBOARD_whymew_content__6       :  'もし、少し不安だけれども MyEtherWallet を使いたければ、[ハードウェアウォレットを入手しましょう](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)！(英語) あなたの鍵を安全に保管してくれます。', /*If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.*/
+ONBOARD_why_title__alt          :  'でも... どうして?', /*But...why?*/
 ONBOARD_secure_title            :  '自分自身とその資産の守り方', /*How To Protect Yourself & Your Funds*/
 ONBOARD_secure_1_title          :  'フィッシング詐欺から自分自身を守る方法', /*How To Protect Yourself from Phishers*/
-ONBOARD_secure_1_content__1     :  'フィッシング詐欺師は、MyEtherWalletやEtherDelta、Paypalやあなたの銀行に似せて作られたウェブサイトのリンクが含まれたメッセージを送りつけてきますが、これは偽サイトです。あなたの情報を盗み、そして資産を盗みます。', /*Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.*/
-  ONBOARD_secure_1_content__2     :  '[EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn)または[MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)、[Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige)、[MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm)を使って、悪質なサイトを遮断してください。', /*Install [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or  or the [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) to block malicious websites.*/
+ONBOARD_secure_1_content__1     :  'フィッシング詐欺師は、MyEtherWallet や EtherDelta、Paypalやあなたの銀行に似せて作られたウェブサイトのリンクが含まれたメッセージを送りつけてきますが、これは偽サイトです。あなたの情報を盗み、そして資産を盗みます。', /*Phishers send you a message with a link to a website that looks just like MyEtherWallet, EtherDelta, Paypal, or your bank, but is not the real website. They steal your information and then steal your money.*/
+ONBOARD_secure_1_content__2     :  '[EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) または [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)、[Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige)、[MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) を使い、悪質なサイトを遮断してください。', /*Install [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or  or the [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) to block malicious websites.*/
 ONBOARD_secure_1_content__3     :  'いつも、必ず、URLが「https://www.myetherwallet.com」であるを確認してください。', /*Always check the URL: `https://www.myetherwallet.com`.*/
-ONBOARD_secure_1_content__4     :  'URLバーに、 `MYETHERWALLET INC`と緑色で表示されていることを必ず確認してください。', /**/
-ONBOARD_secure_1_content__5     :  'EメールやSlack、Reddit、Twitterなどから無差別に送られてくるメッセージやリンクを信用しないでください。', /*Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.*/
+ONBOARD_secure_1_content__4     :  'URLバーに、`MYETHERWALLET INC` と緑色で表示されていることを必ず確認してください。', /* Always make sure the URL bar has `MYETHERWALLET INC` in green. */
+ONBOARD_secure_1_content__5     :  'Eメールや Slack、Reddit、Twitter などから無差別に送られてくるメッセージやリンクを信用しないでください。', /*Do not trust messages or links sent to you randomly via email, Slack, Reddit, Twitter, etc.*/
 ONBOARD_secure_1_content__6     :  '情報を入力する際は、Eメールやメッセージ中のリンクを経由してWebサイトに行くのではなく、常に直接Webサイトを訪れてください。', /*Always navigate directly to a site before you enter information. Do not enter information after clicking a link from a message or email.*/
-ONBOARD_secure_1_content__7     :  '[AdBlockerを導入](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=ja)し、サーチエンジン（例: Google）の広告をクリックしないでください。', /*[Install an AdBlocker](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) and do not click ads on your search engine (e.g. Google).*/
-ONBOARD_point_title__alt_2      :  'それで要点は？', /*What\'s the point?*/
+ONBOARD_secure_1_content__7     :  '[広告ブロッカーを導入](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=ja)し、サーチエンジン（例: Google）の広告をクリックしないでください。', /*[Install an AdBlocker](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) and do not click ads on your search engine (e.g. Google).*/
+ONBOARD_point_title__alt_2      :  'それで要点は?', /*What\'s the point?*/
 ONBOARD_secure_2_title          :  '詐欺から自分自身を守る方法', /*How To Protect Yourself from Scams*/
 ONBOARD_secure_2_content__1     :  'こういった人たちは、「何の見返りもなしにお金をあげる」と言って近づいてきます。', /*People will try to get you to give them money in return for nothing.*/
 ONBOARD_secure_2_content__2     :  'もし、あり得ないくらい良い話であれば、きっと本当に「あり得ない話」です。', /*If it is too good to be true, it probably is.*/
@@ -189,14 +189,14 @@ ONBOARD_secure_3_title          :  '損失を防ぐ方法　', /*How To Protect 
 ONBOARD_secure_3_content__1     :  'もし秘密鍵やパスワードを失くした場合、財産を永久に失います。絶対に失くさないでください。', /*If you lose your private key or password, it is gone forever. Don\'t lose it.*/
 ONBOARD_secure_3_content__2     :  '秘密鍵やパスワードのバックアップを作成してください。絶対にコンピューターに保存したままにしないでください。紙に印刷したりUSBに保存してください。', /*Make a backup of your private key and password. Do NOT just store it on your computer. Print it out on a piece of paper or save it to a USB drive.*/
 ONBOARD_secure_3_content__3     :  '印刷した紙やUSBキーを、物理的に別の場所に保管してください。バックアップ一つだけでは、火事や津波などで、コンピューターと共に破壊されてしまいます。', /*Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.*/
-ONBOARD_secure_3_content__4     :  '秘密鍵をDropboxやGoogle Drive、または他のクラウドストレージに保管しないでください。そのアカウントのセキュリティが損なわれた場合に、資産が盗まれてしまいます。', /*Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.*/
+ONBOARD_secure_3_content__4     :  '秘密鍵を Dropbox や Google Drive、または他のクラウドストレージに保管しないでください。そのアカウントのセキュリティが損なわれた場合に、資産が盗まれてしまいます。', /*Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.*/
 ONBOARD_secure_3_content__5     :  'もし、あなたが1週間以上の給料に値する仮想通貨をお持ちであれば、ハードウェアウォレットを入手してください。言い訳ご無用。それだけの価値があります。絶対です。', /*If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.*/
 ONBOARD_secure_3_content__6     :  '[さらなる安全確保のためのセキュリティ情報はこちら！](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)', /*[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)*/
-ONBOARD_secure_2_title__alt_2   :  '詐欺の撲滅　', /*Screw Scams*/
-ONBOARD_final_title__alt        :  'あとワンクリックで完了です！ 🤘', /*One more click & you\'re done! 🤘*/
-ONBOARD_final_title             :  'よし、これにて講義終了！', /*Alright, I\'m done lecturing you!*/
-ONBOARD_final_subtitle          :  'こんな風で申し訳ありません。次はこれです！', /*Sorry for being like this. Onwards!*/
-ONBOARD_final_content__1        :  'お財布を作る', /**/
+ONBOARD_secure_2_title__alt_2   :  '詐欺の撲滅', /*Screw Scams*/
+ONBOARD_final_title__alt        :  'あとワンクリックで完了です! 🤘', /*One more click & you\'re done! 🤘*/
+ONBOARD_final_title             :  'よし、これにて講義終了!', /*Alright, I\'m done lecturing you!*/
+ONBOARD_final_subtitle          :  'こんな風で申し訳ありません。次はこれです!', /*Sorry for being like this. Onwards!*/
+ONBOARD_final_content__1        :  'お財布を作る', /*Create a wallet*/
 ONBOARD_final_content__2        :  'ハードウェアウォレットを手に入れる', /*Get a hardware wallet*/
 ONBOARD_final_content__3        :  'MEW+Metamaskの設定方法', /*How to Set up MEW + MetaMask*/
 ONBOARD_final_content__4        :  'オフライン/ローカル環境でのMEWの使い方', /*How to Run MEW Offline / Locally*/
@@ -275,7 +275,7 @@ DEP_generate                : 'バイトコードを生成する',
 DEP_generated               : '生成されたバイトコード',
 DEP_signtx                  : 'トランザクションに署名する',
 DEP_interface               : '生成されたインターフェース',
-/* Error Messages */
+
 ERROR_0                     : '(error_01) 正しい値を入力してください。',
 ERROR_1                     : '(error_02) パスワードは最低9文字が必要です。強固なパスワードであることをお確かめください。',
 ERROR_2                     : '(error_03) 申し訳ございませんが、この形式のお財布ファイルは認識できません。',
@@ -316,6 +316,7 @@ ERROR_36                    : '(error_37) 正しいトランザクションハ�
 ERROR_37                    : '(error_38) 16進数を正しく入力してください。（入力可能文字列: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f）',
 ERROR_38                    : '(error_39) 申請は、価格か最低価格を0以上に設定する必要があります。',
 ERROR_39                    : '(error_40) 入札額は指定された最少額よりも大きい必要があります。',
+ERROR_40                    : '(error_41) Please enter a valid private key',
 
 GETH_Balance                : '(geth-01) 残高が足りません。ガスリミット × ガス価格 + 送出したい量 が現在の残高より多いです。口座にETHを追加するか「残高をすべて送出する」ボタンを使ってください。もしこのエラーが間違いだと思う場合は、 トランザクションを生成しなおしてください。 必要量: (d+), 所持量: (d+) [詳細はこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
 GETH_Cheap                  : '(geth-02) ガス価格が低すぎて承認できません。画面右上のドロップダウンメニューから、ガス価格を21 GWEIに上げてみてください。',
@@ -337,7 +338,7 @@ PARITY_Old                  : "(parity-07) 同じ[nonce](https://myetherwallet.g
 PARITY_TooCheapToReplace    : "(parity-08) トランザクション手数料が低すぎます。ご利用のノードの最低額を満たしていません（最低額: (d+), 指定: (d+)）。ガス価格かガスリミットを上げてください。[詳細はこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
 
 
-  FOOTER_1                    : 'Ethereumウォレットを作成するための、無料で、オープンソースの、クライアントサイド・インターフェイス。Ethereumのブロックチェーンを簡単且つ安全に操作。お財布解錠の前に、URL( myetherwallet.com )を再確認してください。',
+FOOTER_1                    : 'Ethereum ウォレットを作成するための、無料で、オープンソースの、クライアントサイド・インターフェイス。Ethereum のブロックチェーンを簡単且つ安全に操作。お財布解錠の前に、URL (myetherwallet.com) を再確認してください。',
 FOOTER_1b                   : '制作者:',
 FOOTER_2                    : '投げ銭に感謝いたします！',
 FOOTER_3                    : 'クライアント・サイド ウォレット制作者:',
@@ -345,8 +346,8 @@ FOOTER_4                    : '免責事項',
 
 GAS_PRICE_Desc              : 'ガス価格は、ガスの一単位当たりにかかるの料金のことです。 `トランザクション手数料`は「ガス価格 × ガスリミット」で算出され、自分のトランザクションをブロックに取り入れてもらうために、マイナーに支払われます。ガス価格が高いほど処理は早く行われますが、料金は高くなります。既定値は`41 GWEI`です。', /*Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `41 GWEI`.*/
 GAS_LIMIT_Desc              : 'ガスリミットは、トランザクション送出のためのガスの最大量です。`トランザクション手数料`は「ガス価格 × ガスリミット」で算出され、自分のトランザクションをブロックに取り入れてもらうために、マイナーに支払われます。 この数字を増やしても、トランザクションの処理が早くなることはありません。ETHの送出には`21000`、トークンの送出には`200000`以下が目安になります。', /*Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.*/
-/* Gen Wallet Updates */
-GEN_desc                    : '複数のお財布の作成をこのタブで行う事ができます：',
+
+GEN_desc                    : '複数のお財布の作成をこのタブで行う事ができます:', /* If you want to generate multiple wallets, you can do so here */
 GEN_Help_1                  : 'この', /* Use your */
 GEN_Help_2                  : 'で自分の口座アドレスにアクセスしてください。', /* to access your account. */
 GEN_Help_3                  : '自分のデバイスそのものが、あなたののお財布です。',　/* Your device * is * your wallet. */
@@ -365,17 +366,17 @@ GEN_Help_15                 : '資金の紛失や盗難を防止するには', /
 GEN_Help_16                 : 'これらの形式の違いは？', /*What are these Different Formats?*/
 GEN_Help_17                 : '何故これらをすべきか？', /*Why Should I?*/
 GEN_Help_18                 : '2つ目のバックアップ作成のため', /*To have a secondary backup.*/
-GEN_Help_19                 : 'パスワードを忘れた場合のため', /*In case you ever forget your password.*/
-GEN_Help_20                 : 'コールドストレージ用', /*Cold Storage*/
-GEN_Label_1                 : '強固なパスワードを入力してください(9文字以上）。',
-GEN_Label_2                 : '`Keystore`ファイルを保存してください。',
-GEN_Label_3                 : 'アドレスを保存してください。',
-GEN_Label_4                 : 'お財布紙情報（ペーパーウォレット）かQRコードを印刷してください。',
-GEN_Label_5                 : '自分の`秘密鍵`を保存してください。', /*Save Your `Private Key`. */
-GEN_Placeholder_1           : '必ず保存してください！',
-GEN_SuccessMsg              : '成功！ お財布が作成されました。',
-GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する。', /*Unlock your wallet to see your address*/
-GET_ConfButton              : 'わかりました。続けます。', /*I understand. Continue.*/
+GEN_Help_19                 : 'パスワードを忘れた場合のため', /* In case you ever forget your password. */
+GEN_Help_20                 : 'コールドストレージ用', /* Cold Storage */
+GEN_Label_1                 : 'パスワードを入力してください', /* Enter a password */
+GEN_Label_2                 : '`Keystore`ファイルを保存してください。', /* Save your `Keystore` File. */
+GEN_Label_3                 : 'アドレスを保存してください。', /* Save Your Address. */
+GEN_Label_4                 : 'お財布紙情報 (ペーパーウォレット) かQRコードを印刷してください。', /* Print paper wallet or a QR code. */
+GEN_Label_5                 : '自分の`秘密鍵`を保存してください。', /* Save Your `Private Key`. */
+GEN_Placeholder_1           : '必ず保存してください!', /* Do NOT forget to save this! */
+GEN_SuccessMsg              : '成功! お財布が作成されました。', /* Success! Your wallet has been generated. */
+GEN_Unlock                  : '自分のアドレスを確認するために、お財布を解錠する。', /* Unlock your wallet to see your address */
+GET_ConfButton              : 'わかりました。続けます。', /* I understand. Continue. */
 
 MEW_Warning_1               : 'お財布を操作したり新しいお財布を作成したりする前に、必ずURLを確認してください。詐欺サイトにご注意ください！',
 MEW_Tagline                 : 'オープンソース JavaScript クライアントサイド Ether ウォレット',
@@ -409,17 +410,17 @@ MYWAL_Content_1             : '警告！ お財布を消去しようとしてい
 MYWAL_Content_2             : '消去する前に、**秘密鍵とKeystoreファイルのいずれか又は両方、及びパスワードが保管されているか**確認してください。',
 MYWAL_Content_3             : '今後MyEtherWallet CXでこのお財布を使用するためには、秘密鍵/JSONとパスワードを手動で追加する必要があります。',
 
-NAV_AddWallet               : 'お財布の追加',
-NAV_BulkGenerate            : '大量作成',
-NAV_CheckTxStatus           : '取引状況の確認',
-NAV_Contact                 : '連絡する',
-NAV_Contracts               : '契約',
-NAV_DeployContract          : '契約を展開',
+NAV_AddWallet               : 'お財布の追加', /* Add Wallet */
+NAV_BulkGenerate            : '大量作成', /* Bulk Generate */
+NAV_CheckTxStatus           : '取引状況の確認', /* Check TX Status */
+NAV_Contact                 : '連絡する', /* Contact */
+NAV_Contracts               : '契約', /* Contracts */
+NAV_DeployContract          : '契約を展開', /* Deploy Contract */
 NAV_DomainSale              : 'ドメイン販売', /*DomainSale*/
-NAV_ENS                     : 'ENS',
-NAV_GenerateWallet_alt      : 'お財布の作成', /*New Wallet*/
-NAV_GenerateWallet          : 'お財布の作成',
-NAV_Help                    : 'ヘルプ',
+NAV_ENS                     : 'ENS', /* ENS */
+NAV_GenerateWallet          : 'お財布の作成', /* Create New Wallet */
+NAV_GenerateWallet_alt      : 'お財布の作成', /* New Wallet */
+NAV_Help                    : 'ヘルプ', /* Help */
 NAV_InteractContract        : '契約を操作',
 NAV_Multisig                : 'マルチシグ',
 NAV_MyWallets               : '自分のお財布',
@@ -477,7 +478,7 @@ SENDModal_Content_2         : '送出先:',
 SENDModal_Content_3         : '本当に送出してよろしいですか？',
 SENDModal_Content_4         : '注意: エラーが発生した場合、トークン送出のためのガスが足りない可能性があります。ガスはETHで支払われます。',
 SENDModal_No                : 'いいえ、中断します！',
-SENDModal_Title             : '警告！',
+SENDModal_Title             : '警告!',
 SENDModal_Yes               : 'はい、問題ありません！ 処理を実行します。',
 
 sidebar_AccountInfo         : 'アカウント情報',
@@ -488,7 +489,7 @@ sidebar_Equiv               : '同等価値',
 sidebar_TransHistory        : 'トランザクション履歴',
 sidebar_donation            : 'MyEtherWalletは、無料で、オープンソースのサービスで、皆さまのプライバシーとセキュリティのための全力を尽くしています。寄付が増えることによって、新機能の作成やフィードバックの反映に多くの時間を費やし、よりユーザーの皆さまのご希望に沿ったものを提供することが可能になります。私たちは、たった二人で世界を変えようとしています。どうかお手伝いいただけませんか？',
 sidebar_donate              : '寄付する',
-sidebar_thanks              : 'ありがとう！！！',
+sidebar_thanks              : 'ありがとう!!!',
 sidebar_DisplayOnTrezor     : 'TREZORでアドレスを表示',
 sidebar_DisplayOnLedger     : 'Ledgerでアドレスを表示',
 
@@ -512,7 +513,7 @@ SWAP_rec_add                : "受取アドレス ",
 SWAP_start_CTA              : "両替を開始する ",
 SWAP_ref_num                : "参照番号 ",
 SWAP_time                   : "送出までの残り時間 ",
-SWAP_elapsed            : "発注後の経過時間 ", /*Time elapsed since sent*/
+SWAP_elapsed                : "発注後の経過時間 ", /*Time elapsed since sent*/
 SWAP_progress_1             : "注文が開始されました ",
 SWAP_progress_2             : "到着を待機しています ", // Waiting for your BTC...
 SWAP_progress_3             : "受け取りを確認しました！ ", // ETH Received!
@@ -534,7 +535,7 @@ TRANS_gas                   : 'ガスリミット',
 TRANS_sendInfo              : '21000ガスを使用する標準トランザクションは、0.000441 ETHを消費します。このサービスでは、トランザクション料金を徴収いたしません。',
 
 translate_version           : '0.5',
-Translator_Desc             : '日本語翻訳を支援する：',
+Translator_Desc             : '日本語翻訳を支援する:',
 TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE',
 TranslatorAddr_2            : '0x4cEE3D48603CbA315Bf8311492e3a2221a95273B',
 TranslatorAddr_3            : '',
@@ -785,14 +786,14 @@ HELP_Remind_Title           : 'Some reminders',
 HELP_Remind_Desc_1          : '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.',
 HELP_Remind_Desc_2          : 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.',
 HELP_Remind_Desc_3          : 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!',
-HELP_SecCX_Title            : 'Security - MyEtherWallet CX',
+HELP_SecCX_Title            : 'セキュリティ - MyEtherWallet CX',
 HELP_SecCX_Desc_1           : 'Where is this extension saving my information?',
 HELP_SecCX_Desc_2           : 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
 HELP_SecCX_Desc_3           : 'What information is saved?',
 HELP_SecCX_Desc_4           : 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
 HELP_SecCX_Desc_5           : 'Why aren\'t the nickname and wallet address encrypted?',
 HELP_SecCX_Desc_6           : 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
-HELP_Sec_Title              : 'Security',
+HELP_Sec_Title              : 'セキュリティ',
 HELP_Sec_Desc_1             : 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears.',
 HELP_Sec_Desc_2             : 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
 HELP_Sec_Desc_3             : 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
