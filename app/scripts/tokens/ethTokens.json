@@ -3408,6 +3408,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x7928c8aBF1F74eF9F96D4D0a44e3b4209d360785",
+		"symbol": "SLY",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x6F6DEb5db0C4994A8283A01D6CFeEB27Fc3bBe9C",
 		"symbol": "SMART",
 		"decimal": 0,
