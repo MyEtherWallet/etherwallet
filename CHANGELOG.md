@@ -1,5 +1,6 @@
 ### Release v3.21.17
 ### New
+- Add SLY token []()
 - Add ELY and DRVH tokens [#1955](https://github.com/kvhnuke/etherwallet/pull/1955)
 - Add Billfodl affiliate link and CFC token [#1954](https://github.com/kvhnuke/etherwallet/pull/1954)
 - Misc CSS fixes [#1935](https://github.com/kvhnuke/etherwallet/pull/1935)
