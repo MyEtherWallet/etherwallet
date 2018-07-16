@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// CryptFillCoin (CFC) Token sale
+to:         '0xC510840609575a10e893aF8b87A903865dF6677c',
+gasLimit:   210000,
+data:       '',
+msg:        'CryptFillCoin (CFC) token sale - Sign Up at https://cryptfillcoin.com and buy your tokens.'
+},{
 // ECrypto Tokens (ECP) Token sale
 to:         '0xa66e012D20B9384444D89Db590C43F16f011D1DE',
 gasLimit:   210000,
