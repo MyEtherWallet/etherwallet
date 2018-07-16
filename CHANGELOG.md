@@ -1,6 +1,6 @@
 ### Release v3.21.17
 ### New
-- Add SLY token []()
+- Add SLY token [#1958](https://github.com/kvhnuke/etherwallet/pull/1958)
 - Added CFC Token sale address and gas limit [#1956](https://github.com/kvhnuke/etherwallet/pull/1956)
 - Add ELY and DRVH tokens [#1955](https://github.com/kvhnuke/etherwallet/pull/1955)
 - Add Billfodl affiliate link and CFC token [#1954](https://github.com/kvhnuke/etherwallet/pull/1954)
@@ -9,6 +9,9 @@
 - Add Cubrix token [#1952](https://github.com/kvhnuke/etherwallet/pull/1952)
 - Update REP token address [#1951](https://github.com/kvhnuke/etherwallet/pull/1951)
 - Add Cubrix contract abi [#1950](https://github.com/kvhnuke/etherwallet/pull/1950)
+
+### Update
+- Update translation [#1957](https://github.com/kvhnuke/etherwallet/pull/1957)
 
 ### Release v3.21.16
 ### New
