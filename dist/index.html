@@ -96,16 +96,16 @@
 
 <section class="bg-gradient header-branding">
   <section class="container">
-    
+
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.21.16</p>
+        <p class="small visible-xs">3.21.17</p>
       </a>
-    
-    
+
+
     <div class="tagline">
 
-    <span class="hidden-xs">3.21.16</span>
+    <span class="hidden-xs">3.21.17</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -214,7 +214,7 @@
   <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
   <div class="nav-scroll">
     <ul class="nav-inner">
-      
+
       <li ng-repeat="tab in tabNames track by $index" \
           class="nav-item {{tab.name}}" \
           ng-class="{active: $index==gService.currentTab}"
@@ -222,8 +222,8 @@
           ng-click="tabClick($index)">
             <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a>
       </li>
-      
-      
+
+
       <li class="nav-item help">
         <a href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer">
           <span translate="NAV_Help">
@@ -321,7 +321,7 @@
     </section>
   </section>
 </article>
- 
+
 
 
 </header>
@@ -692,13 +692,13 @@
       </div>
 
       <div ng-show="!wd">
-            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
-          
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>
+
       </div>
     </div>
 
     <div class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
-      
+
         <article class="col-sm-8 view-wallet-content">
 
   <section class="block">
@@ -830,7 +830,7 @@
 <article class="col-sm-4">
   <wallet-balance-drtv></wallet-balance-drtv>
 </article>
-   
+
     </div>
 
   </article>
@@ -859,8 +859,8 @@
       </h1>
     </div>
     <div ng-show="!wd">
-        
-          <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+
+          <wallet-decrypt-drtv></wallet-decrypt-drtv>
     </div>
   </article>
 
@@ -1224,8 +1224,8 @@
 
 </section>
 <!-- / Sidebar -->
- 
-    
+
+
 
      <article class="modal fade" id="sendTransaction" tabindex="-1">
   <section class="modal-dialog">
@@ -1377,8 +1377,8 @@
     </section>
   </section>
 </article>
- 
-    
+
+
   </article>
 
 
@@ -1493,8 +1493,8 @@
 
 </article>
 <!-- / Swap Init Panel -->
- 
-    
+
+
 
     <div ng-show="!isKyberSwap">
          <!-- Swap Start 2 -->
@@ -1557,8 +1557,8 @@
 </article>
 <!-- / Swap Start 2 -->
 
- 
-        
+
+
 
          <article ng-if="!isKyberSwap">
     <article class="swap-order" ng-show="showStage3Btc || showStage3Eth">
@@ -1647,10 +1647,10 @@
                     <h5 traslate="SWAP_unlock">Unlock your wallet to send ETH or Tokens directly from this page.</h5>
                 </div>
                 <div ng-show="!wd">
-                    
+
                     <wallet-decrypt-drtv></wallet-decrypt-drtv>
-                    
-                    
+
+
                 </div>
             </section>
 
@@ -2018,8 +2018,8 @@
 
 </section>
 <!-- / Sidebar -->
- 
-                
+
+
 
                  <article class="modal fade" id="sendTransaction" tabindex="-1">
   <section class="modal-dialog">
@@ -2171,8 +2171,8 @@
     </section>
   </section>
 </article>
- 
-                
+
+
             </section>
         </article>
         <!-- / Swap CTA ETH -->
@@ -2200,8 +2200,8 @@
     </article>
 
 </article>
- 
-        
+
+
     </div>
 
     <div ng-if="isKyberSwap">
@@ -2385,10 +2385,10 @@
                     <h5>Unlock your wallet to proceed.</h5>  <!-- todo: add translate -->
                 </div>
                 <div ng-show="!wd">
-                    
+
                     <wallet-decrypt-drtv></wallet-decrypt-drtv>
-                    
-                    
+
+
                 </div>
             </section>
             <div class="alert alert-danger" ng-show="ajaxReq.type!=='ETH' && ajaxReq.type!=='ROPSTEN ETH'">
@@ -2882,9 +2882,9 @@
         </section>
     </section>
 </article>
- 
+
                        <!--todo implement (custom swap modal) with content comming from swapCtrl -->
-                       
+
 
             </section>
             <!--</div>-->
@@ -3079,8 +3079,8 @@
     </article>
 
     <!-- / Swap Kyber 4-->
-</article> 
-        
+</article>
+
     </div>
 
     <section class="bity-contact text-center" ng-if="!isKyberRateSwap">
@@ -3198,8 +3198,8 @@
 
 </article>
 <!-- / Step 1 -->
- 
-  
+
+
 
    <article class="block">
 
@@ -3393,8 +3393,8 @@
     <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="signedTx"></textarea>
   </section>
 </article>
- 
-  
+
+
 
    <article class="row block">
 
@@ -3422,8 +3422,8 @@
   </div>
 
 </article>
- 
-  
+
+
 
    <article class="modal fade" id="sendTransactionOffline" tabindex="-1">
   <section class="modal-dialog">
@@ -3513,8 +3513,8 @@
     </section>
   </section>
 </article>
- 
-  
+
+
 
 </main>
 
@@ -3542,7 +3542,7 @@
   <!-- Interact Contracts -->
   <article class="row block" ng-show="visibility=='interactView'">
 
-     
+
 <!-- Address -->
 <section class="col-sm-6 clearfix">
   <div class="row">
@@ -3593,8 +3593,8 @@
 <section class="col-xs-12 clearfix">
   <button class="btn btn-primary" ng-click="initContract()" translate="x_Access"> ACCESS </button>
 </section>
- 
-    
+
+
 
   </article>
 
@@ -3855,8 +3855,8 @@
 
 
 </section>
- 
-    
+
+
 
   </article>
 
@@ -3948,8 +3948,8 @@
   </section>
 </article>
 
- 
-    
+
+
 
   </article>
   <!-- / Interact Contracts -->
@@ -4056,12 +4056,12 @@
     </section>
   </section>
 </article>
- 
-  
+
+
 
 </section>
- 
-    
+
+
 
   </article>
   <!-- / Deploy Contract -->
@@ -4069,8 +4069,8 @@
   <!--wallet decrypt-->
   <article class="form-group"
            ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
-      
-        <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </article>
 
   <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
@@ -4305,8 +4305,8 @@
   </div>
 
 </article>
- 
-  
+
+
 
 
   <!-- .notAvailable or .forbidden -->
@@ -4334,8 +4334,8 @@
     <h4> {{objENS.timeRemaining}} </h4>
   </div>
 </article>
- 
-  
+
+
 
   <!-- .open or .auction -->
    <article class="row text-center" ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
@@ -4365,8 +4365,8 @@
   </section>
 
 </article>
- 
-  
+
+
 
   <!-- .reveal -->
    <article class="row text-center" ng-show="objENS.status==ensModes.reveal">
@@ -4383,8 +4383,8 @@
 
 </article>
 
- 
-  
+
+
 
   <!-- .owned (finalize) -->
    <article class="row text-center" ng-show="objENS.status==ensModes.owned">
@@ -4437,15 +4437,15 @@
     </tr>
 
   </table>
- 
-    
+
+
   </div>
 
 </article>
 
 
- 
-  
+
+
 
   <!-- Unlock Directive: Everything but notAvailable & forbidden -->
   <article class="row" ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.owned || objENS.status==ensModes.reveal)">
@@ -4472,8 +4472,8 @@
         </h4>
       </div>
       <div ng-show="!wd">
-            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
-          
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>
+
       </div>
     </section>
   </article>
@@ -4707,8 +4707,8 @@
 
   </tbody>
 </table>
- 
-        
+
+
       </div>
       <!-- / After Sent: Place Bid / Start Auction -->
 
@@ -4737,8 +4737,8 @@
   </article>
 
 </div>
- 
-  
+
+
 
 
    <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center"
@@ -4801,10 +4801,10 @@
   </section>
 </article>
 <!-- FINALIZE: ENS MODAL -->
- 
 
- 
-  
+
+
+
 
   <!-- .resolve (resolve) -->
    <article class="col-xs-12 col-sm-10 col-sm-offset-1" ng-show="objENS.status==ensModes.owned && objENS.owner==objENS.deedOwner && wd">
@@ -4855,9 +4855,9 @@
     </tr>
 
   </table>
- 
 
-  
+
+
 
 
   <section class="text-center"
@@ -5030,11 +5030,11 @@
   </section>
 </article>
 <!-- Resolve: ENS MODAL -->
- 
 
 
- 
-  
+
+
+
 
 
    <!-- ALL: ENS MODAL -->
@@ -5147,8 +5147,8 @@
 
   </tbody>
 </table>
- 
-        
+
+
 
         <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
@@ -5170,10 +5170,10 @@
 </article>
 <!-- ALL: ENS MODAL -->
 
- 
-  
- 
-    
+
+
+
+
   </div>
   <div ng-if="visibility=='subdomain'">
     <div class="block">
@@ -5183,7 +5183,7 @@
           Register Sub Domain
         </h1>
         <p>
-          
+
         </p>
       </article>
       <!-- / ENS Title -->
@@ -5223,7 +5223,7 @@
       <article class="row">
         <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
           <div>
-            <div class="input-group pad-bot" ng-repeat="data in objSub.validNames track by $index" > 
+            <div class="input-group pad-bot" ng-repeat="data in objSub.validNames track by $index" >
             <input class="form-control" type="text" value="{{data.fullName}}" ng-disabled="true"/>
             <div class="input-group-btn"><button ng-show="data.available" ng-click="registerSubName($index)" class="btn btn-primary btn-primary-buy-button">Buy ({{data.EthVal}} ETH)
             </button>
@@ -5245,8 +5245,8 @@
         <h5 traslate="SWAP_unlock">Unlock your wallet to buy {{objSub.buy.fullName}} for {{objSub.buy.EthVal}} ETH</h5>
       </div>
       <div ng-show="!wd">
-            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
-          
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>
+
       </div>
     </section>
     <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
@@ -5607,8 +5607,8 @@
 
 </section>
 <!-- / Sidebar -->
- 
-      
+
+
 
        <article class="modal fade" id="sendTransaction" tabindex="-1">
   <section class="modal-dialog">
@@ -5760,8 +5760,8 @@
     </section>
   </section>
 </article>
- 
-      
+
+
     </section>
   </article>
 
@@ -5924,8 +5924,8 @@
   </div>
 
 </article>
- 
-  
+
+
 
   <!-- If not owned then say so -->
    <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.ineligible">
@@ -5937,8 +5937,8 @@
   This domain has not yet been registered in ENS.  You should check it out on the ENS tab to see its status, and bid for it if you want it.
 
 </article>
- 
-  
+
+
 
   <!-- If not owned by DomainSale then provide transfer information -->
    <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.nottransferred">
@@ -5948,8 +5948,8 @@
   <h1><strong>{{objDomainSale.name}}.eth</strong> is not currently for sale.</h1>
 
 </article>
- 
-  
+
+
 
   <!-- If not offered then provide offer information -->
    <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.notoffered">
@@ -5959,8 +5959,8 @@
   <h1><strong>{{objDomainSale.name}}.eth</strong> is ready to be put up for sale.</h1>
 
 </article>
- 
-  
+
+
 
   <!-- If available provide purchase and/or auction information -->
    <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.available">
@@ -5986,8 +5986,8 @@
 </div>
 
 </article>
- 
-  
+
+
 
   <!-- If auction active then provide bid information -->
    <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.auctioning">
@@ -6007,8 +6007,8 @@
     </div>
 
 </article>
- 
-  
+
+
 
   <!-- If auction closed then provide finish information -->
    <article class="row text-center" ng-show="objDomainSale.status==domainsaleModes.closed">
@@ -6020,8 +6020,8 @@
   The auction for this domain was won by <strong>{{objDomainSale.lastBidder}}</strong> with a bid of <strong>{{objDomainSale.lastBidEth}} {{ajaxReq.type}}</strong>.
 
 </article>
- 
-  
+
+
 
   <!-- If balance available provide balance information -->
    <article class="row text-center" ng-show="objDomainSale.status==-1 && objDomainSale.balance>=0">
@@ -6037,8 +6037,8 @@
   </div>
 
 </article>
- 
-  
+
+
 
   <!-- Unlock Directive: Everything but ineligible -->
   <article class="row" ng-show="(objDomainSale.balance > 0 || objDomainSale.status==domainsaleModes.nottransferred || objDomainSale.status==domainsaleModes.notoffered || objDomainSale.status==domainsaleModes.available || objDomainSale.status==domainsaleModes.auctioning || objDomainSale.status==domainsaleModes.closed)">
@@ -6059,8 +6059,8 @@
         </h4>
       </div>
       <div ng-show="!wd">
-            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
-          
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>
+
       </div>
     </section>
   </article>
@@ -6132,8 +6132,8 @@
   </article>
 
 </div>
- 
-  
+
+
 
   <!-- Action: offer or cancel -->
    <div ng-show="objDomainSale.status==domainsaleModes.notoffered && wallet!=null && wallet.getAddressString()!=objDomainSale.seller">
@@ -6308,8 +6308,8 @@
     </tr>
   </tbody>
 </table>
- 
-        
+
+
       </div>
       <!-- / After Sent -->
 
@@ -6325,8 +6325,8 @@
   </article>
 
 </div>
- 
-  
+
+
 
   <!-- Action: bid or buy -->
    <div ng-show="(objDomainSale.status==domainsaleModes.available || objDomainSale.status==domainsaleModes.auctioning) && wallet!=null && wallet.getAddressString()!=objDomainSale.seller">
@@ -6446,8 +6446,8 @@
   </article>
 
 </div>
- 
-  
+
+
 
   <!-- Action: finish -->
    <div ng-show="objDomainSale.status==domainsaleModes.closed && wallet!=null">
@@ -6516,8 +6516,8 @@
   </article>
 
 </div>
- 
-  
+
+
 
   <!-- Action: withdraw -->
    <div ng-show="objDomainSale.balance>0 && wallet!=null">
@@ -6572,8 +6572,8 @@
   </article>
 
 </div>
- 
-  
+
+
 
   <!-- Modal: confirm -->
    <!-- ALL: DOMAINSALE MODAL -->
@@ -6627,8 +6627,8 @@
     </tr>
   </tbody>
 </table>
- 
-        
+
+
 
         <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
@@ -6650,8 +6650,8 @@
 </article>
 <!-- ALL: DOMAINSALE MODAL -->
 
- 
-  
+
+
 </main>
 
 
@@ -6679,7 +6679,7 @@
 
   <article class="row" ng-show="wallet!=null">
 
-    
+
       <article class="col-sm-8 view-wallet-content">
 
   <section class="block">
@@ -6811,7 +6811,7 @@
 <article class="col-sm-4">
   <wallet-balance-drtv></wallet-balance-drtv>
 </article>
-   
+
 
   </article>
 
@@ -7038,8 +7038,8 @@
         </h4>
       </div>
       <div ng-show="!wd">
-            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
-          
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>
+
       </div>
     </section>
   </section>
@@ -7405,8 +7405,8 @@
 
 </section>
 <!-- / Sidebar -->
- 
-      
+
+
 
        <article class="modal fade" id="sendTransaction" tabindex="-1">
   <section class="modal-dialog">
@@ -7558,8 +7558,8 @@
     </section>
   </section>
 </article>
- 
-      
+
+
     </div>
     <div class="col-xs-12 block block--danger" ng-show="wallet.getChecksumAddressString()!=txInfo.from">
       <h5 translate="ENS_WrongAddress_2">
@@ -7947,7 +7947,7 @@
     </section>
   </section>
 </article>
- 
+
 
 
  <article class="modal fade" id="onboardingModal" tabindex="-1" ng-controller='onboardingCtrl'>
@@ -8378,7 +8378,7 @@
                 <li translate="ONBOARD_secure_3_content__5">
                   If you have more than 1-week's worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It's worth it. I promise.
                 </li>
-                
+
               </ul>
             </div>
             <div class="col-xs-12 col-sm-4 onboarding__image">
@@ -8484,7 +8484,7 @@
     </div>
   </div>
 </article>
- 
+
 
 
 
