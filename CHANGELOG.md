@@ -1,5 +1,6 @@
 ### Release v3.21.17
 ### New
+- Add Simplex Link [#1961](https://github.com/kvhnuke/etherwallet/pull/1961) [#1960](https://github.com/kvhnuke/etherwallet/pull/1960)
 - Add SLY token [#1958](https://github.com/kvhnuke/etherwallet/pull/1958)
 - Added CFC Token sale address and gas limit [#1956](https://github.com/kvhnuke/etherwallet/pull/1956)
 - Add ELY and DRVH tokens [#1955](https://github.com/kvhnuke/etherwallet/pull/1955)
