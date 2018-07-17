@@ -11,6 +11,7 @@
 - Add Cubrix contract abi [#1950](https://github.com/kvhnuke/etherwallet/pull/1950)
 
 ### Update
+- Update Ethorse rewards contract address [#1960](https://github.com/kvhnuke/etherwallet/pull/1960)
 - Update translation [#1957](https://github.com/kvhnuke/etherwallet/pull/1957)
 
 ### Release v3.21.16
