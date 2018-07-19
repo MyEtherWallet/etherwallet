@@ -780,6 +780,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5dff89a2caa4d76bc286f74d67bd718eb834da61",
+		"symbol": "CFC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x12FEF5e57bF45873Cd9B62E9DBd7BFb99e32D73e",
 		"symbol": "CFI",
 		"decimal": 18,
@@ -1260,6 +1266,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x62d4c04644314f35868ba4c65cc27a77681de7a9",
+		"symbol": "DRVH",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x2799d90c6d44cb9aa5fbc377177f16c33e056b82",
 		"symbol": "DRP (Dripcoin)",
 		"decimal": 0,
@@ -1401,6 +1413,12 @@
 		"address": "0x44197a4c44d6a059297caf6be4f7e172bd56caaf",
 		"symbol": "ELTCOIN",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0xa95592DCFfA3C080B4B40E459c5f5692F67DB7F8",
+		"symbol": "ELY",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -3387,6 +3405,12 @@
 		"address": "0x7A5fF295Dc8239d5C2374E4D894202aAF029Cab6",
 		"symbol": "SLT",
 		"decimal": 3,
+		"type": "default"
+	},
+	{
+		"address": "0x7928c8aBF1F74eF9F96D4D0a44e3b4209d360785",
+		"symbol": "SLY",
+		"decimal": 18,
 		"type": "default"
 	},
 	{

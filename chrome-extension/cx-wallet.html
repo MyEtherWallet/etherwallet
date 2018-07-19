@@ -83,15 +83,15 @@
     
       <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">
         <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.21.16</p>
+        <p class="small visible-xs">3.21.17</p>
       </a>
     
     <div class="tagline">
 
-    <span class="hidden-xs">3.21.16</span>
+    <span class="hidden-xs">3.21.17</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
-      <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
+      <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
       <ul class="dropdown-menu" ng-show="dropdown">
         <li><a ng-class="{true:'active'}[curLang=='Català']"          ng-click="changeLanguage('ca','Català'         )"> Català          </a></li>
         <li><a ng-class="{true:'active'}[curLang=='Deutsch']"         ng-click="changeLanguage('de','Deutsch'        )"> Deutsch         </a></li>
@@ -151,14 +151,6 @@
              rel="noopener noreferrer"></a>
         </div>
       </ul>
-      <p class="dropdown-gas__msg"
-         ng-show="gasPriceMsg"
-         ng-hide="ajaxReq.type!='ETH'">
-        The network is really full right now. Check
-        <a href="https://ethgasstation.info/"
-           target="_blank" rel="noopener noreferrer">Eth Gas Station</a>
-        for gas price to use.
-      </p>
     </span>
 
     <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
@@ -191,6 +183,14 @@
 
     </div>
   </section>
+  <p class="dropdown-gas__msg"
+     ng-show="gasPriceMsg"
+     ng-hide="ajaxReq.type!='ETH'">
+    The network is really full right now. Check
+    <a href="https://ethgasstation.info/"
+       target="_blank" rel="noopener noreferrer">Eth Gas Station</a>
+    for gas price to use.
+  </p>
 </section>
 
 <nav role="navigation" aria-label="main navigation" class="container nav-container overflowing">
@@ -2101,6 +2101,13 @@
     <a ng-click="setFinalPrices()" class="btn btn-info btn-primary">
       <span translate="SWAP_init_CTA"> Let's do this! </span>
     </a>
+    <section class="row">
+      <div class="col-xs-6 col-xs-offset-3" >
+        <h4 style="margin-top: 40px; border: 5px #0b1929">
+          <a href="https://ccswap.myetherwallet.com" > Buy ETH with <img src="images/visa-master.png" width="60" height="30"></a>
+        </h4>
+      </div>
+    </section>
   </div>
 
 </article>
@@ -8122,7 +8129,8 @@
         <p>Consider using our affiliate links to...</p>
         <div class="footer__pill-wrap">
           <a class="footer__pill"  aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener noreferrer">Swap ETH/BTC/EUR/CHF via Bity.com</a>
-        </div>
+          <a class="footer__pill"  aria-label="Buy Ether with credit card via Simplex" href="https://ccswap.myetherwallet.com" target="_blank" rel="noopener noreferrer">Buy ETH with credit card via Simplex</a>
+       </div>
         <p> Buy a... </p>
         <div class="footer__pill-wrap footer__pill-custom-wrap">
           <a class="footer__pill" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Ledger Wallet</a>
@@ -8130,6 +8138,7 @@
           <a class="footer__pill" href="http://shiftcrypto.ositracker.com/91316/7114" target="_blank" rel="noopener">Digital Bitbox</a>
           <a class="footer__pill" href="https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site" target="_blank" rel="noopener">ether.card</a>
           <a class="footer__pill" href="https://thehodlwallet.com?aff=15" target="_blank" rel="noopener">HODL Wallet</a>
+          <a class="footer__pill" href="http://billfodl.com?afmc=2j&utm_campaign=2j&utm_source=leaddyno&utm_medium=affiliate" target="_blank" rel="noopener">Billfodl</a>
         </div>
 
         <h5><i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
