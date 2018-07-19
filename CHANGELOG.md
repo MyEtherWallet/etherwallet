@@ -1,6 +1,7 @@
 ### Release v3.21.18
 ### New  
-- Add VDG token, Update LookRev token []()
+- Add VDG token, Update LookRev token [#1963](https://github.com/kvhnuke/etherwallet/pull/1963)
+- Remove obsolete networks [#1940](https://github.com/kvhnuke/etherwallet/pull/1940)
 
 ### Release v3.21.17
 ### New
