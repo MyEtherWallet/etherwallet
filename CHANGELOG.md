@@ -1,5 +1,6 @@
 ### Release v3.21.18
 ### New  
+- Hide warning for POA network [#1953](https://github.com/kvhnuke/etherwallet/pull/1953)
 - Add VDG token, Update LookRev token [#1963](https://github.com/kvhnuke/etherwallet/pull/1963)
 - Remove obsolete networks [#1940](https://github.com/kvhnuke/etherwallet/pull/1940)
 
