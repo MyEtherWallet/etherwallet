@@ -2311,7 +2311,13 @@
 	},
 	{
 		"address": "0x21ae23b882a340a22282162086bc98d3e2b73018",
-		"symbol": "LOK",
+		"symbol": "LOOK old",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x253c7dd074f4bacb305387f922225a4f737c08bd",
+		"symbol": "LOOK",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -3830,6 +3836,12 @@
 	{
 		"address": "0x82BD526bDB718C6d4DD2291Ed013A5186cAE2DCa",
 		"symbol": "VDOC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x57C75ECCc8557136D32619a191fBCDc88560d711",
+		"symbol": "VDG",
 		"decimal": 18,
 		"type": "default"
 	},
