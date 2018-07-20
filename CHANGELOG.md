@@ -1,5 +1,7 @@
 ### Release v3.21.18
 ### New  
+- Add DEPO custom gas limit [#1964](https://github.com/kvhnuke/etherwallet/pull/1964)
+- Adds DEPO (Depository Network) and CRMT token []()
 - Hide warning for POA network [#1953](https://github.com/kvhnuke/etherwallet/pull/1953)
 - Add VDG token, Update LookRev token [#1963](https://github.com/kvhnuke/etherwallet/pull/1963)
 - Remove obsolete networks [#1940](https://github.com/kvhnuke/etherwallet/pull/1940)
