@@ -98,6 +98,13 @@
     <a ng-click="setFinalPrices()" class="btn btn-info btn-primary">
       <span translate="SWAP_init_CTA"> Let's do this! </span>
     </a>
+    <section class="row">
+      <div class="col-xs-6 col-xs-offset-3" >
+        <h4 style="margin-top: 40px; border: 5px #0b1929">
+          <a href="https://ccswap.myetherwallet.com" > Buy ETH with <img src="images/visa-master.png" width="60" height="30"></a>
+        </h4>
+      </div>
+    </section>
   </div>
 
 </article>

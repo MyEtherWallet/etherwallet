@@ -6,7 +6,19 @@
 // Token Calendar: If you aren't on the above, you should get on it.
 // http://www.tokensalecalendar.com/
 
-module.exports = [{
+module.exports = [{  
+// Depository Network (DEPO) Token sale
+to:         '0x4ee74a5f841c0aab0090ae21d4f9d8fca2aeea26',
+gasLimit:   300000,
+data:       '0xabacadae',
+msg:        'Depository Network (DEPO) Token sale - Sign Up at https://depository.network and buy your tokens.'
+},{
+// CryptFillCoin (CFC) Token sale
+to:         '0xC510840609575a10e893aF8b87A903865dF6677c',
+gasLimit:   210000,
+data:       '',
+msg:        'CryptFillCoin (CFC) token sale - Sign Up at https://cryptfillcoin.com and buy your tokens.'
+},{
 // ECrypto Tokens (ECP) Token sale
 to:         '0xa66e012D20B9384444D89Db590C43F16f011D1DE',
 gasLimit:   210000,
