@@ -329,6 +329,13 @@
       ],
       "alerter": []
     },
+    "internal network": {
+      "admin": "0x1BE6064cA70e40A39473372bE0ac8a5e16F7Be45",
+      "operator": [
+        "0x1BE6064cA70e40A39473372bE0ac8a5e16F7Be45"
+      ],
+      "alerter": []
+    },
     "KyberReserve": {
       "admin": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
       "operator": [
@@ -339,7 +346,9 @@
     "ConversionRates": {
       "admin": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
       "operator": [
-        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45"
+        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+        "0x9Bffd1579bd6760a186fFf1A720f2a5dB35dE0f4",
+        "0x8fC577f07f7d765724e293a4F259d2a15c48fb8A"
       ],
       "alerter": []
     },
@@ -353,7 +362,8 @@
     "WhiteList": {
       "admin": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
       "operator": [
-        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45"
+        "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+        "0x9Bffd1579bd6760a186fFf1A720f2a5dB35dE0f4"
       ],
       "alerter": []
     },
@@ -372,25 +382,28 @@
     "testers category": 9,
     "testers cap": 5000,
     "KGT address": "0x4BFBa4a8F28755Cb2061c413459EE562c6B9c51b",
-    "KGT cap": 5000,
+    "KGT cap": 50000,
     "users": [
       "0x943252227f9cbfa10ee85912069171813e07b5df"
     ],
     "users category": 1,
     "users cap": 5000,
-    "default cap": 5000
+    "default cap": 50000,
+    "partner category": 500,
+    "partner cap": 1000000
   },
   "max gas price": "50000000000",
   "neg diff in bps": 20,
   "min expected rate slippage": 300,
-  "KNC wallet": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
+  "KNC wallet": "0xeb52ce516a8d054a574905bdc3d4a176d3a2d51a",
   "KNC to ETH rate": 300,
   "tax wallet address": "0x1be6064ca70e40a39473372be0ac8a5e16f7be45",
   "tax fees bps": 2000,
   "valid duration block": 600000000,
   "reserve": "0xEB52Ce516a8d054A574905BDc3D4a176D3a2d51a",
   "pricing": "0xE16E257a25e287AF50C5651A4c2728b32D7e5ef7",
-  "network": "0xD19559B3121c1b071481d8813d5dBcDC5869e2e8",
+  "network": "0x818E6FECD516Ecc3849DAf6845e3EC868087B755",
+  "internal network": "0x91a502C678605fbCe581eae053319747482276b9",
   "wrapper": "0x665d34f192F4940Da4E859fF7768c0a80ED3aE10",
-  "feeburner": "0x2879ff9129Dd69822cbb272C42e0aC9e87636901"
+  "feeburner": "0xed4f53268bfdff39b36e8786247ba3a02cf34b04"
 }

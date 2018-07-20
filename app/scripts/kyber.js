@@ -263,7 +263,6 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
                 return i.type
             })
 
-            // console.log(data.data)
             // was returning a number rounded, thus
             // data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
             data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toString()

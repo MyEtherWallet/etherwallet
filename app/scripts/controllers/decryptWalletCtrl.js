@@ -402,14 +402,6 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
   //= ================ Mew Connect (start)==============================
   $scope.scanMewConnect = function () {
     var app = new MewConnectEth()
-    // console.log(MewConnect) // todo remove dev item
-    // if(!MewConnect.instance){
-    //
-    // } else {
-    //     MewConnect.instance.disconnectRTC();
-    //     MewConnect.instance = null;
-    //     // $scope.mewConnect = MewConnect.get();
-    // }
 
     $scope.mewConnect = MewConnect.init(null, null, {
       wrtc: MewRTC,
@@ -421,21 +413,15 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
       value: $scope.mewConnect
     })
 
-    // window.onunload
-
     $scope.$on('$destroy', function () {
       $scope.mewConnect.disconnectRTC()
       if (MewConnect.instance) {
         Reflect.deleteProperty(MewConnect, 'instance')
-        // console.log('decryptWalletCtrl:368 [destroying scope]: ', MewConnect) // todo remove dev item
       }
     })
 
     $scope.mewConnect.on('codeDisplay', codeDisplay)
-    // $scope.mewConnect.on('SocketConnectedEvent', initiateSocketButtonState)
-    // $scope.mewConnect.on('RtcInitiatedEvent', initiateRtcButtonState)
     $scope.mewConnect.on('RtcConnectedEvent', rtcConnected)
-    $scope.mewConnect.on('RtcDisconnectEvent', rtcClosed)
     $scope.mewConnect.on('RtcClosedEvent', rtcClosed)
 
     $scope.mewConnect.on('address', makeWallet)
@@ -455,27 +441,22 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     }
 
     function rtcClosed (data) {
-      // console.log('closing')
       $scope.mewConnectionStatus = 0
       uiFuncs.notifier.info('Disconnected')
     }
 
     function codeDisplay (data) {
-      // console.log('CODE DISPLAY', data)
       $scope.mewConnectionStatus = 1
       $scope.mewConnectCode = data
       $scope.connectionCodeTimeout = setTimeout(() => {
         $scope.mewConnectionStatus = 3
         $scope.$apply()
-        // console.log('Timeout') // todo remove dev item
       }, 120800) // 200ms before the actual server timeout happens. (to account for transit time, ui lag, etc.)
       $scope.$apply()
     }
 
     function makeWallet (data) {
-      // console.log('decryptWalletCtrl:370', data) // todo remove dev item
       var wallet = app.createWallet(data)
-      $scope.notifier.info(globalFuncs.successMsgs[1])
       $scope.wallet = wallet
       walletService.wallet = wallet
       $scope.$apply()

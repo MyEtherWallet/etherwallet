@@ -100,7 +100,7 @@ if (IS_CX) {
   window.MewConnectEth = MewConnectEth
   window.MewConnect = MewConnect
   window.MewConnectCrypto = MewConnectCrypto
-  window.MewRTC = require('./staticJS/SimplePeer')
+  window.MewRTC = require('simple-peer')
 }
 var CustomGasMessages = require('./customGas.js')
 window.CustomGasMessages = CustomGasMessages

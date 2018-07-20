@@ -158,11 +158,9 @@ uiFuncs.signTxMewConnect = function (eTx, rawTx, txData, callback) {
   var app = new MewConnectEth()
   var mewConnect = MewConnect.instance
 
-    // console.log(mewConnect) // todo remove dev item
   app.setMewConnect(mewConnect)
   mewConnect.on('signTx', (data) => {
     var result = data
-    // console.log(result) // todo remove dev item
     uiFuncs.notifier.info("The transaction was signed but not sent. Click the blue 'Send Transaction' button to continue.")
     // var eTx_ = new ethUtil.Tx(rawTx)
     rawTx.rawTx = JSON.stringify(rawTx)
