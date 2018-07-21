@@ -194,33 +194,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
       $scope.notifier.danger(e)
     }
   }
-  $scope.openFileDialog = function ($fileContent) {
-    $scope.showAOnly = false
-    document.getElementById('fselector').click()
-  }
-  $scope.onFilePassChange = function () {
-    $scope.showAOnly = false
-    $scope.showFDecrypt = $scope.filePassword.length >= 0
-  }
-  $scope.onPrivKeyChange = function () {
-    $scope.showAOnly = false
-    const manualprivkey = fixPkey($scope.manualprivkey)
 
-    $scope.requirePPass = manualprivkey.length == 128 || manualprivkey.length == 132
-    $scope.showPDecrypt = manualprivkey.length == 64
-  }
-  $scope.onPrivKeyPassChange = function () {
-    $scope.showAOnly = false
-    $scope.showPDecrypt = $scope.privPassword.length > 0
-  }
-  $scope.onMnemonicChange = function () {
-    $scope.showAOnly = false
-    $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic)
-  }
-  $scope.onParityPhraseChange = function () {
-    if ($scope.parityPhrase) $scope.showParityDecrypt = true
-    else $scope.showParityDecrypt = false
-  }
   $scope.onAddressChange = function () {
     $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showParityDecrypt = false
     $scope.showAOnly = $scope.Validator.isValidAddress($scope.addressOnly)
@@ -340,66 +314,8 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog, walletType)
     walletService.wallet = null
   }
-  $scope.ledgerCallback = function (result, error) {
-    if (typeof result !== 'undefined') {
-      $scope.HWWalletCreate(result['publicKey'], result['chainCode'], 'ledger', $scope.getLedgerPath())
-    } else {
-      $scope.ledgerError = true
-      $scope.ledgerErrorString = error
-      $scope.$apply()
-    }
-  }
-  $scope.trezorCallback = function (response) {
-    if (response.success) {
-      $scope.HWWalletCreate(response.publicKey, response.chainCode, 'trezor', $scope.getTrezorPath())
-    } else {
-      $scope.trezorError = true
-      $scope.trezorErrorString = response.error
-      $scope.$apply()
-    }
-  }
-  $scope.digitalBitboxCallback = function (result, error) {
-    $scope.HDWallet.digitalBitboxSecret = ''
-    if (typeof result !== 'undefined') {
-      $scope.HWWalletCreate(result['publicKey'], result['chainCode'], 'digitalBitbox', $scope.HDWallet.dPath)
-    } else { $scope.notifier.danger(error) }
-  }
-  $scope.secalotCallback = function (result, error) {
-    if (typeof result !== 'undefined') {
-      $scope.HWWalletCreate(result['publicKey'], result['chainCode'], 'secalot', $scope.HDWallet.dPath)
-    } else { $scope.notifier.danger(error) }
-  }
-  $scope.scanLedger = function () {
-    $scope.ledgerError = false
-    $scope.ledger = new Ledger3('w0w')
-    var app = new ledgerEth($scope.ledger)
-    var path = $scope.getLedgerPath()
-    app.getAddress(path, $scope.ledgerCallback, false, true)
-  }
-  $scope.scanDigitalBitbox = function () {
-    $scope.digitalBitbox = new DigitalBitboxUsb()
-    var app = new DigitalBitboxEth($scope.digitalBitbox, $scope.HDWallet.digitalBitboxSecret)
-    var path = $scope.HDWallet.dPath
-    app.getAddress(path, $scope.digitalBitboxCallback)
-  }
-  $scope.scanSecalot = function () {
-    $scope.secalot = new SecalotUsb()
-    if (typeof $scope.HDWallet.secalotSecret === 'undefined') {
-      $scope.HDWallet.secalotSecret = ''
-    }
-    var app = new SecalotEth($scope.secalot, $scope.HDWallet.secalotSecret)
-    var path = $scope.HDWallet.dPath
-    app.getAddress(path, $scope.secalotCallback)
-  }
-  $scope.scanTrezor = function () {
-    // trezor is using the path without change level id
-    var path = $scope.getTrezorPath()
 
-    console.warn('SCANTR', path, $scope.HDWallet)
-    TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.5.2')
-  }
-
-  //= ================ Mew Connect (start)==============================
+  // ================= Mew Connect (start)==============================
   $scope.scanMewConnect = function () {
     var app = new MewConnectEth()
 
@@ -423,8 +339,8 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     $scope.mewConnect.on('codeDisplay', codeDisplay)
     $scope.mewConnect.on('RtcConnectedEvent', rtcConnected)
     $scope.mewConnect.on('RtcClosedEvent', rtcClosed)
-
     $scope.mewConnect.on('address', makeWallet)
+
     app.setMewConnect($scope.mewConnect)
     app.signalerConnect()
 
@@ -442,7 +358,10 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
 
     function rtcClosed (data) {
       $scope.mewConnectionStatus = 0
-      uiFuncs.notifier.info('Disconnected')
+      $scope.wallet = null
+      walletService.wallet = null
+      uiFuncs.notifier.danger('Disconnected', 10000)
+      if (!$scope.$$phase) $scope.$apply()
     }
 
     function codeDisplay (data) {
@@ -450,16 +369,16 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
       $scope.mewConnectCode = data
       $scope.connectionCodeTimeout = setTimeout(() => {
         $scope.mewConnectionStatus = 3
-        $scope.$apply()
+        if (!$scope.$$phase) $scope.$apply()
       }, 120800) // 200ms before the actual server timeout happens. (to account for transit time, ui lag, etc.)
-      $scope.$apply()
+      if (!$scope.$$phase) $scope.$apply()
     }
 
     function makeWallet (data) {
       var wallet = app.createWallet(data)
       $scope.wallet = wallet
       walletService.wallet = wallet
-      $scope.$apply()
+      if (!$scope.$$phase) $scope.$apply()
     }
   }
 
@@ -467,31 +386,6 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     $scope.mewConnect.disconnectRTC()
   }
   //= ================ Mew Connect (end)==============================
-
-  $scope.getLedgerPath = function () {
-    return $scope.HDWallet.dPath
-  }
-  $scope.getTrezorPath = function () {
-    return $scope.HDWallet.dPath
-  }
-  $scope.scanMetamask = function () {
-    window.web3.eth.getAccounts(function (err, accounts) {
-      if (err) $scope.notifier.danger(err + '. Are you sure you are on a secure (SSL / HTTPS) connection?')
-      if (!accounts.length) {
-        $scope.notifier.danger('Could not read your accounts from MetaMask. Try unlocking it.')
-        return
-      }
-      var address = accounts[0]
-      var addressBuffer = Buffer.from(address.slice(2), 'hex')
-      var wallet = new Web3Wallet(addressBuffer)
-      wallet.setBalance(false)
-      // set wallet
-      $scope.wallet = wallet
-      walletService.wallet = wallet
-      $scope.notifier.info(globalFuncs.successMsgs[6])
-      $scope.wallet.type = 'default'
-    })
-  }
 
   // helper function that removes 0x prefix from strings
   function fixPkey (key) {

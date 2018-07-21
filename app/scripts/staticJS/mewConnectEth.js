@@ -4,6 +4,7 @@ class MewConnectEth{
   constructor (callback) {
 
     this.listeners = [];
+
     if (callback) {
       this.callback = callback;
     } else {
