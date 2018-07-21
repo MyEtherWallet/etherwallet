@@ -1,5 +1,16 @@
+### Release v3.21.18
+### New  
+- Adds DEPO (Depository Network) and CRMT token [#1965](https://github.com/kvhnuke/etherwallet/pull/1965)
+- Add DEPO custom gas limit [#1964](https://github.com/kvhnuke/etherwallet/pull/1964)
+- Hide warning for POA network [#1953](https://github.com/kvhnuke/etherwallet/pull/1953)
+- Add VDG token, Update LookRev token [#1963](https://github.com/kvhnuke/etherwallet/pull/1963)
+- Remove obsolete networks [#1940](https://github.com/kvhnuke/etherwallet/pull/1940)
+
 ### Release v3.21.17
 ### New
+- Add Simplex Link [#1961](https://github.com/kvhnuke/etherwallet/pull/1961) [#1960](https://github.com/kvhnuke/etherwallet/pull/1960)
+- Add SLY token [#1958](https://github.com/kvhnuke/etherwallet/pull/1958)
+- Added CFC Token sale address and gas limit [#1956](https://github.com/kvhnuke/etherwallet/pull/1956)
 - Add ELY and DRVH tokens [#1955](https://github.com/kvhnuke/etherwallet/pull/1955)
 - Add Billfodl affiliate link and CFC token [#1954](https://github.com/kvhnuke/etherwallet/pull/1954)
 - Misc CSS fixes [#1935](https://github.com/kvhnuke/etherwallet/pull/1935)
@@ -7,6 +18,10 @@
 - Add Cubrix token [#1952](https://github.com/kvhnuke/etherwallet/pull/1952)
 - Update REP token address [#1951](https://github.com/kvhnuke/etherwallet/pull/1951)
 - Add Cubrix contract abi [#1950](https://github.com/kvhnuke/etherwallet/pull/1950)
+
+### Update
+- Update Ethorse rewards contract address [#1960](https://github.com/kvhnuke/etherwallet/pull/1960)
+- Update translation [#1957](https://github.com/kvhnuke/etherwallet/pull/1957)
 
 ### Release v3.21.16
 ### New

@@ -954,6 +954,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xad723Facb5fd4cDA129d706Ac9D0489B025Ed188",
+		"symbol": "CRMT",
+		"decimal": 8,
+		"type": "default"
+	},
+	{
 		"address": "0x80a7e048f37a50500351c204cb407766fa3bae7f",
 		"symbol": "CRPT",
 		"decimal": 18,
@@ -1149,6 +1155,12 @@
 		"address": "0x7cF271966F36343Bf0150F25E5364f7961c58201",
 		"symbol": "DEPO",
 		"decimal": 0,
+		"type": "default"
+	},
+	{
+		"address": "0x89cbeac5e8a13f0ebb4c74fadfc69be81a501106",
+		"symbol": "DEPO (Depository Network)",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -2311,7 +2323,13 @@
 	},
 	{
 		"address": "0x21ae23b882a340a22282162086bc98d3e2b73018",
-		"symbol": "LOK",
+		"symbol": "LOOK old",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x253c7dd074f4bacb305387f922225a4f737c08bd",
+		"symbol": "LOOK",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -3408,6 +3426,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x7928c8aBF1F74eF9F96D4D0a44e3b4209d360785",
+		"symbol": "SLY",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x6F6DEb5db0C4994A8283A01D6CFeEB27Fc3bBe9C",
 		"symbol": "SMART",
 		"decimal": 0,
@@ -3824,6 +3848,12 @@
 	{
 		"address": "0x82BD526bDB718C6d4DD2291Ed013A5186cAE2DCa",
 		"symbol": "VDOC",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x57C75ECCc8557136D32619a191fBCDc88560d711",
+		"symbol": "VDG",
 		"decimal": 18,
 		"type": "default"
 	},

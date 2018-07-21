@@ -19,10 +19,8 @@ nodes.nodeTypes = {
     ETSC: "ETSC",
     EGEM: "EGEM",
     CLO: "CLO",
-    EAST: "EAST",
     X888: "X88",
     MUSIC: "MUSIC",
-    YAP: "YAP",
     GO: "GO",
     EOSC: "EOSC",
     Custom: "CUSTOM ETH"
@@ -102,18 +100,6 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/etcAbi.json'),
         'service': 'Ethereum Commonwealth',
         'lib': new nodes.customNode('https://etc-geth.0xinfra.com', '')
-    },
-    'etc_chainkorea': {
-        'name': 'ETC',
-        'blockExplorerTX': 'https://classicexplorer.org/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://classicexplorer.org/addr/[[address]]',
-        'type': nodes.nodeTypes.ETC,
-        'eip155': true,
-        'chainId': 61,
-        'tokenList': require('./tokens/etcTokens.json'),
-        'abiList': require('./abiDefinitions/etcAbi.json'),
-        'service': 'Chainkorea',
-        'lib': new nodes.customNode('https://node.classicexplorer.org', '')
     },
     'etc_epool': {
         'name': 'ETC',
@@ -302,19 +288,6 @@ nodes.nodeList = {
         'service': 'Callisto.network',
         'lib': new nodes.customNode('https://clo-geth.0xinfra.com/', '')
     },
-    'east': {
-        'name': 'EAST',
-        'blockExplorerTX': 'https://explorer.easthub.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://explorer.easthub.io/addr/[[address]]',
-        'type': nodes.nodeTypes.EAST,
-        'eip155': true,
-        'chainId': 7,
-        'tokenList': require('./tokens/eastTokens.json'),
-        'abiList': require('./abiDefinitions/eastAbi.json'),
-        'estimateGas': true,
-        'service': 'easthub.io',
-        'lib': new nodes.customNode('https://node.easthub.io', '')
-    },
     'x888': {
         'name': 'X888',
         'blockExplorerTX': 'https://myetherwallet.com/?[[txHash]]#check-tx-status',
@@ -340,19 +313,6 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'musicoin.org',
         'lib': new nodes.customNode('https://mcdnode.trustfarm.io/api', '')
-    },
-    'yap': {
-        'name': 'YAP',
-        'blockExplorerTX': 'https://explorer.yapstone.pro/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://explorer.yapstone.pro/addr/[[address]]',
-        'type': nodes.nodeTypes.YAP,
-        'eip155': true,
-        'chainId': 528,
-        'tokenList': require('./tokens/yapTokens.json'),
-        'abiList': require('./abiDefinitions/yapAbi.json'),
-        'estimateGas': true,
-        'service': 'yapstone.pro',
-        'lib': new nodes.customNode('https://node.yapstone.pro', '')
     },
     'go': {
         'name': 'GO',
