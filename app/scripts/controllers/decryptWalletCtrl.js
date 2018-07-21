@@ -158,7 +158,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             }
         }
     }
-  }
+
   $scope.onHDDPathChange = function (password = $scope.mnemonicPassword) {
     $scope.HDWallet.numWallets = 0
     if ($scope.walletType == 'pastemnemonic') {
