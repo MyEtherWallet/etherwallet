@@ -77,8 +77,8 @@
 
 @@if (site === 'mew' ) {
   <div class="small announcement annoucement-danger">
-    <div class="container">
-      This site is for testing MEWconnect BETA
+    <div class="container hidden-xs" style="font-size: larger;">
+      <b>This site is for testing MEWconnect BETA</b>
 <!--      DON'T GET PHISHED, please! 🎣 Thank you! 🤗
       <br />
       1. BOOKMARK <a href="https://www.myetherwallet.com"> MYETHERWALLET.COM </a>

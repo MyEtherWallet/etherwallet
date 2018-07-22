@@ -108,8 +108,8 @@ class MewConnectEth{
 
   static checkWebRTCAvailable() {
 
-    var hasWebRTC = MewConnectEth.getBrowserRTC() == null;
-    return !hasWebRTC;
+    var doesNotHaveWebRTC = MewConnectEth.getBrowserRTC() == null;
+    return !doesNotHaveWebRTC;
     // return false
   }
 

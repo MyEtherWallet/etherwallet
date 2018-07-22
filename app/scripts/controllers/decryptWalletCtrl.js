@@ -35,6 +35,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         goPath:            "m/44'/6060'/0'/0",     // first address: m/44'/6060'/0'/0/0
         hwEOSClassicPath:  "m/44'/2018'/0'/0",     // first address: m/44'/2018'/0'/0/0
     };
+    $scope.canUseMewConnect = MewConnectEth.checkWebRTCAvailable()
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
     $scope.$watch('ajaxReq.type', function() {
