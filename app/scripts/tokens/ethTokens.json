@@ -1878,6 +1878,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x95C4be8534d69C248C0623c4C9a7A2a001c17337",
+		"symbol": "HDL",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xe9ff07809ccff05dae74990e25831d0bc5cbe575",
 		"symbol": "Hdp",
 		"decimal": 18,
