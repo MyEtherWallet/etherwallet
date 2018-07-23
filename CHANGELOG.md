@@ -1,7 +1,8 @@
-- Add HDL token
-
 ### Release v3.21.18
 ### New  
+- Add CAR, and TSW token, remove WPC token and update AXP to AXPR []()
+- Add WNK token [#1967](https://github.com/kvhnuke/etherwallet/pull/1967)
+- Add HODL token [#1969](https://github.com/kvhnuke/etherwallet/pull/1969)
 - Adds DEPO (Depository Network) and CRMT token [#1965](https://github.com/kvhnuke/etherwallet/pull/1965)
 - Add DEPO custom gas limit [#1964](https://github.com/kvhnuke/etherwallet/pull/1964)
 - Hide warning for POA network [#1953](https://github.com/kvhnuke/etherwallet/pull/1953)
