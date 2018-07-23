@@ -1,5 +1,6 @@
 ### Release v3.21.18
 ### New  
+- Add Kyber and MEW token contracts [#1971](https://github.com/kvhnuke/etherwallet/pull/1971)
 - Add CAR, and TSW token, remove WPC token and update AXP to AXPR [#1970](https://github.com/kvhnuke/etherwallet/pull/1970)
 - Add WNK token [#1967](https://github.com/kvhnuke/etherwallet/pull/1967)
 - Add HODL token [#1969](https://github.com/kvhnuke/etherwallet/pull/1969)
