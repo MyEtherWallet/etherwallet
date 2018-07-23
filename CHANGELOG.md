@@ -1,3 +1,5 @@
+- Add HDL token
+
 ### Release v3.21.18
 ### New  
 - Adds DEPO (Depository Network) and CRMT token [#1965](https://github.com/kvhnuke/etherwallet/pull/1965)
