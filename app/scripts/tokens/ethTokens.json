@@ -324,9 +324,9 @@
 		"type": "default"
 	},
 	{
-		"address": "0x9af2c6B1A28D3d6BC084bd267F70e90d49741D5B",
-		"symbol": "AXP",
-		"decimal": 8,
+		"address": "0xC39E626A04C5971D770e319760D7926502975e47",
+		"symbol": "AXPR",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -675,6 +675,12 @@
 		"address": "0x423e4322cdda29156b49a17dfbd2acc4b280600d",
 		"symbol": "CAR",
 		"decimal": 9,
+		"type": "default"
+	},
+	{
+		"address": "0x4d9e23a3842fe7eb7682b9725cf6c507c424a41b",
+		"symbol": "CAR (Carblock)",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -3792,6 +3798,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x6B87999bE87358065bBdE41e8a0fe0B7b1cd2514",
+		"symbol": "TSW",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x2eF1aB8a26187C58BB8aAeB11B2fC6D25C5c0716",
 		"symbol": "TWN",
 		"decimal": 18,
@@ -4040,12 +4052,6 @@
 	{
 		"address": "0xd18e454d844eb0009d32e07a0cde89e18d64cfb4",
 		"symbol": "WORK",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
-		"address": "0x62087245087125d3db5b9a3d713d78e7bbc31e54",
-		"symbol": "WPC",
 		"decimal": 18,
 		"type": "default"
 	},
