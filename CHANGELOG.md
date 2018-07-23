@@ -1,6 +1,6 @@
 ### Release v3.21.18
 ### New  
-- Add CAR, and TSW token, remove WPC token and update AXP to AXPR []()
+- Add CAR, and TSW token, remove WPC token and update AXP to AXPR [#1970](https://github.com/kvhnuke/etherwallet/pull/1970)
 - Add WNK token [#1967](https://github.com/kvhnuke/etherwallet/pull/1967)
 - Add HODL token [#1969](https://github.com/kvhnuke/etherwallet/pull/1969)
 - Adds DEPO (Depository Network) and CRMT token [#1965](https://github.com/kvhnuke/etherwallet/pull/1965)
