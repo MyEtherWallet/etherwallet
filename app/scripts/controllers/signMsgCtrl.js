@@ -154,30 +154,14 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                 mewConnect.on('signMessage', (data) =>{
                     $scope.signMsg.signedMsg = JSON.parse(data);
                     $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
-                    // mewConnect.disconnectRTCDirect();
                 })
                 mewConnect.on('sign', (data) =>{
                     $scope.signMsg.signedMsg = JSON.parse(data);
                     $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
-                    // mewConnect.disconnectRTCDirect();
                 })
-
-
-              // mewConnect.setMessageSignerCallback(function (data, next) {
-              //   $scope.signMsg.signedMsg = JSON.parse(data);
-              //   $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
-              //   // mewConnect.disconnectRTCDirect();
-              // });
               //TODO hash message before send.  Currently sending as plain text
               connectApp.signMessage(thisMessage);
 
-              $scope.$on("$destroy", function () {
-                // $scope.mewConnect.disconnectRTCDirect();
-                // // if(MewConnect.instance){
-                // //     console.log("decryptWalletCtrl:363", MewConnect); //todo remove dev item
-                // // }
-                // console.log("signMsgCtrl:142 : scope being destroyed"); //todo remove dev item
-              });
               //================= Mew Connect (end)==============================
 
               // Sign via PK

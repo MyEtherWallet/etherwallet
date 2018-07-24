@@ -88,7 +88,6 @@ if (IS_CX) {
   require('./staticJS/adapter') // adapter to ensure a common api for webRTC
   var MewConnectEth = require('./staticJS/mewConnectEth')
   var MewConnect = require('./staticJS/MewConnect.min').Initiator
-  var MewConnectCrypto = require('./staticJS/MewConnect.min').Crypto
   window.u2f = u2f
   window.Ledger3 = ledger3
   window.ledgerEth = ledgerEth
@@ -99,7 +98,6 @@ if (IS_CX) {
   window.SecalotEth = secalotEth
   window.MewConnectEth = MewConnectEth
   window.MewConnect = MewConnect
-  window.MewConnectCrypto = MewConnectCrypto
   window.MewRTC = require('simple-peer')
 }
 var CustomGasMessages = require('./customGas.js')
