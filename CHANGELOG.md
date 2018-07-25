@@ -1,5 +1,6 @@
 ### Release v3.21.18
 ### New  
+- Add IST34 and NUG tokens [#1973](https://github.com/kvhnuke/etherwallet/pull/1973)
 - Add CRGO and TICO token, add Havven ABI [#1972](https://github.com/kvhnuke/etherwallet/pull/1972)
 - Add Kyber and MEW token contracts [#1971](https://github.com/kvhnuke/etherwallet/pull/1971)
 - Add CAR, and TSW token, remove WPC token and update AXP to AXPR [#1970](https://github.com/kvhnuke/etherwallet/pull/1970)
