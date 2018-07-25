@@ -2106,6 +2106,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x0cf713b11c9b986ec40d65bd4f7fbd50f6ff2d64",
+		"symbol": "IST34",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x5e6b6d9abad9093fdc861ea1600eba1b355cd940",
 		"symbol": "ITC",
 		"decimal": 18,
@@ -2702,6 +2708,12 @@
 	{
 		"address": "0x4ce6b362bc77a24966dda9078f9cef81b3b886a7",
 		"symbol": "NPER",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x245ef47d4d0505ecf3ac463f4d81f41ade8f1fd1",
+		"symbol": "NUG",
 		"decimal": 18,
 		"type": "default"
 	},
