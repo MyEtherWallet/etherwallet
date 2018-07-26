@@ -77,8 +77,9 @@
 
 @@if (site === 'mew' ) {
   <div class="small announcement annoucement-danger">
-    <div class="container">
-      DON'T GET PHISHED, please! 🎣 Thank you! 🤗
+    <div class="container hidden-xs" style="font-size: larger;">
+      <b>This site is for testing MEWconnect BETA</b>
+<!--      DON'T GET PHISHED, please! 🎣 Thank you! 🤗
       <br />
       1. BOOKMARK <a href="https://www.myetherwallet.com"> MYETHERWALLET.COM </a>
       <span class="hidden-xs">
@@ -88,7 +89,7 @@
         <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>
         or
         <a href="https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige" target="_blank" rel="noopener noreferrer">Cryptonite</a>
-      </span>
+      </span>-->
     </div>
   </div>
 }

@@ -126,7 +126,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                 $scope.notifier.info("Tap a touch button on your device to confirm signing.");
                 var app = new SecalotEth($scope.wallet.getHWTransport());
                 app.signMessage($scope.wallet.getPath(), thisMessage, localCallback);
-                
+
             // Sign via trezor
             } else if ((typeof hwType != "undefined") && (hwType == "trezor")) {
                 TrezorConnect.ethereumSignMessage($scope.wallet.getPath(), thisMessage, function(response) {
@@ -144,7 +144,27 @@ var signMsgCtrl = function($scope, $sce, walletService) {
                     }
                 })
 
-                // Sign via PK
+                //================= Mew Connect (start)==============================
+            } else if (typeof hwType != "undefined" && hwType == "mewConnect") {
+              //TODO reset ui when rtc disconnects
+              var msg = Buffer.from(thisMessage).toString("hex");
+              var connectApp = new MewConnectEth();
+              var mewConnect = MewConnect.instance;
+              connectApp.setMewConnect(mewConnect);
+                mewConnect.on('signMessage', (data) =>{
+                    $scope.signMsg.signedMsg = JSON.parse(data);
+                    $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
+                })
+                mewConnect.on('sign', (data) =>{
+                    $scope.signMsg.signedMsg = JSON.parse(data);
+                    $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
+                })
+              //TODO hash message before send.  Currently sending as plain text
+              connectApp.signMessage(thisMessage);
+
+              //================= Mew Connect (end)==============================
+
+              // Sign via PK
             } else {
                 var msg = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage))
                 var signed = ethUtil.ecsign(msg, $scope.wallet.getPrivateKey())

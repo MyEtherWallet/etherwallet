@@ -100,7 +100,7 @@
     <section class="footer--righ">
       <p>
         <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-          MyEtherWallet.com
+           Back to MyEtherWallet.com
         </a>
       </p>
       <p>

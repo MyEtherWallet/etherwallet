@@ -283,8 +283,6 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     }
     $scope.setLanguageFromStorage();
 
-
-
     $scope.setHash = function(hash) {
         location.hash = hash;
         $scope.setTab(hash);

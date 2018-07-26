@@ -36,64 +36,64 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     mew: true,
     cx: true
   },
-  swap: {
-    id: 4,
-    name: "NAV_Swap",
-    url: "swap",
-    mew: true,
-    cx: true
-  },
-  offlineTransaction: {
-    id: 5,
-    name: "NAV_Offline",
-    url:"offline-transaction",
-    mew: true,
-    cx: false
-  },
+  // swap: {
+  //   id: 4,
+  //   name: "NAV_Swap",
+  //   url: "swap",
+  //   mew: true,
+  //   cx: true
+  // },
+  // offlineTransaction: {
+  //   id: 5,
+  //   name: "NAV_Offline",
+  //   url:"offline-transaction",
+  //   mew: true,
+  //   cx: false
+  // },
   contracts: {
-    id: 6,
+    id: 4,
     name: "NAV_Contracts",
     url: "contracts",
     mew: true,
     cx: true
   },
   ens: {
-    id:7,
+    id: 5,
     name: "NAV_ENS",
     url: "ens",
     mew: true,
     cx: true
   },
   domainsale: {
-    id: 8,
+    id: 6,
     name: "NAV_DomainSale",
     url: "domainsale",
     mew: true,
     cx: true
   },
   txStatus: {
-    id: 9,
+    id: 7,
     name: "NAV_CheckTxStatus",
     url: "check-tx-status",
     mew: true,
     cx: true
   },
   viewWalletInfo: {
-    id: 10,
+    id: 8,
     name: "NAV_ViewWallet",
     url: "view-wallet-info",
     mew: true,
     cx: false
   },
   signMsg: {
-    id: 11,
+    id: 9,
     name: "NAV_SignMsg",
     url: "sign-message",
     mew: false,
     cx: false
   },
   bulkGenerate: {
-    id: 12,
+    id: 10,
     name: "NAV_BulkGenerate",
     url: "bulk-generate",
     mew: false,
