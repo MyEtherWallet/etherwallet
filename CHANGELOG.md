@@ -1,6 +1,6 @@
 ### Release v3.21.18
 ### New  
-- Add HUR and ODEM tokens, remove inactive tokens. [See list here](https://github.com/MyEtherWallet/ethereum-lists/pull/764) []()
+- Add HUR and ODEM tokens, remove inactive tokens. [See list here](https://github.com/MyEtherWallet/ethereum-lists/pull/764) [#1974](https://github.com/kvhnuke/etherwallet/pull/1974)
 - Add IST34 and NUG tokens [#1973](https://github.com/kvhnuke/etherwallet/pull/1973)
 - Add CRGO and TICO token, add Havven ABI [#1972](https://github.com/kvhnuke/etherwallet/pull/1972)
 - Add Kyber and MEW token contracts [#1971](https://github.com/kvhnuke/etherwallet/pull/1971)
