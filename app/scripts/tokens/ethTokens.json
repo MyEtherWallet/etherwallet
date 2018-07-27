@@ -1392,6 +1392,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xc528c28FEC0A90C083328BC45f587eE215760A0F",
+		"symbol": "EDR",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x2a22e5cca00a3d63308fa39f29202eb1b39eef52",
 		"symbol": "EDU",
 		"decimal": 18,
@@ -1539,12 +1545,6 @@
 		"address": "0xabdf147870235fcfc34153828c769a70b3fae01f",
 		"symbol": "EURT",
 		"decimal": 6,
-		"type": "default"
-	},
-	{
-		"address": "0x523630976eB6147621B5c31c781eBe2Ec2a806E0",
-		"symbol": "eUSD",
-		"decimal": 18,
 		"type": "default"
 	},
 	{
