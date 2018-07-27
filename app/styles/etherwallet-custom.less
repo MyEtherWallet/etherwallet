@@ -606,6 +606,7 @@ label small {
 @brand-music: #fece00;
 @brand-go: #27223d;
 @brand-eosc: #926565;
+@brand-akroma: #F10000;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -670,6 +671,9 @@ label small {
   }
   li:nth-child(24) {
     border-left: 2px solid @brand-eosc;
+  }
+  li:nth-child(25) {
+    border-left: 2px solid @brand-akroma;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -827,6 +831,13 @@ header.EOSC {
   & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-eosc;    }
   & + .container .modal-content          { border: 0.25rem solid @brand-eosc;        }
   & + .container .alert-info             { background-color:@brand-eosc;             }
+}
+
+header.AKROMA {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-akroma; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-akroma;    }
+  & + .container .modal-content          { border: 0.25rem solid @brand-akroma;        }
+  & + .container .alert-info             { background-color:@brand-akroma;             }
 }
 
 .contest-container {
