@@ -34,7 +34,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         hwRskPath:         "m/44'/137'/0'/0",      // first address : m/44'/137'/0'/0/0
         goPath:            "m/44'/6060'/0'/0",     // first address: m/44'/6060'/0'/0/0
         hwEOSClassicPath:  "m/44'/2018'/0'/0",     // first address: m/44'/2018'/0'/0/0
-        akromaPath:        "m/44'/200625'/0'/0",   // first address: m/44'/200625'/0'/0/0
+        hwAkromaPath:        "m/44'/200625'/0'/0",   // first address: m/44'/200625'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
@@ -114,7 +114,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
                     break;
                 case nodes.nodeTypes.Akroma:
-                    $scope.HDWallet.dPath = $scope.HDWallet.akromaPath;
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
                     break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
