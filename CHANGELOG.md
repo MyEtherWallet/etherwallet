@@ -1,5 +1,6 @@
 ### Release v3.21.18
 ### New  
+- Add EXY token [#1981](https://github.com/kvhnuke/etherwallet/pull/1981)
 - Add EDR token [#1977](https://github.com/kvhnuke/etherwallet/pull/1977)
 - Add HUR and ODEM tokens, remove inactive tokens. [See list here](https://github.com/MyEtherWallet/ethereum-lists/pull/764) [#1974](https://github.com/kvhnuke/etherwallet/pull/1974)
 - Add IST34 and NUG tokens [#1973](https://github.com/kvhnuke/etherwallet/pull/1973)
