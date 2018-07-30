@@ -1572,6 +1572,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5c743a35e903f6c584514ec617acee0611cf44f3",
+		"symbol": "EXY",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xb67734521eAbBE9C773729dB73E16CC2dfb20A58",
 		"symbol": "E₹",
 		"decimal": 2,
