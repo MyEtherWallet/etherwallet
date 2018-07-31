@@ -1,3 +1,7 @@
+### Release v3.21.19
+### New
+- Add contracts from ethereum-list [#1984](https://github.com/kvhnuke/etherwallet/pull/1984)
+
 ### Release v3.21.18
 ### New  
 - Cleanup nodeTypes [#1983](https://github.com/kvhnuke/etherwallet/pull/1983)
