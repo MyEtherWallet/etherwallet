@@ -1,6 +1,7 @@
 ### Release v3.21.18
 ### New  
-- Cleanup nodeTypes []()
+- Cleanup nodeTypes [#1983](https://github.com/kvhnuke/etherwallet/pull/1983)
+- Connect Beta [#1966](https://github.com/kvhnuke/etherwallet/pull/1966)
 - Add EXY token [#1981](https://github.com/kvhnuke/etherwallet/pull/1981)
 - Add EDR token [#1977](https://github.com/kvhnuke/etherwallet/pull/1977)
 - Add HUR and ODEM tokens, remove inactive tokens. [See list here](https://github.com/MyEtherWallet/ethereum-lists/pull/764) [#1974](https://github.com/kvhnuke/etherwallet/pull/1974)
