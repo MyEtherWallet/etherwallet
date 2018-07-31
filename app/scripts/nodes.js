@@ -6,11 +6,9 @@ nodes.metamaskNode = require('./nodeHelpers/metamask');
 nodes.nodeTypes = {
     ETH: "ETH",
     ETC: "ETC",
-    MUS: "MUSIC",
     Ropsten: "ROPSTEN ETH",
     Kovan: "KOVAN ETH",
     Rinkeby: "RINKEBY ETH",
-    RSK: "RSK",
     EXP: "EXP",
     UBQ: "UBQ",
     POA: "POA",
