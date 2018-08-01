@@ -1,5 +1,13 @@
+### Release v3.21.19
+### New
+- Add contracts from ethereum-list [#1984](https://github.com/kvhnuke/etherwallet/pull/1984)
+
 ### Release v3.21.18
 ### New  
+- Cleanup nodeTypes [#1983](https://github.com/kvhnuke/etherwallet/pull/1983)
+- Connect Beta [#1966](https://github.com/kvhnuke/etherwallet/pull/1966)
+- Add EXY token [#1981](https://github.com/kvhnuke/etherwallet/pull/1981)
+- Add EDR token [#1977](https://github.com/kvhnuke/etherwallet/pull/1977)
 - Add HUR and ODEM tokens, remove inactive tokens. [See list here](https://github.com/MyEtherWallet/ethereum-lists/pull/764) [#1974](https://github.com/kvhnuke/etherwallet/pull/1974)
 - Add IST34 and NUG tokens [#1973](https://github.com/kvhnuke/etherwallet/pull/1973)
 - Add CRGO and TICO token, add Havven ABI [#1972](https://github.com/kvhnuke/etherwallet/pull/1972)

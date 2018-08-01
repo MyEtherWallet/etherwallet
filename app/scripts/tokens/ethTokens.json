@@ -1392,6 +1392,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xc528c28FEC0A90C083328BC45f587eE215760A0F",
+		"symbol": "EDR",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x2a22e5cca00a3d63308fa39f29202eb1b39eef52",
 		"symbol": "EDU",
 		"decimal": 18,
@@ -1542,12 +1548,6 @@
 		"type": "default"
 	},
 	{
-		"address": "0x523630976eB6147621B5c31c781eBe2Ec2a806E0",
-		"symbol": "eUSD",
-		"decimal": 18,
-		"type": "default"
-	},
-	{
 		"address": "0x923108a439C4e8C2315c4f6521E5cE95B44e9B4c",
 		"symbol": "EVE",
 		"decimal": 18,
@@ -1569,6 +1569,12 @@
 		"address": "0xc98e0639c6d2ec037a615341c369666b110e80e5",
 		"symbol": "EXMR",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0x5c743a35e903f6c584514ec617acee0611cf44f3",
+		"symbol": "EXY",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
