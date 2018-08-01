@@ -22,6 +22,7 @@ nodes.nodeTypes = {
     GO: "GO",
     EOSC: "EOSC",
     AKROMA: "AKROMA",
+    ESN: "ESN",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -351,6 +352,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'akroma.io',
         'lib': new nodes.customNode('https://rpc.akroma.io', '')
+    },
+    'esn': {
+        'name': 'ESN',
+        'blockExplorerTX': 'https://ethersocial.net/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://ethersocial.net/addr/[[address]]',
+        'type': nodes.nodeTypes.ESN,
+        'eip155': true,
+        'chainId': 31102,
+        'tokenList': require('./tokens/esnTokens.json'),
+        'abiList': require('./abiDefinitions/esnAbi.json'),
+        'estimateGas': true,
+        'service': 'ethersocial.org',
+        'lib': new nodes.customNode('https://api.esn.gonspool.com', '')
     }
 };
 

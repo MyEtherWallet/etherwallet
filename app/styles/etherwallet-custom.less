@@ -606,6 +606,7 @@ label small {
 @brand-go: #27223d;
 @brand-eosc: #926565;
 @brand-akroma: #F10000;
+@brand-esn: #a16bff;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -674,6 +675,10 @@ label small {
   li:nth-child(25) {
     border-left: 2px solid @brand-akroma;
   }
+  li:nth-child(26) {
+    border-left: 2px solid @brand-esn;
+  }
+
   li:last-child {
     border-left: 2px solid @gray-light;
   }
@@ -692,7 +697,8 @@ label small {
   li:nth-child(22),
   li:nth-child(23),
   li:nth-child(24),
-  li:nth-child(25), {
+  li:nth-child(25),
+  li:nth-child(26),{
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -831,6 +837,13 @@ header.AKROMA {
   & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-akroma;    }
   & + .container .modal-content          { border: 0.25rem solid @brand-akroma;        }
   & + .container .alert-info             { background-color:@brand-akroma;             }
+}
+
+header.ESN {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-esn;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-esn;     }
+  & + .container .modal-content          { border: 0.25rem solid @brand-esn;         }
+  & + .container .alert-info             { background-color:@brand-esn;              }
 }
 
 .contest-container {
