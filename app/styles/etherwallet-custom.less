@@ -605,6 +605,7 @@ label small {
 @brand-music: #fece00;
 @brand-go: #27223d;
 @brand-eosc: #926565;
+@brand-akroma: #F10000;
 @brand-esn: #a16bff;
 @brand-cust: #b50085;
 
@@ -672,8 +673,12 @@ label small {
     border-left: 2px solid @brand-eosc;
   }
   li:nth-child(25) {
+    border-left: 2px solid @brand-akroma;
+  }
+  li:nth-child(26) {
     border-left: 2px solid @brand-esn;
   }
+
   li:last-child {
     border-left: 2px solid @gray-light;
   }
@@ -692,7 +697,8 @@ label small {
   li:nth-child(22),
   li:nth-child(23),
   li:nth-child(24),
-  li:nth-child(25), {
+  li:nth-child(25),
+  li:nth-child(26),{
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -824,6 +830,13 @@ header.EOSC {
   & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-eosc;    }
   & + .container .modal-content          { border: 0.25rem solid @brand-eosc;        }
   & + .container .alert-info             { background-color:@brand-eosc;             }
+}
+
+header.AKROMA {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-akroma; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-akroma;    }
+  & + .container .modal-content          { border: 0.25rem solid @brand-akroma;        }
+  & + .container .alert-info             { background-color:@brand-akroma;             }
 }
 
 header.ESN {

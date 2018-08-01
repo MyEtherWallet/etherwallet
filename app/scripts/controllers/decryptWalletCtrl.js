@@ -33,6 +33,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         singularDTVPath:   "m/0'/0'/0'",           // first address: m/0'/0'/0'/0
         goPath:            "m/44'/6060'/0'/0",     // first address: m/44'/6060'/0'/0/0
         hwEOSClassicPath:  "m/44'/2018'/0'/0",     // first address: m/44'/2018'/0'/0/0
+        hwAkromaPath:      "m/44'/200625'/0'/0",   // first address: m/44'/200625'/0'/0/0
         hwESNetworkPath:   "m/44'/31102'/0'/0",    // first address: m/44'/31102'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
@@ -109,6 +110,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.EOSC:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
                     break;
+                case nodes.nodeTypes.Akroma:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
                 case nodes.nodeTypes.ESN:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwESNetworkPath;
                     break;

@@ -21,6 +21,7 @@ nodes.nodeTypes = {
     MUSIC: "MUSIC",
     GO: "GO",
     EOSC: "EOSC",
+    AKROMA: "AKROMA",
     ESN: "ESN",
     Custom: "CUSTOM ETH"
 };
@@ -338,6 +339,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'eos-classic.io',
         'lib': new nodes.customNode('https://node.eos-classic.io', '')
+    },
+    'akroma': {
+        'name': 'AKA',
+        'blockExplorerTX': 'https://akroma.io/explorer/transaction/[[txHash]]',
+        'blockExplorerAddr': 'https://akroma.io/explorer/address/[[address]]',
+        'type': nodes.nodeTypes.AKROMA,
+        'eip155': true,
+        'chainId': 200625,
+        'tokenList': require('./tokens/akromaTokens.json'),
+        'abiList': require('./abiDefinitions/akromaAbi.json'),
+        'estimateGas': true,
+        'service': 'akroma.io',
+        'lib': new nodes.customNode('https://rpc.akroma.io', '')
     },
     'esn': {
         'name': 'ESN',
