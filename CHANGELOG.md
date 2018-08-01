@@ -2,6 +2,9 @@
 ### New
 - Add contracts from ethereum-list [#1984](https://github.com/kvhnuke/etherwallet/pull/1984)
 
+### Update
+- Add buzcoin ico scam sites to darklist [#1987](https://github.com/kvhnuke/etherwallet/pull/1987)
+
 ### Release v3.21.18
 ### New  
 - Cleanup nodeTypes [#1983](https://github.com/kvhnuke/etherwallet/pull/1983)
