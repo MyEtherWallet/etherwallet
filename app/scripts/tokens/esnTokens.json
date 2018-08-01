@@ -1,0 +1,14 @@
+[
+  {
+    "address": "0x72ea3508d9d817a91465abb59be10fef9857a055",
+    "symbol": "DGT",
+    "decimal": 0,
+    "type": "default"
+  },
+  {
+    "address": "0x0146b9dcd9fb2abc1b5b136c28d20d0037526961",
+    "symbol": "TOPM",
+    "decimal": 18,
+    "type": "default"
+  }
+]
