@@ -1,9 +1,13 @@
 ### Release v3.21.19
 ### New
 - Add contracts from ethereum-list [#1984](https://github.com/kvhnuke/etherwallet/pull/1984)
+- Add Akroma Support [#1976](https://github.com/kvhnuke/etherwallet/pull/1976)
+- Add ESN Support [#1879](https://github.com/kvhnuke/etherwallet/pull/1879)
+- support 32bits chainId with the latest Ledger app [#1979](https://github.com/kvhnuke/etherwallet/pull/1979)
 
 ### Update
 - Add buzcoin ico scam sites to darklist [#1987](https://github.com/kvhnuke/etherwallet/pull/1987)
+- Fixed menu layout [#1988](https://github.com/kvhnuke/etherwallet/pull/1988)
 
 ### Release v3.21.18
 ### New  
