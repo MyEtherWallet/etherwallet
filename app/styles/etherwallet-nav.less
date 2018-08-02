@@ -54,26 +54,33 @@
     transition: 250ms all ease;
   }
   .dropdown {
-    padding: .2rem;
+    padding: .1rem;
   }
   @media screen and (max-width: 900px) {
     .dropdown {
-      padding: .2rem 0;
+      padding: .1rem 0;
       white-space: nowrap;
       display: inline-block;
       font-size: 14px;
       .dropdown-menu {
-        right: -10px;
+        right: 0;
+        overflow-y: auto;
         left: auto;
         min-width: auto;
         left: auto;
-        top: 2.45rem;
+        top: 100%;
         font-size: 14px;
         & > li > a {
           font-size: 14px;
           padding: @space-xs 30px @space-xs 15px;
           position: relative;
         }
+      }
+    }
+    .dropdown-gas {
+      white-space: normal;
+      .dropdown-menu {
+        right: 0 !important;
       }
     }
   }
@@ -86,9 +93,10 @@
     .dropdown-menu{
       min-width: 200px;
       padding: .5rem;
-      margin: 0;
-      left: 0;
-      right: 0;
+      margin: .1rem 0 0;
+      right: .1rem;
+      left: auto;
+      overflow: unset;
       p {
         padding: 0;
       }
@@ -100,6 +108,12 @@
   text-decoration: none;
   color: @brand-primary;
   background-color: @gray-lightest;
+}
+
+.dropdown-menu {
+  overflow-y: auto;
+  right: .1rem;
+  margin: .1rem 0 0;
 }
 
 // Navigation
