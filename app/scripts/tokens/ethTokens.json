@@ -18,6 +18,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x0db8d8b76bc361bacbb72e2c491e06085a97ab31",
+		"symbol": "$IQN",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x7dd7f56d697cc0f2b52bd55c057f378f1fe6ab4b",
 		"symbol": "$TEAK",
 		"decimal": 18,
