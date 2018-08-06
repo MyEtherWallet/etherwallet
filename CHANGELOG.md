@@ -1,5 +1,6 @@
 ### Release v3.21.19
 ### New
+- Add BOX and GULD tokens, update VDG decimal, update FANX address, update Su Square contract abi and address [#1994](https://github.com/kvhnuke/etherwallet/pull/1994)
 - Add EXY contract abi [#1990](https://github.com/kvhnuke/etherwallet/pull/1990)
 - Add IQN token, update Havven abi, add Havven Mintr abi [#1991](https://github.com/kvhnuke/etherwallet/pull/1991)
 - Add contracts from ethereum-list [#1984](https://github.com/kvhnuke/etherwallet/pull/1984)

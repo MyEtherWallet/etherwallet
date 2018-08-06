@@ -546,6 +546,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xe1A178B681BD05964d3e3Ed33AE731577d9d96dD",
+		"symbol": "BOX",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x327682779bAB2BF4d1337e8974ab9dE8275A7Ca8",
 		"symbol": "BPT",
 		"decimal": 18,
@@ -1602,7 +1608,7 @@
 		"type": "default"
 	},
 	{
-		"address": "0x7f6715c3fc4740a02f70de85b9fd50ac6001fed9",
+		"address": "0x7dcb3b2356c822d3577d4d060d0d5d78c860488c",
 		"symbol": "FANX",
 		"decimal": 18,
 		"type": "default"
@@ -1839,6 +1845,12 @@
 		"address": "0xc5bbae50781be1669306b9e001eff57a2957b09d",
 		"symbol": "GTO",
 		"decimal": 5,
+		"type": "default"
+	},
+	{
+		"address": "0x9847345de8b614c956146bbea549336d9c8d26b6",
+		"symbol": "GULD",
+		"decimal": 8,
 		"type": "default"
 	},
 	{
@@ -3860,7 +3872,7 @@
 	{
 		"address": "0x57C75ECCc8557136D32619a191fBCDc88560d711",
 		"symbol": "VDG",
-		"decimal": 18,
+		"decimal": 0,
 		"type": "default"
 	},
 	{
