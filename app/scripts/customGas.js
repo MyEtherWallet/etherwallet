@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// ORCA Alliance (ORCA) Token sale
+to:         '0xEDF19b437d1A67E18B15dd4a859dD52F9cfA012F',
+gasLimit:   110000,
+data:       '',
+msg:        'Thank you for buying ORCA Tokens! - Share ORCA with your friends (https://www.orcaalliance.eu).' 
+},{
 // Depository Network (DEPO) Token sale
 to:         '0x4ee74a5f841c0aab0090ae21d4f9d8fca2aeea26',
 gasLimit:   300000,
