@@ -63,6 +63,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.POA:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
                     break;
+                case nodes.nodeTypes.AKROMA:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
+                    break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
             }
@@ -110,8 +113,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.EOSC:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
                     break;
-                case nodes.nodeTypes.Akroma:
+                case nodes.nodeTypes.AKROMA:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
+                    break;
                 case nodes.nodeTypes.ESN:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwESNetworkPath;
                     break;
@@ -155,6 +159,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.EOSC:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
+                    break;
+                case nodes.nodeTypes.AKROMA:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
                     break;
                 case nodes.nodeTypes.ESN:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwESNetworkPath;
