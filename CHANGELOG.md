@@ -1,5 +1,5 @@
 ### New
-- Update Havven contract address to point to underlying contract []()
+- Update Havven contract address to point to underlying contract [#1995](https://github.com/kvhnuke/etherwallet/pull/1995)
 
 ### Release v3.21.19
 ### New
