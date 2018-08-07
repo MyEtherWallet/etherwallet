@@ -17,7 +17,6 @@ nodes.nodeTypes = {
     ETSC: "ETSC",
     EGEM: "EGEM",
     CLO: "CLO",
-    X888: "X88",
     MUSIC: "MUSIC",
     GO: "GO",
     EOSC: "EOSC",
@@ -287,19 +286,6 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/cloAbi.json'),
         'service': 'Callisto.network',
         'lib': new nodes.customNode('https://clo-geth.0xinfra.com/', '')
-    },
-    'x888': {
-        'name': 'X888',
-        'blockExplorerTX': 'https://myetherwallet.com/?[[txHash]]#check-tx-status',
-        'blockExplorerAddr': 'https://myetherwallet.com/?[[address]]#view-wallet-info',
-        'type': nodes.nodeTypes.X888,
-        'eip155': true,
-        'chainId': 888,
-        'tokenList': require('./tokens/x888Tokens.json'),
-        'abiList': require('./abiDefinitions/x888Abi.json'),
-        'estimateGas': true,
-        'service': 'eightereum',
-        'lib': new nodes.customNode('https://eightereum.x888.io', '')
     },
     'music': {
         'name': 'MUSIC',
