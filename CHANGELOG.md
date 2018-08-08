@@ -1,5 +1,5 @@
 ### New
-- Add CYFM and MFTU tokens []]()
+- Add CYFM and MFTU tokens [#1998](https://github.com/kvhnuke/etherwallet/pull/1998)
 - Remove x888 for inactivity and invalidity [#1996](https://github.com/kvhnuke/etherwallet/pull/1996)
 - Update Havven contract address to point to underlying contract [#1995](https://github.com/kvhnuke/etherwallet/pull/1995)
 
