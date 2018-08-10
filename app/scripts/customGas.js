@@ -25,6 +25,12 @@ gasLimit:   210000,
 data:       '',
 msg:        'CryptFillCoin (CFC) token sale - Sign Up at https://cryptfillcoin.com and buy your tokens.'
 },{
+// MTC Mesh Network (MTC) Token sale
+to:         '0xdfdc0d82d96f8fd40ca0cfb4a288955becec2088',
+gasLimit:   60000,
+data:       '',
+msg:        'MTC Mesh Network (MTC) token sale - Sign Up at https://www.mtc.io/ and buy your tokens.'
+},{
 // Ethernet.Cash (ENC) Token sale
 to:         '0x039f5050de4908f9b5ddf40a4f3aa3f329086387',
 gasLimit:   299686,
