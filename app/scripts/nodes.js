@@ -22,6 +22,7 @@ nodes.nodeTypes = {
     EOSC: "EOSC",
     AKROMA: "AKROMA",
     ESN: "ESN",
+    PIRL: "PIRL",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -351,6 +352,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'ethersocial.org',
         'lib': new nodes.customNode('https://api.esn.gonspool.com', '')
+    },
+    'pirl': {
+        'name': 'PIRL',
+        'blockExplorerTX': 'https://poseidon.pirl.io/explorer/transaction/[[txHash]]',
+        'blockExplorerAddr': 'https://poseidon.pirl.io/explorer/address/[[address]]',
+        'type': nodes.nodeTypes.PIRL,
+        'eip155': true,
+        'chainId': 3125659152,
+        'tokenList': require('./tokens/pirlTokens.json'),
+        'abiList': require('./abiDefinitions/pirlAbi.json'),
+        'estimateGas': true,
+        'service': 'pirl.io',
+        'lib': new nodes.customNode('https://wallrpc.pirl.io', '')
     }
 };
 
