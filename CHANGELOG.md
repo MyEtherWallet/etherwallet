@@ -1,3 +1,4 @@
+### Release v3.21.20
 ### New
 - Add AMLT, MTC and DGTX tokens, update TWNKL to MOVED [#2001](https://github.com/kvhnuke/etherwallet/pull/2001)
 - Add CYFM and MFTU tokens [#1998](https://github.com/kvhnuke/etherwallet/pull/1998)
