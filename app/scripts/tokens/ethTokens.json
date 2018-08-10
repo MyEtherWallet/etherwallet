@@ -186,6 +186,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xca0e7269600d353f70b14ad118a49575455c0f2f",
+		"symbol": "AMLT",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x737f98ac8ca59f2c68ad658e3c3d8c8963e40a4c",
 		"symbol": "AMN",
 		"decimal": 18,
@@ -1215,6 +1221,12 @@
 		"address": "0x6aEDbF8dFF31437220dF351950Ba2a3362168d1b",
 		"symbol": "DGS",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0x1c83501478f1320977047008496dacbd60bb15ef",
+		"symbol": "DGTX",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
@@ -2586,8 +2598,14 @@
 		"type": "default"
 	},
 	{
+		"address": "0xdfdc0d82d96f8fd40ca0cfb4a288955becec2088",
+		"symbol": "MTC (Mesh Network)",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x905E337c6c8645263D3521205Aa37bf4d034e745",
-		"symbol": "MTC",
+		"symbol": "MTC (Medical Token Currency)",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -3823,7 +3841,7 @@
 	},
 	{
 		"address": "0xfbd0d1c77b501796a35d86cf91d65d9778eee695",
-		"symbol": "TWNKL",
+		"symbol": "MOVED",
 		"decimal": 3,
 		"type": "default"
 	},
