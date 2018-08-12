@@ -2946,6 +2946,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x8Ae56a6850a7cbeaC3c3Ab2cB311e7620167eAC8",
+		"symbol": "PEG",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x5884969Ec0480556E11d119980136a4C17eDDEd1",
 		"symbol": "PET",
 		"decimal": 18,
