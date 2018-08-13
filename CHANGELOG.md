@@ -1,6 +1,10 @@
 ### New
-- Fix darklist bypass []()
+<<<<<<< HEAD
+- Fix darklist bypass [#2007](https://github.com/kvhnuke/etherwallet/pull/2007)
 - Add PEG token [#2002](https://github.com/kvhnuke/etherwallet/pull/2002)
+=======
+
+>>>>>>> Update changelog
 - Add Opiria PData custom gas [#2004](https://github.com/kvhnuke/etherwallet/pull/2004)
 - Add PASS, REDC, FTXT, 3LT, WMK, CRMT, ORCA and remove FXC [#2006](https://github.com/kvhnuke/etherwallet/pull/2006)
 
