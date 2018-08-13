@@ -60,6 +60,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x430241368c1D293fdA21DBa8Bb7aF32007c59109",
+		"symbol": "3LT",
+		"decimal": 8,
+		"type": "default"
+	},
+	{
 		"address": "0xBDe8f7820b5544a49D34F9dDeaCAbEDC7C0B5adc",
 		"symbol": "A18",
 		"decimal": 0,
@@ -990,6 +996,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x9238bfb781a55eacc3cf05f7df94038c198cd9b9",
+		"symbol": "CRMT",
+		"decimal": 8,
+		"type": "default"
+	},
+	{
 		"address": "0x80a7e048f37a50500351c204cb407766fa3bae7f",
 		"symbol": "CRPT",
 		"decimal": 18,
@@ -1704,6 +1716,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x41875c2332b0877cdfaa699b641402b7d4642c32",
+		"symbol": "FTXT",
+		"decimal": 8,
+		"type": "default"
+	},
+	{
 		"address": "0x65be44c747988fbf606207698c944df4442efe19",
 		"symbol": "FUCK",
 		"decimal": 4,
@@ -1718,12 +1736,6 @@
 	{
 		"address": "0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b",
 		"symbol": "FUN",
-		"decimal": 8,
-		"type": "default"
-	},
-	{
-		"address": "0xc92d6e3e64302c59d734f3292e2a13a13d7e1817",
-		"symbol": "FXC",
 		"decimal": 8,
 		"type": "default"
 	},
@@ -2868,6 +2880,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x6F59e0461Ae5E2799F1fB3847f05a63B16d0DbF8",
+		"symbol": "ORCA",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0x2C4e8f2D746113d0696cE89B35F0d8bF88E0AEcA",
 		"symbol": "OST",
 		"decimal": 18,
@@ -2888,6 +2906,12 @@
 	{
 		"address": "0xfeDAE5642668f8636A11987Ff386bfd215F942EE",
 		"symbol": "PAL",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0x77761e63c05aee6648fdaeaa9b94248351af9bcd",
+		"symbol": "PASS",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -3230,6 +3254,12 @@
 	{
 		"address": "0x76960dccd5a1fe799f7c29be9f19ceb4627aeb2f",
 		"symbol": "RED",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xB563300A3BAc79FC09B93b6F84CE0d4465A2AC27",
+		"symbol": "REDC",
 		"decimal": 18,
 		"type": "default"
 	},
@@ -4070,6 +4100,12 @@
 	{
 		"address": "0xF6B55acBBC49f4524Aa48D19281A9A77c54DE10f",
 		"symbol": "WLK",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
+		"address": "0xbfbe5332f172d77811bc6c272844f3e54a7b23bb",
+		"symbol": "WMK",
 		"decimal": 18,
 		"type": "default"
 	},
