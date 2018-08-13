@@ -1,4 +1,5 @@
 ### New
+- Enable Ledger Hardware Wallet support for Pirl [#2000](https://github.com/kvhnuke/etherwallet/pull/2000)
 - Fix darklist bypass [#2007](https://github.com/kvhnuke/etherwallet/pull/2007)
 - Add PEG token [#2002](https://github.com/kvhnuke/etherwallet/pull/2002)
 - Add Opiria PData custom gas [#2004](https://github.com/kvhnuke/etherwallet/pull/2004)
