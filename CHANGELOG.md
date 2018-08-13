@@ -1,3 +1,6 @@
+### New
+- Network logos [#2003](https://github.com/kvhnuke/etherwallet/pull/2003)
+
 ### Release v3.21.21
 ### New
 - Enable Ledger Hardware Wallet support for Pirl [#2000](https://github.com/kvhnuke/etherwallet/pull/2000)
