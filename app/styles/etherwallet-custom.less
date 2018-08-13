@@ -606,6 +606,8 @@ label small {
 @brand-eosc: #926565;
 @brand-akroma: #AA0087;
 @brand-esn: #a16bff;
+@brand-pirl: #a2d729;
+@brand-etho: #d63068;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -674,6 +676,12 @@ label small {
   li:nth-child(25) {
     border-left: 2px solid @brand-esn;
   }
+  li:nth-child(26) {
+    border-left: 2px solid @brand-pirl;
+  }
+  li:nth-child(27) {
+    border-left: 2px solid @brand-etho;
+  }
 
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -693,7 +701,8 @@ label small {
   li:nth-child(22),
   li:nth-child(23),
   li:nth-child(24),
-  li:nth-child(25) {
+  li:nth-child(25),
+  li:nth-child(26) {
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -892,6 +901,28 @@ header.ESN {
   .dropdown-gas:before {
     width: 32px;
     background-image: url("../images/ethersocial.svg");
+  }
+}
+
+header.PIRL {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-pirl; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-pirl;    }
+  & + .container .modal-content          { border: 0.25rem solid @brand-pirl;        }
+  & + .container .alert-info             { background-color:@brand-pirl;             }
+  .dropdown-gas:before {
+    width: 32px;
+    background-image: url("../images/pirl.svg");
+  }
+}
+
+header.ETHO {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-etho; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-etho;    }
+  & + .container .modal-content          { border: 0.25rem solid @brand-etho;        }
+  & + .container .alert-info             { background-color:@brand-etho;             }
+  .dropdown-gas:before {
+    width: 24px;
+    background-image: url("../images/etho.svg");
   }
 }
 
