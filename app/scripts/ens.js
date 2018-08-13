@@ -30,6 +30,7 @@ var ens = function() {
             _this.setCurrentRegistry(ens.registry.NULL);
     }
 };
+ens.uts46 = uts46
 ens.registry = {
     ETH: require('./ensConfigs/ETHConfig.json'),
     Rinkeby: require('./ensConfigs/RinkebyConfig.json'),
@@ -38,7 +39,10 @@ ens.registry = {
 };
 ens.normalise = function(name) {
     try {
-        return uts46.toUnicode(name);
+        return uts46.toUnicode(name, {
+            useStd3ASCII: true,
+            transitional: false
+        });
     } catch (e) {
         throw e;
     }

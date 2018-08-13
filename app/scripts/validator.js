@@ -11,7 +11,7 @@ validator.isChecksumAddress = function(address) {
     return ethFuncs.isChecksumAddress(address);
 }
 validator.isValidENSorEtherAddress = function(address) {
-    return (validator.isValidAddress(address) || validator.isValidENSAddress(address));
+  return (validator.isValidAddress(address) || validator.isValidENSAddress(address));
 }
 validator.isValidSubName = function(str) {
     try {
@@ -31,7 +31,11 @@ validator.isValidTxHash = function(txHash) {
     return txHash.substring(0, 2) == "0x" && txHash.length == 66 && this.isValidHex(txHash);
 }
 validator.isValidENSAddress = function(address) {
+  try {
     address = ens.normalise(address);
+  } catch (e) {
+    return false
+  }
     return address.lastIndexOf(".") != -1;
 }
 validator.isValidBTCAddress = function(address) {
