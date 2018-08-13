@@ -38,10 +38,7 @@ ens.registry = {
 };
 ens.normalise = function(name) {
     try {
-        return uts46.toUnicode(name, {
-            useStd3ASCII: true,
-            transitional: false
-        });
+        return uts46.toUnicode(name);
     } catch (e) {
         throw e;
     }
