@@ -30,6 +30,7 @@ var ens = function() {
             _this.setCurrentRegistry(ens.registry.NULL);
     }
 };
+ens.uts46 = uts46
 ens.registry = {
     ETH: require('./ensConfigs/ETHConfig.json'),
     Rinkeby: require('./ensConfigs/RinkebyConfig.json'),

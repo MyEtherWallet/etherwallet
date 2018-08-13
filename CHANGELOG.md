@@ -1,4 +1,15 @@
 ### New
+- Enable Ledger Hardware Wallet support for Pirl [#2000](https://github.com/kvhnuke/etherwallet/pull/2000)
+- Fix darklist bypass [#2007](https://github.com/kvhnuke/etherwallet/pull/2007)
+- Add PEG token [#2002](https://github.com/kvhnuke/etherwallet/pull/2002)
+- Add Opiria PData custom gas [#2004](https://github.com/kvhnuke/etherwallet/pull/2004)
+- Add PASS, REDC, FTXT, 3LT, WMK, CRMT, ORCA and remove FXC [#2006](https://github.com/kvhnuke/etherwallet/pull/2006)
+
+### Release v3.21.20
+### New
+- Add AMLT, MTC and DGTX tokens, update TWNKL to MOVED [#2001](https://github.com/kvhnuke/etherwallet/pull/2001)
+- Add CYFM and MFTU tokens [#1998](https://github.com/kvhnuke/etherwallet/pull/1998)
+- Remove x888 for inactivity and invalidity [#1996](https://github.com/kvhnuke/etherwallet/pull/1996)
 - Update Havven contract address to point to underlying contract [#1995](https://github.com/kvhnuke/etherwallet/pull/1995)
 
 ### Release v3.21.19

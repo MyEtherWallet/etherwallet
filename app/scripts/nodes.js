@@ -17,12 +17,12 @@ nodes.nodeTypes = {
     ETSC: "ETSC",
     EGEM: "EGEM",
     CLO: "CLO",
-    X888: "X88",
     MUSIC: "MUSIC",
     GO: "GO",
     EOSC: "EOSC",
     AKROMA: "AKROMA",
     ESN: "ESN",
+    PIRL: "PIRL",
     ETHO: "ETHO",
     Custom: "CUSTOM ETH"
 };
@@ -289,19 +289,6 @@ nodes.nodeList = {
         'service': 'Callisto.network',
         'lib': new nodes.customNode('https://clo-geth.0xinfra.com/', '')
     },
-    'x888': {
-        'name': 'X888',
-        'blockExplorerTX': 'https://myetherwallet.com/?[[txHash]]#check-tx-status',
-        'blockExplorerAddr': 'https://myetherwallet.com/?[[address]]#view-wallet-info',
-        'type': nodes.nodeTypes.X888,
-        'eip155': true,
-        'chainId': 888,
-        'tokenList': require('./tokens/x888Tokens.json'),
-        'abiList': require('./abiDefinitions/x888Abi.json'),
-        'estimateGas': true,
-        'service': 'eightereum',
-        'lib': new nodes.customNode('https://eightereum.x888.io', '')
-    },
     'music': {
         'name': 'MUSIC',
         'blockExplorerTX': 'https://explorer.musicoin.org/tx/[[txHash]]',
@@ -366,6 +353,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'ethersocial.org',
         'lib': new nodes.customNode('https://api.esn.gonspool.com', '')
+    },
+    'pirl': {
+        'name': 'PIRL',
+        'blockExplorerTX': 'https://poseidon.pirl.io/explorer/transaction/[[txHash]]',
+        'blockExplorerAddr': 'https://poseidon.pirl.io/explorer/address/[[address]]',
+        'type': nodes.nodeTypes.PIRL,
+        'eip155': true,
+        'chainId': 3125659152,
+        'tokenList': require('./tokens/pirlTokens.json'),
+        'abiList': require('./abiDefinitions/pirlAbi.json'),
+        'estimateGas': true,
+        'service': 'pirl.io',
+        'lib': new nodes.customNode('https://wallrpc.pirl.io', '')
     },
     'etho': {
         'name': 'ETHO',
