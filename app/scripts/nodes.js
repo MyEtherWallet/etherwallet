@@ -23,6 +23,7 @@ nodes.nodeTypes = {
     AKROMA: "AKROMA",
     ESN: "ESN",
     PIRL: "PIRL",
+    ETHO: "ETHO",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -365,6 +366,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'pirl.io',
         'lib': new nodes.customNode('https://wallrpc.pirl.io', '')
+    },
+    'etho': {
+        'name': 'ETHO',
+        'blockExplorerTX': 'https://explorer.ether1.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.ether1.org/addr/[[address]]',
+        'type': nodes.nodeTypes.ETHO,
+        'eip155': true,
+        'chainId': 1313114,
+        'tokenList': require('./tokens/ethoTokens.json'),
+        'abiList': require('./abiDefinitions/ethoAbi.json'),
+        'estimateGas': true,
+        'service': 'ether1.org',
+        'lib': new nodes.customNode('https://rpc.ether1.org', '')
     }
 };
 
