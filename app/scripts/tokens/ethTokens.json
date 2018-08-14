@@ -666,6 +666,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0xE5f867dE1EA81346df5181b8b48DD6B0BB3357B0",
+		"symbol": "BTZ",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xca3c18a65b802ec267f8f4802545e7f53d24c75e",
 		"symbol": "BUC",
 		"decimal": 18,
