@@ -33,6 +33,13 @@ uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
             return;
         }
 
+        // check the returned signature_v and recalc signature_v if it needed
+        // see also https://github.com/trezor/trezor-mcu/pull/399
+        if (result.v <= 1) {
+          // for larger chainId, only signature_v returned. simply recalc signature_v
+          result.v += 2 * rawTx.chainId + 35;
+        }
+
         rawTx.v = "0x" + ethFuncs.decimalToHex(result.v);
         rawTx.r = "0x" + result.r;
         rawTx.s = "0x" + result.s;
