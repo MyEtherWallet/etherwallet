@@ -114,6 +114,18 @@ nodes.nodeList = {
         'service': 'epool.io',
         'lib': new nodes.customNode('https://mew.epool.io', '')
     },
+        'etc_etccoop': {
+        'name': 'ETC',
+        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
+        'type': nodes.nodeTypes.ETC,
+        'eip155': true,
+        'chainId': 61,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'service': 'ETC Cooperative',
+        'lib': new nodes.customNode('https://ethereumclassic.network', '')
+    },
     'rop_mew': {
         'name': 'Ropsten',
         'type': nodes.nodeTypes.Ropsten,
