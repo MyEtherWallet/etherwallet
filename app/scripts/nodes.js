@@ -90,7 +90,7 @@ nodes.nodeList = {
         'service': 'giveth.io',
         'lib': new nodes.customNode('https://mew.giveth.io', '')
     },
-    'etc_ethereum_commonwealth': {
+    'etc_gastracker': {
         'name': 'ETC',
         'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
         'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
@@ -99,8 +99,8 @@ nodes.nodeList = {
         'chainId': 61,
         'tokenList': require('./tokens/etcTokens.json'),
         'abiList': require('./abiDefinitions/etcAbi.json'),
-        'service': 'Ethereum Commonwealth',
-        'lib': new nodes.customNode('https://etc-geth.0xinfra.com', '')
+        'service': 'GasTracker (ETCDEV)',
+        'lib': new nodes.customNode('https://web3.gastracker.io', '')
     },
     'etc_epool': {
         'name': 'ETC',
