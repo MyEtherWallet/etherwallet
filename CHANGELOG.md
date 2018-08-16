@@ -1,4 +1,5 @@
 ### New
+- Add gastracker; remove Commonwealth as their nodes are currently down [#2013](https://github.com/kvhnuke/etherwallet/pull/2013)
 - Update YEED token address [#2010](https://github.com/kvhnuke/etherwallet/pull/2010)
 - Add BTZ token[#1982](https://github.com/kvhnuke/etherwallet/pull/1982)
 - pirl, etho logos added [#2009](https://github.com/kvhnuke/etherwallet/pull/2009)
