@@ -99,7 +99,7 @@ nodes.nodeList = {
         'chainId': 61,
         'tokenList': require('./tokens/etcTokens.json'),
         'abiList': require('./abiDefinitions/etcAbi.json'),
-        'service': 'GasTracker (ETCDEV)',
+        'service': 'GasTracker',
         'lib': new nodes.customNode('https://web3.gastracker.io', '')
     },
     'etc_epool': {
