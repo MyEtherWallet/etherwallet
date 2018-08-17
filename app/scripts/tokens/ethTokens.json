@@ -1926,6 +1926,12 @@
 		"type": "default"
 	},
 	{
+		"address": "0x5a567e28dbfa2bbd3ef13c0a01be114745349657",
+		"symbol": "HAPPY",
+		"decimal": 2,
+		"type": "default"
+	},
+	{
 		"address": "0x9002D4485b7594e3E850F0a206713B305113f69e",
 		"symbol": "HAT",
 		"decimal": 12,
@@ -1965,6 +1971,12 @@
 		"address": "0xba2184520A1cC49a6159c57e61E1844E085615B6",
 		"symbol": "HGT",
 		"decimal": 8,
+		"type": "default"
+	},
+	{
+		"address": "0x9bb1db1445b83213a56d90d331894b3f26218e4e",
+		"symbol": "HIBT",
+		"decimal": 18,
 		"type": "default"
 	},
 	{
