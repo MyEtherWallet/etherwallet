@@ -304,11 +304,6 @@ const darklist = function() {
 			date: "2018-03-12"
 		},
 		{
-			address: "0x5Af2Be193a6ABCa9c8817001F45744777Db30756",
-			comment: "slackbot / reddit dms. did not 404.",
-			date: "2018-03-12"
-		},
-		{
 			address: "0x2b065809f6ec6df32878bcd26711a0e2bcf59c26",
 			comment: "slackbot / reddit dms. did not 404.",
 			date: "2018-03-12"
