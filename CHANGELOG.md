@@ -1,4 +1,6 @@
+### Release v3.21.22
 ### New
+- Change `eth_call` to `latest` [Commit](https://github.com/kvhnuke/etherwallet/commit/60bc0295cf6296341bd805c5993f18da0d79b32c)
 - Update BQX to ETHOS, remove from darklist [#2016](https://github.com/kvhnuke/etherwallet/pull/2016)
 - Add HIBT and HAPPY tokens [#2015](https://github.com/kvhnuke/etherwallet/pull/2015)
 - Add gastracker; remove Commonwealth as their nodes are currently down [#2013](https://github.com/kvhnuke/etherwallet/pull/2013)
