@@ -36,7 +36,7 @@
     <ul class="account-info">
       <li ng-show="ajaxReq.type != 'CUS'">
         <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener noreferrer">
-          {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})
+          {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.match('://(.*?)/')[1]}})
         </a>
       </li>
       <li ng-show="ajaxReq.type == 'ETH'">
@@ -147,7 +147,7 @@
          href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}"
          target="_blank"
          rel="noopener noreferrer">
-          {{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}}
+          {{ajaxReq.blockExplorerTX.match('://(.*?)/')[1]}}
       </a>
       <span ng-show="ajaxReq.type == 'ETH'"> or
         <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}"
