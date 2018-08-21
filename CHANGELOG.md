@@ -1,3 +1,8 @@
+### New
+- Add TangguoTaoToken Contract abi [#2023](https://github.com/kvhnuke/etherwallet/pull/2023)
+- Manual gas limits for upcoming TCA [#2021](https://github.com/kvhnuke/etherwallet/pull/2021)
+- Fix network tabs css, move chain logo to internal directory. [#2018](https://github.com/kvhnuke/etherwallet/pull/2018)
+
 ### Release v3.21.22
 ### New
 - Change `eth_call` to `latest` [Commit](https://github.com/kvhnuke/etherwallet/commit/60bc0295cf6296341bd805c5993f18da0d79b32c)
