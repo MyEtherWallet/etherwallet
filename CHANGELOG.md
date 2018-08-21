@@ -1,4 +1,5 @@
 ### New
+- Fix transaction history link text [#2022](https://github.com/kvhnuke/etherwallet/pull/2022)
 - Add TCA token and UNV token [#2024](https://github.com/kvhnuke/etherwallet/pull/2024)
 - Add TangguoTaoToken Contract abi [#2023](https://github.com/kvhnuke/etherwallet/pull/2023)
 - Manual gas limits for upcoming TCA [#2021](https://github.com/kvhnuke/etherwallet/pull/2021)
