@@ -1,18 +1,26 @@
 [
   {
-    "address":"0x6F6DEb5db0C4994A8283A01D6CFeEB27Fc3bBe9C",
-    "symbol":"Smart",
-    "decimal":0,
-    "type":"default"
-  },{
-    "address":"0x085fb4f24031eaedbc2b611aa528f22343eb52db",
-    "symbol":"BEC",
-    "decimal":8,
-    "type":"default"
-  },{
-   "address":"0x5ace17f87c7391e5792a7683069a8025b83bbd85",
-   "symbol":"PLAY",
-   "decimal": 0,
-   "type":"default"
+    "address": "0x6F6DEb5db0C4994A8283A01D6CFeEB27Fc3bBe9C",
+    "symbol": "Smart",
+    "decimal": 0,
+    "type": "default"
+  },
+  {
+    "address": "0x085fb4f24031eaedbc2b611aa528f22343eb52db",
+    "symbol": "BEC",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0x5ace17f87c7391e5792a7683069a8025b83bbd85",
+    "symbol": "PLAY",
+    "decimal": 0,
+    "type": "default"
+  },
+  {
+    "address": "0x6ADa6F48C815689502C43eC1a59F1b5DD3C04E1F",
+    "symbol": "UNV",
+    "decimal": 18,
+    "type": "default"
   }
 ]
