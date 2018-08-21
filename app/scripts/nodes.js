@@ -90,6 +90,18 @@ nodes.nodeList = {
 		service: "giveth.io",
 		lib: new nodes.customNode("https://mew.giveth.io", "")
 	},
+	etc_etccoop: {
+		name: "ETC",
+		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",
+		blockExplorerAddr: "https://gastracker.io/addr/[[address]]",
+		type: nodes.nodeTypes.ETC,
+		eip155: true,
+		chainId: 61,
+		tokenList: require("./tokens/etcTokens.json"),
+		abiList: require("./abiDefinitions/etcAbi.json"),
+		service: "ETC Cooperative",
+		lib: new nodes.customNode("https://ethereumclassic.network", "")
+	},
 	etc_gastracker: {
 		name: "ETC",
 		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",
@@ -113,18 +125,6 @@ nodes.nodeList = {
 		abiList: require("./abiDefinitions/etcAbi.json"),
 		service: "epool.io",
 		lib: new nodes.customNode("https://mew.epool.io", "")
-	},
-	etc_etccoop: {
-		name: "ETC",
-		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",
-		blockExplorerAddr: "https://gastracker.io/addr/[[address]]",
-		type: nodes.nodeTypes.ETC,
-		eip155: true,
-		chainId: 61,
-		tokenList: require("./tokens/etcTokens.json"),
-		abiList: require("./abiDefinitions/etcAbi.json"),
-		service: "ETC Cooperative",
-		lib: new nodes.customNode("https://ethereumclassic.network", "")
 	},
 	rop_mew: {
 		name: "Ropsten",
