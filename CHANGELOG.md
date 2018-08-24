@@ -1,5 +1,5 @@
 ### New
-- Add TLX, WATT, and URB token []()
+- Add TLX, WATT, and URB token [#2028](https://github.com/kvhnuke/etherwallet/pull/2028)
 - Update Kyber Network address [#2017](https://github.com/kvhnuke/etherwallet/pull/2017)
 - Added Telex contract ABI [#2026](https://github.com/kvhnuke/etherwallet/pull/2026)
 - Add urbitdata.eth URB [#2027](https://github.com/kvhnuke/etherwallet/pull/2027)
