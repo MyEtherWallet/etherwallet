@@ -123,8 +123,8 @@ kyberFuncs.prototype.setCurrentTokenABIs = function (_tokenABIs) {
 
 kyberFuncs.prototype.getKyberNetworkAddress = function () {
     var _this = this
-    // return _this.currentNetwork.network;
-    return _this.KyberNetworkAddress
+    var kyberAddressExists = (_this.KyberNetworkAddress !== '' && _this.KyberNetworkAddress !== undefined && _this.KyberNetworkAddress !== null)
+    return kyberAddressExists ? _this.KyberNetworkAddress : _this.currentNetwork.network
 }
 
 kyberFuncs.prototype.getTokenAddress = function (_token) {
@@ -381,7 +381,7 @@ kyberFuncs.prototype.approveKyber = function (srcToken, value) {
     }
 
     var weiValue = _this.convertToTokenWei(value, srcToken)
-    return _this.getDataString(funcABI, [_this.KyberNetworkAddress, weiValue])
+    return _this.getDataString(funcABI, [_this.getKyberNetworkAddress(), weiValue])
 }
 
 kyberFuncs.prototype.allowance = function (_srcToken, userAddress, callback) {
@@ -399,7 +399,7 @@ kyberFuncs.prototype.allowance = function (_srcToken, userAddress, callback) {
 
     ajaxReq.getEthCall({
         to: srcTokenAddress,
-        data: _this.getDataString(funcABI, [userAddress, _this.KyberNetworkAddress])
+        data: _this.getDataString(funcABI, [userAddress, _this.getKyberNetworkAddress()])
     }, function (data) {
         if (data.error) callback(data)
         else {
