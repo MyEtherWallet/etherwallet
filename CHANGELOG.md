@@ -1,4 +1,9 @@
 ### New
+- Add TLX, WATT, and URB token [#2028](https://github.com/kvhnuke/etherwallet/pull/2028)
+- Update Kyber Network address [#2017](https://github.com/kvhnuke/etherwallet/pull/2017)
+- Added Telex contract ABI [#2026](https://github.com/kvhnuke/etherwallet/pull/2026)
+- Add urbitdata.eth URB [#2027](https://github.com/kvhnuke/etherwallet/pull/2027)
+- support full 32bit chain_id for trezor [#2011](https://github.com/kvhnuke/etherwallet/pull/2011)
 - Fix transaction history link text [#2022](https://github.com/kvhnuke/etherwallet/pull/2022)
 - Add TCA token and UNV token [#2024](https://github.com/kvhnuke/etherwallet/pull/2024)
 - Add TangguoTaoToken Contract abi [#2023](https://github.com/kvhnuke/etherwallet/pull/2023)
