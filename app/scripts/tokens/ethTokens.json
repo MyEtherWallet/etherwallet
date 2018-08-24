@@ -3852,6 +3852,12 @@
     "type": "default"
   },
   {
+    "address": "0xb3616550abc8af79c7a5902def9efa3bc9a95200",
+    "symbol": "TLX",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x08f5a9235b08173b7569f83645d2c7fb55e8ccd8",
     "symbol": "TNT",
     "decimal": 8,
@@ -3926,6 +3932,12 @@
   {
     "address": "0xd01db73e047855efb414e6202098c4be4cd2423b",
     "symbol": "UQC",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x931684139f756c24ec0731e9f74fe50e5548ddef",
+    "symbol": "URB",
     "decimal": 18,
     "type": "default"
   },
@@ -4064,6 +4076,12 @@
   {
     "address": "0x286BDA1413a2Df81731D4930ce2F862a35A609fE",
     "symbol": "WaBi",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x829A4cA1303383F1082B6B1fB937116e4b3b5605",
+    "symbol": "WATT",
     "decimal": 18,
     "type": "default"
   },
