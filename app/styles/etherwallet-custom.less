@@ -608,6 +608,7 @@ label small {
 @brand-esn: #a16bff;
 @brand-pirl: #a2d729;
 @brand-etho: #d63068;
+@brand-ath: #0095C8;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -683,6 +684,9 @@ label small {
   li:nth-child(28) {
     border-left: 2px solid @brand-etho;
   }
+  li:nth-child(29) {
+    border-left: 2px solid @brand-ath;
+  }
 
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -703,7 +707,8 @@ label small {
   li:nth-child(24),
   li:nth-child(25),
   li:nth-child(26),
-  li:nth-child(27) {
+  li:nth-child(27),
+  li:nth-child(28) {
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -924,6 +929,17 @@ header.ETHO {
   .dropdown-gas:before {
     width: 24px;
     background-image: url("../images/coins/etho.svg");
+  }
+}
+
+header.ATH {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-ath; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ath;    }
+  & + .container .modal-content          { border: 0.25rem solid @brand-ath;        }
+  & + .container .alert-info             { background-color:@brand-ath;             }
+  .dropdown-gas:before {
+    width: 36px;
+    background-image: url("../images/coins/atheios.svg");
   }
 }
 
