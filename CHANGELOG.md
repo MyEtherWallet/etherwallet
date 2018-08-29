@@ -1,4 +1,8 @@
 ### New
+- Enable Ledger Hardware Wallet support for Callisto (CLO) [#2032](https://github.com/kvhnuke/etherwallet/pull/2032)
+- Enable Ledger Hardware Wallet support for Atheios (ATH) [#2030](https://github.com/kvhnuke/etherwallet/pull/2030)
+- Remove confusing json_relay_node folder [#2025](https://github.com/kvhnuke/etherwallet/pull/2025)
+- Enable Ledger Hardware Wallet support for EtherGem (EGEM) [#2008](https://github.com/kvhnuke/etherwallet/pull/2008)
 - Add TLX, WATT, and URB token [#2028](https://github.com/kvhnuke/etherwallet/pull/2028)
 - Update Kyber Network address [#2017](https://github.com/kvhnuke/etherwallet/pull/2017)
 - Added Telex contract ABI [#2026](https://github.com/kvhnuke/etherwallet/pull/2026)
