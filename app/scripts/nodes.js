@@ -24,6 +24,7 @@ nodes.nodeTypes = {
 	ESN: "ESN",
 	PIRL: "PIRL",
 	ETHO: "ETHO",
+	ATH: "ATH",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -391,6 +392,19 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "ether1.org",
 		lib: new nodes.customNode("https://rpc.ether1.org", "")
+	},
+	ath: {
+		name: "ATH",
+		blockExplorerTX: "https://scan.atheios.com/tx/[[txHash]]",
+		blockExplorerAddr: "https://scan.atheios.com/addr/[[address]]",
+		type: nodes.nodeTypes.ATH,
+		eip155: true,
+		chainId: 1620,
+		tokenList: require("./tokens/athTokens.json"),
+		abiList: require("./abiDefinitions/athAbi.json"),
+		estimateGas: true,
+		service: "wallet.atheios.com",
+		lib: new nodes.customNode("https://wallet.atheios.com", "8797")
 	}
 };
 
