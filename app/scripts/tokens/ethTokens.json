@@ -2298,6 +2298,12 @@
     "type": "default"
   },
   {
+    "address": "0x4a37a91eec4c97f9090ce66d21d3b3aadf1ae5ad",
+    "symbol": "LCT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x5102791ca02fc3595398400bfe0e33d7b6c82267",
     "symbol": "LDC",
     "decimal": 18,
