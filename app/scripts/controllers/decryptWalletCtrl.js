@@ -80,6 +80,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.ATH:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
+                    break;
                 case nodes.nodeTypes.EGEM:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwEtherGemPath;
                     break;
