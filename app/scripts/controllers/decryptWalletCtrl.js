@@ -57,6 +57,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.ETC:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerClassicPath;
                     break;
+                case nodes.nodeTypes.CLO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwCallistoPath;
+                    break;
                 case nodes.nodeTypes.EXP:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
                     break;
@@ -77,6 +80,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.ATH:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
+                case nodes.nodeTypes.EGEM:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEtherGemPath;
                     break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
