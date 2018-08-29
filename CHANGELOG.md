@@ -1,4 +1,5 @@
 ### New
+- BUG FIX: Fix missing break after bad merge conflict resolution [#2034](https://github.com/kvhnuke/etherwallet/pull/2034)
 - Enable Ledger Hardware Wallet support for Callisto (CLO) [#2032](https://github.com/kvhnuke/etherwallet/pull/2032)
 - Enable Ledger Hardware Wallet support for Atheios (ATH) [#2030](https://github.com/kvhnuke/etherwallet/pull/2030)
 - Remove confusing json_relay_node folder [#2025](https://github.com/kvhnuke/etherwallet/pull/2025)
