@@ -1,4 +1,5 @@
 ### New
+- Add USD//Coin (USDC) token []()
 - Add LCT token [#2035](https://github.com/kvhnuke/etherwallet/pull/2035)
 - BUG FIX: Fix missing break after bad merge conflict resolution [#2034](https://github.com/kvhnuke/etherwallet/pull/2034)
 - Enable Ledger Hardware Wallet support for Callisto (CLO) [#2032](https://github.com/kvhnuke/etherwallet/pull/2032)
