@@ -1,4 +1,5 @@
 ### New
+- Update darklist from eth-list, update ledger affiliate links [#2042](https://github.com/kvhnuke/etherwallet/pull/2042)
 - Add USD//Coin (USDC) token [#2036](https://github.com/kvhnuke/etherwallet/pull/2036)
 - Add LCT token [#2035](https://github.com/kvhnuke/etherwallet/pull/2035)
 - BUG FIX: Fix missing break after bad merge conflict resolution [#2034](https://github.com/kvhnuke/etherwallet/pull/2034)
