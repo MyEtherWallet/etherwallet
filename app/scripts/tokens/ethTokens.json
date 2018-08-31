@@ -2101,8 +2101,14 @@
   },
   {
     "address": "0x22E5F62D0FA19974749faa194e3d3eF6d89c08d7",
-    "symbol": "IMT",
+    "symbol": "IMT (Immortal)",
     "decimal": 0,
+    "type": "default"
+  },
+  {
+    "address": "0x13119E34E140097a507B07a5564bDe1bC375D9e6",
+    "symbol": "IMT (MoneyToken)",
+    "decimal": 18,
     "type": "default"
   },
   {
