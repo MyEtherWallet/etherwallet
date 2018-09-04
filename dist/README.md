@@ -13,7 +13,7 @@ Check gh-pages files against live website at https://www.myetherwallet.com
 
 | File Name| Status|
 |---|---|
-| index.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/index.html&remoteFile=https://www.myetherwallet.com/index.html)| 
+| index.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/index.html&remoteFile=https://www.myetherwallet.com/index.html)|
 | embedded.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/embedded.html&remoteFile=https://www.myetherwallet.com/embedded.html)|  
 | helpers.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/helpers.html&remoteFile=https://www.myetherwallet.com/helpers.html)|
 | signmsg.html |![signmsg.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/signmsg.html&remoteFile=https://www.myetherwallet.com/signmsg.html)|
@@ -123,7 +123,6 @@ If you want to help contribute, here's what you need to know to get it up and ru
 - We use angular and bootstrap. We used to use jQuery and Bootstrap until it was converted in April 2016. If you wonder why some things are set up funky, that's why.
 - The mercury branch is currently the active development branch. We then push the dist folder live to gh-pages, which then gets served to MyEtherWallet.com.
 - We use npm / gulp for compiling. There is a lot of stuff happening in the compilation.
-- Old node setups can be found in in `json_relay_node` (node.js) & `json_relay_php` (php). These are great resources for developers looking to get started and launch a public node on a $40 Linode instance.
 
 **Getting Started**
 
