@@ -1,4 +1,5 @@
 ### New
+- Add Metamask breaking change [#2048](https://github.com/kvhnuke/etherwallet/pull/2048)
 - Add 0xinfra nodes [#2045](https://github.com/kvhnuke/etherwallet/pull/2045)
 - nodes: add remote.akroma.io [#2046](https://github.com/kvhnuke/etherwallet/pull/2046)
 - Add STB token and Add electrominer scammer address [#2047](https://github.com/kvhnuke/etherwallet/pull/2047)
