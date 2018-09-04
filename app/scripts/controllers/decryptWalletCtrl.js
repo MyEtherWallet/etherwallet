@@ -451,6 +451,14 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         return $scope.HDWallet.dPath;
     };
     $scope.scanMetamask = function() {
+        if (window.web3 === undefined) {
+            window.addEventListener('message', ({data}) => {
+              if (data && data.type && data.type === 'ETHEREUM_PROVIDER_SUCCESS') {
+                window.web3 = new Web3(ethereum); 
+              }
+            });
+            window.postMessage({ type: 'ETHEREUM_PROVIDER_REQUEST', web3: true }, '*');
+        }
         window.web3.eth.getAccounts(function (err, accounts) {
           if (err) $scope.notifier.danger(err + '. Are you sure you are on a secure (SSL / HTTPS) connection?')
           if (!accounts.length) {
