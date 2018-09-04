@@ -12,6 +12,19 @@ var bip39                    = require('bip39');
 var HDKey                    = require('hdkey');
 var xssFilters               = require('xss-filters');
 window.xssFilters            = xssFilters;
+var Web3                     = require('web3');
+if (window.web3 === undefined) {
+  window.addEventListener('message', ({data}) => {
+    if (data && data.type && data.type === 'ETHEREUM_PROVIDER_SUCCESS') {
+      // Use injected provider, start dapp...
+      window.web3 = new Web3(ethereum); // Should probably need to change this to the Metamask provider
+    }
+  });
+  window.postMessage({ type: 'ETHEREUM_PROVIDER_REQUEST' }, '*');
+} else {
+  window.web3 = new Web3(ethereum); // Should probably need to change this to the Metamask provider
+}
+console.log("Here now?")
 window.hd                    = { bip39: bip39, HDKey: HDKey };
 var BigNumber                = require('bignumber.js');
 window.BigNumber             = BigNumber;
