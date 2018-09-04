@@ -3684,6 +3684,12 @@
     "type": "default"
   },
   {
+    "address": "0x09bca6ebab05ee2ae945be4eda51393d94bf7b99",
+    "symbol": "STB",
+    "decimal": 4,
+    "type": "default"
+  },
+  {
     "address": "0x629aEe55ed49581C33ab27f9403F7992A289ffd5",
     "symbol": "STC",
     "decimal": 18,
