@@ -1,5 +1,5 @@
 ### New
-- Add STB token and Add electrominer scammer address []()
+- Add STB token and Add electrominer scammer address [#2047](https://github.com/kvhnuke/etherwallet/pull/2047)
 - Add IMT token [#2043](https://github.com/kvhnuke/etherwallet/pull/2043)
 - Update darklist from eth-list, update ledger affiliate links [#2042](https://github.com/kvhnuke/etherwallet/pull/2042)
 - Add USD//Coin (USDC) token [#2036](https://github.com/kvhnuke/etherwallet/pull/2036)
