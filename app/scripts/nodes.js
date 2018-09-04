@@ -341,7 +341,7 @@ nodes.nodeList = {
 		service: "eos-classic.io",
 		lib: new nodes.customNode("https://node.eos-classic.io", "")
 	},
-	akroma: {
+	aka_remote: {
 		name: "AKA",
 		blockExplorerTX: "https://akroma.io/explorer/transaction/[[txHash]]",
 		blockExplorerAddr: "https://akroma.io/explorer/address/[[address]]",
@@ -351,7 +351,20 @@ nodes.nodeList = {
 		tokenList: require("./tokens/akromaTokens.json"),
 		abiList: require("./abiDefinitions/akromaAbi.json"),
 		estimateGas: true,
-		service: "akroma.io",
+		service: "remote.akroma.io",
+		lib: new nodes.customNode("https://remote.akroma.io", "")
+	},
+	aka_rpc: {
+		name: "AKA",
+		blockExplorerTX: "https://akroma.io/explorer/transaction/[[txHash]]",
+		blockExplorerAddr: "https://akroma.io/explorer/address/[[address]]",
+		type: nodes.nodeTypes.AKROMA,
+		eip155: true,
+		chainId: 200625,
+		tokenList: require("./tokens/akromaTokens.json"),
+		abiList: require("./abiDefinitions/akromaAbi.json"),
+		estimateGas: true,
+		service: "rpc.akroma.io",
 		lib: new nodes.customNode("https://rpc.akroma.io", "")
 	},
 	esn: {
