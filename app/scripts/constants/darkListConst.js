@@ -7,6 +7,11 @@ const darklist = function() {
       date: "2018-06-19"
     },
     {
+      address: "0xB4c9d8A5812a024BDb177991af256dA144776033",
+      comment: "Electrominer ICO fake admin",
+      date: "2018-08-30"
+    },
+    {
       address: "0x5ddD20aC4bACFf3f148aF4C8C24194a1C102CfE5",
       comment: "Electrominer ICO fake admin",
       date: "2018-08-30"
