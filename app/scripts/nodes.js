@@ -362,7 +362,7 @@ nodes.nodeList = {
 		tokenList: require("./tokens/eoscTokens.json"),
 		abiList: require("./abiDefinitions/eoscAbi.json"),
 		estimateGas: true,
-		service: "eos-classic.io",
+		service: "EOS Classic",
 		lib: new nodes.customNode("https://node.eos-classic.io", "")
 	},
 	aka_remote: {
