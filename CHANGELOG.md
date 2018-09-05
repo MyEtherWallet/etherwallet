@@ -1,3 +1,6 @@
+### New
+- CSS fix for networks [#2049](https://github.com/kvhnuke/etherwallet/pull/2049)
+
 ### Release v3.21.23
 ### New
 - Add Metamask breaking change [#2048](https://github.com/kvhnuke/etherwallet/pull/2048)
