@@ -273,7 +273,7 @@ nodes.nodeList = {
 		abiList: require("./abiDefinitions/tomoAbi.json"),
 		estimateGas: true,
 		service: "testnet.tomochain.com",
-		lib: new nodes.customNode("https:/testnet.tomochain.com", "")
+		lib: new nodes.customNode("https://testnet.tomochain.com", "")
 	},
 	ella: {
 		name: "ELLA",
