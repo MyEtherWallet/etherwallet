@@ -49,13 +49,6 @@ function onSuccess(msg) {
     }
 }
 
-function notifyFunc(msg) {
-    return gulp.src('.', { read: false })
-        .pipe(notify(onSuccess(msg)))
-}
-
-
-
 // HTML / TPL Pages
 let htmlFiles = app + 'layouts/*.html';
 let tplFiles = app + 'includes/*.tpl';
@@ -103,7 +96,7 @@ let js_destFolder_CX = dist_CX + 'js/';
 let js_destFile = 'etherwallet-master.js';
 let browseOpts = { debug: true }; // generates inline source maps - only in js-debug
 let babelOpts = {
-    presets: ['es2015'],
+    presets: ['env'],
     compact: false,
     global: true
 };
