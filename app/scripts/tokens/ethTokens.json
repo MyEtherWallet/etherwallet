@@ -3372,6 +3372,12 @@
     "type": "default"
   },
   {
+    "address": "0xC16b542ff490e01fcc0DC58a60e1EFdc3e357cA6",
+    "symbol": "ROCK2",
+    "decimal": 0,
+    "type": "default"
+  },
+  {
     "address": "0xc9de4b7f0c3d991e967158e4d4bfa4b51ec0b114",
     "symbol": "ROK",
     "decimal": 18,

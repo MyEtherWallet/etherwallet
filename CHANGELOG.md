@@ -1,4 +1,6 @@
 ### New
+- Add ROCK2(ICE ROCK MINING) token [#2053](https://github.com/kvhnuke/etherwallet/pull/2053)
+- update TOMO Testnet and TOMO Token [#2050](https://github.com/kvhnuke/etherwallet/pull/2050)
 - Fix Akroma logo [#2051](https://github.com/kvhnuke/etherwallet/pull/2051)
 - CSS fix for networks [#2049](https://github.com/kvhnuke/etherwallet/pull/2049)
 
