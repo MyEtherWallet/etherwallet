@@ -1,4 +1,5 @@
 ### New
+- Fix Akroma logo [#2051](https://github.com/kvhnuke/etherwallet/pull/2051)
 - CSS fix for networks [#2049](https://github.com/kvhnuke/etherwallet/pull/2049)
 
 ### Release v3.21.23
