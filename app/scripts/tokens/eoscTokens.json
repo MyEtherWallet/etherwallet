@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "address": "0x92b5120545f457cd0ffcfd787d17a5d777a54293",
+    "symbol": "EOSG",
+    "decimal": 0,
+    "type": "default"
+  }
+]
