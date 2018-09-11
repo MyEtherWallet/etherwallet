@@ -68,7 +68,7 @@
   {
     "address": "0xBa7DCBa2Ade319Bc772DB4df75A76BA00dFb31b0",
     "symbol": "A18",
-    "decimal": 0,
+    "decimal": 18,
     "type": "default"
   },
   {
