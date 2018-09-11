@@ -1,4 +1,6 @@
 ### New
+- Add RUNE and Ecrypto tokens [#2059](https://github.com/kvhnuke/etherwallet/pull/2059)
+- [EOSC] Enable ledger wallet for EOS Classic [#2056](https://github.com/kvhnuke/etherwallet/pull/2056)
 - Add ROCK2(ICE ROCK MINING) token [#2053](https://github.com/kvhnuke/etherwallet/pull/2053)
 - update TOMO Testnet and TOMO Token [#2050](https://github.com/kvhnuke/etherwallet/pull/2050)
 - Fix Akroma logo [#2051](https://github.com/kvhnuke/etherwallet/pull/2051)
