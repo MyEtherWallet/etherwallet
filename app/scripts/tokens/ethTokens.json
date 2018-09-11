@@ -1423,7 +1423,7 @@
   },
   {
     "address": "0x8869b1f9bc8b246a4d7220f834e56ddfdd8255e7",
-    "symbol": "ECrypto",
+    "symbol": "ECP",
     "decimal": 18,
     "type": "default"
   },
