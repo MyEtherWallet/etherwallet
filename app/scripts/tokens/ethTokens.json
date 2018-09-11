@@ -1422,6 +1422,12 @@
     "type": "default"
   },
   {
+    "address": "0x8869b1f9bc8b246a4d7220f834e56ddfdd8255e7",
+    "symbol": "ECrypto",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xfa1de2ee97e4c10c94c91cb2b5062b89fb140b82",
     "symbol": "EDC",
     "decimal": 6,
@@ -3398,6 +3404,12 @@
   {
     "address": "0x54b293226000ccBFC04DF902eEC567CB4C35a903",
     "symbol": "RTN",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xdEE02D94be4929d26f67B64Ada7aCf1914007F10",
+    "symbol": "RUNE",
     "decimal": 18,
     "type": "default"
   },
