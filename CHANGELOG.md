@@ -1,4 +1,5 @@
 ### New
+- Update NPM packages [#2054](https://github.com/kvhnuke/etherwallet/pull/2054)
 - Add ROCK2 Fake address in darklist, add PDATA token [#2062](https://github.com/kvhnuke/etherwallet/pull/2062)
 - update CARD token address [#2061](https://github.com/kvhnuke/etherwallet/pull/2061)
 - Add privacy policy [#2060](https://github.com/kvhnuke/etherwallet/pull/2060)
