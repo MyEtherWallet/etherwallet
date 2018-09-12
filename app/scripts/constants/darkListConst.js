@@ -1,6 +1,11 @@
 const darklist = function() {
   return [
     {
+      address: "0x8abe0a9b8A1C8a003354E61F3ed8befdeb7D2CEc",
+      comment: "Fake copy of ROCK2 token",
+      date: "2018-09-12"
+    },
+    {
       address: "0xfb6E71e0800BcCC0db8a9Cf326fe3213CA1A0EA0",
       comment:
         "Scam lottery contract that takes advantage of odd struct memory management",

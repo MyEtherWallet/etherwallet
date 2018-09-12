@@ -3006,6 +3006,12 @@
     "type": "default"
   },
   {
+    "address": "0x0db03B6CDe0B2d427C64a04FeAfd825938368f1F",
+    "symbol": "PDATA",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x8Ae56a6850a7cbeaC3c3Ab2cB311e7620167eAC8",
     "symbol": "PEG",
     "decimal": 18,
