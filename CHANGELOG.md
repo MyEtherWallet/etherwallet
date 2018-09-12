@@ -1,4 +1,5 @@
 ### New
+- Add ROCK2 Fake address in darklist, add PDATA token []()
 - Add RUNE and Ecrypto tokens [#2059](https://github.com/kvhnuke/etherwallet/pull/2059)
 - [EOSC] Enable ledger wallet for EOS Classic [#2056](https://github.com/kvhnuke/etherwallet/pull/2056)
 - Add ROCK2(ICE ROCK MINING) token [#2053](https://github.com/kvhnuke/etherwallet/pull/2053)
