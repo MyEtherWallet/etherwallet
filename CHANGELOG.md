@@ -1,3 +1,4 @@
+### Release v3.21.24
 ### New
 - Update NPM packages [#2054](https://github.com/kvhnuke/etherwallet/pull/2054)
 - Add ROCK2 Fake address in darklist, add PDATA token [#2062](https://github.com/kvhnuke/etherwallet/pull/2062)
