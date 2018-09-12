@@ -33,7 +33,6 @@
     "gulp-template": "^4.0.0",
     "gulp-uglify": "^2.0.1",
     "gulp-zip": "^4.0.0",
-    "npm": "^6.4.0",
     "run-sequence": "^1.2.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
