@@ -1,7 +1,4 @@
 language: node_js
-cache:
-  directories:
-  - node_modules
 sudo: required
 dist: trusty
 node_js: "8"
