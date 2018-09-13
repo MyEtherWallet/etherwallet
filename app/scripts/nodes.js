@@ -316,14 +316,14 @@ nodes.nodeList = {
 	},
 	clo: {
 		name: "CLO",
-		blockExplorerTX: "https://cloexplorer.org/tx/[[txHash]]",
-		blockExplorerAddr: "https://cloexplorer.org/addr/[[address]]",
+		blockExplorerTX: "https://explorer.callisto.network/tx/[[txHash]]",
+		blockExplorerAddr: "https://explorer.callisto.network/account/[[address]]",
 		type: nodes.nodeTypes.CLO,
 		eip155: true,
 		chainId: 820,
 		tokenList: require("./tokens/cloTokens.json"),
 		abiList: require("./abiDefinitions/cloAbi.json"),
-		service: "Callisto.network",
+		service: "0xinfra.com",
 		lib: new nodes.customNode("https://clo-geth.0xinfra.com/", "")
 	},
 	music: {
