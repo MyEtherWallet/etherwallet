@@ -1,3 +1,7 @@
+### New
+- Enable Ledger Hardware Wallet support for GoChain [#2063](https://github.com/kvhnuke/etherwallet/pull/2063)
+- Fix Callisto 'blockExplorerTX', 'blockExplorerAddr' and 'service' text [#2065](https://github.com/kvhnuke/etherwallet/pull/2065)
+
 ### Release v3.21.24
 ### New
 - Update NPM packages [#2054](https://github.com/kvhnuke/etherwallet/pull/2054)
