@@ -323,7 +323,7 @@ nodes.nodeList = {
 		chainId: 820,
 		tokenList: require("./tokens/cloTokens.json"),
 		abiList: require("./abiDefinitions/cloAbi.json"),
-		service: "Callisto.network",
+		service: "0xinfra.com",
 		lib: new nodes.customNode("https://clo-geth.0xinfra.com/", "")
 	},
 	music: {
