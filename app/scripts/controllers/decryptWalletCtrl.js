@@ -90,6 +90,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.EOSC:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
                     break;
+                case nodes.nodeTypes.GO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.goPath;
+                    break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
             }
