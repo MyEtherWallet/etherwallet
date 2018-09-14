@@ -4038,6 +4038,12 @@
     "type": "default"
   },
   {
+    "address": "0xD850942eF8811f2A866692A623011bDE52a462C1",
+    "symbol": "VEN",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xEbeD4fF9fe34413db8fC8294556BBD1528a4DAca",
     "symbol": "VENUS",
     "decimal": 3,
@@ -4046,12 +4052,6 @@
   {
     "address": "0x8f3470A7388c05eE4e7AF3d01D8C722b0FF52374",
     "symbol": "VERI",
-    "decimal": 18,
-    "type": "default"
-  },
-  {
-    "address": "0xD850942eF8811f2A866692A623011bDE52a462C1",
-    "symbol": "VET",
     "decimal": 18,
     "type": "default"
   },

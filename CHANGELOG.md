@@ -1,4 +1,5 @@
 ### New
+- Catch errors for when Cx is newly installed, update VET to VEN [#2067](https://github.com/kvhnuke/etherwallet/pull/2067)
 - Enable Ledger Hardware Wallet support for GoChain [#2063](https://github.com/kvhnuke/etherwallet/pull/2063)
 - Fix Callisto 'blockExplorerTX', 'blockExplorerAddr' and 'service' text [#2065](https://github.com/kvhnuke/etherwallet/pull/2065)
 
