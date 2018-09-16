@@ -243,7 +243,7 @@
           </span>
         </a>
       </li>
-      <li class="nav-item" ng-show="MEWconnectActive">
+      <li class="nav-item" ng-show="MEWconnectActive" ng-cloak>
         <div style="margin-left: 20px;">
           <div ng-show="MEWconnectState == 0" style="border-bottom: solid 2px #929292">
             <h4 ><img src="images/MEWconnectLogo.svg" width="120" height="26"> Not Connected</h4>

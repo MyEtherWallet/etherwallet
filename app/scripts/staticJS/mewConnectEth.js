@@ -115,10 +115,73 @@ class MewConnectEth{
   }
 
   static checkWebRTCAvailable() {
-
     var doesNotHaveWebRTC = MewConnectEth.getBrowserRTC() == null;
     return !doesNotHaveWebRTC;
     // return false
+  }
+
+  static checkBrowser() {
+    var notChecking = ['Android', 'Opera', 'Chrome', 'Firefox'];
+    if(typeof window !== 'undefined'){
+      var UA = window.navigator.userAgent;
+      var shouldNotCheck = notChecking.filter(browser => {
+        return UA.indexOf(browser) !== -1;
+      })
+
+      if(shouldNotCheck.length === 0){
+        if (UA.indexOf("Safari") !== -1){
+          var REGEX_Safari = /(?<=Version\/)((?<!\.)[\d{1,2}]*)/
+          var match_Safari = UA.match(REGEX_Safari)
+          if(match_Safari){
+            try {
+              if (+match_Safari[1] >= 12) {
+                return MewConnectEth.buildBrowserResult(false, '', '');
+              } else {
+                return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + match_Safari[1]);
+              }
+            } catch (e) {
+
+            }
+          }
+        } else if (UA.indexOf("MSIE") !== -1 || UA.indexOf("WOW64") !== -1 ){
+          var REGEX_IE = /(?<=MSIE)((?<!\.)[\s\d{1,2}]*)|(WOW64)/
+          var match_IE = UA.match(REGEX_IE)
+          if(match_IE){
+            try {
+              if(match_IE[1]){
+                  return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', 'version: ' + match_IE[1]);
+              } else if(match_IE[2]){
+                return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '');
+              }
+            } catch (e) {
+
+            }
+          }
+        } else if (UA.indexOf("Edge") !== -1 ){
+          var REGEX_Edge = /(?<=Edge\/)((?<!\.)[\d{1,2}]*)/
+          var match_Edge = UA.match(REGEX_Edge)
+          console.log(match_Edge); // todo remove dev item
+          if(match_Edge){
+            try {
+              if (+match_Edge[1]) {
+                return MewConnectEth.buildBrowserResult(true, 'Edge', 'version: ' + match_Edge[1]);
+              }
+            } catch (e) {
+
+            }
+          }
+        }
+      }
+    }
+    return MewConnectEth.buildBrowserResult(false, '', '');
+  }
+
+  static buildBrowserResult(status, browser, version){
+    return {
+      status: status,
+      browser: browser,
+      version: version
+    }
   }
 
 
