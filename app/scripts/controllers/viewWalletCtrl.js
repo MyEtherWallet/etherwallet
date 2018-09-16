@@ -53,5 +53,12 @@ var viewWalletCtrl = function($scope, walletService) {
         walletService.password = '';
         $scope.blob = $scope.blobEnc = $scope.password = "";
     }
+
+  $scope.reOpenDecryptWalletMEWconnect = function () {
+    if ($scope.globalService.currentTab === 10) {
+      $scope.wd = false
+    }
+  }
+  globalFuncs.MEWconnectStatus.registerDecryptOpeners($scope.reOpenDecryptWalletMEWconnect.bind(this))
 };
 module.exports = viewWalletCtrl;
