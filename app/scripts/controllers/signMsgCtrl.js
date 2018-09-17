@@ -152,13 +152,11 @@ var signMsgCtrl = function($scope, $sce, walletService) {
               var mewConnect = MewConnect.instance;
               connectApp.setMewConnect(mewConnect);
               mewConnect.on('signMessage', (data) =>{
-                console.log('signMessage Response', data) // todo remove dev item
                 $scope.signMsg.signedMsg = JSON.parse(data);
                 $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
               })
               mewConnect.on('sign', (data) =>{
                 $scope.signMsg.signedMsg = JSON.parse(data);
-                console.log('sign Response', data) // todo remove dev item
                 $scope.notifier.success('Successfully Signed Message with ' + $scope.wallet.getAddressString());
               })
               //TODO hash message before send.  Currently sending as plain text

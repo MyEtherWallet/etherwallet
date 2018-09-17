@@ -504,10 +504,10 @@
       <h4> <!-- todo re-add translation property -->
            MEWconnect
       </h4>
-      <div ng-if="!canUseMewConnect">
+      <div ng-if="!canUseMewConnect || mewConnectMayFail.noSupport">
         MEWconnect does note support your browser. <br/> Please use a supported browser (<a href="http://chrome.google.com/">Chrome</a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="http://www.opera.com/">Opera</a>, Safari (version 11 and above))
       </div>
-      <div ng-if="canUseMewConnect">
+      <div ng-if="canUseMewConnect && !mewConnectMayFail.noSupport">
         <ul>
           <li class="u__protip">
             <!-- Todo add path  -->
@@ -554,9 +554,9 @@
           <div qr-code="{{mewConnectCode}}" watch-var="mewConnectCode" style="width: 200px; height: 200px"></div>
         </div>
 
-        <div ng-if="mewConnectMayFail.status">
+        <div ng-if="mewConnectMayFail.status && !mewConnectMayFail.noSupport">
           <br/>
-          MEWconnect does note support your browser [{{mewConnectMayFail.browser}} {{mewConnectMayFail.version}}] and may not work.  <br/> Please use a supported browser (<a href="http://chrome.google.com/">Chrome</a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="http://www.opera.com/">Opera</a>, Safari (version 12 and above))
+          MEWconnect does not fully support your browser [{{mewConnectMayFail.browser}} {{mewConnectMayFail.version}}] and may not work.  <br/> Please use a fully supported browser (<a href="http://chrome.google.com/">Chrome </a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="http://www.opera.com/">Opera</a>, Safari (version 12 and above))
         </div>
       </div>
 

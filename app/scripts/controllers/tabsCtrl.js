@@ -339,16 +339,11 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
   angular.element(document.querySelectorAll('.nav-scroll')[0]).bind('scroll', $scope.setOnScrollArrows);
   globalFuncs.changeHash = $scope.setHash;
 
-  // $scope.MEWconnectActive = false;
   $scope.displayMEWconnectState = function(state) {
-    // $scope.MEWconnectActive = true;
-    // $scope.MEWconnectActive =
-    console.log(state); // todo remove dev item
     $scope.MEWconnectState = state;
   };
 
   $scope.newTabOpenedMEWconnect = function(show) {
-    console.log('new tab open'); // todo remove dev item
     $scope.MEWconnectActive = show;
   };
 

@@ -1,7 +1,5 @@
-
-
-class MewConnectEth{
-  constructor (callback) {
+class MewConnectEth {
+  constructor(callback) {
 
     this.listeners = [];
 
@@ -11,7 +9,7 @@ class MewConnectEth{
       // this.callback = this.mewConnectCallback;
     }
     this.walletCallback = null;
-    this.signalerUrl =  "https://connect.mewapi.io" // nanobox hosted version
+    this.signalerUrl = 'https://connect.mewapi.io'; // nanobox hosted version
   }
 
   getCallback() {
@@ -38,21 +36,21 @@ class MewConnectEth{
     var address = data.address;
     // var pub = data.pub;
     var wallet = void 0;
-    if (address.substring(0, 2) != "0x") {
-      address = "0x" + address;
+    if (address.substring(0, 2) != '0x') {
+      address = '0x' + address;
     }
     if (Validator.isValidAddress(address)) {
       var tempWallet = new Wallet();
-      tempWallet.getAddressString = function () {
+      tempWallet.getAddressString = function() {
         return address;
       };
-      var balance = tempWallet.setBalance(function (data) {
+      var balance = tempWallet.setBalance(function(data) {
         return data;
       });
 
       wallet = {
         // type: "addressOnly",
-        type: "mewConnect",
+        type: 'mewConnect',
         address: address,
         // pubKey: pub,
         getAddressString: tempWallet.getAddressString,
@@ -69,7 +67,7 @@ class MewConnectEth{
         getHWTransport: function getHWTransport(stuff) {
         },
         getHWType: function getHWType() {
-          return "mewConnect";
+          return 'mewConnect';
         }
       };
       return wallet;
@@ -80,8 +78,8 @@ class MewConnectEth{
   }
 
   signMessageSend(msg) {
-    var hashToSign = ethUtil.hashPersonalMessage(msg)
-    this.comm.sendRtcMessage("signMessage", hashToSign);
+    var hashToSign = ethUtil.hashPersonalMessage(msg);
+    this.comm.sendRtcMessage('signMessage', hashToSign);
   }
 
   signTransaction(eTx, rawTx, txData) {
@@ -93,14 +91,14 @@ class MewConnectEth{
       data: rawTx.data,
       chainId: rawTx.chainId,
       gas: rawTx.gasLimit
-    }
-    this.comm.sendRtcMessage("signTx", JSON.stringify(sendTxData));
+    };
+    this.comm.sendRtcMessage('signTx', JSON.stringify(sendTxData));
   }
 
   signMessage(messageHex) {
     var self = this;
-    var hashToSign = ethUtil.hashPersonalMessage(ethUtil.toBuffer(messageHex))
-    self.comm.sendRtcMessage("signMessage", hashToSign.toString('hex'));
+    var hashToSign = ethUtil.hashPersonalMessage(ethUtil.toBuffer(messageHex));
+    self.comm.sendRtcMessage('signMessage', hashToSign.toString('hex'));
   }
 
   static getBrowserRTC() {
@@ -121,70 +119,134 @@ class MewConnectEth{
   }
 
   static checkBrowser() {
-    var notChecking = ['Android', 'Opera', 'Chrome', 'Firefox'];
-    if(typeof window !== 'undefined'){
+    /*
+    * Chrome > 23
+    * Firefox > 22
+    * Opera > 18
+    * Safari > 11 (caveats exist)
+    * Edge - none (RTCDataChannel not supported)
+    * IE - none
+    * */
+    if (typeof window !== 'undefined') {
       var UA = window.navigator.userAgent;
-      var shouldNotCheck = notChecking.filter(browser => {
-        return UA.indexOf(browser) !== -1;
-      })
+      var browsersToCheck = {
+        safari: {
+          ua: UA.indexOf('Safari') !== -1,
+          version: /(?<=Version\/)((?<!\.)[\d{1,2}]*)/
+        },
+        IE: {
+          ua: UA.indexOf('MSIE') !== -1 || UA.indexOf('Trident') !== -1,
+          version: /(?<=MSIE)((?<!\.)[\s\d{1,2}]*)|(?<=rv:)((?<!\.)[\s\d{1,2}]*)/
+        },
+        edge: {
+          ua: UA.indexOf('Edge') !== -1,
+          version: /(?<=Edge\/)((?<!\.)[\d{1,2}]*)/
+        },
+        chrome: {
+          ua: UA.indexOf('Chrome') !== -1,
+          version: /(?<=Chrome\/)((?<!\.)[\d{1,2}]*)/,
+          after: 23
+        },
+        android: {
+          ua: UA.indexOf('Android') !== -1,
+          version: ''
+        },
+        fireFox: {
+          ua: UA.indexOf('Firefox') !== -1,
+          version: /(?<=Firefox\/)((?<!\.)[\d{1,2}]*)/,
+          after: 22
+        },
+        opera: {
+          ua: UA.indexOf('Opera') !== -1,
+          version: /(?<=OPR\/)((?<!\.)[\d{1,2}]*)/,
+          after: 18
+        }
+      };
 
-      if(shouldNotCheck.length === 0){
-        if (UA.indexOf("Safari") !== -1){
-          var REGEX_Safari = /(?<=Version\/)((?<!\.)[\d{1,2}]*)/
-          var match_Safari = UA.match(REGEX_Safari)
-          if(match_Safari){
-            try {
-              if (+match_Safari[1] >= 12) {
-                return MewConnectEth.buildBrowserResult(false, '', '');
-              } else {
-                return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + match_Safari[1]);
-              }
-            } catch (e) {
-
+      if (browsersToCheck.safari.ua && !browsersToCheck.chrome.ua) {
+        var match_Safari = UA.match(browsersToCheck.safari.version);
+        if (match_Safari) {
+          try {
+            if (+match_Safari[1] >= 12) {
+              return MewConnectEth.buildBrowserResult(false, '', '');
+            } else if(+match_Safari[1] === 11) {
+              return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + match_Safari[1]);
+            } else {
+              return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + match_Safari[1], true);
             }
+          } catch (e) {
+
           }
-        } else if (UA.indexOf("MSIE") !== -1 || UA.indexOf("WOW64") !== -1 ){
-          var REGEX_IE = /(?<=MSIE)((?<!\.)[\s\d{1,2}]*)|(WOW64)/
-          var match_IE = UA.match(REGEX_IE)
-          if(match_IE){
-            try {
-              if(match_IE[1]){
-                  return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', 'version: ' + match_IE[1]);
-              } else if(match_IE[2]){
-                return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '');
-              }
-            } catch (e) {
-
+        }
+      } else if (browsersToCheck.IE.ua) {
+        var match_IE = UA.match(browsersToCheck.IE.version);
+        if (match_IE) {
+          try {
+            if (match_IE[1]) {
+              return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '', true);
+            } else if (match_IE[2]) {
+              return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '', true);
             }
+          } catch (e) {
+
           }
-        } else if (UA.indexOf("Edge") !== -1 ){
-          var REGEX_Edge = /(?<=Edge\/)((?<!\.)[\d{1,2}]*)/
-          var match_Edge = UA.match(REGEX_Edge)
-          console.log(match_Edge); // todo remove dev item
-          if(match_Edge){
-            try {
-              if (+match_Edge[1]) {
-                return MewConnectEth.buildBrowserResult(true, 'Edge', 'version: ' + match_Edge[1]);
-              }
-            } catch (e) {
-
+        }
+      } else if (browsersToCheck.edge.ua) {
+        var match_Edge = UA.match(browsersToCheck.edge.version);
+        if (match_Edge) {
+          try {
+            if (+match_Edge[1]) {
+              return MewConnectEth.buildBrowserResult(true, 'Edge', 'version: ' + match_Edge[1], true);
             }
+          } catch (e) {
+
+          }
+        }
+      } else {
+        var name = '';
+        var versionRegex = /.*/;
+        var minVersion = 0;
+        if (browsersToCheck.opera.ua) {
+          name = 'Opera';
+          versionRegex = browsersToCheck.opera.version;
+          minVersion = browsersToCheck.opera.after;
+        } else if (browsersToCheck.fireFox.ua) {
+          name = 'FireFox';
+          versionRegex = browsersToCheck.fireFox.version;
+          minVersion = browsersToCheck.fireFox.after;
+        } else if (browsersToCheck.chrome.ua) {
+          name = 'Chrome';
+          versionRegex = browsersToCheck.chrome.version;
+          minVersion = browsersToCheck.chrome.after;
+        } else {
+          return MewConnectEth.buildBrowserResult(false, '', '');
+        }
+        var versionCheck = UA.match(versionRegex);
+        if (versionCheck) {
+          try {
+            if (minVersion >= +versionCheck[1]) {
+              return MewConnectEth.buildBrowserResult(true, name, 'version: ' + versionCheck[1]);
+            } else {
+              return MewConnectEth.buildBrowserResult(false, '', '');
+            }
+          } catch (e) {
+            console.error(e); // todo replace with proper error
           }
         }
       }
     }
-    return MewConnectEth.buildBrowserResult(false, '', '');
+
   }
 
-  static buildBrowserResult(status, browser, version){
+  static buildBrowserResult(status, browser, version, noSupport) {
     return {
       status: status,
       browser: browser,
-      version: version
-    }
+      version: version,
+      noSupport: noSupport || false
+    };
   }
-
 
 }
 
-module.exports = MewConnectEth
+module.exports = MewConnectEth;

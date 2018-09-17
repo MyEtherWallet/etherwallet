@@ -469,7 +469,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     })
 
     $scope.$on('$destroy', function () {
-      console.log('destroyed'); // todo remove dev item
       globalFuncs.MEWconnectStatus.newTabOpenedTrigger(false);
       globalFuncs.MEWconnectStatus.update(0)
       $scope.mewConnect.disconnectRTC()
@@ -511,7 +510,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 
 
     function codeDisplay (data) {
-      console.log(data) // todo remove dev item
       $scope.mewConnectionStatus = 1
       globalFuncs.MEWconnectStatus.update(1)
       $scope.mewConnectCode = data
