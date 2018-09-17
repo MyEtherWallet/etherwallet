@@ -39,6 +39,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         hwEther1Path:      "m/44'/1313114'/0'/0",  // first address: m/44'/1313114'/0'/0/0
         hwAtheiosPath:     "m/44'/1620'/0'/0",     // first address: m/44'/1620'/0'/0/0
     };
+  $scope.canUseMewConnect = MewConnectEth.checkWebRTCAvailable();
+  $scope.mewConnectMayFail = MewConnectEth.checkBrowser();
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
     $scope.$watch('ajaxReq.type', function() {
@@ -229,6 +231,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             $scope.scanDigitalBitbox();
         } else if ($scope.walletType == 'secalot') {
             $scope.scanSecalot();
+        } else if ($scope.walletType == 'mewConnect') {
+          $scope.scanMewConnect()
         }
     }
     $scope.onCustomHDDPathChange = function() {
@@ -295,6 +299,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, $scope.walletType, $scope.digitalBitbox));
             } else if ($scope.walletType == "secalot") {
                 $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, $scope.walletType, $scope.secalot));
+            } else if ($scope.walletType == 'mewConnect') {
+              $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + '/' + i, $scope.walletType, $scope.mewConnect))
             } else {
                 $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, $scope.walletType));
             }
@@ -305,7 +311,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         $scope.HDWallet.numWallets = start + limit;
     }
     $scope.AddRemoveHDAddresses = function(isAdd) {
-        if ($scope.walletType == "ledger" || $scope.walletType == "trezor" || $scope.walletType == "digitalBitbox" || $scope.walletType == "secalot") {
+        if ($scope.walletType == "ledger" || $scope.walletType == "trezor" || $scope.walletType == "digitalBitbox" || $scope.walletType == "secalot" || $scope.walletType == 'mewConnect') {
             if (isAdd) $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
             else $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets - 2 * $scope.HDWallet.walletsPerDialog, $scope.HDWallet.walletsPerDialog);
         } else {
@@ -450,6 +456,83 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         console.warn("SCANTR", path, $scope.HDWallet)
         TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.5.2');
     };
+  // ================= Mew Connect (start)==============================
+  $scope.scanMewConnect = function () {
+    globalFuncs.MEWconnectStatus.newTabOpenedTrigger(true);
+    globalFuncs.MEWconnectStatus.update(0)
+    var app = new MewConnectEth()
+
+    $scope.mewConnect = MewConnect.init(null, null, {})
+
+    Reflect.defineProperty(MewConnect, 'instance', {
+      value: $scope.mewConnect
+    })
+
+    $scope.$on('$destroy', function () {
+      globalFuncs.MEWconnectStatus.newTabOpenedTrigger(false);
+      globalFuncs.MEWconnectStatus.update(0)
+      $scope.mewConnect.disconnectRTC()
+      if (MewConnect.instance) {
+        Reflect.deleteProperty(MewConnect, 'instance')
+      }
+    })
+
+    $scope.mewConnect.on('codeDisplay', codeDisplay)
+    $scope.mewConnect.on('RtcConnectedEvent', rtcConnected)
+    $scope.mewConnect.on('RtcClosedEvent', rtcClosed)
+    // $scope.mewConnect.on('RtcDisconnectEvent', rtcDisconnected)
+    $scope.mewConnect.on('address', makeWallet)
+
+    app.setMewConnect($scope.mewConnect)
+    app.signalerConnect()
+
+    $scope.connectionCodeTimeout = null
+
+    function rtcConnected (data) {
+      if ($scope.connectionCodeTimeout) {
+        clearTimeout($scope.connectionCodeTimeout)
+      }
+      globalFuncs.MEWconnectStatus.update(2)
+      $scope.connectionCodeTimeout = null
+      uiFuncs.notifier.info('Connected Via Mew Connect')
+      $scope.mewConnect.sendRtcMessage('address', '')
+      $scope.mewConnectionStatus = 2
+    }
+
+    function rtcClosed (data) {
+      globalFuncs.MEWconnectStatus.update(4)
+      $scope.mewConnectionStatus = 4
+      $scope.wallet = null
+      walletService.wallet = null
+      uiFuncs.notifier.danger('Disconnected', 10000)
+      if (!$scope.$$phase) $scope.$apply()
+    }
+
+
+    function codeDisplay (data) {
+      $scope.mewConnectionStatus = 1
+      globalFuncs.MEWconnectStatus.update(1)
+      $scope.mewConnectCode = data
+      $scope.connectionCodeTimeout = setTimeout(() => {
+        $scope.mewConnectionStatus = 3
+        globalFuncs.MEWconnectStatus.update(3)
+        if (!$scope.$$phase) $scope.$apply()
+      }, 119800) // 200ms before the actual server timeout happens. (to account for transit time, ui lag, etc.)
+      if (!$scope.$$phase) $scope.$apply()
+    }
+
+    function makeWallet (data) {
+      var wallet = app.createWallet(data)
+      $scope.wallet = wallet
+      walletService.wallet = wallet
+      if (!$scope.$$phase) $scope.$apply()
+    }
+  }
+
+  $scope.mewConnectDisconnect = function () {
+    $scope.mewConnect.disconnectRTC()
+  }
+  //= ================ Mew Connect (end)==============================
     $scope.getLedgerPath = function() {
         return $scope.HDWallet.dPath;
     }
@@ -460,7 +543,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         if (window.web3 === undefined) {
             window.addEventListener('message', ({data}) => {
               if (data && data.type && data.type === 'ETHEREUM_PROVIDER_SUCCESS') {
-                window.web3 = new Web3(ethereum); 
+                window.web3 = new Web3(ethereum);
               }
             });
             window.postMessage({ type: 'ETHEREUM_PROVIDER_REQUEST', web3: true }, '*');

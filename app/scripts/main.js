@@ -74,6 +74,9 @@ if (IS_CX) {
   window.cxHelpers['similarity'] = similarity;
   window.cxHelpers['levenshtein'] = levenshtein;
 } else {
+    require('webrtc-adapter'); // adapter to ensure a common api for webRTC
+    var MewConnectEth = require('./staticJS/mewConnectEth');
+    var MewConnect = require('@myetherwallet/mewconnect-web-client').Initiator;
     var u2f                  = require('./staticJS/u2f-api');
     var ledger3              = require('./staticJS/ledger3');
     var ledgerEth            = require('./staticJS/ledger-eth');
@@ -90,6 +93,8 @@ if (IS_CX) {
     window.DigitalBitboxEth  = digitalBitboxEth;
     window.SecalotUsb        = secalotUsb;
     window.SecalotEth        = secalotEth;
+    window.MewConnectEth = MewConnectEth;
+    window.MewConnect = MewConnect;
 }
 var CustomGasMessages        = require('./customGas.js')
 window.CustomGasMessages     = CustomGasMessages;

@@ -231,6 +231,25 @@
           </span>
         </a>
       </li>
+      <li class="nav-item" ng-show="MEWconnectActive" ng-cloak>
+        <div style="margin-left: 20px;">
+          <div ng-show="MEWconnectState == 0" style="border-bottom: solid 2px #929292">
+            <h4 ><img src="images/MEWconnectLogo.svg" width="120" height="26"> Not Connected</h4>
+          </div>
+          <div ng-show="MEWconnectState == 1" style="border-bottom: solid 2px #1995be">
+            <h4><img src="images/MEWconnectLogo.svg" width="120" height="26" style="margin-right: 10px">Preparing Connection</h4>
+          </div>
+          <div ng-show="MEWconnectState == 2" style="border-bottom: solid 2px #23aeb2">
+            <h4 ><img src="images/MEWconnectLogo.svg" width="120" height="26"> Connected</h4>
+          </div>
+          <div ng-show="MEWconnectState == 3" style="border-bottom: solid 2px #febe1a">
+            <h4><img src="images/MEWconnectLogo.svg" width="120" height="26"> Timed Out</h4>
+          </div>
+          <div ng-show="MEWconnectState == 4" style="border-bottom: solid 2px #e74d41">
+            <h4><img src="images/MEWconnectLogo.svg" width="120" height="26"> Disconnected</h4>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
   <a aria-hidden="true"

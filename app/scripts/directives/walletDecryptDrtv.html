@@ -96,6 +96,18 @@
       </a>
     </label>
 
+    <!-- MEWconnect -->
+    <label
+      class="radio"><!-- todo re-add aria-flowto="aria10" property -->
+      <input type="radio"
+             aria-label="MEW Connect"
+             ng-model="walletType"
+             value="mewConnect"/>
+      <span><!-- todo re-add translation property -->
+       <img src="images/MEWconnectLogo.svg" width="120" height="26">
+      </span>
+    </label>
+
     <!-- Mnemonic Phrase -->
     <label aria-flowto="aria7"
            class="radio">
@@ -484,6 +496,74 @@
     </div>
     <!-- / Secalot-->
 
+    <!--  Mew Connect -->
+    <!-------------------------------  Mew Connect (Start) ------------------------------------------>
+    <!-- Based Off MetaMask Code (above)-->
+    <div id="selectedTypeMewConnect"
+         ng-if="walletType=='mewConnect'">
+      <h4> <!-- todo re-add translation property -->
+           MEWconnect
+      </h4>
+      <div ng-if="!canUseMewConnect || mewConnectMayFail.noSupport">
+        MEWconnect does note support your browser. <br/> Please use a supported browser (<a href="http://chrome.google.com/">Chrome</a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="http://www.opera.com/">Opera</a>, Safari (version 11 and above))
+      </div>
+      <div ng-if="canUseMewConnect && !mewConnectMayFail.noSupport">
+        <ul>
+          <li class="u__protip">
+            <!-- Todo add path  -->
+            <a href="https://kb.myetherwallet.com/getting-started/mew-connect-user-guide.html"
+               target="_blank"
+               rel="noopener noreferrer">
+              How to use MEWconnect with MyEtherWallet
+            </a>
+          </li>
+          <li class="u__protip">
+            <!-- Todo add path  -->
+            <span> Don't have MEWconnect? <br/> <a href="#"  target="_blank" rel="noopener noreferrer"> <img src="images/appstore.png" height="50" width="170"> </a>
+          </li>
+        </ul>
+        <div class="form-group"
+             ng-hide="isSSL">
+        <span class="text-danger"> <!-- todo re-add translation property -->
+            MEWconnect only works on a secure (SSL / HTTPS) connection.
+        </span>
+        </div>
+        <div class="form-group" ng-show="(!mewConnectionStatus || mewConnectionStatus == 3 || mewConnectionStatus == 4) && canUseMewConnect">
+          <!-- todo re-add translation  and id properties -->
+          <a class="btn btn-primary"
+             ng-click="scanMewConnect()"
+             ng-show="walletType=='mewConnect'"
+             tabindex="0" role="button">
+            Connect with MEWconnect
+          </a>
+        </div>
+        <div class="form-group" ng-show="(mewConnectionStatus == 2) && canUseMewConnect">
+          <!-- todo re-add translation  and id properties -->
+          <a class="btn btn-primary"
+             ng-click="mewConnectDisconnect()"
+             ng-show="walletType=='mewConnect'"
+             tabindex="0" role="button">
+            Disconnect from MEWconnect
+          </a>
+        </div>
+        <div class="form-group" >
+          <!-- todo re-add translation  and id properties -->
+          <h5 ng-show="mewConnectionStatus == 1">Scan this code with your <a href="https://mewconnect.myetherwallet.com">MEWconnect app</a></h5>
+        </div>
+        <div ng-if="mewConnectionStatus == 1">
+          <div qr-code="{{mewConnectCode}}" watch-var="mewConnectCode" style="width: 200px; height: 200px"></div>
+        </div>
+
+        <div ng-if="mewConnectMayFail.status && !mewConnectMayFail.noSupport">
+          <br/>
+          MEWconnect does not fully support your browser [{{mewConnectMayFail.browser}} {{mewConnectMayFail.version}}] and may not work.  <br/> Please use a fully supported browser (<a href="http://chrome.google.com/">Chrome </a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="http://www.opera.com/">Opera</a>, Safari (version 12 and above))
+        </div>
+      </div>
+
+
+    </div>
+    <!-------------------------------  Mew Connect (End) ------------------------------------------>
+    <!-- / Mew Connect -->
 
     <!-- Keystore -->
     <div ng-if="walletType=='fileupload'">

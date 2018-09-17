@@ -201,5 +201,12 @@ var contractsCtrl = function($scope, $sce, walletService) {
         $scope.tx.to = $scope.contract.address;
         $scope.sendContractModal.open();
     }
+
+  $scope.reOpenDecryptWalletMEWconnect = function () {
+    if ($scope.globalService.currentTab === 6) {
+      $scope.wd = false
+    }
+  }
+  globalFuncs.MEWconnectStatus.registerDecryptOpeners($scope.reOpenDecryptWalletMEWconnect.bind(this))
 }
 module.exports = contractsCtrl;
