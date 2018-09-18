@@ -1,5 +1,5 @@
 ### New
-- Hotfix firefox support for MEWconnect [Commit]()
+- Hotfix firefox support for MEWconnect [Commit](https://github.com/kvhnuke/etherwallet/commit/d653481b756f425052c5bb20b0a1ff2f1c32b2ae)
 
 ### Release v3.22.2
 ### New
