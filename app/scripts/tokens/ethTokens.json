@@ -2970,6 +2970,12 @@
     "type": "default"
   },
   {
+    "address": "0x8e870d67f660d95d5be530380d0ec0bd388289e1",
+    "symbol": "PAX",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xB97048628DB6B661D4C2aA833e95Dbe1A905B280",
     "symbol": "PAY",
     "decimal": 18,

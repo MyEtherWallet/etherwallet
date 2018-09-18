@@ -1,6 +1,14 @@
-[{
-"address":"0x95D7321EdCe519419ba1DbC60A89bAfbF55EAC0D",
-"symbol":"💥 PLASMA",
-"decimal":6,
-"type":"default"
-}]
+[
+  {
+    "address": "0x95D7321EdCe519419ba1DbC60A89bAfbF55EAC0D",
+    "symbol": "💥 PLASMA",
+    "decimal": 6,
+    "type": "default"
+  },
+  {
+    "address": "0xa1bacca0e12d4091ec1f92e7cae3394cc9854d3d",
+    "symbol": "dqr30",
+    "decimal": 18,
+    "type": "default"
+  }
+]
