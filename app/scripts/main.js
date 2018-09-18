@@ -74,7 +74,6 @@ if (IS_CX) {
   window.cxHelpers['similarity'] = similarity;
   window.cxHelpers['levenshtein'] = levenshtein;
 } else {
-    require('webrtc-adapter'); // adapter to ensure a common api for webRTC
     var MewConnectEth = require('./staticJS/mewConnectEth');
     var MewConnect = require('@myetherwallet/mewconnect-web-client').Initiator;
     var u2f                  = require('./staticJS/u2f-api');
