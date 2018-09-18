@@ -2292,6 +2292,12 @@
     "type": "default"
   },
   {
+    "address": "0xdf1338FbAfe7aF1789151627B886781ba556eF9a",
+    "symbol": "KUE",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x9541FD8B9b5FA97381783783CeBF2F5fA793C262",
     "symbol": "KZN",
     "decimal": 8,
