@@ -1,3 +1,7 @@
+### Release v3.22.2
+### New
+- Hotfix firefox support for MEWconnect [Commit](https://github.com/kvhnuke/etherwallet/commit/644c63da54ded3e74c78a14b0e0dff1c419a0be0)
+
 ### Release v3.22.1
 ### New
 - Hotfix link and icon for MEWconnect, Add PAX token and contract, and dqr30 token [#2069](https://github.com/kvhnuke/etherwallet/pull/2069)
