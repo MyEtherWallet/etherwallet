@@ -19,6 +19,18 @@
         View w/ Address Only
     </label>
 
+    <!-- MEWconnect -->
+    <label
+      class="radio"><!-- todo re-add aria-flowto="aria10" property -->
+      <input type="radio"
+             aria-label="MEW Connect"
+             ng-model="walletType"
+             value="mewConnect"/>
+      <span><!-- todo re-add translation property -->
+       <img src="images/MEWconnectLogo.svg" width="120" height="26">
+      </span>
+    </label>
+
     <!-- MetaMask -->
     <label aria-flowto="aria2"
            class="radio">
@@ -94,18 +106,6 @@
          rel="noopener noreferrer">
         <img src="images/icon-help-3.svg" width="16px" height="16px" style="margin: 0 5px 5px">
       </a>
-    </label>
-
-    <!-- MEWconnect -->
-    <label
-      class="radio"><!-- todo re-add aria-flowto="aria10" property -->
-      <input type="radio"
-             aria-label="MEW Connect"
-             ng-model="walletType"
-             value="mewConnect"/>
-      <span><!-- todo re-add translation property -->
-       <img src="images/MEWconnectLogo.svg" width="120" height="26">
-      </span>
     </label>
 
     <!-- Mnemonic Phrase -->
@@ -519,7 +519,7 @@
           </li>
           <li class="u__protip">
             <!-- Todo add path  -->
-            <span> Don't have MEWconnect? <br/> <a href="#"  target="_blank" rel="noopener noreferrer"> <img src="images/appstore.png" height="50" width="170"> </a>
+            <span> Don't have MEWconnect? <br/> <a href="https://itunes.apple.com/us/app/mewconnect/id1391097156"  target="_blank" rel="noopener noreferrer"> <img src="images/appstore.png" height="50" width="170"> </a>
           </li>
         </ul>
         <div class="form-group"

@@ -1,3 +1,7 @@
+### Release v3.22.1
+### New
+- Hotfix link and icon for MEWconnect, Add PAX token and contract, and dqr30 token [#2069](https://github.com/kvhnuke/etherwallet/pull/2069)
+
 ### Release v3.22.0
 ### New
 - MEW connect integration [#2068](https://github.com/kvhnuke/etherwallet/pull/2068)
