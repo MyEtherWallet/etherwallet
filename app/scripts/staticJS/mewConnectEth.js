@@ -119,6 +119,8 @@ class MewConnectEth {
   }
 
   static checkBrowser() {
+    const browser = window.browser;
+    const version = browser.version.split(0, 1)[0]
     /*
     * Chrome > 23
     * Firefox > 22
@@ -128,110 +130,41 @@ class MewConnectEth {
     * IE - none
     * */
     if (typeof window !== 'undefined') {
-      var UA = window.navigator.userAgent;
-      var browsersToCheck = {
-        safari: {
-          ua: UA.indexOf('Safari') !== -1,
-          version: /(?<=Version\/)((?<!\.)[\d{1,2}]*)/
-        },
-        IE: {
-          ua: UA.indexOf('MSIE') !== -1 || UA.indexOf('Trident') !== -1,
-          version: /(?<=MSIE)((?<!\.)[\s\d{1,2}]*)|(?<=rv:)((?<!\.)[\s\d{1,2}]*)/
-        },
-        edge: {
-          ua: UA.indexOf('Edge') !== -1,
-          version: /(?<=Edge\/)((?<!\.)[\d{1,2}]*)/
-        },
-        chrome: {
-          ua: UA.indexOf('Chrome') !== -1,
-          version: /(?<=Chrome\/)((?<!\.)[\d{1,2}]*)/,
-          after: 23
-        },
-        android: {
-          ua: UA.indexOf('Android') !== -1,
-          version: ''
-        },
-        fireFox: {
-          ua: UA.indexOf('Firefox') !== -1,
-          version: /(?<=Firefox\/)((?<!\.)[\d{1,2}]*)/,
-          after: 22
-        },
-        opera: {
-          ua: UA.indexOf('Opera') !== -1,
-          version: /(?<=OPR\/)((?<!\.)[\d{1,2}]*)/,
-          after: 18
+      if (browser.name === 'safari') {
+        if (+version >= 12) {
+          return MewConnectEth.buildBrowserResult(false, '', '');
+        } else if (+version === 11) {
+          return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + browser.version);
         }
-      };
-
-      if (browsersToCheck.safari.ua && !browsersToCheck.chrome.ua) {
-        var match_Safari = UA.match(browsersToCheck.safari.version);
-        if (match_Safari) {
-          try {
-            if (+match_Safari[1] >= 12) {
-              return MewConnectEth.buildBrowserResult(false, '', '');
-            } else if(+match_Safari[1] === 11) {
-              return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + match_Safari[1]);
-            } else {
-              return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + match_Safari[1], true);
-            }
-          } catch (e) {
-
-          }
-        }
-      } else if (browsersToCheck.IE.ua) {
-        var match_IE = UA.match(browsersToCheck.IE.version);
-        if (match_IE) {
-          try {
-            if (match_IE[1]) {
-              return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '', true);
-            } else if (match_IE[2]) {
-              return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '', true);
-            }
-          } catch (e) {
-
-          }
-        }
-      } else if (browsersToCheck.edge.ua) {
-        var match_Edge = UA.match(browsersToCheck.edge.version);
-        if (match_Edge) {
-          try {
-            if (+match_Edge[1]) {
-              return MewConnectEth.buildBrowserResult(true, 'Edge', 'version: ' + match_Edge[1], true);
-            }
-          } catch (e) {
-
-          }
-        }
+      } else if (browser.name === 'ie') {
+        return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '', true);
+      } else if (browser.name === 'edge') {
+        return MewConnectEth.buildBrowserResult(true, 'Edge', 'version: ' + browser.version, true);
       } else {
-        var name = '';
-        var versionRegex = /.*/;
-        var minVersion = 0;
-        if (browsersToCheck.opera.ua) {
+        let name = '';
+        let minVersion = 0;
+
+        if (browser.name === 'opera') {
           name = 'Opera';
-          versionRegex = browsersToCheck.opera.version;
-          minVersion = browsersToCheck.opera.after;
-        } else if (browsersToCheck.fireFox.ua) {
-          name = 'FireFox';
-          versionRegex = browsersToCheck.fireFox.version;
-          minVersion = browsersToCheck.fireFox.after;
-        } else if (browsersToCheck.chrome.ua) {
+          minVersion = 18;
+        } else if (browser.name === 'firefox') {
+          name = 'Firefox';
+          minVersion = 22;
+        } else if (browser.name === 'chrome') {
           name = 'Chrome';
-          versionRegex = browsersToCheck.chrome.version;
-          minVersion = browsersToCheck.chrome.after;
+          minVersion = 23;
         } else {
           return MewConnectEth.buildBrowserResult(false, '', '');
         }
-        var versionCheck = UA.match(versionRegex);
-        if (versionCheck) {
-          try {
-            if (minVersion >= +versionCheck[1]) {
-              return MewConnectEth.buildBrowserResult(true, name, 'version: ' + versionCheck[1]);
-            } else {
-              return MewConnectEth.buildBrowserResult(false, '', '');
-            }
-          } catch (e) {
-            console.error(e); // todo replace with proper error
+
+        try {
+          if (minVersion >= +version) {
+            return MewConnectEth.buildBrowserResult(true, name, 'version: ' + version);
+          } else {
+            return MewConnectEth.buildBrowserResult(false, '', '');
           }
+        } catch(e) {
+          console.error(e)
         }
       }
     }
