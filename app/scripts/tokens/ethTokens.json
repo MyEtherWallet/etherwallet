@@ -570,12 +570,6 @@
     "type": "default"
   },
   {
-    "address": "0x5Af2Be193a6ABCa9c8817001F45744777Db30756",
-    "symbol": "ETHOS",
-    "decimal": 8,
-    "type": "default"
-  },
-  {
     "address": "0x9E77D5a1251b6F7D456722A6eaC6D2d5980bd891",
     "symbol": "BRAT",
     "decimal": 8,
@@ -1374,14 +1368,14 @@
     "type": "default"
   },
   {
-    "address": "0x765f0c16d1ddc279295c1a7c24b0883f62d33f75",
-    "symbol": "DTX",
+    "address": "0x82fdedfB7635441aA5A92791D001fA7388da8025",
+    "symbol": "DTx",
     "decimal": 18,
     "type": "default"
   },
   {
-    "address": "0x82fdedfB7635441aA5A92791D001fA7388da8025",
-    "symbol": "DTx",
+    "address": "0x765f0c16d1ddc279295c1a7c24b0883f62d33f75",
+    "symbol": "DTX",
     "decimal": 18,
     "type": "default"
   },
@@ -1566,6 +1560,12 @@
     "type": "default"
   },
   {
+    "address": "0x92A5B04D0ED5D94D7a193d1d334D3D16996f4E13",
+    "symbol": "ERT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xe8a1df958be379045e2b46a31a98b93a2ecdfded",
     "symbol": "ESZ",
     "decimal": 18,
@@ -1586,6 +1586,12 @@
   {
     "address": "0x3a26746Ddb79B1B8e4450e3F4FFE3285A307387E",
     "symbol": "ETHB",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0x5Af2Be193a6ABCa9c8817001F45744777Db30756",
+    "symbol": "ETHOS",
     "decimal": 8,
     "type": "default"
   },
@@ -2628,6 +2634,12 @@
     "type": "default"
   },
   {
+    "address": "0xfbd0d1c77b501796a35d86cf91d65d9778eee695",
+    "symbol": "MOVED",
+    "decimal": 3,
+    "type": "default"
+  },
+  {
     "address": "0x82125AFe01819Dff1535D0D6276d57045291B6c0",
     "symbol": "MRL",
     "decimal": 18,
@@ -2652,14 +2664,14 @@
     "type": "default"
   },
   {
-    "address": "0xdfdc0d82d96f8fd40ca0cfb4a288955becec2088",
-    "symbol": "MTC (Mesh Network)",
+    "address": "0x905E337c6c8645263D3521205Aa37bf4d034e745",
+    "symbol": "MTC (Medical Token Currency)",
     "decimal": 18,
     "type": "default"
   },
   {
-    "address": "0x905E337c6c8645263D3521205Aa37bf4d034e745",
-    "symbol": "MTC (Medical Token Currency)",
+    "address": "0xdfdc0d82d96f8fd40ca0cfb4a288955becec2088",
+    "symbol": "MTC (Mesh Network)",
     "decimal": 18,
     "type": "default"
   },
@@ -2952,14 +2964,14 @@
     "type": "default"
   },
   {
-    "address": "0x77761e63c05aee6648fdaeaa9b94248351af9bcd",
-    "symbol": "PASS",
+    "address": "0xea5f88e54d982cbb0c441cde4e79bc305e5b43bc",
+    "symbol": "PARETO",
     "decimal": 18,
     "type": "default"
   },
   {
-    "address": "0xea5f88e54d982cbb0c441cde4e79bc305e5b43bc",
-    "symbol": "PARETO",
+    "address": "0x77761e63c05aee6648fdaeaa9b94248351af9bcd",
+    "symbol": "PASS",
     "decimal": 18,
     "type": "default"
   },
@@ -3086,6 +3098,12 @@
   {
     "address": "0xD8912C10681D8B21Fd3742244f44658dBA12264E",
     "symbol": "PLU",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x93ed3fbe21207ec2e8f2d3c3de6e058cb73bc04d",
+    "symbol": "PNK",
     "decimal": 18,
     "type": "default"
   },
@@ -3960,12 +3978,6 @@
     "type": "default"
   },
   {
-    "address": "0xfbd0d1c77b501796a35d86cf91d65d9778eee695",
-    "symbol": "MOVED",
-    "decimal": 3,
-    "type": "default"
-  },
-  {
     "address": "0x24692791bc444c5cd0b81e3cbcaba4b04acd1f3b",
     "symbol": "UKG",
     "decimal": 18,
@@ -3996,15 +4008,15 @@
     "type": "default"
   },
   {
-    "address": "0xD760ADdFb24D9C01Fe4Bfea7475C5e3636684058",
-    "symbol": "USDM",
-    "decimal": 2,
-    "type": "default"
-  },
-  {
     "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     "symbol": "USDC",
     "decimal": 6,
+    "type": "default"
+  },
+  {
+    "address": "0xD760ADdFb24D9C01Fe4Bfea7475C5e3636684058",
+    "symbol": "USDM",
+    "decimal": 2,
     "type": "default"
   },
   {
