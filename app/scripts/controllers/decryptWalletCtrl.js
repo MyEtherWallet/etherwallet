@@ -41,6 +41,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     };
     $scope.canUseMewConnect = MewConnectEth.checkWebRTCAvailable();
     $scope.mewConnectMayFail = MewConnectEth.checkBrowser();
+    console.log($scope.mewConnectMayFail)
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
     $scope.$watch('ajaxReq.type', function() {

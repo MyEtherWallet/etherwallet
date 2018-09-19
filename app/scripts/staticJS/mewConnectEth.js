@@ -121,6 +121,7 @@ class MewConnectEth {
   static checkBrowser() {
     const browser = window.browser;
     const version = browser.version.split(0, 1)[0]
+    console.log(browser)
     /*
     * Chrome > 23
     * Firefox > 22
@@ -131,11 +132,13 @@ class MewConnectEth {
     * */
     if (typeof window !== 'undefined') {
       if (browser.name === 'safari') {
-        if (+version >= 12) {
-          return MewConnectEth.buildBrowserResult(false, '', '');
-        } else if (+version === 11) {
+        // return MewConnectEth.buildBrowserResult(false, '', '');
+        // Uncomment when safari can be fixed
+        // if (+version >= 12) {
+        //   return MewConnectEth.buildBrowserResult(false, '', '');
+        // } else if (+version === 11) {
           return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + browser.version);
-        }
+        // }
       } else if (browser.name === 'ie') {
         return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '', true);
       } else if (browser.name === 'edge') {
