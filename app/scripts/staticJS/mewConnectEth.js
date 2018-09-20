@@ -121,7 +121,6 @@ class MewConnectEth {
   static checkBrowser() {
     const browser = window.browser;
     const version = browser.version.split(0, 1)[0]
-    console.log(browser)
     /*
     * Chrome > 23
     * Firefox > 22
