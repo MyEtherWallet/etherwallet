@@ -233,9 +233,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
     }
 
   $scope.reOpenDecryptWalletMEWconnect = function () {
-    if ($scope.globalService.currentTab === 11) {
       $scope.wd = false
-    }
   }
   globalFuncs.MEWconnectStatus.registerDecryptOpeners($scope.reOpenDecryptWalletMEWconnect.bind(this))
 
