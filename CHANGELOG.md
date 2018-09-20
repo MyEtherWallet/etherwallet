@@ -1,5 +1,5 @@
 ### New
-- Pop MEWconnect warning on safari [#2073](https://github.com/kvhnuke/etherwallet/pull/2073)
+- Pop MEWconnect warning on safari, add CPOLLO token [#2073](https://github.com/kvhnuke/etherwallet/pull/2073)
 - Add ERT and PNK tokens [#2071](https://github.com/kvhnuke/etherwallet/pull/2071)
 - Hotfix firefox support for MEWconnect [Commit](https://github.com/kvhnuke/etherwallet/commit/d653481b756f425052c5bb20b0a1ff2f1c32b2ae)
 
