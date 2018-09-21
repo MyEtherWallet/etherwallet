@@ -1,4 +1,6 @@
+### Release v3.22.3
 ### New
+- fix sign msg mewconnect [#2074](https://github.com/kvhnuke/etherwallet/pull/2074)
 - Pop MEWconnect warning on safari, add CPOLLO token [#2073](https://github.com/kvhnuke/etherwallet/pull/2073)
 - Add ERT and PNK tokens [#2071](https://github.com/kvhnuke/etherwallet/pull/2071)
 - Hotfix firefox support for MEWconnect [Commit](https://github.com/kvhnuke/etherwallet/commit/d653481b756f425052c5bb20b0a1ff2f1c32b2ae)
