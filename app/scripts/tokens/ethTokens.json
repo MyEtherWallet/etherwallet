@@ -960,6 +960,12 @@
     "type": "default"
   },
   {
+    "address": "0x7064aAb39A0Fcf7221c3396719D0917a65E35515",
+    "symbol": "CPOLLO",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xf44745fbd41f6a1ba151df190db0564c5fcc4410",
     "symbol": "CPY",
     "decimal": 18,

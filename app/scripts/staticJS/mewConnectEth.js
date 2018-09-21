@@ -131,11 +131,13 @@ class MewConnectEth {
     * */
     if (typeof window !== 'undefined') {
       if (browser.name === 'safari') {
-        if (+version >= 12) {
-          return MewConnectEth.buildBrowserResult(false, '', '');
-        } else if (+version === 11) {
+        // return MewConnectEth.buildBrowserResult(false, '', '');
+        // Uncomment when safari can be fixed
+        // if (+version >= 12) {
+        //   return MewConnectEth.buildBrowserResult(false, '', '');
+        // } else if (+version === 11) {
           return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + browser.version);
-        }
+        // }
       } else if (browser.name === 'ie') {
         return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '', true);
       } else if (browser.name === 'edge') {
