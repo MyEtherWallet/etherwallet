@@ -95,10 +95,8 @@ class MewConnectEth {
     this.comm.sendRtcMessage('signTx', JSON.stringify(sendTxData));
   }
 
-  signMessage(messageHex) {
-    var self = this;
-    var hashToSign = ethUtil.hashPersonalMessage(ethUtil.toBuffer(messageHex));
-    self.comm.sendRtcMessage('signMessage', hashToSign.toString('hex'));
+  signMessage(message) {
+    this.comm.sendRtcMessage('signMessage', message);
   }
 
   static getBrowserRTC() {
