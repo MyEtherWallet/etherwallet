@@ -1,4 +1,3 @@
-### Release v3.22.4
 ### New
 - Add SNBL tokens [#2076](https://github.com/kvhnuke/etherwallet/pull/2076)
 
