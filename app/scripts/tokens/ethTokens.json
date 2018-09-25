@@ -3630,6 +3630,12 @@
     "type": "default"
   },
   {
+    "address": "0x198a87b3114143913d4229fb0f6d4bcb44aa8aff",
+    "symbol": "SNBL",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0xF4134146AF2d511Dd5EA8cDB1C4AC88C57D60404",
     "symbol": "SNC",
     "decimal": 18,
