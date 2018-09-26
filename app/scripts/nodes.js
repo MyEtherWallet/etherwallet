@@ -238,8 +238,8 @@ nodes.nodeList = {
 	},
 	ubq: {
 		name: "UBQ",
-		blockExplorerTX: "https://ubiqscan.io/en/tx/[[txHash]]",
-		blockExplorerAddr: "https://ubiqscan.io/en/address/[[address]]",
+		blockExplorerTX: "https://ubiqscan.io/tx/[[txHash]]",
+		blockExplorerAddr: "https://ubiqscan.io/address/[[address]]",
 		type: nodes.nodeTypes.UBQ,
 		eip155: true,
 		chainId: 8,
