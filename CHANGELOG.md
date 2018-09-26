@@ -1,4 +1,5 @@
 ### New
+- UBQ: update ubiqscan tx/address links [#2078](https://github.com/kvhnuke/etherwallet/pull/2078)
 - Add SNBL tokens [#2076](https://github.com/kvhnuke/etherwallet/pull/2076)
 
 ### Release v3.22.3
