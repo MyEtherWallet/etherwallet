@@ -1350,9 +1350,9 @@
     "type": "default"
   },
   {
-    "address": "0x1e09BD8Cadb441632e441Db3e1D79909EE0A2256",
-    "symbol": "DSC",
-    "decimal": 1,
+    "address": "0x03e3f0c25965f13DbbC58246738C183E27b26a56",
+    "symbol": "DSCP",
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -3378,6 +3378,12 @@
     "type": "default"
   },
   {
+    "address": "0x9469D013805bFfB7D3DEBe5E7839237e535ec483",
+    "symbol": "RING",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xdd007278b667f6bef52fd0a4c23604aa1f96039a",
     "symbol": "RIPT",
     "decimal": 8,
@@ -4149,6 +4155,12 @@
     "address": "0x92e78dae1315067a8819efd6dca432de9dcde2e9",
     "symbol": "VRS",
     "decimal": 6,
+    "type": "default"
+  },
+  {
+    "address": "0xeDBaF3c5100302dCddA53269322f3730b1F0416d",
+    "symbol": "VRS",
+    "decimal": 5,
     "type": "default"
   },
   {
