@@ -1902,7 +1902,7 @@
     "type": "default"
   },
   {
-    "address": "0x9c6Fa42209169bCeA032e401188a6fc3e9C9f59c",
+    "address": "0xEd7fEA78C393cF7B17B152A8c2D0CD97aC31790B",
     "symbol": "DUBI",
     "decimal": 18,
     "type": "default"
@@ -3894,6 +3894,12 @@
     "type": "default"
   },
   {
+    "address": "0xd8446236FA95b9b5f9fd0f8E7Df1a944823c683d",
+    "symbol": "NEEO",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xcfb98637bcae43C13323EAa1731cED2B716962fD",
     "symbol": "NET",
     "decimal": 18,
@@ -4500,7 +4506,7 @@
     "type": "default"
   },
   {
-    "address": "0xd94F2778e2B3913C53637Ae60647598bE588c570",
+    "address": "0xE40C374d8805b1dD58CDcEFf998A2F6920Cb52FD",
     "symbol": "PRPS",
     "decimal": 18,
     "type": "default"
@@ -4863,6 +4869,12 @@
     "address": "0xC16b542ff490e01fcc0DC58a60e1EFdc3e357cA6",
     "symbol": "ROCK2",
     "decimal": 0,
+    "type": "default"
+  },
+  {
+    "address": "0x0E3de3B0E3D617FD8D1D8088639bA877feb4d742",
+    "symbol": "ROCK2PAY",
+    "decimal": 18,
     "type": "default"
   },
   {
