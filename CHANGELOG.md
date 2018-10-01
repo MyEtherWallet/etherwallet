@@ -1,5 +1,5 @@
 ### New
-- Add ROCK2PAY token and contract, Add NEEO token, update Purpose and DUBI token. []()
+- Add ROCK2PAY token and contract, Add NEEO token, update Purpose and DUBI token. [#2084](https://github.com/kvhnuke/etherwallet/pull/2084)
 - Add NEEO manual gas [#2038](https://github.com/kvhnuke/etherwallet/pull/2083)
 - Add RING, VRS, DSCP tokens from ethereum-list, remove DSC. [#2079](https://github.com/kvhnuke/etherwallet/pull/2079)
 - UBQ: update ubiqscan tx/address links [#2078](https://github.com/kvhnuke/etherwallet/pull/2078)
