@@ -5778,12 +5778,6 @@
     "type": "default"
   },
   {
-    "address": "0x27f706edde3aD952EF647Dd67E24e38CD0803DD6",
-    "symbol": "UET",
-    "decimal": 18,
-    "type": "default"
-  },
-  {
     "address": "0xea097a2b1db00627b2fa17460ad260c016016977",
     "symbol": "UFR",
     "decimal": 18,
