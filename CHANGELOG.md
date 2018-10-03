@@ -6,6 +6,9 @@
 - UBQ: update ubiqscan tx/address links [#2078](https://github.com/kvhnuke/etherwallet/pull/2078)
 - Add SNBL tokens [#2076](https://github.com/kvhnuke/etherwallet/pull/2076)
 
+### Update
+- Update TICO token to new decimal and address []()
+
 ### Release v3.22.3
 ### New
 - fix sign msg mewconnect [#2074](https://github.com/kvhnuke/etherwallet/pull/2074)
