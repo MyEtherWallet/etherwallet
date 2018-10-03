@@ -7,7 +7,7 @@
 - Add SNBL tokens [#2076](https://github.com/kvhnuke/etherwallet/pull/2076)
 
 ### Update
-- Update TICO token to new decimal and address []()
+- Update TICO token to new decimal and address [Commit](https://github.com/kvhnuke/etherwallet/commit/474ee732c997f486af0fe01e69392b72358b4c72)
 
 ### Release v3.22.3
 ### New
