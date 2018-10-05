@@ -38,7 +38,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         hwESNetworkPath:   "m/44'/31102'/0'/0",    // first address: m/44'/31102'/0'/0/0
         hwEther1Path:      "m/44'/1313114'/0'/0",  // first address: m/44'/1313114'/0'/0/0
         hwAtheiosPath:     "m/44'/1620'/0'/0",     // first address: m/44'/1620'/0'/0/0
-        hwIolitePath:      "m/44'/18289463'/0'/0", // first address: m/44'/18289463'/0'/0/0
+        hwIolitePath:      "m/44'/1171337'/0'/0",  // first address: m/44'/1171337'/0'/0/0
     };
     $scope.canUseMewConnect = MewConnectEth.checkWebRTCAvailable();
     $scope.mewConnectMayFail = MewConnectEth.checkBrowser();
