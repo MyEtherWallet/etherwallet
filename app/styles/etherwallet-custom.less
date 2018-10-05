@@ -609,6 +609,7 @@ label small {
 @brand-pirl: #a2d729;
 @brand-etho: #d63068;
 @brand-ath: #0099ff;
+@brand-ilt: #4568bb;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -690,6 +691,9 @@ label small {
   li:nth-child(32) {
     border-left: 2px solid @brand-ath;
   }
+  li:nth-child(33) {
+    border-left: 2px solid @brand-ilt;
+  }
   li:last-child {
     border-left: 2px solid @gray-light;
   }
@@ -710,7 +714,8 @@ label small {
   li:nth-child(28),
   li:nth-child(29),
   li:nth-child(30),
-  li:nth-child(31) {
+  li:nth-child(31),
+  li:nth-child(32) {
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -942,6 +947,17 @@ header.ATH {
   .dropdown-gas:before {
     width: 36px;
     background-image: url("../images/coins/atheios.svg");
+  }
+}
+
+header.ILT {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-ilt;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ilt;     }
+  & + .container .modal-content          { border: 0.25rem solid @brand-ilt;         }
+  & + .container .alert-info             { background-color:@brand-ilt;              }
+  .dropdown-gas:before {
+    width: 35px;
+    background-image: url("../images/coins/ilt.svg");
   }
 }
 
