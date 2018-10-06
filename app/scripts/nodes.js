@@ -367,8 +367,8 @@ nodes.nodeList = {
 	},
 	aka_remote: {
 		name: "AKA",
-		blockExplorerTX: "https://akroma.io/explorer/transaction/[[txHash]]",
-		blockExplorerAddr: "https://akroma.io/explorer/address/[[address]]",
+		blockExplorerTX: "https://explorer.akroma.io/transaction/[[txHash]]",
+		blockExplorerAddr: "https://explorer.akroma.io/address/[[address]]",
 		type: nodes.nodeTypes.AKA,
 		eip155: true,
 		chainId: 200625,
@@ -380,8 +380,8 @@ nodes.nodeList = {
 	},
 	aka_rpc: {
 		name: "AKA",
-		blockExplorerTX: "https://akroma.io/explorer/transaction/[[txHash]]",
-		blockExplorerAddr: "https://akroma.io/explorer/address/[[address]]",
+		blockExplorerTX: "https://explorer.akroma.io/transaction/[[txHash]]",
+		blockExplorerAddr: "https://explorer.akroma.io/address/[[address]]",
 		type: nodes.nodeTypes.AKA,
 		eip155: true,
 		chainId: 200625,
