@@ -16,6 +16,7 @@ var QRCodeDrtv = function() {
 					colorLight: "#ffffff",
 					correctLevel: QRCode.CorrectLevel.M
 				});
+        element[0].title = ''
 			}, delay);
 		});
 	};
