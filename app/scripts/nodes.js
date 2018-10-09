@@ -25,6 +25,7 @@ nodes.nodeTypes = {
 	PIRL: "PIRL",
 	ETHO: "ETHO",
 	ATH: "ATH",
+	WEB: "WEB"
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -442,6 +443,19 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "wallet.atheios.com",
 		lib: new nodes.customNode("https://wallet.atheios.com", "8797")
+	},
+	web: {
+		name: "WEB",
+		blockExplorerTX: "https://explorer.webchain.network/tx/[[txHash]]",
+		blockExplorerAddr: "https://explorer.webchain.network/addr/[[address]]",
+		type: nodes.nodeTypes.WEB,
+		eip155: true,
+		chainId: 101,
+		tokenList: require("./tokens/webTokens.json"),
+		abiList: require("./abiDefinitions/webAbi.json"),
+		estimateGas: true,
+		service: "node1.webchain.network",
+		lib: new nodes.customNode("https://node1.webchain.network", "")
 	}
 };
 
