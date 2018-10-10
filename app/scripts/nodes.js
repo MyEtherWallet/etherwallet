@@ -25,7 +25,7 @@ nodes.nodeTypes = {
 	PIRL: "PIRL",
 	ETHO: "ETHO",
 	ATH: "ATH",
-	WEB: "WEB"
+	WEB: "WEB",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
