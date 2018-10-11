@@ -495,7 +495,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
       globalFuncs.MEWconnectStatus.update(2);
       if ($scope.mewConnectionStatus !== 2) {
         $scope.connectionCodeTimeout = null;
-        uiFuncs.notifier.info('Connected Via Mew Connect');
+        uiFuncs.notifier.info('Connected Via MEWconnect');
         $scope.mewConnect.sendRtcMessage('address', '');
         $scope.mewConnectionStatus = 2;
       }
