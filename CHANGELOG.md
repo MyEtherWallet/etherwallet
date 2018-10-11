@@ -1,6 +1,6 @@
 ### New
 
-- Add HLX token []()
+- Add HLX token [Commit](https://github.com/kvhnuke/etherwallet/commit/5d67b16b873e8189ac6fa666e42d01da615a875a)
 - Add batch tokens [#2081](https://github.com/kvhnuke/etherwallet/pull/2081)
 - Add ROCK2PAY token and contract, Add NEEO token, update Purpose and DUBI token. [#2084](https://github.com/kvhnuke/etherwallet/pull/2084)
 - Add NEEO manual gas [#2038](https://github.com/kvhnuke/etherwallet/pull/2083)
