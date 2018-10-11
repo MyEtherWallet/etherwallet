@@ -2826,6 +2826,12 @@
     "type": "default"
   },
   {
+    "address": "0x66eb65D7Ab8e9567ba0fa6E37c305956c5341574",
+    "symbol": "HLX",
+    "decimal": 5,
+    "type": "default"
+  },
+  {
     "address": "0xAa0bb10CEc1fa372eb3Abc17C933FC6ba863DD9E",
     "symbol": "HMC",
     "decimal": 18,
