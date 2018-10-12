@@ -1139,6 +1139,20 @@
                </label>
             </div>
 
+            <div class="col-sm-4">
+              <label class="radio small">
+                <input aria-describedby="Path: TREZOR (TOMO) {{HDWallet.tomoPath}}"
+                        ng-change="onHDDPathChange()"
+                        ng-model="HDWallet.dPath"
+                        type="radio"
+                       value="{{HDWallet.tomoPath}}"/>
+                <span ng-bind="HDWallet.tomoPath"></span>
+                <p class="small">
+                  Network: TomoChain (TOMO)
+                </p>
+               </label>
+            </div>
+
 
             <div class="col-sm-4">
               <label class="radio small">
