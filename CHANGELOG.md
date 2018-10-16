@@ -1,5 +1,13 @@
 ### New
 
+- Add Bitcar, BHR and WORK token. Delete TrezorConnect in favor of package [#2097](https://github.com/kvhnuke/etherwallet/pull/2097)
+- Add Iolite Network [#2086](https://github.com/kvhnuke/etherwallet/pull/2086/)
+- Hardcoded link to etherscan in TX Status page fixed [#2087](https://github.com/kvhnuke/etherwallet/pull/2087)
+- Add Webchain coin [#2090](https://github.com/kvhnuke/etherwallet/pull/2090/)
+- add TomoChain HDWallet.dPath [#2093](https://github.com/kvhnuke/etherwallet/pull/2093)
+- Https error handled - header-node-modal.tpl updated [#2094](https://github.com/kvhnuke/etherwallet/pull/2094)
+- Added Ethorse Rewards contract ABI [#2095](https://github.com/kvhnuke/etherwallet/pull/2095)
+- Enable Ledger Hardware Wallet support for MIX Blockchain (MIX) [#2096](https://github.com/kvhnuke/etherwallet/pull/2096)
 - Add HLX token [Commit](https://github.com/kvhnuke/etherwallet/commit/5d67b16b873e8189ac6fa666e42d01da615a875a)
 - Add batch tokens [#2081](https://github.com/kvhnuke/etherwallet/pull/2081)
 - Add ROCK2PAY token and contract, Add NEEO token, update Purpose and DUBI token. [#2084](https://github.com/kvhnuke/etherwallet/pull/2084)
