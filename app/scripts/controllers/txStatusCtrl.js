@@ -19,7 +19,10 @@ var txStatusCtrl = function($scope) {
         gasLimit: '',
         gasPrice: '',
         data: '',
-        nonce: ''
+        nonce: '',
+        txExplorerUrl: '',
+        fromExplorerUrl: '',
+        toExplorerUrl: ''
     }
 
     var applyScope = function() {
@@ -36,6 +39,8 @@ var txStatusCtrl = function($scope) {
         if (tx) {
             console.log('txToObject')
             console.log(tx)
+            var curNode = JSON.parse(globalFuncs.localStorage.getItem('curNode', null));
+            curNode = nodes.nodeList[curNode.key]
             $scope.txInfo = {
                 status: tx.blockNumber ? txStatus.mined : txStatus.found,
                 hash: tx.hash,
@@ -50,7 +55,10 @@ var txStatusCtrl = function($scope) {
                     eth: etherUnits.toEther(tx.gasPrice, 'wei')
                 },
                 data: tx.input == '0x' ? '' : tx.input,
-                nonce: new BigNumber(tx.nonce).toString()
+                nonce: new BigNumber(tx.nonce).toString(),
+                txExplorerUrl: curNode.blockExplorerTX.replace(/\[\[(\w+)\]\]/g, () => tx.hash),
+                fromExplorerUrl: curNode.blockExplorerAddr.replace(/\[\[(\w+)\]\]/g, () => tx.from),
+                toExplorerUrl: curNode.blockExplorerAddr.replace(/\[\[(\w+)\]\]/g, () => tx.to || '')
             }
             if ($scope.txInfo.status == txStatus.found) {
                 var _gasPrice = new BigNumber($scope.txInfo.gasPrice.wei).mul(1.1).floor();

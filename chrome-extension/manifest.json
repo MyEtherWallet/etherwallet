@@ -1,6 +1,6 @@
 {
   "name": "MyEtherWallet",
-  "version": "3.22.3",
+  "version": "3.23.0",
   "manifest_version": 2,
   "description": "MyEtherWallet Chrome Extension",
   "homepage_url": "https://www.myetherwallet.com/",
@@ -16,9 +16,9 @@
     "default_popup": "browser_action/browser_action.html"
   },
   "background": {
-		"scripts": ["js/etherwallet-master.js","background/extension.js"],
+    "scripts": ["js/etherwallet-master.js", "background/extension.js"],
     "persistent": false
-	},
-	"permissions": ["storage", "tabs"],
+  },
+  "permissions": ["storage", "tabs"],
   "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-uxI0oLy+6OpnvTApEkmCzuxkvu4J47b6yHCV93fjHN0=' 'sha256-0Gsidap6748RQlB69d8CLcBCD2A1kL9luXuhxAKpgXQ=' 'sha256-Z7zS8qcr4BZTeVyPP1sIfzQLoVSrzOW0qLHyZCds1WE='; object-src 'self'"
 }

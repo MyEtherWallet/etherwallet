@@ -1,221 +1,249 @@
 'use strict';
 var decryptWalletCtrl = function($scope, $sce, walletService) {
-  $scope.walletType = '';
-  $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showAOnly = $scope.showParityDecrypt = false;
-  $scope.filePassword = '';
-  $scope.fileContent = '';
-  $scope.Validator = Validator;
-  $scope.isSSL = window.location.protocol == 'https:';
-  $scope.ajaxReq = ajaxReq;
-  $scope.nodeType = $scope.ajaxReq.type;
-  $scope.HDWallet = {
-    numWallets: 0,
-    walletsPerDialog: 5,
-    wallets: [],
-    id: 0,
-    hdk: null,
-    dPath: '',
-    defaultDPath: 'm/44\'/60\'/0\'/0',       // first address: m/44'/60'/0'/0/0
-    alternativeDPath: 'm/44\'/60\'/0\'',         // first address: m/44'/60'/0/0
-    customDPath: 'm/44\'/60\'/1\'/0',       // first address: m/44'/60'/1'/0/0
-    ledgerPath: 'm/44\'/60\'/0\'',         // first address: m/44'/60'/0/0
-    ledgerClassicPath: 'm/44\'/60\'/160720\'/0\'', // first address: m/44'/60'/160720'/0/0
-    trezorTestnetPath: 'm/44\'/1\'/0\'/0',        // first address: m/44'/1'/0'/0/0
-    trezorClassicPath: 'm/44\'/61\'/0\'/0',       // first address: m/44'/61'/0'/0/0
-    trezorPath: 'm/44\'/60\'/0\'/0',       // first address: m/44'/60'/0'/0/0
-    hwUbqPath: 'm/44\'/108\'/0\'/0',      // first address: m/44'/40'/0'/0/0
-    hwExpansePath: 'm/44\'/40\'/0\'/0',       // first address: m/44'/40'/0'/0/0
-    hwEllaismPath: 'm/44\'/163\'/0\'/0',      // first address: m/44'/163'/0'/0/0
-    hwPirlPath: 'm/44\'/164\'/0\'/0',      // first address: m/44'/164'/0'/0/0
-    hwEtherGemPath: 'm/44\'/1987\'/0\'/0',     // first address: m/44'/1987'/0'/0/0
-    hwCallistoPath: 'm/44\'/820\'/0\'/0',      // first address: m/44'/820'/0'/0/0
-    hwSocialPath: 'm/44\'/1128\'/0\'/0',     // first address: m/44'/1128'/0'/0/0
-    hwMusicoinPath: 'm/44\'/184\'/0\'/0',      // first address: m/44'/184'/0'/0/0
-    singularDTVPath: 'm/0\'/0\'/0\'',           // first address: m/0'/0'/0'/0
-    goPath: 'm/44\'/6060\'/0\'/0',     // first address: m/44'/6060'/0'/0/0
-    hwEOSClassicPath: 'm/44\'/2018\'/0\'/0',     // first address: m/44'/2018'/0'/0/0
-    hwAkromaPath: 'm/44\'/200625\'/0\'/0',   // first address: m/44'/200625'/0'/0/0
-    hwESNetworkPath: 'm/44\'/31102\'/0\'/0',    // first address: m/44'/31102'/0'/0/0
-    hwEther1Path: 'm/44\'/1313114\'/0\'/0',  // first address: m/44'/1313114'/0'/0/0
-    hwAtheiosPath: 'm/44\'/1620\'/0\'/0',     // first address: m/44'/1620'/0'/0/0
-  };
-  $scope.canUseMewConnect = MewConnectEth.checkWebRTCAvailable();
-  $scope.mewConnectMayFail = MewConnectEth.checkBrowser();
-  $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
-  $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
-  $scope.$watch('ajaxReq.type', function() {
+    $scope.walletType = "";
+    $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showAOnly = $scope.showParityDecrypt = false;
+    $scope.filePassword = "";
+    $scope.fileContent = "";
+    $scope.Validator = Validator;
+    $scope.isSSL = window.location.protocol == 'https:';
+    $scope.ajaxReq = ajaxReq;
     $scope.nodeType = $scope.ajaxReq.type;
-    $scope.setdPath();
-  });
-  $scope.$watch('walletType', function() {
-    $scope.setdPath();
-  });
-  $scope.setdPath = function() {
-    if ($scope.walletType == 'ledger') {
-      switch ($scope.nodeType) {
-        case nodes.nodeTypes.ETH:
-          $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
-          break;
-        case nodes.nodeTypes.ETC:
-          $scope.HDWallet.dPath = $scope.HDWallet.ledgerClassicPath;
-          break;
-        case nodes.nodeTypes.CLO:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwCallistoPath;
-          break;
-        case nodes.nodeTypes.EXP:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
-          break;
-        case nodes.nodeTypes.UBQ:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
-          break;
-        case nodes.nodeTypes.POA:
-          $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
-          break;
-        case nodes.nodeTypes.AKA:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
-          break;
-        case nodes.nodeTypes.PIRL:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwPirlPath;
-          break;
-        case nodes.nodeTypes.ETHO:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwEther1Path;
-          break;
-        case nodes.nodeTypes.ATH:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
-          break;
-        case nodes.nodeTypes.EGEM:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwEtherGemPath;
-          break;
-        case nodes.nodeTypes.MUSIC:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
-          break;
-        case nodes.nodeTypes.EOSC:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
-          break;
-        case nodes.nodeTypes.GO:
-          $scope.HDWallet.dPath = $scope.HDWallet.goPath;
-          break;
-        default:
-          $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
-      }
-    } else if ($scope.walletType == 'trezor') {
-      switch ($scope.nodeType) {
-        case nodes.nodeTypes.ETH:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
-          break;
-        case nodes.nodeTypes.ETC:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorClassicPath;
-          break;
-        case nodes.nodeTypes.Ropsten:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
-          break;
-        case nodes.nodeTypes.Rinkeby:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
-          break;
-        case nodes.nodeTypes.Kovan:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
-          break;
-        case nodes.nodeTypes.EXP:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
-          break;
-        case nodes.nodeTypes.UBQ:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
-          break;
-        case nodes.nodeTypes.ELLA:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwEllaismPath;
-          break;
-        case nodes.nodeTypes.EGEM:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwEtherGemPath;
-          break;
-        case nodes.nodeTypes.CLO:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwCallistoPath;
-          break;
-        case nodes.nodeTypes.ETSC:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwSocialPath;
-          break;
-        case nodes.nodeTypes.MUSIC:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
-          break;
-        case nodes.nodeTypes.GO:
-          $scope.HDWallet.dPath = $scope.HDWallet.goPath;
-          break;
-        case nodes.nodeTypes.EOSC:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
-          break;
-        case nodes.nodeTypes.AKA:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
-          break;
-        case nodes.nodeTypes.ESN:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwESNetworkPath;
-          break;
-        case nodes.nodeTypes.PIRL:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwPirlPath;
-          break;
-        case nodes.nodeTypes.ETHO:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwEther1Path;
-          break;
-        case nodes.nodeTypes.ATH:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
-          break;
-        default:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
-      }
-    } else {
-      switch ($scope.nodeType) {
-        case nodes.nodeTypes.ETH:
-          $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
-          break;
-        case nodes.nodeTypes.ETC:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorClassicPath;
-          break;
-        case nodes.nodeTypes.Ropsten:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
-          break;
-        case nodes.nodeTypes.Rinkeby:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
-          break;
-        case nodes.nodeTypes.Kovan:
-          $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
-          break;
-        case nodes.nodeTypes.EXP:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
-          break;
-        case nodes.nodeTypes.UBQ:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
-          break;
-        case nodes.nodeTypes.CLO:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwCallistoPath;
-          break;
-        case nodes.nodeTypes.ETSC:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwSocialPath;
-          break;
-        case nodes.nodeTypes.MUSIC:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
-          break;
-        case nodes.nodeTypes.GO:
-          $scope.HDWallet.dPath = $scope.HDWallet.goPath;
-          break;
-        case nodes.nodeTypes.EOSC:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
-          break;
-        case nodes.nodeTypes.AKA:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
-          break;
-        case nodes.nodeTypes.ESN:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwESNetworkPath;
-          break;
-        case nodes.nodeTypes.PIRL:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwPirlPath;
-          break;
-        case nodes.nodeTypes.ETHO:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwEther1Path;
-          break;
-        case nodes.nodeTypes.ATH:
-          $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
-          break;
-        default:
-          $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
-      }
+    $scope.HDWallet = {
+        numWallets: 0,
+        walletsPerDialog: 5,
+        wallets: [],
+        id: 0,
+        hdk: null,
+        dPath: '',
+        defaultDPath:      "m/44'/60'/0'/0",       // first address: m/44'/60'/0'/0/0
+        alternativeDPath:  "m/44'/60'/0'",         // first address: m/44'/60'/0/0
+        customDPath:       "m/44'/60'/1'/0",       // first address: m/44'/60'/1'/0/0
+        ledgerPath:        "m/44'/60'/0'",         // first address: m/44'/60'/0/0
+        ledgerClassicPath: "m/44'/60'/160720'/0'", // first address: m/44'/60'/160720'/0/0
+        trezorTestnetPath: "m/44'/1'/0'/0",        // first address: m/44'/1'/0'/0/0
+        trezorClassicPath: "m/44'/61'/0'/0",       // first address: m/44'/61'/0'/0/0
+        trezorPath:        "m/44'/60'/0'/0",       // first address: m/44'/60'/0'/0/0
+        hwUbqPath:         "m/44'/108'/0'/0",      // first address: m/44'/40'/0'/0/0
+        hwExpansePath:     "m/44'/40'/0'/0",       // first address: m/44'/40'/0'/0/0
+        hwEllaismPath:     "m/44'/163'/0'/0",      // first address: m/44'/163'/0'/0/0
+        hwPirlPath:        "m/44'/164'/0'/0",      // first address: m/44'/164'/0'/0/0
+        hwEtherGemPath:    "m/44'/1987'/0'/0",     // first address: m/44'/1987'/0'/0/0
+        hwCallistoPath:    "m/44'/820'/0'/0",      // first address: m/44'/820'/0'/0/0
+        hwSocialPath:      "m/44'/1128'/0'/0",     // first address: m/44'/1128'/0'/0/0
+        hwMusicoinPath:    "m/44'/184'/0'/0",      // first address: m/44'/184'/0'/0/0
+        singularDTVPath:   "m/0'/0'/0'",           // first address: m/0'/0'/0'/0
+        goPath:            "m/44'/6060'/0'/0",     // first address: m/44'/6060'/0'/0/0
+        hwEOSClassicPath:  "m/44'/2018'/0'/0",     // first address: m/44'/2018'/0'/0/0
+        hwAkromaPath:      "m/44'/200625'/0'/0",   // first address: m/44'/200625'/0'/0/0
+        hwESNetworkPath:   "m/44'/31102'/0'/0",    // first address: m/44'/31102'/0'/0/0
+        hwEther1Path:      "m/44'/1313114'/0'/0",  // first address: m/44'/1313114'/0'/0/0
+        hwAtheiosPath:     "m/44'/1620'/0'/0",     // first address: m/44'/1620'/0'/0/0
+        hwIolitePath:      "m/44'/1171337'/0'/0",  // first address: m/44'/1171337'/0'/0/0
+        tomoPath:          "m/44'/889'/0'/0",      // first address: m/44'/889'/0'/0/0
+        hwMixPath:         "m/44'/76'/0'/0",       // first address: m/44'/76'/0'/0/0
+    };
+    $scope.canUseMewConnect = MewConnectEth.checkWebRTCAvailable();
+    $scope.mewConnectMayFail = MewConnectEth.checkBrowser();
+    $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
+    $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
+    $scope.$watch('ajaxReq.type', function() {
+        $scope.nodeType = $scope.ajaxReq.type;
+        $scope.setdPath();
+    });
+    $scope.$watch('walletType', function() {
+        $scope.setdPath();
+    });
+    $scope.setdPath = function() {
+        if ($scope.walletType == "ledger") {
+            switch ($scope.nodeType) {
+                case nodes.nodeTypes.ETH:
+                    $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
+                    break;
+                case nodes.nodeTypes.ETC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.ledgerClassicPath;
+                    break;
+                case nodes.nodeTypes.CLO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwCallistoPath;
+                    break;
+                case nodes.nodeTypes.EXP:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
+                    break;
+                case nodes.nodeTypes.UBQ:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
+                    break;
+                case nodes.nodeTypes.POA:
+                    $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
+                    break;
+                case nodes.nodeTypes.AKA:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
+                    break;
+                case nodes.nodeTypes.PIRL:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwPirlPath;
+                    break;
+                case nodes.nodeTypes.ETHO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEther1Path;
+                    break;
+                case nodes.nodeTypes.ATH:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
+                    break;
+                case nodes.nodeTypes.EGEM:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEtherGemPath;
+                    break;
+                case nodes.nodeTypes.MUSIC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
+                    break;
+                case nodes.nodeTypes.EOSC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
+                    break;
+                case nodes.nodeTypes.GO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.goPath;
+                    break;
+                case nodes.nodeTypes.ILT:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwIolitePath;
+                break;
+                case nodes.nodeTypes.TOMO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.tomoPath;
+                    break;
+                case nodes.nodeTypes.MIX:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwMixPath;
+                    break;
+                default:
+                    $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
+            }
+        } else if ($scope.walletType == "trezor") {
+            switch ($scope.nodeType) {
+                case nodes.nodeTypes.ETH:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
+                    break;
+                case nodes.nodeTypes.ETC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorClassicPath;
+                    break;
+                case nodes.nodeTypes.Ropsten:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
+                    break;
+                case nodes.nodeTypes.Rinkeby:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
+                    break;
+                case nodes.nodeTypes.Kovan:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
+                    break;
+                case nodes.nodeTypes.EXP:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
+                    break;
+                case nodes.nodeTypes.UBQ:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
+                    break;
+                case nodes.nodeTypes.ELLA:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEllaismPath;
+                    break;
+                case nodes.nodeTypes.EGEM:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEtherGemPath;
+                    break;
+                case nodes.nodeTypes.CLO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwCallistoPath;
+                    break;
+                case nodes.nodeTypes.ETSC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwSocialPath;
+                    break;
+                case nodes.nodeTypes.MUSIC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
+                    break;
+                case nodes.nodeTypes.GO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.goPath;
+                    break;
+                case nodes.nodeTypes.EOSC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
+                    break;
+                case nodes.nodeTypes.AKA:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
+                    break;
+                case nodes.nodeTypes.ESN:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwESNetworkPath;
+                    break;
+                case nodes.nodeTypes.PIRL:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwPirlPath;
+                    break;
+                case nodes.nodeTypes.ETHO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEther1Path;
+                    break;
+                case nodes.nodeTypes.ATH:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
+                    break;
+                case nodes.nodeTypes.ILT:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwIolitePath;
+                    break;
+                case nodes.nodeTypes.TOMO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.tomoPath;
+                    break;
+                default:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
+            }
+        } else {
+          switch ($scope.nodeType) {
+                case nodes.nodeTypes.ETH:
+                    $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
+                    break;
+                case nodes.nodeTypes.ETC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorClassicPath;
+                    break;
+                case nodes.nodeTypes.Ropsten:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
+                    break;
+                case nodes.nodeTypes.Rinkeby:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
+                    break;
+                case nodes.nodeTypes.Kovan:
+                    $scope.HDWallet.dPath = $scope.HDWallet.trezorTestnetPath;
+                    break;
+                case nodes.nodeTypes.EXP:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwExpansePath;
+                    break;
+                case nodes.nodeTypes.UBQ:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
+                    break;
+                case nodes.nodeTypes.CLO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwCallistoPath;
+                    break;
+                case nodes.nodeTypes.ETSC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwSocialPath;
+                    break;
+                case nodes.nodeTypes.MUSIC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
+                    break;
+                case nodes.nodeTypes.GO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.goPath;
+                    break;
+                case nodes.nodeTypes.EOSC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEOSClassicPath;
+                    break;
+                case nodes.nodeTypes.AKA:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAkromaPath;
+                    break;
+                case nodes.nodeTypes.ESN:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwESNetworkPath;
+                    break;
+                case nodes.nodeTypes.PIRL:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwPirlPath;
+                    break;
+                case nodes.nodeTypes.ETHO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwEther1Path;
+                    break;
+                case nodes.nodeTypes.ATH:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
+                    break;
+                case nodes.nodeTypes.ILT:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwIolitePath;
+                    break;
+                case nodes.nodeTypes.TOMO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.tomoPath;
+                    break;
+                case nodes.nodeTypes.MIX:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwMixPath;
+                    break;
+                default:
+                  $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
+            }
+        }
     }
   };
   $scope.onHDDPathChange = function(password = $scope.mnemonicPassword) {
@@ -383,35 +411,26 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
       $scope.notifier.info(globalFuncs.successMsgs[1]);
       walletService.wallet = $scope.wallet;
     }
-  };
-  $scope.HWWalletCreate = function(publicKey, chainCode, walletType, path) {
-    $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
-    $scope.mnemonicModel.open();
-    $scope.HDWallet.hdk = new hd.HDKey();
-    $scope.HDWallet.hdk.publicKey = new Buffer(publicKey, 'hex');
-    $scope.HDWallet.hdk.chainCode = new Buffer(chainCode, 'hex');
-    $scope.HDWallet.numWallets = 0;
-    $scope.HDWallet.dPath = path;
-    $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog, walletType);
-    walletService.wallet = null;
-  };
-  $scope.ledgerCallback = function(result, error) {
-    if (typeof result != 'undefined') {
-      $scope.HWWalletCreate(result['publicKey'], result['chainCode'], 'ledger', $scope.getLedgerPath());
+    $scope.HWWalletCreate = function(publicKey, chainCode, walletType, path) {
+        $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
+        $scope.mnemonicModel.open();
+        $scope.HDWallet.hdk = new hd.HDKey();
+        $scope.HDWallet.hdk.publicKey = new Buffer(publicKey, 'hex');
+        $scope.HDWallet.hdk.chainCode = new Buffer(chainCode, 'hex');
+        $scope.HDWallet.numWallets = 0;
+        $scope.HDWallet.dPath = path;
+        $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog, walletType);
+        walletService.wallet = null;
     }
-    else {
-      $scope.ledgerError = true;
-      $scope.ledgerErrorString = error;
-      $scope.$apply();
-    }
-  };
-  $scope.trezorCallback = function(response) {
-    if (response.success) {
-      $scope.HWWalletCreate(response.publicKey, response.chainCode, 'trezor', $scope.getTrezorPath());
-    } else {
-      $scope.trezorError = true;
-      $scope.trezorErrorString = response.error;
-      $scope.$apply();
+    $scope.ledgerCallback = function(result, error) {
+        if (typeof result != "undefined") {
+            $scope.HWWalletCreate(result['publicKey'], result['chainCode'], "ledger", $scope.getLedgerPath());
+        }
+        else {
+            $scope.ledgerError = true;
+            $scope.ledgerErrorString = error;
+            $scope.$apply();
+        }
     }
   };
   $scope.digitalBitboxCallback = function(result, error) {
@@ -453,9 +472,35 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     // trezor is using the path without change level id
     var path = $scope.getTrezorPath();
 
-    console.warn('SCANTR', path, $scope.HDWallet);
-    TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.5.2');
-  };
+        console.warn("SCANTR", path, $scope.HDWallet)
+        TrezorConnect.getPublicKey({ path })
+            .then(
+                ({
+                    payload: {
+                        path,
+                        serializedPath,
+                        xpub,
+                        chainCode,
+                        childNum,
+                        publicKey,
+                        fingerprint,
+                        depth
+                    }
+                }) => {
+                    $scope.HWWalletCreate(
+                        publicKey,
+                        chainCode,
+                        "trezor",
+                        $scope.getTrezorPath()
+                    );
+                }
+            )
+            .catch(err => {
+                $scope.trezorError = true;
+                $scope.trezorErrorString = err;
+                $scope.$apply();
+            });
+    };
   // ================= Mew Connect (start)==============================
   $scope.scanMewConnect = function() {
     globalFuncs.MEWconnectStatus.newTabOpenedTrigger(true);

@@ -21,45 +21,35 @@ uiFuncs.isTxDataValid = function(txData) {
     else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
     if (txData.to == "0xCONTRACT") txData.to = '';
 }
-uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
-    var localCallback = function(result) {
-        if (!result.success) {
-            if (callback !== undefined) {
-                callback({
-                    isError: true,
-                    error: result.error
-                });
-            }
-            return;
+uiFuncs.signTxTrezor = function(rawTx, { path }) {
+    function localCallback({ error = null, success, payload: { v, r, s } }) {
+        if (!success) {
+            throw error;
         }
 
         // check the returned signature_v and recalc signature_v if it needed
         // see also https://github.com/trezor/trezor-mcu/pull/399
-        if (result.v <= 1) {
+        if (v <= 1) {
           // for larger chainId, only signature_v returned. simply recalc signature_v
-          result.v += 2 * rawTx.chainId + 35;
+          v += 2 * rawTx.chainId + 35;
         }
 
-        rawTx.v = "0x" + ethFuncs.decimalToHex(result.v);
-        rawTx.r = "0x" + result.r;
-        rawTx.s = "0x" + result.s;
-        var eTx = new ethUtil.Tx(rawTx);
+        rawTx.v = ethFuncs.sanitizeHex(ethFuncs.decimalToHex(v));
+        rawTx.r = ethFuncs.sanitizeHex(r);
+        rawTx.s = ethFuncs.sanitizeHex(s);
+        const eTx = new ethUtil.Tx(rawTx);
         rawTx.rawTx = JSON.stringify(rawTx);
-        rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
+        rawTx.signedTx = ethFuncs.sanitizeHex(eTx.serialize().toString("hex"));
         rawTx.isError = false;
-        if (callback !== undefined) callback(rawTx);
+        return rawTx;
     }
 
-    TrezorConnect.signEthereumTx(
-        txData.path,
-        ethFuncs.getNakedAddress(rawTx.nonce),
-        ethFuncs.getNakedAddress(rawTx.gasPrice),
-        ethFuncs.getNakedAddress(rawTx.gasLimit),
-        ethFuncs.getNakedAddress(rawTx.to),
-        ethFuncs.getNakedAddress(rawTx.value),
-        ethFuncs.getNakedAddress(rawTx.data),
-        rawTx.chainId,
-        localCallback
+    const options = {
+        path,
+        transaction: rawTx
+    };
+    return TrezorConnect.ethereumSignTransaction(options).then(result =>
+        localCallback(result)
     );
 }
 uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
@@ -167,24 +157,7 @@ uiFuncs.signTxMewConnect = function (eTx, rawTx, txData, callback) {
   app.signTransaction(eTx, rawTx, txData)
   //= ================ Mew Connect (end)==============================
 }
-uiFuncs.trezorUnlockCallback = function(txData, callback) {
-    TrezorConnect.open(function(error) {
-        if (error) {
-            if (callback !== undefined) callback({
-                isError: true,
-                error: error
-            });
-        } else {
-            txData.trezorUnlocked = true;
-            uiFuncs.generateTx(txData, callback);
-        }
-    });
-}
 uiFuncs.generateTx = function(txData, callback) {
-    if ((typeof txData.hwType != "undefined") && (txData.hwType == "trezor") && !txData.trezorUnlocked) {
-        uiFuncs.trezorUnlockCallback(txData, callback);
-        return;
-    }
     try {
         uiFuncs.isTxDataValid(txData);
         var genTxWithInfo = function(data) {
@@ -227,7 +200,11 @@ uiFuncs.generateTx = function(txData, callback) {
                 }
                 app.getAppConfiguration(localCallback);
             } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "trezor")) {
-                uiFuncs.signTxTrezor(rawTx, txData, callback);
+                uiFuncs.signTxTrezor(rawTx, txData).then(result => {
+                    callback(result);
+                }).catch(err => {
+                    callback({ isError: true, error: "User cancelled tx" });
+                });
             } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "web3")) {
                 // for web3, we dont actually sign it here
                 // instead we put the final params in the "signedTx" field and

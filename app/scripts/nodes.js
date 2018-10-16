@@ -25,6 +25,9 @@ nodes.nodeTypes = {
 	PIRL: "PIRL",
 	ETHO: "ETHO",
 	ATH: "ATH",
+	ILT: "ILT",
+  WEB: "WEB",
+	MIX: "MIX",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -367,8 +370,8 @@ nodes.nodeList = {
 	},
 	aka_remote: {
 		name: "AKA",
-		blockExplorerTX: "https://akroma.io/explorer/transaction/[[txHash]]",
-		blockExplorerAddr: "https://akroma.io/explorer/address/[[address]]",
+		blockExplorerTX: "https://explorer.akroma.io/transaction/[[txHash]]",
+		blockExplorerAddr: "https://explorer.akroma.io/address/[[address]]",
 		type: nodes.nodeTypes.AKA,
 		eip155: true,
 		chainId: 200625,
@@ -380,8 +383,8 @@ nodes.nodeList = {
 	},
 	aka_rpc: {
 		name: "AKA",
-		blockExplorerTX: "https://akroma.io/explorer/transaction/[[txHash]]",
-		blockExplorerAddr: "https://akroma.io/explorer/address/[[address]]",
+		blockExplorerTX: "https://explorer.akroma.io/transaction/[[txHash]]",
+		blockExplorerAddr: "https://explorer.akroma.io/address/[[address]]",
 		type: nodes.nodeTypes.AKA,
 		eip155: true,
 		chainId: 200625,
@@ -442,6 +445,45 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "wallet.atheios.com",
 		lib: new nodes.customNode("https://wallet.atheios.com", "8797")
+	},
+	iolite: {
+		name: "ILT",
+		blockExplorerTX: "https://scan.iolite.io/txs/[[txHash]]",
+		blockExplorerAddr: "https://scan.iolite.io/addrs/[[address]]",
+		type: nodes.nodeTypes.ILT,
+		eip155: true,
+		chainId: 18289463,
+		tokenList: require("./tokens/iltTokens.json"),
+		abiList: require("./abiDefinitions/iltAbi.json"),
+		estimateGas: true,
+		service: "net.iolite.io",
+		lib: new nodes.customNode("https://net.iolite.io", "")
+	},
+	web: {
+		name: "WEB",
+		blockExplorerTX: "https://explorer.webchain.network/tx/[[txHash]]",
+		blockExplorerAddr: "https://explorer.webchain.network/addr/[[address]]",
+		type: nodes.nodeTypes.WEB,
+		eip155: true,
+		chainId: 101,
+		tokenList: require("./tokens/webTokens.json"),
+		abiList: require("./abiDefinitions/webAbi.json"),
+		estimateGas: true,
+		service: "node1.webchain.network",
+		lib: new nodes.customNode("https://node1.webchain.network", "")
+  },
+	mix: {
+		name: "MIX",
+		blockExplorerTX: "https://blocks.mix-blockchain.org/transaction/[[txHash]]",
+		blockExplorerAddr: "https://blocks.mix-blockchain.org/address/[[address]]",
+		type: nodes.nodeTypes.MIX,
+		eip155: true,
+		chainId: 76,
+		tokenList: require("./tokens/mixTokens.json"),
+		abiList: require("./abiDefinitions/mixAbi.json"),
+		estimateGas: true,
+		service: "mix-blockchain.org",
+		lib: new nodes.customNode("https://rpc2.mix-blockchain.org", "8647")
 	}
 };
 
