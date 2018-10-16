@@ -99,13 +99,13 @@
     
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.22.3</p>
+        <p class="small visible-xs">3.23.0</p>
       </a>
     
     
     <div class="tagline">
 
-    <span class="hidden-xs">3.22.3</span>
+    <span class="hidden-xs">3.23.0</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -271,7 +271,7 @@
 
         <p class="small"><a href="https://myetherwallet.github.io/knowledge-base/networks/run-your-own-node-with-myetherwallet.html" target="_blank" rel="noopener noreferrer"> Instructions can be found here </a></p>
 
-        <div ng-show="browserProtocol=='https:'" class="alert alert-danger small" translate="NODE_Warning">
+        <div ng-show="browserProtocol!='https:'" class="alert alert-danger small" translate="NODE_Warning">
           Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to your local node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
         </div>
 
