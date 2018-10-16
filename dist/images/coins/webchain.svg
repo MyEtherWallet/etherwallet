@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" version="1.1" viewBox="0 0 105.83305 105.83333" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+<metadata>
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<defs>
+<clipPath id="f">
+<path d="m181.06 229.16h12.6l-17.085 33.839h-12.6z"/>
+</clipPath>
+<clipPath id="c">
+<path d="m144.57 229.16h-12.599l17.084 33.839h12.6z"/>
+</clipPath>
+<linearGradient id="e" x2="1" gradientTransform="matrix(-14.177 25.472 25.472 14.177 185.75 233.65)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#d6d6d6" offset="0"/>
+<stop stop-color="#fff" offset=".517"/>
+<stop stop-color="#fff" offset=".765"/>
+<stop stop-color="#fff" offset=".907"/>
+<stop stop-color="#fff" offset="1"/>
+</linearGradient>
+<linearGradient id="b" x2="1" gradientTransform="matrix(0 -46.014 -46.014 0 146.82 267.62)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#d6d6d6" offset="0"/>
+<stop stop-color="#fff" offset=".603"/>
+<stop stop-color="#fff" offset="1"/>
+</linearGradient>
+<linearGradient id="a" x2="1" gradientTransform="matrix(0 -23.606 -23.606 0 781.46 8.9385)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#d6d6d6" offset="0"/>
+<stop stop-color="#fff" offset=".603"/>
+<stop stop-color="#fff" offset="1"/>
+</linearGradient>
+</defs>
+<g transform="matrix(3 0 0 3 -2293.6 59.178)">
+<g transform="matrix(.51303 0 0 .51303 698.48 -128.36)" clip-path="url(#f)">
+<path d="m181.06 229.16h12.6l-17.085 33.839h-12.6z" fill="url(#e)"/>
+</g>
+<g transform="matrix(.51303 0 0 .51303 698.48 -128.36)" clip-path="url(#c)">
+<path d="m144.57 229.16h-12.599l17.084 33.839h12.6z" fill="url(#b)"/>
+</g>
+<path d="m777.69-3.1793 4.9205 9.7462h6.4638l-4.9208-9.7462z" fill="url(#a)" stroke-width=".042442"/>
+</g>
+</svg>
