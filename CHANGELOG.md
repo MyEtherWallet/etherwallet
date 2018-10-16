@@ -1,7 +1,9 @@
+### Release v3.23.0
+
 ### New
 
 - Add BTU and BC token [#2098](https://github.com/kvhnuke/etherwallet/pull/2098)
-- Add Bitcar, BHR and WORK token. Delete TrezorConnect in favor of package [#2097](https://github.com/kvhnuke/etherwallet/pull/2097)
+- Add Bitcar, BHR and WORK token. [#2097](https://github.com/kvhnuke/etherwallet/pull/2097)
 - Add Iolite Network [#2086](https://github.com/kvhnuke/etherwallet/pull/2086/)
 - Hardcoded link to etherscan in TX Status page fixed [#2087](https://github.com/kvhnuke/etherwallet/pull/2087)
 - Add Webchain coin [#2090](https://github.com/kvhnuke/etherwallet/pull/2090/)
