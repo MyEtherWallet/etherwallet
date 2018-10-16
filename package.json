@@ -7,7 +7,6 @@
   "license": "ISC",
   "scripts": {
     "dev": "gulp",
-
     "dist": "gulp prep",
     "build": "gulp build"
   },
