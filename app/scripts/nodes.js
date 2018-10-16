@@ -25,6 +25,7 @@ nodes.nodeTypes = {
 	PIRL: "PIRL",
 	ETHO: "ETHO",
 	ATH: "ATH",
+	ILT: "ILT",
   WEB: "WEB",
 	MIX: "MIX",
 	Custom: "CUSTOM ETH"
@@ -444,6 +445,19 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "wallet.atheios.com",
 		lib: new nodes.customNode("https://wallet.atheios.com", "8797")
+	},
+	iolite: {
+		name: "ILT",
+		blockExplorerTX: "https://scan.iolite.io/txs/[[txHash]]",
+		blockExplorerAddr: "https://scan.iolite.io/addrs/[[address]]",
+		type: nodes.nodeTypes.ILT,
+		eip155: true,
+		chainId: 18289463,
+		tokenList: require("./tokens/iltTokens.json"),
+		abiList: require("./abiDefinitions/iltAbi.json"),
+		estimateGas: true,
+		service: "net.iolite.io",
+		lib: new nodes.customNode("https://net.iolite.io", "")
 	},
 	web: {
 		name: "WEB",
