@@ -610,6 +610,7 @@ label small {
 @brand-etho: #d63068;
 @brand-ath: #0099ff;
 @brand-ilt: #4568bb;
+@brand-web: #0092ee;
 @brand-cust: #b50085;
 
 .dropdown-node .dropdown-menu {
@@ -693,6 +694,9 @@ label small {
   }
   li:nth-child(33) {
     border-left: 2px solid @brand-ilt;
+  }
+  li:nth-child(34) {
+    border-left: 2px solid @brand-web;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -958,6 +962,17 @@ header.ILT {
   .dropdown-gas:before {
     width: 35px;
     background-image: url("../images/coins/ilt.svg");
+  }
+}
+
+header.WEB {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-web; }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-web;    }
+  & + .container .modal-content          { border: 0.25rem solid @brand-web;        }
+  & + .container .alert-info             { background-color:@brand-web;             }
+  .dropdown-gas:before {
+    width: 36px;
+    background-image: url("../images/coins/webchain.svg");
   }
 }
 
