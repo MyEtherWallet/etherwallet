@@ -510,6 +510,12 @@
     "type": "default"
   },
   {
+    "address": "0x2ecb13a8c458c379c4d9a7259e202de03c8f3d19",
+    "symbol": "BC",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xff3519eeeea3e76f1f699ccce5e23ee0bdda41ac",
     "symbol": "BCAP",
     "decimal": 0,
@@ -604,7 +610,8 @@
     "symbol": "BHR",
     "decimal": 18,
     "type": "default"
-  },{
+  },
+  {
     "address": "0x08b4c866aE9D1bE56a06e0C302054B4FFe067b43",
     "symbol": "BITCAR",
     "decimal": 8,
@@ -913,6 +920,12 @@
   {
     "address": "0xFA456Cf55250A839088b27EE32A424d7DAcB54Ff",
     "symbol": "BTT (Blocktrade)",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xb683D83a532e2Cb7DFa5275eED3698436371cc9f",
+    "symbol": "BTU",
     "decimal": 18,
     "type": "default"
   },
