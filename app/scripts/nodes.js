@@ -25,7 +25,8 @@ nodes.nodeTypes = {
 	PIRL: "PIRL",
 	ETHO: "ETHO",
 	ATH: "ATH",
-	WEB: "WEB",
+  WEB: "WEB",
+	MIX: "MIX",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -456,6 +457,19 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "node1.webchain.network",
 		lib: new nodes.customNode("https://node1.webchain.network", "")
+  },
+	mix: {
+		name: "MIX",
+		blockExplorerTX: "https://blocks.mix-blockchain.org/transaction/[[txHash]]",
+		blockExplorerAddr: "https://blocks.mix-blockchain.org/address/[[address]]",
+		type: nodes.nodeTypes.MIX,
+		eip155: true,
+		chainId: 76,
+		tokenList: require("./tokens/mixTokens.json"),
+		abiList: require("./abiDefinitions/mixAbi.json"),
+		estimateGas: true,
+		service: "mix-blockchain.org",
+		lib: new nodes.customNode("https://rpc2.mix-blockchain.org", "8647")
 	}
 };
 
