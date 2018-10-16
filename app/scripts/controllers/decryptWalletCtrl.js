@@ -38,6 +38,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         hwESNetworkPath:   "m/44'/31102'/0'/0",    // first address: m/44'/31102'/0'/0/0
         hwEther1Path:      "m/44'/1313114'/0'/0",  // first address: m/44'/1313114'/0'/0/0
         hwAtheiosPath:     "m/44'/1620'/0'/0",     // first address: m/44'/1620'/0'/0/0
+        tomoPath:          "m/44'/889'/0'/0",      // first address: m/44'/889'/0'/0/0
         hwMixPath:         "m/44'/76'/0'/0",       // first address: m/44'/76'/0'/0/0
     };
     $scope.canUseMewConnect = MewConnectEth.checkWebRTCAvailable();
@@ -95,6 +96,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.GO:
                     $scope.HDWallet.dPath = $scope.HDWallet.goPath;
+                    break;
+                case nodes.nodeTypes.TOMO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.tomoPath;
                     break;
                 case nodes.nodeTypes.MIX:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwMixPath;
@@ -161,6 +165,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.ATH:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
                     break;
+                case nodes.nodeTypes.TOMO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.tomoPath;
+                    break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
             }
@@ -216,6 +223,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.ATH:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
+                    break;
+                case nodes.nodeTypes.TOMO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.tomoPath;
                     break;
                 case nodes.nodeTypes.MIX:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwMixPath;
