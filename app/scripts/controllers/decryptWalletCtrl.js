@@ -432,15 +432,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             $scope.$apply();
         }
     }
-    $scope.trezorCallback = function(response) {
-        if (response.success) {
-            $scope.HWWalletCreate(response.publicKey, response.chainCode, "trezor", $scope.getTrezorPath());
-        } else {
-            $scope.trezorError = true;
-            $scope.trezorErrorString = response.error;
-            $scope.$apply();
-        }
-    }
     $scope.digitalBitboxCallback = function(result, error) {
         $scope.HDWallet.digitalBitboxSecret = '';
         if (typeof result != "undefined") {
@@ -481,7 +472,33 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         var path = $scope.getTrezorPath();
 
         console.warn("SCANTR", path, $scope.HDWallet)
-        TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.5.2');
+        TrezorConnect.getPublicKey({ path })
+            .then(
+                ({
+                    payload: {
+                        path,
+                        serializedPath,
+                        xpub,
+                        chainCode,
+                        childNum,
+                        publicKey,
+                        fingerprint,
+                        depth
+                    }
+                }) => {
+                    $scope.HWWalletCreate(
+                        publicKey,
+                        chainCode,
+                        "trezor",
+                        $scope.getTrezorPath()
+                    );
+                }
+            )
+            .catch(err => {
+                $scope.trezorError = true;
+                $scope.trezorErrorString = err;
+                $scope.$apply();
+            });
     };
   // ================= Mew Connect (start)==============================
   $scope.scanMewConnect = function () {
