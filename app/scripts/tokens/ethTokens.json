@@ -600,6 +600,17 @@
     "type": "default"
   },
   {
+    "address": "0xfe5d908c9ad85f651185daa6a4770726e2b27d09",
+    "symbol": "BHR",
+    "decimal": 18,
+    "type": "default"
+  },{
+    "address": "0x08b4c866aE9D1bE56a06e0C302054B4FFe067b43",
+    "symbol": "BITCAR",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0xf3d29fb98d2dc5e78c87198deef99377345fd6f1",
     "symbol": "BITPARK",
     "decimal": 8,
@@ -6123,6 +6134,12 @@
     "address": "0x728781E75735dc0962Df3a51d7Ef47E798A7107E",
     "symbol": "WOLK",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xa686514faf7d54289266f483d1e4852c99e13ec7",
+    "symbol": "WORK",
+    "decimal": 8,
     "type": "default"
   },
   {
