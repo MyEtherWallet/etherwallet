@@ -1,3 +1,18 @@
+### Rlease v3.23.1
+
+### Hotfix
+
+- Fix unsafe eval [#2103](https://github.com/kvhnuke/etherwallet/pull/2103)
+
+### Update
+
+- Update mewconnect version package []()
+- Update EOSC chainid [#2105](https://github.com/kvhnuke/etherwallet/pull/2105)
+
+### New
+
+- Reorder token contract, add EWO token []()
+
 ### Release v3.23.0
 
 ### New
