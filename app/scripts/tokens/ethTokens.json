@@ -2280,6 +2280,12 @@
     "type": "default"
   },
   {
+    "address": "0x444997b7e7fC830E20089afea3078cd518fCF2A2",
+    "symbol": "EWO",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x00c4b398500645eb5da00a1a379a88b11683ba01",
     "symbol": "EXC",
     "decimal": 18,
