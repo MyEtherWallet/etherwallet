@@ -102,8 +102,7 @@ let js_destFile = "etherwallet-master.js";
 let browseOpts = { debug: true }; // generates inline source maps - only in js-debug
 let babelOpts = {
   presets: ["env"],
-  compact: false,
-  global: true
+  compact: false
 };
 
 function bundle_js(bundler) {
