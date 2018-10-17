@@ -361,7 +361,7 @@ nodes.nodeList = {
 		blockExplorerAddr: "https://explorer.eos-classic.io/addr/[[address]]",
 		type: nodes.nodeTypes.EOSC,
 		eip155: true,
-		chainId: 20,
+		chainId: 2018,
 		tokenList: require("./tokens/eoscTokens.json"),
 		abiList: require("./abiDefinitions/eoscAbi.json"),
 		estimateGas: true,
