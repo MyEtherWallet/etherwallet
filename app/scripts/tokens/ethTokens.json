@@ -48,6 +48,12 @@
     "type": "default"
   },
   {
+    "address": "0x0073e5E52E2B4fE218D75d994eE2B3c82f9C87EA",
+    "symbol": "22x",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x9fC0583220eB44fAeE9e2dc1E63F39204DDD9090",
     "symbol": "2DC",
     "decimal": 18,
@@ -513,6 +519,12 @@
     "address": "0x2ecb13a8c458c379c4d9a7259e202de03c8f3d19",
     "symbol": "BC",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x1f41e42d0a9e3c0dd3ba15b527342783b43200a9",
+    "symbol": "BCAP",
+    "decimal": 0,
     "type": "default"
   },
   {
@@ -5319,6 +5331,12 @@
     "address": "0x3833dda0aeb6947b98ce454d89366cba8cc55528",
     "symbol": "SPHTX",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x0324dd195d0cd53f9f07bee6a48ee7a20bad738f",
+    "symbol": "SPICE",
+    "decimal": 8,
     "type": "default"
   },
   {
