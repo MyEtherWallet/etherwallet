@@ -442,4 +442,10 @@ to:         '0x0acbcc45dde258b18c11b16b06bdc64fd91913ac',
 gasLimit:   150000,
 data:       '',
 msg:        'NEEO token sale http://neeoico.com'
+},{
+// Credits (CS) Token Sale
+to:         '0x46b9ad944d1059450da1163511069c718f699d31',
+gasLimit:   200000,
+data:       '',
+msg:        'Credits token sale https://credits.com'
 }]
