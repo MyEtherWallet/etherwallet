@@ -471,7 +471,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     // trezor is using the path without change level id
     var path = $scope.getTrezorPath();
 
-    console.warn("SCANTR", path, $scope.HDWallet)
     TrezorConnect.getPublicKey({ path })
       .then(
         ({
