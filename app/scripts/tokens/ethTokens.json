@@ -4212,6 +4212,12 @@
     "type": "default"
   },
   {
+    "address": "0x516E5436bAfdc11083654DE7Bb9b95382d08d5DE",
+    "symbol": "ORME",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0xeb9a4b185816c354db92db09cc3b50be60b901b6",
     "symbol": "ORS",
     "decimal": 18,
@@ -5796,8 +5802,14 @@
     "type": "default"
   },
   {
+    "address": "0xaab606817809841e8b1168be8779eeaf6744ef64",
+    "symbol": "TTA",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x9389434852b94bbad4c8afed5b7bdbc5ff0c2275",
-    "symbol": "TTC) (TTC",
+    "symbol": "TTC (TTC)",
     "decimal": 18,
     "type": "default"
   },
