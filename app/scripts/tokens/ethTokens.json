@@ -528,12 +528,6 @@
     "type": "default"
   },
   {
-    "address": "0xff3519eeeea3e76f1f699ccce5e23ee0bdda41ac",
-    "symbol": "BCAP",
-    "decimal": 0,
-    "type": "default"
-  },
-  {
     "address": "0x7367a68039d4704f30bfbf6d948020c3b07dfc59",
     "symbol": "BCBC",
     "decimal": 18,
