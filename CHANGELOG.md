@@ -7,7 +7,7 @@
 
 ### Devop
 
-- Update checksum error address []()
+- Update checksum error address [#2126](https://github.com/kvhnuke/etherwallet/pull/2126)
 
 ### Release v3.23.1
 
