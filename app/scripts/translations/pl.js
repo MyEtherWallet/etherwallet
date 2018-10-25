@@ -598,7 +598,7 @@ ERROR_31                    : 'Błędna tajna fraza (secret phrase) ',
 ERROR_32                    : 'Nie można połączyć z węzłem. Odśwież stronę, spróbuj inny węzeł (w prawym górnym rogu), sprawdź swoje ustawienia firewall. Jeśli łączysz się z węzłem niestandardowym, sprawdź konfigurację.', // 32
 ERROR_33                    : 'Odblokowany portfel nie zgadza się z adresem właściciela. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Wprowadzony adres nie jest sprawdzony (checksummed). <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Więcej informacji</a>', // 35
+ERROR_35                    : 'Wprowadzony adres nie jest sprawdzony (checksummed). <a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer"> Więcej informacji</a>', // 35
 ERROR_36                    : 'Wprowadź poprawny TX hash', // 36
 ERROR_37                    : 'Wprowadź poprawny ciąg znaków (0-9, a-f)', // 37
 

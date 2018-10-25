@@ -5,6 +5,10 @@
 - Add Credits custom gas [#2107](https://github.com/kvhnuke/etherwallet/pull/2107)
 - Add TTA, ORME, 22x, Spice, and BCAP tokens [#2112](https://github.com/kvhnuke/etherwallet/pull/2112)
 
+### Devop
+
+- Update checksum error address []()
+
 ### Release v3.23.1
 
 ### Hotfix

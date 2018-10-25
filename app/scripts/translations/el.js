@@ -602,7 +602,7 @@ ERROR_31                    : 'Παρακαλούμε εισαγάγετε έγ�
 ERROR_32                    : 'Δεν ήταν δυνατή η σύνδεση στον κόμβο. Ανανεώστε τη σελίδα σας, δοκιμάστε κάποιον διαφορετικό κόμβο (πάνω δεξιά γωνία), ελέγξτε τις ρυθμίσεις του τείχους προστασίας. Εάν πρόκειται για προσαρμοσμένο κόμβο, ελέγξτε τις διαμορφώσεις σας.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'Το όνομα που προσπαθείτε να αποκαλύψετε δεν ταιριάζει με το όνομα που έχετε εισαγάγει. ', // 34
-ERROR_35                    : 'Η διεύθυνση εισόδου δεν περιέχει άθροισμα ελέγχου. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Περισσότερες πληροφορίες</a>', // 35
+ERROR_35                    : 'Η διεύθυνση εισόδου δεν περιέχει άθροισμα ελέγχου. <a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer"> Περισσότερες πληροφορίες</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

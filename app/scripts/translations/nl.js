@@ -581,7 +581,7 @@ ERROR_31                    : 'Ongeldige geheime zin ',
 ERROR_32                    : 'Kon niet met de node verbinden. Ververs de pagina, probeer een andere node (rechterbovenhoek) en/of check je firewall instellingen. Check bij een custom node je configuratie.', // 32
 ERROR_33                    : 'De wallet die je hebt geopend matched niet bij het adres van de eigenaar owner\'s. ', // 33
 ERROR_34                    : 'De naam die je probeert de onthullen ("reveal") matched niet met de naam die je hebt ingevoerd. ', // 34
-ERROR_35                    : 'Input adres is niet ge-checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Meer info</a>', // 35
+ERROR_35                    : 'Input adres is niet ge-checksummed. <a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer"> Meer info</a>', // 35
 ERROR_36                    : 'Voer een geldige TX hash in', // 36
 ERROR_37                    : 'Voer een geldige hex string in (0-9, a-f)', // 37
 

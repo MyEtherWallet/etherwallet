@@ -582,7 +582,7 @@ ERROR_31                    : 'กรุณาใส่ secret phrase ที่�
 ERROR_32                    : 'ไม่สามารถเชื่อมต่อไปยัง Node ลองรีเฟรชหน้าใหม่อีกครั้ง, ลองใช้ Node อื่น (มุมขวาบน), หรือตรวจสอบการตั้งค่าไฟวอลล์ของคุณ หรือเช็คค่าการตั้งค่าใน Config ของคุณถ้าหากใช้ Node แบบกำหนดเอง', // 32
 ERROR_33                    : 'กระเป๋าที่คุณปลดล็อก มีที่อยู่ไม่ตรงกับที่อยู่ของเจ้าของ ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'กรุณาใส่ TX hash ที่ถูกต้อง', // 36
 ERROR_37                    : 'กรุณาใส่เลขฐานสิบหก (0-9, a-f)', // 37
 

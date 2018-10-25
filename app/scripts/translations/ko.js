@@ -592,7 +592,7 @@ ERROR_31                    : '(error_32) 올바른 비밀 문구를 입력해�
 ERROR_32                    : '(error_33) 노드에 연결할 수 없습니다. 새로 고침을 하거나 (우측 상단에서 선택할 수 있는) 다른 노드를 이용해 보시고, 방화벽 설정도 확인해주세요. 사용자 정의 노드라면 설정을 확인하세요. ',
 ERROR_33                    : '(error_34) 해제된 지갑이(지갑 주소가) 소유자의 주소와 일치하지 않습니다. ',
 ERROR_34                    : '(error_35) 입력한 이름과 확인하려는 이름이 일치하지 않습니다. ',
-ERROR_35                    : '(error_36) 입력된 주소가 체크섬되어있지 않습니다. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> 더 보기</a>', // 35
+ERROR_35                    : '(error_36) 입력된 주소가 체크섬되어있지 않습니다. <a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer"> 더 보기</a>', // 35
 ERROR_36                    : '(error_37) 올바른 TX 해시를 입력하세요', // 36
 ERROR_37                    : '(error_38) 올바른 hex 문자열을 입력하세요 (0-9, a-f)', // 37
 ERROR_38                    : '(error_39) 판매는 가격 또는 예약을 0보다 크게 설정해야 합니다',
