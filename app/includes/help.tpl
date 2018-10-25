@@ -3,7 +3,7 @@
 
   <h1 translate="NAV_Help"> Help </h1>
 
-  <h3><a href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer">
+  <h3><a href="https://kb.myetherwallet.com/" target="_blank" rel="noopener noreferrer">
     This page is slowly being deprecated. Please check out our more up-to-date and searchable Help Center.
   </a></h3>
 

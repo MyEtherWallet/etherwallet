@@ -416,9 +416,9 @@
         </article>
 <!--        <div class="row text-center">
             <span> Common Questions: </span><br/>
-            <a href="https://myetherwallet.github.io/knowledge-base/faq/eth-or-tokens-not-showing-on-exchange.html" target="_blank"
+            <a href="https://kb.myetherwallet.com/faq/eth-or-tokens-not-showing-on-exchange.html" target="_blank"
                rel="noopener noreferrer"> ETH or Tokens haven't shown up </a><br/>
-            <a href="https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html" target="_blank"
+            <a href="https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html" target="_blank"
                rel="noopener noreferrer"> Transactions are Not Showing Up or Pending Forever </a><br/>
             <span> Still need help: </span>
         </div>-->
