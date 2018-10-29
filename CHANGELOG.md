@@ -1,3 +1,5 @@
+### Release v3.24.0
+
 ### New
 
 - Add C20 contract abi [#2122](https://github.com/kvhnuke/etherwallet/pull/2122)
