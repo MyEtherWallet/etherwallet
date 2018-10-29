@@ -13,7 +13,7 @@
       </h5>
       <ul>
         <li class="u__protip">
-          <a href="https://myetherwallet.github.io/knowledge-base/getting-started/accessing-your-new-eth-wallet.html"
+          <a href="https://kb.myetherwallet.com/getting-started/accessing-your-new-eth-wallet.html"
              target="_blank"
              rel="noopener noreferrer"
              translate="X_HelpfulLinks_1">
@@ -21,7 +21,7 @@
           </a>
         </li>
         <li class="u__protip">
-          <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/lost-eth-private-key.html"
+          <a href="https://kb.myetherwallet.com/private-keys-passwords/lost-eth-private-key.html"
              target="_blank"
              rel="noopener noreferrer"
              translate="X_HelpfulLinks_2">
@@ -29,7 +29,7 @@
           </a>
         </li>
         <li class="u__protip">
-          <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/accessing-different-address-same-private-key-ether.html"
+          <a href="https://kb.myetherwallet.com/private-keys-passwords/accessing-different-address-same-private-key-ether.html"
              target="_blank"
              rel="noopener noreferrer"
              translate="X_HelpfulLinks_3">
@@ -37,7 +37,7 @@
           </a>
         </li>
         <li class="u__protip">
-          <a href="https://myetherwallet.github.io/knowledge-base/migration/"
+          <a href="https://kb.myetherwallet.com/migration/"
              target="_blank"
              rel="noopener noreferrer"
              translate="X_HelpfulLinks_4">
@@ -151,7 +151,7 @@
     <section class="row form-group">
       <div class="col-sm-11 clearfix">
         <a class="account-help-icon"
-           href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
+           href="https://kb.myetherwallet.com/gas/what-is-gas-ethereum.html"
            target="_blank"
            rel="noopener noreferrer">
           <img src="images/icon-help.svg" class="help-icon" />
@@ -210,7 +210,7 @@
         <div class="col-sm-11 clearfix">
 
           <a class="account-help-icon"
-             href="https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html"
+             href="https://kb.myetherwallet.com/transactions/what-is-nonce.html"
              target="_blank"
              rel="noopener noreferrer">
             <img src="images/icon-help.svg" class="help-icon" />
@@ -235,7 +235,7 @@
       <section class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
           <a class="account-help-icon"
-             href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
+             href="https://kb.myetherwallet.com/gas/what-is-gas-ethereum.html"
              target="_blank"
              rel="noopener noreferrer">
                 <img src="images/icon-help.svg" class="help-icon" />

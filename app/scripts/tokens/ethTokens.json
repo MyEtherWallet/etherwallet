@@ -48,6 +48,12 @@
     "type": "default"
   },
   {
+    "address": "0x0073e5E52E2B4fE218D75d994eE2B3c82f9C87EA",
+    "symbol": "22x",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x9fC0583220eB44fAeE9e2dc1E63F39204DDD9090",
     "symbol": "2DC",
     "decimal": 18,
@@ -516,7 +522,7 @@
     "type": "default"
   },
   {
-    "address": "0xff3519eeeea3e76f1f699ccce5e23ee0bdda41ac",
+    "address": "0x1f41e42d0a9e3c0dd3ba15b527342783b43200a9",
     "symbol": "BCAP",
     "decimal": 0,
     "type": "default"
@@ -4200,6 +4206,12 @@
     "type": "default"
   },
   {
+    "address": "0x516E5436bAfdc11083654DE7Bb9b95382d08d5DE",
+    "symbol": "ORME",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0xeb9a4b185816c354db92db09cc3b50be60b901b6",
     "symbol": "ORS",
     "decimal": 18,
@@ -5322,6 +5334,12 @@
     "type": "default"
   },
   {
+    "address": "0x0324dd195d0cd53f9f07bee6a48ee7a20bad738f",
+    "symbol": "SPICE",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x20F7A3DdF244dc9299975b4Da1C39F8D5D75f05A",
     "symbol": "SPN",
     "decimal": 6,
@@ -5778,8 +5796,14 @@
     "type": "default"
   },
   {
+    "address": "0xaab606817809841e8b1168be8779eeaf6744ef64",
+    "symbol": "TTA",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x9389434852b94bbad4c8afed5b7bdbc5ff0c2275",
-    "symbol": "TTC) (TTC",
+    "symbol": "TTC (TTC)",
     "decimal": 18,
     "type": "default"
   },

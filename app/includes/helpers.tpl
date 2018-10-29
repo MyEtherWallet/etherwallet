@@ -618,12 +618,12 @@
       </strong>
     </li>
       <li>
-        <a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherwallet.html" target="_blank" rel="noopener noreferrer">
+        <a href="https://kb.myetherwallet.com/getting-started/creating-a-new-wallet-on-myetherwallet.html" target="_blank" rel="noopener noreferrer">
           Read this guide for more information.
         </a>
       </li>
       <li>
-        <a href="https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener noreferrer">
+        <a href="https://kb.myetherwallet.com/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener noreferrer">
           Learn how to protect yourself and your funds.
         </a>
       </li>

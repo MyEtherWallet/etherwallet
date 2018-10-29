@@ -166,7 +166,7 @@ ONBOARD_whymew_content__2       :  '自分の資産を動かすときに、金�
 ONBOARD_whymew_content__3       :  '自分の資産を守るために、取引所や銀行のセキュリティに頼る必要もありません。', /*You don\'t have to rely on the security of an exchange or bank to keep your funds safe.*/
 ONBOARD_whymew_content__4       :  'もし、こういった事には価値がない、と感じるのでしたら、なぜブロックチェーンや仮想通貨に価値を感じたのか、よく考えてみてください。😉', /*If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉*/
 ONBOARD_whymew_content__5       :  'もし、お気に召さないようでしたら、[Coinbase](https://www.coinbase.com/) や [Blockchain.info](https://blockchain.info/wallet/#/signup)をお使いください。これらは、IDとパスワードを使用する、より一般的な口座を採用しています。', /*If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.*/
-ONBOARD_whymew_content__6       :  'もし、少し不安だけれども MyEtherWallet を使いたければ、[ハードウェアウォレットを入手しましょう](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)！(英語) あなたの鍵を安全に保管してくれます。', /*If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.*/
+ONBOARD_whymew_content__6       :  'もし、少し不安だけれども MyEtherWallet を使いたければ、[ハードウェアウォレットを入手しましょう](https://kb.myetherwallet.com/hardware-wallets/hardware-wallet-recommendations.html)！(英語) あなたの鍵を安全に保管してくれます。', /*If you are scared but want to use MEW, [get a hardware wallet](https://kb.myetherwallet.com/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.*/
 ONBOARD_why_title__alt          :  'でも... どうして?', /*But...why?*/
 ONBOARD_secure_title            :  '自分自身とその資産の守り方', /*How To Protect Yourself & Your Funds*/
 ONBOARD_secure_1_title          :  'フィッシング詐欺から自分自身を守る方法', /*How To Protect Yourself from Phishers*/
@@ -191,7 +191,7 @@ ONBOARD_secure_3_content__2     :  '秘密鍵やパスワードのバックア�
 ONBOARD_secure_3_content__3     :  '印刷した紙やUSBキーを、物理的に別の場所に保管してください。バックアップ一つだけでは、火事や津波などで、コンピューターと共に破壊されてしまいます。', /*Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.*/
 ONBOARD_secure_3_content__4     :  '秘密鍵を Dropbox や Google Drive、または他のクラウドストレージに保管しないでください。そのアカウントのセキュリティが損なわれた場合に、資産が盗まれてしまいます。', /*Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.*/
 ONBOARD_secure_3_content__5     :  'もし、あなたが1週間以上の給料に値する仮想通貨をお持ちであれば、ハードウェアウォレットを入手してください。言い訳ご無用。それだけの価値があります。絶対です。', /*If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.*/
-ONBOARD_secure_3_content__6     :  '[さらなる安全確保のためのセキュリティ情報はこちら！](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)', /*[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)*/
+ONBOARD_secure_3_content__6     :  '[さらなる安全確保のためのセキュリティ情報はこちら！](https://kb.myetherwallet.com/getting-started/protecting-yourself-and-your-funds.html)', /*[Even more Security Tips!](https://kb.myetherwallet.com/getting-started/protecting-yourself-and-your-funds.html)*/
 ONBOARD_secure_2_title__alt_2   :  '詐欺の撲滅', /*Screw Scams*/
 ONBOARD_final_title__alt        :  'あとワンクリックで完了です! 🤘', /*One more click & you\'re done! 🤘*/
 ONBOARD_final_title             :  'よし、これにて講義終了!', /*Alright, I\'m done lecturing you!*/
@@ -293,7 +293,7 @@ ERROR_13                    : '(error_14) 同じニックネームのお財布�
 ERROR_14                    : '(error_15) お財布が見つかりません。',
 ERROR_15                    : '(error_16) おや、このIDのプロポーサルは存在しないか、あるいは正常に読み込みできないようです。',
 ERROR_16                    : '(error_17) 同じアドレスのお財布が既に存在します。お財布のページをご確認ください。',
-  ERROR_17                    : '(error_18) 残高が足りません。ガスリミット × ガス価格 + 送出したい量 が現在の残高より多いです。口座にETHを追加するか「残高をすべて送出する」ボタンを使ってください。もしこのエラーが間違いだと思う場合は、 トランザクションを生成しなおしてください。 必要量: (d+), 所持量: (d+) [詳細はこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+ERROR_17                    : '(error_18) 残高が足りません。ガスリミット × ガス価格 + 送出したい量 が現在の残高より多いです。口座にETHを追加するか「残高をすべて送出する」ボタンを使ってください。もしこのエラーが間違いだと思う場合は、 トランザクションを生成しなおしてください。 必要量: (d+), 所持量: (d+) [詳細はこちら](https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html)',
 ERROR_18                    : '(error_19) 全てのガスがこのトランザクションにより消費されます。これは、このプロポーサルに既に投票したか、ディベート期間が終了しているためです。',
 ERROR_19                    : '(error_20) 正しいシンボルを入力してください。',
 ERROR_20                    : '(error_21) 正しいERC-20トークンではありません。',
@@ -311,31 +311,31 @@ ERROR_31                    : '(error_32) 正しいsecret phraseを入力して�
 ERROR_32                    : '(error_33) ノードに接続できませんでした。ページを再表示したり、別のノード（画面の右上にあります）を試したり、ファイアーウォールの設定を確認したりしてください。 カスタムノードを使用している場合は、設定を確認してください。',
 ERROR_33                    : '(error_34) 解錠したお財布のアドレスが、オーナーのアドレスと一致しません。',
 ERROR_34                    : '(error_35) 開示しようとしている名前が、以前に入力した名前と異なります。',
-ERROR_35                    : '(error_36) 入力したアドレスには、チェックサムが付いていません。<a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer">詳細はこちら</a>',
+ERROR_35                    : '(error_36) 入力したアドレスには、チェックサムが付いていません。<a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer">詳細はこちら</a>',
 ERROR_36                    : '(error_37) 正しいトランザクションハッシュを入力してください。',
 ERROR_37                    : '(error_38) 16進数を正しく入力してください。（入力可能文字列: 0x, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f）',
 ERROR_38                    : '(error_39) 申請は、価格か最低価格を0以上に設定する必要があります。',
 ERROR_39                    : '(error_40) 入札額は指定された最少額よりも大きい必要があります。',
 ERROR_40                    : '(error_41) Please enter a valid private key',
 
-GETH_Balance                : '(geth-01) 残高が足りません。ガスリミット × ガス価格 + 送出したい量 が現在の残高より多いです。口座にETHを追加するか「残高をすべて送出する」ボタンを使ってください。もしこのエラーが間違いだと思う場合は、 トランザクションを生成しなおしてください。 必要量: (d+), 所持量: (d+) [詳細はこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_Balance                : '(geth-01) 残高が足りません。ガスリミット × ガス価格 + 送出したい量 が現在の残高より多いです。口座にETHを追加するか「残高をすべて送出する」ボタンを使ってください。もしこのエラーが間違いだと思う場合は、 トランザクションを生成しなおしてください。 必要量: (d+), 所持量: (d+) [詳細はこちら](https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html)',
 GETH_Cheap                  : '(geth-02) ガス価格が低すぎて承認できません。画面右上のドロップダウンメニューから、ガス価格を21 GWEIに上げてみてください。',
-GETH_GasLimit               : '(geth-03) ブロックのガスリミットを超過しました。トランザクション・コストが現在のガスリミットを超過しました。 リミット: (d+), 指定: (d+). ガスリミットを21000（送出時）か200000（トークンや契約の送出時）より少なくして、もう一度お試しください。[詳細はこちら](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)',
-GETH_InsufficientFunds      : '(geth-04) 残高が足りません。ガスリミット × ガス価格 + 送出したい量 が現在の残高より多いです。口座にETHを追加するか「残高をすべて送出する」ボタンを使ってください。もしこのエラーが間違いだと思う場合は、 トランザクションを生成しなおしてください。 必要量: (d+), 所持量: (d+) [詳細はこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+GETH_GasLimit               : '(geth-03) ブロックのガスリミットを超過しました。トランザクション・コストが現在のガスリミットを超過しました。 リミット: (d+), 指定: (d+). ガスリミットを21000（送出時）か200000（トークンや契約の送出時）より少なくして、もう一度お試しください。[詳細はこちら](https://kb.myetherwallet.com/gas/what-is-gas-ethereum.html)',
+GETH_InsufficientFunds      : '(geth-04) 残高が足りません。ガスリミット × ガス価格 + 送出したい量 が現在の残高より多いです。口座にETHを追加するか「残高をすべて送出する」ボタンを使ってください。もしこのエラーが間違いだと思う場合は、 トランザクションを生成しなおしてください。 必要量: (d+), 所持量: (d+) [詳細はこちら](https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html)',
 GETH_IntrinsicGas           : '(geth-05) もともとのガスの量が低すぎます。画面右上のドロップダウンメニューから、ガス価格を21 GWEIに上げるか、ガスリミットを21000（送出時）か200000（トークンや契約の送出時）まで上げて、もう一度お試しください。',
 GETH_InvalidSender          : '(geth-06) 送出元が無効です。',
 GETH_NegativeValue          : '(geth-07) 負の値です。',
-GETH_Nonce                  : '(geth-08) トランザクションの[nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html)が低すぎます。トランザクション生成ボタンを押してnonceを増やすか、[待機中トランザクションを置き換えてください](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)。',
+GETH_Nonce                  : '(geth-08) トランザクションの[nonce](https://kb.myetherwallet.com/transactions/what-is-nonce.html)が低すぎます。トランザクション生成ボタンを押してnonceを増やすか、[待機中トランザクションを置き換えてください](https://kb.myetherwallet.com/transactions/check-status-of-ethereum-transaction.html)。',
 GETH_NonExistentAccount     : '(geth-09) アカウントが存在しないか、残高不足です。',
 
-PARITY_AlreadyImported      : "(parity-01) 同じハッシュのトランザクションが既にインポートされています。このトランザクションは既に送出されている可能性があります。トランザクションの重複を防ぐために、[etherscan.io](https://etherscan.io)でアドレスを確認してください。再送出しようとする前に10分間待機してください。[詳しくはこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
-PARITY_GasLimitExceeded     : "(parity-02) トランザクション・コストが現在のガスリミットを超過しました。 リミット: (d+), 指定: (d+). ガスリミットを21000（送出時）か200000（トークンや契約の送出時）より少なくして、もう一度お試しください。[詳細はこちら](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",　　　/* increasing gas limit???  Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)*/
-PARITY_InsufficientBalance  : "(parity-03) 残高が足りません。トランザクションを送出しようとしているアカウントに、十分な量の資金がありません。もしこのエラーが間違いだと思う場合は、「残高をすべて送出する」ボタンを使うか、トランザクションを生成しなおしてください。必要量: (d+), 所持量: (d+) [詳細はこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
-PARITY_InsufficientGasPrice : "(parity-04) 同じnonceのトランザクションが既にキューに存在しているか、トランザクション手数料が低すぎます。トランザクション生成ボタンを押してnonceを増やしてください。[詳細はこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
-PARITY_InvalidGasLimit      : "(parity-05) ガス供給量が制限を超過しています。ガスリミットを21000に下げてください。[詳細はこちら](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
-PARITY_LimitReached         : "(parity-06) キューに存在するトランザクションの数が多すぎます。上限超過のため、このトランザクションは除外されています。ガス価格を上げてください。[詳細はこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
-PARITY_Old                  : "(parity-07) 同じ[nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html)のトランザクションが既に存在しています。トランザクション生成ボタンを押してnonceを増やすか、[待機中トランザクションを置き換えてください](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)。",
-PARITY_TooCheapToReplace    : "(parity-08) トランザクション手数料が低すぎます。ご利用のノードの最低額を満たしていません（最低額: (d+), 指定: (d+)）。ガス価格かガスリミットを上げてください。[詳細はこちら](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_AlreadyImported      : "(parity-01) 同じハッシュのトランザクションが既にインポートされています。このトランザクションは既に送出されている可能性があります。トランザクションの重複を防ぐために、[etherscan.io](https://etherscan.io)でアドレスを確認してください。再送出しようとする前に10分間待機してください。[詳しくはこちら](https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html)",
+PARITY_GasLimitExceeded     : "(parity-02) トランザクション・コストが現在のガスリミットを超過しました。 リミット: (d+), 指定: (d+). ガスリミットを21000（送出時）か200000（トークンや契約の送出時）より少なくして、もう一度お試しください。[詳細はこちら](https://kb.myetherwallet.com/gas/what-is-gas-ethereum.html)",　　　/* increasing gas limit???  Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://kb.myetherwallet.com/gas/what-is-gas-ethereum.html)*/
+PARITY_InsufficientBalance  : "(parity-03) 残高が足りません。トランザクションを送出しようとしているアカウントに、十分な量の資金がありません。もしこのエラーが間違いだと思う場合は、「残高をすべて送出する」ボタンを使うか、トランザクションを生成しなおしてください。必要量: (d+), 所持量: (d+) [詳細はこちら](https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InsufficientGasPrice : "(parity-04) 同じnonceのトランザクションが既にキューに存在しているか、トランザクション手数料が低すぎます。トランザクション生成ボタンを押してnonceを増やしてください。[詳細はこちら](https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html)",
+PARITY_InvalidGasLimit      : "(parity-05) ガス供給量が制限を超過しています。ガスリミットを21000に下げてください。[詳細はこちら](https://kb.myetherwallet.com/gas/what-is-gas-ethereum.html)",
+PARITY_LimitReached         : "(parity-06) キューに存在するトランザクションの数が多すぎます。上限超過のため、このトランザクションは除外されています。ガス価格を上げてください。[詳細はこちら](https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html)",
+PARITY_Old                  : "(parity-07) 同じ[nonce](https://kb.myetherwallet.com/transactions/what-is-nonce.html)のトランザクションが既に存在しています。トランザクション生成ボタンを押してnonceを増やすか、[待機中トランザクションを置き換えてください](https://kb.myetherwallet.com/transactions/check-status-of-ethereum-transaction.html)。",
+PARITY_TooCheapToReplace    : "(parity-08) トランザクション手数料が低すぎます。ご利用のノードの最低額を満たしていません（最低額: (d+), 指定: (d+)）。ガス価格かガスリミットを上げてください。[詳細はこちら](https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html)",
 
 
 FOOTER_1                    : 'Ethereum ウォレットを作成するための、無料で、オープンソースの、クライアントサイド・インターフェイス。Ethereum のブロックチェーンを簡単且つ安全に操作。お財布解錠の前に、URL (myetherwallet.com) を再確認してください。',
@@ -555,13 +555,13 @@ tx_foundInPending_3         : 'トランザクションの「取り消し」ま�
 tx_FoundOnChain             : 'トランザクションが見つかりました',
 tx_FoundOnChain_1           : 'トランザクションは正常に発掘され、ブロックチェーンに組み込まれました。',
 tx_FoundOnChain_2           : '**もし赤い`( ! )`マークや`BAD INSTRUCTION`、あるいは`OUT OF GAS` のエラーメッセージを見つけたら**, トランザクションの送出に失敗したということです。トランザクションの取り消しや置き換えはできません。代わりに、新しくトランザクションを送出してください。"Out of Gas"エラーの場合には、ガスリミットを初めに指定した値の2倍にしてください。',
-tx_FoundOnChain_3           : '**何もエラーメッセージが表示されていなければ、トランザクションは正しく送出されました。** ETH/トークンは、送出先に到着しました。もし、ETH/トークンが他のお財布や取引所のウォレットに見つからず、送出から24時間以上経っていたら、[送出先のサービスに連絡](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html)してください。自分のトランザクションのリンクを連絡し、正確に状況を確認してもらってください。',
+tx_FoundOnChain_3           : '**何もエラーメッセージが表示されていなければ、トランザクションは正しく送出されました。** ETH/トークンは、送出先に到着しました。もし、ETH/トークンが他のお財布や取引所のウォレットに見つからず、送出から24時間以上経っていたら、[送出先のサービスに連絡](https://kb.myetherwallet.com/diving-deeper/ethereum-list-of-support-and-communities.html)してください。自分のトランザクションのリンクを連絡し、正確に状況を確認してもらってください。',
 tx_notFound                 : 'トランザクションが見つかりません',
 tx_notFound_1               : 'このトランザクションは、現在接続中のTXプールの中にありませんでした。',
 tx_notFound_2               : 'もしたった今トランザクションを送出したばかりであれば、15秒待ってから「取引状況の確認」ボタンをもう一度押してください。',
 tx_notFound_3               : '別のTXプールで発掘を待っているままかもしれません。',
 tx_notFound_4               : '画面右上のドロップダウンメニューから、別のノード（例: `ETH (Etherscan.io)`・`ETH (Infura.io)`・`ETH (MyEtherWallet)`）を選択し、もう一度確認してください',
-tx_Summary                  : '繁盛期（ICO実施中など）は、トランザクションは数時間（数日間ではなく）待機中のままになることがあります。このツールは、こういったトランザクションを検索し、「取り消し」または置き換えを行えるようにするためのものです。**これは通常は不要な操作です。このツールに頼るのは本来好ましいことではなく、TXプールが満杯のときのみ効果を発揮します。[このツールに関しては、こちらを参照してください。](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
+tx_Summary                  : '繁盛期（ICO実施中など）は、トランザクションは数時間（数日間ではなく）待機中のままになることがあります。このツールは、こういったトランザクションを検索し、「取り消し」または置き換えを行えるようにするためのものです。**これは通常は不要な操作です。このツールに頼るのは本来好ましいことではなく、TXプールが満杯のときのみ効果を発揮します。[このツールに関しては、こちらを参照してください。](https://kb.myetherwallet.com/transactions/check-status-of-ethereum-transaction.html)**',
 
 TXFEE_Desc                  : 'トランザクション手数料は、トランザクションをブロックへ組み込むためにマイナーに支払われます。`ガスリミット` × `ガス価格`で算出されます。 [GWEI -> ETHの単位変換はこちらからどうぞ](https://www.myetherwallet.com/helpers.html)',　/*The TX Fee is paid to miners for including your TX in a block. It is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)*/
 

@@ -161,7 +161,7 @@ ONBOARD_whymew_content__2       :  'You don\'t have to rely on your bank, govern
 ONBOARD_whymew_content__3       :  'You don\'t have to rely on the security of an exchange or bank to keep your funds safe.',
 ONBOARD_whymew_content__4       :  'If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉',
 ONBOARD_whymew_content__5       :  'If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.',
-ONBOARD_whymew_content__6       :  'If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.',
+ONBOARD_whymew_content__6       :  'If you are scared but want to use MEW, [get a hardware wallet](https://kb.myetherwallet.com/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.',
 ONBOARD_why_title__alt          :  'But...why?',
 ONBOARD_secure_title            :  'How To Protect Yourself & Your Funds',
 ONBOARD_secure_1_title          :  'How To Protect Yourself from Phishers',
@@ -186,7 +186,7 @@ ONBOARD_secure_3_content__2     :  'Make a backup of your private key and passwo
 ONBOARD_secure_3_content__3     :  'Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.',
 ONBOARD_secure_3_content__4     :  'Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.',
 ONBOARD_secure_3_content__5     :  'If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.',
-ONBOARD_secure_3_content__6     :  '[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)',
+ONBOARD_secure_3_content__6     :  '[Even more Security Tips!](https://kb.myetherwallet.com/getting-started/protecting-yourself-and-your-funds.html)',
 ONBOARD_secure_2_title__alt_2   :  'Screw Scams',
 ONBOARD_final_title__alt        :  'One more click & you\'re done! 🤘',
 ONBOARD_final_title             :  'Alright, I\'m done lecturing you!',
@@ -216,7 +216,7 @@ x_TxHash                    : 'TX Hash',
 NAV_CheckTxStatus           : 'Check TX Status',
 NAV_TxStatus                : 'TX Status',
 tx_Details                  : 'Transaktionsdetails',
-tx_Summary                  : 'Zu manchen Zeiten (z.B. während der Laufzeit mancher ICOs) können einzelne Transaktionen für Stunden, villeicht sogar Tage ausstehen. Dieses Tool gibt Ihnen die Fähigkeit ihre Transaktion zu finden und zu widerrufen / ersetzen. ** Dies können Sie normalerweise nicht machen. Man sollte sich darauf nicht verlassen und es funktioniert nur, wenn die TX Pools voll sind. [Lesen Sie mehr über das Tool hier](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
+tx_Summary                  : 'Zu manchen Zeiten (z.B. während der Laufzeit mancher ICOs) können einzelne Transaktionen für Stunden, villeicht sogar Tage ausstehen. Dieses Tool gibt Ihnen die Fähigkeit ihre Transaktion zu finden und zu widerrufen / ersetzen. ** Dies können Sie normalerweise nicht machen. Man sollte sich darauf nicht verlassen und es funktioniert nur, wenn die TX Pools voll sind. [Lesen Sie mehr über das Tool hier](https://kb.myetherwallet.com/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Transaktion nicht gefunden',
 tx_notFound_1               : 'Die Transaktion kann nicht in dem Transaktions-Pool des Nodes, mit dem Sie verbunden sind, gefunden werden.',
 tx_notFound_2               : 'Wenn Sie die Transaktion erst gesendet haben, warten Sie bitte 15 Sekunden und drücken dann den "Check TX Status" Button erneut. ',
@@ -229,7 +229,7 @@ tx_foundInPending_3         : 'Es ist möglich Sie zu widerrufen oder diese Tran
 tx_FoundOnChain             : 'Transaktion gefunden',
 tx_FoundOnChain_1           : 'Ihre Transaktion wurde gemined und ist nun in der Blockchain.',
 tx_FoundOnChain_2           : '**Wenn Sie ein rotes`( ! )`, ein `BAD INSTRUCTION` oder `OUT OF GAS` Fehlernachricht bekommen**, heißt dass, dass die Transaktion nicht erfolgreich *gesendet* worden ist. Sie können die Transaktion nicht zurücknehmen oder ersetzen. Stattdessen, sende eine neue Transaktion. Wenn Sie einen "Out of Gas" Fehler bekommen, sollten Sie das GasLimit verdoppeln, dass Sie ursprünglich benutzt haben.',
-tx_FoundOnChain_3           : '**Wenn sie keine Fehlernachrichten bekommen, wurde ihre Transaktion erfolgreich versendet.** Ihre ETH oder Tokens sind dort, wohin sie versendet wurden. Wenn Sie die ETH or Tokens nicht im anderen Wallet / Exchange account sehen können, und es schon mehr als 24 Stunden her ist, seitdem Sie gesendet haben, bitte [Kontaktieren Sie den Service](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Senden Sie den *link* zu ihrer Transaktion und fragen Sie höflich, die Situation anzuschauen.',
+tx_FoundOnChain_3           : '**Wenn sie keine Fehlernachrichten bekommen, wurde ihre Transaktion erfolgreich versendet.** Ihre ETH oder Tokens sind dort, wohin sie versendet wurden. Wenn Sie die ETH or Tokens nicht im anderen Wallet / Exchange account sehen können, und es schon mehr als 24 Stunden her ist, seitdem Sie gesendet haben, bitte [Kontaktieren Sie den Service](https://kb.myetherwallet.com/diving-deeper/ethereum-list-of-support-and-communities.html). Senden Sie den *link* zu ihrer Transaktion und fragen Sie höflich, die Situation anzuschauen.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Nutzen Sie Ihre',
@@ -601,7 +601,7 @@ ERROR_31                    : 'Bitte gebe einen gültigen Geheime Phasre ein ',
 ERROR_32                    : 'Verbindung zum Knoten nicht möglich. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
+    ERROR_35: 'Input address is not checksummed. <a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

@@ -63,7 +63,7 @@
   "https://www.facebook.com/MyEtherWallet/",
   "https://twitter.com/myetherwallet",
   "https://medium.com/@myetherwallet",
-  "https://myetherwallet.github.io/knowledge-base/",
+  "https://kb.myetherwallet.com/",
   "https://github.com/kvhnuke/etherwallet",
   "https://github.com/MyEtherWallet",
   "https://kvhnuke.github.io/etherwallet/","https://myetherwallet.slack.com/"
@@ -85,7 +85,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;
         2. INSTALL <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a>
         or
-        <a href="https://myetherwallet.github.io/knowledge-base/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>
+        <a href="https://kb.myetherwallet.com/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>
         or
         <a href="https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige" target="_blank" rel="noopener noreferrer">Cryptonite</a>
       </span>
@@ -167,7 +167,7 @@
           <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
           <a class="small"
              translate="x_ReadMore"
-             href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
+             href="https://kb.myetherwallet.com/gas/what-is-gas-ethereum.html"
              target="_blank"
              rel="noopener noreferrer"></a>
         </div>
@@ -237,7 +237,7 @@
       </li>
       }
       <li class="nav-item help">
-        <a href="https://myetherwallet.github.io/knowledge-base/" target="_blank" rel="noopener noreferrer">
+        <a href="https://kb.myetherwallet.com/" target="_blank" rel="noopener noreferrer">
           <span translate="NAV_Help">
             Help
           </span>

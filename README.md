@@ -52,7 +52,7 @@ Check gh-pages files against live website at https://www.myetherwallet.com
 
 ### `mercury` is the development branch. gh-pages contains only the smaller dist folder only and is served to MyEtherWallet.com
 
-- Our infrastructure ("node") is on AWS. [You can also use your own node.](https://myetherwallet.github.io/knowledge-base/networks/run-your-own-node-with-myetherwallet.html)
+- Our infrastructure ("node") is on AWS. [You can also use your own node.](https://kb.myetherwallet.com/networks/run-your-own-node-with-myetherwallet.html)
 - We also provide access to Infura.io & Etherscan.io nodes. Use the drop-down in the top-right.
 
 
@@ -97,7 +97,7 @@ Check gh-pages files against live website at https://www.myetherwallet.com
 
 ### Users (non-developers)
 
-- [It is recommended you start here.](https://myetherwallet.github.io/knowledge-base/getting-started/getting-started-new.html)
+- [It is recommended you start here.](https://kb.myetherwallet.com/getting-started/getting-started-new.html)
 - You can run MyEtherWallet.com on your computer. You can create a wallet completely offline & send transactions from the "Offline Transaction" page.
 
 1. Go to https://github.com/kvhnuke/etherwallet/releases/latest.
@@ -155,7 +155,7 @@ If you want to help contribute, here's what you need to know to get it up and ru
 
 - [Setting up on AWS super easily.](https://github.com/MyEtherWallet/docker-geth-lb)
 
-- [Running MyEtherWallet w/ Your Own Personal Node](https://myetherwallet.github.io/knowledge-base/networks/run-your-own-node-with-myetherwallet.html)
+- [Running MyEtherWallet w/ Your Own Personal Node](https://kb.myetherwallet.com/networks/run-your-own-node-with-myetherwallet.html)
 
 - [Guide by benjaminion for MEW + Ledger Nano S + Local Parity Node](https://github.com/benjaminion/eth-parity-qnap/wiki/Connecting-to-MyEtherWallet)
 

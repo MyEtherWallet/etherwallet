@@ -161,7 +161,7 @@ ONBOARD_whymew_content__2       :  '你的资金交易不再依赖银行或者�
 ONBOARD_whymew_content__3       :  '你资金的安全也不再依赖交易所或者银行的安全系统.',
 ONBOARD_whymew_content__4       :  '如果你认为上面的几点不重要, 那你可能需要重新思考下区块链以及加密货币是如何产生价值的. 😉',
 ONBOARD_whymew_content__5       :  '如果你还是觉得用MEW太麻烦, 那你可以考虑用 [Coinbase](https://www.coinbase.com/) 或者 [Blockchain.info](https://blockchain.info/wallet/#/signup). 它们提供类似的使用用户名和密码来登录管理的账户系统.',
-ONBOARD_whymew_content__6       :  '如果你担心 MEW 还不够安全, [那就赶紧买个硬件钱包吧](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! 它们能保证你密钥的安全.',
+ONBOARD_whymew_content__6       :  '如果你担心 MEW 还不够安全, [那就赶紧买个硬件钱包吧](https://kb.myetherwallet.com/hardware-wallets/hardware-wallet-recommendations.html)! 它们能保证你密钥的安全.',
 ONBOARD_why_title__alt          :  '但是为啥呢?',
 ONBOARD_secure_title            :  '如何保护你的隐私和资金安全',
 ONBOARD_secure_1_title          :  '如何防范钓鱼网站',
@@ -186,7 +186,7 @@ ONBOARD_secure_3_content__2     :  '将你的私钥或者密码做好备份, 最
 ONBOARD_secure_3_content__3     :  '将私钥或密码的备份单独保存到安全的离线环境, 如果它们跟你电脑放在一起的话那么一场大火或者洪水就能轻易的将它们一并摧毁.',
 ONBOARD_secure_3_content__4     :  '千万不要将私钥存放到在线网盘, 带云同步的相册等在线环境中.',
 ONBOARD_secure_3_content__5     :  '如果你真正重视你的数字货币, 那你就应该买一个硬件钱包, 你的资产值得用更专业的设备来保护.',
-ONBOARD_secure_3_content__6     :  '[点我查看更多安全技巧!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)',
+ONBOARD_secure_3_content__6     :  '[点我查看更多安全技巧!](https://kb.myetherwallet.com/getting-started/protecting-yourself-and-your-funds.html)',
 ONBOARD_secure_2_title__alt_2   :  '防范网络欺诈',
 ONBOARD_final_title__alt        :  '还有一步! 🤘',
 ONBOARD_final_title             :  '教程到此完毕!',
@@ -218,7 +218,7 @@ x_TxHash                    : 'TX Hash',
 NAV_CheckTxStatus           : 'Check TX Status',
 NAV_TxStatus                : 'TX Status',
 tx_Details                  : 'Transaction Details',
-tx_Summary                  : 'During times of high volume (like during ICOs) transactions can be pending for hours, if not days. This tool aims to give you the ability to find and "cancel" / replace these TXs. ** This is not typically something you can do. It should not be relied upon & will only work when the TX Pools are full. [Please, read about this tool here.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
+tx_Summary                  : 'During times of high volume (like during ICOs) transactions can be pending for hours, if not days. This tool aims to give you the ability to find and "cancel" / replace these TXs. ** This is not typically something you can do. It should not be relied upon & will only work when the TX Pools are full. [Please, read about this tool here.](https://kb.myetherwallet.com/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Transaction Not Found',
 tx_notFound_1               : 'This TX cannot be found in the TX Pool of the node you are connected to.',
 tx_notFound_2               : 'If you just sent the transaction, please wait 15 seconds and press the "Check TX Status" button again. ',
@@ -231,7 +231,7 @@ tx_foundInPending_3         : 'There is a chance you can "cancel" or replace thi
 tx_FoundOnChain             : 'Transaction Found',
 tx_FoundOnChain_1           : 'Your transaction was successfully mined and is on the blockchain.',
 tx_FoundOnChain_2           : '**If you see a red `( ! )`, a `BAD INSTRUCTION` or `OUT OF GAS` error message**, it means that the transaction was not successfully *sent*. You cannot cancel or replace this transaction. Instead, send a new transaction. If you received an "Out of Gas" error, you should double the gas limit you specified originally.',
-tx_FoundOnChain_3           : '**If you do not see any errors, your transaction was successfully sent.** Your ETH or Tokens are where you sent them. If you cannot see this ETH or Tokens credited in your other wallet / exchange account, and it has been 24+ hours since you sent, please [contact that service](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Send them the *link* to your transaction and ask them, nicely, to look into your situation.',
+tx_FoundOnChain_3           : '**If you do not see any errors, your transaction was successfully sent.** Your ETH or Tokens are where you sent them. If you cannot see this ETH or Tokens credited in your other wallet / exchange account, and it has been 24+ hours since you sent, please [contact that service](https://kb.myetherwallet.com/diving-deeper/ethereum-list-of-support-and-communities.html). Send them the *link* to your transaction and ask them, nicely, to look into your situation.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Use your',
@@ -602,7 +602,7 @@ ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
 ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer"> More info</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

@@ -161,7 +161,7 @@ ONBOARD_whymew_content__2       :  'You don\'t have to rely on your bank, govern
 ONBOARD_whymew_content__3       :  'You don\'t have to rely on the security of an exchange or bank to keep your funds safe.',
 ONBOARD_whymew_content__4       :  'If you don\'t find these things valuable, ask yourself why you think the blockchain and cryptocurrencies are valuable. 😉',
 ONBOARD_whymew_content__5       :  'If you don\'t like the sound of this, consider using [Coinbase](https://www.coinbase.com/) or [Blockchain.info](https://blockchain.info/wallet/#/signup). They have more familiar accounts with usernames & passwords.',
-ONBOARD_whymew_content__6       :  'If you are scared but want to use MEW, [get a hardware wallet](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.',
+ONBOARD_whymew_content__6       :  'If you are scared but want to use MEW, [get a hardware wallet](https://kb.myetherwallet.com/hardware-wallets/hardware-wallet-recommendations.html)! These keep your keys secure.',
 ONBOARD_why_title__alt          :  'But...why?',
 ONBOARD_secure_title            :  'How To Protect Yourself & Your Funds',
 ONBOARD_secure_1_title          :  'How To Protect Yourself from Phishers',
@@ -186,7 +186,7 @@ ONBOARD_secure_3_content__2     :  'Make a backup of your private key and passwo
 ONBOARD_secure_3_content__3     :  'Store this paper or USB drive in a different physical location. A backup is not useful if it is destroyed by a fire or flood along with your laptop.',
 ONBOARD_secure_3_content__4     :  'Do not store your private key in Dropbox, Google Drive, or other cloud storage. If that account is compromised, your funds will be stolen.',
 ONBOARD_secure_3_content__5     :  'If you have more than 1-week\'s worth of pay worth of cryptocurrency, get a hardware wallet. No excuses. It\'s worth it. I promise.',
-ONBOARD_secure_3_content__6     :  '[Even more Security Tips!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)',
+ONBOARD_secure_3_content__6     :  '[Even more Security Tips!](https://kb.myetherwallet.com/getting-started/protecting-yourself-and-your-funds.html)',
 ONBOARD_secure_2_title__alt_2   :  'Screw Scams',
 ONBOARD_final_title__alt        :  'One more click & you\'re done! 🤘',
 ONBOARD_final_title             :  'Alright, I\'m done lecturing you!',
@@ -217,7 +217,7 @@ x_TxHash                    : 'Hash συναλλαγής',
 NAV_CheckTxStatus           : 'Έλεγχος κατάστασης συναλλαγής',
 NAV_TxStatus                : 'Κατάσταση συναλλαγής',
 tx_Details                  : 'Λεπτομέρειες συναλλαγής',
-tx_Summary                  : 'Σε στιγμές υψηλού όγκου συναλλαγών (όπως κατά τη διάρκεια ενός ICO) οι συναλλαγές μπορεί να εκκρεμούν για ώρες, αν όχι ημέρες. Αυτό το εργαλείο αποσκοπεί στο να σας δώσει τη δυνατότητα να βρείτε και να «ακυρώσετε» / αντικαταστήσετε αυτές τις συναλλαγές. ** Αυτό δεν είναι κάτι που μπορείτε συνήθως να κάνετε. Δεν πρέπει να βασίζεστε σε αυτό και θα δουλέψει μόνο όταν οι δεξαμενές συναλλαγών είναι πλήρεις. [Παρακαλούμε, διαβάστε για αυτό το εργαλείο εδώ.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
+tx_Summary                  : 'Σε στιγμές υψηλού όγκου συναλλαγών (όπως κατά τη διάρκεια ενός ICO) οι συναλλαγές μπορεί να εκκρεμούν για ώρες, αν όχι ημέρες. Αυτό το εργαλείο αποσκοπεί στο να σας δώσει τη δυνατότητα να βρείτε και να «ακυρώσετε» / αντικαταστήσετε αυτές τις συναλλαγές. ** Αυτό δεν είναι κάτι που μπορείτε συνήθως να κάνετε. Δεν πρέπει να βασίζεστε σε αυτό και θα δουλέψει μόνο όταν οι δεξαμενές συναλλαγών είναι πλήρεις. [Παρακαλούμε, διαβάστε για αυτό το εργαλείο εδώ.](https://kb.myetherwallet.com/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : 'Δεν βρέθηκε συναλλαγή',
 tx_notFound_1               : 'Αυτή η συναλλαγή δεν ήταν δυνατόν να βρεθεί στη δεξαμενή συναλλαγών του κόμβου στον οποίον έχετε συνδεθεί.',
 tx_notFound_2               : 'Αν μόλις στείλατε τη συναλλαγή, παρακαλούμε περιμένετε 15 δευτερόλεπτα και πατήστε ξανά το κουμπί «Έλεγχος κατάστασης συναλλαγής». ',
@@ -230,7 +230,7 @@ tx_foundInPending_3         : 'Υπάρχει μια πιθανότητα να �
 tx_FoundOnChain             : 'Βρέθηκε συναλλαγή',
 tx_FoundOnChain_1           : 'Η συναλλαγή σας εξορύχθηκε επιτυχώς και βρίσκεται πάνω στο blockchain.',
 tx_FoundOnChain_2           : '**Αν δείτε κόκκινο μήνυμα λάθους `( ! )`, `BAD INSTRUCTION` ή `OUT OF GAS`**, σημαίνει ότι η συναλλαγή *δεν εστάλη* επιτυχώς. Δεν μπορείτε να ακυρώσετε ή να αντικαταστήσετε αυτήν τη συναλλαγή. Αντί αυτού, στείλτε μια νέα συναλλαγή. Αν λάβατε σφάλμα «Out of Gas», πρέπει να διπλασιάσετε το όριο αερίου που καθορίσατε αρχικά.',
-tx_FoundOnChain_3           : '**Αν δεν βλέπετε σφάλματα, η συναλλαγή σας εστάλη επιτυχώς.** Τα ETH σας ή οι μάρκες σας βρίσκονται εκεί που τα στείλατε. Αν δεν μπορείτε να δείτε αυτά τα ETH ή τις μάρκες να έχουν πιστωθεί στο άλλο σας πορτοφόλι ή στο λογαριασμό του ανταλλακτηρίου σας, και έχουν περάσει 24+ ώρες από τότε που τα στείλατε, παρακαλούμε [επικοινωνήστε με αυτήν την υπηρεσία](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). Στείλτε τους το *σύνδεσμο* προς τη συναλλαγή σας και ζητήστε τους ευγενικά να ρίξουν μια ματιά στο θέμα σας.',
+tx_FoundOnChain_3           : '**Αν δεν βλέπετε σφάλματα, η συναλλαγή σας εστάλη επιτυχώς.** Τα ETH σας ή οι μάρκες σας βρίσκονται εκεί που τα στείλατε. Αν δεν μπορείτε να δείτε αυτά τα ETH ή τις μάρκες να έχουν πιστωθεί στο άλλο σας πορτοφόλι ή στο λογαριασμό του ανταλλακτηρίου σας, και έχουν περάσει 24+ ώρες από τότε που τα στείλατε, παρακαλούμε [επικοινωνήστε με αυτήν την υπηρεσία](https://kb.myetherwallet.com/diving-deeper/ethereum-list-of-support-and-communities.html). Στείλτε τους το *σύνδεσμο* προς τη συναλλαγή σας και ζητήστε τους ευγενικά να ρίξουν μια ματιά στο θέμα σας.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : 'Χρησιμοποιήστε το',
@@ -602,7 +602,7 @@ ERROR_31                    : 'Παρακαλούμε εισαγάγετε έγ�
 ERROR_32                    : 'Δεν ήταν δυνατή η σύνδεση στον κόμβο. Ανανεώστε τη σελίδα σας, δοκιμάστε κάποιον διαφορετικό κόμβο (πάνω δεξιά γωνία), ελέγξτε τις ρυθμίσεις του τείχους προστασίας. Εάν πρόκειται για προσαρμοσμένο κόμβο, ελέγξτε τις διαμορφώσεις σας.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'Το όνομα που προσπαθείτε να αποκαλύψετε δεν ταιριάζει με το όνομα που έχετε εισαγάγει. ', // 34
-ERROR_35                    : 'Η διεύθυνση εισόδου δεν περιέχει άθροισμα ελέγχου. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> Περισσότερες πληροφορίες</a>', // 35
+ERROR_35                    : 'Η διεύθυνση εισόδου δεν περιέχει άθροισμα ελέγχου. <a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer"> Περισσότερες πληροφορίες</a>', // 35
 ERROR_36                    : 'Enter valid TX hash', // 36
 ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 

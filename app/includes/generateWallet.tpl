@@ -40,14 +40,14 @@
       <p translate="x_PasswordDesc"></p>
       <div class="text-center">
         <strong>
-          <a href="https://myetherwallet.github.io/knowledge-base/getting-started/creating-a-new-wallet-on-myetherwallet.html"
+          <a href="https://kb.myetherwallet.com/getting-started/creating-a-new-wallet-on-myetherwallet.html"
              target="_blank"
              rel="noopener noreferrer"
              translate="GEN_Help_5">
                How to Create a Wallet
           </a>
           &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-          <a href="https://myetherwallet.github.io/knowledge-base/getting-started/getting-started-new.html"
+          <a href="https://kb.myetherwallet.com/getting-started/getting-started-new.html"
              target="_blank"
              rel="noopener noreferrer"
              translate="GEN_Help_6">
@@ -219,14 +219,14 @@
       <h2 translate="GEN_Help_4">Guides &amp; FAQ</h2>
       <ul>
         <li>
-          <a href="https://myetherwallet.github.io/knowledge-base/getting-started/backing-up-your-new-wallet.html" target="_blank" rel="noopener noreferrer">
+          <a href="https://kb.myetherwallet.com/getting-started/backing-up-your-new-wallet.html" target="_blank" rel="noopener noreferrer">
             <strong translate="GEN_Help_13">
               How to Back Up Your Keystore File
             </strong>
           </a>
         </li>
         <li>
-          <a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
+          <a href="https://kb.myetherwallet.com/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
             <strong translate="GEN_Help_14">
               What are these Different Formats?
             </strong>
@@ -290,15 +290,15 @@
         Guides &amp; FAQ
       </h2>
       <ul>
-        <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/backing-up-your-new-wallet.html" target="_blank" rel="noopener noreferrer">
+        <li><a href="https://kb.myetherwallet.com/getting-started/backing-up-your-new-wallet.html" target="_blank" rel="noopener noreferrer">
           <strong translate="HELP_2a_Title">
             How to Save & Backup Your Wallet.
           </strong>
         </a></li>
-        <li><a href="https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener noreferrer">
+        <li><a href="https://kb.myetherwallet.com/getting-started/protecting-yourself-and-your-funds.html" target="_blank" rel="noopener noreferrer">
           <strong translate="GEN_Help_15">Preventing loss &amp; theft of your funds.</strong>
         </a></li>
-        <li><a href="https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
+        <li><a href="https://kb.myetherwallet.com/private-keys-passwords/difference-beween-private-key-and-keystore-file.html" target="_blank" rel="noopener noreferrer">
           <strong translate="GEN_Help_16">What are these Different Formats?</strong>
         </a></li>
       </ul>
@@ -314,7 +314,7 @@
           In case you ever forget your password.
         </li>
         <li>
-          <a href="https://myetherwallet.github.io/knowledge-base/offline/ethereum-cold-storage-with-myetherwallet.html" target="_blank" rel="noopener noreferrer" translate="GEN_Help_20">Cold Storage</a>
+          <a href="https://kb.myetherwallet.com/offline/ethereum-cold-storage-with-myetherwallet.html" target="_blank" rel="noopener noreferrer" translate="GEN_Help_20">Cold Storage</a>
         </li>
       </ul>
 

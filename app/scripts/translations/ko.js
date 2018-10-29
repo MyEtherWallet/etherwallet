@@ -168,7 +168,7 @@ ONBOARD_whymew_content__2       :  '자금을 옮기고 싶을 때 은행, 정�
 ONBOARD_whymew_content__3       :  '자금을 안전하게 지키기 위해 거래소나 은행의 보안에 의존할 필요가 없습니다.',
 ONBOARD_whymew_content__4       :  '이러한 것들이 가치 있다고 생각하지 않는다면, 왜 블록 체인과 암호 체계가 가치 있다고 생각하는지 스스로 물어 보세요. 😉',
 ONBOARD_whymew_content__5       :  '이런 얘기가 마음에 들지 않는다면 [Coinbase](https://www.coinbase.com/) 또는 [Blockchain.info](https://blockchain.info/wallet/#/signup)를 사용하세요. 그들은 사용자 이름과 비밀 번호로 구성된 더 익숙한 계정 형태를 지원합니다.',
-ONBOARD_whymew_content__6       :  '걱정스러워도 MEW를 사용하고자 한다면, [하드웨어 지갑을 구입하세요](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html)! 키를 안전하게 보존해줍니다.',
+ONBOARD_whymew_content__6       :  '걱정스러워도 MEW를 사용하고자 한다면, [하드웨어 지갑을 구입하세요](https://kb.myetherwallet.com/hardware-wallets/hardware-wallet-recommendations.html)! 키를 안전하게 보존해줍니다.',
 ONBOARD_why_title__alt          :  '그런데...왜?',
 ONBOARD_secure_title            :  '어떻게 하면 당신과 당신 자금을 지킬 수 있을까',
 ONBOARD_secure_1_title          :  '피싱범으로부터 자신을 지키는 방법',
@@ -193,7 +193,7 @@ ONBOARD_secure_3_content__2     :  '개인 키와 비밀번호를 백업하세�
 ONBOARD_secure_3_content__3     :  '이 종이나 USB드라이브를 물리적으로 다른 곳에 저장하세요. 화재나 홍수로 인해 노트북이 고장나면 백업은 무용지물입니다.',
 ONBOARD_secure_3_content__4     :  'Dropbox, Google 드라이브 또는 기타 클라우드 저장소에 개인 키를 저장하지 마세요. 만약 계정이 손상되면, 자금은 도난당할 것입니다.',
 ONBOARD_secure_3_content__5     :  '암호화폐의 가치가 1주일치 보수보다 높다면, 하드웨어 지갑을 구입하세요. 그만한 가치가 있습니다.',
-ONBOARD_secure_3_content__6     :  '[더 많은 보안 팁!](https://myetherwallet.github.io/knowledge-base/getting-started/protecting-yourself-and-your-funds.html)',
+ONBOARD_secure_3_content__6     :  '[더 많은 보안 팁!](https://kb.myetherwallet.com/getting-started/protecting-yourself-and-your-funds.html)',
 ONBOARD_secure_2_title__alt_2   :  '스캠 꺼져',
 ONBOARD_final_title__alt        :  '한번만 더 클릭하면 다 끝납니다! 🤘',
 ONBOARD_final_title             :  '좋습니다. 강의는 끝났습니다!',
@@ -223,7 +223,7 @@ x_TxHash                    : 'TX 해시',
 NAV_CheckTxStatus           : 'TX 상태 검사',
 NAV_TxStatus                : 'TX 상태',
 tx_Details                  : '트랜잭션 내역',
-tx_Summary                  : '거래량이 높은 기간(예를 들어 ICO 기간중)의 트랜잭션은 몇 시간 동안 보류될 수 있습니다. 이 도구는 이러한 TX를 찾아 "취소"하거나 교체할 수 있는 기능을 제공합니다. **이는 일반적으로 수행할 수 있는 작업이 아닙니다. 이 도구를 의존하지 말아야 하며 TX풀이 가득 찼을 때만 작동합니다. [여기서 이 도구에 대해 읽어 보십시오.](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)**',
+tx_Summary                  : '거래량이 높은 기간(예를 들어 ICO 기간중)의 트랜잭션은 몇 시간 동안 보류될 수 있습니다. 이 도구는 이러한 TX를 찾아 "취소"하거나 교체할 수 있는 기능을 제공합니다. **이는 일반적으로 수행할 수 있는 작업이 아닙니다. 이 도구를 의존하지 말아야 하며 TX풀이 가득 찼을 때만 작동합니다. [여기서 이 도구에 대해 읽어 보십시오.](https://kb.myetherwallet.com/transactions/check-status-of-ethereum-transaction.html)**',
 tx_notFound                 : '트랜잭션을 찾을 수 없습니다',
 tx_notFound_1               : '연결된 노드의 TX풀에서 이 TX를 찾을 수 없습니다.',
 tx_notFound_2               : '방금 전송하셨다면 15초간 기다렸다가 "TX상태 확인" 버튼을 다시 누르세요. ',
@@ -236,7 +236,7 @@ tx_foundInPending_3         : '트랜잭션을 "취소" 하거나 교체할 수 
 tx_FoundOnChain             : '트랜잭션이 발견되었습니다',
 tx_FoundOnChain_1           : '트랜잭션이 성공적으로 채굴되어 블록 체인상에 기록되었습니다.',
 tx_FoundOnChain_2           : '**만약 빨간색으로 표시된 `( ! )`, 잘못된 인스트럭션 (`BAD INSTRUCTION`) 혹은 가스부족(`OUT OF GAS`) 오류 메시지**가 보인다면, 트랜잭션이 성공적으로 *전송*되지 않은 것입니다. 이 트랜잭션은 취소하거나 교체할 수 없습니다. 그 대신에 새 트랜잭션을 보내야 합니다. "가스부족"오류가 발생한 경우 원래 지정한 가스 한도를 두배로 늘려야 합니다. ',
-tx_FoundOnChain_3           : '**오류 메시지가 없다면 트랜잭션이 성공적으로 전송된 것입니다.** 이제 전송한 ETH 혹은 토큰은 전송된 곳에 있습니다. ETH 또는 토큰을 다른 지갑/거래소 계정에 입금된 것을 볼 수 없다면, 그리고 보낸 후 24시간이 지난 후라면, [관련 서비스에 문의하시기 바랍니다](https://myetherwallet.github.io/knowledge-base/diving-deeper/ethereum-list-of-support-and-communities.html). 문의할 때 트랜잭션에 해당하는 *링크*를 보내어 친절하게 당신의 상황을 살펴보라고 부탁하세요.',
+tx_FoundOnChain_3           : '**오류 메시지가 없다면 트랜잭션이 성공적으로 전송된 것입니다.** 이제 전송한 ETH 혹은 토큰은 전송된 곳에 있습니다. ETH 또는 토큰을 다른 지갑/거래소 계정에 입금된 것을 볼 수 없다면, 그리고 보낸 후 24시간이 지난 후라면, [관련 서비스에 문의하시기 바랍니다](https://kb.myetherwallet.com/diving-deeper/ethereum-list-of-support-and-communities.html). 문의할 때 트랜잭션에 해당하는 *링크*를 보내어 친절하게 당신의 상황을 살펴보라고 부탁하세요.',
 
 /* Gen Wallet Updates */
 GEN_Help_1                  : '', /* FIXME */
@@ -574,7 +574,7 @@ ERROR_13                    : '(error_14) 같은 별명을 가진 지갑이 이�
 ERROR_14                    : '(error_15) 지갑을 찾을 수 없습니다. ',
 ERROR_15                    : '(error_16) 이 ID에 대한 제안서가 존재하지 않거나 읽기를 실패하였습니다. ',
 ERROR_16                    : '(error_17) 같은 주소의 지갑이 이미 존재합니다. 지갑 페이지를 확인해주세요. ',
-ERROR_17                    : '(error_18) 잔액이 부족합니다. 가스 한도 * 가스 가격 + 보낼 수량 총합이 현 계정 잔액보다 부족합니다. 계정에 ETH를 보충하거나 "모든 잔액 전송" 버튼을 누르세요. 이것이 오류라고 생각한다면 생성 버튼을 다시 누르세요. 필요한 수량 (d+)과 실제 수량: (d+). [더 배우기](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
+ERROR_17                    : '(error_18) 잔액이 부족합니다. 가스 한도 * 가스 가격 + 보낼 수량 총합이 현 계정 잔액보다 부족합니다. 계정에 ETH를 보충하거나 "모든 잔액 전송" 버튼을 누르세요. 이것이 오류라고 생각한다면 생성 버튼을 다시 누르세요. 필요한 수량 (d+)과 실제 수량: (d+). [더 배우기](https://kb.myetherwallet.com/transactions/transactions-not-showing-or-pending.html)',
 ERROR_18                    : '(error_19) 모든 가스가 이 트랜잭션에 사용될 것입니다. 이것은 이미 투표를 진행했거나 토론 기간이 종료되었기 때문입니다. ',
 ERROR_19                    : '(error_20) 올바른 기호를 넣어주세요 ',
 ERROR_20                    : '(error_21) 올바른 ERC-20 토큰이 아닙니다 ',
@@ -592,7 +592,7 @@ ERROR_31                    : '(error_32) 올바른 비밀 문구를 입력해�
 ERROR_32                    : '(error_33) 노드에 연결할 수 없습니다. 새로 고침을 하거나 (우측 상단에서 선택할 수 있는) 다른 노드를 이용해 보시고, 방화벽 설정도 확인해주세요. 사용자 정의 노드라면 설정을 확인하세요. ',
 ERROR_33                    : '(error_34) 해제된 지갑이(지갑 주소가) 소유자의 주소와 일치하지 않습니다. ',
 ERROR_34                    : '(error_35) 입력한 이름과 확인하려는 이름이 일치하지 않습니다. ',
-ERROR_35                    : '(error_36) 입력된 주소가 체크섬되어있지 않습니다. <a href="https://myetherwallet.github.io/knowledge-base/addresses/not-checksummed-shows-when-i-enter-an-address.html" target="_blank" rel="noopener noreferrer"> 더 보기</a>', // 35
+ERROR_35                    : '(error_36) 입력된 주소가 체크섬되어있지 않습니다. <a href="https://kb.myetherwallet.com/addresses/what-does-checksummed-mean.html" target="_blank" rel="noopener noreferrer"> 더 보기</a>', // 35
 ERROR_36                    : '(error_37) 올바른 TX 해시를 입력하세요', // 36
 ERROR_37                    : '(error_38) 올바른 hex 문자열을 입력하세요 (0-9, a-f)', // 37
 ERROR_38                    : '(error_39) 판매는 가격 또는 예약을 0보다 크게 설정해야 합니다',
