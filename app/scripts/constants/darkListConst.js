@@ -3475,6 +3475,11 @@ const darklist = function() {
       comment:
         "Scam address of phishing email sent to leaked Everex investor database",
       date: "2017-09-05"
+    },
+    {
+      address: "0xDdd6854A002A6fbcDF695385cD5ed630c9E27C3e",
+      comment: "Scam address contacted Trust Wallet users in Telegram group depicting admin image and username",
+      date: "2018-10-25"
     }
   ];
 };
