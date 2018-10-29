@@ -5,6 +5,9 @@
   localStorage.getItem("iosiro-blacklisted-domains") === null
     ? getDomains("iosiro")
     : checkIfDataIsRecent("iosiro");
+    localStorage.getItem("phishfort-blacklisted-domains") === null
+    ? getDomains("phishfort")
+    : checkIfDataIsRecent("phishfort");
 
   localStorage.getItem("409h-whitelisted-domains") === null
     ? getDomains("409h")
@@ -47,6 +50,15 @@ function querycB(tabs) {
     identifer: "iosiro"
   };
 
+  let phishfort = {
+    timestamp: 0,
+    domains: [],
+    format: "plain",
+    repo:
+      "https://raw.githubusercontent.com/phishfort/phishfort-lists/master/blacklists/domains.json",
+    identifer: "phishfort"
+  };
+
   let whitelistDef = {
     timestamp: 0,
     domains: [],
@@ -59,15 +71,20 @@ function querycB(tabs) {
   const ealBlacklisted = localStorage.getItem("eal-blacklisted-domains")
     ? JSON.parse(localStorage.getItem("eal-blacklisted-domains"))
     : eal;
+
   const iosiroBlacklisted = localStorage.getItem("iosiro-blacklisted-domains")
     ? JSON.parse(localStorage.getItem("iosiro-blacklisted-domains"))
     : iosiro;
+
+  const phishfortBlacklisted = localStorage.getItem("phishfort-blacklisted-domains")
+  ? JSON.parse(localStorage.getItem("phishfort-blacklisted-domains"))
+  : phishfort;
 
   const whitelisted = localStorage.getItem("409h-whitelisted-domains")
     ? JSON.parse(localStorage.getItem("409h-whitelisted-domains"))
     : whitelistDef;
 
-  const allDomains = ealBlacklisted.domains.concat(iosiroBlacklisted.domains);
+  const allDomains = ealBlacklisted.domains.concat(iosiroBlacklisted.domains).concat(phishfortBlacklisted.domains);
   let urlRedirect;
   let foundWhitelist = whitelisted.domains.find(dom => {
 		if (tabs[0] !== undefined) {
@@ -128,7 +145,7 @@ function extractRootDomain(url) {
 
 function checkIfDataIsRecent(str) {
   let storedName =
-    str === "eal" || str === "iosiro"
+    str === "eal" || str === "iosiro" || str === "phishfort"
       ? str + "-blacklisted-domains"
       : str + "-whitelisted-domains";
   let dataObj = JSON.parse(localStorage.getItem(storedName));
@@ -158,6 +175,14 @@ function getDomains(str) {
       repo:
         "https://raw.githubusercontent.com/iosiro/counter_phishing_blacklist/master/blacklists/domains.json",
       identifer: "iosiro"
+    },
+    phishfort: {
+      timestamp: 0,
+      domains: [],
+      format: "plain",
+      repo:
+        "https://raw.githubusercontent.com/phishfort/phishfort-lists/master/blacklists/domains.json",
+      identifer: "phishfort"
     }
   };
 
@@ -174,10 +199,10 @@ function getDomains(str) {
 
   let newName;
 
-  if (str && str !== "" && (str === "eal" || str === "iosiro")) {
+  if (str && str !== "" && (str === "eal" || str === "iosiro" || str == "phishfort")) {
     newName = str + "-blacklisted-domains";
     setInStorage(blackListDomains[str], newName);
-  } else if (str && str !== "" && (str !== "eal" || str !== "iosiro")) {
+  } else if (str && str !== "" && (str !== "eal" || str !== "iosiro" || str != "phishfort")) {
     newName = str + "-whitelisted-domains";
     setInStorage(whiteListDomains[str], newName);
   } else {
