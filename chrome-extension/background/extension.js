@@ -5,7 +5,7 @@
   localStorage.getItem("iosiro-blacklisted-domains") === null
     ? getDomains("iosiro")
     : checkIfDataIsRecent("iosiro");
-  localStorage.getItem("phishfort-blacklisted-domains") === null
+    localStorage.getItem("phishfort-blacklisted-domains") === null
     ? getDomains("phishfort")
     : checkIfDataIsRecent("phishfort");
 
@@ -71,12 +71,14 @@ function querycB(tabs) {
   const ealBlacklisted = localStorage.getItem("eal-blacklisted-domains")
     ? JSON.parse(localStorage.getItem("eal-blacklisted-domains"))
     : eal;
+
   const iosiroBlacklisted = localStorage.getItem("iosiro-blacklisted-domains")
     ? JSON.parse(localStorage.getItem("iosiro-blacklisted-domains"))
     : iosiro;
+
   const phishfortBlacklisted = localStorage.getItem("phishfort-blacklisted-domains")
-    ? JSON.parse(localStorage.getItem("phishfort-blacklisted-domains"))
-    : phishfort;
+  ? JSON.parse(localStorage.getItem("phishfort-blacklisted-domains"))
+  : phishfort;
 
   const whitelisted = localStorage.getItem("409h-whitelisted-domains")
     ? JSON.parse(localStorage.getItem("409h-whitelisted-domains"))
@@ -197,10 +199,10 @@ function getDomains(str) {
 
   let newName;
 
-  if (str && str !== "" && (str === "eal" || str === "iosiro" || str === "phishfort")) {
+  if (str && str !== "" && (str === "eal" || str === "iosiro" || str == "phishfort")) {
     newName = str + "-blacklisted-domains";
     setInStorage(blackListDomains[str], newName);
-  } else if (str && str !== "" && (str !== "eal" || str !== "iosiro" || str !== "phishfort")) {
+  } else if (str && str !== "" && (str !== "eal" || str !== "iosiro" || str != "phishfort")) {
     newName = str + "-whitelisted-domains";
     setInStorage(whiteListDomains[str], newName);
   } else {
