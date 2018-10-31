@@ -4,7 +4,7 @@
 
 ### Devop
 
-- Fixes gasPrice when generating offline. []()
+- Fixes gasPrice when generating offline. [#2134](https://github.com/kvhnuke/etherwallet/pull/2134)
 - Update u2f-api [#2135](https://github.com/kvhnuke/etherwallet/pull/2135)
 
 ### Release v3.24.0
