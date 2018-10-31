@@ -74,7 +74,7 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
             ajaxReq.getTransactionData($scope.tx.from, function(data) {
                 if (data.error) throw data.msg;
                 data = data.data;
-                $scope.gasPriceDec = ethFuncs.hexToDecimal(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)));
+                $scope.gasPriceDec = $scope.gasPriceDef === 'GWEI' ? etherUnits.toGwei(data.gasprice, 'wei'):ethFuncs.hexToDecimal(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)));
                 $scope.nonceDec = ethFuncs.hexToDecimal(data.nonce);
                 $scope.showWalletInfo = true;
             });
