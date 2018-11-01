@@ -6498,6 +6498,12 @@
     "type": "default"
   },
   {
+    "address": "0xE8F9fa977ea585591d9F394681318C16552577fB",
+    "symbol": "ZTX",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x83e2be8d114f9661221384b3a50d24b96a5653f5",
     "symbol": "ZXC",
     "decimal": 18,
