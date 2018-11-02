@@ -1,4 +1,5 @@
 "use strict";
+const u2f = require('u2f-api');
 var signMsgCtrl = function($scope, $sce, walletService) {
   walletService.wallet = null;
   $scope.visibility = "signView";

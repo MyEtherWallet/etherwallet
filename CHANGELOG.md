@@ -1,3 +1,11 @@
+### New
+
+- Add ZTX token [#2136](https://github.com/kvhnuke/etherwallet/pull/2136)
+
+### Devop
+
+- Update u2f-api [#2135](https://github.com/kvhnuke/etherwallet/pull/2135)
+
 ### Release v3.24.0
 
 ### New
