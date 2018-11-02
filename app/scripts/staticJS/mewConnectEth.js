@@ -33,7 +33,7 @@ class MewConnectEth {
   }
 
   createWallet(data) {
-    var address = data.address;
+    var address = data.address.toLowerCase();
     // var pub = data.pub;
     var wallet = void 0;
     if (address.substring(0, 2) != '0x') {
