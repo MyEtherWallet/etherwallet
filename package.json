@@ -37,6 +37,7 @@
     "npm": "^6.4.1",
     "run-sequence": "^1.2.2",
     "trezor-connect": "^5.0.33",
+    "u2f-api": "^1.0.7",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "xss-filters": "^1.2.7"

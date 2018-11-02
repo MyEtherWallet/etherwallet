@@ -1,4 +1,5 @@
 'use strict';
+const u2f = require("u2f-api");
 var uiFuncs = function() {}
 uiFuncs.getTxData = function($scope) {
     return {

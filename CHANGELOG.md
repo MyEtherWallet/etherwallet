@@ -1,3 +1,7 @@
+### Devop
+
+- Update u2f-api [#2135](https://github.com/kvhnuke/etherwallet/pull/2135)
+
 ### Release v3.24.0
 
 ### New
