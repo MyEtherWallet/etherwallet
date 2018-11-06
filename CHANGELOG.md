@@ -1,9 +1,12 @@
+### Release v3.25.0
+
 ### New
 
 - Add ZTX token [#2136](https://github.com/kvhnuke/etherwallet/pull/2136)
 
 ### Devop
 
+- Update mewConnect address [#2138](https://github.com/kvhnuke/etherwallet/pull/2138)
 - Fixes gasPrice when generating offline. [#2134](https://github.com/kvhnuke/etherwallet/pull/2134)
 - Update u2f-api [#2135](https://github.com/kvhnuke/etherwallet/pull/2135)
 
