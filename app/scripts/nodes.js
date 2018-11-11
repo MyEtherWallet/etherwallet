@@ -319,8 +319,8 @@ nodes.nodeList = {
 	},
 	clo: {
 		name: "CLO",
-		blockExplorerTX: "https://explorer.callisto.network/tx/[[txHash]]",
-		blockExplorerAddr: "https://explorer.callisto.network/account/[[address]]",
+		blockExplorerTX: "https://explorer2.callisto.network/tx/[[txHash]]",
+		blockExplorerAddr: "https://explorer2.callisto.network/addr/[[address]]",
 		type: nodes.nodeTypes.CLO,
 		eip155: true,
 		chainId: 820,
