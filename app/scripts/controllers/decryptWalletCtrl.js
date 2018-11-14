@@ -175,6 +175,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         case nodes.nodeTypes.TOMO:
           $scope.HDWallet.dPath = $scope.HDWallet.tomoPath;
           break;
+        case nodes.nodeTypes.MIX:
+          $scope.HDWallet.dPath = $scope.HDWallet.hwMixPath;
+          break;
         default:
           $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
       }
