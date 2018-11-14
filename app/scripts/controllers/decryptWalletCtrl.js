@@ -617,28 +617,22 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     globalFuncs.MEWconnectStatus.update(0);
     var app = new MewConnectEth();
 
-    $scope.mewConnect = MewConnect.init();
-
-    Reflect.defineProperty(MewConnect, "instance", {
-      value: $scope.mewConnect
-    });
+    globalFuncs.MEWconnectStatus.mewConnect = MewConnect.init();
 
     $scope.$on("$destroy", function() {
       globalFuncs.MEWconnectStatus.newTabOpenedTrigger(false);
       globalFuncs.MEWconnectStatus.update(0);
-      $scope.mewConnect.disconnectRTC();
-      if (MewConnect.instance) {
-        Reflect.deleteProperty(MewConnect, "instance");
-      }
+      globalFuncs.MEWconnectStatus.mewConnect.disconnectRTC();
+      globalFuncs.MEWconnectStatus.mewConnect = null;
     });
 
-    $scope.mewConnect.on("codeDisplay", codeDisplay);
-    $scope.mewConnect.on("RtcConnectedEvent", rtcConnected);
-    $scope.mewConnect.on("RtcClosedEvent", rtcClosed);
-    $scope.mewConnect.on("RtcDisconnectEvent", rtcDisconnected);
-    $scope.mewConnect.on("address", makeWallet);
+    globalFuncs.MEWconnectStatus.mewConnect.on("codeDisplay", codeDisplay);
+    globalFuncs.MEWconnectStatus.mewConnect.on("RtcConnectedEvent", rtcConnected);
+    globalFuncs.MEWconnectStatus.mewConnect.on("RtcClosedEvent", rtcClosed);
+    globalFuncs.MEWconnectStatus.mewConnect.on("RtcDisconnectEvent", rtcDisconnected);
+    globalFuncs.MEWconnectStatus.mewConnect.on("address", makeWallet);
 
-    app.setMewConnect($scope.mewConnect);
+    app.setMewConnect(globalFuncs.MEWconnectStatus.mewConnect);
     app.signalerConnect();
 
     $scope.connectionCodeTimeout = null;
@@ -651,7 +645,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
       if ($scope.mewConnectionStatus !== 2) {
         $scope.connectionCodeTimeout = null;
         uiFuncs.notifier.info("Connected Via MEWconnect");
-        $scope.mewConnect.sendRtcMessage("address", "");
+        globalFuncs.MEWconnectStatus.mewConnect.sendRtcMessage("address", "");
         $scope.mewConnectionStatus = 2;
       }
     }
@@ -699,7 +693,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
   };
 
   $scope.mewConnectDisconnect = function() {
-    $scope.mewConnect.disconnectRTC();
+    globalFuncs.MEWconnectStatus.mewConnect.disconnectRTC();
   };
   //= ================ Mew Connect (end)==============================
   $scope.getLedgerPath = function() {
