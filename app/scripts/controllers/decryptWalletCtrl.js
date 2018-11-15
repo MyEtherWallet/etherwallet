@@ -1,6 +1,13 @@
 "use strict";
+const u2f = require("u2f-api");
 var decryptWalletCtrl = function($scope, $sce, walletService) {
   $scope.walletType = "";
+  $scope.supported = false;
+  u2f.isSupported().then(res => {
+    $scope.supported = res && window.browser.name === "chrome";
+    $scope.$apply();
+  });
+
   $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showAOnly = $scope.showParityDecrypt = false;
   $scope.filePassword = "";
   $scope.fileContent = "";
