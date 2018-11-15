@@ -1,6 +1,6 @@
 ### New
 
-- Update changelog, update darklist, update coinvest token [#2149](https://github.com/kvhnuke/etherwallet/pull/2149)
+- Update changelog, update darklist, update coinvest token, update u2f package [#2149](https://github.com/kvhnuke/etherwallet/pull/2149)
 - Add Trezor Hardware Wallet Support for MIX Blockchain (MIX) [#2146](https://github.com/kvhnuke/etherwallet/pull/2146)
 - Add Callisto Cold Staking Contract ABI & Update Explorer [#2144](https://github.com/kvhnuke/etherwallet/pull/2144)
 
