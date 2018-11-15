@@ -1,3 +1,5 @@
+### Release v3.26.0
+
 ### New
 
 - Update changelog, update darklist, update coinvest token, update u2f package [#2149](https://github.com/kvhnuke/etherwallet/pull/2149)
