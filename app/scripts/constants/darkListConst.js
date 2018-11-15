@@ -1,6 +1,26 @@
 const darklist = function() {
   return [
     {
+      address: "0xF193a9aFb00715AaCF7ca9Ebffafe02C77517C2E",
+      comment: "Fake copy of ROCK2PAY token",
+      date: "2018-11-06"
+    },
+    {
+      address: "0xcc02b920ae227f1be7d01fc241c27e5f74d40436",
+      comment: "Fake copy of ROCK2 token",
+      date: "2018-10-28"
+    },
+    {
+      address: "0xa153a6eF80fb5d60de18688bdC82684d48FC8De1",
+      comment: "Fake copy of ROCK2 token",
+      date: "2018-10-28"
+    },
+    {
+      address: "0x19fb7020381fe9197bf841d5034D5467FE5a3C93",
+      comment: "Fake copy of ROCK2 token",
+      date: "2018-10-27"
+    },
+    {
       address: "0x8abe0a9b8A1C8a003354E61F3ed8befdeb7D2CEc",
       comment: "Fake copy of ROCK2 token",
       date: "2018-09-12"
@@ -3478,7 +3498,8 @@ const darklist = function() {
     },
     {
       address: "0xDdd6854A002A6fbcDF695385cD5ed630c9E27C3e",
-      comment: "Scam address contacted Trust Wallet users in Telegram group depicting admin image and username",
+      comment:
+        "Scam address contacted Trust Wallet users in Telegram group depicting admin image and username",
       date: "2018-10-25"
     }
   ];

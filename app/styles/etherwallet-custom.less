@@ -37,7 +37,8 @@ textarea {
   &:hover,
   &:focus {
     background-color: darken(@brand-orangered, 5%);
-    a, a:hover {
+    a,
+    a:hover {
       text-decoration: none;
     }
   }
@@ -51,25 +52,27 @@ textarea {
   a:hover,
   a:focus {
     color: darken(white, 5%);
-    a, a:hover {
+    a,
+    a:hover {
       text-decoration: none;
     }
   }
 }
-
 
 // address icenticons
 .address-identicon-container {
   padding: 0;
   text-align: left;
   max-width: 4.5rem;
-  margin-left: -.5rem;
-  margin-top: .5rem;
+  margin-left: -0.5rem;
+  margin-top: 0.5rem;
 }
 
 .address-identicon-container-right {
   text-align: right;
-  .addressIdenticon { float: right; }
+  .addressIdenticon {
+    float: right;
+  }
 }
 
 .address-identicon-container-offline {
@@ -84,7 +87,8 @@ textarea {
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;
-  box-shadow: inset rgba(255, 255, 255, 0.5) 0 2px 2px, inset rgba(0, 0, 0, 0.6) 0 -1px 8px;
+  box-shadow: inset rgba(255, 255, 255, 0.5) 0 2px 2px,
+    inset rgba(0, 0, 0, 0.6) 0 -1px 8px;
 }
 
 .addressIdenticon.med {
@@ -107,24 +111,23 @@ textarea {
   margin-right: @space-sm;
 }
 
-.transaction-modal{
-
-  tbody{
-    tr{
-      td:nth-child(1){
+.transaction-modal {
+  tbody {
+    tr {
+      td:nth-child(1) {
         width: 30%;
       }
-      td:nth-child(2){
+      td:nth-child(2) {
         width: 70%;
       }
     }
   }
 
-  .text-width-limit{
+  .text-width-limit {
     display: grid;
     grid-auto-rows: 1fr;
 
-    p{
+    p {
       margin: 0;
       white-space: nowrap;
       overflow: hidden;
@@ -153,7 +156,11 @@ textarea {
 }
 
 .account-help-icon {
-  h3, h4, h5, h6, img {
+  h3,
+  h4,
+  h5,
+  h6,
+  img {
     display: inline-block;
   }
   img:hover + .account-help-text {
@@ -173,13 +180,13 @@ textarea {
 .account-help-text {
   background: white;
   border-radius: @border-radius;
-  border: 1px solid #CDCDCD;
-  box-shadow: 0 0 @space-sm rgba(100, 100, 100, .2);
+  border: 1px solid #cdcdcd;
+  box-shadow: 0 0 @space-sm rgba(100, 100, 100, 0.2);
   display: none;
   font-size: @font-size-xs;
   font-weight: 400;
   padding: @space-xs;
-  position: absolute;;
+  position: absolute;
   width: 18rem;
   z-index: 999;
   color: @text-color;
@@ -192,9 +199,7 @@ textarea {
   }
 }
 
-
-
-@media screen and (max-width:767px) {
+@media screen and (max-width: 767px) {
   .account-help-icon li,
   .account-help-icon img,
   .account-help-icon p {
@@ -215,7 +220,7 @@ textarea {
 #accountAddressMainTbl-1 {
   font-family: @font-family-monospace;
   font-weight: normal;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
 }
 
 // QR Code on Offline Transactions Page
@@ -251,7 +256,7 @@ table.account-info {
     flex-direction: column;
   }
   td {
-    padding: .3rem;
+    padding: 0.3rem;
     line-height: 1;
   }
   td:first-child {
@@ -270,7 +275,7 @@ table.account-info {
   }
 }
 
-input[type="text"]+.eye {
+input[type="text"] + .eye {
   cursor: pointer;
   &:before {
     content: "";
@@ -284,7 +289,7 @@ input[type="text"]+.eye {
   }
 }
 
-input[type="password"]+.eye {
+input[type="password"] + .eye {
   cursor: pointer;
   &:before {
     content: "";
@@ -298,11 +303,10 @@ input[type="password"]+.eye {
   }
 }
 
-
 // collapsable containers
 .collapse-container {
   h1 {
-    margin: .25rem 0;
+    margin: 0.25rem 0;
   }
   .collapse-button {
     float: left;
@@ -321,7 +325,6 @@ input[type="password"]+.eye {
     border-radius: 5px;
   }
 }
-
 
 // help collapsable containers
 .help .collapse-container {
@@ -376,25 +379,24 @@ h2 a.isActive {
   }
 }
 
-
 .item {
   margin: 6px 0;
 }
 
 .output {
   padding: @space-sm @space;
-  margin-top: -@space/2;
+  margin-top: -@space / 2;
   p {
     margin: @space-md 0 0;
   }
 }
 
 label .small {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 label small {
-  color: @gray-light
+  color: @gray-light;
 }
 
 .write-address {
@@ -410,24 +412,16 @@ label small {
   display: block;
 }
 
-
 .decrypt-drtv {
   padding: @space 0;
   label.radio {
     padding: 0 @space-lg;
-    margin: .5rem 0;
+    margin: 0.5rem 0;
   }
   h4 {
     margin-top: 0;
   }
 }
-
-
-
-
-
-
-
 
 .qr-code {
   max-width: 17rem;
@@ -467,7 +461,9 @@ label small {
     left: auto;
     right: 0;
     min-width: 37rem;
-    small { float: right; }
+    small {
+      float: right;
+    }
   }
 }
 
@@ -477,19 +473,16 @@ label small {
     font-weight: 400;
   }
 
-  .btn-primary-buy-button{
+  .btn-primary-buy-button {
     width: 200px;
   }
 
-
   .btn-red {
-
     background-color: #84023d;
     border-color: #84023d;
     position: relative;
     width: 200px;
-    .na{
-
+    .na {
       background-color: red;
       border-radius: 300px;
 
@@ -503,7 +496,6 @@ label small {
     border-color: #84023d;
     position: relative;
   }
-
 
   .pad-bot {
     padding-bottom: 5px;
@@ -519,12 +511,12 @@ label small {
 
 .dropdown-gas__msg {
   font-size: 12px;
-  font-weight:300;
+  font-weight: 300;
   margin: -10px auto 3px auto;
   max-width: 113rem;
   padding: 0 5rem;
   text-align: right;
-  white-space:normal;
+  white-space: normal;
   @media screen and (max-width: 80rem) {
     padding: 0 3%;
   }
@@ -532,24 +524,27 @@ label small {
     margin-top: 0;
     padding: 0 1%;
   }
-
 }
 
 .view-wallet-content {
   h5 {
     margin-bottom: @space-xs;
   }
-  a.isActive { color: @text-color; }
+  a.isActive {
+    color: @text-color;
+  }
 }
 #selectedTypeLedger ol {
   padding-left: 1rem;
 }
 
-
 .loading-wrap {
   position: fixed;
-  top:0;left:0;right:0;bottom:0;
-  background-color: fadeOut(black,30%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: fadeOut(black, 30%);
   z-index: 999;
   text-align: center;
 
@@ -558,7 +553,7 @@ label small {
     text-align: center;
     top: 40%;
     left: 50%;
-    transform: translate(-50%,-60%);
+    transform: translate(-50%, -60%);
   }
   img {
     border-radius: 50%;
@@ -569,7 +564,8 @@ label small {
   }
 
   @keyframes opacity {
-    from, to {
+    from,
+    to {
       opacity: 0;
     }
     50% {
@@ -582,7 +578,7 @@ label small {
   height: auto;
   width: 100%;
   max-width: 290px;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 
 .ens-response {
@@ -604,7 +600,7 @@ label small {
 @brand-music: #fece00;
 @brand-go: #27223d;
 @brand-eosc: #926565;
-@brand-akroma: #AA0087;
+@brand-akroma: #aa0087;
 @brand-esn: #a16bff;
 @brand-pirl: #a2d729;
 @brand-etho: #d63068;
@@ -625,7 +621,7 @@ label small {
   li:nth-child(1),
   li:nth-child(2),
   li:nth-child(3),
-  li:nth-child(4){
+  li:nth-child(4) {
     border-left: 2px solid @brand-eth;
   }
   li:nth-child(5),
@@ -729,10 +725,18 @@ header {
   margin-bottom: 1em;
 }
 header.ETH {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-eth;  }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-eth;     }
-  & + .container .modal-content          { border: 0.25rem solid @brand-eth;         }
-  & + .container .alert-info             { background-color:@brand-eth;              }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-eth;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-eth;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-eth;
+  }
+  & + .container .alert-info {
+    background-color: @brand-eth;
+  }
   .dropdown-gas:before {
     width: 24px;
     background-image: url("../images/coins/ethereum.svg");
@@ -740,10 +744,18 @@ header.ETH {
 }
 
 header.ETC {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-etc;  }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-etc;     }
-  & + .container .modal-content          { border: 0.25rem solid @brand-etc;         }
-  & + .container .alert-info             { background-color:@brand-etc;              }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-etc;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-etc;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-etc;
+  }
+  & + .container .alert-info {
+    background-color: @brand-etc;
+  }
   .dropdown-gas:before {
     width: 24px;
     background-image: url("../images/coins/ethereum-classic.svg");
@@ -751,38 +763,78 @@ header.ETC {
 }
 
 header.Ropsten {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-test; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-test;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-test;        }
-  & + .container .alert-info             { background-color:@brand-test;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-test;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-test;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-test;
+  }
+  & + .container .alert-info {
+    background-color: @brand-test;
+  }
 }
 
 header.Kovan {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-test; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-test;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-test;        }
-  & + .container .alert-info             { background-color:@brand-test;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-test;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-test;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-test;
+  }
+  & + .container .alert-info {
+    background-color: @brand-test;
+  }
 }
 
 header.Rinkeby {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-test; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-test;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-test;        }
-  & + .container .alert-info             { background-color:@brand-test;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-test;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-test;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-test;
+  }
+  & + .container .alert-info {
+    background-color: @brand-test;
+  }
 }
 
 header.Custom {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-cust; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-cust;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-cust;        }
-  & + .container .alert-info             { background-color:@brand-cust;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-cust;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-cust;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-cust;
+  }
+  & + .container .alert-info {
+    background-color: @brand-cust;
+  }
 }
 
 header.EXP {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-exp;  }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-exp;     }
-  & + .container .modal-content          { border: 0.25rem solid @brand-exp;         }
-  & + .container .alert-info             { background-color:@brand-exp;              }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-exp;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-exp;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-exp;
+  }
+  & + .container .alert-info {
+    background-color: @brand-exp;
+  }
   .dropdown-gas:before {
     width: 32px;
     background-image: url("../images/coins/exp.svg");
@@ -790,10 +842,18 @@ header.EXP {
 }
 
 header.UBQ {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-ubq;  }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ubq;     }
-  & + .container .modal-content          { border: 0.25rem solid @brand-ubq;         }
-  & + .container .alert-info             { background-color:@brand-ubq;              }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-ubq;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-ubq;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-ubq;
+  }
+  & + .container .alert-info {
+    background-color: @brand-ubq;
+  }
   .dropdown-gas:before {
     width: 32px;
     background-image: url("../images/coins/ubiq.svg");
@@ -801,10 +861,18 @@ header.UBQ {
 }
 
 header.POA {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-poa;  }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-poa;     }
-  & + .container .modal-content          { border: 0.25rem solid @brand-poa;         }
-  & + .container .alert-info             { background-color:@brand-poa;              }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-poa;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-poa;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-poa;
+  }
+  & + .container .alert-info {
+    background-color: @brand-poa;
+  }
   .dropdown-gas:before {
     width: 32px;
     background-image: url("../images/coins/poa.svg");
@@ -812,10 +880,18 @@ header.POA {
 }
 
 header.TOMO {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-tomo; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-tomo;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-tomo;        }
-  & + .container .alert-info             { background-color:@brand-tomo;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-tomo;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-tomo;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-tomo;
+  }
+  & + .container .alert-info {
+    background-color: @brand-tomo;
+  }
   .dropdown-gas:before {
     width: 34px;
     background-image: url("../images/coins/tomo.svg");
@@ -823,10 +899,18 @@ header.TOMO {
 }
 
 header.ELLA {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-ella; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ella;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-ella;        }
-  & + .container .alert-info             { background-color:@brand-ella;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-ella;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-ella;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-ella;
+  }
+  & + .container .alert-info {
+    background-color: @brand-ella;
+  }
   .dropdown-gas:before {
     width: 32px;
     background-image: url("../images/coins/ella.svg");
@@ -834,10 +918,18 @@ header.ELLA {
 }
 
 header.ETSC {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-etsc; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-etsc;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-etsc;        }
-  & + .container .alert-info             { background-color:@brand-etsc;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-etsc;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-etsc;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-etsc;
+  }
+  & + .container .alert-info {
+    background-color: @brand-etsc;
+  }
   .dropdown-gas:before {
     width: 32px;
     background-image: url("../images/coins/etsc.svg");
@@ -845,10 +937,18 @@ header.ETSC {
 }
 
 header.EGEM {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-egem; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-egem;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-egem;        }
-  & + .container .alert-info             { background-color:@brand-egem;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-egem;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-egem;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-egem;
+  }
+  & + .container .alert-info {
+    background-color: @brand-egem;
+  }
   .dropdown-gas:before {
     width: 36px;
     background-image: url("../images/coins/egem.svg");
@@ -856,22 +956,37 @@ header.EGEM {
 }
 
 header.CLO {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-clo;  }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-clo;     }
-  & + .container .modal-content          { border: 0.25rem solid @brand-clo;         }
-  & + .container .alert-info             { background-color:@brand-clo;              }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-clo;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-clo;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-clo;
+  }
+  & + .container .alert-info {
+    background-color: @brand-clo;
+  }
   .dropdown-gas:before {
     width: 36px;
     background-image: url("../images/coins/callisto.svg");
   }
 }
 
-
 header.MUSIC {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-music;}
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-music;   }
-  & + .container .modal-content          { border: 0.25rem solid @brand-music;       }
-  & + .container .alert-info             { background-color:@brand-music;            }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-music;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-music;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-music;
+  }
+  & + .container .alert-info {
+    background-color: @brand-music;
+  }
   .dropdown-gas:before {
     width: 34px;
     background-image: url("../images/coins/music.svg");
@@ -879,10 +994,18 @@ header.MUSIC {
 }
 
 header.GO {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-go;   }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-go;      }
-  & + .container .modal-content          { border: 0.25rem solid @brand-go;          }
-  & + .container .alert-info             { background-color:@brand-go;               }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-go;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-go;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-go;
+  }
+  & + .container .alert-info {
+    background-color: @brand-go;
+  }
   .dropdown-gas:before {
     width: 38px;
     background-image: url("../images/coins/gochain.svg");
@@ -890,10 +1013,18 @@ header.GO {
 }
 
 header.EOSC {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-eosc; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-eosc;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-eosc;        }
-  & + .container .alert-info             { background-color:@brand-eosc;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-eosc;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-eosc;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-eosc;
+  }
+  & + .container .alert-info {
+    background-color: @brand-eosc;
+  }
   .dropdown-gas:before {
     width: 26px;
     background-image: url("../images/coins/eosc.svg");
@@ -901,10 +1032,18 @@ header.EOSC {
 }
 
 header.AKA {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-akroma; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-akroma;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-akroma;        }
-  & + .container .alert-info             { background-color:@brand-akroma;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-akroma;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-akroma;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-akroma;
+  }
+  & + .container .alert-info {
+    background-color: @brand-akroma;
+  }
   .dropdown-gas:before {
     width: 34px;
     background-image: url("../images/coins/akroma.svg");
@@ -912,10 +1051,18 @@ header.AKA {
 }
 
 header.ESN {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-esn;  }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-esn;     }
-  & + .container .modal-content          { border: 0.25rem solid @brand-esn;         }
-  & + .container .alert-info             { background-color:@brand-esn;              }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-esn;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-esn;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-esn;
+  }
+  & + .container .alert-info {
+    background-color: @brand-esn;
+  }
   .dropdown-gas:before {
     width: 32px;
     background-image: url("../images/coins/ethersocial.svg");
@@ -923,10 +1070,18 @@ header.ESN {
 }
 
 header.PIRL {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-pirl; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-pirl;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-pirl;        }
-  & + .container .alert-info             { background-color:@brand-pirl;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-pirl;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-pirl;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-pirl;
+  }
+  & + .container .alert-info {
+    background-color: @brand-pirl;
+  }
   .dropdown-gas:before {
     width: 32px;
     background-image: url("../images/coins/pirl.svg");
@@ -934,10 +1089,18 @@ header.PIRL {
 }
 
 header.ETHO {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-etho; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-etho;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-etho;        }
-  & + .container .alert-info             { background-color:@brand-etho;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-etho;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-etho;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-etho;
+  }
+  & + .container .alert-info {
+    background-color: @brand-etho;
+  }
   .dropdown-gas:before {
     width: 24px;
     background-image: url("../images/coins/etho.svg");
@@ -945,10 +1108,18 @@ header.ETHO {
 }
 
 header.ATH {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-ath; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ath;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-ath;        }
-  & + .container .alert-info             { background-color:@brand-ath;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-ath;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-ath;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-ath;
+  }
+  & + .container .alert-info {
+    background-color: @brand-ath;
+  }
   .dropdown-gas:before {
     width: 36px;
     background-image: url("../images/coins/atheios.svg");
@@ -956,10 +1127,18 @@ header.ATH {
 }
 
 header.ILT {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-ilt;  }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-ilt;     }
-  & + .container .modal-content          { border: 0.25rem solid @brand-ilt;         }
-  & + .container .alert-info             { background-color:@brand-ilt;              }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-ilt;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-ilt;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-ilt;
+  }
+  & + .container .alert-info {
+    background-color: @brand-ilt;
+  }
   .dropdown-gas:before {
     width: 35px;
     background-image: url("../images/coins/ilt.svg");
@@ -967,10 +1146,18 @@ header.ILT {
 }
 
 header.WEB {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-web; }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-web;    }
-  & + .container .modal-content          { border: 0.25rem solid @brand-web;        }
-  & + .container .alert-info             { background-color:@brand-web;             }
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-web;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-web;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-web;
+  }
+  & + .container .alert-info {
+    background-color: @brand-web;
+  }
   .dropdown-gas:before {
     width: 36px;
     background-image: url("../images/coins/webchain.svg");
@@ -1016,7 +1203,6 @@ header.WEB {
   }
 }
 
-
 .on-boarding-close {
   display: flex;
   justify-content: flex-end;
@@ -1055,4 +1241,11 @@ header.WEB {
 .phishing {
   height: 60%;
   text-align: center;
+}
+
+.unsupported {
+  color: @brand-danger;
+  background: rgba(255, 68, 8, 0.1);
+  border: 1px solid @brand-danger;
+  padding: 10px;
 }

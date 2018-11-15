@@ -301,6 +301,9 @@
           </a>
         </li>
       </ul>
+      <div ng-show="!supported" class="unsupported">
+        U2F not supported in this browser. Please try using Google Chrome with a secure (SSL / HTTPS) connection!
+      </div>
       <div class="form-group">
         <a class="btn btn-primary"
            ng-click="scanLedger()"
@@ -505,7 +508,7 @@
            MEWconnect
       </h4>
       <div ng-if="!canUseMewConnect || mewConnectMayFail.noSupport">
-        MEWconnect does note support your browser. <br/> Please use a supported browser (<a href="http://chrome.google.com/">Chrome</a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="http://www.opera.com/">Opera</a>, Safari (version 11 and above))
+        MEWconnect does not support your browser. <br/> Please use a supported browser (<a href="http://chrome.google.com/">Chrome</a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="http://www.opera.com/">Opera</a>, Safari (version 11 and above))
       </div>
       <div ng-if="canUseMewConnect && !mewConnectMayFail.noSupport">
         <ul>
