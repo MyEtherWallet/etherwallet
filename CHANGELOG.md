@@ -1,6 +1,6 @@
 ### New
 
-- Add NCC, LG, LML, and GNY tokens []()
+- Add NCC, LG, LML, and GNY tokens [#2158](https://github.com/kvhnuke/etherwallet/pull/2158)
 
 ### Release v3.26.0
 
