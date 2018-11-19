@@ -2658,6 +2658,12 @@
     "type": "default"
   },
   {
+    "address": "0x247551F2EB3362E222c742E9c788B8957D9BC87e",
+    "symbol": "GNY",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xeAb43193CF0623073Ca89DB9B712796356FA7414",
     "symbol": "GOLDX",
     "decimal": 18,
@@ -3378,6 +3384,12 @@
     "type": "default"
   },
   {
+    "address": "0xc520F3Ac303a107D8F4B08b326B6ea66A4f961cd",
+    "symbol": "LG",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x59061b6f26BB4A9cE5828A19d35CFD5A4B80F056",
     "symbol": "LGD",
     "decimal": 8,
@@ -3434,6 +3446,12 @@
   {
     "address": "0x49bd2da75b1f7af1e4dfd6b1125fecde59dbec58",
     "symbol": "LKY",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x25B6325f5BB1c1E03cfbC3e53F470E1F1ca022E3",
+    "symbol": "LML",
     "decimal": 18,
     "type": "default"
   },
@@ -3913,7 +3931,13 @@
   },
   {
     "address": "0x5d48f293baed247a2d0189058ba37aa238bd4725",
-    "symbol": "NCC",
+    "symbol": "NCC (NeuroChain)",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x9344b383b1D59b5ce3468B234DAB43C7190ba735",
+    "symbol": "NCC (NeedsCoin)",
     "decimal": 18,
     "type": "default"
   },
