@@ -1,6 +1,11 @@
 ### New
 
 - Add NCC, LG, LML, and GNY tokens [#2158](https://github.com/kvhnuke/etherwallet/pull/2158)
+- PTON token [#2157](https://github.com/kvhnuke/etherwallet/pull/2157)
+- ABBC contract [#2156](https://github.com/kvhnuke/etherwallet/pull/2156)
+- ABBC custom gas [#2155](https://github.com/kvhnuke/etherwallet/pull/2155)
+- LML contract [#2152](https://github.com/kvhnuke/etherwallet/pull/2152)
+- GNY contract [#2151](https://github.com/kvhnuke/etherwallet/pull/2151)
 
 ### Release v3.26.0
 
