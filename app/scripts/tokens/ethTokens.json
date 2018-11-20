@@ -6538,5 +6538,11 @@
     "symbol": "ZXC",
     "decimal": 18,
     "type": "default"
+  },
+  {
+    "address": "0xabC1280A0187a2020cC675437aed400185F86Db6",
+    "symbol": "SAC",
+    "decimal": 18,
+    "type": "default"
   }
 ]
