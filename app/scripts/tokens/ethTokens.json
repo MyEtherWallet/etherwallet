@@ -78,6 +78,12 @@
     "type": "default"
   },
   {
+    "address": "0xcc7d26d8ea6281bb363c8448515f2c61f7bc19f0",
+    "symbol": "ABCH",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xb98d4c97425d9908e66e53a6fdf673acca0be986",
     "symbol": "ABT",
     "decimal": 18,
@@ -2364,6 +2370,12 @@
     "type": "default"
   },
   {
+    "address": "0xd9a8cfe21c232d485065cb62a96866799d4645f7",
+    "symbol": "FGP",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x52fb36c83ad33c1824912fc81071ca5eeb8ab390",
     "symbol": "FID",
     "decimal": 18,
@@ -2690,6 +2702,12 @@
   {
     "address": "0xb444208cb0516c150178fcf9a52604bc04a1acea",
     "symbol": "GRMD",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xC17195bde49D70CefCF8A9F2ee1759FFC27BF0B1",
+    "symbol": "GROO",
     "decimal": 18,
     "type": "default"
   },
@@ -3411,6 +3429,12 @@
     "address": "0x2eb86e8fc520e0f6bb5d9af08f924fe70558ab89",
     "symbol": "LGR",
     "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0xe6dfbf1faca95036b8e76e1fb28933d025b76cc0",
+    "symbol": "LIBER",
+    "decimal": 18,
     "type": "default"
   },
   {
