@@ -1722,6 +1722,12 @@
     "type": "default"
   },
   {
+    "address": "0x497bAEF294c11a5f0f5Bea3f2AdB3073DB448B56",
+    "symbol": "DEX",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A",
     "symbol": "DGD",
     "decimal": 9,
