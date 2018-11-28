@@ -6574,5 +6574,11 @@
     "symbol": "SAC",
     "decimal": 18,
     "type": "default"
+  },
+  {
+    "address": "0xf3C092cA8CD6D3d4ca004Dc1d0f1fe8CcAB53599",
+    "symbol": "ZIX",
+    "decimal": 18,
+    "type": "default"
   }
 ]
