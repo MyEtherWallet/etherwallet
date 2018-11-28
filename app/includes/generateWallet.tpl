@@ -68,7 +68,7 @@
         <li>
           <p>
             <strong>
-              Ledger / TREZOR / Digital Bitbox / Secalot
+              Ledger / TREZOR / BitBox / Secalot
             </strong>:
             <span translate="GEN_Help_1">
               Use your

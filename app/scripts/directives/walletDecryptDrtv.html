@@ -74,10 +74,10 @@
            ng-show="ajaxReq.type=='ETH'||ajaxReq.type=='ETC'||ajaxReq.type=='ROPSTEN ETH'||ajaxReq.type=='RINKEBY ETH'||ajaxReq.type=='KOVAN ETH'||ajaxReq.type=='EXP'">
       <input aria-flowto="aria5"
              type="radio"
-             aria-label="Digital Bitbox hardware wallet"
+             aria-label="BitBox hardware wallet"
              ng-model="walletType"
              value="digitalBitbox"/>
-      Digital Bitbox
+      BitBox
     </label>
 
     <!-- Secalot -->
@@ -413,7 +413,7 @@
     <!--  Digital Bitbox-->
     <div id="selectedTypeDigitalBitbox" ng-if="walletType=='digitalBitbox'">
       <h4>
-        Digital Bitbox Hardware Wallet
+        BitBox Hardware Wallet
       </h4>
       <h5>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 79.536 79.536"><path fill="#5dba5a" d="M39.769 0C17.8 0 0 17.8 0 39.768c0 21.965 17.8 39.768 39.769 39.768 21.965 0 39.768-17.803 39.768-39.768C79.536 17.8 61.733 0 39.769 0zm-5.627 58.513L15.397 39.768l7.498-7.498 11.247 11.247 22.497-22.493 7.498 7.498-29.995 29.991z"/></svg>
@@ -424,31 +424,31 @@
       </div>
       <ul>
         <li class="u__protip">
-          <a href="https://digitalbitbox.com/ethereum"
+          <a href="https://shiftcrypto.ch/ethereum"
              target="_blank"
              rel="noopener noreferrer">
-               How to use Digital Bitbox with MyEtherWallet
+               How to use BitBox with MyEtherWallet
           </a>
         </li>
         <li class="u__protip">
-          <a href="https://digitalbitbox.com/?ref=mew"
+          <a href="https://shiftcrypto.ch/?ref=mew"
              target="_blank"
              rel="noopener noreferrer">
-                Don't have a Digital Bitbox? Get one now.
+                Don't have a BitBox? Get one now.
           </a>
         </li>
       </ul>
       <input class="form-control"
-             aria-label="Enter the Digital Bitbox password"
+             aria-label="Enter the BitBox password"
              aria-describedby="selectedTypeDigitalBitbox"
              type="password"
-             placeholder="Digital Bitbox password"
+             placeholder="BitBox password"
              spellcheck="false"
              value=""
              ng-model="HDWallet.digitalBitboxSecret" />
       <div class="form-group">
         <a tabindex="0" role="button" class="btn btn-primary" ng-click="scanDigitalBitbox()" translate="ADD_DigitalBitbox_scan">
-          Connect your Digital Bitbox
+          Connect your BitBox
         </a>
       </div>
     </div>
@@ -873,7 +873,7 @@
                       value="{{HDWallet.defaultDPath}}"/>
                 <span ng-bind="HDWallet.defaultDPath"></span>
                 <p class="small">
-                  Jaxx, Metamask, Exodus, imToken, TREZOR (ETH) &amp; Digital Bitbox
+                  Jaxx, Metamask, Exodus, imToken, TREZOR (ETH) &amp; BitBox
                 </p>
               </label>
             </div>

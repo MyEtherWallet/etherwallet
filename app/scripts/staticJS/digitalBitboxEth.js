@@ -55,10 +55,10 @@ DigitalBitboxEth.aes_cbc_b64_encrypt = function(plaintext, key) {
 
 DigitalBitboxEth.parseError = function(errObject) {
     var errMsg = {
-        err101: 'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener noreferrer">Digital Bitbox desktop app</a> to set up a wallet.',// No password set
-        err250: 'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener noreferrer">Digital Bitbox desktop app</a> to set up a wallet.',// Wallet not seeded
-        err251: 'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener noreferrer">Digital Bitbox desktop app</a> to set up a wallet.',// Wallet not seeded
-        err109: 'The Digital Bitbox received unexpected data. Was the correct password used? ' + errObject.message,
+        err101: 'The BitBox is not initialized. First use the <a href="https://shiftcrypto.ch/start" target="_blank" rel="noopener noreferrer">Digital Bitbox desktop app</a> to set up a wallet.',// No password set
+        err250: 'The BitBox is not initialized. First use the <a href="https://shiftcrypto.ch/start" target="_blank" rel="noopener noreferrer">BitBox desktop app</a> to set up a wallet.',// Wallet not seeded
+        err251: 'The BitBox is not initialized. First use the <a href="https://shiftcrypto.ch/start" target="_blank" rel="noopener noreferrer">BitBox desktop app</a> to set up a wallet.',// Wallet not seeded
+        err109: 'The BitBox received unexpected data. Was the correct password used? ' + errObject.message,
     };
     var code = 'err' + errObject.code.toString();
     var msg = errMsg[code] || errObject.message;
