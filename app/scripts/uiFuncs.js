@@ -143,8 +143,8 @@ uiFuncs.signTxMewConnect = function (eTx, rawTx, txData, callback) {
   // uiFuncs.notifier.info("Tap a touch button on your device to confirm signing.");
 
   var app = new MewConnectEth()
-  var mewConnect = MewConnect.instance
-
+  // var mewConnect = MewConnect.instance
+  var mewConnect = globalFuncs.MEWconnectStatus.MEWconnect;
   app.setMewConnect(mewConnect)
   mewConnect.once('signTx', function(data) {
     uiFuncs.notifier.info("The transaction was signed but not sent. Click the blue 'Send Transaction' button to continue.")

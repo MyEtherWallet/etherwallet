@@ -394,6 +394,7 @@ globalFuncs.localStorage = {
 };
 
 globalFuncs.MEWconnectStatus = {
+  MEWconnect: null,
   decryptOpenTriggers: [],
   mewConnectListener: function() {},
   register: function(listener) {

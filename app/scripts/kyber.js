@@ -420,7 +420,7 @@ kyberFuncs.prototype.getTradeData = function (swapOrder, minRate) {
         var funcABI = _this.kyberNetworkABI.trade
         var srcTokenAddress = _this.getTokenAddress(swapOrder.fromCoin)
         var destTokenAddress = _this.getTokenAddress(swapOrder.toCoin)
-        let walletId = '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+        let walletId = '0x4247951c2eb6d0bA38d233fe7d542c8c80c9d46A'
         let minConversionRate = _this.convertToTokenWei(minRate, 'ETH') // Uses slippagePrice with fallback to MarketRate.  1 => Market Rate, but we could also set this as the quoted rate
         let srcAmount = _this.convertToTokenWei(swapOrder.fromVal, swapOrder.fromCoin) //etherUnits.toWei(swapOrder.fromVal, "ether");
         let maxDestAmount = 2 ** 200 //100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; // Really big number (like a googol)

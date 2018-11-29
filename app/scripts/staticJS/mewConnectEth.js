@@ -118,7 +118,7 @@ class MewConnectEth {
 
   static checkBrowser() {
     const browser = window.browser;
-    const version = browser.version.split(0, 1)[0]
+    const version = browser.version.split('.')[0];
     /*
     * Chrome > 23
     * Firefox > 22
@@ -134,7 +134,7 @@ class MewConnectEth {
         // if (+version >= 12) {
         //   return MewConnectEth.buildBrowserResult(false, '', '');
         // } else if (+version === 11) {
-          return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + browser.version);
+        return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + browser.version);
         // }
       } else if (browser.name === 'ie') {
         return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '', true);
@@ -163,8 +163,8 @@ class MewConnectEth {
           } else {
             return MewConnectEth.buildBrowserResult(false, '', '');
           }
-        } catch(e) {
-          console.error(e)
+        } catch (e) {
+          console.error(e);
         }
       }
     }
