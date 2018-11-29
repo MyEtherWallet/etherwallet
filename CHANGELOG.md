@@ -1,5 +1,8 @@
+### Release v3.27.0
+
 ### New
 
+- Fix send null and browser check issues [#2165](https://github.com/kvhnuke/etherwallet/pull/2165)
 - Add PIT, SKE tokens, add HUM contract [#2165](https://github.com/kvhnuke/etherwallet/pull/2165)
 - Add ZIX token [#2163](https://github.com/kvhnuke/etherwallet/pull/2163)
 - Add CRO contract [#2160](https://github.com/kvhnuke/etherwallet/pull/2160)
