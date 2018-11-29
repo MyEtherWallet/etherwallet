@@ -78,6 +78,12 @@
     "type": "default"
   },
   {
+    "address": "0xcc7d26d8ea6281bb363c8448515f2c61f7bc19f0",
+    "symbol": "ABCH",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xb98d4c97425d9908e66e53a6fdf673acca0be986",
     "symbol": "ABT",
     "decimal": 18,
@@ -1308,7 +1314,7 @@
     "type": "default"
   },
   {
-    "address": "0x5e8f855966d638135a968861e80dda722291b06d",
+    "address": "0xeb547ed1d8a3ff1461abaa7f0022fed4836e00a4",
     "symbol": "COIN",
     "decimal": 18,
     "type": "default"
@@ -1718,6 +1724,12 @@
   {
     "address": "0x20e94867794dba030ee287f1406e100d03c84cd3",
     "symbol": "DEW",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x497bAEF294c11a5f0f5Bea3f2AdB3073DB448B56",
+    "symbol": "DEX",
     "decimal": 18,
     "type": "default"
   },
@@ -2358,6 +2370,12 @@
     "type": "default"
   },
   {
+    "address": "0xd9a8cfe21c232d485065cb62a96866799d4645f7",
+    "symbol": "FGP",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x52fb36c83ad33c1824912fc81071ca5eeb8ab390",
     "symbol": "FID",
     "decimal": 18,
@@ -2658,6 +2676,12 @@
     "type": "default"
   },
   {
+    "address": "0x247551F2EB3362E222c742E9c788B8957D9BC87e",
+    "symbol": "GNY",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xeAb43193CF0623073Ca89DB9B712796356FA7414",
     "symbol": "GOLDX",
     "decimal": 18,
@@ -2678,6 +2702,12 @@
   {
     "address": "0xb444208cb0516c150178fcf9a52604bc04a1acea",
     "symbol": "GRMD",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xC17195bde49D70CefCF8A9F2ee1759FFC27BF0B1",
+    "symbol": "GROO",
     "decimal": 18,
     "type": "default"
   },
@@ -3378,6 +3408,12 @@
     "type": "default"
   },
   {
+    "address": "0xc520F3Ac303a107D8F4B08b326B6ea66A4f961cd",
+    "symbol": "LG",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x59061b6f26BB4A9cE5828A19d35CFD5A4B80F056",
     "symbol": "LGD",
     "decimal": 8,
@@ -3393,6 +3429,12 @@
     "address": "0x2eb86e8fc520e0f6bb5d9af08f924fe70558ab89",
     "symbol": "LGR",
     "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0xe6dfbf1faca95036b8e76e1fb28933d025b76cc0",
+    "symbol": "LIBER",
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -3434,6 +3476,12 @@
   {
     "address": "0x49bd2da75b1f7af1e4dfd6b1125fecde59dbec58",
     "symbol": "LKY",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x25B6325f5BB1c1E03cfbC3e53F470E1F1ca022E3",
+    "symbol": "LML",
     "decimal": 18,
     "type": "default"
   },
@@ -3913,7 +3961,13 @@
   },
   {
     "address": "0x5d48f293baed247a2d0189058ba37aa238bd4725",
-    "symbol": "NCC",
+    "symbol": "NCC (NeuroChain)",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x9344b383b1D59b5ce3468B234DAB43C7190ba735",
+    "symbol": "NCC (NeedsCoin)",
     "decimal": 18,
     "type": "default"
   },
@@ -4386,6 +4440,12 @@
     "type": "default"
   },
   {
+    "address": "0x0ff161071e627a0e6de138105c73970f86ca7922",
+    "symbol": "PIT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x8eFFd494eB698cc399AF6231fCcd39E08fd20B15",
     "symbol": "PIX",
     "decimal": 0,
@@ -4586,6 +4646,12 @@
   {
     "address": "0x2a8E98e256f32259b5E5Cb55Dd63C8e891950666",
     "symbol": "PTC",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x4946583c5b86e01ccd30c71a05617d06e3e73060",
+    "symbol": "PTON",
     "decimal": 18,
     "type": "default"
   },
@@ -5132,6 +5198,12 @@
   {
     "address": "0x4af328c52921706dcb739f25786210499169afe6",
     "symbol": "SKB",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0x13DB74B3cf512F65C4b91683940B4f3955E05085",
+    "symbol": "SKE",
     "decimal": 8,
     "type": "default"
   },
@@ -6506,6 +6578,18 @@
   {
     "address": "0x83e2be8d114f9661221384b3a50d24b96a5653f5",
     "symbol": "ZXC",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xabC1280A0187a2020cC675437aed400185F86Db6",
+    "symbol": "SAC",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xf3C092cA8CD6D3d4ca004Dc1d0f1fe8CcAB53599",
+    "symbol": "ZIX",
     "decimal": 18,
     "type": "default"
   }

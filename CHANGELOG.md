@@ -1,3 +1,26 @@
+### New
+
+- Add PIT, SKE tokens, add HUM contract [#2165](https://github.com/kvhnuke/etherwallet/pull/2165)
+- Add ZIX token [#2163](https://github.com/kvhnuke/etherwallet/pull/2163)
+- Add CRO contract [#2160](https://github.com/kvhnuke/etherwallet/pull/2160)
+- ADD DEX token [#2161](https://github.com/kvhnuke/etherwallet/pull/2161)
+- ADD SAC token [#2159](https://github.com/kvhnuke/etherwallet/pull/2159)
+- Add ABBC, GROO, FGP, and LIBER tokens [#2162](https://github.com/kvhnuke/etherwallet/pull/2162)
+- Add NCC, LG, LML, and GNY tokens [#2158](https://github.com/kvhnuke/etherwallet/pull/2158)
+- PTON token [#2157](https://github.com/kvhnuke/etherwallet/pull/2157)
+- ABBC contract [#2156](https://github.com/kvhnuke/etherwallet/pull/2156)
+- ABBC custom gas [#2155](https://github.com/kvhnuke/etherwallet/pull/2155)
+- LML contract [#2152](https://github.com/kvhnuke/etherwallet/pull/2152)
+- GNY contract [#2151](https://github.com/kvhnuke/etherwallet/pull/2151)
+
+### Release v3.26.0
+
+### New
+
+- Update changelog, update darklist, update coinvest token, update u2f package [#2149](https://github.com/kvhnuke/etherwallet/pull/2149)
+- Add Trezor Hardware Wallet Support for MIX Blockchain (MIX) [#2146](https://github.com/kvhnuke/etherwallet/pull/2146)
+- Add Callisto Cold Staking Contract ABI & Update Explorer [#2144](https://github.com/kvhnuke/etherwallet/pull/2144)
+
 ### Release v3.25.0
 
 ### New
@@ -281,7 +304,7 @@
 - Add CLB token [#1912](https://github.com/kvhnuke/etherwallet/pull/1912)
 - Update EOS classic style [#1911](https://github.com/kvhnuke/etherwallet/pull/1911)
 - Add EOS classic node [#1903](https://github.com/kvhnuke/etherwallet/pull/1903)
-- Add $FFC token [#1910](https://github.com/kvhnuke/etherwallet/pull/1910)
+- Add \$FFC token [#1910](https://github.com/kvhnuke/etherwallet/pull/1910)
 - Add OAK and RAO tokens [#1909](https://github.com/kvhnuke/etherwallet/pull/1909)
 - BBK abi [#1901](https://github.com/kvhnuke/etherwallet/pull/1901)
 - OAK custom Gas [#1907](https://github.com/kvhnuke/etherwallet/pull/1907)
