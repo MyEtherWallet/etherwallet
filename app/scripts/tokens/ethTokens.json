@@ -4440,6 +4440,12 @@
     "type": "default"
   },
   {
+    "address": "0x0ff161071e627a0e6de138105c73970f86ca7922",
+    "symbol": "PIT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x8eFFd494eB698cc399AF6231fCcd39E08fd20B15",
     "symbol": "PIX",
     "decimal": 0,
@@ -5192,6 +5198,12 @@
   {
     "address": "0x4af328c52921706dcb739f25786210499169afe6",
     "symbol": "SKB",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0x13DB74B3cf512F65C4b91683940B4f3955E05085",
+    "symbol": "SKE",
     "decimal": 8,
     "type": "default"
   },
