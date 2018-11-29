@@ -1,5 +1,10 @@
 ### New
 
+- Add PIT, SKE tokens, add HUM contract []()
+- Add ZIX token [#2163](https://github.com/kvhnuke/etherwallet/pull/2163)
+- Add CRO contract [#2160](https://github.com/kvhnuke/etherwallet/pull/2160)
+- ADD DEX token [#2161](https://github.com/kvhnuke/etherwallet/pull/2161)
+- ADD SAC token [#2159](https://github.com/kvhnuke/etherwallet/pull/2159)
 - Add NCC, LG, LML, and GNY tokens [#2158](https://github.com/kvhnuke/etherwallet/pull/2158)
 - PTON token [#2157](https://github.com/kvhnuke/etherwallet/pull/2157)
 - ABBC contract [#2156](https://github.com/kvhnuke/etherwallet/pull/2156)
