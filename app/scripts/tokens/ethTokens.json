@@ -5658,6 +5658,12 @@
     "type": "default"
   },
   {
+    "address": "0xEc32A9725C59855d841ba7d8D9c99c84ff754688",
+    "symbol": "TEL (Meditel)",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x85e076361cc813a908ff672f9bad1541474402b2",
     "symbol": "TEL",
     "decimal": 2,
