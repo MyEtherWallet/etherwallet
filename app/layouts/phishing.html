@@ -6,19 +6,25 @@
 </section>
 <script>
 (function() {
+  const regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 	const url = globalFuncs.stripTags(window.location.search.replace("?phishing-address=", ""));
-	const body = document.getElementById("phishingMsg");
-	const fragment = document.createDocumentFragment();
-	const newP1 = document.createElement("p");
-	const newP2 = document.createElement("p");
-	newP1.innerHTML = `</br></br></br></br></br>
-    The url ${url} has been flagged as a supicious site by the community.
-  `;
+  console.log(url, url.match(regex) !== null);
+  const body = document.getElementById("phishingMsg");
+  const fragment = document.createDocumentFragment();
+  const newP1 = document.createElement("p");
+  const newP2 = document.createElement("p");
+  url.match(regex) !== null ? 
+    newP1.innerHTML = `</br></br></br></br></br>
+      The url ${url} has been flagged as a supicious site by the community.
+    ` :
+    newP1.innerHTML =  `</br></br></br></br></br>
+      Unparsable url found.
+    `;
   newP2.textContent =`
   Please refrain from going to this site for the mean time.`
   fragment.appendChild(newP1);
   fragment.appendChild(newP2);
-	body.appendChild(fragment);
+  body.appendChild(fragment);
 })();
 </script>
 @@include( '../includes/footer.tpl', { "site": "mew" } )
