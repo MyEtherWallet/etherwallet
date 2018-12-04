@@ -93,6 +93,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         case nodes.nodeTypes.ATH:
           $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
           break;
+        case nodes.nodeTypes.ELLA:
+          $scope.HDWallet.dPath = $scope.HDWallet.hwEllaismPath;
+          break;
         case nodes.nodeTypes.EGEM:
           $scope.HDWallet.dPath = $scope.HDWallet.hwEtherGemPath;
           break;
@@ -240,6 +243,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
           break;
         case nodes.nodeTypes.EGEM:
           $scope.HDWallet.dPath = $scope.HDWallet.hwEtherGemPath;
+          break;
+        case nodes.nodeTypes.ELLA:
+          $scope.HDWallet.dPath = $scope.HDWallet.hwEllaismPath;
           break;
         case nodes.nodeTypes.ATH:
           $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
