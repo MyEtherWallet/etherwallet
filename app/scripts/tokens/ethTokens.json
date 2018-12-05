@@ -1068,6 +1068,12 @@
     "type": "default"
   },
   {
+    "address": "0x95efd1fe6099f65a7ed524def487483221094947",
+    "symbol": "CBM",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x076C97e1c869072eE22f8c91978C99B4bcB02591",
     "symbol": "CBT",
     "decimal": 18,
