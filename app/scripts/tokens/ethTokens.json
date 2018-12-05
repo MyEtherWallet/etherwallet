@@ -2815,7 +2815,7 @@
   },
   {
     "address": "0xC011A72400E58ecD99Ee497CF89E3775d4bd732F",
-    "symbol": "HAV",
+    "symbol": "SNX",
     "decimal": 18,
     "type": "default"
   },
@@ -4117,7 +4117,7 @@
   },
   {
     "address": "0x57Ab1E02fEE23774580C119740129eAC7081e9D3",
-    "symbol": "nUSD",
+    "symbol": "sUSD",
     "decimal": 18,
     "type": "default"
   },
@@ -5768,6 +5768,12 @@
   {
     "address": "0xdae1baf249964bc4b6ac98c3122f0e3e785fd279",
     "symbol": "TKA",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x0675daa94725a528b05a3a88635c03ea964bfa7e",
+    "symbol": "TKLN",
     "decimal": 18,
     "type": "default"
   },

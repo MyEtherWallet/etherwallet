@@ -1,6 +1,6 @@
 ### New
 
-- Fix url parsing in phishing redirect, Add Meditel(TEL) token [#2173](https://github.com/kvhnuke/etherwallet/pull/2173)
+- Fix url parsing in phishing redirect, Add Meditel(TEL) token, Update HAV and nUSD tokens, Add TKLN, Update Havven Mintr contract, add Paypite contract [#2173](https://github.com/kvhnuke/etherwallet/pull/2173)
 
 ### Release v3.27.0
 
