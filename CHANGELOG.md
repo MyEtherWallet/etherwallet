@@ -1,8 +1,14 @@
+### New
+- Bitbox integration [#2172](https://github.com/kvhnuke/etherwallet/pull/2172)
+- Add CBM token [#2150](https://github.com/kvhnuke/etherwallet/pull/2150)
+- Enable Ledger Hardware wallet support for Ellaism [#2175](https://github.com/kvhnuke/etherwallet/pull/2175)
+- Fix url parsing in phishing redirect, Add Meditel(TEL) token, Update HAV and nUSD tokens, Add TKLN, Update Havven Mintr contract, add Paypite contract [#2173](https://github.com/kvhnuke/etherwallet/pull/2173)
+
 ### Release v3.27.0
 
 ### New
 
-- Fix send null and browser check issues [#2165](https://github.com/kvhnuke/etherwallet/pull/2165)
+- Fix send null and browser check issues [#2148](https://github.com/kvhnuke/etherwallet/pull/2148)
 - Add PIT, SKE tokens, add HUM contract [#2165](https://github.com/kvhnuke/etherwallet/pull/2165)
 - Add ZIX token [#2163](https://github.com/kvhnuke/etherwallet/pull/2163)
 - Add CRO contract [#2160](https://github.com/kvhnuke/etherwallet/pull/2160)
