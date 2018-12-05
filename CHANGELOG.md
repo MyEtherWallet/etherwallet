@@ -1,4 +1,5 @@
 ### New
+- Bitbox integration [#2172](https://github.com/kvhnuke/etherwallet/pull/2172)
 - Add CBM token [#2150](https://github.com/kvhnuke/etherwallet/pull/2150)
 - Enable Ledger Hardware wallet support for Ellaism [#2175](https://github.com/kvhnuke/etherwallet/pull/2175)
 - Fix url parsing in phishing redirect, Add Meditel(TEL) token, Update HAV and nUSD tokens, Add TKLN, Update Havven Mintr contract, add Paypite contract [#2173](https://github.com/kvhnuke/etherwallet/pull/2173)
