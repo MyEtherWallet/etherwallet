@@ -101,7 +101,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
           localCallback
         );
 
-        // Sign via Digital Bitbox
+        // Sign via BitBox
       } else if (typeof hwType != "undefined" && hwType == "digitalBitbox") {
         var msg = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage));
         var localCallback = function(signed, error) {

@@ -14,7 +14,7 @@ Check gh-pages files against live website at https://www.myetherwallet.com
 | File Name| Status|
 |---|---|
 | index.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/index.html&remoteFile=https://www.myetherwallet.com/index.html)|
-| embedded.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/embedded.html&remoteFile=https://www.myetherwallet.com/embedded.html)|  
+| embedded.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/embedded.html&remoteFile=https://www.myetherwallet.com/embedded.html)|
 | helpers.html |![embedded.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/helpers.html&remoteFile=https://www.myetherwallet.com/helpers.html)|
 | signmsg.html |![signmsg.html](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/signmsg.html&remoteFile=https://www.myetherwallet.com/signmsg.html)|
 | bin/startMEW.js |![startMEW.js](https://filechecker.myetherwallet.com/check?localFile=https://raw.githubusercontent.com/kvhnuke/etherwallet/gh-pages/bin/startMEW.js&remoteFile=https://www.myetherwallet.com/bin/startMEW.js)|
@@ -64,10 +64,10 @@ Check gh-pages files against live website at https://www.myetherwallet.com
 #### Features
 
 - Create new wallets completely client side.
-- Access your wallet via unencrypted private key, encrypted private key, keystore files, mnemonics, or Digital Bitbox, Ledger Nano S or TREZOR hardware wallet.
+- Access your wallet via unencrypted private key, encrypted private key, keystore files, mnemonics, or BitBox, Ledger Nano S or TREZOR hardware wallet.
 - Easily send ETH and *any* ERC-20 Standard Token. [Many tokens included as default.](https://myetherwallet.groovehq.com/knowledge_base/topics/can-i-send-my-steem-slash-btc-slash-ltc-slash-nem-slash-to-myetherwallet)
 - Generate, sign & send transactions offline, ensuring your private keys never touch an internet-connected device.
-- Securely access your ETH & Tokens on your [Digital Bitbox, Ledger or TREZOR Hardware Wallet](https://myetherwallet.groovehq.com/knowledge_base/topics/hardware-wallet-recommends) via the MyEtherWallet interface (Chrome & Opera natively, Firefox w/ [add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/))
+- Securely access your ETH & Tokens on your [BitBox, Ledger or TREZOR Hardware Wallet](https://myetherwallet.groovehq.com/knowledge_base/topics/hardware-wallet-recommends) via the MyEtherWallet interface (Chrome & Opera natively, Firefox w/ [add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/))
 - Now in 18 languages thanks 100% to the amazing Ethereum community.
 - Supports URI Strings on Send Transaction Page.
     - to=[address]
