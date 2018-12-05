@@ -1,5 +1,5 @@
 ### New
-- Fix invalid 'to' field on contract deploy transactions []()
+- Fix invalid 'to' field on contract deploy transactions [#2177](https://github.com/kvhnuke/etherwallet/pull/2177)
 - Bitbox integration [#2172](https://github.com/kvhnuke/etherwallet/pull/2172)
 - Add CBM token [#2150](https://github.com/kvhnuke/etherwallet/pull/2150)
 - Enable Ledger Hardware wallet support for Ellaism [#2175](https://github.com/kvhnuke/etherwallet/pull/2175)
