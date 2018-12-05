@@ -19,7 +19,7 @@ ethFuncs.validateHexString = function(str) {
 }
 ethFuncs.sanitizeHex = function(hex) {
     hex = hex.substring(0, 2) == '0x' ? hex.substring(2) : hex;
-    if (hex == "") return "";
+    if (hex == "") return undefined;
     return '0x' + this.padLeftEven(hex);
 }
 ethFuncs.trimHexZero = function(hex) {
