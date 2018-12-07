@@ -1,3 +1,5 @@
+### Release v3.28.0
+
 ### New
 - Bitbox integration [#2172](https://github.com/kvhnuke/etherwallet/pull/2172)
 - Add CBM token [#2150](https://github.com/kvhnuke/etherwallet/pull/2150)
