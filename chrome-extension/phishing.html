@@ -100,13 +100,13 @@
     
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.27.0</p>
+        <p class="small visible-xs">3.28.0</p>
       </a>
     
     
     <div class="tagline">
 
-    <span class="hidden-xs">3.27.0</span>
+    <span class="hidden-xs">3.28.0</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -353,19 +353,25 @@
 </section>
 <script>
 (function() {
+  const regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 	const url = globalFuncs.stripTags(window.location.search.replace("?phishing-address=", ""));
-	const body = document.getElementById("phishingMsg");
-	const fragment = document.createDocumentFragment();
-	const newP1 = document.createElement("p");
-	const newP2 = document.createElement("p");
-	newP1.innerHTML = `</br></br></br></br></br>
-    The url ${url} has been flagged as a supicious site by the community.
-  `;
+  console.log(url, url.match(regex) !== null);
+  const body = document.getElementById("phishingMsg");
+  const fragment = document.createDocumentFragment();
+  const newP1 = document.createElement("p");
+  const newP2 = document.createElement("p");
+  url.match(regex) !== null ? 
+    newP1.innerHTML = `</br></br></br></br></br>
+      The url ${url} has been flagged as a supicious site by the community.
+    ` :
+    newP1.innerHTML =  `</br></br></br></br></br>
+      Unparsable url found.
+    `;
   newP2.textContent =`
   Please refrain from going to this site for the mean time.`
   fragment.appendChild(newP1);
   fragment.appendChild(newP2);
-	body.appendChild(fragment);
+  body.appendChild(fragment);
 })();
 </script>
 <section class="pre-footer">
@@ -431,7 +437,7 @@
         <div class="footer__pill-wrap footer__pill-custom-wrap">
           <a class="footer__pill" href="https://www.ledger.com/products/ledger-nano-s?r=fa4b" target="_blank" rel="noopener">Ledger Wallet</a>
           <a class="footer__pill" href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">TREZOR</a>
-          <a class="footer__pill" href="http://shiftcrypto.ositracker.com/91316/7114" target="_blank" rel="noopener">Digital Bitbox</a>
+          <a class="footer__pill" href="http://shiftcrypto.ositracker.com/91316/7114" target="_blank" rel="noopener">BitBox</a>
           <a class="footer__pill" href="https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site" target="_blank" rel="noopener">ether.card</a>
           <a class="footer__pill" href="https://thehodlwallet.com?aff=15" target="_blank" rel="noopener">HODL Wallet</a>
           <a class="footer__pill" href="http://billfodl.com?afmc=2j&utm_campaign=2j&utm_source=leaddyno&utm_medium=affiliate" target="_blank" rel="noopener">Billfodl</a>
