@@ -267,16 +267,16 @@ nodes.nodeList = {
 	},
 	tomo: {
 		name: "TOMO",
-		blockExplorerTX: "https://scan.testnet.tomochain.com/txs/[[txHash]]",
-		blockExplorerAddr: "https://scan.testnet.tomochain.com/address/[[address]]",
+		blockExplorerTX: "https://scan.tomochain.com/txs/[[txHash]]",
+		blockExplorerAddr: "https://scan.tomochain.com/address/[[address]]",
 		type: nodes.nodeTypes.TOMO,
 		eip155: true,
-		chainId: 89,
+		chainId: 88,
 		tokenList: require("./tokens/tomoTokens.json"),
 		abiList: require("./abiDefinitions/tomoAbi.json"),
 		estimateGas: true,
-		service: "testnet.tomochain.com",
-		lib: new nodes.customNode("https://testnet.tomochain.com", "")
+		service: "tomochain.com",
+		lib: new nodes.customNode("https://rpc.tomochain.com", "")
 	},
 	ella: {
 		name: "ELLA",
