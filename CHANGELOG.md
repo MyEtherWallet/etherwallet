@@ -1,3 +1,7 @@
+### New
+
+- Add USDS, WOC, REMI, and SKYM tokens []()
+
 ### Release v3.28.0
 
 ### New
