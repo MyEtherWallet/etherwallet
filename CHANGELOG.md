@@ -1,3 +1,11 @@
+### New
+
+- Add USDS, WOC, REMI, and SKYM tokens [#2184](https://github.com/kvhnuke/etherwallet/pull/2184)
+- MEW supports TomoChain Mainnet [#2170](https://github.com/kvhnuke/etherwallet/pull/2170)
+- Added WallOfChain contract ABI  [#2178](https://github.com/kvhnuke/etherwallet/pull/2178)
+- Added WallOfChain contract ABI  [#2178](https://github.com/kvhnuke/etherwallet/pull/2178)
+- Add FIH contract abi [#2183](https://github.com/kvhnuke/etherwallet/pull/2183)
+
 ### Release v3.28.0
 
 ### New
