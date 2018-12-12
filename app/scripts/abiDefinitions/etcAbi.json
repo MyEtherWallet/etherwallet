@@ -16,7 +16,7 @@
   },
   {
     "name": "P3C Farm Contract",
-    "address": "0x93123ba3781bc066e076d249479eef760970aa32",
+    "address": "0x93123bA3781bc066e076D249479eEF760970aa32",
     "abi": '[{"constant":false,"inputs":[{"name":"_playerAddress","type":"address"},{"name":"_selfBuy","type":"bool"}],"name":"createCrop","outputs":[{"name":"","type":"address"}],"payable":true,"stateMutability":"payable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":false,"name":"crop","type":"address"}],"name":"CropCreated","type":"event"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"crops","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"myCrop","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"myCropDisabled","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"myCropDividends","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"myCropTokens","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"p3cAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"}]'
   },
   {
