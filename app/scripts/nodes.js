@@ -28,6 +28,7 @@ nodes.nodeTypes = {
 	ILT: "ILT",
   WEB: "WEB",
 	MIX: "MIX",
+	REOSC: "REOSC",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -484,6 +485,19 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "mix-blockchain.org",
 		lib: new nodes.customNode("https://rpc2.mix-blockchain.org", "8647")
+	},
+	reosc: {
+		name: "REOSC",
+		blockExplorerTX: "https://explorer.reosc.io/tx/[[txHash]]",
+		blockExplorerAddr: "https://explorer.reosc.io/addr/[[address]]",
+		type: nodes.nodeTypes.REOSC,
+		eip155: true,
+		chainId: 2894,
+		tokenList: require("./tokens/reoscTokens.json"),
+		abiList: require("./abiDefinitions/reoscAbi.json"),
+		estimateGas: true,
+		service: "REOSC Ecosystem",
+		lib: new nodes.customNode("https://remote.reosc.io", "3000")
 	}
 };
 
