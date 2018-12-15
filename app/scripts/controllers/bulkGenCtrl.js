@@ -18,7 +18,7 @@ var bulkGenCtrl = function($scope) {
                 $scope.wallets.push(tWallet);
             }
             $scope.showWallets = true;
-            $scope.bJSON = globalFuncs.getBlob("text/json;charset=UTF-8",JSON.stringify($scope.jsonWallets));
+            $scope.bJSON = globalFuncs.getBlob("application/json;charset=UTF-8",JSON.stringify($scope.jsonWallets));
             $scope.bTXT =  globalFuncs.getBlob("text/plain;charset=UTF-8",txt);
             $scope.bCSV = globalFuncs.getBlob("text/csv;charset=UTF-8",csv);
         }

@@ -28,8 +28,8 @@ var walletGenCtrl = function($scope) {
             $scope.isDone = false;
             $scope.wallet = Wallet.generate(false);
             $scope.showWallet = true;
-            $scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
-            $scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3($scope.password, {
+            $scope.blob = globalFuncs.getBlob("application/json;charset=UTF-8", $scope.wallet.toJSON());
+            $scope.blobEnc = globalFuncs.getBlob("application/json;charset=UTF-8", $scope.wallet.toV3($scope.password, {
                 kdf: globalFuncs.kdf,
                 n: globalFuncs.scrypt.n
             }));
