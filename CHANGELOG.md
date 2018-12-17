@@ -1,3 +1,6 @@
+### New
+- Add PASS, BIT, and FIH token []()
+
 ### Release v3.28.0
 
 ### New
