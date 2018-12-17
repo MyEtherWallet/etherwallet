@@ -4872,6 +4872,12 @@
     "type": "default"
   },
   {
+    "address": "0x13cb85823f78cff38f0b0e90d3e975b8cb3aad64",
+    "symbol": "REMI",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x408e41876cCCDC0F92210600ef50372656052a38",
     "symbol": "REN",
     "decimal": 18,
@@ -5270,6 +5276,12 @@
   {
     "address": "0x324a48ebcbb46e61993931ef9d35f6697cd2901b",
     "symbol": "SKRP (Phase 1-E)",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x7297862B9670fF015192799cc849726c88bf1d77",
+    "symbol": "SKYM",
     "decimal": 18,
     "type": "default"
   },
@@ -6012,6 +6024,12 @@
     "type": "default"
   },
   {
+    "address": "0xA4Bdb11dc0a2bEC88d24A3aa1E6Bb17201112eBe",
+    "symbol": "USDS",
+    "decimal": 6,
+    "type": "default"
+  },
+  {
     "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
     "symbol": "USDT",
     "decimal": 6,
@@ -6279,6 +6297,12 @@
     "address": "0xd73A66B8FB26Be8B0AcD7c52Bd325054Ac7d468b",
     "symbol": "WNK",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xf9d9702d031407f425a4412682fdc56b07d05262",
+    "symbol": "WOC",
+    "decimal": 0,
     "type": "default"
   },
   {
