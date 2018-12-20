@@ -228,7 +228,7 @@ Wallet.prototype.toV3 = function(password, opts) {
             random: opts.uuid || ethUtil.crypto.randomBytes(16)
         }),
         address: this.getAddress().toString('hex'),
-        crypto: {
+        Crypto: {
             ciphertext: ciphertext.toString('hex'),
             cipherparams: {
                 iv: iv.toString('hex')
@@ -351,7 +351,7 @@ Wallet.prototype.toV3String = function(password, opts) {
 }
 Wallet.prototype.getV3Filename = function(timestamp) {
     var ts = timestamp ? new Date(timestamp) : new Date()
-    return ['UTC--', ts.toJSON().replace(/:/g, '-'), '--', this.getAddress().toString('hex'), '.json'].join('')
+    return ['UTC--', ts.toJSON().replace(/:/g, '-'), '--', this.getAddress().toString('hex')].join('')
 }
 Wallet.decipherBuffer = function(decipher, data) {
     return Buffer.concat([decipher.update(data), decipher.final()])
