@@ -263,8 +263,8 @@ nodes.nodeList = {
 		tokenList: require("./tokens/poaTokens.json"),
 		abiList: require("./abiDefinitions/poaAbi.json"),
 		estimateGas: true,
-		service: "poa.infura.io",
-		lib: new nodes.infuraNode("https://poa.infura.io")
+		service: "core.poa.network",
+		lib: new nodes.infuraNode("https://core.poa.network")
 	},
 	tomo: {
 		name: "TOMO",
