@@ -1,5 +1,10 @@
 ### New
-
+- Added PhishFort Protect #2189 [#2189](https://github.com/kvhnuke/etherwallet/pull/2189)
+- misc fixes [#2187](https://github.com/kvhnuke/etherwallet/pull/2187)
+- (Fix) Replace RPC provider endpoint for POA Network [#2191](https://github.com/kvhnuke/etherwallet/pull/2191)
+- Add PASS, BIT, and FIH token [#2188](https://github.com/kvhnuke/etherwallet/pull/2188)
+- Add hardware wallet support for REOSC Ecosystem [#2186](https://github.com/kvhnuke/etherwallet/pull/2186)
+- Add P3C Farm change [#2185](https://github.com/kvhnuke/etherwallet/pull/2185)
 - Add USDS, WOC, REMI, and SKYM tokens [#2184](https://github.com/kvhnuke/etherwallet/pull/2184)
 - MEW supports TomoChain Mainnet [#2170](https://github.com/kvhnuke/etherwallet/pull/2170)
 - Added WallOfChain contract ABI  [#2178](https://github.com/kvhnuke/etherwallet/pull/2178)

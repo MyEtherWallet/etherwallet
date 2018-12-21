@@ -624,6 +624,12 @@
     "type": "default"
   },
   {
+    "address": "0x089b85fa15f72c1088cbbef23a49db80b91dd521",
+    "symbol": "BIT",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x08b4c866aE9D1bE56a06e0C302054B4FFe067b43",
     "symbol": "BITCAR",
     "decimal": 8,
@@ -2384,6 +2390,12 @@
   {
     "address": "0x52fb36c83ad33c1824912fc81071ca5eeb8ab390",
     "symbol": "FID",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xdfc3e857c8ccea7657e0ed98ab92e048e38dee0f",
+    "symbol": "FIH",
     "decimal": 18,
     "type": "default"
   },
@@ -4329,6 +4341,12 @@
     "address": "0x77761e63c05aee6648fdaeaa9b94248351af9bcd",
     "symbol": "PASS",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xeE4458e052B533b1aABD493B5f8c4d85D7B263Dc",
+    "symbol": "PASS (Blockpass)",
+    "decimal": 6,
     "type": "default"
   },
   {
