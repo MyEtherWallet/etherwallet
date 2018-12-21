@@ -5850,6 +5850,12 @@
     "type": "default"
   },
   {
+    "address": "0x9a49f02e128a8e989b443a8f94843c0918bf45e7",
+    "symbol": "TOK",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x8b353021189375591723e7384262f45709a3c3dc",
     "symbol": "TOMO",
     "decimal": 18,
