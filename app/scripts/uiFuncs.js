@@ -156,7 +156,7 @@ console.log(rawTx); // todo remove dev item
       tokenDetails.address = tokenInfo.address || tokenInfo.contractAddress
     }
   } else if(rawTx.data.length > 2){
-      tokenDetails = 'otherTx';
+      tokenDetails = 'otherType';
   }
   var app = new MewConnectEth()
   // var mewConnect = MewConnect.instance
