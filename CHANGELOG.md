@@ -1,5 +1,5 @@
 ### New
-- Add NDX and FMF tokens []()
+- Add NDX and FMF tokens [#2199](https://github.com/kvhnuke/etherwallet/pull/2199)
 
 ### Release v3.29.0
 
