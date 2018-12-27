@@ -2448,6 +2448,12 @@
     "type": "default"
   },
   {
+    "address": "0xb4d0fdfc8497aef97d3c2892ae682ee06064a2bc",
+    "symbol": "FMF",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x4df47b4969b2911c966506e3592c41389493953b",
     "symbol": "FND",
     "decimal": 18,
@@ -3998,6 +4004,12 @@
   {
     "address": "0xa54ddc7b3cce7fc8b1e3fa0256d0db80d2c10970",
     "symbol": "NDC",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x1966d718A565566e8E202792658D7b5Ff4ECe469",
+    "symbol": "NDX",
     "decimal": 18,
     "type": "default"
   },
@@ -5847,6 +5859,12 @@
     "address": "0x08f5a9235b08173b7569f83645d2c7fb55e8ccd8",
     "symbol": "TNT",
     "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0x9a49f02e128a8e989b443a8f94843c0918bf45e7",
+    "symbol": "TOK",
+    "decimal": 18,
     "type": "default"
   },
   {

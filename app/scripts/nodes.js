@@ -26,7 +26,7 @@ nodes.nodeTypes = {
 	ETHO: "ETHO",
 	ATH: "ATH",
 	ILT: "ILT",
-  WEB: "WEB",
+	WEB: "WEB",
 	MIX: "MIX",
 	REOSC: "REOSC",
 	Custom: "CUSTOM ETH"
@@ -105,21 +105,9 @@ nodes.nodeList = {
 		tokenList: require("./tokens/etcTokens.json"),
 		abiList: require("./abiDefinitions/etcAbi.json"),
 		service: "Ethereum Commonwealth Geth",
- 		lib: new nodes.customNode("https://etc-geth.0xinfra.com/", "")
+		lib: new nodes.customNode("https://etc-geth.0xinfra.com/", "")
 	},
 	etc_ethereumcommonwealth_parity: {
- 		name: "ETC",
- 		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",
- 		blockExplorerAddr: "https://gastracker.io/addr/[[address]]",
- 		type: nodes.nodeTypes.ETC,
- 		eip155: true,
- 		chainId: 61,
- 		tokenList: require("./tokens/etcTokens.json"),
- 		abiList: require("./abiDefinitions/etcAbi.json"),
- 		service: "Ethereum Commonwealth Parity",
- 		lib: new nodes.customNode("https://etc-parity.0xinfra.com/", "")
-	},
-	etc_etccoop: {
 		name: "ETC",
 		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",
 		blockExplorerAddr: "https://gastracker.io/addr/[[address]]",
@@ -128,8 +116,8 @@ nodes.nodeList = {
 		chainId: 61,
 		tokenList: require("./tokens/etcTokens.json"),
 		abiList: require("./abiDefinitions/etcAbi.json"),
-		service: "ETC Cooperative",
-		lib: new nodes.customNode("https://ethereumclassic.network", "")
+		service: "Ethereum Commonwealth Parity",
+		lib: new nodes.customNode("https://etc-parity.0xinfra.com/", "")
 	},
 	etc_gastracker: {
 		name: "ETC",
@@ -472,7 +460,7 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "node1.webchain.network",
 		lib: new nodes.customNode("https://node1.webchain.network", "")
-  },
+	},
 	mix: {
 		name: "MIX",
 		blockExplorerTX: "https://blocks.mix-blockchain.org/transaction/[[txHash]]",

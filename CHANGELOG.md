@@ -1,4 +1,12 @@
 ### New
+- Add NDX and FMF tokens [#2199](https://github.com/kvhnuke/etherwallet/pull/2199)
+
+### Release v3.29.0
+
+### New
+- Adds TokToken and update Trezor affiliate link [#2197](https://github.com/kvhnuke/etherwallet/pull/2197)
+- Add TokToken Custom Gas Limit [#2196](https://github.com/kvhnuke/etherwallet/pull/2196)
+- Add TokToken Contract [#2195](https://github.com/kvhnuke/etherwallet/pull/2195)
 - Added PhishFort Protect #2189 [#2189](https://github.com/kvhnuke/etherwallet/pull/2189)
 - misc fixes [#2187](https://github.com/kvhnuke/etherwallet/pull/2187)
 - (Fix) Replace RPC provider endpoint for POA Network [#2191](https://github.com/kvhnuke/etherwallet/pull/2191)
