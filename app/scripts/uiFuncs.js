@@ -141,7 +141,6 @@ uiFuncs.signTxSecalot = function(eTx, rawTx, txData, callback) {
 //= ================ Mew Connect (begin)==============================
 uiFuncs.signTxMewConnect = function (eTx, rawTx, txData, callback) {
   // uiFuncs.notifier.info("Tap a touch button on your device to confirm signing.");
-console.log(rawTx); // todo remove dev item
   var tokenDetails;
   var tokenInfo;
   var storedTokens = globalFuncs.localStorage.getItem('localTokens', null) != null ? JSON.parse(globalFuncs.localStorage.getItem('localTokens', null)) : [];
