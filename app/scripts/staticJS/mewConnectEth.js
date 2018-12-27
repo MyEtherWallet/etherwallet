@@ -82,8 +82,9 @@ class MewConnectEth {
     this.comm.sendRtcMessage('signMessage', hashToSign);
   }
 
-  signTransaction(eTx, rawTx, txData) {
+  signTransaction(eTx, rawTx, tokenDetails) {
     const sendTxData = {
+      txData: {
       nonce: rawTx.nonce,
       gasPrice: rawTx.gasPrice,
       to: rawTx.to,
@@ -91,7 +92,20 @@ class MewConnectEth {
       data: rawTx.data,
       chainId: rawTx.chainId,
       gas: rawTx.gasLimit
+      }
     };
+
+    if(tokenDetails !== 'otherTx'){
+      sendTxData.currency = {
+        symbol: tokenDetails ? tokenDetails.symbol : "ETH",
+        decimal: tokenDetails ? tokenDetails.decimal : 18,
+        address: tokenDetails ? tokenDetails.address : "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      };
+    } else {
+      sendTxData.currency = undefined;
+    }
+
+
     this.comm.sendRtcMessage('signTx', JSON.stringify(sendTxData));
   }
 
