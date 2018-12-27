@@ -84,7 +84,6 @@ class MewConnectEth {
 
   signTransaction(eTx, rawTx, tokenDetails) {
     const sendTxData = {
-      txData: {
       nonce: rawTx.nonce,
       gasPrice: rawTx.gasPrice,
       to: rawTx.to,
@@ -92,7 +91,6 @@ class MewConnectEth {
       data: rawTx.data,
       chainId: rawTx.chainId,
       gas: rawTx.gasLimit
-      }
     };
 
     if(tokenDetails !== 'otherTx'){
