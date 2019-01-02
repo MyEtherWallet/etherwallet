@@ -141,8 +141,7 @@ uiFuncs.signTxSecalot = function(eTx, rawTx, txData, callback) {
 //= ================ Mew Connect (begin)==============================
 uiFuncs.signTxMewConnect = function (eTx, rawTx, txData, callback) {
   // uiFuncs.notifier.info("Tap a touch button on your device to confirm signing.");
-  var tokenDetails;
-  var tokenInfo;
+  var tokenDetails, tokenInfo;
   var storedTokens = globalFuncs.localStorage.getItem('localTokens', null) != null ? JSON.parse(globalFuncs.localStorage.getItem('localTokens', null)) : [];
   var defaultTokens = globalFuncs.getDefaultTokensAndNetworkType().defaultTokens;
   if(rawTx.data.slice(0,10) === '0xa9059cbb'){
@@ -157,8 +156,8 @@ uiFuncs.signTxMewConnect = function (eTx, rawTx, txData, callback) {
   } else if(rawTx.data.length > 2){
       tokenDetails = 'otherType';
   }
+
   var app = new MewConnectEth()
-  // var mewConnect = MewConnect.instance
   var mewConnect = globalFuncs.MEWconnectStatus.MEWconnect;
   app.setMewConnect(mewConnect)
   mewConnect.once('signTx', function(data) {
