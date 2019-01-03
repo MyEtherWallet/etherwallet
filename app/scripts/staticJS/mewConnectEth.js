@@ -93,13 +93,15 @@ class MewConnectEth {
       gas: rawTx.gasLimit
     };
 
-    if(tokenDetails !== 'otherType'){
+    if (tokenDetails !== 'otherType') {
       sendTxData.currency = {
-        symbol: tokenDetails ? tokenDetails.symbol : "ETH",
-        decimals: tokenDetails ? tokenDetails.decimal : 18,
+        symbol: tokenDetails ? tokenDetails.symbol : 'ETH',
+        decimals: tokenDetails ? tokenDetails.decimal : 18
       };
+      if (tokenDetails.address) {
+        sendTxData.currency.address = tokenDetails.address;
+      }
     }
-
 
     this.comm.sendRtcMessage('signTx', JSON.stringify(sendTxData));
   }
