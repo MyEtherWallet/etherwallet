@@ -96,8 +96,7 @@ class MewConnectEth {
     if(tokenDetails !== 'otherType'){
       sendTxData.currency = {
         symbol: tokenDetails ? tokenDetails.symbol : "ETH",
-        decimal: tokenDetails ? tokenDetails.decimal : 18,
-        address: tokenDetails ? tokenDetails.address : "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        decimals: tokenDetails ? tokenDetails.decimal : 18,
       };
     }
 
