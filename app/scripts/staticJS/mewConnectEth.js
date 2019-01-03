@@ -98,8 +98,8 @@ class MewConnectEth {
         symbol: tokenDetails ? tokenDetails.symbol : 'ETH',
         decimals: tokenDetails ? tokenDetails.decimal : 18
       };
-      if (tokenDetails.address) {
-        sendTxData.currency.address = tokenDetails.address;
+      if (tokenDetails) {
+        if(tokenDetails.address) sendTxData.currency.address = tokenDetails.address;
       }
     }
 
