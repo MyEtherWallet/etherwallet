@@ -1,7 +1,7 @@
 ### Release v3.30.0
 
 ### New
-- Remove etc_Epool node []();
+- Remove etc_Epool node [#2203](https://github.com/kvhnuke/etherwallet/pull/2203)
 - Add NDX and FMF tokens [#2199](https://github.com/kvhnuke/etherwallet/pull/2199)
 
 ### Release v3.29.0
