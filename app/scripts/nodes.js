@@ -131,18 +131,6 @@ nodes.nodeList = {
 		service: "GasTracker",
 		lib: new nodes.customNode("https://web3.gastracker.io", "")
 	},
-	etc_epool: {
-		name: "ETC",
-		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",
-		blockExplorerAddr: "https://gastracker.io/addr/[[address]]",
-		type: nodes.nodeTypes.ETC,
-		eip155: true,
-		chainId: 61,
-		tokenList: require("./tokens/etcTokens.json"),
-		abiList: require("./abiDefinitions/etcAbi.json"),
-		service: "epool.io",
-		lib: new nodes.customNode("https://mew.epool.io", "")
-	},
 	rop_mew: {
 		name: "Ropsten",
 		type: nodes.nodeTypes.Ropsten,
