@@ -672,8 +672,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         clearTimeout($scope.connectionCodeTimeout);
       }
       globalFuncs.MEWconnectStatus.update(2);
-      console.log($scope.mewConnectionStatus); // todo remove dev item
-      console.log('$scope.haveAddress', $scope.haveAddress); // todo remove dev item
       if ($scope.mewConnectionStatus !== 2) {
         $scope.connectionCodeTimeout = null;
         globalFuncs.MEWconnectStatus.MEWconnect.sendRtcMessage('address', '');
