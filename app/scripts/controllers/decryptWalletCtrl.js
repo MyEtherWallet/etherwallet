@@ -682,6 +682,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
       } else if (!$scope.haveAddress) {
         $scope.connectionCodeTimeout = null;
         globalFuncs.MEWconnectStatus.MEWconnect.sendRtcMessage('address', '');
+        uiFuncs.notifier.info('Connected Via MEWconnect');
       }
     }
 
