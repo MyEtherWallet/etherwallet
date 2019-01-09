@@ -37,8 +37,6 @@ var txStatusCtrl = function($scope) {
     var txToObject = function(tx) {
         var txStatus = $scope.txStatus;
         if (tx) {
-            console.log('txToObject')
-            console.log(tx)
             var curNode = JSON.parse(globalFuncs.localStorage.getItem('curNode', null));
             curNode = nodes.nodeList[curNode.key]
             $scope.txInfo = {

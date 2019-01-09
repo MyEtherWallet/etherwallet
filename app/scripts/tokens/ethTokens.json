@@ -4236,6 +4236,12 @@
     "type": "default"
   },
   {
+    "address": "0x4d807509aece24c0fa5a102b6a3b059ec6e14392",
+    "symbol": "ONE",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xb23be73573bc7e03db6e5dfc62405368716d28a8",
     "symbol": "ONEK",
     "decimal": 18,
@@ -5953,7 +5959,13 @@
   },
   {
     "address": "0x8dd5fbce2f6a956c3022ba3663759011dd51e73e",
-    "symbol": "TUSD",
+    "symbol": "TUSD (Old)",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x0000000000085d4780B73119b644AE5ecd22b376",
+    "symbol": "TUSD (New)",
     "decimal": 18,
     "type": "default"
   },
