@@ -1,3 +1,6 @@
+### New
+- Add SNX oracle and Feepool, Add ZEUS, STACS, CPT, and GZB tokens []()
+
 ### Release v3.30.0
 
 ### New

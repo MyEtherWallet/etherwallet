@@ -1381,7 +1381,13 @@
   },
   {
     "address": "0x88d50b466be55222019d71f9e8fae17f5f45fca1",
-    "symbol": "CPT",
+    "symbol": "CPT (Cryptaur)",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0x9B62513c8a27290CF6A7A9e29386e600245EA819",
+    "symbol": "CPT (Contents Protocol Token)",
     "decimal": 8,
     "type": "default"
   },
@@ -2805,6 +2811,12 @@
     "address": "0x22F0AF8D78851b72EE799e05F54A77001586B18A",
     "symbol": "GXVC",
     "decimal": 10,
+    "type": "default"
+  },
+  {
+    "address": "0x9dae8b7f6d37ea8e5d32c6c3e856a6d8a1d3b363",
+    "symbol": "GZB",
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -5508,6 +5520,12 @@
     "type": "default"
   },
   {
+    "address": "0x286708f069225905194673755F12359e6afF6FE1",
+    "symbol": "STACS",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xF70a642bD387F94380fFb90451C2c81d4Eb82CBc",
     "symbol": "STAR",
     "decimal": 18,
@@ -5924,12 +5942,6 @@
   {
     "address": "0xcb94be6f13a1182e4a4b6140cb7bf2025d28e41b",
     "symbol": "TRST",
-    "decimal": 6,
-    "type": "default"
-  },
-  {
-    "address": "0xf230b790e05390fc8295f4d3f60332c93bed42e2",
-    "symbol": "TRX",
     "decimal": 6,
     "type": "default"
   },
@@ -6597,6 +6609,12 @@
     "address": "0x2008e3057bd734e10ad13c9eae45ff132abc1722",
     "symbol": "ZCO",
     "decimal": 8,
+    "type": "default"
+  },
+  {
+    "address": "0xe7e4279b80d319ede2889855135a22021baf0907",
+    "symbol": "ZEUS",
+    "decimal": 18,
     "type": "default"
   },
   {
