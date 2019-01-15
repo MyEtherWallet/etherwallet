@@ -1872,6 +1872,12 @@
     "type": "default"
   },
   {
+    "address": "0x82f4ded9cec9b5750fbff5c2185aee35afc16587",
+    "symbol": "DREAM",
+    "decimal": 6,
+    "type": "default"
+  },
+  {
     "address": "0x419c4db4b9e25d6db2ad9691ccb832c8d9fda05e",
     "symbol": "DRGN",
     "decimal": 18,
