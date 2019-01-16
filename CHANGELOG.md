@@ -1,4 +1,16 @@
+### Release v3.30.1
+
+### Hotfix
+- Add new badges for google and apple stores
+
+### Release v3.30.0
+
 ### New
+- Add ONE and new TUSD token [#2207](https://github.com/kvhnuke/etherwallet/pull/2207)
+- Include token information in signTx request to MEWconnect [#2200](https://github.com/kvhnuke/etherwallet/pull/2200)
+- correct address details not getting received on firefox [#2205](https://github.com/kvhnuke/etherwallet/pull/2205)
+- Remove etc_Epool node [#2203](https://github.com/kvhnuke/etherwallet/pull/2203)
+- Remove etc_Epool node [#2203](https://github.com/kvhnuke/etherwallet/pull/2203)
 - Add NDX and FMF tokens [#2199](https://github.com/kvhnuke/etherwallet/pull/2199)
 
 ### Release v3.29.0
