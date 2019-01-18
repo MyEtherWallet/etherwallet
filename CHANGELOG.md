@@ -1,3 +1,6 @@
+### New
+- Add SNX oracle and Feepool, Add ZEUS, STACS, CPT, and GZB tokens [#2213](https://github.com/kvhnuke/etherwallet/pull/2213)
+
 ### Release v3.30.1
 
 ### Hotfix
