@@ -1,3 +1,8 @@
+### Release v3.30.2
+
+### Hotfix
+- Update bitbox version [#2214](https://github.com/kvhnuke/etherwallet/pull/2214)
+
 ### New
 - Add SNX oracle and Feepool, Add ZEUS, STACS, CPT, and GZB tokens [#2213](https://github.com/kvhnuke/etherwallet/pull/2213)
 
