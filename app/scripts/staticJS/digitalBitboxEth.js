@@ -22,7 +22,7 @@ var DigitalBitboxEth = function(comm, sec) {
     DigitalBitboxEth.to = setTimeout(function(){ DigitalBitboxEth.sec = ''; }, 60000);
 }
 
-var BitBoxSupportedMajorVersion = 5;
+var BitBoxSupportedMajorVersion = 6;
 
 DigitalBitboxEth.sec = '';
 DigitalBitboxEth.to = null;
