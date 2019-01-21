@@ -1,6 +1,6 @@
 ### Release v3.31.0
 ### New
-- Update CPT decimals, update banner []()
+- Update CPT decimals, update banner [#2220](https://github.com/kvhnuke/etherwallet/pull/2220)
 
 ### Release v3.30.2
 
