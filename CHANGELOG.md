@@ -1,3 +1,7 @@
+### Release v3.31.0
+### New
+- Update CPT decimals, update banner []()
+
 ### Release v3.30.2
 
 ### Hotfix

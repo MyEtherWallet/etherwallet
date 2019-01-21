@@ -545,6 +545,7 @@
     "decimal": 15,
     "type": "default"
   },
+  
   {
     "address": "0xacfa209fb73bf3dd5bbfb1101b9bc999c49062a5",
     "symbol": "BCDT",
@@ -1382,7 +1383,7 @@
   {
     "address": "0x9B62513c8a27290CF6A7A9e29386e600245EA819",
     "symbol": "CPT (Contents Protocol Token)",
-    "decimal": 8,
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -5456,6 +5457,12 @@
   {
     "address": "0x1c62aca2b7605db3606eacda7bc67a1857ddb8ff",
     "symbol": "SONIQ",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xBb1f24C0c1554b9990222f036b0AaD6Ee4CAec29",
+    "symbol": "SOUL",
     "decimal": 18,
     "type": "default"
   },

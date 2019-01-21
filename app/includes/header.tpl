@@ -76,21 +76,11 @@
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
 @@if (site === 'mew' ) {
-  <div class="small announcement annoucement-danger">
-    <div class="container">
-      DON'T GET PHISHED, please! 🎣 Thank you! 🤗
+  <div class="small announcement announcement-mew">
+    <div clas="container">
+      Try our new Beta version here: <a href="https://beta.myetherwallet.com">https://beta.myetherwallet.com</a>
       <br />
-      1. BOOKMARK <a href="https://www.myetherwallet.com"> MYETHERWALLET.COM </a>
-      <span class="hidden-xs">
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        2. INSTALL <a href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer">EAL</a>
-        or
-        <a href="https://kb.myetherwallet.com/migration/moving-from-private-key-to-metamask.html" target="_blank" rel="noopener noreferrer">MetaMask</a>
-        or
-        <a href="https://chrome.google.com/webstore/detail/phishfort-protect/bdiohckpogchppdldbckcdjlklanhkfc" target="_blank" rel="noopener noreferrer">PhishFort</a>
-        or
-        <a href="https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige" target="_blank" rel="noopener noreferrer">Cryptonite</a>
-      </span>
+      Read more about it in our <a href="https://medium.com/@myetherwallet/v5-beta-a-user-friendly-mew-631378a6c8ff" target="_blank">Medium post</a>
     </div>
   </div>
 }
@@ -100,18 +90,18 @@
     @@if (site === 'mew' ) {
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.30.2</p>
+        <p class="small visible-xs">3.31.0</p>
       </a>
     }
     @@if (site === 'cx'  ) {
       <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">
         <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.30.2</p>
+        <p class="small visible-xs">3.31.0</p>
       </a>
     }
     <div class="tagline">
 
-    <span class="hidden-xs">3.30.2</span>
+    <span class="hidden-xs">3.31.0</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
