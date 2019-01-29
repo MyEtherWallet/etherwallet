@@ -1,3 +1,7 @@
+### Release v3.31.1
+
+- Update Trezor affiliate link [#2224](https://github.com/kvhnuke/etherwallet/pull/2224)
+
 ### Release v3.31.0
 ### New
 - Update CPT decimals, update banner [#2220](https://github.com/kvhnuke/etherwallet/pull/2220)
