@@ -7,7 +7,15 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// LondonCoin Token sale
+to:         '0x9efa0e2387e4cba02a6e4e6594b8f4dd209a0b93',
+gasLimit:   200000,
+data:       '',
+msg:        'Thank you for buying LondonCoin Token! LDX is an additional value for goods transactions.' 
+},  
+  
 // ORCA Alliance (ORCA) Token sale
+  
 to:         '0xEDF19b437d1A67E18B15dd4a859dD52F9cfA012F',
 gasLimit:   110000,
 data:       '',
