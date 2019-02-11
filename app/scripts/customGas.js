@@ -8,6 +8,15 @@
 
 module.exports = [{
 // ORCA Alliance (ORCA) Token sale
+
+{
+to:         '0x50C1F6d905dd635D905aA37285216073855c6B8E',
+gasLimit:   110000,
+data:       '',
+msg:        'Thank you for buying LDX(LondonCoin) Tokens! - Share LDX(londonCoin) with your friends (https://londoncoin.io).' 
+},
+                  
+{                  
 to:         '0xEDF19b437d1A67E18B15dd4a859dD52F9cfA012F',
 gasLimit:   110000,
 data:       '',
