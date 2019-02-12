@@ -1,6 +1,6 @@
 ### Release v3.33.0
 
-- Replace all links to new one []()
+- Replace all links to new one [#2231](https://github.com/kvhnuke/etherwallet/pull/2231)
 
 ### Release v3.32.0
 
