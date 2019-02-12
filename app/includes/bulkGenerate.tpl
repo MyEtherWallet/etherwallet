@@ -43,7 +43,7 @@
         </h1>
 
         <div class="alert alert-danger" translate="ERROR_28">
-          **You need your Keystore File + password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.
+          **You need your Keystore File + password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://vintage.myetherwallet.com/#help) for instructions.
         </div>
       </div>
 

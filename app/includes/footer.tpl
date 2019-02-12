@@ -35,7 +35,7 @@
         </a>
       </p>
       <p>
-        <a href="https://www.myetherwallet.com/privacy-policy.html" target="_blank">
+        <a href="https://vintage.myetherwallet.com/privacy-policy.html" target="_blank">
           Privacy policy
         </a>
       </p>
@@ -104,6 +104,11 @@
 
     <section class="footer--righ">
       <p>
+        <a aria-label="website via my ether wallet dot com" href="https://vintage.myetherwallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Vintage MEW
+        </a>
+      </p>
+      <p>
         <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
           MyEtherWallet.com
         </a>
@@ -119,13 +124,13 @@
         </a>
       </p>
       <p>
-        <a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+        <a href="https://vintage.myetherwallet.com/helpers.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
           Unit Converters &amp; ENS Debugging
         </a>
       </p>
 
       <p>
-        <a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+        <a href="https://vintage.myetherwallet.com/signmsg.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
           Sign Message
         </a>
       </p>
