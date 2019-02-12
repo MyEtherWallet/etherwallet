@@ -1,3 +1,7 @@
+### Release v3.32.0
+
+- Update header, sync tokens []()
+
 ### Release v3.31.1
 
 - Update Trezor affiliate link [#2224](https://github.com/kvhnuke/etherwallet/pull/2224)
