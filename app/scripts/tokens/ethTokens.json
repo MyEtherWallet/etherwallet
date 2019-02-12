@@ -545,7 +545,6 @@
     "decimal": 15,
     "type": "default"
   },
-  
   {
     "address": "0xacfa209fb73bf3dd5bbfb1101b9bc999c49062a5",
     "symbol": "BCDT",
@@ -1957,14 +1956,14 @@
     "type": "default"
   },
   {
-    "address": "0x765f0c16d1ddc279295c1a7c24b0883f62d33f75",
-    "symbol": "DTX",
+    "address": "0x82fdedfB7635441aA5A92791D001fA7388da8025",
+    "symbol": "DTx",
     "decimal": 18,
     "type": "default"
   },
   {
-    "address": "0x82fdedfB7635441aA5A92791D001fA7388da8025",
-    "symbol": "DTx",
+    "address": "0x765f0c16d1ddc279295c1a7c24b0883f62d33f75",
+    "symbol": "DTX",
     "decimal": 18,
     "type": "default"
   },
@@ -2077,13 +2076,13 @@
     "type": "default"
   },
   {
-    "address": "0x5dbac24e98e2a4f43adc0dc82af403fca063ce2c",
+    "address": "0x8e1b448EC7aDFc7Fa35FC2e885678bD323176E34",
     "symbol": "EGT",
     "decimal": 18,
     "type": "default"
   },
   {
-    "address": "0x8e1b448EC7aDFc7Fa35FC2e885678bD323176E34",
+    "address": "0x5dbac24e98e2a4f43adc0dc82af403fca063ce2c",
     "symbol": "EGT",
     "decimal": 18,
     "type": "default"
@@ -2839,6 +2838,12 @@
     "type": "default"
   },
   {
+    "address": "0x93a7174dafd31d13400cd9fa01f4e5b5baa00d39",
+    "symbol": "HAK",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x48c1b2f3efa85fbafb2ab951bf4ba860a08cdbb7",
     "symbol": "HAND",
     "decimal": 0,
@@ -3412,6 +3417,12 @@
     "address": "0x5102791ca02fc3595398400bfe0e33d7b6c82267",
     "symbol": "LDC",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x9efa0e2387e4cba02a6e4e6594b8f4dd209a0b93",
+    "symbol": "LDX",
+    "decimal": 0,
     "type": "default"
   },
   {
@@ -4123,13 +4134,13 @@
     "type": "default"
   },
   {
-    "address": "0x5d4d57cd06fa7fe99e26fdc481b468f77f05073c",
+    "address": "0x69beab403438253f13b6e92db91f7fb849258263",
     "symbol": "NTK",
     "decimal": 18,
     "type": "default"
   },
   {
-    "address": "0x69beab403438253f13b6e92db91f7fb849258263",
+    "address": "0x5d4d57cd06fa7fe99e26fdc481b468f77f05073c",
     "symbol": "NTK",
     "decimal": 18,
     "type": "default"
@@ -5635,9 +5646,9 @@
     "type": "default"
   },
   {
-    "address": "0x12480E24eb5bec1a9D4369CaB6a80caD3c0A377A",
+    "address": "0x8D75959f1E61EC2571aa72798237101F084DE63a",
     "symbol": "SUB",
-    "decimal": 2,
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -5703,6 +5714,12 @@
   {
     "address": "0x1d4ccc31dab6ea20f461d329a0562c1c58412515",
     "symbol": "TALAO",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x2C36204a0712A2a50E54A62F7c4F01867e78cB53",
+    "symbol": "TAN",
     "decimal": 18,
     "type": "default"
   },
@@ -5817,6 +5834,12 @@
   {
     "address": "0xfe7B915A0bAA0E79f85c5553266513F7C1c03Ed0",
     "symbol": "THUG",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x614b9802D45Aa1bC2282651dC1408632F9027A6e",
+    "symbol": "TIC",
     "decimal": 18,
     "type": "default"
   },
@@ -6289,6 +6312,12 @@
     "type": "default"
   },
   {
+    "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+    "symbol": "WBTC",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x6a0a97e47d15aad1d132a1ac79a480e3f2079063",
     "symbol": "WCT",
     "decimal": 18,
@@ -6315,6 +6344,12 @@
   {
     "address": "0xe933c0Cd9784414d5F278C114904F5A84b396919",
     "symbol": "WHO",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x3F17Dd476faF0a4855572F0B6ed5115D9bBA22AD",
+    "symbol": "WIB",
     "decimal": 18,
     "type": "default"
   },
