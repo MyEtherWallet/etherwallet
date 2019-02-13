@@ -1,6 +1,10 @@
+### Release v3.33.0
+
+- Replace all links to new one [#2231](https://github.com/kvhnuke/etherwallet/pull/2231)
+
 ### Release v3.32.0
 
-- Update header, sync tokens []()
+- Update header, sync tokens [#2229](https://github.com/kvhnuke/etherwallet/pull/2229)
 
 ### Release v3.31.1
 

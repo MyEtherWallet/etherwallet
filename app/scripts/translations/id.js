@@ -167,7 +167,7 @@ ONBOARD_secure_title            :  'Cara Melindungi Diri & Dana Anda',
 ONBOARD_secure_1_title          :  'Cara Melindungi Diri Anda dari Phisher',
 ONBOARD_secure_1_content__1     :  'Phisher biasanya mengirim Anda pesan dengan link ke situs web yang sekilas terlihat seperti MyEtherWallet, EtherDelta, Paypal, atau bank Anda, namun bukan situs web yang asli. Mereka mencuri informasi Anda dan kemudian mencuri uang Anda.',
 ONBOARD_secure_1_content__2     :  'Pasang [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) atau [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) atau [Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige) atau [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) untuk memblokir situs web jahat.',
-ONBOARD_secure_1_content__3     :  'Selalu periksa URLnya: `https://www.myetherwallet.com`.',
+ONBOARD_secure_1_content__3     :  'Selalu periksa URLnya: `https://vintage.myetherwallet.com`.',
 ONBOARD_secure_1_content__4     :  'Pastikan bar URL menunjukkan `MYETHERWALLET INC` dalam warna hijau.',
 ONBOARD_secure_1_content__5     :  'Jangan mempercayai pesan atau tautan yang dikirim kepada Anda secara acak melalui email, Slack, Reddit, Twitter, dll.',
 ONBOARD_secure_1_content__6     :  'Selalu kunjungi situs secara langsung sebelum memasukkan informasi. Jangan memasukkan informasi setelah mengklik link dari pesan atau email.',
@@ -261,7 +261,7 @@ GEN_Unlock                  : 'Buka kunci dompet Anda untuk melihat alamat Anda'
 GAS_PRICE_Desc              : 'Harga Gas Price adalah jumlah yang Anda bayar per unit gas. `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Makin tinggi harga gas = transaksi makin cepat, tapi makin mahal. Default-nya `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Batas Gas (Gas limit) adalah jumlah gas untuk dikirim bersama TX Anda.  `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Menaikkan angka ini tidak mempercepat TX Anda untuk ditambang. Pengiriman ETH = `21000`. Pengiriman Token = ~`200000`.',
 NONCE_Desc                  : 'Nonce adalah nomor transaksi yang dikirimn dari sebuah alamat. Ini untuk menjamin agar pengiriman terlaksana secara runtut dan tidak ada yang dilakukan lebih dari sekali.',
-TXFEE_Desc                  : 'Biaya TX Fee dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Jumlahnya =  `gas limit` * `gas price`. [Anda dapat mengkonversi GWEI -> ETH](https://www.myetherwallet.com/helpers.html)',
+TXFEE_Desc                  : 'Biaya TX Fee dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Jumlahnya =  `gas limit` * `gas price`. [Anda dapat mengkonversi GWEI -> ETH](https://vintage.myetherwallet.com/helpers.html)',
 
 
 
@@ -592,7 +592,7 @@ ERROR_24                    : 'Masukkan port yang valid. ', // 24
 ERROR_25                    : 'Masukkan chain ID yang valid. ', // 25
 ERROR_26                    : 'Masukkan ABI yang valid. ', // 26
 ERROR_27                    : 'Jumlah Minimum: 0.01. Jumlah Max: ', // 27
-ERROR_28                    : '**DIPERLUKAN File Keystore & password** (atau Kunci Privat) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help). ',
+ERROR_28                    : '**DIPERLUKAN File Keystore & password** (atau Kunci Privat) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://vintage.myetherwallet.com/#help). ',
 ERROR_29                    : 'Masukkan user dan password yang valid. ', // 29
 ERROR_30                    : 'Masukkan nama yang vaklid (7+ karakter, tanda baca terbatas) ', // 30
 ERROR_31                    : 'Masukkan frase rahasia yang valid. ', // 31
@@ -636,7 +636,7 @@ PARITY_TooCheapToReplace    : "(parity-08) Biaya transaksi terlalu rendah. Ada t
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : 'Thank you to our translators ',
-TranslatorName_1            : '[Yos Ginting](https://www.myetherwallet.com/?gaslimit=21000&to=0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c&value=1.0#send-transaction) ',
+TranslatorName_1            : '[Yos Ginting](https://vintage.myetherwallet.com/?gaslimit=21000&to=0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c ',
 /* Translator 1             : 05 Sep 2016: Translation completed (except HELP texts); 09 Sep 2016: Revisions; 3 Sep 2017 more translations; 1 Jan 2018 more translations*/
 TranslatorName_2            : '',
@@ -865,7 +865,7 @@ HELP_Sec_Title              : 'Keamanan ',
 HELP_Sec_Desc_1             : 'Jika salah satu pertanyaan pertama Anda adalah "Mengapa saya harus percaya keapda orang-orang ini?", Ini sikap kehati-hatian yang baik. Mudah-mudahan informasi berikut ini akan membantu meringankan kekhawatiran anda. ',
 HELP_Sec_Desc_2             : 'Kami sudah ada sejak 2015. Jika Anda mencari ["myetherwallet" di reddit](https://www.reddit.com/search?q=myetherwallet), Anda bisa melihat banyak orang yang sudah menggunakan layanan kami dan baik-baik saja. ',
 HELP_Sec_Desc_3             : 'Kami tidak akan mengambil uang Anda atau mencuri Kunci Privat Anda. Tidak ada kode berbahaya di situs ini. Bahkan, fungsi "BUAT DOMPET/GENERATE WALLET" sepenihnya dilakukan di sisi klien. Ini berarti bahwa semua kode dieksekusi di **komputer Anda** dan tidak pernah disimpan dan dikirim di luar itu. ',
-HELP_Sec_Desc_4             : 'Periksa URL ini -- Situs ini dijalankan melalui GitHub dan Anda bisa melihat sorce code nya di sini: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) ke [https://www.myetherwallet.com](https://www.myetherwallet.com). ',
+HELP_Sec_Desc_4             : 'Periksa URL ini -- Situs ini dijalankan melalui GitHub dan Anda bisa melihat sorce code nya di sini: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) ke [https://vintage.myetherwallet.com](https://vintage.myetherwallet.com). ',
 HELP_Sec_Desc_5             : 'Untuk membuat dompet, Anda dapat mendownload [source code dan menjalankannya secara lokal](https://github.com/kvhnuke/etherwallet/releases/latest). Lihat #5 di atas. ',
 HELP_Sec_Desc_6             : 'Cobalam emmbuat sebuah test dompet. Uji dan periksa serta lihat aktivitas apa saja yang sedang terjadi di jaringan. Cara termudah bagi Anda untuk melakukan hal ini adalah dengan klik kanan pada halamannya dan klik "inspect element". Buka "Network" tab. Buat sebuah Test Dompet. Anda akan buktikan nahwa tidak ada aktivitas jaringan. Anda mungkin melihat sesuatu yang terjadi seperti data:image/gif dan data:image/png. Itu adalah kode QR yang dihasilkan ... di komputer Anda ... oleh komputer Anda. Tidak ada bytes yang ditransfer. ',
 HELP_Sec_Desc_8             : 'Jika Anda merasa tidak nyaman menggunakan fasilitas ini, maka janganlah dipakai. Kami membuat program iniuntuk membantu orang untuk membuat dompet dan melakukan transaksi tanpa perlu mendalami cara memakai command line atau menjalankan full node.. Sekali lagi, silakan menghubungi kami jika Anda memiliki masalah dan kami akan merespon selekasnya. Terima kasih! ',

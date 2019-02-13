@@ -325,7 +325,7 @@
                   Install [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) or [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Protect by PhishFort](https://chrome.google.com/webstore/detail/phishfort-protect/bdiohckpogchppdldbckcdjlklanhkfc") or [Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige) or the [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) to block malicious websites.
                 </li>
                 <li translate="ONBOARD_secure_1_content__3">
-                  Always check the URL: `https://www.myetherwallet.com`.
+                  Always check the URL: `https://vintage.myetherwallet.com`.
                 </li>
                 <li translate="ONBOARD_secure_1_content__4">
                   Always make sure the URL bar has `MYETHERWALLET Inc` in green.

@@ -172,7 +172,7 @@ globalFuncs.stripTags = function(str) {
 };
 globalFuncs.checkAndRedirectHTTPS = function() {
   var host = 'myetherwallet.com';
-  var hostw = 'https://www.myetherwallet.com';
+  var hostw = 'https://vintage.myetherwallet.com';
   var path = window.location.pathname;
   if (host == window.location.host) window.location = hostw + path;
 };

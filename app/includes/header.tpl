@@ -8,9 +8,9 @@
 <meta property="og:site_name" content="MyEtherWallet.com: Your Key to Ethereum">
 <meta name="twitter:title" content="MyEtherWallet.com: Your Key to Ethereum">
 <meta name="apple-mobile-web-app-title" content="MyEtherWallet.com: Your Key to Ethereum">
-<link href="https://www.myetherwallet.com" rel="canonical">
-<meta content="https://www.myetherwallet.com" property="og:url">
-<meta content="https://www.myetherwallet.com" name="twitter:url">
+<link href="https://vintage.myetherwallet.com" rel="canonical">
+<meta content="https://vintage.myetherwallet.com" property="og:url">
+<meta content="https://vintage.myetherwallet.com" name="twitter:url">
 <link rel="stylesheet" href="css/etherwallet-master.min.css">
 <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
 <script type="text/javascript" src="js/etherwallet-master.js"></script>
@@ -31,7 +31,7 @@
 <meta name="msapplication-config" content="images/fav/browserconfig.xml">
 <meta name="theme-color" content="#1d6986">
 <meta name="apple-mobile-web-app-status-bar-style" content="#1d6986">
-<meta property="og:url" content="https://www.myetherwallet.com" />
+<meta property="og:url" content="https://vintage.myetherwallet.com" />
 <meta property="og:title" content="MyEtherWallet.com  &middot; Your Key to Ethereum" />
 <meta property="og:type" content="website">
 <meta property="og:image" content="/images/myetherwallet-logo-banner.png" />
@@ -48,17 +48,17 @@
 "@type" : "Organization",
 "name" : "MyEtherWallet",
 "legalName" : "MyEtherWallet Inc",
-"url" : "https://www.myetherwallet.com/",
+"url" : "https://vintage.myetherwallet.com/",
 "contactPoint" : [{
   "@type" : "ContactPoint",
   "email" : "support@myetherwallet.com",
   "url"   : "https://myetherwallet.com",
   "contactType" : "customer service"
 }],
-"logo" : "https://www.myetherwallet.com/images/myetherwallet-logo.png",
+"logo" : "https://vintage.myetherwallet.com/images/myetherwallet-logo.png",
 "description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely.",
 "sameAs" : [
-  "https://www.myetherwallet.com/",
+  "https://vintage.myetherwallet.com/",
   "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
   "https://www.facebook.com/MyEtherWallet/",
   "https://twitter.com/myetherwallet",
@@ -90,18 +90,18 @@
     @@if (site === 'mew' ) {
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.32.0</p>
+        <p class="small visible-xs">3.33.0</p>
       </a>
     }
     @@if (site === 'cx'  ) {
       <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">
         <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
-        <p class="small visible-xs">3.32.0</p>
+        <p class="small visible-xs">3.33.0</p>
       </a>
     }
     <div class="tagline">
 
-    <span class="hidden-xs">3.32.0</span>
+    <span class="hidden-xs">3.33.0</span>
 
     <span class="dropdown dropdown-lang" ng-cloak>
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
