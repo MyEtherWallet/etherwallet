@@ -3654,6 +3654,12 @@
     "type": "default"
   },
   {
+    "address": "0x23ccc43365d9dd3882eab88f43d515208f832430",
+    "symbol": "MAS",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x386467f1f3ddbe832448650418311a479eecfc57",
     "symbol": "MBRS",
     "decimal": 0,
