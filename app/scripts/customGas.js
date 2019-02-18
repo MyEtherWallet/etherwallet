@@ -8,8 +8,6 @@
 
 module.exports = [{
 // ORCA Alliance (ORCA) Token sale
-
-{
 to:         '0x50C1F6d905dd635D905aA37285216073855c6B8E',
 gasLimit:   110000,
 data:       '',
