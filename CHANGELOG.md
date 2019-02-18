@@ -1,6 +1,6 @@
 ### v3.34.0
 
-- Add MAS token []()
+- Add MAS token [https://github.com/kvhnuke/etherwallet/pull/2237](2237)
 - Added BitherPlatformToken contract ABI [https://github.com/kvhnuke/etherwallet/pull/2234](2234)
 - Added RentalProcessorToken contract ABI [https://github.com/kvhnuke/etherwallet/pull/2235](2235)
 - Added BitherPlatformCrowdsale contract ABI [https://github.com/kvhnuke/etherwallet/pull/2236](2236)
