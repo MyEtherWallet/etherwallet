@@ -15,7 +15,7 @@ msg:        'Thank you for buying LondonCoin Token! LDX is an additional value f
 },  
   
 // ORCA Alliance (ORCA) Token sale
-  
+{
 to:         '0xEDF19b437d1A67E18B15dd4a859dD52F9cfA012F',
 gasLimit:   110000,
 data:       '',
