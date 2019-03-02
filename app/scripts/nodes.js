@@ -29,6 +29,7 @@ nodes.nodeTypes = {
 	WEB: "WEB",
 	MIX: "MIX",
 	REOSC: "REOSC",
+	THUNDERCORE: "THUNDERCORE",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -474,6 +475,19 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "REOSC Ecosystem",
 		lib: new nodes.customNode("https://remote.reosc.io", "3000")
+	},
+	thundercore: {
+		name: "THUNDERCORE",
+		blockExplorerTX: "https://scan.thundercore.com/transactions/[[txHash]]",
+		blockExplorerAddr: "https://scan.thundercore.com/address/[[address]]",
+		type: nodes.nodeTypes.THUNDERCORE,
+		eip155: true,
+		chainId: 108,
+		tokenList: require("./tokens/thundercoreTokens.json"),
+		abiList: require("./abiDefinitions/thundercoreAbi.json"),
+		estimateGas: true,
+		service: "thundercore.com",
+		lib: new nodes.customNode("https://mainnet-rpc.thundercore.com", "443")
 	}
 };
 
