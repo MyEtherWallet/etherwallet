@@ -35,7 +35,7 @@
         </a>
       </p>
       <p>
-        <a href="https://www.myetherwallet.com/privacy-policy.html" target="_blank">
+        <a href="https://vintage.myetherwallet.com/privacy-policy.html" target="_blank">
           Privacy policy
         </a>
       </p>
@@ -59,7 +59,7 @@
        </div>
         <p> Buy a... </p>
         <div class="footer__pill-wrap footer__pill-custom-wrap">
-          <a class="footer__pill" href="https://www.ledger.com/products/ledger-nano-s?r=fa4b" target="_blank" rel="noopener">Ledger Wallet</a>
+          <a class="footer__pill" href="https://www.ledger.com?r=fa4b" target="_blank" rel="noopener">Ledger Wallet</a>
           <a class="footer__pill" href="https://shop.trezor.io/?offer_id=10&aff_id=2029" target="_blank" rel="noopener">TREZOR</a>
           <a class="footer__pill" href="http://shiftcrypto.ositracker.com/91316/7114" target="_blank" rel="noopener">BitBox</a>
           <a class="footer__pill" href="https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site" target="_blank" rel="noopener">ether.card</a>
@@ -104,6 +104,11 @@
 
     <section class="footer--righ">
       <p>
+        <a aria-label="website via my ether wallet dot com" href="https://vintage.myetherwallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Vintage MEW
+        </a>
+      </p>
+      <p>
         <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
           MyEtherWallet.com
         </a>
@@ -119,13 +124,13 @@
         </a>
       </p>
       <p>
-        <a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+        <a href="https://vintage.myetherwallet.com/helpers.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
           Unit Converters &amp; ENS Debugging
         </a>
       </p>
 
       <p>
-        <a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+        <a href="https://vintage.myetherwallet.com/signmsg.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
           Sign Message
         </a>
       </p>

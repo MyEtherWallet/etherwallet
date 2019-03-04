@@ -167,7 +167,7 @@ ONBOARD_secure_title            :  '如何保护你的隐私和资金安全',
 ONBOARD_secure_1_title          :  '如何防范钓鱼网站',
 ONBOARD_secure_1_content__1     :  '钓鱼网站的常用伎俩是向你发送一条包含网站链接的信息, 并将这个链接伪装成很像MyEtherWallet, EtherDelta, Paypal或者银行的网站.当用户访问这些钓鱼网站并不慎填写自己的账户信息后, 黑客就能窃取这些信息进而窃取你的资金.',
 ONBOARD_secure_1_content__2     :  '可以安装 [EAL](https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn) 或者 [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) 或者 [Cryptonite by Metacert](https://chrome.google.com/webstore/detail/cryptonite-by-metacert/keghdcpemohlojlglbiegihkljkgnige) 或者 [MyEtherWallet Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm) 这几个可以防范钓鱼网站的插件.',
-ONBOARD_secure_1_content__3     :  '记得每次都要检查 URL 地址: `https://www.myetherwallet.com`.',
+ONBOARD_secure_1_content__3     :  '记得每次都要检查 URL 地址: `https://vintage.myetherwallet.com`.',
 ONBOARD_secure_1_content__4     :  '正常情况下地址栏左侧会始终显示 `MYETHERWALLET INC` 字样的绿色字体.',
 ONBOARD_secure_1_content__5     :  '不要相信或者点击那些在电子邮件, Slack, Reddit, Twitter等地方看到的网页链接.',
 ONBOARD_secure_1_content__6     :  '养成手动输入地址打开网站的好习惯, 不要通过邮件或者其它途径里链接来打开网站.',
@@ -260,7 +260,7 @@ GEN_Unlock                  : 'Unlock your wallet to see your address',
 GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
-TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.myetherwallet.com/helpers.html)',
+TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://vintage.myetherwallet.com/helpers.html)',
 
 
 
@@ -595,7 +595,7 @@ ERROR_24                    : 'Please enter a valid port. ', // 24
 ERROR_25                    : 'Please enter a valid chain ID. ', // 25
 ERROR_26                    : 'Please enter a valid ABI. ', // 26
 ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
-ERROR_28                    : '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。 ',
+ERROR_28                    : '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://vintage.myetherwallet.com/#help)，获得更多信息。 ',
 ERROR_29                    : 'Please enter a valid user and password. ', // 29
 ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
 ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
@@ -639,10 +639,10 @@ PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : '感谢中文译者： ',
-TranslatorName_1            : '[ Shaoping@ethfans.org （少平）]((https://www.myetherwallet.com/?gaslimit=21000&to=0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740&value=1.0#send-transaction)) ',
+TranslatorName_1            : '[ Shaoping@ethfans.org （少平）]((https://vintage.myetherwallet.com/?gaslimit=21000&to=0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740&value=1.0#send-transaction)) ',
 TranslatorAddr_1            : '0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740 ',
 /* Translator 1             : Insert Comments Here */
-TranslatorName_2            : '[ Wenham@coinwallet.shop (文翰) ]((https://www.myetherwallet.com/?gaslimit=21000&to=0x0D2dC3fD9463a7CeBE5f1b946c2D7cF5c3e82127&value=0.1#send-transaction))',
+TranslatorName_2            : '[ Wenham@coinwallet.shop (文翰) ]((https://vintage.myetherwallet.com/?gaslimit=21000&to=0x0D2dC3fD9463a7CeBE5f1b946c2D7cF5c3e82127&value=0.1#send-transaction))',
 TranslatorAddr_2            : '0x0D2dC3fD9463a7CeBE5f1b946c2D7cF5c3e82127',
 /* Translator 2             : Insert Comments Here */
 TranslatorName_3            : '',
@@ -870,7 +870,7 @@ HELP_Sec_Title              : 'Security安全 ',
 HELP_Sec_Desc_1             : 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
 HELP_Sec_Desc_2             : 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success. ',
 HELP_Sec_Desc_3             : 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere. ',
-HELP_Sec_Desc_4             : 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to [https://www.myetherwallet.com](https://www.myetherwallet.com). ',
+HELP_Sec_Desc_4             : 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to [https://vintage.myetherwallet.com](https://vintage.myetherwallet.com). ',
 HELP_Sec_Desc_5             : 'For generating wallets, you can download the [source code and run it locally](https://github.com/kvhnuke/etherwallet/releases/latest). See #5 above. ',
 HELP_Sec_Desc_6             : 'Generate a test wallet and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred. ',
 HELP_Sec_Desc_8             : 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',

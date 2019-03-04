@@ -1,3 +1,18 @@
+### v3.34.0
+
+- Add MAS token [https://github.com/kvhnuke/etherwallet/pull/2237](2237)
+- Added BitherPlatformToken contract ABI [https://github.com/kvhnuke/etherwallet/pull/2234](2234)
+- Added RentalProcessorToken contract ABI [https://github.com/kvhnuke/etherwallet/pull/2235](2235)
+- Added BitherPlatformCrowdsale contract ABI [https://github.com/kvhnuke/etherwallet/pull/2236](2236)
+
+### Release v3.33.0
+
+- Replace all links to new one [#2231](https://github.com/kvhnuke/etherwallet/pull/2231)
+
+### Release v3.32.0
+
+- Update header, sync tokens [#2229](https://github.com/kvhnuke/etherwallet/pull/2229)
+
 ### Release v3.31.1
 
 - Update Trezor affiliate link [#2224](https://github.com/kvhnuke/etherwallet/pull/2224)
