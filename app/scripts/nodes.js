@@ -120,18 +120,6 @@ nodes.nodeList = {
 		service: "Ethereum Commonwealth Parity",
 		lib: new nodes.customNode("https://etc-parity.0xinfra.com/", "")
 	},
-	etc_gastracker: {
-		name: "ETC",
-		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",
-		blockExplorerAddr: "https://gastracker.io/addr/[[address]]",
-		type: nodes.nodeTypes.ETC,
-		eip155: true,
-		chainId: 61,
-		tokenList: require("./tokens/etcTokens.json"),
-		abiList: require("./abiDefinitions/etcAbi.json"),
-		service: "GasTracker",
-		lib: new nodes.customNode("https://web3.gastracker.io", "")
-	},
 	rop_mew: {
 		name: "Ropsten",
 		type: nodes.nodeTypes.Ropsten,
