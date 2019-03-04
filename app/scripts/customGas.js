@@ -7,6 +7,13 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// LondonCoin Token sale
+to:         '0x9efa0e2387e4cba02a6e4e6594b8f4dd209a0b93',
+gasLimit:   200000,
+data:       '',
+msg:        'Thank you for buying LondonCoin Token! LDX is an additional value for goods transactions.' 
+},  
+{
 // LDX Token Sale
 to:         '0x50C1F6d905dd635D905aA37285216073855c6B8E',
 gasLimit:   110000,
