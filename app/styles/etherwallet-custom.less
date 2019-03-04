@@ -621,6 +621,7 @@ label small {
 @brand-web: #0092ee;
 @brand-reosc: #1500db;
 @brand-cust: #b50085;
+@brand-thundercore: #ffe81c;
 
 .dropdown-node .dropdown-menu {
   li {
@@ -710,6 +711,9 @@ label small {
   li:nth-child(35),
   li:nth-child(36) {
     border-left: 2px solid @brand-reosc;
+  }
+  li:nth-child(37) {
+      border-left: 2px solid @brand-thundercore;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -833,7 +837,7 @@ header.Custom {
   }
   & + .container .modal-content {
     border: 0.25rem solid @brand-cust;
-  }
+  } 
   & + .container .alert-info {
     background-color: @brand-cust;
   }
@@ -1197,6 +1201,25 @@ header.REOSC {
   .dropdown-gas:before {
     width: 32px;
     background-image: url("../images/coins/reosc.svg");
+  }
+}
+
+header.THUNDERCORE {
+  .header-branding {
+    border-bottom: 0.25rem solid @brand-thundercore;
+  }
+  & + .container + .pre-footer + .footer {
+    border-top: 0.25rem solid @brand-thundercore;
+  }
+  & + .container .modal-content {
+    border: 0.25rem solid @brand-thundercore;
+  }
+  & + .container .alert-info {
+    background-color: @brand-thundercore;
+  }
+  .dropdown-gas:before {
+    width: 34px;
+    background-image: url("../images/coins/thundercore.svg");
   }
 }
 
