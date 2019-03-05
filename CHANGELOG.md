@@ -3,8 +3,8 @@
 - Add LDX custom Gas [#2227](https://github.com/kvhnuke/etherwallet/pull/2226)
 - Add LondonCoin custom Gas [#2226](https://github.com/kvhnuke/etherwallet/pull/2226)
 - Add ThunderCore node [#2240](https://github.com/kvhnuke/etherwallet/pull/2226)
-- Remove etc gastracker node [#2225](https://github.com/kvhnuke/etherwallet/pull/2226)
-- Add Crypto20 contract, Add 1SG, BCASH, BRP, BTR, CAS, EMB, FORK, FZCOIN, GUSD, PXG, TMTG, VIDT, DST, HEY, HV, VEGAN, XCL and XCHF, update ORME token, Update custom node function []()
+- Remove etc gastracker node [#2225](https://github.com/kvhnuke/etherwallet/pull/2225)
+- Add Crypto20 contract, Add 1SG, BCASH, BRP, BTR, CAS, EMB, FORK, FZCOIN, GUSD, PXG, TMTG, VIDT, DST, HEY, HV, VEGAN, XCL and XCHF, update ORME token, Update custom node function [#2242](https://github.com/kvhnuke/etherwallet/pull/2242)
 
 
 ### v3.34.0
