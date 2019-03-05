@@ -1,6 +1,6 @@
 ### v3.35.1
 
-- Remove `;` []()
+- Remove `;` [#2244](https://github.com/kvhnuke/etherwallet/pull/2244)
 ### v3.35.0
 
 - Add LDX custom Gas [#2227](https://github.com/kvhnuke/etherwallet/pull/2226)
