@@ -1,9 +1,18 @@
+### v3.35.0
+
+- Add LDX custom Gas [#2227](https://github.com/kvhnuke/etherwallet/pull/2226)
+- Add LondonCoin custom Gas [#2226](https://github.com/kvhnuke/etherwallet/pull/2226)
+- Add ThunderCore node [#2240](https://github.com/kvhnuke/etherwallet/pull/2226)
+- Remove etc gastracker node [#2225](https://github.com/kvhnuke/etherwallet/pull/2226)
+- Add Crypto20 contract, Add 1SG, BCASH, BRP, BTR, CAS, EMB, FORK, FZCOIN, GUSD, PXG, TMTG, VIDT, DST, HEY, HV, VEGAN, XCL and XCHF, update ORME token, Update custom node function []()
+
+
 ### v3.34.0
 
 - Add MAS token [https://github.com/kvhnuke/etherwallet/pull/2237](2237)
-- Added BitherPlatformToken contract ABI [https://github.com/kvhnuke/etherwallet/pull/2234](2234)
-- Added RentalProcessorToken contract ABI [https://github.com/kvhnuke/etherwallet/pull/2235](2235)
-- Added BitherPlatformCrowdsale contract ABI [https://github.com/kvhnuke/etherwallet/pull/2236](2236)
+- Added BitherPlatformToken contract ABI [#2234](https://github.com/kvhnuke/etherwallet/pull/2234)
+- Added RentalProcessorToken contract ABI [#2235](https://github.com/kvhnuke/etherwallet/pull/2235)
+- Added BitherPlatformCrowdsale contract ABI [#2236](https://github.com/kvhnuke/etherwallet/pull/2236)
 
 ### Release v3.33.0
 

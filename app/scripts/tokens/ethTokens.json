@@ -36,6 +36,12 @@
     "type": "default"
   },
   {
+    "address": "0x0f72714b35a366285df85886a2ee174601292a17",
+    "symbol": "1SG",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
     "symbol": "1ST",
     "decimal": 18,
@@ -534,6 +540,12 @@
     "type": "default"
   },
   {
+    "address": "0xb5BB48567BfD0bFE9e4B08EF8b7f91556CC2a112",
+    "symbol": "BCASH",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x7367a68039d4704f30bfbf6d948020c3b07dfc59",
     "symbol": "BCBC",
     "decimal": 18,
@@ -834,6 +846,12 @@
     "type": "default"
   },
   {
+    "address": "0xB22c2786a549B008517B67625f5296E8fAf9589e",
+    "symbol": "BRP",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xf26ef5e0545384b7dcc0f297f2674189586830df",
     "symbol": "BSDC",
     "decimal": 18,
@@ -924,8 +942,14 @@
     "type": "default"
   },
   {
+    "address": "0xcbf15FB8246F679F9Df0135881CB29a3746f734b",
+    "symbol": "BTR (Bitether Platform)",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x499a6b77bc25c26bcf8265e2102b1b3dd1617024",
-    "symbol": "BTR",
+    "symbol": "BTR (Bitether)",
     "decimal": 18,
     "type": "default"
   },
@@ -1044,8 +1068,14 @@
     "type": "default"
   },
   {
+    "address": "0x779492d3644dDF4495Aa2d80C468E1B7be6AF1d2",
+    "symbol": "CAS (CAS Coin)",
+    "decimal": 2,
+    "type": "default"
+  },
+  {
     "address": "0xe8780B48bdb05F928697A5e8155f672ED91462F7",
-    "symbol": "CAS",
+    "symbol": "CAS (Cashaa)",
     "decimal": 18,
     "type": "default"
   },
@@ -1932,6 +1962,12 @@
     "type": "default"
   },
   {
+    "address": "0x68d53441c0e253f76c500e551bdeA3D102206C9a",
+    "symbol": "DST",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x5adc961D6AC3f7062D2eA45FEFB8D8167d44b190",
     "symbol": "DTH",
     "decimal": 18,
@@ -2133,6 +2169,12 @@
     "address": "0xa95592DCFfA3C080B4B40E459c5f5692F67DB7F8",
     "symbol": "ELY",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x28b94f58b11ac945341329dbf2e5ef7f8bd44225",
+    "symbol": "EMB",
+    "decimal": 8,
     "type": "default"
   },
   {
@@ -2490,6 +2532,12 @@
     "type": "default"
   },
   {
+    "address": "0x5bB1632fA0023e1AA76a1AE92B4635C8DBa49Fa2",
+    "symbol": "FORK",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x4270bb238f6dd8b1c3ca01f96ca65b2647c06d3c",
     "symbol": "FOTA",
     "decimal": 18,
@@ -2594,6 +2642,12 @@
   {
     "address": "0x8f0921f30555624143d427b340b1156914882c10",
     "symbol": "FYP",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xE5aeE163513119F4F750376C718766B40fA37A5F",
+    "symbol": "Fzcoin",
     "decimal": 18,
     "type": "default"
   },
@@ -2802,6 +2856,12 @@
     "type": "default"
   },
   {
+    "address": "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd",
+    "symbol": "GUSD",
+    "decimal": 2,
+    "type": "default"
+  },
+  {
     "address": "0x103c3A209da59d3E7C4A89307e66521e081CFDF0",
     "symbol": "GVT",
     "decimal": 18,
@@ -2910,6 +2970,12 @@
     "type": "default"
   },
   {
+    "address": "0xe9c9e7e1dabea830c958c39d6b25964a6f52143a",
+    "symbol": "HEY",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xba2184520A1cC49a6159c57e61E1844E085615B6",
     "symbol": "HGT",
     "decimal": 8,
@@ -3002,6 +3068,12 @@
   {
     "address": "0x6f259637dcd74c767781e37bc6133cd6a68aa161",
     "symbol": "HT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x141abb03f001deded9a0223d4ff26d929117b72e",
+    "symbol": "HV",
     "decimal": 18,
     "type": "default"
   },
@@ -4320,7 +4392,7 @@
     "type": "default"
   },
   {
-    "address": "0x516E5436bAfdc11083654DE7Bb9b95382d08d5DE",
+    "address": "0xc96DF921009B790dfFcA412375251ed1A2b75c60",
     "symbol": "ORME",
     "decimal": 8,
     "type": "default"
@@ -4743,6 +4815,12 @@
     "address": "0xef6b4ce8c9bc83744fbcde2657b32ec18790458a",
     "symbol": "PUC",
     "decimal": 0,
+    "type": "default"
+  },
+  {
+    "address": "0x47e67BA66b0699500f18A53F94E2b9dB3D47437e",
+    "symbol": "PXG",
+    "decimal": 18,
     "type": "default"
   },
   {
@@ -5928,6 +6006,12 @@
     "type": "default"
   },
   {
+    "address": "0x10086399dd8c1e3de736724af52587a2044c9fa2",
+    "symbol": "TMTG",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xb0280743b44bf7db4b6be482b2ba7b75e5da096c",
     "symbol": "TNS",
     "decimal": 18,
@@ -6156,6 +6240,12 @@
     "type": "default"
   },
   {
+    "address": "0xfade17a07ba3b480aa1714c3724a52d4c57d410e",
+    "symbol": "VEGAN",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x57C75ECCc8557136D32619a191fBCDc88560d711",
     "symbol": "VDG",
     "decimal": 0,
@@ -6206,6 +6296,12 @@
   {
     "address": "0x882448f83d90b2bf477af2ea79327fdea1335d93",
     "symbol": "VIBEX",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x445f51299ef3307dbd75036dd896565f5b4bf7a5",
+    "symbol": "VIDT",
     "decimal": 18,
     "type": "default"
   },
@@ -6501,6 +6597,18 @@
     "address": "0x4d829f8c92a6691c56300d020c9e0db984cfe2ba",
     "symbol": "XCC",
     "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0xB4272071eCAdd69d933AdcD19cA99fe80664fc08",
+    "symbol": "XCHF",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
+    "address": "0x0843971b4ac6e842a518aa184e0271d88b5cb74f",
+    "symbol": "XCL",
+    "decimal": 8,
     "type": "default"
   },
   {

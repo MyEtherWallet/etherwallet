@@ -8,7 +8,7 @@ var customNode = function(srvrUrl, port, httpBasicAuthentication) {
 }
 customNode.prototype.config = {
     headers: {
-        'Content-Type': 'application/json; charset=UTF-8'
+        'Content-Type': 'application/json;'
     }
 };
 
