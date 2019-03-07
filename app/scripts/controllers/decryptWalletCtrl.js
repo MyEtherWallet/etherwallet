@@ -199,9 +199,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         case nodes.nodeTypes.REOSC:
           $scope.HDWallet.dPath = $scope.HDWallet.hwReoscPath;
           break;
-        case nodes.nodeTypes.THUNDERCORE:
-          $scope.HDWallet.dPath = $scope.HDWallet.thundercorePath;
-          break;
         default:
           $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
       }
