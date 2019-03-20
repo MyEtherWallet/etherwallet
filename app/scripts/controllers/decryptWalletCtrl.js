@@ -49,6 +49,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     tomoPath: 'm/44\'/889\'/0\'/0', // first address: m/44'/889'/0'/0/0
     hwMixPath: 'm/44\'/76\'/0\'/0', // first address: m/44'/76'/0'/0/0
     hwReoscPath: 'm/44\'/2894\'/0\'/0', // first address: m/44'/2894'/0'/0/0
+    thundercorePath: 'm/44\'/1001\'/0\'/0', // first address: m/44'/1001'/0'/0/0
   };
   $scope.canUseMewConnect = MewConnectEth.checkWebRTCAvailable();
   $scope.mewConnectMayFail = MewConnectEth.checkBrowser();
@@ -120,6 +121,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
           break;
         case nodes.nodeTypes.REOSC:
           $scope.HDWallet.dPath = $scope.HDWallet.hwReoscPath;
+          break;
+        case nodes.nodeTypes.THUNDERCORE:
+          $scope.HDWallet.dPath = $scope.HDWallet.thundercorePath;
           break;
         default:
           $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
@@ -268,6 +272,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
           break;
         case nodes.nodeTypes.REOSC:
           $scope.HDWallet.dPath = $scope.HDWallet.hwReoscPath;
+          break;
+        case nodes.nodeTypes.THUNDERCORE:
+          $scope.HDWallet.dPath = $scope.HDWallet.thundercorePath;
           break;
         default:
           $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
