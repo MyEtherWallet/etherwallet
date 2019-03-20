@@ -29,7 +29,7 @@ nodes.nodeTypes = {
 	WEB: "WEB",
 	MIX: "MIX",
 	REOSC: "REOSC",
-	THUNDERCORE: "THUNDERCORE",
+	THUNDERCORE: "TT",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
