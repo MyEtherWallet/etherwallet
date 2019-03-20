@@ -93,6 +93,10 @@ if (IS_CX) {
   window.SecalotEth = secalotEth;
   window.MewConnectEth = MewConnectEth;
   window.MewConnect = MewConnect;
+  trezorConnect.manifest({
+    email: 'info@myetherwallet.com',
+    appUrl: 'https://vintage.myetherwallet.com'
+  });
 }
 var CustomGasMessages = require("./customGas.js");
 window.CustomGasMessages = CustomGasMessages;
