@@ -94,7 +94,7 @@ if (IS_CX) {
   window.MewConnectEth = MewConnectEth;
   window.MewConnect = MewConnect;
   trezorConnect.manifest({
-    email: 'info@myetherwallet.com',
+    email: 'dev@myetherwallet.com',
     appUrl: 'https://vintage.myetherwallet.com'
   });
 }
