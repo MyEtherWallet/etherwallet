@@ -45,7 +45,7 @@
       </p>
 
       <p>
-        &copy; 2018 MyEtherWallet, Inc
+        &copy; 2019 MyEtherWallet, Inc
       </p>
 
     </section>

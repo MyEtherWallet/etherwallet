@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (C) 2015-2018 MyEtherWallet INC
+Copyright (C) 2015-2019 MyEtherWallet INC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

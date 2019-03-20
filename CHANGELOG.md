@@ -1,3 +1,6 @@
+### v3.36.0
+- Add new tokens from ethlist [#2249](https://github.com/kvhnuke/etherwallet/pull/2249)
+
 ### v3.35.1
 
 - Remove `;` [#2244](https://github.com/kvhnuke/etherwallet/pull/2244)
