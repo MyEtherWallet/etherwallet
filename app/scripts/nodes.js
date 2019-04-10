@@ -431,7 +431,7 @@ nodes.nodeList = {
 		blockExplorerAddr: "https://explorer.webchain.network/addr/[[address]]",
 		type: nodes.nodeTypes.WEB,
 		eip155: true,
-		chainId: 101,
+		chainId: 24484,
 		tokenList: require("./tokens/webTokens.json"),
 		abiList: require("./abiDefinitions/webAbi.json"),
 		estimateGas: true,
