@@ -1,5 +1,5 @@
 ### v3.38.0
-- XSS fix []()
+- XSS fix [#2273](https://github.com/kvhnuke/etherwallet/pull/2273)
 
 ### v3.37.0
 - Change Webchain chain ID [#2256](https://github.com/kvhnuke/etherwallet/pull/2256)
