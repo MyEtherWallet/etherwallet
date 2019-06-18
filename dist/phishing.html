@@ -343,16 +343,16 @@
 </section>
 <script>
 (function() {
-  const regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
-	const url = globalFuncs.stripTags(window.location.search.replace("?phishing-address=", ""));
-  console.log(url, url.match(regex) !== null);
+  const regex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
+  const url = globalFuncs.stripTags(window.location.search.replace("?phishing-address=", ""));
+  const actualUrl = new URL(url).origin;
   const body = document.getElementById("phishingMsg");
   const fragment = document.createDocumentFragment();
   const newP1 = document.createElement("p");
   const newP2 = document.createElement("p");
-  url.match(regex) !== null ? 
+  actualUrl.match(regex) !== null ? 
     newP1.innerHTML = `</br></br></br></br></br>
-      The url ${url} has been flagged as a supicious site by the community.
+      The url ${actualUrl} has been flagged as a supicious site by the community.
     ` :
     newP1.innerHTML =  `</br></br></br></br></br>
       Unparsable url found.
