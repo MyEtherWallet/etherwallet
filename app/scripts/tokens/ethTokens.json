@@ -832,6 +832,12 @@
     "symbol": "BOB",
     "decimal": 18,
     "type": "default"
+  },  
+  {
+    "address": "0x27C743954bCe1Bfaef8bcbD685527531001D88D7",
+    "symbol": "BOK",
+    "decimal": 18,
+    "type": "default"
   },
   {
     "address": "0x9f235d23354857efe6c541db92a9ef1877689bcb",
