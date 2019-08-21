@@ -1,5 +1,11 @@
 [
 	{
+		"address": "0x2d427d9e535e4382606b93290dcc13a5e9a694be",
+		"symbol": "qwe",
+		"decimal": 18,
+		"type": "default"
+	},
+	{
 		"address": "0xA52832A0B3EBfAeF629B1a44A922F46c90445108",
 		"symbol": "☼ PLASMA",
 		"decimal": 6,
