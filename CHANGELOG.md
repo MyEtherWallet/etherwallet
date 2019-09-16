@@ -1,3 +1,5 @@
+- Sync tokens with ethereum-list [#2301](https://github.com/kvhnuke/etherwallet/pull/2301)
+
 ### Release v3.39.0
 
 - Add BOK token [#2282](https://github.com/kvhnuke/etherwallet/pull/2282)
@@ -6,6 +8,7 @@
 - Re-add sv.js changes and Ledger show data [#2280](https://github.com/kvhnuke/etherwallet/pull/2280)
 
 ### Release v3.38.0
+
 - XSS fix [#2273](https://github.com/kvhnuke/etherwallet/pull/2273)
 
 ### Release v3.37.0
