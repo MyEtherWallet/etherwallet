@@ -43,6 +43,7 @@
     "xss-filters": "^1.2.7"
   },
   "devDependencies": {
+    "@ledgerhq/hw-app-eth": "^4.61.0",
     "angular": "^1.6.2",
     "angular-animate": "^1.6.2",
     "angular-sanitize": "^1.6.2",
