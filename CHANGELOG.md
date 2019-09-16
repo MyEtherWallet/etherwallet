@@ -1,18 +1,29 @@
-### v3.38.0
+- Add warning modal []()
+- Sync tokens with ethereum-list [#2301](https://github.com/kvhnuke/etherwallet/pull/2301)
+
+### Release v3.39.0
+
+- Add BOK token [#2282](https://github.com/kvhnuke/etherwallet/pull/2282)
+- Add Ampleforth abi [#2287](https://github.com/kvhnuke/etherwallet/pull/2287)
+- Add HW token [#2270](https://github.com/kvhnuke/etherwallet/pull/2270)
+- Re-add sv.js changes and Ledger show data [#2280](https://github.com/kvhnuke/etherwallet/pull/2280)
+
+### Release v3.38.0
+
 - XSS fix [#2273](https://github.com/kvhnuke/etherwallet/pull/2273)
 
-### v3.37.0
+### Release v3.37.0
 - Change Webchain chain ID [#2256](https://github.com/kvhnuke/etherwallet/pull/2256)
 - Added InsightsNetworkMigrationToEOS contract ABI [#2252](https://github.com/kvhnuke/etherwallet/pull/2252)
 - Update ethAbi.json [#2254](https://github.com/kvhnuke/etherwallet/pull/2254)
 
-### v3.36.0
+### Release v3.36.0
 - Add new tokens from ethlist [#2249](https://github.com/kvhnuke/etherwallet/pull/2249)
 
-### v3.35.1
+### Release v3.35.1
 
 - Remove `;` [#2244](https://github.com/kvhnuke/etherwallet/pull/2244)
-### v3.35.0
+### Release v3.35.0
 
 - Add LDX custom Gas [#2227](https://github.com/kvhnuke/etherwallet/pull/2226)
 - Add LondonCoin custom Gas [#2226](https://github.com/kvhnuke/etherwallet/pull/2226)
@@ -21,7 +32,7 @@
 - Add Crypto20 contract, Add 1SG, BCASH, BRP, BTR, CAS, EMB, FORK, FZCOIN, GUSD, PXG, TMTG, VIDT, DST, HEY, HV, VEGAN, XCL and XCHF, update ORME token, Update custom node function [#2242](https://github.com/kvhnuke/etherwallet/pull/2242)
 
 
-### v3.34.0
+### Release v3.34.0
 
 - Add MAS token [https://github.com/kvhnuke/etherwallet/pull/2237](2237)
 - Added BitherPlatformToken contract ABI [#2234](https://github.com/kvhnuke/etherwallet/pull/2234)

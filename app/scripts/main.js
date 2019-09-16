@@ -79,6 +79,7 @@ if (IS_CX) {
   var MewConnect = require("@myetherwallet/mewconnect-web-client").Initiator;
   var ledger3 = require("./staticJS/ledger3");
   var ledgerEth = require("./staticJS/ledger-eth");
+  var byContractAddress = require('@ledgerhq/hw-app-eth/erc20').byContractAddress;
   var trezorConnect = require("trezor-connect").default;
   var digitalBitboxUsb = require("./staticJS/digitalBitboxUsb");
   var digitalBitboxEth = require("./staticJS/digitalBitboxEth");
@@ -86,6 +87,7 @@ if (IS_CX) {
   var secalotEth = require("./staticJS/secalotEth");
   window.Ledger3 = ledger3;
   window.ledgerEth = ledgerEth;
+  window.ledgerByContractAddress = byContractAddress;
   window.TrezorConnect = trezorConnect;
   window.DigitalBitboxUsb = digitalBitboxUsb;
   window.DigitalBitboxEth = digitalBitboxEth;
