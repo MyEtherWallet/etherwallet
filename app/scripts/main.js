@@ -106,7 +106,7 @@ var darkListConst = require("./constants/darkListConst");
 var tabsCtrl = require("./controllers/tabsCtrl");
 var viewCtrl = require("./controllers/viewCtrl");
 var walletGenCtrl = require("./controllers/walletGenCtrl");
-var onboardingCtrl = require("./controllers/onboardingCtrl");
+var deprecationCtrl = require("./controllers/deprecationCtrl");
 var bulkGenCtrl = require("./controllers/bulkGenCtrl");
 var decryptWalletCtrl = require("./controllers/decryptWalletCtrl");
 var viewWalletCtrl = require("./controllers/viewWalletCtrl");
@@ -190,7 +190,7 @@ app.controller("tabsCtrl", [
 app.controller("viewCtrl", ["$scope", "globalService", "$sce", viewCtrl]);
 app.controller("walletGenCtrl", ["$scope", walletGenCtrl]);
 app.controller("bulkGenCtrl", ["$scope", bulkGenCtrl]);
-app.controller("onboardingCtrl", ["$scope", onboardingCtrl]);
+app.controller("deprecationCtrl", ["$scope", deprecationCtrl]);
 app.controller("decryptWalletCtrl", [
   "$scope",
   "$sce",
