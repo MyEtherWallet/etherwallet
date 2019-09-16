@@ -1,3 +1,6 @@
+
+- Sync tokens with ethereum-list [#2301](https://github.com/kvhnuke/etherwallet/pull/2301)
+
 ### v3.38.0
 - XSS fix [#2273](https://github.com/kvhnuke/etherwallet/pull/2273)
 
