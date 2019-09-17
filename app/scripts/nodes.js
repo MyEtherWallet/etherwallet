@@ -96,6 +96,30 @@ nodes.nodeList = {
 		service: "giveth.io",
 		lib: new nodes.customNode("https://mew.giveth.io", "")
 	},
+	etc_ethereumclassiccooperative_parity: {
+		name: "ETC",
+		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",
+		blockExplorerAddr: "https://gastracker.io/addr/[[address]]",
+		type: nodes.nodeTypes.ETC,
+		eip155: true,
+		chainId: 61,
+		tokenList: require("./tokens/etcTokens.json"),
+		abiList: require("./abiDefinitions/etcAbi.json"),
+		service: "ETC Coop Parity",
+		lib: new nodes.customNode("https://www.ethercluster.com/etc", "")
+	},
+	etc_ethereumclassiccooperative_parity_classic: {
+		name: "ETC",
+		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",
+		blockExplorerAddr: "https://gastracker.io/addr/[[address]]",
+		type: nodes.nodeTypes.ETC,
+		eip155: true,
+		chainId: 61,
+		tokenList: require("./tokens/etcTokens.json"),
+		abiList: require("./abiDefinitions/etcAbi.json"),
+		service: "ETC Coop Parity Classic",
+		lib: new nodes.customNode("https://www.ethereumclassic.network/", "")
+	},
 	etc_ethereumcommonwealth_geth: {
 		name: "ETC",
 		blockExplorerTX: "https://gastracker.io/tx/[[txHash]]",

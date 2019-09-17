@@ -1,3 +1,4 @@
+- Add ETC nodes [#2305](https://github.com/kvhnuke/etherwallet/pull/2305)
 - Add warning modal [#2302](https://github.com/kvhnuke/etherwallet/pull/2302)
 - Sync tokens with ethereum-list [#2301](https://github.com/kvhnuke/etherwallet/pull/2301)
 
